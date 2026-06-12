@@ -47,7 +47,7 @@ header{background:var(--header-bg);border-bottom:1px solid var(--border);padding
 .signal-dot{width:6px;height:6px;border-radius:50%;background:var(--accent3);animation:pulse 2s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
 .header-stats{display:flex;align-items:center;gap:8px}.stat-pill{background:var(--surface2);border:1px solid var(--border);padding:5px 10px;font-size:10px;letter-spacing:1px}.stat-label{color:var(--text-dim);margin-right:5px}.stat-value{color:var(--accent);font-family:'IBM Plex Mono',monospace;font-weight:500}
 .layout{display:flex;flex:1;overflow:hidden;min-height:0}
-.sidebar-left,.sidebar-right{width:200px;flex-shrink:0;background:var(--surface);overflow-y:auto;display:flex;flex-direction:column;position:relative}.sidebar-left{border-right:1px solid var(--border)}.sidebar-right{border-left:1px solid var(--border)}.sidebar-left>div,.sidebar-right>div{padding:12px;border-bottom:1px solid var(--border)}
+.left-cluster{width:450px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);display:grid;grid-template-columns:200px 250px;min-height:0;position:relative}.sidebar-left,.sidebar-detail,.sidebar-right{flex-shrink:0;background:var(--surface);overflow-y:auto;display:flex;flex-direction:column;position:relative;min-height:0}.sidebar-left{width:200px;border-right:1px solid var(--border)}.sidebar-detail{width:250px}.sidebar-right{width:250px;border-left:1px solid var(--border)}.sidebar-live{background:var(--surface)}.sidebar-left>div,.sidebar-detail>div,.sidebar-right>div{padding:12px;border-bottom:1px solid var(--border)}
 .panel-title{font-size:10px;letter-spacing:2px;color:var(--text-dim);margin-bottom:9px;text-transform:uppercase}
 .metric-btn{width:100%;padding:8px 10px;background:transparent;border:1px solid var(--border);color:var(--text-mid);font-family:inherit;font-size:10px;letter-spacing:0.8px;cursor:pointer;text-align:left;transition:all 0.2s;margin-bottom:4px;display:flex;align-items:center;gap:8px}.metric-btn:hover{border-color:var(--accent);color:var(--text)}.metric-btn.active{border-color:var(--accent);background:var(--metric-active-bg);color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
 #legendCanvas{width:100%;display:block;margin-bottom:4px}.legend-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--text-dim)}
@@ -86,7 +86,7 @@ body.light .alliance-info-btn{background:rgba(0,0,0,0.03);border-color:rgba(0,0,
 @keyframes livePulse{0%,100%{opacity:1;box-shadow:0 0 4px #ff3344}50%{opacity:0.4;box-shadow:none}}
 .live-tag{font-size:9px;color:#ff4466;letter-spacing:1px;display:flex;align-items:center;padding:0 14px;font-family:'IBM Plex Mono',monospace}
 /* Live data panels in sidebar */
-.live-section{border-bottom:1px solid var(--border);padding:10px 12px}
+.live-section{border-bottom:1px solid var(--border);padding:10px 12px}.sidebar-live #newsPanel{max-height:360px!important}
 .live-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .live-header .panel-title{margin-bottom:0}
 .refresh-btn{background:none;border:1px solid var(--border);color:var(--text-dim);font-size:10px;cursor:pointer;padding:2px 6px;border-radius:2px;font-family:inherit;transition:all 0.15s}
@@ -164,6 +164,8 @@ body.light .alliance-info-btn{background:rgba(0,0,0,0.03);border-color:rgba(0,0,
 .mobile-toggle-right{right:0;border-radius:6px 0 0 6px;border-right:none}
 .sidebar-close{display:none;position:absolute;top:8px;right:8px;width:24px;height:24px;background:var(--surface2);border:1px solid var(--border);color:var(--text-mid);font-size:14px;cursor:pointer;z-index:3;border-radius:3px;align-items:center;justify-content:center;padding:0}
 /* Mobile responsive */
+@media(max-width:1180px){.left-cluster{width:410px;grid-template-columns:185px 225px}.sidebar-left{width:185px}.sidebar-detail{width:225px}.sidebar-right{width:230px}}
+@media(max-width:980px){.left-cluster{width:370px;grid-template-columns:170px 200px}.sidebar-left{width:170px}.sidebar-detail{width:200px}.sidebar-right{width:220px}.rank-val{display:none}}
 @media(max-width:900px){
   .header-right .stat-pill{display:none}
   .header-right .stat-pill:last-of-type{display:inline-flex}
@@ -175,12 +177,15 @@ body.light .alliance-info-btn{background:rgba(0,0,0,0.03);border-color:rgba(0,0,
   .font-ctrl-btn span.fc-text{display:none}
 }
 @media(max-width:768px){
-  .sidebar-left,.sidebar-right{position:fixed;top:0;bottom:0;width:260px;z-index:1100;transition:transform 0.3s ease;overflow-y:auto}
-  .sidebar-left{left:0;transform:translateX(-100%);border-right:1px solid var(--border)}
-  .sidebar-right{right:0;transform:translateX(100%);border-left:1px solid var(--border)}
-  .sidebar-left.open{transform:translateX(0)}
+  .left-cluster,.sidebar-right{position:fixed;top:0;bottom:0;z-index:1100;transition:transform 0.3s ease;overflow-y:auto}
+  .left-cluster{left:0;width:min(92vw,340px);display:block;transform:translateX(-100%);border-right:1px solid var(--border);background:var(--surface)}
+  .left-cluster.open{transform:translateX(0)}
+  .left-cluster .sidebar-left,.left-cluster .sidebar-detail{width:100%;border-right:none;overflow:visible;min-height:auto}
+  .left-cluster .sidebar-detail{border-top:1px solid var(--border)}
+  .sidebar-right{right:0;width:min(88vw,320px);transform:translateX(100%);border-left:1px solid var(--border)}
   .sidebar-right.open{transform:translateX(0)}
   .sidebar-close{display:flex}
+  .cluster-close{position:sticky;top:8px;margin-left:auto;margin-right:8px;margin-top:8px}
   .mobile-toggle{display:flex}
   .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1099}
   .mobile-overlay.active{display:block}
@@ -251,13 +256,21 @@ body.light .alliance-info-btn{background:rgba(0,0,0,0.03);border-color:rgba(0,0,
   <div style="overflow:hidden;flex:1"><div class="ticker-track" id="tickerTrack"><span class="ticker-item"><span class="ticker-label">로딩 중...</span></span></div></div>
 </div>
 <div class="layout">
+<div class="left-cluster" id="leftCluster">
+<button class="sidebar-close cluster-close" onclick="closeSidebars()" aria-label="닫기">✕</button>
 <div class="sidebar-left" id="sidebarLeft">
-<button class="sidebar-close" onclick="closeSidebars()" aria-label="닫기">✕</button>
 <div><div class="panel-title">경제 지표 선택</div><button class="metric-btn active" onclick="setMetric('gdp',this)"><span class="metric-icon">📊</span> GDP / 국내총생산</button><button class="metric-btn" onclick="setMetric('trade',this)"><span class="metric-icon">🚢</span> 무역 수출입</button><button class="metric-btn" onclick="setMetric('unemployment',this)"><span class="metric-icon">📉</span> 실업률</button><button class="metric-btn" onclick="setMetric('inflation',this)"><span class="metric-icon">💹</span> 인플레이션율</button></div>
 <div class="search-panel"><div class="panel-title">국가 검색</div><div class="search-box"><span class="search-icon">⌕</span><input id="countrySearch" class="search-input" type="search" placeholder="국가명, 지역, GDP 순위" autocomplete="off" oninput="renderCountrySearch(this.value)" onkeydown="handleSearchKey(event)"><button id="searchClear" class="search-clear" onclick="clearCountrySearch()" aria-label="검색 지우기">×</button></div><div class="search-results" id="countrySearchResults"></div></div>
 <div><div class="panel-title">지도 오버레이</div><button class="overlay-btn" onclick="setOverlay('polsys',this)">🟣 정치체제 구분</button><button class="overlay-btn" onclick="setOverlay('powercable',this)" style="border-color:#ff4488;color:#ff4488">⚡ 해저전력케이블</button><button class="overlay-btn resource" onclick="toggleResMenu(this)">🟡 천연자원 보유국</button><div id="resSubMenu"><button class="res-sub-btn" onclick="setResOverlay('oil_prod',this)">🛢️ 석유 생산량</button><button class="res-sub-btn" onclick="setResOverlay('oil_export',this)">🛢️ 석유 수출량</button><button class="res-sub-btn" onclick="setResOverlay('gas_prod',this)">💨 천연가스 생산량</button><button class="res-sub-btn" onclick="setResOverlay('gas_export',this)">💨 천연가스 수출량</button><button class="res-sub-btn" onclick="setResOverlay('uranium',this)">☢️ 우라늄</button><button class="res-sub-btn" onclick="setResOverlay('lithium',this)">🔋 리튬</button><button class="res-sub-btn" onclick="setResOverlay('rare_earth',this)">⚗️ 희토류</button><button class="res-sub-btn" onclick="setResOverlay('tungsten',this)">🪨 텅스텐</button><button class="res-sub-btn" onclick="setResOverlay('all',this)">🌐 전체</button></div><button class="overlay-btn" onclick="setOverlay('none',this)">⬜ 오버레이 해제</button><div class="overlay-legend" id="overlayLegendBox"></div></div>
 <div><div class="panel-title">범례</div><canvas id="legendCanvas" height="10"></canvas><div class="legend-labels"><span id="legendMin">$5B</span><span id="legendMax">$30T+</span></div></div>
 <div><div class="panel-title">TOP 10 순위</div><div id="rankingList"></div></div>
+</div>
+<div class="sidebar-detail" id="sidebarDetail">
+<div><div class="panel-title">국가 상세 정보</div><div id="countryDetail"><div class="placeholder-text">지도에서 국가를<br>클릭하세요</div></div></div>
+<div><div class="panel-title">글로벌 인사이트</div><div id="insights"></div></div>
+<div><div class="panel-title">데이터 상태</div><div id="dataStatusList" class="data-status-list"></div><div class="data-source-card"><strong>기준:</strong> 국가 경제 수치는 IMF/WB 계열 2024-2025 추정치를 기반으로 한 대시보드용 정적 데이터입니다.<br><strong>실시간:</strong> 환율·원자재·뉴스는 외부 API와 CORS 프록시에 의존하며 실패 시 최근/참고값 또는 오류 상태를 표시합니다.<br><strong>배포:</strong> GitHub Pages에서는 HTTPS CDN 연결이 필요합니다.</div></div>
+<div><div class="panel-title">지역별 GDP 비중</div><div id="regionChart"></div></div>
+</div>
 </div>
 <div class="map-container" id="mapContainer">
 <button class="mobile-toggle mobile-toggle-left" onclick="toggleSidebar('left')" aria-label="왼쪽 메뉴">☰</button>
@@ -318,15 +331,12 @@ body.light .alliance-info-btn{background:rgba(0,0,0,0.03);border-color:rgba(0,0,
 </div>
 <div class="map-controls"><button class="map-ctrl-btn" onclick="map.zoomIn()">＋</button><button class="map-ctrl-btn" onclick="map.zoomOut()">－</button><button class="map-ctrl-btn" onclick="map.setView([20,0],2.3)">⌖</button><button class="map-ctrl-btn" id="labelToggleBtn" onclick="toggleLabels()">A·Z</button></div>
 </div>
-<div class="sidebar-right" id="sidebarRight">
+<div class="sidebar-right sidebar-live" id="sidebarRight">
 <button class="sidebar-close" onclick="closeSidebars()" aria-label="닫기">✕</button>
-<div><div class="panel-title">국가 상세 정보</div><div id="countryDetail"><div class="placeholder-text">지도에서 국가를<br>클릭하세요</div></div></div>
+<div><div class="panel-title">라이브 시세 · 뉴스</div><div class="insight-box">귀금속·에너지 시세와 인베스팅 뉴스를 고정 표시합니다.</div></div>
 <div class="live-section"><div class="live-header"><div class="panel-title" style="display:flex;align-items:center;gap:5px"><span class="live-dot"></span>귀금속 시세</div><button class="refresh-btn" onclick="fetchCommodities()">↻</button></div><div id="commodityPanel"><div class="data-loading">시세 로딩 중...</div></div><div class="last-update" id="commodityTime"></div></div>
 <div class="live-section"><div class="live-header"><div class="panel-title" style="display:flex;align-items:center;gap:5px">🛢️ 에너지 시세</div><button class="refresh-btn" onclick="fetchEnergy()">↻</button></div><div id="energyPanel"><div class="data-loading">시세 로딩 중...</div></div><div class="last-update" id="energyTime"></div></div>
 <div class="live-section"><div class="live-header"><div class="panel-title" style="display:flex;align-items:center;gap:5px"><span class="live-dot"></span>인베스팅 뉴스</div><button class="refresh-btn" onclick="fetchNews()">↻</button></div><div id="newsPanel" style="max-height:220px;overflow-y:auto"><div class="data-loading">뉴스 로딩 중...</div></div><div class="last-update" id="newsTime"></div></div>
-<div><div class="panel-title">글로벌 인사이트</div><div id="insights"></div></div>
-<div><div class="panel-title">데이터 상태</div><div id="dataStatusList" class="data-status-list"></div><div class="data-source-card"><strong>기준:</strong> 국가 경제 수치는 IMF/WB 계열 2024-2025 추정치를 기반으로 한 대시보드용 정적 데이터입니다.<br><strong>실시간:</strong> 환율·원자재·뉴스는 외부 API와 CORS 프록시에 의존하며 실패 시 최근/참고값 또는 오류 상태를 표시합니다.<br><strong>배포:</strong> GitHub Pages에서는 HTTPS CDN 연결이 필요합니다.</div></div>
-<div><div class="panel-title">지역별 GDP 비중</div><div id="regionChart"></div></div>
 </div>
 </div>
 <div id="tooltip"></div>
@@ -516,12 +526,12 @@ function setLabelWeight(w,btn){
 // Mobile sidebar toggles
 function toggleSidebar(side){
   closeSidebars();
-  const el=side==='left'?document.getElementById('sidebarLeft'):document.getElementById('sidebarRight');
+  const el=side==='left'?document.getElementById('leftCluster'):document.getElementById('sidebarRight');
   el.classList.add('open');
   document.getElementById('mobileOverlay').classList.add('active');
 }
 function closeSidebars(){
-  document.getElementById('sidebarLeft').classList.remove('open');
+  document.getElementById('leftCluster')?.classList.remove('open');
   document.getElementById('sidebarRight').classList.remove('open');
   document.getElementById('mobileOverlay').classList.remove('active');
   if(map) setTimeout(()=>map.invalidateSize(),350);
