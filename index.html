@@ -639,9 +639,9 @@ const extraNames={"192":"쿠바","591":"파나마","222":"엘살바도르","112"
 function renderLabels(){labelMarkers.forEach(m=>map.removeLayer(m));labelMarkers=[];if(!showLabels)return;const zoom=map.getZoom(),bounds=map.getBounds();Object.entries(LABEL_POS).forEach(([iso,[lon,lat]])=>{const name=eData[iso]?.name??extraNames[iso];if(!name)return;const hasData=!!eData[iso];if(!hasData&&zoom<4)return;if(smallC.has(iso)&&zoom<4)return;if(zoom<2.2)return;const ll=L.latLng(lat,lon);if(!bounds.contains(ll))return;const label=zoom>=4?name:(name.length>5?name.slice(0,4)+'.':name);const m=L.marker(ll,{icon:L.divIcon({className:'country-label-div',html:label,iconSize:null,iconAnchor:[0,0]}),interactive:false});m.setOpacity(hasData?0.85:0.5);m.addTo(map);labelMarkers.push(m);});}
 
 function initMap(){
-  map=L.map('map',{center:[20,0],zoom:2.3,minZoom:2,maxZoom:10,zoomSnap:0.1,zoomDelta:0.5,worldCopyJump:true,maxBounds:[[-85,-200],[85,200]],maxBoundsViscosity:0.8});
-  darkTiles=L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19});
-  lightTiles=L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19});
+  map=L.map('map',{center:[20,0],zoom:2.3,minZoom:2,maxZoom:10,zoomSnap:0.1,zoomDelta:0.5,worldCopyJump:false,maxBounds:[[-88,-260],[88,260]],maxBoundsViscosity:0.55});
+  darkTiles=L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19,noWrap:true,bounds:[[-85,-180],[85,180]]});
+  lightTiles=L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19,noWrap:true,bounds:[[-85,-180],[85,180]]});
   currentTiles=darkTiles;currentTiles.addTo(map);
   colorScale=mCfg[curMetric].darkScale();
   document.getElementById('loadingStatus').textContent='GeoJSON 로딩 중...';setDataStatus('map','loading','세계 경계 로딩 중');
