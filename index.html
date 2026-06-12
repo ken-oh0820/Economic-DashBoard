@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="99개국 GDP, 무역, 실업률, 인플레이션 + 실시간 환율·원자재 시세·글로벌 뉴스를 한눈에. Interactive World Economic Dashboard.">
+<meta name="description" content="100개국 GDP, 무역, 실업률, 인플레이션 + 실시간 환율·원자재 시세·글로벌 뉴스를 한눈에. Interactive World Economic Dashboard.">
 <meta name="keywords" content="세계경제,GDP,지도,Economic Atlas,글로벌 대시보드,환율,원유시세">
 <meta property="og:title" content="Economic Atlas — 글로벌 경제 대시보드 2026">
-<meta property="og:description" content="99개국 경제 데이터 + 실시간 환율·원자재 시세·뉴스를 인터랙티브 세계지도로 탐색">
+<meta property="og:description" content="100개국 경제 데이터 + 실시간 환율·원자재 시세·뉴스를 인터랙티브 세계지도로 탐색">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
 <title>글로벌 경제 지도 — Economic Atlas 2026</title>
@@ -104,6 +104,31 @@ body.light .alliance-info-btn{background:rgba(0,0,0,0.03);border-color:rgba(0,0,
 .data-loading{font-size:10px;color:var(--text-dim);text-align:center;padding:12px 0;letter-spacing:1px}
 .data-error{font-size:10px;color:#ff6666;text-align:center;padding:8px 0}
 .last-update{font-size:9px;color:var(--text-dim);text-align:right;margin-top:6px;letter-spacing:0.3px}
+
+/* Search and data quality panels */
+.search-panel{padding:12px;border-bottom:1px solid var(--border)}
+.search-box{position:relative;display:flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);padding:7px 8px;transition:border-color .15s,box-shadow .15s}
+.search-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 2px rgba(0,212,255,.08)}
+.search-icon{color:var(--text-dim);font-size:12px;line-height:1}
+.search-input{width:100%;background:transparent;border:none;outline:none;color:var(--text);font-family:inherit;font-size:11px;min-width:0}
+.search-input::placeholder{color:var(--text-dim)}
+.search-clear{display:none;background:transparent;border:none;color:var(--text-dim);font-size:14px;cursor:pointer;padding:0 2px;line-height:1}
+.search-clear.show{display:block}.search-clear:hover{color:var(--accent)}
+.search-results{margin-top:8px;display:flex;flex-direction:column;gap:3px;max-height:236px;overflow-y:auto}
+.search-result{display:flex;align-items:center;gap:7px;padding:7px 8px;border:1px solid var(--rank-border);background:transparent;color:var(--text-mid);cursor:pointer;transition:all .15s;text-align:left;font-family:inherit;width:100%}
+.search-result:hover,.search-result.active{border-color:var(--accent);background:var(--rank-hover);color:var(--text)}
+.search-result-name{font-size:10px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left}
+.search-result-meta{font-size:9px;color:var(--text-dim);font-family:'IBM Plex Mono',monospace;white-space:nowrap}
+.search-empty{font-size:10px;color:var(--text-dim);line-height:1.6;text-align:center;padding:12px 4px;border:1px dashed var(--border)}
+.data-source-card{font-size:10px;color:var(--text-mid);line-height:1.65;background:var(--surface2);border:1px solid var(--border);padding:9px 10px}
+.data-source-card strong{color:var(--text);font-weight:500}.data-source-card a{color:var(--accent);text-decoration:none}.data-source-card a:hover{text-decoration:underline}
+.data-status-list{display:flex;flex-direction:column;gap:5px;margin-bottom:8px}
+.data-status-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 8px;background:var(--surface2);border:1px solid var(--border);font-size:10px}
+.data-status-left{display:flex;align-items:center;gap:6px;min-width:0}.data-status-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text-mid)}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--text-dim);flex-shrink:0}.status-ok{background:#22dd66}.status-loading{background:var(--accent);animation:pulse 1.5s infinite}.status-warn{background:#ffaa33}.status-error{background:#ff4466}
+.data-status-detail{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);white-space:nowrap}
+@media(max-width:768px){.search-results{max-height:42vh}.data-status-row{padding:7px 9px}.search-result{padding:9px 10px}}
+
 /* Mobile toggle buttons */
 .mobile-toggle{display:none;position:absolute;top:50%;transform:translateY(-50%);width:28px;height:54px;background:var(--ctrl-bg);border:1px solid var(--border);color:var(--accent);font-size:14px;cursor:pointer;z-index:1002;align-items:center;justify-content:center;backdrop-filter:blur(8px);padding:0;transition:all 0.2s}
 /* Alliance quick cards on map */
@@ -229,6 +254,7 @@ body.light .alliance-info-btn{background:rgba(0,0,0,0.03);border-color:rgba(0,0,
 <div class="sidebar-left" id="sidebarLeft">
 <button class="sidebar-close" onclick="closeSidebars()" aria-label="닫기">✕</button>
 <div><div class="panel-title">경제 지표 선택</div><button class="metric-btn active" onclick="setMetric('gdp',this)"><span class="metric-icon">📊</span> GDP / 국내총생산</button><button class="metric-btn" onclick="setMetric('trade',this)"><span class="metric-icon">🚢</span> 무역 수출입</button><button class="metric-btn" onclick="setMetric('unemployment',this)"><span class="metric-icon">📉</span> 실업률</button><button class="metric-btn" onclick="setMetric('inflation',this)"><span class="metric-icon">💹</span> 인플레이션율</button></div>
+<div class="search-panel"><div class="panel-title">국가 검색</div><div class="search-box"><span class="search-icon">⌕</span><input id="countrySearch" class="search-input" type="search" placeholder="국가명, 지역, GDP 순위" autocomplete="off" oninput="renderCountrySearch(this.value)" onkeydown="handleSearchKey(event)"><button id="searchClear" class="search-clear" onclick="clearCountrySearch()" aria-label="검색 지우기">×</button></div><div class="search-results" id="countrySearchResults"></div></div>
 <div><div class="panel-title">지도 오버레이</div><button class="overlay-btn" onclick="setOverlay('polsys',this)">🟣 정치체제 구분</button><button class="overlay-btn" onclick="setOverlay('powercable',this)" style="border-color:#ff4488;color:#ff4488">⚡ 해저전력케이블</button><button class="overlay-btn resource" onclick="toggleResMenu(this)">🟡 천연자원 보유국</button><div id="resSubMenu"><button class="res-sub-btn" onclick="setResOverlay('oil_prod',this)">🛢️ 석유 생산량</button><button class="res-sub-btn" onclick="setResOverlay('oil_export',this)">🛢️ 석유 수출량</button><button class="res-sub-btn" onclick="setResOverlay('gas_prod',this)">💨 천연가스 생산량</button><button class="res-sub-btn" onclick="setResOverlay('gas_export',this)">💨 천연가스 수출량</button><button class="res-sub-btn" onclick="setResOverlay('uranium',this)">☢️ 우라늄</button><button class="res-sub-btn" onclick="setResOverlay('lithium',this)">🔋 리튬</button><button class="res-sub-btn" onclick="setResOverlay('rare_earth',this)">⚗️ 희토류</button><button class="res-sub-btn" onclick="setResOverlay('tungsten',this)">🪨 텅스텐</button><button class="res-sub-btn" onclick="setResOverlay('all',this)">🌐 전체</button></div><button class="overlay-btn" onclick="setOverlay('none',this)">⬜ 오버레이 해제</button><div class="overlay-legend" id="overlayLegendBox"></div></div>
 <div><div class="panel-title">범례</div><canvas id="legendCanvas" height="10"></canvas><div class="legend-labels"><span id="legendMin">$5B</span><span id="legendMax">$30T+</span></div></div>
 <div><div class="panel-title">TOP 10 순위</div><div id="rankingList"></div></div>
@@ -299,6 +325,7 @@ body.light .alliance-info-btn{background:rgba(0,0,0,0.03);border-color:rgba(0,0,
 <div class="live-section"><div class="live-header"><div class="panel-title" style="display:flex;align-items:center;gap:5px">🛢️ 에너지 시세</div><button class="refresh-btn" onclick="fetchEnergy()">↻</button></div><div id="energyPanel"><div class="data-loading">시세 로딩 중...</div></div><div class="last-update" id="energyTime"></div></div>
 <div class="live-section"><div class="live-header"><div class="panel-title" style="display:flex;align-items:center;gap:5px"><span class="live-dot"></span>인베스팅 뉴스</div><button class="refresh-btn" onclick="fetchNews()">↻</button></div><div id="newsPanel" style="max-height:220px;overflow-y:auto"><div class="data-loading">뉴스 로딩 중...</div></div><div class="last-update" id="newsTime"></div></div>
 <div><div class="panel-title">글로벌 인사이트</div><div id="insights"></div></div>
+<div><div class="panel-title">데이터 상태</div><div id="dataStatusList" class="data-status-list"></div><div class="data-source-card"><strong>기준:</strong> 국가 경제 수치는 IMF/WB 계열 2024-2025 추정치를 기반으로 한 대시보드용 정적 데이터입니다.<br><strong>실시간:</strong> 환율·원자재·뉴스는 외부 API와 CORS 프록시에 의존하며 실패 시 최근/참고값 또는 오류 상태를 표시합니다.<br><strong>배포:</strong> GitHub Pages에서는 HTTPS CDN 연결이 필요합니다.</div></div>
 <div><div class="panel-title">지역별 GDP 비중</div><div id="regionChart"></div></div>
 </div>
 </div>
@@ -424,6 +451,18 @@ function getResourceList(id){return Object.entries(RESOURCES).filter(([,r])=>r.c
 
 let curMetric='gdp',isLight=false,selId=null,curOverlay='none',showLabels=true,curResource=null;
 let colorScale,geoLayer,map,labelMarkers=[],darkTiles,lightTiles,currentTiles;
+const DATA_STATUS={map:{label:'지도 경계',status:'loading',detail:'대기'},fx:{label:'환율',status:'loading',detail:'대기'},commodities:{label:'귀금속',status:'loading',detail:'대기'},energy:{label:'에너지',status:'loading',detail:'대기'},news:{label:'뉴스',status:'loading',detail:'대기'}};
+const COUNTRY_ALIASES={"410":"한국 남한 코리아 korea republic of korea rok","840":"미국 미국달러 usa united states america us","156":"중국 china prc","392":"일본 japan","276":"독일 germany deutschland","826":"영국 uk united kingdom britain","250":"프랑스 france","643":"러시아 russia","356":"인도 india","076":"브라질 brazil","124":"캐나다 canada","036":"호주 australia","792":"튀르키예 터키 turkey turkiye","784":"아랍에미레이트 uae united arab emirates","704":"베트남 vietnam viet nam","408":"북한 north korea dprk"};
+let lastSearchQuery='',searchCursor=0;
+function escHtml(v){return String(v??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));}
+function setDataStatus(key,status,detail){if(!DATA_STATUS[key])return;DATA_STATUS[key].status=status;DATA_STATUS[key].detail=detail||new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});renderDataStatus();}
+function renderDataStatus(){const el=document.getElementById('dataStatusList');if(!el)return;const order=['map','fx','commodities','energy','news'];const label={ok:'정상',loading:'연결중',warn:'참고값',error:'오류'};el.innerHTML=order.map(k=>{const s=DATA_STATUS[k];return `<div class="data-status-row"><div class="data-status-left"><span class="status-dot status-${s.status}"></span><span class="data-status-label">${escHtml(s.label)}</span></div><span class="data-status-detail">${label[s.status]||s.status} · ${escHtml(s.detail)}</span></div>`;}).join('');}
+function getCountryEntries(){return Object.entries(eData).map(([id,d])=>({id,d,rank:getRank(id,'gdp'),text:[d.name,d.region,id,d.flag,COUNTRY_ALIASES[id]||''].join(' ').toLowerCase()}));}
+function renderCountrySearch(q=''){lastSearchQuery=q;const input=document.getElementById('countrySearch'),clear=document.getElementById('searchClear'),box=document.getElementById('countrySearchResults');if(!box)return;if(input&&input.value!==q)input.value=q;if(clear)clear.classList.toggle('show',!!q.trim());const term=q.trim().toLowerCase();let rows=getCountryEntries().sort((a,b)=>a.rank-b.rank);if(term){rows=rows.filter(x=>x.text.includes(term)||String(x.rank)===term.replace('#',''));}rows=rows.slice(0,term?12:8);searchCursor=Math.min(searchCursor,Math.max(rows.length-1,0));if(!rows.length){box.innerHTML='<div class="search-empty">검색 결과가 없습니다</div>';return;}box.innerHTML=rows.map((x,i)=>`<button class="search-result ${x.id===selId||i===searchCursor?'active':''}" onclick="selectCountry('${x.id}',{pan:true,closePanel:true})"><span class="search-result-name">${escHtml(x.d.flag)} ${escHtml(x.d.name)}</span><span class="search-result-meta">#${x.rank} · ${escHtml(x.d.region)}</span></button>`).join('');}
+function clearCountrySearch(){searchCursor=0;renderCountrySearch('');document.getElementById('countrySearch')?.focus();}
+function handleSearchKey(e){const items=[...document.querySelectorAll('#countrySearchResults .search-result')];if(e.key==='ArrowDown'){e.preventDefault();searchCursor=Math.min(searchCursor+1,Math.max(items.length-1,0));renderCountrySearch(e.currentTarget.value);}else if(e.key==='ArrowUp'){e.preventDefault();searchCursor=Math.max(searchCursor-1,0);renderCountrySearch(e.currentTarget.value);}else if(e.key==='Enter'&&items[searchCursor]){e.preventDefault();items[searchCursor].click();}else if(e.key==='Escape'){clearCountrySearch();}}
+function selectCountry(id,opts={}){if(!eData[id])return;selId=id;renderDetail(id);if(geoLayer){geoLayer.eachLayer(l=>{const lid=pad(l.feature.id);l.setStyle(lid===id?{weight:2.5,color:'rgba(0,212,255,0.9)'}:{weight:0.6,color:getStroke()});if(lid===id&&l.bringToFront)l.bringToFront();});}if(opts.pan&&map&&LABEL_POS[id]){const [lon,lat]=LABEL_POS[id];map.setView([lat,lon],Math.max(map.getZoom(),isMobile()?4:3.4),{animate:true});}renderCountrySearch(lastSearchQuery);if(opts.closePanel&&isMobile())closeSidebars();}
+
 function pad(id){return String(id).padStart(3,'0');}
 function getStroke(){return isLight?'rgba(0,80,160,0.22)':'rgba(0,200,255,0.15)';}
 function getFill(rawId){const id=pad(rawId);if(curOverlay==='nato')return natoMembers.has(id)?'#1a44cc':(isLight?'#c8d8e8':'#090f1a');if(curOverlay==='brics')return bricsMembers.has(id)?'#cc6600':(isLight?'#c8d8e8':'#090f1a');if(curOverlay==='g7')return g7Members.has(id)?'#22aa66':(isLight?'#c8d8e8':'#090f1a');if(curOverlay==='polsys'){const p=polSys[id];return p?polColors[p]:(isLight?'#c8d8e8':'#090f1a');}if(curOverlay==='resource'){if(curResource==='all'){const l=getResourceList(id);if(l.length>1)return'#ffdd00';if(l.length===1)return l[0].color;return isLight?'#c8d8e8':'#090f1a';}const r=RESOURCES[curResource];return r&&r.countries.has(id)?r.color:(isLight?'#c8d8e8':'#090f1a');}const d=eData[id];if(!d)return isLight?mCfg[curMetric].lightNoData:mCfg[curMetric].darkNoData;try{return colorScale(d[curMetric]);}catch(e){return'#0b1520';}}
@@ -435,7 +474,7 @@ function hideTip(){document.getElementById('tooltip').style.display='none';}
 function renderDetail(iso){const d=eData[iso];if(!d)return;document.getElementById('countryDetail').dataset.iso=iso;const rnk=getRank(iso,'gdp');const badges=[natoMembers.has(iso)?'<span style="background:#1a44cc;color:#fff;font-size:10px;padding:3px 8px;border-radius:2px">NATO</span>':'',bricsMembers.has(iso)?'<span style="background:#cc6600;color:#fff;font-size:10px;padding:3px 8px;border-radius:2px">BRICS</span>':'',polSys[iso]?`<span style="border:1px solid ${polColors[polSys[iso]]};color:${polColors[polSys[iso]]};font-size:10px;padding:3px 8px;border-radius:2px">${polLabels[polSys[iso]]}</span>`:''].filter(Boolean).join('');const ex=extraInfo[iso];const extraHtml=ex?`<div style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px"><div style="font-size:9px;letter-spacing:1px;color:var(--text-dim);margin-bottom:6px">상세 경제지표 (WB/IMF 2024-25)</div><div class="metric-grid"><div class="metric-card"><div class="mc-label">총인구</div><div class="mc-value" style="color:var(--text)">${ex.pop>=1000?(ex.pop/1000).toFixed(1)+'억':ex.pop.toFixed(1)+'백만'}</div></div><div class="metric-card"><div class="mc-label">GNI 총액</div><div class="mc-value" style="color:#88ccff">${fmtMoney(ex.gni)}</div></div><div class="metric-card"><div class="mc-label">1인당 GNI</div><div class="mc-value" style="color:#ffaa44">${fmtMoneyPc(ex.gniPc)}</div></div><div class="metric-card"><div class="mc-label">국가채무/GDP</div><div class="mc-value" style="color:${ex.debt>100?'#ff4466':ex.debt>60?'#ffaa44':'#66dd88'}">${ex.debt}%</div></div></div></div>`:'';const ind=industryData[iso];const indHtml=ind?`<div style="margin-top:8px;padding:9px 11px;background:var(--bg);border:1px solid var(--border)"><div style="font-size:9px;letter-spacing:1px;color:var(--text-dim);margin-bottom:7px">핵심 산업</div><div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px">${ind.ind.map(i=>`<span style="background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);color:var(--accent);font-size:10px;padding:3px 8px;border-radius:2px">${i}</span>`).join('')}</div><div style="font-size:9px;letter-spacing:1px;color:var(--text-dim);margin-bottom:5px">대표 기술·기업</div><div style="font-size:10px;color:var(--text-mid);line-height:1.8">${ind.tech.map(t=>`<div style="padding:2px 0;border-bottom:1px solid var(--border)">▸ ${t}</div>`).join('')}</div></div>`:'';document.getElementById('countryDetail').innerHTML=`<div class="country-card"><div class="country-name-big">${d.flag} ${d.name}</div><div class="country-region">${d.region}</div>${badges?`<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px">${badges}</div>`:''}<div class="metric-grid"><div class="metric-card"><div class="mc-label">GDP</div><div class="mc-value gdp">${mCfg.gdp.fmt(d.gdp)}</div></div><div class="metric-card"><div class="mc-label">무역규모</div><div class="mc-value trade">${mCfg.trade.fmt(d.trade)}</div></div><div class="metric-card"><div class="mc-label">실업률</div><div class="mc-value unemp">${d.unemployment}%</div></div><div class="metric-card"><div class="mc-label">인플레이션</div><div class="mc-value infl">${d.inflation}%</div></div></div><div class="rank-badge"><span>GDP 세계 순위</span><span>#${rnk}</span></div>${extraHtml}${indHtml}${(()=>{const rl=getResourceList(iso);return rl.length?`<div style="margin-top:9px;padding:8px 11px;background:var(--bg);border:1px solid var(--border)"><div style="font-size:9px;letter-spacing:1px;color:var(--text-dim);margin-bottom:7px">보유 천연자원</div><div style="display:flex;flex-wrap:wrap;gap:5px">${rl.map(r=>`<span style="background:${r.color}22;border:1px solid ${r.color}88;color:${r.color};font-size:10px;padding:3px 8px;border-radius:2px">${r.icon} ${r.label}</span>`).join('')}</div></div>`:'';})()} </div>`;}
 function getRank(id,key){return Object.entries(eData).sort((a,b)=>b[1][key]-a[1][key]).findIndex(([c])=>c===id)+1;}
 function renderRankings(){const cfg=mCfg[curMetric],col=isLight?cfg.lightColor:cfg.darkColor;const sorted=Object.entries(eData).sort((a,b)=>b[1][curMetric]-a[1][curMetric]).slice(0,10);const max=sorted[0][1][curMetric];document.getElementById('rankingList').innerHTML=sorted.map(([id,d],i)=>`<div class="rank-item" onclick="clickRank('${id}')"><span class="rank-num">${i+1}</span><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between"><span class="rank-name">${d.flag} ${d.name}</span><span class="rank-val" style="color:${col}">${cfg.fmt(d[curMetric])}</span></div><div class="rank-bar-bg"><div style="height:100%;width:${(d[curMetric]/max*100).toFixed(1)}%;background:${col};border-radius:2px;opacity:0.75"></div></div></div></div>`).join('');}
-function clickRank(id){selId=id;renderDetail(id);if(geoLayer)geoLayer.eachLayer(l=>{const lid=pad(l.feature.id);l.setStyle(lid===id?{weight:2.5,color:'rgba(0,212,255,0.9)'}:{weight:0.6,color:getStroke()});});}
+function clickRank(id){selectCountry(id,{pan:true});}
 function renderLegend(){const canvas=document.getElementById('legendCanvas');if(!canvas.offsetWidth)return;const W=canvas.offsetWidth;canvas.width=W;canvas.height=10;const ctx=canvas.getContext('2d');const sc=isLight?mCfg[curMetric].lightScale():mCfg[curMetric].darkScale();const domain=curMetric==='unemployment'?[0,35]:curMetric==='gdp'?[5,31000]:curMetric==='trade'?[1,6500]:[0.5,270];const isLog=curMetric!=='unemployment';for(let i=0;i<W;i++){const t=i/W;let v;if(isLog)v=Math.exp(Math.log(Math.max(domain[0],1e-9))+(Math.log(Math.max(domain[1],1e-9))-Math.log(Math.max(domain[0],1e-9)))*t);else v=domain[0]+(domain[1]-domain[0])*t;ctx.fillStyle=sc(v);ctx.fillRect(i,0,1,10);}document.getElementById('legendMin').textContent=mCfg[curMetric].min;document.getElementById('legendMax').textContent=mCfg[curMetric].max;}
 function renderInsight(){document.getElementById('insights').innerHTML=`<div class="insight-box">${mCfg[curMetric].insight}</div>`;}
 function renderRegionChart(){const regions={};Object.values(eData).forEach(d=>{regions[d.region]=(regions[d.region]||0)+d.gdp;});const total=Object.values(regions).reduce((a,b)=>a+b,0);const col=isLight?mCfg.gdp.lightColor:mCfg.gdp.darkColor;document.getElementById('regionChart').innerHTML=Object.entries(regions).sort((a,b)=>b[1]-a[1]).map(([r,v])=>`<div style="margin-bottom:7px"><div style="display:flex;justify-content:space-between;font-size:9px;color:var(--text-mid);margin-bottom:3px"><span>${r}</span><span style="color:${col}">${(v/total*100).toFixed(1)}%</span></div><div style="height:3px;background:var(--border);border-radius:2px"><div style="height:100%;width:${(v/total*100).toFixed(1)}%;background:${col};border-radius:2px;opacity:0.8"></div></div></div>`).join('');}
@@ -578,7 +617,7 @@ function initMap(){
   lightTiles=L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19});
   currentTiles=darkTiles;currentTiles.addTo(map);
   colorScale=mCfg[curMetric].darkScale();
-  document.getElementById('loadingStatus').textContent='GeoJSON 로딩 중...';
+  document.getElementById('loadingStatus').textContent='GeoJSON 로딩 중...';setDataStatus('map','loading','세계 경계 로딩 중');
   fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json').then(r=>r.json()).then(topo=>{
     const countries=topojson.feature(topo,topo.objects.countries);
     // Fix antimeridian: Russia, Fiji etc. cross the 180° line causing render artifacts
@@ -593,13 +632,14 @@ function initMap(){
         mouseover:e=>{if(eData[id]){showTip(e,id);e.target.setStyle({weight:2,color:'rgba(0,212,255,0.9)'});e.target.bringToFront();}},
         mousemove:e=>{const tt=document.getElementById('tooltip');tt.style.left=Math.min(e.originalEvent.clientX+14,window.innerWidth-215)+'px';tt.style.top=Math.min(e.originalEvent.clientY-8,window.innerHeight-200)+'px';},
         mouseout:e=>{hideTip();const sid=pad(e.target.feature.id);e.target.setStyle({weight:sid===selId?2.5:0.6,color:sid===selId?'rgba(0,212,255,0.9)':getStroke()});},
-        click:e=>{const cid=pad(e.target.feature.id);if(!eData[cid])return;if(geoLayer)geoLayer.eachLayer(l=>l.setStyle({weight:0.6,color:getStroke()}));e.target.setStyle({weight:2.5,color:'rgba(0,212,255,0.9)'});e.target.bringToFront();selId=cid;renderDetail(cid);}
+        click:e=>{const cid=pad(e.target.feature.id);if(!eData[cid])return;selectCountry(cid,{pan:false});}
       });}
     }).addTo(map);
     document.getElementById('countryCount').textContent=Object.keys(eData).length+'개국';
     document.getElementById('loadingOverlay').style.display='none';
-    renderAll();renderLabels();
-  }).catch(err=>{document.getElementById('loadingStatus').textContent='로딩 실패 — 인터넷 연결 확인';console.error(err);});
+    setDataStatus('map','ok','국가 '+Object.keys(eData).length+'개');
+    renderAll();renderLabels();renderCountrySearch('');
+  }).catch(err=>{document.getElementById('loadingStatus').textContent='로딩 실패 — 인터넷 연결 확인';setDataStatus('map','error','CDN 연결 실패');console.error(err);});
   map.on('zoomend moveend',()=>renderLabels());
 }
 initMap();
@@ -628,6 +668,7 @@ function fetchT(url, ms=5000) {
 
 // ═══ Exchange Rates — 1순위: Cloudflare Worker (실시간) → 2순위: open.er-api (폴백) ═══
 async function fetchExchangeRates() {
+  setDataStatus('fx','loading','갱신 중');
   // 1순위: Cloudflare Worker (Yahoo Finance 실시간)
   try {
     const syms = TICKER_CURRENCIES.map(c=>c.sym).join(',');
@@ -652,7 +693,7 @@ async function fetchExchangeRates() {
         const chgCls = chgPct>0?'ticker-down':chgPct<0?'ticker-up':'ticker-flat';
         return '<span class="ticker-item"><span class="ticker-label">'+c.icon+' '+c.label+'</span><span class="ticker-val">₩'+Number(fmt).toLocaleString()+'</span>'+(chgStr?'<span class="ticker-chg '+chgCls+'" style="font-size:9px">'+chgStr+'</span>':'')+(tickDir?'<span style="font-size:9px;margin-left:2px" class="'+tickCls+'">'+tickDir+'</span>':'')+'</span>';
       }).filter(Boolean).join('');
-      if (items) { document.getElementById('tickerTrack').innerHTML=items+items; return; }
+      if (items) { document.getElementById('tickerTrack').innerHTML=items+items;setDataStatus('fx','ok','Worker '+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})); return; }
     }
   } catch(e) {}
 
@@ -676,16 +717,17 @@ async function fetchExchangeRates() {
       const arrow = hasChg?(chgPct>0?'▲':'▼'):'';
       return '<span class="ticker-item"><span class="ticker-label">'+c.icon+' '+c.label+'</span><span class="ticker-val">₩'+Number(fmt).toLocaleString()+'</span>'+(chgStr?'<span class="ticker-chg '+cls+'" style="font-size:9px">'+chgStr+'</span>':'')+(arrow?'<span style="font-size:9px;margin-left:2px" class="'+cls+'">'+arrow+'</span>':'')+'</span>';
     }).filter(Boolean).join('');
-    if (items) document.getElementById('tickerTrack').innerHTML=items+items;
+    if (items){document.getElementById('tickerTrack').innerHTML=items+items;setDataStatus('fx','ok','open.er-api');}
   } catch(e) {
     if (!document.getElementById('tickerTrack').innerHTML.includes('ticker-val'))
-      document.getElementById('tickerTrack').innerHTML='<span class="ticker-item"><span class="ticker-label" style="color:#ff6666">환율 로딩 실패</span></span>';
+      document.getElementById('tickerTrack').innerHTML='<span class="ticker-item"><span class="ticker-label" style="color:#ff6666">환율 로딩 실패</span></span>';setDataStatus('fx','error','연결 실패');
   }
 }
 
 // ═══ Commodities — fawazahmed0 CDN (프록시 불필요, CORS OK) ═══
 let prevCom = {};
 async function fetchCommodities() {
+  setDataStatus('commodities','loading','갱신 중');
   const panel = document.getElementById('commodityPanel');
   panel.innerHTML = '<div class="data-loading">시세 로딩 중...</div>';
   const items = [];
@@ -726,8 +768,9 @@ async function fetchCommodities() {
       return '<div class="commodity-row"><span class="commodity-name">'+r.icon+' '+r.name+'</span><span><span class="commodity-price">$'+r.price.toFixed(2)+'</span>'+(chgStr?' <span class="ticker-chg '+cls+'" style="font-size:9px">'+chgStr+'</span>':'')+'</span></div>';
     }).join('');
     document.getElementById('commodityTime').textContent='최종 갱신: '+new Date().toLocaleTimeString('ko-KR');
+    setDataStatus('commodities','ok','금속 '+items.length+'개');
   } else {
-    panel.innerHTML='<div class="data-error">시세 불러오기 실패<br><span style="font-size:9px;color:var(--text-dim)">↻ 재시도</span></div>';
+    panel.innerHTML='<div class="data-error">시세 불러오기 실패<br><span style="font-size:9px;color:var(--text-dim)">↻ 재시도</span></div>';setDataStatus('commodities','error','연결 실패');
   }
 }
 
@@ -742,6 +785,7 @@ const ENERGY_FALLBACK = [
 ];
 
 async function fetchEnergy() {
+  setDataStatus('energy','loading','갱신 중');
   const panel = document.getElementById('energyPanel');
   panel.innerHTML='<div class="data-loading">시세 로딩 중...</div>';
   const items = [];
@@ -793,17 +837,20 @@ async function fetchEnergy() {
     }).join('');
     const src = WORKER_URL.includes('YOUR_ID') ? '프록시' : 'Worker';
     document.getElementById('energyTime').textContent='실시간('+src+') · '+new Date().toLocaleTimeString('ko-KR');
+    setDataStatus('energy','ok',src);
   } else {
     // 3순위: 참고 시세
     panel.innerHTML = ENERGY_FALLBACK.map(r =>
       '<div class="commodity-row"><span class="commodity-name">'+r.icon+' '+r.name+'</span><span><span class="commodity-price">$'+r.price.toFixed(2)+'</span><span style="font-size:9px;color:var(--text-dim);margin-left:4px">'+r.unit+'</span></span></div>'
     ).join('') + '<div style="font-size:9px;color:var(--text-dim);margin-top:5px;line-height:1.5;border-top:1px solid var(--border);padding-top:5px">⚠ 실시간 연결 불가 — 참고 시세 ('+ENERGY_FALLBACK[0].date+')'+(WORKER_URL.includes('YOUR_ID')?'<br><span style="color:var(--accent)">→ Cloudflare Worker 세팅 후 실시간 가능</span>':'')+'</div>';
     document.getElementById('energyTime').textContent='참고 시세 · '+ENERGY_FALLBACK[0].date;
+    setDataStatus('energy','warn','참고값 '+ENERGY_FALLBACK[0].date);
   }
 }
 
 // ═══ News — 피드별 프록시 4중 시도 ═══
 async function fetchNews() {
+  setDataStatus('news','loading','갱신 중');
   const panel = document.getElementById('newsPanel');
   panel.innerHTML='<div class="data-loading">뉴스 로딩 중...</div>';
   const feeds=[
@@ -847,8 +894,9 @@ async function fetchNews() {
       return '<div class="news-item" onclick="window.open(\''+l+'\',\'_blank\')"><div class="news-title">'+t+'</div><div class="news-meta"><span class="news-source">'+(i._src||'')+'</span>'+(ts?' · '+ts:'')+'</div></div>';
     }).join('');
     document.getElementById('newsTime').textContent='최종 갱신: '+new Date().toLocaleTimeString('ko-KR');
+    setDataStatus('news','ok',(all[0]?._src||'RSS')+' '+all.length+'건');
   }else{
-    panel.innerHTML='<div class="data-error">뉴스를 불러올 수 없습니다<br><span style="font-size:9px;color:var(--text-dim)">↻ 재시도</span></div>';
+    panel.innerHTML='<div class="data-error">뉴스를 불러올 수 없습니다<br><span style="font-size:9px;color:var(--text-dim)">↻ 재시도</span></div>';setDataStatus('news','error','RSS 실패');
   }
 }
 
@@ -953,6 +1001,7 @@ function drawPowerCables(){
 }
 
 function initLiveData() {
+  renderDataStatus();
   Promise.all([fetchExchangeRates(), fetchCommodities(), fetchEnergy(), fetchNews()]);
   setInterval(fetchExchangeRates, 300000);   // 환율: 5분
   setInterval(fetchCommodities, 300000);     // 귀금속: 5분
