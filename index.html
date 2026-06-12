@@ -46,8 +46,9 @@ header{background:var(--header-bg);border-bottom:1px solid var(--border);padding
 .font-weight-btn.active{border-color:var(--accent);color:var(--accent);background:var(--metric-active-bg)}
 .signal-dot{width:6px;height:6px;border-radius:50%;background:var(--accent3);animation:pulse 2s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
 .header-stats{display:flex;align-items:center;gap:8px}.stat-pill{background:var(--surface2);border:1px solid var(--border);padding:5px 10px;font-size:10px;letter-spacing:1px}.stat-label{color:var(--text-dim);margin-right:5px}.stat-value{color:var(--accent);font-family:'IBM Plex Mono',monospace;font-weight:500}
-.layout{display:flex;flex:1;overflow:hidden;min-height:0}
-.left-cluster{width:450px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);display:grid;grid-template-columns:200px 250px;min-height:0;position:relative}.sidebar-left,.sidebar-detail,.sidebar-right{flex-shrink:0;background:var(--surface);overflow-y:auto;display:flex;flex-direction:column;position:relative;min-height:0}.sidebar-left{width:200px;border-right:1px solid var(--border)}.sidebar-detail{width:250px}.sidebar-right{width:250px;border-left:1px solid var(--border)}.sidebar-live{background:var(--surface)}.sidebar-left>div,.sidebar-detail>div,.sidebar-right>div{padding:12px;border-bottom:1px solid var(--border)}
+.layout{display:flex;flex:1;overflow:hidden;min-height:0;position:relative}
+.left-cluster{width:450px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);display:grid;grid-template-columns:200px 250px;min-height:0;position:relative;transition:margin-left .24s ease}.sidebar-left,.sidebar-detail,.sidebar-right{flex-shrink:0;background:var(--surface);overflow-y:auto;display:flex;flex-direction:column;position:relative;min-height:0}.sidebar-left{width:200px;border-right:1px solid var(--border)}.sidebar-detail{width:250px}.sidebar-right{width:250px;border-left:1px solid var(--border);transition:margin-right .24s ease}.sidebar-live{background:var(--surface)}.sidebar-left>div,.sidebar-detail>div,.sidebar-right>div{padding:12px;border-bottom:1px solid var(--border)}
+body.left-collapsed .left-cluster{margin-left:-450px}body.right-collapsed .sidebar-live{margin-right:-250px}.desktop-panel-toggle{position:absolute;top:50%;transform:translateY(-50%);width:26px;height:72px;z-index:1300;background:var(--ctrl-bg);border:1px solid var(--border);color:var(--accent);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);transition:left .24s ease,right .24s ease,border-color .15s,background .15s;padding:0}.desktop-panel-toggle:hover{border-color:var(--accent);background:var(--metric-active-bg)}.desktop-panel-toggle-left{left:450px;border-left:none;border-radius:0 6px 6px 0}.desktop-panel-toggle-right{right:250px;border-right:none;border-radius:6px 0 0 6px}body.left-collapsed .desktop-panel-toggle-left{left:0}body.right-collapsed .desktop-panel-toggle-right{right:0}
 .panel-title{font-size:10px;letter-spacing:2px;color:var(--text-dim);margin-bottom:9px;text-transform:uppercase}
 .metric-btn{width:100%;padding:8px 10px;background:transparent;border:1px solid var(--border);color:var(--text-mid);font-family:inherit;font-size:10px;letter-spacing:0.8px;cursor:pointer;text-align:left;transition:all 0.2s;margin-bottom:4px;display:flex;align-items:center;gap:8px}.metric-btn:hover{border-color:var(--accent);color:var(--text)}.metric-btn.active{border-color:var(--accent);background:var(--metric-active-bg);color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
 #legendCanvas{width:100%;display:block;margin-bottom:4px}.legend-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--text-dim)}
@@ -164,8 +165,8 @@ body.light .alliance-info-btn{background:rgba(0,0,0,0.03);border-color:rgba(0,0,
 .mobile-toggle-right{right:0;border-radius:6px 0 0 6px;border-right:none}
 .sidebar-close{display:none;position:absolute;top:8px;right:8px;width:24px;height:24px;background:var(--surface2);border:1px solid var(--border);color:var(--text-mid);font-size:14px;cursor:pointer;z-index:3;border-radius:3px;align-items:center;justify-content:center;padding:0}
 /* Mobile responsive */
-@media(max-width:1180px){.left-cluster{width:410px;grid-template-columns:185px 225px}.sidebar-left{width:185px}.sidebar-detail{width:225px}.sidebar-right{width:230px}}
-@media(max-width:980px){.left-cluster{width:370px;grid-template-columns:170px 200px}.sidebar-left{width:170px}.sidebar-detail{width:200px}.sidebar-right{width:220px}.rank-val{display:none}}
+@media(max-width:1180px){.left-cluster{width:410px;grid-template-columns:185px 225px}.sidebar-left{width:185px}.sidebar-detail{width:225px}.sidebar-right{width:230px}body.left-collapsed .left-cluster{margin-left:-410px}body.right-collapsed .sidebar-live{margin-right:-230px}.desktop-panel-toggle-left{left:410px}.desktop-panel-toggle-right{right:230px}body.left-collapsed .desktop-panel-toggle-left{left:0}body.right-collapsed .desktop-panel-toggle-right{right:0}}
+@media(max-width:980px){.left-cluster{width:370px;grid-template-columns:170px 200px}.sidebar-left{width:170px}.sidebar-detail{width:200px}.sidebar-right{width:220px}.rank-val{display:none}body.left-collapsed .left-cluster{margin-left:-370px}body.right-collapsed .sidebar-live{margin-right:-220px}.desktop-panel-toggle-left{left:370px}.desktop-panel-toggle-right{right:220px}body.left-collapsed .desktop-panel-toggle-left{left:0}body.right-collapsed .desktop-panel-toggle-right{right:0}}
 @media(max-width:900px){
   .header-right .stat-pill{display:none}
   .header-right .stat-pill:last-of-type{display:inline-flex}
@@ -177,6 +178,8 @@ body.light .alliance-info-btn{background:rgba(0,0,0,0.03);border-color:rgba(0,0,
   .font-ctrl-btn span.fc-text{display:none}
 }
 @media(max-width:768px){
+  body.left-collapsed .left-cluster,body.right-collapsed .sidebar-live{margin-left:0;margin-right:0}
+  .desktop-panel-toggle{display:none}
   .left-cluster,.sidebar-right{position:fixed;top:0;bottom:0;z-index:1100;transition:transform 0.3s ease;overflow-y:auto}
   .left-cluster{left:0;width:min(92vw,340px);display:block;transform:translateX(-100%);border-right:1px solid var(--border);background:var(--surface)}
   .left-cluster.open{transform:translateX(0)}
@@ -256,6 +259,8 @@ body.light .alliance-info-btn{background:rgba(0,0,0,0.03);border-color:rgba(0,0,
   <div style="overflow:hidden;flex:1"><div class="ticker-track" id="tickerTrack"><span class="ticker-item"><span class="ticker-label">로딩 중...</span></span></div></div>
 </div>
 <div class="layout">
+<button class="desktop-panel-toggle desktop-panel-toggle-left" id="leftDesktopToggle" onclick="toggleDesktopPanel('left')" aria-label="왼쪽 패널 접기">◀</button>
+<button class="desktop-panel-toggle desktop-panel-toggle-right" id="rightDesktopToggle" onclick="toggleDesktopPanel('right')" aria-label="오른쪽 패널 접기">▶</button>
 <div class="left-cluster" id="leftCluster">
 <button class="sidebar-close cluster-close" onclick="closeSidebars()" aria-label="닫기">✕</button>
 <div class="sidebar-left" id="sidebarLeft">
@@ -524,6 +529,18 @@ function setLabelWeight(w,btn){
 }
 
 // Mobile sidebar toggles
+function updateDesktopPanelButtons(){
+  const l=document.getElementById('leftDesktopToggle'),r=document.getElementById('rightDesktopToggle');
+  const lc=document.body.classList.contains('left-collapsed'),rc=document.body.classList.contains('right-collapsed');
+  if(l){l.textContent=lc?'▶':'◀';l.setAttribute('aria-label',lc?'왼쪽 패널 펼치기':'왼쪽 패널 접기');}
+  if(r){r.textContent=rc?'◀':'▶';r.setAttribute('aria-label',rc?'오른쪽 패널 펼치기':'오른쪽 패널 접기');}
+  if(map) setTimeout(()=>map.invalidateSize(),260);
+}
+function toggleDesktopPanel(side){
+  if(side==='left') document.body.classList.toggle('left-collapsed');
+  if(side==='right') document.body.classList.toggle('right-collapsed');
+  updateDesktopPanelButtons();
+}
 function toggleSidebar(side){
   closeSidebars();
   const el=side==='left'?document.getElementById('leftCluster'):document.getElementById('sidebarRight');
@@ -1018,6 +1035,7 @@ function initLiveData() {
   setInterval(fetchEnergy, 300000);          // 에너지: 5분
   setInterval(fetchNews, 600000);            // 뉴스: 10분
 }
+updateDesktopPanelButtons();
 setTimeout(initLiveData, 1500); // Start after map loads
 </script>
 </body>
