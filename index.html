@@ -143,7 +143,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
 .main-menu-inner{width:min(1040px,100%);display:flex;flex-direction:column;gap:28px}.main-menu-kicker{font-size:10px;letter-spacing:3px;color:var(--accent);font-family:'IBM Plex Mono',monospace}.main-menu-title{font-family:'Bebas Neue',sans-serif;font-size:58px;letter-spacing:6px;color:var(--text);line-height:.95}.main-menu-credit{font-size:10px;letter-spacing:2px;color:var(--text-dim);font-family:'IBM Plex Mono',monospace;margin-top:8px}.main-menu-sub{font-size:13px;color:var(--text-mid);line-height:1.8;max-width:620px}.main-menu-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.main-menu-card{min-height:180px;background:rgba(12,20,34,.86);border:1px solid var(--border);color:var(--text);font-family:inherit;text-align:left;padding:18px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .18s,background .18s,transform .18s}.main-menu-card:hover{border-color:var(--accent);background:rgba(0,212,255,.06);transform:translateY(-2px)}.main-menu-card.disabled{cursor:default;opacity:.62}.main-menu-card.disabled:hover{border-color:var(--border);background:rgba(12,20,34,.86);transform:none}.menu-card-index{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--accent)}.menu-card-title{font-size:18px;font-weight:700;margin-bottom:8px}.menu-card-desc{font-size:11px;color:var(--text-mid);line-height:1.7}.menu-card-enter{font-size:11px;color:var(--accent);letter-spacing:1px;font-family:'IBM Plex Mono',monospace}.app-nav-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text-mid);font-size:10px;padding:4px 8px;cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}.app-nav-btn:hover{border-color:var(--accent);color:var(--accent)}
 .indicator-dashboard{flex:1;overflow:auto;background:var(--bg);padding:18px 18px 28px}.dashboard-shell{max-width:1480px;margin:0 auto}.dashboard-top{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:16px}.dashboard-kicker{font-size:10px;letter-spacing:2px;color:var(--accent);font-family:'IBM Plex Mono',monospace;margin-bottom:6px}.dashboard-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:5px;color:var(--text)}.dashboard-sub{font-size:11px;color:var(--text-mid);line-height:1.7;margin-top:4px}.dashboard-status{border:1px solid var(--border);background:var(--surface);padding:9px 12px;font-size:10px;color:var(--text-mid);font-family:'IBM Plex Mono',monospace;white-space:nowrap}.indicator-grid{display:grid;grid-template-columns:repeat(4,minmax(170px,1fr));gap:10px;margin-bottom:16px}.indicator-card{background:var(--surface);border:1px solid var(--border);padding:12px;min-height:112px}.indicator-group{font-size:9px;letter-spacing:1.4px;color:var(--text-dim);text-transform:uppercase;margin-bottom:8px}.indicator-name{font-size:13px;color:var(--text);font-weight:600;margin-bottom:8px}.indicator-value{font-family:'IBM Plex Mono',monospace;font-size:22px;color:var(--accent);margin-bottom:6px}.indicator-note{font-size:10px;color:var(--text-mid);line-height:1.5}.dashboard-sections{display:grid;grid-template-columns:1.2fr .8fr;gap:12px}.dashboard-panel{background:var(--surface);border:1px solid var(--border);padding:14px}.dashboard-panel-title{font-size:10px;letter-spacing:2px;color:var(--text-dim);margin-bottom:12px;text-transform:uppercase}.watch-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.watch-row{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--rank-border);padding:9px 10px;font-size:11px;color:var(--text-mid)}.watch-row span:last-child{font-family:'IBM Plex Mono',monospace;color:var(--text)}.roadmap-list{font-size:11px;color:var(--text-mid);line-height:1.9}.roadmap-list b{color:var(--text)}
 .fed-dashboard{flex:1;display:none;flex-direction:column;background:var(--bg);min-height:0}.fed-frame-toolbar{height:38px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 14px;border-bottom:1px solid var(--border);background:var(--surface);font-size:10px;color:var(--text-mid);font-family:'IBM Plex Mono',monospace}.fed-frame-title{color:var(--text);letter-spacing:1.4px}.fed-open-link{color:var(--accent);text-decoration:none;border:1px solid var(--border);padding:5px 8px;background:var(--surface2)}.fed-open-link:hover{border-color:var(--accent)}.fed-frame{flex:1;width:100%;border:0;background:#05080d;min-height:0}
-.market-refresh-btn{background:var(--surface2);border:1px solid var(--border);color:var(--accent);font-size:10px;padding:7px 10px;cursor:pointer;font-family:'IBM Plex Mono',monospace;white-space:nowrap}.market-refresh-btn:hover{border-color:var(--accent);background:rgba(0,212,255,.08)}.dashboard-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.dashboard-status.ok{color:var(--accent);border-color:rgba(0,212,255,.45)}.dashboard-status.warn{color:#ffcc00;border-color:rgba(255,204,0,.45)}.dashboard-status.error{color:#ff6666;border-color:rgba(255,102,102,.45)}.indicator-card{position:relative}.indicator-card.row-break{grid-column:1}.indicator-card[data-chart-key],.watch-row[data-chart-key]{cursor:pointer;transition:border-color .16s,background .16s,transform .16s}.indicator-card[data-chart-key]:hover,.indicator-card.chart-active{border-color:var(--accent);background:rgba(0,212,255,.055)}.indicator-card[data-chart-key]:hover{transform:translateY(-1px)}.watch-row[data-chart-key]:hover,.watch-row.chart-active{border-color:var(--accent);background:rgba(0,212,255,.045)}.indicator-value.loading{color:var(--text-dim);font-size:15px}.indicator-change{font-family:'IBM Plex Mono',monospace;font-size:11px;min-height:16px}.indicator-source{font-size:9px;color:var(--text-dim);margin-top:6px;line-height:1.4}.market-up{color:#00ff88}.market-down{color:#ff4d6d}.market-flat{color:var(--text-dim)}.watch-row span:last-child.loading{color:var(--text-dim)}.market-chart-panel{margin-bottom:16px}.market-chart-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}.market-chart-meta{font-size:10px;color:var(--text-mid);font-family:'IBM Plex Mono',monospace;line-height:1.5}.chart-range-tabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.chart-range-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text-mid);font-size:10px;padding:5px 8px;font-family:'IBM Plex Mono',monospace;cursor:pointer}.chart-range-btn.active,.chart-range-btn:hover{border-color:var(--accent);color:var(--accent)}.market-chart-canvas{height:260px;border:1px solid var(--rank-border);background:rgba(0,0,0,.15);position:relative;overflow:hidden}.market-chart-canvas svg{width:100%;height:100%;display:block}.chart-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:11px;font-family:'IBM Plex Mono',monospace}.chart-axis{fill:var(--text-dim);font-size:10px;font-family:'IBM Plex Mono',monospace}.chart-grid{stroke:rgba(120,160,200,.16);stroke-width:1}.source-list{display:grid;gap:7px}.source-row{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--rank-border);padding:7px 0;font-size:11px;color:var(--text-mid)}.source-row span:last-child{font-family:'IBM Plex Mono',monospace;color:var(--text-dim);text-align:right}.source-row.ok span:last-child{color:var(--accent)}.source-row.warn span:last-child{color:#ffcc00}.source-row.error span:last-child{color:#ff6666}
+.market-refresh-btn{background:var(--surface2);border:1px solid var(--border);color:var(--accent);font-size:10px;padding:7px 10px;cursor:pointer;font-family:'IBM Plex Mono',monospace;white-space:nowrap}.market-refresh-btn:hover{border-color:var(--accent);background:rgba(0,212,255,.08)}.dashboard-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.dashboard-status.ok{color:var(--accent);border-color:rgba(0,212,255,.45)}.dashboard-status.warn{color:#ffcc00;border-color:rgba(255,204,0,.45)}.dashboard-status.error{color:#ff6666;border-color:rgba(255,102,102,.45)}.indicator-card{position:relative}.indicator-card.row-break{grid-column:1}.indicator-card[data-chart-key],.watch-row[data-chart-key]{cursor:pointer;transition:border-color .16s,background .16s,transform .16s}.indicator-card[data-chart-key]:hover,.indicator-card.chart-active{border-color:var(--accent);background:rgba(0,212,255,.055)}.indicator-card[data-chart-key]:hover{transform:translateY(-1px)}.watch-row[data-chart-key]:hover,.watch-row.chart-active{border-color:var(--accent);background:rgba(0,212,255,.045)}.indicator-value.loading{color:var(--text-dim);font-size:15px}.indicator-change{font-family:'IBM Plex Mono',monospace;font-size:11px;min-height:16px}.indicator-source{font-size:9px;color:var(--text-dim);margin-top:6px;line-height:1.4}.market-up{color:#00ff88}.market-down{color:#ff4d6d}.market-flat{color:var(--text-dim)}.watch-row span:last-child.loading{color:var(--text-dim)}.market-chart-panel{margin-bottom:16px}.market-chart-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}.market-chart-head>div:first-child{min-width:0}.market-chart-meta{font-size:10px;color:var(--text-mid);font-family:'IBM Plex Mono',monospace;line-height:1.5;word-break:keep-all}.chart-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;flex-shrink:0}.chart-range-tabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.chart-range-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text-mid);font-size:10px;padding:5px 8px;font-family:'IBM Plex Mono',monospace;cursor:pointer}.chart-range-btn.active,.chart-range-btn:hover{border-color:var(--accent);color:var(--accent)}.tradingview-link{background:rgba(0,212,255,.06);border:1px solid var(--border);color:var(--accent);font-size:10px;padding:5px 9px;font-family:'IBM Plex Mono',monospace;text-decoration:none;white-space:nowrap}.tradingview-link:hover{border-color:var(--accent);background:rgba(0,212,255,.12)}.market-chart-canvas{height:280px;border:1px solid var(--rank-border);background:rgba(0,0,0,.15);position:relative;overflow:hidden}.market-chart-canvas svg{width:100%;height:100%;display:block}.chart-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:11px;font-family:'IBM Plex Mono',monospace}.chart-axis{fill:var(--text-dim);font-size:9px;font-family:'IBM Plex Mono',monospace}.chart-axis.value{text-anchor:end}.chart-axis.date{text-anchor:middle}.chart-grid{stroke:rgba(120,160,200,.16);stroke-width:1}.source-list{display:grid;gap:7px}.source-row{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--rank-border);padding:7px 0;font-size:11px;color:var(--text-mid)}.source-row span:last-child{font-family:'IBM Plex Mono',monospace;color:var(--text-dim);text-align:right}.source-row.ok span:last-child{color:var(--accent)}.source-row.warn span:last-child{color:#ffcc00}.source-row.error span:last-child{color:#ff6666}
 @media(max-width:980px){.main-menu-title{font-size:48px}.main-menu-grid{grid-template-columns:1fr}.indicator-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.indicator-card.row-break{grid-column:auto}.dashboard-sections{grid-template-columns:1fr}}
 @media(max-width:560px){.main-menu{padding:18px}.main-menu-title{font-size:38px;letter-spacing:5px}.indicator-grid,.watch-list{grid-template-columns:1fr}.dashboard-top{align-items:flex-start;flex-direction:column}.indicator-dashboard{padding:14px 12px 24px}}
 
@@ -421,10 +421,13 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
           <div class="dashboard-panel-title" id="marketChartTitle">CHART · S&P 500</div>
           <div class="market-chart-meta" id="marketChartMeta">카드를 클릭하면 최근 흐름을 표시합니다.</div>
         </div>
-        <div class="chart-range-tabs">
-          <button class="chart-range-btn active" data-range="1mo" onclick="setMarketChartRange('1mo')">1M</button>
-          <button class="chart-range-btn" data-range="3mo" onclick="setMarketChartRange('3mo')">3M</button>
-          <button class="chart-range-btn" data-range="1y" onclick="setMarketChartRange('1y')">1Y</button>
+        <div class="chart-actions">
+          <div class="chart-range-tabs">
+            <button class="chart-range-btn active" data-range="1mo" onclick="setMarketChartRange('1mo')">1M</button>
+            <button class="chart-range-btn" data-range="3mo" onclick="setMarketChartRange('3mo')">3M</button>
+            <button class="chart-range-btn" data-range="1y" onclick="setMarketChartRange('1y')">1Y</button>
+          </div>
+          <a class="tradingview-link" id="tradingViewLink" href="https://www.tradingview.com/" target="_blank" rel="noopener">TRADINGVIEW ↗</a>
         </div>
       </div>
       <div class="market-chart-canvas" id="marketChartCanvas"><div class="chart-loading">차트 데이터 대기 중</div></div>
@@ -1061,21 +1064,21 @@ const MARKET_ITEMS=[
 let marketLoading=false,marketTimer=null;
 let currentMarketChartKey='sp500',marketChartRange='1mo';
 const MARKET_CHARTS={
-  sp500:{label:'S&P 500',symbol:'^GSPC',type:'yahoo',dec:2},
-  nasdaq:{label:'나스닥',symbol:'^IXIC',type:'yahoo',dec:2},
-  gold:{label:'금',symbol:'GC=F',type:'yahoo',dec:2,prefix:'$'},
-  btc:{label:'비트코인',symbol:'BTC-USD',type:'btc',dec:0,prefix:'$'},
-  kospi:{label:'코스피',symbol:'^KS11',type:'yahoo',dec:2},
-  kosdaq:{label:'코스닥',symbol:'^KQ11',type:'yahoo',dec:2},
-  fng:{label:'CNN 공포탐욕지수',type:'fng',dec:0,suffix:''},
-  cfng:{label:'암호화폐 공포탐욕',type:'cfng',dec:0,suffix:''},
-  vix:{label:'VIX',symbol:'^VIX',type:'yahoo',dec:2},
-  dxy:{label:'달러인덱스 DXY',symbol:'DX-Y.NYB',type:'yahoo',dec:2},
-  usdkrw:{label:'원달러 환율',symbol:'USDKRW=X',type:'yahoo',dec:2,prefix:'₩'},
-  us10y:{label:'미국 10년물 금리',symbol:'^TNX',type:'yahoo',dec:2,suffix:'%'},
-  curve:{label:'10Y-3M 금리차',type:'curve',a:'^TNX',b:'^IRX',dec:2,suffix:'%p'},
-  wti:{label:'WTI 원유',symbol:'CL=F',type:'yahoo',dec:2,prefix:'$'},
-  hy:{label:'하이일드 스프레드',type:'fred',series:'BAMLH0A0HYM2',dec:2,suffix:'%'}
+  sp500:{label:'S&P 500',symbol:'^GSPC',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/SPX/'},
+  nasdaq:{label:'나스닥',symbol:'^IXIC',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/NASDAQ-IXIC/'},
+  gold:{label:'금',symbol:'GC=F',type:'yahoo',dec:2,prefix:'$',tv:'https://www.tradingview.com/symbols/TVC-GOLD/'},
+  btc:{label:'비트코인',symbol:'BTC-USD',type:'btc',dec:0,prefix:'$',tv:'https://www.tradingview.com/symbols/BTCUSD/'},
+  kospi:{label:'코스피',symbol:'^KS11',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/KRX-KOSPI/'},
+  kosdaq:{label:'코스닥',symbol:'^KQ11',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/KRX-KOSDAQ/'},
+  fng:{label:'CNN 공포탐욕지수',type:'fng',dec:0,suffix:'',tv:'https://www.tradingview.com/search/?query=CNN%20Fear%20and%20Greed'},
+  cfng:{label:'암호화폐 공포탐욕',type:'cfng',dec:0,suffix:'',tv:'https://www.tradingview.com/search/?query=Crypto%20Fear%20and%20Greed'},
+  vix:{label:'VIX',symbol:'^VIX',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/CBOE-VIX/'},
+  dxy:{label:'달러인덱스 DXY',symbol:'DX-Y.NYB',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/TVC-DXY/'},
+  usdkrw:{label:'원달러 환율',symbol:'USDKRW=X',type:'yahoo',dec:2,prefix:'₩',tv:'https://www.tradingview.com/symbols/USDKRW/'},
+  us10y:{label:'미국 10년물 금리',symbol:'^TNX',type:'yahoo',dec:2,suffix:'%',tv:'https://www.tradingview.com/symbols/TVC-US10Y/'},
+  curve:{label:'10Y-3M 금리차',type:'curve',a:'^TNX',b:'^IRX',dec:2,suffix:'%p',tv:'https://www.tradingview.com/search/?query=10Y%203M%20yield%20spread'},
+  wti:{label:'WTI 원유',symbol:'CL=F',type:'yahoo',dec:2,prefix:'$',tv:'https://www.tradingview.com/symbols/NYMEX-CL1!/'},
+  hy:{label:'하이일드 스프레드',type:'fred',series:'BAMLH0A0HYM2',dec:2,suffix:'%',tv:'https://www.tradingview.com/search/?query=BAMLH0A0HYM2'}
 };
 function setMarketStatus(status,msg){
   const el=document.getElementById('marketDashboardStatus');if(!el)return;
@@ -1189,6 +1192,20 @@ function chartRangeLabel(r){return { '1mo':'1개월','3mo':'3개월','1y':'1년'
 function chartRangeParams(r){return r==='1y'?{range:'1y',interval:'1wk'}:r==='3mo'?{range:'3mo',interval:'1d'}:{range:'1mo',interval:'1d'};}
 function chartLimit(r){return r==='1y'?365:r==='3mo'?90:30;}
 function fmtChartValue(v,cfg={}){return fmtMarketNumber(v,{dec:cfg.dec??2,prefix:cfg.prefix||'',suffix:cfg.suffix||''});}
+function fmtChartAxisValue(v,cfg={}){
+  if(typeof v!=='number'||!isFinite(v))return '—';
+  const abs=Math.abs(v),prefix=cfg.prefix||'',suffix=cfg.suffix||'';
+  let n;
+  if(abs>=1000000)n=(v/1000000).toFixed(1)+'M';
+  else if(abs>=1000)n=(v/1000).toFixed(abs>=10000?0:1)+'K';
+  else n=v.toLocaleString('en-US',{maximumFractionDigits:cfg.dec??2});
+  return prefix+n+suffix;
+}
+function updateTradingViewLink(cfg){
+  const link=document.getElementById('tradingViewLink');if(!link)return;
+  link.href=cfg.tv||('https://www.tradingview.com/search/?query='+encodeURIComponent(cfg.label||cfg.symbol||'market'));
+  link.setAttribute('aria-label',(cfg.label||'지표')+' TradingView에서 보기');
+}
 async function fetchYahooSeries(sym,range=marketChartRange){
   const p=chartRangeParams(range);
   const y='https://query1.finance.yahoo.com/v8/finance/chart/'+encodeURIComponent(sym)+'?range='+p.range+'&interval='+p.interval;
@@ -1279,20 +1296,20 @@ function renderMarketChart(points,cfg,source){
   const box=document.getElementById('marketChartCanvas');if(!box)return;
   if(!points||points.length<2){box.innerHTML='<div class="chart-loading">차트 데이터를 불러올 수 없습니다</div>';return;}
   const vals=points.map(p=>p.v),min=Math.min(...vals),max=Math.max(...vals),span=max-min||1;
-  const w=760,h=260,padL=58,padR=20,padT=18,padB=34,innerW=w-padL-padR,innerH=h-padT-padB;
+  const w=820,h=280,padL=72,padR=28,padT=20,padB=42,innerW=w-padL-padR,innerH=h-padT-padB;
   const first=points[0],last=points[points.length-1],tMin=first.t,tMax=last.t||first.t+1;
   const x=p=>padL+((p.t-tMin)/(tMax-tMin||1))*innerW;
   const y=p=>padT+(1-(p.v-min)/span)*innerH;
   const poly=points.map(p=>x(p).toFixed(1)+','+y(p).toFixed(1)).join(' ');
   const up=last.v>=first.v,line=up?'#00ff88':'#ff4d6d';
   const gridVals=[max,(max+min)/2,min];
-  const grid=gridVals.map(v=>{const yy=padT+(1-(v-min)/span)*innerH;return `<line class="chart-grid" x1="${padL}" y1="${yy}" x2="${w-padR}" y2="${yy}"/><text class="chart-axis" x="8" y="${yy+3}">${fmtChartValue(v,cfg)}</text>`;}).join('');
+  const grid=gridVals.map(v=>{const yy=padT+(1-(v-min)/span)*innerH;return `<line class="chart-grid" x1="${padL}" y1="${yy}" x2="${w-padR}" y2="${yy}"/><text class="chart-axis value" x="${padL-10}" y="${yy+3}">${fmtChartAxisValue(v,cfg)}</text>`;}).join('');
   const startDate=new Date(first.t).toLocaleDateString('ko-KR',{month:'short',day:'numeric'});
   const endDate=new Date(last.t).toLocaleDateString('ko-KR',{month:'short',day:'numeric'});
   const chg=(last.v-first.v)/Math.abs(first.v||1)*100;
   document.getElementById('marketChartTitle').textContent='CHART · '+cfg.label;
   document.getElementById('marketChartMeta').textContent=chartRangeLabel(marketChartRange)+' · '+points.length+'개 포인트 · '+(source||'Live')+' · '+fmtChartValue(last.v,cfg)+' ('+(chg>=0?'+':'')+chg.toFixed(2)+'%)';
-  box.innerHTML=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-label="${escHtml(cfg.label)} chart">${grid}<polyline points="${poly}" fill="none" stroke="${line}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${x(last).toFixed(1)}" cy="${y(last).toFixed(1)}" r="4" fill="${line}"/><text class="chart-axis" x="${padL}" y="${h-10}">${startDate}</text><text class="chart-axis" x="${w-padR-60}" y="${h-10}">${endDate}</text></svg>`;
+  box.innerHTML=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" aria-label="${escHtml(cfg.label)} chart">${grid}<polyline points="${poly}" fill="none" stroke="${line}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${x(last).toFixed(1)}" cy="${y(last).toFixed(1)}" r="4.5" fill="${line}"/><text class="chart-axis date" x="${padL}" y="${h-14}">${startDate}</text><text class="chart-axis date" x="${w-padR}" y="${h-14}">${endDate}</text></svg>`;
 }
 function setChartActive(key){
   document.querySelectorAll('[data-chart-key]').forEach(el=>el.classList.toggle('chart-active',el.dataset.chartKey===key));
@@ -1301,10 +1318,12 @@ async function showMarketChart(key=currentMarketChartKey){
   const cfg=MARKET_CHARTS[key];if(!cfg)return;
   currentMarketChartKey=key;setChartActive(key);
   const box=document.getElementById('marketChartCanvas'),title=document.getElementById('marketChartTitle'),meta=document.getElementById('marketChartMeta');
+  updateTradingViewLink(cfg);
   if(title)title.textContent='CHART · '+cfg.label;
   if(meta)meta.textContent=chartRangeLabel(marketChartRange)+' 데이터 불러오는 중';
   if(box)box.innerHTML='<div class="chart-loading">차트 데이터 로딩 중...</div>';
   const data=await fetchMarketChartData(key);
+  if(key!==currentMarketChartKey)return;
   if(data?.points?.length)renderMarketChart(data.points,cfg,data.source);
   else{if(meta)meta.textContent='데이터 소스 연결 실패';if(box)box.innerHTML='<div class="chart-loading">차트 데이터를 불러올 수 없습니다</div>';}
 }
