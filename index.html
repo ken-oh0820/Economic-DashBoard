@@ -409,7 +409,7 @@ body.map-mode #indicatorDashboard,body.menu-mode #indicatorDashboard{display:non
       <div class="indicator-card" data-chart-key="btc" role="button" tabindex="0"><div class="indicator-group">위험자산</div><div class="indicator-name">비트코인</div><div class="indicator-value loading" id="ind-btc">연결 중</div><div class="indicator-change" id="chg-btc">—</div><div class="indicator-note">BTC/USD · 유동성 민감</div><div class="indicator-source" id="src-btc">CoinGecko</div></div>
       <div class="indicator-card" data-chart-key="kospi" role="button" tabindex="0"><div class="indicator-group">한국 증시</div><div class="indicator-name">코스피</div><div class="indicator-value loading" id="ind-kospi">연결 중</div><div class="indicator-change" id="chg-kospi">—</div><div class="indicator-note">한국 대표지수</div><div class="indicator-source" id="src-kospi">Yahoo Chart</div></div>
       <div class="indicator-card" data-chart-key="kosdaq" role="button" tabindex="0"><div class="indicator-group">한국 증시</div><div class="indicator-name">코스닥</div><div class="indicator-value loading" id="ind-kosdaq">연결 중</div><div class="indicator-change" id="chg-kosdaq">—</div><div class="indicator-note">성장주·중소형주 흐름</div><div class="indicator-source" id="src-kosdaq">Yahoo Chart</div></div>
-      <div class="indicator-card" data-chart-key="fng" role="button" tabindex="0"><div class="indicator-group">시장 심리</div><div class="indicator-name">공포탐욕지수</div><div class="indicator-value loading" id="ind-fng">연결 중</div><div class="indicator-change" id="chg-fng">—</div><div class="indicator-note">0~100 · 낮을수록 공포</div><div class="indicator-source" id="src-fng">Alternative.me</div></div>
+      <div class="indicator-card" data-chart-key="fng" role="button" tabindex="0"><div class="indicator-group">시장 심리</div><div class="indicator-name">CNN 공포탐욕지수</div><div class="indicator-value loading" id="ind-fng">연결 중</div><div class="indicator-change" id="chg-fng">—</div><div class="indicator-note">미국 주식시장 심리 · 0~100</div><div class="indicator-source" id="src-fng">CNN · Worker 필요</div></div>
       <div class="indicator-card" data-chart-key="vix" role="button" tabindex="0"><div class="indicator-group">변동성</div><div class="indicator-name">VIX</div><div class="indicator-value loading" id="ind-vix">연결 중</div><div class="indicator-change" id="chg-vix">—</div><div class="indicator-note">20↓ 안정 · 30↑ 경계</div><div class="indicator-source" id="src-vix">Yahoo Chart</div></div>
     </div>
     <div class="dashboard-panel market-chart-panel">
@@ -1056,7 +1056,7 @@ const MARKET_CHARTS={
   btc:{label:'비트코인',symbol:'BTC-USD',type:'btc',dec:0,prefix:'$'},
   kospi:{label:'코스피',symbol:'^KS11',type:'yahoo',dec:2},
   kosdaq:{label:'코스닥',symbol:'^KQ11',type:'yahoo',dec:2},
-  fng:{label:'공포탐욕지수',type:'fng',dec:0,suffix:''},
+  fng:{label:'CNN 공포탐욕지수',type:'fng',dec:0,suffix:''},
   vix:{label:'VIX',symbol:'^VIX',type:'yahoo',dec:2},
   dxy:{label:'달러인덱스 DXY',symbol:'DX-Y.NYB',type:'yahoo',dec:2},
   usdkrw:{label:'원달러 환율',symbol:'USDKRW=X',type:'yahoo',dec:2,prefix:'₩'},
@@ -1128,11 +1128,28 @@ async function fetchBitcoinQuote(){
   }catch(e){}
   return fetchYahooQuote('BTC-USD');
 }
+function parseCnnFearGreed(d){
+  const fg=d?.fear_and_greed||d?.fearAndGreed||d?.fearGreed||d;
+  const value=Number(fg?.score??fg?.value??fg?.y);
+  if(!isFinite(value))return null;
+  const raw=String(fg?.rating||fg?.value_classification||fg?.status||'').replace(/_/g,' ');
+  const label=raw?raw.replace(/\b\w/g,c=>c.toUpperCase()):value<25?'Extreme Fear':value<45?'Fear':value<55?'Neutral':value<75?'Greed':'Extreme Greed';
+  return {value,label,source:'CNN'};
+}
 async function fetchFearGreed(){
-  try{
-    const res=await fetchT('https://api.alternative.me/fng/?limit=1',4500);const d=await res.json();const f=d.data?.[0];
-    if(f?.value)return {value:Number(f.value),label:f.value_classification||'',source:'Alternative.me'};
-  }catch(e){}
+  const urls=[
+    WORKER_URL+'/cnn-fear-greed',
+    WORKER_URL+'/fear-greed',
+    'https://production.dataviz.cnn.io/index/fearandgreed/graphdata'
+  ];
+  for(const url of urls){
+    try{
+      const res=await fetchT(url,5500);
+      const d=await res.json();
+      const parsed=parseCnnFearGreed(d);
+      if(parsed)return parsed;
+    }catch(e){}
+  }
   return null;
 }
 async function fetchFredLatest(id){
@@ -1183,12 +1200,20 @@ async function fetchBitcoinSeries(range=marketChartRange){
   return fetchYahooSeries('BTC-USD',range);
 }
 async function fetchFearGreedSeries(range=marketChartRange){
-  try{
-    const res=await fetchT('https://api.alternative.me/fng/?limit='+chartLimit(range),6500);
-    const d=await res.json();
-    const points=(d.data||[]).map(x=>({t:Number(x.timestamp)*1000,v:Number(x.value)})).filter(p=>isFinite(p.t)&&isFinite(p.v)).sort((a,b)=>a.t-b.t);
-    if(points.length>1)return {points,source:'Alternative.me'};
-  }catch(e){}
+  const urls=[
+    WORKER_URL+'/cnn-fear-greed',
+    WORKER_URL+'/fear-greed',
+    'https://production.dataviz.cnn.io/index/fearandgreed/graphdata'
+  ];
+  const cutoff=Date.now()-chartLimit(range)*24*60*60*1000;
+  for(const url of urls){
+    try{
+      const res=await fetchT(url,6500);const d=await res.json();
+      const raw=d?.fear_and_greed_historical?.data||d?.historical?.data||d?.data||[];
+      const points=raw.map(x=>({t:Number(x.x??x.timestamp??x.date),v:Number(x.y??x.score??x.value)})).map(p=>({t:p.t<1e12?p.t*1000:p.t,v:p.v})).filter(p=>isFinite(p.t)&&isFinite(p.v)&&p.t>=cutoff).sort((a,b)=>a.t-b.t);
+      if(points.length>1)return {points,source:'CNN'};
+    }catch(e){}
+  }
   return null;
 }
 async function fetchFredSeries(id,range=marketChartRange){
@@ -1281,14 +1306,14 @@ async function fetchMarketDashboard(force=false){
   const btc=await fetchBitcoinQuote();renderIndicator({value:'ind-btc',change:'chg-btc',source:'src-btc',prefix:'$',dec:0},btc);btc?ok++:fail++;
   const fng=await fetchFearGreed();
   const fngVal=document.getElementById('ind-fng'),fngChg=document.getElementById('chg-fng'),fngSrc=document.getElementById('src-fng');
-  if(fng){ok++;fngVal.textContent=String(fng.value);fngVal.classList.remove('loading');fngVal.className='indicator-value '+(fng.value<25?'market-down':fng.value>75?'market-up':'market-flat');fngChg.className='indicator-change '+(fng.value<25?'market-down':fng.value>75?'market-up':'market-flat');fngChg.textContent=fng.label;fngSrc.textContent=fng.source;}else{fail++;fngVal.textContent='실패';fngVal.classList.remove('loading');fngChg.textContent='—';fngSrc.textContent='연결 실패';}
+  if(fng){ok++;fngVal.textContent=String(fng.value);fngVal.classList.remove('loading');fngVal.className='indicator-value '+(fng.value<25?'market-down':fng.value>75?'market-up':'market-flat');fngChg.className='indicator-change '+(fng.value<25?'market-down':fng.value>75?'market-up':'market-flat');fngChg.textContent=fng.label;fngSrc.textContent=fng.source;}else{fail++;fngVal.textContent='Worker 필요';fngVal.classList.remove('loading');fngVal.className='indicator-value market-flat';fngChg.className='indicator-change market-flat';fngChg.textContent='CNN 프록시 미연결';fngSrc.textContent='CNN 데이터는 Worker 프록시 필요';}
   const usdkrw=quotes.usdkrw||await fetchYahooQuote('USDKRW=X');if(usdkrw?.price){usdKrwRate=usdkrw.price;renderWatch('watch-usdkrw',fmtMarketNumber(usdkrw.price,{dec:2,prefix:'₩'}),pctClass(usdkrw.changePct||0));ok++;}else{renderWatch('watch-usdkrw','실패');fail++;}
   if(quotes.us10y&&quotes.us3m){const spread=quotes.us10y.price-quotes.us3m.price;renderWatch('watch-curve',spread.toFixed(2)+'%p',spread>=0?'market-up':'market-down');}
   else renderWatch('watch-curve','실패');
   const hy=await fetchFredLatest('BAMLH0A0HYM2');if(hy?.value){renderWatch('watch-hy',hy.value.toFixed(2)+'%',hy.value>5?'market-down':'market-up');ok++;}else{renderWatch('watch-hy','프록시 실패');fail++;}
   sourceRows.push({name:'Yahoo Chart/Proxy',state:ok?'ok':'error',text:ok+'개 성공'});
   sourceRows.push({name:'CoinGecko BTC',state:btc?'ok':'error',text:btc?'정상':'실패'});
-  sourceRows.push({name:'Fear & Greed',state:fng?'ok':'error',text:fng?'정상':'실패'});
+  sourceRows.push({name:'CNN Fear & Greed',state:fng?'ok':'warn',text:fng?'정상':'Worker 필요'});
   sourceRows.push({name:'FRED HY Spread',state:hy?'ok':'warn',text:hy?hy.date:'CORS 제한'});
   sourceRows.push({name:'자동 갱신',state:'ok',text:'60초'});
   const list=document.getElementById('marketSourceList');
