@@ -389,10 +389,10 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
 </div>
 <div class="sidebar-right sidebar-live" id="sidebarRight">
 <button class="sidebar-close" onclick="closeSidebars()" aria-label="닫기">✕</button>
-<div><div class="panel-title">라이브 시세 · 뉴스</div><div class="insight-box">귀금속·에너지 시세와 인베스팅 뉴스를 고정 표시합니다.</div></div>
+<div><div class="panel-title">라이브 시세 · 뉴스</div><div class="insight-box">귀금속·에너지 시세와 실시간 경제 뉴스를 고정 표시합니다.</div></div>
 <div class="live-section"><div class="live-header"><div class="panel-title" style="display:flex;align-items:center;gap:5px"><span class="live-dot"></span>귀금속 시세</div><button class="refresh-btn" onclick="fetchCommodities()">↻</button></div><div id="commodityPanel"><div class="data-loading">시세 로딩 중...</div></div><div class="last-update" id="commodityTime"></div></div>
 <div class="live-section"><div class="live-header"><div class="panel-title" style="display:flex;align-items:center;gap:5px">🛢️ 에너지 시세</div><button class="refresh-btn" onclick="fetchEnergy()">↻</button></div><div id="energyPanel"><div class="data-loading">시세 로딩 중...</div></div><div class="last-update" id="energyTime"></div></div>
-<div class="live-section"><div class="live-header"><div class="panel-title" style="display:flex;align-items:center;gap:5px"><span class="live-dot"></span>인베스팅 뉴스</div><button class="refresh-btn" onclick="fetchNews()">↻</button></div><div id="newsPanel" style="max-height:220px;overflow-y:auto"><div class="data-loading">뉴스 로딩 중...</div></div><div class="last-update" id="newsTime"></div></div>
+<div class="live-section"><div class="live-header"><div class="panel-title" style="display:flex;align-items:center;gap:5px"><span class="live-dot"></span>실시간 경제 뉴스</div><button class="refresh-btn" onclick="fetchNews()">↻</button></div><div id="newsPanel" style="max-height:220px;overflow-y:auto"><div class="data-loading">뉴스 로딩 중...</div></div><div class="last-update" id="newsTime"></div></div>
 </div>
 </div>
 
@@ -1071,6 +1071,7 @@ async function fetchNews() {
 }
 
 // ═══ Market Dashboard Live Data ═══
+const NEWS_MAX_ITEMS = 30;
 const NEWS_API_ENDPOINT = WORKER_URL && !WORKER_URL.includes('YOUR_ID') ? WORKER_URL + '/news' : '';
 const NEWS_RSS_FEEDS = [
   {url:'https://news.google.com/rss/search?q=%EA%B2%BD%EC%A0%9C+%EA%B8%88%EB%A6%AC+%EC%A6%9D%EC%8B%9C&hl=ko&gl=KR&ceid=KR:ko',name:'Google 경제'},
@@ -1119,7 +1120,7 @@ function renderNewsItems(items, label){
     .filter(i=>{const d=new Date(i.pubDate);return !i.pubDate||isNaN(d)||d.getTime()>sevenDays;})
     .sort((a,b)=>new Date(b.pubDate||0)-new Date(a.pubDate||0));
   if(!list.length)return false;
-  panel.innerHTML=list.slice(0,10).map(i=>{
+  panel.innerHTML=list.slice(0,NEWS_MAX_ITEMS).map(i=>{
     const d=i.pubDate?new Date(i.pubDate):null;
     const ts=d&&!isNaN(d)?d.toLocaleDateString('ko-KR',{month:'short',day:'numeric'})+' '+d.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'';
     return '<a class="news-item" href="'+escHtml(i.link)+'" target="_blank" rel="noopener noreferrer"><div class="news-title">'+escHtml(i.title.slice(0,96))+'</div><div class="news-meta"><span class="news-source">'+escHtml(i._src||'News')+'</span>'+(i._provider&&i._provider!==i._src?' · '+escHtml(i._provider):'')+(ts?' · '+escHtml(ts):'')+'</div></a>';
@@ -1130,7 +1131,7 @@ function renderNewsItems(items, label){
 }
 async function fetchUnifiedNews(){
   if(!NEWS_API_ENDPOINT)return null;
-  const res=await fetchT(NEWS_API_ENDPOINT+'?limit=16&lang=ko',4500);
+  const res=await fetchT(NEWS_API_ENDPOINT+'?limit='+NEWS_MAX_ITEMS+'&lang=ko',4500);
   if(!res.ok)throw new Error('news api '+res.status);
   const data=await res.json();
   const items=Array.isArray(data)?data:(data.items||data.news||[]);
@@ -1140,7 +1141,7 @@ async function fetchRssFallbackNews(){
   function parseXml(s,n){
     const x=new DOMParser().parseFromString(s,'text/xml');
     const e=x.querySelectorAll('item, entry');
-    return [...e].slice(0,10).map(el=>normalizeNewsItem({
+    return [...e].slice(0,NEWS_MAX_ITEMS).map(el=>normalizeNewsItem({
       title:el.querySelector('title')?.textContent||'',
       link:el.querySelector('link')?.textContent?.trim()||el.querySelector('link')?.getAttribute('href')||'',
       pubDate:el.querySelector('pubDate, published, updated')?.textContent||'',
@@ -1153,7 +1154,7 @@ async function fetchRssFallbackNews(){
       'https://api.allorigins.win/raw?url='+encodeURIComponent(f.url)+'&_='+Date.now(),
       'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(f.url),
       'https://corsproxy.io/?'+encodeURIComponent(f.url),
-      'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(f.url)+'&count=10',
+      'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(f.url)+'&count='+NEWS_MAX_ITEMS,
     ];
     const attempts=proxies.map(async p=>{
       try{

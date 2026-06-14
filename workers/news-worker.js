@@ -10,7 +10,7 @@ export default {
     if (request.method === 'OPTIONS') return new Response(null, { headers: CORS_HEADERS });
     if (url.pathname !== '/news') return json({ error: 'Not found' }, 404);
 
-    const limit = clamp(Number(url.searchParams.get('limit') || 16), 4, 30);
+    const limit = clamp(Number(url.searchParams.get('limit') || 30), 4, 30);
     const cache = caches.default;
     const cacheKey = new Request(url.origin + '/news?limit=' + limit);
     const cached = await cache.match(cacheKey);
@@ -51,7 +51,7 @@ async function fetchMarketaux(env) {
   url.searchParams.set('filter_entities', 'true');
   url.searchParams.set('group_similar', 'true');
   url.searchParams.set('sort', 'published_at');
-  url.searchParams.set('limit', '12');
+  url.searchParams.set('limit', '20');
 
   const data = await fetchJson(url);
   return (data.data || []).map(item => ({
@@ -73,7 +73,7 @@ async function fetchAlphaVantage(env) {
   url.searchParams.set('function', 'NEWS_SENTIMENT');
   url.searchParams.set('topics', 'economy_macro,economy_monetary,financial_markets');
   url.searchParams.set('sort', 'LATEST');
-  url.searchParams.set('limit', '12');
+  url.searchParams.set('limit', '20');
   url.searchParams.set('apikey', env.ALPHAVANTAGE_API_KEY);
 
   const data = await fetchJson(url);
@@ -94,7 +94,7 @@ async function fetchNaver(env) {
   if (!env.NAVER_CLIENT_ID || !env.NAVER_CLIENT_SECRET) return [];
   const url = new URL('https://openapi.naver.com/v1/search/news.json');
   url.searchParams.set('query', '경제 증시 금리 환율');
-  url.searchParams.set('display', '12');
+  url.searchParams.set('display', '20');
   url.searchParams.set('sort', 'date');
 
   const data = await fetchJson(url, {
