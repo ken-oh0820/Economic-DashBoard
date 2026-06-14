@@ -154,8 +154,9 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
 /* Mobile toggle buttons */
 .mobile-toggle{display:none;position:absolute;top:50%;transform:translateY(-50%);width:28px;height:54px;background:var(--ctrl-bg);border:1px solid var(--border);color:var(--accent);font-size:14px;cursor:pointer;z-index:1002;align-items:center;justify-content:center;backdrop-filter:blur(8px);padding:0;transition:all 0.2s}
 /* Alliance quick cards on map */
-.alliance-panel{position:absolute;top:4px;left:4px;z-index:1001;display:flex;flex-direction:column;gap:2px}
-.alliance-card{display:flex;align-items:center;gap:8px;padding:7px 12px;background:transparent;border:none;backdrop-filter:none;cursor:pointer;transition:all 0.2s;min-width:140px;position:relative}
+.alliance-panel{position:static;z-index:1001;display:flex;flex-direction:column;gap:2px;padding:12px;border-bottom:1px solid var(--border);background:var(--surface)}
+.alliance-panel::before{content:'동맹 · 협의체';font-size:10px;letter-spacing:2px;color:var(--text-dim);margin-bottom:7px;text-transform:uppercase}
+.alliance-card{display:flex;align-items:center;gap:8px;padding:7px 9px;background:transparent;border:1px solid transparent;backdrop-filter:none;cursor:pointer;transition:all 0.2s;min-width:0;position:relative}
 .alliance-card:hover{border:none;background:rgba(0,212,255,0.04)}
 .alliance-card.active{border:none;box-shadow:inset 3px 0 0 var(--accent);background:rgba(0,212,255,0.06)}
 .alliance-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
@@ -164,7 +165,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
 .alliance-info-btn{margin-left:auto;width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:var(--text-dim);font-size:9px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.15s;padding:0;font-family:serif;font-style:italic}
 .alliance-info-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,212,255,0.1)}
 /* Info popup */
-.alliance-popup{display:none;position:absolute;left:155px;top:0;width:300px;background:var(--tooltip-bg);border:1px solid var(--border);backdrop-filter:blur(14px);padding:14px 16px;z-index:1003;font-size:10px;line-height:1.7;color:var(--text-mid)}
+.alliance-popup{display:none;position:fixed;left:210px;top:180px;width:300px;background:var(--tooltip-bg);border:1px solid var(--border);backdrop-filter:blur(14px);padding:14px 16px;z-index:1600;font-size:10px;line-height:1.7;color:var(--text-mid)}
 .alliance-popup.show{display:block}
 .alliance-popup-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:6px}
 .alliance-popup-desc{margin-bottom:10px;color:var(--text-mid);font-size:10px;line-height:1.7}
@@ -179,7 +180,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
   .alliance-card{padding:5px 9px;min-width:110px}
   .alliance-name{font-size:9px}
   .alliance-count{display:none}
-  .alliance-popup{left:0;top:auto;bottom:-5px;transform:translateY(100%);width:calc(100vw - 60px);max-width:300px}
+  .alliance-popup{left:12px!important;right:12px;top:86px!important;bottom:auto;transform:none;width:auto;max-width:none}
 }
 .mobile-toggle:hover{background:var(--metric-active-bg);border-color:var(--accent)}
 .mobile-toggle-left{left:0;border-radius:0 6px 6px 0;border-left:none}
@@ -593,6 +594,11 @@ let lastSearchQuery='',searchCursor=0;
 function escHtml(v){return String(v??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));}
 function setDataStatus(key,status,detail){if(!DATA_STATUS[key])return;DATA_STATUS[key].status=status;DATA_STATUS[key].detail=detail||new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});renderDataStatus();}
 function renderDataStatus(){const el=document.getElementById('dataStatusList');if(!el)return;const order=['map','fx','commodities','energy','news'];const label={ok:'정상',loading:'연결중',warn:'참고값',error:'오류'};el.innerHTML=order.map(k=>{const s=DATA_STATUS[k];return `<div class="data-status-row"><div class="data-status-left"><span class="status-dot status-${s.status}"></span><span class="data-status-label">${escHtml(s.label)}</span></div><span class="data-status-detail">${label[s.status]||s.status} · ${escHtml(s.detail)}</span></div>`;}).join('');}
+function placeAlliancePanel(){
+  const panel=document.getElementById('alliancePanel');
+  const search=document.querySelector('#sidebarLeft .search-panel');
+  if(panel&&search&&panel.parentElement!==search.parentElement)search.parentElement.insertBefore(panel,search);
+}
 function getCountryEntries(){return Object.entries(eData).map(([id,d])=>({id,d,rank:getRank(id,'gdp'),text:[d.name,d.region,id,d.flag,COUNTRY_ALIASES[id]||''].join(' ').toLowerCase()}));}
 function renderCountrySearch(q=''){lastSearchQuery=q;const input=document.getElementById('countrySearch'),clear=document.getElementById('searchClear'),box=document.getElementById('countrySearchResults');if(!box)return;if(input&&input.value!==q)input.value=q;if(clear)clear.classList.toggle('show',!!q.trim());const term=q.trim().toLowerCase();let rows=getCountryEntries().sort((a,b)=>a.rank-b.rank);if(term){rows=rows.filter(x=>x.text.includes(term)||String(x.rank)===term.replace('#',''));}rows=rows.slice(0,term?12:8);searchCursor=Math.min(searchCursor,Math.max(rows.length-1,0));if(!rows.length){box.innerHTML='<div class="search-empty">검색 결과가 없습니다</div>';return;}box.innerHTML=rows.map((x,i)=>`<button class="search-result ${x.id===selId||i===searchCursor?'active':''}" onclick="selectCountry('${x.id}',{pan:true,closePanel:true})"><span class="search-result-name">${escHtml(x.d.flag)} ${escHtml(x.d.name)}</span><span class="search-result-meta">#${x.rank} · ${escHtml(x.d.region)}</span></button>`).join('');}
 function clearCountrySearch(){searchCursor=0;renderCountrySearch('');document.getElementById('countrySearch')?.focus();}
@@ -688,7 +694,18 @@ function toggleAllianceInfo(key){
   const el=document.getElementById(id);
   const wasOpen=el.classList.contains('show');
   closeAllPopups();
-  if(!wasOpen) el.classList.add('show');
+  if(!wasOpen){
+    const card=document.getElementById(key+'Card');
+    if(card&&!isMobile()){
+      const r=card.getBoundingClientRect();
+      el.style.left=Math.min(r.right+10,window.innerWidth-320)+'px';
+      el.style.top=Math.max(66,Math.min(r.top,window.innerHeight-260))+'px';
+    }else{
+      el.style.left='';
+      el.style.top='';
+    }
+    el.classList.add('show');
+  }
 }
 function toggleAllianceOverlay(mode){
   closeAllPopups();
@@ -1492,6 +1509,7 @@ function initLiveData() {
   marketTimer=setInterval(fetchMarketDashboard, 60000); // 지표: 1분
 }
 updateDesktopPanelButtons();
+placeAlliancePanel();
 setTimeout(initLiveData, 1500); // Start after map loads
 </script>
 </body>
