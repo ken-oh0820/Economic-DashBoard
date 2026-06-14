@@ -1071,6 +1071,129 @@ async function fetchNews() {
 }
 
 // ═══ Market Dashboard Live Data ═══
+const NEWS_API_ENDPOINT = WORKER_URL && !WORKER_URL.includes('YOUR_ID') ? WORKER_URL + '/news' : '';
+const NEWS_RSS_FEEDS = [
+  {url:'https://news.google.com/rss/search?q=%EA%B2%BD%EC%A0%9C+%EA%B8%88%EB%A6%AC+%EC%A6%9D%EC%8B%9C&hl=ko&gl=KR&ceid=KR:ko',name:'Google 경제'},
+  {url:'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtdHZHZ0pMVWlnQVAB?hl=ko&gl=KR&ceid=KR:ko',name:'Google 금융'},
+  {url:'https://feeds.bbci.co.uk/news/business/rss.xml',name:'BBC'},
+  {url:'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114',name:'CNBC'},
+];
+
+function stripNewsHtml(v){
+  const text=String(v||'').replace(/<[^>]*>/g,' ');
+  const box=document.createElement('textarea');
+  box.innerHTML=text;
+  return box.value.replace(/\s+/g,' ').trim();
+}
+function normalizeNewsItem(item, source=''){
+  if(!item)return null;
+  const title=stripNewsHtml(item.title||item.headline||item.name);
+  const link=String(item.url||item.link||item.originallink||item.originalLink||'').trim();
+  if(!title||!/^https?:\/\//i.test(link))return null;
+  const published=item.publishedAt||item.published_at||item.time_published||item.pubDate||item.pub_date||item.date||'';
+  let publishedAt=published;
+  if(/^\d{8}T\d{4}/.test(published)){
+    publishedAt=published.replace(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2}).*$/,'$1-$2-$3T$4:$5:00Z');
+  }
+  return {
+    title,
+    link,
+    pubDate:publishedAt,
+    _src:item._src||item.source||item.sourceName||item.publisher||source||'News',
+    _provider:item._provider||item.provider||source||'News',
+  };
+}
+function dedupeNews(items){
+  const seen=new Set();
+  return items.filter(i=>{
+    const key=(i.link||'').replace(/[?#].*$/,'')+'|'+(i.title||'').slice(0,40).toLowerCase();
+    if(seen.has(key))return false;
+    seen.add(key);
+    return true;
+  });
+}
+function renderNewsItems(items, label){
+  const panel=document.getElementById('newsPanel');
+  const sevenDays=Date.now()-7*24*60*60*1000;
+  let list=dedupeNews(items.map(i=>normalizeNewsItem(i)).filter(Boolean))
+    .filter(i=>{const d=new Date(i.pubDate);return !i.pubDate||isNaN(d)||d.getTime()>sevenDays;})
+    .sort((a,b)=>new Date(b.pubDate||0)-new Date(a.pubDate||0));
+  if(!list.length)return false;
+  panel.innerHTML=list.slice(0,10).map(i=>{
+    const d=i.pubDate?new Date(i.pubDate):null;
+    const ts=d&&!isNaN(d)?d.toLocaleDateString('ko-KR',{month:'short',day:'numeric'})+' '+d.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'';
+    return '<a class="news-item" href="'+escHtml(i.link)+'" target="_blank" rel="noopener noreferrer"><div class="news-title">'+escHtml(i.title.slice(0,96))+'</div><div class="news-meta"><span class="news-source">'+escHtml(i._src||'News')+'</span>'+(i._provider&&i._provider!==i._src?' · '+escHtml(i._provider):'')+(ts?' · '+escHtml(ts):'')+'</div></a>';
+  }).join('');
+  document.getElementById('newsTime').textContent='최종 갱신: '+new Date().toLocaleTimeString('ko-KR');
+  setDataStatus('news','ok',label+' '+list.length+'건');
+  return true;
+}
+async function fetchUnifiedNews(){
+  if(!NEWS_API_ENDPOINT)return null;
+  const res=await fetchT(NEWS_API_ENDPOINT+'?limit=16&lang=ko',4500);
+  if(!res.ok)throw new Error('news api '+res.status);
+  const data=await res.json();
+  const items=Array.isArray(data)?data:(data.items||data.news||[]);
+  return {items,label:data.sourceLabel||data.label||'Marketaux+Alpha+Naver'};
+}
+async function fetchRssFallbackNews(){
+  function parseXml(s,n){
+    const x=new DOMParser().parseFromString(s,'text/xml');
+    const e=x.querySelectorAll('item, entry');
+    return [...e].slice(0,10).map(el=>normalizeNewsItem({
+      title:el.querySelector('title')?.textContent||'',
+      link:el.querySelector('link')?.textContent?.trim()||el.querySelector('link')?.getAttribute('href')||'',
+      pubDate:el.querySelector('pubDate, published, updated')?.textContent||'',
+      source:n,
+      provider:'RSS'
+    },n)).filter(Boolean);
+  }
+  async function tryFeed(f){
+    const proxies=[
+      'https://api.allorigins.win/raw?url='+encodeURIComponent(f.url)+'&_='+Date.now(),
+      'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(f.url),
+      'https://corsproxy.io/?'+encodeURIComponent(f.url),
+      'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(f.url)+'&count=10',
+    ];
+    const attempts=proxies.map(async p=>{
+      try{
+        const res=await fetchT(p,4500);
+        const text=await res.text();
+        if(p.includes('rss2json')){
+          const d=JSON.parse(text);
+          const items=d.status==='ok'&&d.items?.length?d.items.map(i=>normalizeNewsItem({...i,source:f.name,provider:'RSS'},f.name)).filter(Boolean):[];
+          if(items.length)return items;
+        }else if(text.includes('<item')||text.includes('<entry')){
+          const items=parseXml(text,f.name);
+          if(items.length)return items;
+        }
+      }catch(e){}
+      throw new Error('rss proxy failed');
+    });
+    try{return await Promise.any(attempts);}catch(e){return [];}
+  }
+  const settled=await Promise.allSettled(NEWS_RSS_FEEDS.map(tryFeed));
+  return {
+    items:settled.flatMap(r=>r.status==='fulfilled'?r.value:[]),
+    label:'RSS 백업'
+  };
+}
+async function fetchNews() {
+  setDataStatus('news','loading','갱신 중');
+  const panel=document.getElementById('newsPanel');
+  panel.innerHTML='<div class="data-loading">뉴스 로딩 중...</div>';
+  try{
+    let result=null;
+    try{result=await fetchUnifiedNews();}catch(e){result=null;}
+    if(!result?.items?.length)result=await fetchRssFallbackNews();
+    if(result?.items?.length&&renderNewsItems(result.items,result.label))return;
+    throw new Error('no news');
+  }catch(e){
+    panel.innerHTML='<div class="data-error">뉴스를 불러올 수 없습니다<br><span style="font-size:9px;color:var(--text-dim)">↻ 재시도</span></div>';
+    setDataStatus('news','error','뉴스 실패');
+  }
+}
+
 const MARKET_ITEMS=[
   {key:'sp500',symbol:'^GSPC',value:'ind-sp500',change:'chg-sp500',source:'src-sp500',dec:2},
   {key:'nasdaq',symbol:'^IXIC',value:'ind-nasdaq',change:'chg-nasdaq',source:'src-nasdaq',dec:2},
