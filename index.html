@@ -74,7 +74,7 @@ body.left-collapsed .left-cluster{transform:translateX(-100%)}body.right-collaps
 .map-controls{position:absolute;bottom:16px;left:16px;display:flex;flex-direction:column;gap:4px;z-index:1001}.map-ctrl-btn{width:30px;height:30px;background:var(--ctrl-bg);border:1px solid var(--border);color:var(--text-mid);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;padding:0;backdrop-filter:blur(8px)}.map-ctrl-btn:hover{border-color:var(--accent);color:var(--accent)}#labelToggleBtn{width:auto;padding:0 8px;font-size:10px;letter-spacing:0.5px;font-family:inherit;color:var(--accent);border-color:var(--accent)}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--surface)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 .country-label-div{font-family:var(--label-font,'Noto Sans KR'),sans-serif;font-size:var(--label-size,9px);font-weight:var(--label-weight,700);color:var(--text);text-shadow:0 0 5px var(--bg),0 0 10px var(--bg),1px 1px 3px rgba(0,0,0,0.9);white-space:nowrap;pointer-events:none;letter-spacing:0.3px}body.light .country-label-div{text-shadow:0 0 5px #fff,0 0 10px rgba(255,255,255,0.95),1px 1px 2px rgba(255,255,255,0.8);color:var(--text)}
-body.light .alliance-card{border:none}body.light .alliance-card:hover{border:none;background:rgba(0,119,204,0.04)}body.light .alliance-card.active{border:none;background:rgba(0,119,204,0.06)}
+body.light .alliance-card{border-color:transparent}body.light .alliance-card:hover{border-color:var(--border);background:rgba(0,119,204,0.04)}body.light .alliance-card.active{border-color:transparent;background:rgba(0,119,204,0.06)}
 body.light .alliance-name{text-shadow:0 0 6px #fff,0 0 12px #fff}body.light .alliance-count{text-shadow:0 0 6px #fff}
 body.light .alliance-info-btn{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.1)}
 /* Ticker bar */
@@ -100,7 +100,7 @@ body.light .alliance-info-btn{background:rgba(0,0,0,0.03);border-color:rgba(0,0,
 .commodity-row:last-child{border-bottom:none}
 .commodity-name{color:var(--text-mid);display:flex;align-items:center;gap:5px}
 .commodity-price{font-family:'IBM Plex Mono',monospace;font-weight:500;color:var(--text)}
-.news-item{padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.15s}
+.news-item{display:block;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.15s;text-decoration:none;color:inherit}
 .news-item:hover{background:var(--rank-hover)}
 .news-item:last-child{border-bottom:none}
 .news-title{font-size:10px;color:var(--text);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -157,8 +157,8 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
 .alliance-panel{position:static;z-index:1001;display:flex;flex-direction:column;gap:2px;padding:12px;border-bottom:1px solid var(--border);background:var(--surface)}
 .alliance-panel::before{content:'동맹 · 협의체';font-size:10px;letter-spacing:2px;color:var(--text-dim);margin-bottom:7px;text-transform:uppercase}
 .alliance-card{display:flex;align-items:center;gap:8px;padding:7px 9px;background:transparent;border:1px solid transparent;backdrop-filter:none;cursor:pointer;transition:all 0.2s;min-width:0;position:relative}
-.alliance-card:hover{border:none;background:rgba(0,212,255,0.04)}
-.alliance-card.active{border:none;box-shadow:inset 3px 0 0 var(--accent);background:rgba(0,212,255,0.06)}
+.alliance-card:hover{border-color:var(--border);background:rgba(0,212,255,0.04)}
+.alliance-card.active{border-color:transparent;box-shadow:inset 3px 0 0 var(--accent);background:rgba(0,212,255,0.06)}
 .alliance-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .alliance-name{font-size:10px;font-weight:500;color:var(--text);letter-spacing:0.5px;text-shadow:0 0 6px var(--bg),0 0 12px var(--bg)}
 .alliance-count{font-size:10px;color:var(--text-dim);font-family:'IBM Plex Mono',monospace;text-shadow:0 0 6px var(--bg)}
@@ -597,7 +597,7 @@ function renderDataStatus(){const el=document.getElementById('dataStatusList');i
 function placeAlliancePanel(){
   const panel=document.getElementById('alliancePanel');
   const search=document.querySelector('#sidebarLeft .search-panel');
-  if(panel&&search&&panel.parentElement!==search.parentElement)search.parentElement.insertBefore(panel,search);
+  if(panel&&search&&search.previousElementSibling!==panel)search.parentElement.insertBefore(panel,search);
 }
 function getCountryEntries(){return Object.entries(eData).map(([id,d])=>({id,d,rank:getRank(id,'gdp'),text:[d.name,d.region,id,d.flag,COUNTRY_ALIASES[id]||''].join(' ').toLowerCase()}));}
 function renderCountrySearch(q=''){lastSearchQuery=q;const input=document.getElementById('countrySearch'),clear=document.getElementById('searchClear'),box=document.getElementById('countrySearchResults');if(!box)return;if(input&&input.value!==q)input.value=q;if(clear)clear.classList.toggle('show',!!q.trim());const term=q.trim().toLowerCase();let rows=getCountryEntries().sort((a,b)=>a.rank-b.rank);if(term){rows=rows.filter(x=>x.text.includes(term)||String(x.rank)===term.replace('#',''));}rows=rows.slice(0,term?12:8);searchCursor=Math.min(searchCursor,Math.max(rows.length-1,0));if(!rows.length){box.innerHTML='<div class="search-empty">검색 결과가 없습니다</div>';return;}box.innerHTML=rows.map((x,i)=>`<button class="search-result ${x.id===selId||i===searchCursor?'active':''}" onclick="selectCountry('${x.id}',{pan:true,closePanel:true})"><span class="search-result-name">${escHtml(x.d.flag)} ${escHtml(x.d.name)}</span><span class="search-result-meta">#${x.rank} · ${escHtml(x.d.region)}</span></button>`).join('');}
@@ -1059,8 +1059,9 @@ async function fetchNews() {
       const d=i.pubDate?new Date(i.pubDate):null;
       const ts=d&&!isNaN(d)?d.toLocaleDateString('ko-KR',{month:'short',day:'numeric'})+' '+d.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'';
       const t=(i.title||'').replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&#39;/g,"'").replace(/&quot;/g,'"').slice(0,90);
-      const l=(i.link||'#').replace(/'/g,'%27');
-      return '<div class="news-item" onclick="window.open(\''+l+'\',\'_blank\')"><div class="news-title">'+t+'</div><div class="news-meta"><span class="news-source">'+(i._src||'')+'</span>'+(ts?' · '+ts:'')+'</div></div>';
+      const l=(i.link||'').trim();
+      const safeLink=/^https?:\/\//i.test(l)?l:'#';
+      return '<a class="news-item" href="'+escHtml(safeLink)+'" target="_blank" rel="noopener noreferrer"><div class="news-title">'+escHtml(t)+'</div><div class="news-meta"><span class="news-source">'+escHtml(i._src||'')+'</span>'+(ts?' · '+escHtml(ts):'')+'</div></a>';
     }).join('');
     document.getElementById('newsTime').textContent='최종 갱신: '+new Date().toLocaleTimeString('ko-KR');
     setDataStatus('news','ok',(all[0]?._src||'RSS')+' '+all.length+'건');
@@ -1363,6 +1364,7 @@ function bindMarketChartClicks(){
 async function fetchMarketDashboard(force=false){
   if(marketLoading&&!force)return;
   marketLoading=true;setMarketStatus('warn','MARKET DATA · UPDATING');
+  try{
   document.querySelectorAll('.indicator-value.loading,.watch-row span.loading').forEach(el=>{el.textContent='연결 중';});
   const sourceRows=[];
   const quotes={};let ok=0,fail=0;
@@ -1394,7 +1396,11 @@ async function fetchMarketDashboard(force=false){
   if(list)list.innerHTML=sourceRows.map(r=>`<div class="source-row ${r.state}"><span>${escHtml(r.name)}</span><span>${escHtml(r.text)}</span></div>`).join('');
   const now=new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
   setMarketStatus(fail?'warn':'ok','MARKET DATA · '+now+' · '+ok+' OK'+(fail?' / '+fail+' FAIL':''));
-  marketLoading=false;
+  }catch(e){
+    setMarketStatus('error','MARKET DATA · ERROR');
+  }finally{
+    marketLoading=false;
+  }
 }
 
 // ═══ Submarine Power Cables (해저전력케이블) ═══
