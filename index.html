@@ -150,6 +150,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
 .market-refresh-btn{background:var(--surface2);border:1px solid var(--border);color:var(--accent);font-size:10px;padding:7px 10px;cursor:pointer;font-family:'IBM Plex Mono',monospace;white-space:nowrap}.market-refresh-btn:hover{border-color:var(--accent);background:rgba(0,212,255,.08)}.dashboard-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.dashboard-status.ok{color:var(--accent);border-color:rgba(0,212,255,.45)}.dashboard-status.warn{color:#ffcc00;border-color:rgba(255,204,0,.45)}.dashboard-status.error{color:#ff6666;border-color:rgba(255,102,102,.45)}.indicator-card{position:relative}.indicator-card.row-break{grid-column:1}.indicator-card[data-chart-key],.watch-row[data-chart-key]{cursor:pointer;transition:border-color .16s,background .16s,transform .16s}.indicator-card[data-chart-key]:hover,.indicator-card.chart-active{border-color:var(--accent);background:rgba(0,212,255,.055)}.indicator-card[data-chart-key]:hover{transform:translateY(-1px)}.watch-row[data-chart-key]:hover,.watch-row.chart-active{border-color:var(--accent);background:rgba(0,212,255,.045)}.indicator-value.loading{color:var(--text-dim);font-size:15px}.indicator-change{font-family:'IBM Plex Mono',monospace;font-size:11px;min-height:16px}.indicator-source{font-size:9px;color:var(--text-dim);margin-top:6px;line-height:1.4}.market-up{color:#00ff88}.market-down{color:#ff4d6d}.market-flat{color:var(--text-dim)}.watch-row span:last-child.loading{color:var(--text-dim)}.market-chart-panel{margin-bottom:16px}.market-chart-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}.market-chart-head>div:first-child{min-width:0}.market-chart-meta{font-size:10px;color:var(--text-mid);font-family:'IBM Plex Mono',monospace;line-height:1.5;word-break:keep-all}.chart-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;flex-shrink:0}.chart-range-tabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.chart-range-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text-mid);font-size:10px;padding:5px 8px;font-family:'IBM Plex Mono',monospace;cursor:pointer}.chart-range-btn.active,.chart-range-btn:hover{border-color:var(--accent);color:var(--accent)}.tradingview-link{background:rgba(0,212,255,.06);border:1px solid var(--border);color:var(--accent);font-size:10px;padding:5px 9px;font-family:'IBM Plex Mono',monospace;text-decoration:none;white-space:nowrap}.tradingview-link:hover{border-color:var(--accent);background:rgba(0,212,255,.12)}.market-chart-canvas{height:280px;border:1px solid var(--rank-border);background:rgba(0,0,0,.15);position:relative;overflow:hidden}.market-chart-canvas svg{width:100%;height:100%;display:block}.chart-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:11px;font-family:'IBM Plex Mono',monospace}.chart-axis{fill:var(--text-dim);font-size:9px;font-family:'IBM Plex Mono',monospace}.chart-axis.value{text-anchor:end}.chart-axis.date{text-anchor:middle}.chart-grid{stroke:rgba(120,160,200,.16);stroke-width:1}.source-list{display:grid;gap:7px}.source-row{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--rank-border);padding:7px 0;font-size:11px;color:var(--text-mid)}.source-row span:last-child{font-family:'IBM Plex Mono',monospace;color:var(--text-dim);text-align:right}.source-row.ok span:last-child{color:var(--accent)}.source-row.warn span:last-child{color:#ffcc00}.source-row.error span:last-child{color:#ff6666}
 .sentiment-extreme-fear{color:#ff3344}.sentiment-fear{color:#ff9f1a}.sentiment-neutral{color:#dce3ea}.sentiment-greed{color:#9dff57}.sentiment-extreme-greed{color:#00d46a}
 .macro-panel{margin-bottom:16px}.macro-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}.macro-sub{font-size:10px;color:var(--text-mid);line-height:1.5}.macro-badge{font-size:10px;color:var(--text-dim);font-family:'IBM Plex Mono',monospace;border:1px solid var(--border);background:var(--surface2);padding:6px 9px;white-space:nowrap}.macro-badge.ok{color:var(--accent);border-color:rgba(0,212,255,.45)}.macro-badge.warn{color:#ffcc00;border-color:rgba(255,204,0,.45)}.macro-grid{display:grid;grid-template-columns:repeat(5,minmax(130px,1fr));gap:8px}.macro-card{border:1px solid var(--rank-border);background:rgba(0,0,0,.08);padding:10px;min-height:96px}.macro-group{font-size:9px;color:var(--text-dim);letter-spacing:1.1px;text-transform:uppercase;margin-bottom:6px}.macro-name{font-size:12px;color:var(--text);font-weight:600;margin-bottom:6px}.macro-value{font-family:'IBM Plex Mono',monospace;font-size:18px;color:var(--accent);margin-bottom:4px}.macro-change{font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1.5;min-height:30px}.macro-source{font-size:9px;color:var(--text-dim);margin-top:6px;line-height:1.4}
+.macro-card[data-chart-key]{cursor:pointer;transition:border-color .16s,background .16s,transform .16s}.macro-card[data-chart-key]:hover,.macro-card.chart-active{border-color:var(--accent);background:rgba(0,212,255,.045)}.macro-card[data-chart-key]:hover{transform:translateY(-1px)}
 @media(max-width:980px){.main-menu-title{font-size:48px}.main-menu-grid{grid-template-columns:1fr}.indicator-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.indicator-card.row-break{grid-column:auto}.dashboard-sections{grid-template-columns:1fr}}
 @media(max-width:560px){.main-menu{padding:18px}.main-menu-title{font-size:38px;letter-spacing:5px}.indicator-grid,.watch-list{grid-template-columns:1fr}.dashboard-top{align-items:flex-start;flex-direction:column}.indicator-dashboard{padding:14px 12px 24px}}
 
@@ -1238,7 +1239,14 @@ const MARKET_CHARTS={
   us10y:{label:'미국 10년물 금리',symbol:'^TNX',type:'yahoo',dec:2,suffix:'%',tv:'https://www.tradingview.com/symbols/TVC-US10Y/'},
   curve:{label:'10Y-3M 금리차',type:'curve',a:'^TNX',b:'^IRX',dec:2,suffix:'%p',tv:'https://www.tradingview.com/search/?query=10Y%203M%20yield%20spread'},
   wti:{label:'WTI 원유',symbol:'CL=F',type:'yahoo',dec:2,prefix:'$',tv:'https://www.tradingview.com/symbols/NYMEX-CL1!/'},
-  hy:{label:'하이일드 스프레드',type:'fred',series:'BAMLH0A0HYM2',dec:2,suffix:'%',tv:'https://www.tradingview.com/search/?query=BAMLH0A0HYM2'}
+  hy:{label:'하이일드 스프레드',type:'fred',series:'BAMLH0A0HYM2',dec:2,suffix:'%',tv:'https://www.tradingview.com/search/?query=BAMLH0A0HYM2'},
+  'macro-cpi':{label:'CPI',type:'bls',series:'CUSR0000SA0',fallbackFred:'CPIAUCSL',dec:1,sourceUrl:'https://data.bls.gov/timeseries/CUSR0000SA0',linkText:'BLS CHART VIEW ↗'},
+  'macro-core-cpi':{label:'Core CPI',type:'bls',series:'CUSR0000SA0L1E',fallbackFred:'CPILFESL',dec:1,sourceUrl:'https://data.bls.gov/timeseries/CUSR0000SA0L1E',linkText:'BLS CHART VIEW ↗'},
+  'macro-ppi':{label:'PPI',type:'bls',series:'WPSFD4',fallbackFred:'PPIACO',dec:1,sourceUrl:'https://data.bls.gov/timeseries/WPSFD4',linkText:'BLS CHART VIEW ↗'},
+  'macro-core-ppi':{label:'Core PPI',type:'bls',series:'WPSFD49104',fallbackFred:'PPIACO',dec:1,sourceUrl:'https://data.bls.gov/timeseries/WPSFD49104',linkText:'BLS CHART VIEW ↗'},
+  'macro-unrate':{label:'실업률',type:'bls',series:'LNS14000000',fallbackFred:'UNRATE',dec:1,suffix:'%',sourceUrl:'https://data.bls.gov/timeseries/LNS14000000',linkText:'BLS CHART VIEW ↗'},
+  'macro-payems':{label:'비농업고용',type:'bls',series:'CES0000000001',fallbackFred:'PAYEMS',dec:0,suffix:'K',sourceUrl:'https://data.bls.gov/timeseries/CES0000000001',linkText:'BLS CHART VIEW ↗'},
+  'macro-ahe':{label:'시간당 임금',type:'bls',series:'CES0500000003',fallbackFred:'CES0500000003',dec:2,prefix:'$',sourceUrl:'https://data.bls.gov/timeseries/CES0500000003',linkText:'BLS CHART VIEW ↗'}
 };
 function setMarketStatus(status,msg){
   const el=document.getElementById('marketDashboardStatus');if(!el)return;
@@ -1273,13 +1281,13 @@ const US_MACRO_ITEMS=[
   {key:'fedfunds',group:'금리',name:'Fed Funds',fred:'FEDFUNDS',mode:'rate',unit:'%',note:'월평균 정책금리'}
 ];
 const US_MACRO_FALLBACK=[
-  {group:'물가',name:'CPI',value:'4.3%',change:'MoM 0.5% · YoY 4.3%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'전월비 / 전년비'},
-  {group:'물가',name:'Core CPI',value:'3.0%',change:'MoM 0.2% · YoY 3.0%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'식품·에너지 제외'},
-  {group:'물가',name:'PPI',value:'6.4%',change:'MoM 1.1% · YoY 6.4%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'최종수요 우선'},
-  {group:'물가',name:'Core PPI',value:'4.9%',change:'MoM 0.4% · YoY 4.9%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'BLS 우선'},
-  {group:'고용',name:'실업률',value:'4.3%',change:'+0.0p.p. vs prev',cls:'market-flat',source:'BLS cached',date:'2026-05',note:'전월 대비 p.p.'},
-  {group:'고용',name:'비농업고용',value:'+172K',change:'Latest 159,001K · Prev 158,829K',cls:'market-up',source:'BLS cached',date:'2026-05',note:'전월 대비 증감'},
-  {group:'임금',name:'시간당 임금',value:'3.4%',change:'MoM 0.3% · YoY 3.4%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'전월비 / 전년비'}
+  {key:'cpi',group:'물가',name:'CPI',value:'4.3%',change:'MoM 0.5% · YoY 4.3%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'전월비 / 전년비'},
+  {key:'core-cpi',group:'물가',name:'Core CPI',value:'3.0%',change:'MoM 0.2% · YoY 3.0%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'식품·에너지 제외'},
+  {key:'ppi',group:'물가',name:'PPI',value:'6.4%',change:'MoM 1.1% · YoY 6.4%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'최종수요 우선'},
+  {key:'core-ppi',group:'물가',name:'Core PPI',value:'4.9%',change:'MoM 0.4% · YoY 4.9%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'BLS 우선'},
+  {key:'unrate',group:'고용',name:'실업률',value:'4.3%',change:'+0.0p.p. vs prev',cls:'market-flat',source:'BLS cached',date:'2026-05',note:'전월 대비 p.p.'},
+  {key:'payems',group:'고용',name:'비농업고용',value:'+172K',change:'Latest 159,001K · Prev 158,829K',cls:'market-up',source:'BLS cached',date:'2026-05',note:'전월 대비 증감'},
+  {key:'ahe',group:'임금',name:'시간당 임금',value:'3.4%',change:'MoM 0.3% · YoY 3.4%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'전월비 / 전년비'}
 ];
 function setMacroStatus(cls,msg){const el=document.getElementById('macroStatus');if(!el)return;el.className='macro-badge '+(cls||'');el.textContent=msg;}
 function sortPeriodRows(rows){
@@ -1371,7 +1379,8 @@ async function fetchFredMacro(item){
 function renderUsMacro(items){
   const grid=document.getElementById('usMacroGrid');if(!grid)return;
   const live=items.filter(Boolean);
-  grid.innerHTML=live.length?live.map(item=>`<div class="macro-card"><div class="macro-group">${escHtml(item.group)}</div><div class="macro-name">${escHtml(item.name)}</div><div class="macro-value ${escHtml(item.cls)}">${escHtml(item.value)}</div><div class="macro-change ${escHtml(item.cls)}">${escHtml(item.change)}</div><div class="macro-source">${escHtml(item.source)} · ${escHtml((item.date||'').slice(0,7))} · ${escHtml(item.note||'')}</div></div>`).join(''):`<div class="macro-card"><div class="macro-name">미국 매크로</div><div class="macro-value market-flat">—</div><div class="macro-source">BLS/FRED 연결 대기</div></div>`;
+  grid.innerHTML=live.length?live.map(item=>{const key='macro-'+item.key;return `<div class="macro-card ${currentMarketChartKey===key?'chart-active':''}" data-chart-key="${escHtml(key)}" role="button" tabindex="0"><div class="macro-group">${escHtml(item.group)}</div><div class="macro-name">${escHtml(item.name)}</div><div class="macro-value ${escHtml(item.cls)}">${escHtml(item.value)}</div><div class="macro-change ${escHtml(item.cls)}">${escHtml(item.change)}</div><div class="macro-source">${escHtml(item.source)} · ${escHtml((item.date||'').slice(0,7))} · ${escHtml(item.note||'')}</div></div>`;}).join(''):`<div class="macro-card"><div class="macro-name">미국 매크로</div><div class="macro-value market-flat">—</div><div class="macro-source">BLS/FRED 연결 대기</div></div>`;
+  bindMarketChartClicks();
 }
 async function fetchUsMacroDashboard(){
   setMacroStatus('warn','US MACRO · UPDATING');
@@ -1499,8 +1508,9 @@ function fmtChartAxisValue(v,cfg={}){
 }
 function updateTradingViewLink(cfg){
   const link=document.getElementById('tradingViewLink');if(!link)return;
-  link.href=cfg.tv||('https://www.tradingview.com/search/?query='+encodeURIComponent(cfg.label||cfg.symbol||'market'));
-  link.setAttribute('aria-label',(cfg.label||'지표')+' TradingView에서 보기');
+  link.href=cfg.sourceUrl||cfg.tv||('https://www.tradingview.com/search/?query='+encodeURIComponent(cfg.label||cfg.symbol||'market'));
+  link.textContent=cfg.linkText||'TRADINGVIEW ↗';
+  link.setAttribute('aria-label',(cfg.label||'지표')+' 원문 차트 보기');
 }
 async function fetchYahooSeries(sym,range=marketChartRange){
   const p=chartRangeParams(range);
@@ -1572,6 +1582,25 @@ async function fetchFredSeries(id,range=marketChartRange){
   }
   return null;
 }
+async function fetchBlsSeries(id,range=marketChartRange){
+  const base='https://api.bls.gov/publicAPI/v2/timeseries/data/'+encodeURIComponent(id);
+  const urls=[
+    base,
+    'https://api.allorigins.win/raw?url='+encodeURIComponent(base),
+    'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(base)
+  ];
+  const maxPoints=range==='1y'?60:range==='3mo'?36:18;
+  for(const url of urls){
+    try{
+      const res=await fetchT(url,6500);const data=await res.json();
+      const rows=data?.Results?.series?.[0]?.data;
+      if(!Array.isArray(rows)||!rows.length)continue;
+      const points=sortPeriodRows(rows).slice(-maxPoints).map(p=>({t:new Date(p.date).getTime(),v:p.value})).filter(p=>isFinite(p.t)&&isFinite(p.v));
+      if(points.length>1)return {points,source:url===base?'BLS':'BLS proxy'};
+    }catch(e){}
+  }
+  return null;
+}
 async function fetchCurveSeries(range=marketChartRange){
   const [a,b]=await Promise.all([fetchYahooSeries('^TNX',range),fetchYahooSeries('^IRX',range)]);
   if(!a?.points?.length||!b?.points?.length)return null;
@@ -1585,6 +1614,7 @@ async function fetchMarketChartData(key){
   if(cfg.type==='fng')return fetchFearGreedSeries(marketChartRange);
   if(cfg.type==='cfng')return fetchCryptoFearGreedSeries(marketChartRange);
   if(cfg.type==='fred')return fetchFredSeries(cfg.series,marketChartRange);
+  if(cfg.type==='bls')return await fetchBlsSeries(cfg.series,marketChartRange)||await fetchFredSeries(cfg.fallbackFred,'1y');
   if(cfg.type==='curve')return fetchCurveSeries(marketChartRange);
   return fetchYahooSeries(cfg.symbol,marketChartRange);
 }
@@ -1605,6 +1635,10 @@ function renderMarketChart(points,cfg,source){
   const chg=(last.v-first.v)/Math.abs(first.v||1)*100;
   document.getElementById('marketChartTitle').textContent='CHART · '+cfg.label;
   document.getElementById('marketChartMeta').textContent=chartRangeLabel(marketChartRange)+' · '+points.length+'개 포인트 · '+(source||'Live')+' · '+fmtChartValue(last.v,cfg)+' ('+(chg>=0?'+':'')+chg.toFixed(2)+'%)';
+  if(cfg.type==='bls'&&source==='FRED'&&cfg.fallbackFred){
+    const link=document.getElementById('tradingViewLink');
+    if(link){link.href='https://fred.stlouisfed.org/series/'+encodeURIComponent(cfg.fallbackFred);link.textContent='FRED CHART VIEW ↗';}
+  }
   box.innerHTML=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" aria-label="${escHtml(cfg.label)} chart">${grid}<polyline points="${poly}" fill="none" stroke="${line}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${x(last).toFixed(1)}" cy="${y(last).toFixed(1)}" r="4.5" fill="${line}"/><text class="chart-axis date" x="${padL}" y="${h-14}">${startDate}</text><text class="chart-axis date" x="${w-padR}" y="${h-14}">${endDate}</text></svg>`;
 }
 function setChartActive(key){
@@ -1621,6 +1655,14 @@ async function showMarketChart(key=currentMarketChartKey){
   const data=await fetchMarketChartData(key);
   if(key!==currentMarketChartKey)return;
   if(data?.points?.length)renderMarketChart(data.points,cfg,data.source);
+  else if(cfg.type==='bls'&&cfg.fallbackFred){
+    const fredUrl='https://fred.stlouisfed.org/series/'+encodeURIComponent(cfg.fallbackFred);
+    const imgUrl='https://fred.stlouisfed.org/graph/fredgraph.png?id='+encodeURIComponent(cfg.fallbackFred);
+    const link=document.getElementById('tradingViewLink');
+    if(link){link.href=fredUrl;link.textContent='FRED CHART VIEW ↗';}
+    if(meta)meta.textContent='BLS API 연결 실패 · FRED 공식 차트 이미지로 표시';
+    if(box)box.innerHTML='<a href="'+fredUrl+'" target="_blank" rel="noopener" style="display:block;width:100%;height:100%;background:#fff"><img src="'+imgUrl+'" alt="'+escHtml(cfg.label)+' FRED chart" style="width:100%;height:100%;object-fit:contain;display:block"></a>';
+  }
   else{if(meta)meta.textContent='데이터 소스 연결 실패';if(box)box.innerHTML='<div class="chart-loading">차트 데이터를 불러올 수 없습니다</div>';}
 }
 function setMarketChartRange(range){
