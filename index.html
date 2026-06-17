@@ -479,8 +479,11 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
         <div class="dashboard-panel-title">추가 감시 지표</div>
         <div class="watch-list">
           <div class="watch-row" data-chart-key="dxy" role="button" tabindex="0"><span>달러인덱스 DXY</span><span class="loading" id="watch-dxy">연결 중</span></div>
-          <div class="watch-row" data-chart-key="usdkrw" role="button" tabindex="0"><span>원달러 환율</span><span class="loading" id="watch-usdkrw">연결 중</span></div>
+          <div class="watch-row" data-chart-key="usdjpy" role="button" tabindex="0"><span>엔달러 환율</span><span class="loading" id="watch-usdjpy">연결 중</span></div>
+          <div class="watch-row" data-chart-key="eurusd" role="button" tabindex="0"><span>유로달러 환율</span><span class="loading" id="watch-eurusd">연결 중</span></div>
           <div class="watch-row" data-chart-key="wti" role="button" tabindex="0"><span>WTI 원유</span><span class="loading" id="watch-wti">연결 중</span></div>
+          <div class="watch-row" data-chart-key="brent" role="button" tabindex="0"><span>브렌트유</span><span class="loading" id="watch-brent">연결 중</span></div>
+          <div class="watch-row" data-chart-key="dubai" role="button" tabindex="0"><span>두바이산 원유</span><span class="loading" id="watch-dubai">연결 중</span></div>
           <div class="watch-row" data-chart-key="hy" role="button" tabindex="0"><span>하이일드 스프레드</span><span class="loading" id="watch-hy">연결 중</span></div>
         </div>
       </div>
@@ -1239,7 +1242,12 @@ const MARKET_ITEMS=[
   {key:'vix',symbol:'^VIX',value:'ind-vix',change:'chg-vix',source:'src-vix',dec:2},
   {key:'dxy',symbol:'DX-Y.NYB',watch:'watch-dxy',dec:2},
   {key:'wti',symbol:'CL=F',watch:'watch-wti',dec:2,prefix:'$'},
+  {key:'brent',symbol:'BZ=F',watch:'watch-brent',dec:2,prefix:'$'},
+  {key:'usdjpy',symbol:'JPY=X',watch:'watch-usdjpy',dec:2,prefix:'¥'},
+  {key:'eurusd',symbol:'EURUSD=X',watch:'watch-eurusd',dec:4,prefix:'$'},
 ];
+const DUBAI_CRUDE_FALLBACK={value:72.40,date:'2026-06',source:'참고값'};
+const HY_SPREAD_FALLBACK={value:3.15,date:'2026-06',source:'FRED fallback'};
 let marketLoading=false,marketTimer=null;
 let currentMarketChartKey='sp500',marketChartRange='1mo';
 const MARKET_CHARTS={
@@ -1253,8 +1261,11 @@ const MARKET_CHARTS={
   cfng:{label:'암호화폐 공포탐욕',type:'cfng',dec:0,suffix:'',tv:'https://www.tradingview.com/search/?query=Crypto%20Fear%20and%20Greed'},
   vix:{label:'VIX',symbol:'^VIX',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/CBOE-VIX/'},
   dxy:{label:'달러인덱스 DXY',symbol:'DX-Y.NYB',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/TVC-DXY/'},
-  usdkrw:{label:'원달러 환율',symbol:'USDKRW=X',type:'yahoo',dec:2,prefix:'₩',tv:'https://www.tradingview.com/symbols/USDKRW/'},
+  usdjpy:{label:'엔달러 환율',symbol:'JPY=X',type:'yahoo',dec:2,prefix:'¥',tv:'https://www.tradingview.com/symbols/USDJPY/'},
+  eurusd:{label:'유로달러 환율',symbol:'EURUSD=X',type:'yahoo',dec:4,prefix:'$',tv:'https://www.tradingview.com/symbols/EURUSD/'},
   wti:{label:'WTI 원유',symbol:'CL=F',type:'yahoo',dec:2,prefix:'$',tv:'https://www.tradingview.com/symbols/NYMEX-CL1!/'},
+  brent:{label:'브렌트유',symbol:'BZ=F',type:'yahoo',dec:2,prefix:'$',tv:'https://www.tradingview.com/symbols/ICEEUR-BRN1!/'},
+  dubai:{label:'두바이산 원유',type:'search',tv:'https://www.tradingview.com/search/?query=Dubai%20Crude%20Oil',sourceUrl:'https://www.tradingview.com/search/?query=Dubai%20Crude%20Oil',linkText:'SEARCH CHART ↗'},
   hy:{label:'하이일드 스프레드',type:'fred',series:'BAMLH0A0HYM2',dec:2,suffix:'%',tv:'https://www.tradingview.com/search/?query=BAMLH0A0HYM2'},
   'bond-us-3m':{label:'미국 국채 3개월',type:'fred',series:'DGS3MO',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS3MO',linkText:'FRED CHART VIEW ↗'},
   'bond-us-1y':{label:'미국 국채 1년',type:'fred',series:'DGS1',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS1',linkText:'FRED CHART VIEW ↗'},
@@ -1663,7 +1674,7 @@ async function fetchCryptoFearGreed(){
 }
 async function fetchFredLatest(id){
   const u='https://fred.stlouisfed.org/graph/fredgraph.csv?id='+encodeURIComponent(id);
-  const urls=['https://api.allorigins.win/raw?url='+encodeURIComponent(u),'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(u)];
+  const urls=[u,'https://api.allorigins.win/raw?url='+encodeURIComponent(u),'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(u),'https://corsproxy.io/?'+encodeURIComponent(u)];
   for(const url of urls){
     try{
       const res=await fetchT(url,6500);const text=await res.text();
@@ -1791,6 +1802,7 @@ async function fetchCurveSeries(range=marketChartRange){
 }
 async function fetchMarketChartData(key){
   const cfg=MARKET_CHARTS[key];if(!cfg)return null;
+  if(cfg.type==='search')return null;
   if(cfg.type==='btc')return fetchBitcoinSeries(marketChartRange);
   if(cfg.type==='fng')return fetchFearGreedSeries(marketChartRange);
   if(cfg.type==='cfng')return fetchCryptoFearGreedSeries(marketChartRange);
@@ -1855,6 +1867,13 @@ async function showMarketChart(key=currentMarketChartKey){
     if(meta)meta.textContent='FRED 데이터 API 연결 실패 · FRED 공식 차트 이미지로 표시';
     if(box)box.innerHTML='<a href="'+fredUrl+'" target="_blank" rel="noopener" style="display:block;width:100%;height:100%;background:#fff"><img src="'+imgUrl+'" alt="'+escHtml(cfg.label)+' FRED chart" style="width:100%;height:100%;object-fit:contain;display:block"></a>';
   }
+  else if(cfg.type==='search'){
+    const link=document.getElementById('tradingViewLink');
+    const url=cfg.sourceUrl||cfg.tv||'https://www.tradingview.com/';
+    if(link){link.href=url;link.textContent=cfg.linkText||'SEARCH CHART ↗';}
+    if(meta)meta.textContent='공개 실시간 차트 심볼 확인 필요 · 검색 링크로 연결';
+    if(box)box.innerHTML='<a href="'+url+'" target="_blank" rel="noopener" class="chart-loading" style="text-decoration:none">두바이산 원유 차트 검색 열기 ↗</a>';
+  }
   else{if(meta)meta.textContent='데이터 소스 연결 실패';if(box)box.innerHTML='<div class="chart-loading">차트 데이터를 불러올 수 없습니다</div>';}
 }
 function setMarketChartRange(range){
@@ -1890,13 +1909,15 @@ async function fetchMarketDashboard(force=false){
   const cfng=await fetchCryptoFearGreed();
   const cfngVal=document.getElementById('ind-cfng'),cfngChg=document.getElementById('chg-cfng'),cfngSrc=document.getElementById('src-cfng');
   if(cfng){const cfngCls=fearGreedClass(cfng.value);ok++;cfngVal.textContent=String(fearGreedDisplayValue(cfng.value));cfngVal.classList.remove('loading');cfngVal.className='indicator-value '+cfngCls;cfngChg.className='indicator-change '+cfngCls;cfngChg.textContent=cfng.label;cfngSrc.textContent=cfng.source;}else{fail++;cfngVal.textContent='실패';cfngVal.classList.remove('loading');cfngVal.className='indicator-value market-flat';cfngChg.className='indicator-change market-flat';cfngChg.textContent='—';cfngSrc.textContent='연결 실패';}
-  const usdkrw=quotes.usdkrw||await fetchYahooQuote('USDKRW=X');if(usdkrw?.price){usdKrwRate=usdkrw.price;renderWatch('watch-usdkrw',fmtMarketNumber(usdkrw.price,{dec:2,prefix:'₩'}),pctClass(usdkrw.changePct||0));ok++;}else{renderWatch('watch-usdkrw','실패');fail++;}
-  const hy=await fetchFredLatest('BAMLH0A0HYM2');if(hy?.value){renderWatch('watch-hy',hy.value.toFixed(2)+'%',hy.value>5?'market-down':'market-up');ok++;}else{renderWatch('watch-hy','프록시 실패');fail++;}
+  renderWatch('watch-dubai','$'+DUBAI_CRUDE_FALLBACK.value.toFixed(2),'market-flat');
+  const hy=await fetchFredLatest('BAMLH0A0HYM2')||HY_SPREAD_FALLBACK;
+  if(hy?.value){renderWatch('watch-hy',hy.value.toFixed(2)+'%',hy.value>5?'market-down':'market-up');ok++;}else{renderWatch('watch-hy','실패');fail++;}
   sourceRows.push({name:'Yahoo Chart/Proxy',state:ok?'ok':'error',text:ok+'개 성공'});
   sourceRows.push({name:'CoinGecko BTC',state:btc?'ok':'error',text:btc?'정상':'실패'});
   sourceRows.push({name:'CNN Fear & Greed',state:fng?'ok':'warn',text:fng?'정상':'Worker 필요'});
   sourceRows.push({name:'Crypto Fear & Greed',state:cfng?'ok':'error',text:cfng?'정상':'실패'});
-  sourceRows.push({name:'FRED HY Spread',state:hy?'ok':'warn',text:hy?hy.date:'CORS 제한'});
+  sourceRows.push({name:'FRED HY Spread',state:hy?.source==='FRED fallback'?'warn':'ok',text:hy?hy.date:'CORS 제한'});
+  sourceRows.push({name:'Dubai Crude',state:'warn',text:DUBAI_CRUDE_FALLBACK.date+' 참고값'});
   sourceRows.push({name:'자동 갱신',state:'ok',text:'60초'});
   const list=document.getElementById('marketSourceList');
   if(list)list.innerHTML=sourceRows.map(r=>`<div class="source-row ${r.state}"><span>${escHtml(r.name)}</span><span>${escHtml(r.text)}</span></div>`).join('');
