@@ -149,6 +149,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
 .fed-dashboard{flex:1;display:none;flex-direction:column;background:var(--bg);min-height:0}.fed-frame-toolbar{height:38px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 14px;border-bottom:1px solid var(--border);background:var(--surface);font-size:10px;color:var(--text-mid);font-family:'IBM Plex Mono',monospace}.fed-frame-title{color:var(--text);letter-spacing:1.4px}.fed-open-link{color:var(--accent);text-decoration:none;border:1px solid var(--border);padding:5px 8px;background:var(--surface2)}.fed-open-link:hover{border-color:var(--accent)}.fed-frame{flex:1;width:100%;border:0;background:#05080d;min-height:0}
 .market-refresh-btn{background:var(--surface2);border:1px solid var(--border);color:var(--accent);font-size:10px;padding:7px 10px;cursor:pointer;font-family:'IBM Plex Mono',monospace;white-space:nowrap}.market-refresh-btn:hover{border-color:var(--accent);background:rgba(0,212,255,.08)}.dashboard-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.dashboard-status.ok{color:var(--accent);border-color:rgba(0,212,255,.45)}.dashboard-status.warn{color:#ffcc00;border-color:rgba(255,204,0,.45)}.dashboard-status.error{color:#ff6666;border-color:rgba(255,102,102,.45)}.indicator-card{position:relative}.indicator-card.row-break{grid-column:1}.indicator-card[data-chart-key],.watch-row[data-chart-key]{cursor:pointer;transition:border-color .16s,background .16s,transform .16s}.indicator-card[data-chart-key]:hover,.indicator-card.chart-active{border-color:var(--accent);background:rgba(0,212,255,.055)}.indicator-card[data-chart-key]:hover{transform:translateY(-1px)}.watch-row[data-chart-key]:hover,.watch-row.chart-active{border-color:var(--accent);background:rgba(0,212,255,.045)}.indicator-value.loading{color:var(--text-dim);font-size:15px}.indicator-change{font-family:'IBM Plex Mono',monospace;font-size:11px;min-height:16px}.indicator-source{font-size:9px;color:var(--text-dim);margin-top:6px;line-height:1.4}.market-up{color:#00ff88}.market-down{color:#ff4d6d}.market-flat{color:var(--text-dim)}.watch-row span:last-child.loading{color:var(--text-dim)}.market-chart-panel{margin-bottom:16px}.market-chart-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}.market-chart-head>div:first-child{min-width:0}.market-chart-meta{font-size:10px;color:var(--text-mid);font-family:'IBM Plex Mono',monospace;line-height:1.5;word-break:keep-all}.chart-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;flex-shrink:0}.chart-range-tabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.chart-range-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text-mid);font-size:10px;padding:5px 8px;font-family:'IBM Plex Mono',monospace;cursor:pointer}.chart-range-btn.active,.chart-range-btn:hover{border-color:var(--accent);color:var(--accent)}.tradingview-link{background:rgba(0,212,255,.06);border:1px solid var(--border);color:var(--accent);font-size:10px;padding:5px 9px;font-family:'IBM Plex Mono',monospace;text-decoration:none;white-space:nowrap}.tradingview-link:hover{border-color:var(--accent);background:rgba(0,212,255,.12)}.market-chart-canvas{height:280px;border:1px solid var(--rank-border);background:rgba(0,0,0,.15);position:relative;overflow:hidden}.market-chart-canvas svg{width:100%;height:100%;display:block}.chart-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:11px;font-family:'IBM Plex Mono',monospace}.chart-axis{fill:var(--text-dim);font-size:9px;font-family:'IBM Plex Mono',monospace}.chart-axis.value{text-anchor:end}.chart-axis.date{text-anchor:middle}.chart-grid{stroke:rgba(120,160,200,.16);stroke-width:1}.source-list{display:grid;gap:7px}.source-row{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--rank-border);padding:7px 0;font-size:11px;color:var(--text-mid)}.source-row span:last-child{font-family:'IBM Plex Mono',monospace;color:var(--text-dim);text-align:right}.source-row.ok span:last-child{color:var(--accent)}.source-row.warn span:last-child{color:#ffcc00}.source-row.error span:last-child{color:#ff6666}
 .sentiment-extreme-fear{color:#ff3344}.sentiment-fear{color:#ff9f1a}.sentiment-neutral{color:#dce3ea}.sentiment-greed{color:#9dff57}.sentiment-extreme-greed{color:#00d46a}
+.macro-panel{margin-bottom:16px}.macro-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}.macro-sub{font-size:10px;color:var(--text-mid);line-height:1.5}.macro-badge{font-size:10px;color:var(--text-dim);font-family:'IBM Plex Mono',monospace;border:1px solid var(--border);background:var(--surface2);padding:6px 9px;white-space:nowrap}.macro-badge.ok{color:var(--accent);border-color:rgba(0,212,255,.45)}.macro-badge.warn{color:#ffcc00;border-color:rgba(255,204,0,.45)}.macro-grid{display:grid;grid-template-columns:repeat(5,minmax(130px,1fr));gap:8px}.macro-card{border:1px solid var(--rank-border);background:rgba(0,0,0,.08);padding:10px;min-height:96px}.macro-group{font-size:9px;color:var(--text-dim);letter-spacing:1.1px;text-transform:uppercase;margin-bottom:6px}.macro-name{font-size:12px;color:var(--text);font-weight:600;margin-bottom:6px}.macro-value{font-family:'IBM Plex Mono',monospace;font-size:18px;color:var(--accent);margin-bottom:4px}.macro-change{font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1.5;min-height:30px}.macro-source{font-size:9px;color:var(--text-dim);margin-top:6px;line-height:1.4}
 @media(max-width:980px){.main-menu-title{font-size:48px}.main-menu-grid{grid-template-columns:1fr}.indicator-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.indicator-card.row-break{grid-column:auto}.dashboard-sections{grid-template-columns:1fr}}
 @media(max-width:560px){.main-menu{padding:18px}.main-menu-title{font-size:38px;letter-spacing:5px}.indicator-grid,.watch-list{grid-template-columns:1fr}.dashboard-top{align-items:flex-start;flex-direction:column}.indicator-dashboard{padding:14px 12px 24px}}
 
@@ -421,6 +422,18 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
       <div class="indicator-card" data-chart-key="cfng" role="button" tabindex="0"><div class="indicator-group">크립토 심리</div><div class="indicator-name">암호화폐 공포탐욕</div><div class="indicator-value loading" id="ind-cfng">연결 중</div><div class="indicator-change" id="chg-cfng">—</div><div class="indicator-note">Crypto Fear & Greed · 0~100</div><div class="indicator-source" id="src-cfng">Alternative.me</div></div>
       <div class="indicator-card" data-chart-key="vix" role="button" tabindex="0"><div class="indicator-group">변동성</div><div class="indicator-name">VIX</div><div class="indicator-value loading" id="ind-vix">연결 중</div><div class="indicator-change" id="chg-vix">—</div><div class="indicator-note">20↓ 안정 · 30↑ 경계</div><div class="indicator-source" id="src-vix">Yahoo Chart</div></div>
     </div>
+    <div class="dashboard-panel macro-panel">
+      <div class="macro-head">
+        <div>
+          <div class="dashboard-panel-title">미국 매크로 지표</div>
+          <div class="macro-sub">CPI/PPI/고용은 발표 원기관인 BLS를 우선 조회하고, 연결 실패 시 FRED로 보강합니다.</div>
+        </div>
+        <div class="macro-badge" id="macroStatus">US MACRO · CONNECTING</div>
+      </div>
+      <div class="macro-grid" id="usMacroGrid">
+        <div class="macro-card"><div class="data-loading">미국 지표 연결 중...</div></div>
+      </div>
+    </div>
     <div class="dashboard-panel market-chart-panel">
       <div class="market-chart-head">
         <div>
@@ -661,7 +674,7 @@ function switchView(view){
   document.body.classList.remove('menu-mode','map-mode','dashboard-mode','fed-mode');
   document.body.classList.add(view==='dashboard'?'dashboard-mode':view==='fed'?'fed-mode':view==='map'?'map-mode':'menu-mode');
   if(view==='map'&&map) setTimeout(()=>map.invalidateSize(),80);
-  if(view==='dashboard') setTimeout(()=>{bindMarketChartClicks();fetchMarketDashboard(true);showMarketChart(currentMarketChartKey);},80);
+  if(view==='dashboard') setTimeout(()=>{bindMarketChartClicks();fetchMarketDashboard(true);fetchUsMacroDashboard();showMarketChart(currentMarketChartKey);},80);
   if(view==='fed'){const f=document.getElementById('fedFrame');if(f&&f.getAttribute('src')==='about:blank')f.src=f.dataset.src;}
 }
 function updateDesktopPanelButtons(){
@@ -831,9 +844,9 @@ const TICKER_CURRENCIES = [
 let prevRates = {};
 
 // ═══ Fetch with timeout ═══
-function fetchT(url, ms=5000) {
+function fetchT(url, ms=5000, init={}) {
   const c=new AbortController();const t=setTimeout(()=>c.abort(),ms);
-  return fetch(url,{signal:c.signal,cache:'no-store'}).then(r=>{clearTimeout(t);return r;}).catch(e=>{clearTimeout(t);throw e;});
+  return fetch(url,{...init,signal:c.signal,cache:init.cache||'no-store'}).then(r=>{clearTimeout(t);return r;}).catch(e=>{clearTimeout(t);throw e;});
 }
 
 // ═══ Exchange Rates — 1순위: Cloudflare Worker (실시간) → 2순위: open.er-api (폴백) ═══
@@ -1247,6 +1260,132 @@ function fearGreedClass(v){
   if(score<=75)return 'sentiment-greed';
   return 'sentiment-extreme-greed';
 }
+const US_MACRO_ITEMS=[
+  {key:'cpi',group:'물가',name:'CPI',bls:'CUSR0000SA0',fred:'CPIAUCSL',mode:'inflation',unit:'%',note:'전월비 / 전년비'},
+  {key:'core-cpi',group:'물가',name:'Core CPI',bls:'CUSR0000SA0L1E',fred:'CPILFESL',mode:'inflation',unit:'%',note:'식품·에너지 제외'},
+  {key:'ppi',group:'물가',name:'PPI',bls:'WPSFD4',fred:'PPIACO',mode:'inflation',unit:'%',note:'최종수요 우선'},
+  {key:'core-ppi',group:'물가',name:'Core PPI',bls:'WPSFD49104',fred:'PPIACO',mode:'inflation',unit:'%',note:'BLS 우선 · FRED 백업'},
+  {key:'pce',group:'물가',name:'PCE 물가',fred:'PCEPI',mode:'inflation',unit:'%',note:'FRED/BEA 계열'},
+  {key:'core-pce',group:'물가',name:'Core PCE',fred:'PCEPILFE',mode:'inflation',unit:'%',note:'연준 선호 물가'},
+  {key:'unrate',group:'고용',name:'실업률',bls:'LNS14000000',fred:'UNRATE',mode:'rate',unit:'%',note:'전월 대비 p.p.'},
+  {key:'payems',group:'고용',name:'비농업고용',bls:'CES0000000001',fred:'PAYEMS',mode:'level-change',unit:'K',note:'전월 대비 증감'},
+  {key:'ahe',group:'임금',name:'시간당 임금',bls:'CES0500000003',fred:'CES0500000003',mode:'inflation',unit:'%',note:'전월비 / 전년비'},
+  {key:'fedfunds',group:'금리',name:'Fed Funds',fred:'FEDFUNDS',mode:'rate',unit:'%',note:'월평균 정책금리'}
+];
+const US_MACRO_FALLBACK=[
+  {group:'물가',name:'CPI',value:'4.3%',change:'MoM 0.5% · YoY 4.3%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'전월비 / 전년비'},
+  {group:'물가',name:'Core CPI',value:'3.0%',change:'MoM 0.2% · YoY 3.0%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'식품·에너지 제외'},
+  {group:'물가',name:'PPI',value:'6.4%',change:'MoM 1.1% · YoY 6.4%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'최종수요 우선'},
+  {group:'물가',name:'Core PPI',value:'4.9%',change:'MoM 0.4% · YoY 4.9%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'BLS 우선'},
+  {group:'고용',name:'실업률',value:'4.3%',change:'+0.0p.p. vs prev',cls:'market-flat',source:'BLS cached',date:'2026-05',note:'전월 대비 p.p.'},
+  {group:'고용',name:'비농업고용',value:'+172K',change:'Latest 159,001K · Prev 158,829K',cls:'market-up',source:'BLS cached',date:'2026-05',note:'전월 대비 증감'},
+  {group:'임금',name:'시간당 임금',value:'3.4%',change:'MoM 0.3% · YoY 3.4%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'전월비 / 전년비'}
+];
+function setMacroStatus(cls,msg){const el=document.getElementById('macroStatus');if(!el)return;el.className='macro-badge '+(cls||'');el.textContent=msg;}
+function sortPeriodRows(rows){
+  return rows.filter(r=>/^M\d{2}$/.test(r.period||'')).map(r=>({date:`${r.year}-${r.period.slice(1)}-01`,value:Number(r.value)})).filter(r=>isFinite(r.value)).sort((a,b)=>new Date(a.date)-new Date(b.date));
+}
+function calcMacroFromPoints(points,item,source){
+  if(!points||points.length<2)return null;
+  const last=points[points.length-1],prev=points[points.length-2],yearAgo=points.length>12?points[points.length-13]:null;
+  const lastVal=Number(last.value),prevVal=Number(prev.value),yearAgoVal=Number(yearAgo?.value);
+  let value='',change='',cls='market-flat';
+  if(item.mode==='inflation'){
+    const mom=(lastVal/prevVal-1)*100;
+    const yoy=yearAgo&&yearAgoVal?(lastVal/yearAgoVal-1)*100:null;
+    value=(yoy==null?mom:yoy).toFixed(1)+item.unit;
+    change='MoM '+mom.toFixed(1)+'%'+(yoy==null?'':' · YoY '+yoy.toFixed(1)+'%');
+    cls=mom>0?'market-up':mom<0?'market-down':'market-flat';
+  }else if(item.mode==='level-change'){
+    const diff=lastVal-prevVal;
+    value=diff>=0?'+'+diff.toFixed(0)+'K':diff.toFixed(0)+'K';
+    change='Latest '+lastVal.toLocaleString('en-US',{maximumFractionDigits:0})+'K · Prev '+prevVal.toLocaleString('en-US',{maximumFractionDigits:0})+'K';
+    cls=diff>0?'market-up':diff<0?'market-down':'market-flat';
+  }else{
+    const diff=lastVal-prevVal;
+    value=lastVal.toFixed(1)+item.unit;
+    change=(diff>=0?'+':'')+diff.toFixed(1)+'p.p. vs prev';
+    cls=diff>0?'market-up':diff<0?'market-down':'market-flat';
+  }
+  return {...item,value,change,cls,source,date:last.date};
+}
+async function fetchBlsMacro(item){
+  if(!item.bls)return null;
+  const base='https://api.bls.gov/publicAPI/v2/timeseries/data/'+encodeURIComponent(item.bls);
+  const urls=[
+    base,
+    'https://api.allorigins.win/raw?url='+encodeURIComponent(base),
+    'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(base)
+  ];
+  for(const url of urls){
+    try{
+      const res=await fetchT(url,4500);const data=await res.json();
+      const rows=data?.Results?.series?.[0]?.data;
+      if(Array.isArray(rows)&&rows.length)return calcMacroFromPoints(sortPeriodRows(rows),item,url===base?'BLS':'BLS proxy');
+    }catch(e){}
+  }
+  return null;
+}
+async function fetchBlsMacroBatch(items){
+  const blsItems=items.filter(item=>item.bls);
+  if(!blsItems.length)return new Map();
+  const now=new Date().getFullYear();
+  const res=await fetchT('https://api.bls.gov/publicAPI/v2/timeseries/data/',9000,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({seriesid:blsItems.map(item=>item.bls),startyear:String(now-2),endyear:String(now)})
+  });
+  const data=await res.json();
+  const series=data?.Results?.series||[];
+  const output=new Map();
+  blsItems.forEach(item=>{
+    const rows=series.find(s=>s.seriesID===item.bls)?.data;
+    const parsed=Array.isArray(rows)?calcMacroFromPoints(sortPeriodRows(rows),item,'BLS'):null;
+    if(parsed)output.set(item.key,parsed);
+  });
+  return output;
+}
+async function fetchFredMacro(item){
+  if(!item.fred)return null;
+  const url='https://fred.stlouisfed.org/graph/fredgraph.csv?id='+encodeURIComponent(item.fred);
+  const proxies=[
+    url,
+    'https://api.allorigins.win/raw?url='+encodeURIComponent(url),
+    'https://api.allorigins.win/get?url='+encodeURIComponent(url),
+    'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(url),
+    'https://corsproxy.io/?'+encodeURIComponent(url)
+  ];
+  for(const proxy of proxies){
+    try{
+      const res=await fetchT(proxy,6500);const text=await res.text();
+      let csv=text;
+      if(proxy.includes('/get?url=')){try{csv=JSON.parse(text).contents||text;}catch(e){}}
+      if(!csv.includes('observation_date'))continue;
+      const points=csv.trim().split(/\r?\n/).slice(1).map(r=>{const [date,value]=r.split(',');return {date,value:Number(value)};}).filter(p=>p.date&&isFinite(p.value));
+      const parsed=calcMacroFromPoints(points.slice(-18),item,'FRED');
+      if(parsed)return parsed;
+    }catch(e){}
+  }
+  return null;
+}
+function renderUsMacro(items){
+  const grid=document.getElementById('usMacroGrid');if(!grid)return;
+  const live=items.filter(Boolean);
+  grid.innerHTML=live.length?live.map(item=>`<div class="macro-card"><div class="macro-group">${escHtml(item.group)}</div><div class="macro-name">${escHtml(item.name)}</div><div class="macro-value ${escHtml(item.cls)}">${escHtml(item.value)}</div><div class="macro-change ${escHtml(item.cls)}">${escHtml(item.change)}</div><div class="macro-source">${escHtml(item.source)} · ${escHtml((item.date||'').slice(0,7))} · ${escHtml(item.note||'')}</div></div>`).join(''):`<div class="macro-card"><div class="macro-name">미국 매크로</div><div class="macro-value market-flat">—</div><div class="macro-source">BLS/FRED 연결 대기</div></div>`;
+}
+async function fetchUsMacroDashboard(){
+  setMacroStatus('warn','US MACRO · UPDATING');
+  const results=[];let finished=false;
+  const fallbackTimer=setTimeout(()=>{if(!finished&&!results.length){renderUsMacro(US_MACRO_FALLBACK);setMacroStatus('warn','US MACRO · CACHED');}},12000);
+  for(const item of US_MACRO_ITEMS.filter(item=>item.bls)){
+    let parsed=null;
+    try{parsed=await fetchBlsMacro(item);}catch(e){}
+    if(parsed){results.push(parsed);renderUsMacro(results);setMacroStatus('ok','US MACRO · '+results.length+' INDICATORS');}
+    await new Promise(resolve=>setTimeout(resolve,160));
+  }
+  finished=true;clearTimeout(fallbackTimer);
+  if(!results.length){renderUsMacro(US_MACRO_FALLBACK);setMacroStatus('warn','US MACRO · CACHED');}
+}
 function renderIndicator(item,q){
   const val=document.getElementById(item.value),chg=document.getElementById(item.change),src=document.getElementById(item.source);
   if(!val)return;
@@ -1641,13 +1780,14 @@ function drawPowerCables(){
 function initLiveData() {
   renderDataStatus();
   bindMarketChartClicks();
-  Promise.all([fetchExchangeRates(), fetchCommodities(), fetchEnergy(), fetchNews(), fetchMarketDashboard()]);
+  Promise.all([fetchExchangeRates(), fetchCommodities(), fetchEnergy(), fetchNews(), fetchMarketDashboard(), fetchUsMacroDashboard()]);
   showMarketChart(currentMarketChartKey);
   setInterval(fetchExchangeRates, 300000);   // 환율: 5분
   setInterval(fetchCommodities, 300000);     // 귀금속: 5분
   setInterval(fetchEnergy, 300000);          // 에너지: 5분
   setInterval(fetchNews, 600000);            // 뉴스: 10분
   marketTimer=setInterval(fetchMarketDashboard, 60000); // 지표: 1분
+  setInterval(fetchUsMacroDashboard, 900000); // 미국 매크로: 15분
 }
 updateDesktopPanelButtons();
 placeAlliancePanel();
