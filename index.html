@@ -1338,13 +1338,13 @@ const GLOBAL_RATE_ITEMS=[
   {rank:10,key:'au',country:'호주',name:'RBA Cash Rate',series:'IRSTCB01AUM156N',fallback:'3.60%',change:'AUD · China beta',source:'RBA/FRED',date:'2026-06',note:'중국 베타·원자재'}
 ];
 const BOND_TENORS=[
-  {key:'3m',label:'3개월'},
-  {key:'1y',label:'1년'},
-  {key:'2y',label:'2년'},
-  {key:'5y',label:'5년'},
-  {key:'10y',label:'10년'},
-  {key:'20y',label:'20년'},
-  {key:'30y',label:'30년'}
+  {key:'3m',label:'3개월물'},
+  {key:'1y',label:'1년물'},
+  {key:'2y',label:'2년물'},
+  {key:'5y',label:'5년물'},
+  {key:'10y',label:'10년물'},
+  {key:'20y',label:'20년물'},
+  {key:'30y',label:'30년물'}
 ];
 const BOND_YIELD_GROUPS=[
   {key:'us',flag:'🇺🇸',name:'미국 국채',note:'FRED H.15 · Daily',spreadSeries:'T10Y3M',tenors:{
@@ -1373,6 +1373,15 @@ const BOND_YIELD_GROUPS=[
     '10y':{series:'IRLTLT01JPM156N',value:2.65,source:'FRED/OECD'},
     '20y':{value:3.10,source:'참고값'},
     '30y':{value:3.35,source:'참고값'}
+  }},
+  {key:'br',flag:'🇧🇷',name:'브라질 국채',note:'reference curve · high-yield EM',tenors:{
+    '3m':{value:14.70,source:'참고값'},
+    '1y':{value:13.95,source:'참고값'},
+    '2y':{value:13.35,source:'참고값'},
+    '5y':{value:13.10,source:'참고값'},
+    '10y':{value:13.25,source:'참고값'},
+    '20y':{value:13.45,source:'참고값'},
+    '30y':{value:13.60,source:'참고값'}
   }}
 ];
 function setMacroStatus(cls,msg){const el=document.getElementById('macroStatus');if(!el)return;el.className='macro-badge '+(cls||'');el.textContent=msg;}
