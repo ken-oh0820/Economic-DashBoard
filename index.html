@@ -439,9 +439,9 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
       <div class="macro-head">
         <div>
           <div class="dashboard-panel-title">글로벌 금리 지표</div>
-          <div class="macro-sub">미국, 한국, 일본, 스위스, 브라질의 정책금리/중앙은행 단기금리를 비교합니다.</div>
+          <div class="macro-sub">미국 시장 영향력 기준 TOP 10 정책금리/중앙은행 단기금리를 순위별로 비교합니다.</div>
         </div>
-        <div class="macro-badge ok">GLOBAL RATES · 5 MARKETS</div>
+        <div class="macro-badge ok">GLOBAL RATES · TOP 10</div>
       </div>
       <div class="macro-grid" id="globalRateGrid"></div>
     </div>
@@ -1257,11 +1257,16 @@ const MARKET_CHARTS={
   'macro-unrate':{label:'실업률',type:'bls',series:'LNS14000000',fallbackFred:'UNRATE',dec:1,suffix:'%',sourceUrl:'https://data.bls.gov/timeseries/LNS14000000',linkText:'BLS CHART VIEW ↗'},
   'macro-payems':{label:'비농업고용',type:'bls',series:'CES0000000001',fallbackFred:'PAYEMS',dec:0,suffix:'K',sourceUrl:'https://data.bls.gov/timeseries/CES0000000001',linkText:'BLS CHART VIEW ↗'},
   'macro-ahe':{label:'시간당 임금',type:'bls',series:'CES0500000003',fallbackFred:'CES0500000003',dec:2,prefix:'$',sourceUrl:'https://data.bls.gov/timeseries/CES0500000003',linkText:'BLS CHART VIEW ↗'},
-  'rate-us':{label:'미국 정책금리',type:'fred',series:'FEDFUNDS',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/FEDFUNDS',linkText:'FRED CHART VIEW ↗'},
-  'rate-kr':{label:'한국 기준금리',type:'fred',series:'IRSTCB01KRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01KRM156N',linkText:'FRED CHART VIEW ↗'},
-  'rate-jp':{label:'일본 정책금리',type:'fred',series:'IRSTCB01JPM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01JPM156N',linkText:'FRED CHART VIEW ↗'},
-  'rate-ch':{label:'스위스 정책금리',type:'fred',series:'IRSTCB01CHM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01CHM156N',linkText:'FRED CHART VIEW ↗'},
-  'rate-br':{label:'브라질 Selic',type:'fred',series:'IRSTCB01BRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01BRM156N',linkText:'FRED CHART VIEW ↗'}
+  'rate-us':{label:'#1 미국 정책금리',type:'fred',series:'FEDFUNDS',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/FEDFUNDS',linkText:'FRED CHART VIEW ↗'},
+  'rate-jp':{label:'#2 일본 정책금리',type:'fred',series:'IRSTCB01JPM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01JPM156N',linkText:'FRED CHART VIEW ↗'},
+  'rate-eu':{label:'#3 유로존 ECB 금리',type:'fred',series:'ECBDFR',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/ECBDFR',linkText:'FRED CHART VIEW ↗'},
+  'rate-cn':{label:'#4 중국 PBOC 금리',type:'fred',series:'INTDSRCNM193N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/INTDSRCNM193N',linkText:'FRED CHART VIEW ↗'},
+  'rate-ch':{label:'#5 스위스 정책금리',type:'fred',series:'IRSTCB01CHM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01CHM156N',linkText:'FRED CHART VIEW ↗'},
+  'rate-uk':{label:'#6 영국 Bank Rate',type:'fred',series:'IRSTCB01GBM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01GBM156N',linkText:'FRED CHART VIEW ↗'},
+  'rate-br':{label:'#7 브라질 Selic',type:'fred',series:'IRSTCB01BRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01BRM156N',linkText:'FRED CHART VIEW ↗'},
+  'rate-kr':{label:'#8 한국 기준금리',type:'fred',series:'IRSTCB01KRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01KRM156N',linkText:'FRED CHART VIEW ↗'},
+  'rate-ca':{label:'#9 캐나다 Overnight',type:'fred',series:'IRSTCB01CAM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01CAM156N',linkText:'FRED CHART VIEW ↗'},
+  'rate-au':{label:'#10 호주 Cash Rate',type:'fred',series:'IRSTCB01AUM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01AUM156N',linkText:'FRED CHART VIEW ↗'}
 };
 function setMarketStatus(status,msg){
   const el=document.getElementById('marketDashboardStatus');if(!el)return;
@@ -1305,11 +1310,16 @@ const US_MACRO_FALLBACK=[
   {key:'ahe',group:'임금',name:'시간당 임금',value:'3.4%',change:'MoM 0.3% · YoY 3.4%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'전월비 / 전년비'}
 ];
 const GLOBAL_RATE_ITEMS=[
-  {key:'us',country:'미국',name:'Fed Funds',series:'FEDFUNDS',fallback:'3.50-3.75%',change:'FOMC target range',source:'Fed/FRED',date:'2026-06',note:'유효 연방기금금리'},
-  {key:'kr',country:'한국',name:'BOK 기준금리',series:'IRSTCB01KRM156N',fallback:'2.50%',change:'Base Rate',source:'BOK/FRED',date:'2026-06',note:'한국은행 기준금리'},
-  {key:'jp',country:'일본',name:'BOJ 정책금리',series:'IRSTCB01JPM156N',fallback:'1.00%',change:'Short-term policy rate',source:'BOJ/FRED',date:'2026-06',note:'일본 단기 정책금리'},
-  {key:'ch',country:'스위스',name:'SNB 정책금리',series:'IRSTCB01CHM156N',fallback:'0.00%',change:'SNB policy rate',source:'SNB/FRED',date:'2026-06',note:'스위스 정책금리'},
-  {key:'br',country:'브라질',name:'Selic 목표금리',series:'IRSTCB01BRM156N',fallback:'14.50%',change:'Copom Selic target',source:'BCB/FRED',date:'2026-06',note:'브라질 정책금리'}
+  {rank:1,key:'us',country:'미국',name:'Fed Funds',series:'FEDFUNDS',fallback:'3.50-3.75%',change:'FOMC target range',source:'Fed/FRED',date:'2026-06',note:'글로벌 할인율·달러 유동성'},
+  {rank:2,key:'jp',country:'일본',name:'BOJ 정책금리',series:'IRSTCB01JPM156N',fallback:'1.00%',change:'Yen carry trade',source:'BOJ/FRED',date:'2026-06',note:'엔 캐리 트레이드 핵심'},
+  {rank:3,key:'eu',country:'유로존',name:'ECB Deposit Rate',series:'ECBDFR',fallback:'3.25%',change:'EUR/USD · DXY',source:'ECB/FRED',date:'2026-06',note:'달러 인덱스·유럽 채권'},
+  {rank:4,key:'cn',country:'중국',name:'PBOC Rate',series:'INTDSRCNM193N',fallback:'1.50%',change:'CNY · commodities',source:'PBOC/FRED',date:'2026-06',note:'위안화·원자재·경기부양'},
+  {rank:5,key:'ch',country:'스위스',name:'SNB 정책금리',series:'IRSTCB01CHM156N',fallback:'0.00%',change:'CHF safe haven',source:'SNB/FRED',date:'2026-06',note:'안전자산·CHF funding'},
+  {rank:6,key:'uk',country:'영국',name:'BOE Bank Rate',series:'IRSTCB01GBM156N',fallback:'3.75%',change:'GBP · gilt market',source:'BOE/FRED',date:'2026-06',note:'런던 금융시장·길트'},
+  {rank:7,key:'br',country:'브라질',name:'Selic 목표금리',series:'IRSTCB01BRM156N',fallback:'14.50%',change:'EM carry trade',source:'BCB/FRED',date:'2026-06',note:'신흥국 캐리·원자재'},
+  {rank:8,key:'kr',country:'한국',name:'BOK 기준금리',series:'IRSTCB01KRM156N',fallback:'2.50%',change:'KRW · semis',source:'BOK/FRED',date:'2026-06',note:'원화·반도체 수급'},
+  {rank:9,key:'ca',country:'캐나다',name:'BoC Overnight',series:'IRSTCB01CAM156N',fallback:'3.25%',change:'CAD · energy',source:'BoC/FRED',date:'2026-06',note:'원유·북미 경기'},
+  {rank:10,key:'au',country:'호주',name:'RBA Cash Rate',series:'IRSTCB01AUM156N',fallback:'3.60%',change:'AUD · China beta',source:'RBA/FRED',date:'2026-06',note:'중국 베타·원자재'}
 ];
 function setMacroStatus(cls,msg){const el=document.getElementById('macroStatus');if(!el)return;el.className='macro-badge '+(cls||'');el.textContent=msg;}
 function sortPeriodRows(rows){
@@ -1408,14 +1418,13 @@ function renderGlobalRates(items=GLOBAL_RATE_ITEMS){
   const grid=document.getElementById('globalRateGrid');if(!grid)return;
   grid.innerHTML=items.map(item=>{
     const chartKey='rate-'+item.key;
-    return `<div class="macro-card ${currentMarketChartKey===chartKey?'chart-active':''}" data-chart-key="${escHtml(chartKey)}" role="button" tabindex="0"><div class="macro-group">${escHtml(item.country)}</div><div class="macro-name">${escHtml(item.name)}</div><div class="macro-value ${escHtml(item.cls||'market-flat')}">${escHtml(item.value||item.fallback)}</div><div class="macro-change ${escHtml(item.cls||'market-flat')}">${escHtml(item.change||'Latest policy rate')}</div><div class="macro-source">${escHtml(item.source)} · ${escHtml((item.date||'').slice(0,7))} · ${escHtml(item.note||'')}</div></div>`;
+    return `<div class="macro-card ${currentMarketChartKey===chartKey?'chart-active':''}" data-chart-key="${escHtml(chartKey)}" role="button" tabindex="0"><div class="macro-group">#${escHtml(item.rank||'')} · ${escHtml(item.country)}</div><div class="macro-name">${escHtml(item.name)}</div><div class="macro-value ${escHtml(item.cls||'market-flat')}">${escHtml(item.value||item.fallback)}</div><div class="macro-change ${escHtml(item.cls||'market-flat')}">${escHtml(item.change||'Latest policy rate')}</div><div class="macro-source">${escHtml(item.source)} · ${escHtml((item.date||'').slice(0,7))} · ${escHtml(item.note||'')}</div></div>`;
   }).join('');
   bindMarketChartClicks();
 }
 async function fetchGlobalRateDashboard(){
   renderGlobalRates(GLOBAL_RATE_ITEMS);
-  const updated=[];
-  for(const item of GLOBAL_RATE_ITEMS){
+  const updated=await Promise.all(GLOBAL_RATE_ITEMS.map(async item=>{
     let next={...item,value:item.fallback,cls:'market-flat'};
     try{
       const data=await fetchFredSeries(item.series,'1y');
@@ -1433,9 +1442,9 @@ async function fetchGlobalRateDashboard(){
         };
       }
     }catch(e){}
-    updated.push(next);
-    renderGlobalRates(updated.concat(GLOBAL_RATE_ITEMS.slice(updated.length)));
-  }
+    return next;
+  }));
+  renderGlobalRates(updated);
 }
 async function fetchUsMacroDashboard(){
   setMacroStatus('warn','US MACRO · UPDATING');
