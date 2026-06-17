@@ -151,8 +151,10 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
 .sentiment-extreme-fear{color:#ff3344}.sentiment-fear{color:#ff9f1a}.sentiment-neutral{color:#dce3ea}.sentiment-greed{color:#9dff57}.sentiment-extreme-greed{color:#00d46a}
 .macro-panel{margin-bottom:16px}.macro-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}.macro-sub{font-size:10px;color:var(--text-mid);line-height:1.5}.macro-badge{font-size:10px;color:var(--text-dim);font-family:'IBM Plex Mono',monospace;border:1px solid var(--border);background:var(--surface2);padding:6px 9px;white-space:nowrap}.macro-badge.ok{color:var(--accent);border-color:rgba(0,212,255,.45)}.macro-badge.warn{color:#ffcc00;border-color:rgba(255,204,0,.45)}.macro-grid{display:grid;grid-template-columns:repeat(5,minmax(130px,1fr));gap:8px}.macro-card{border:1px solid var(--rank-border);background:rgba(0,0,0,.08);padding:10px;min-height:96px}.macro-group{font-size:9px;color:var(--text-dim);letter-spacing:1.1px;text-transform:uppercase;margin-bottom:6px}.macro-name{font-size:12px;color:var(--text);font-weight:600;margin-bottom:6px}.macro-value{font-family:'IBM Plex Mono',monospace;font-size:18px;color:var(--accent);margin-bottom:4px}.macro-change{font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1.5;min-height:30px}.macro-source{font-size:9px;color:var(--text-dim);margin-top:6px;line-height:1.4}
 .macro-card[data-chart-key]{cursor:pointer;transition:border-color .16s,background .16s,transform .16s}.macro-card[data-chart-key]:hover,.macro-card.chart-active{border-color:var(--accent);background:rgba(0,212,255,.045)}.macro-card[data-chart-key]:hover{transform:translateY(-1px)}
-@media(max-width:980px){.main-menu-title{font-size:48px}.main-menu-grid{grid-template-columns:1fr}.indicator-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.indicator-card.row-break{grid-column:auto}.dashboard-sections{grid-template-columns:1fr}}
-@media(max-width:560px){.main-menu{padding:18px}.main-menu-title{font-size:38px;letter-spacing:5px}.indicator-grid,.watch-list{grid-template-columns:1fr}.dashboard-top{align-items:flex-start;flex-direction:column}.indicator-dashboard{padding:14px 12px 24px}}
+.bond-panel{margin-bottom:16px}.bond-country{border-top:1px solid var(--rank-border);padding-top:10px;margin-top:10px}.bond-country:first-of-type{border-top:none;padding-top:0;margin-top:0}.bond-country-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.bond-country-name{font-size:12px;color:var(--text);font-weight:700;letter-spacing:1px}.bond-country-note{font-size:9px;color:var(--text-dim);font-family:'IBM Plex Mono',monospace;text-align:right}.bond-grid{display:grid;grid-template-columns:repeat(8,minmax(94px,1fr));gap:7px}.bond-card{border:1px solid var(--rank-border);background:rgba(0,0,0,.08);padding:9px;min-height:82px}.bond-card.spread{background:rgba(0,212,255,.035)}.bond-tenor{font-size:9px;color:var(--text-dim);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px}.bond-value{font-family:'IBM Plex Mono',monospace;font-size:17px;color:var(--accent);margin-bottom:5px}.bond-source{font-size:9px;color:var(--text-dim);line-height:1.35}.bond-card[data-chart-key]{cursor:pointer;transition:border-color .16s,background .16s,transform .16s}.bond-card[data-chart-key]:hover,.bond-card.chart-active{border-color:var(--accent);background:rgba(0,212,255,.055)}.bond-card[data-chart-key]:hover{transform:translateY(-1px)}
+@media(max-width:1180px){.bond-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:980px){.main-menu-title{font-size:48px}.main-menu-grid{grid-template-columns:1fr}.indicator-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.indicator-card.row-break{grid-column:auto}.dashboard-sections{grid-template-columns:1fr}.bond-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.main-menu{padding:18px}.main-menu-title{font-size:38px;letter-spacing:5px}.indicator-grid,.watch-list,.bond-grid{grid-template-columns:1fr}.dashboard-top{align-items:flex-start;flex-direction:column}.indicator-dashboard{padding:14px 12px 24px}}
 
 /* Mobile toggle buttons */
 .mobile-toggle{display:none;position:absolute;top:50%;transform:translateY(-50%);width:28px;height:54px;background:var(--ctrl-bg);border:1px solid var(--border);color:var(--accent);font-size:14px;cursor:pointer;z-index:1002;align-items:center;justify-content:center;backdrop-filter:blur(8px);padding:0;transition:all 0.2s}
@@ -445,6 +447,16 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
       </div>
       <div class="macro-grid" id="globalRateGrid"></div>
     </div>
+    <div class="dashboard-panel bond-panel">
+      <div class="macro-head">
+        <div>
+          <div class="dashboard-panel-title">국채 금리 커브</div>
+          <div class="macro-sub">미국, 한국, 일본의 3개월·1년·2년·5년·10년·20년·30년물과 10Y-3M 스프레드를 비교합니다.</div>
+        </div>
+        <div class="macro-badge" id="bondYieldStatus">BOND CURVE · CONNECTING</div>
+      </div>
+      <div id="bondYieldGrid"></div>
+    </div>
     <div class="dashboard-panel market-chart-panel">
       <div class="market-chart-head">
         <div>
@@ -468,8 +480,6 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
         <div class="watch-list">
           <div class="watch-row" data-chart-key="dxy" role="button" tabindex="0"><span>달러인덱스 DXY</span><span class="loading" id="watch-dxy">연결 중</span></div>
           <div class="watch-row" data-chart-key="usdkrw" role="button" tabindex="0"><span>원달러 환율</span><span class="loading" id="watch-usdkrw">연결 중</span></div>
-          <div class="watch-row" data-chart-key="us10y" role="button" tabindex="0"><span>미국 10년물 금리</span><span class="loading" id="watch-us10y">연결 중</span></div>
-          <div class="watch-row" data-chart-key="curve" role="button" tabindex="0"><span>10Y-3M 금리차</span><span class="loading" id="watch-curve">연결 중</span></div>
           <div class="watch-row" data-chart-key="wti" role="button" tabindex="0"><span>WTI 원유</span><span class="loading" id="watch-wti">연결 중</span></div>
           <div class="watch-row" data-chart-key="hy" role="button" tabindex="0"><span>하이일드 스프레드</span><span class="loading" id="watch-hy">연결 중</span></div>
         </div>
@@ -685,7 +695,7 @@ function switchView(view){
   document.body.classList.remove('menu-mode','map-mode','dashboard-mode','fed-mode');
   document.body.classList.add(view==='dashboard'?'dashboard-mode':view==='fed'?'fed-mode':view==='map'?'map-mode':'menu-mode');
   if(view==='map'&&map) setTimeout(()=>map.invalidateSize(),80);
-  if(view==='dashboard') setTimeout(()=>{bindMarketChartClicks();fetchMarketDashboard(true);fetchUsMacroDashboard();fetchGlobalRateDashboard();showMarketChart(currentMarketChartKey);},80);
+  if(view==='dashboard') setTimeout(()=>{bindMarketChartClicks();fetchMarketDashboard(true);fetchUsMacroDashboard();fetchGlobalRateDashboard();fetchBondYieldDashboard();showMarketChart(currentMarketChartKey);},80);
   if(view==='fed'){const f=document.getElementById('fedFrame');if(f&&f.getAttribute('src')==='about:blank')f.src=f.dataset.src;}
 }
 function updateDesktopPanelButtons(){
@@ -1228,8 +1238,6 @@ const MARKET_ITEMS=[
   {key:'kosdaq',symbol:'^KQ11',value:'ind-kosdaq',change:'chg-kosdaq',source:'src-kosdaq',dec:2},
   {key:'vix',symbol:'^VIX',value:'ind-vix',change:'chg-vix',source:'src-vix',dec:2},
   {key:'dxy',symbol:'DX-Y.NYB',watch:'watch-dxy',dec:2},
-  {key:'us10y',symbol:'^TNX',watch:'watch-us10y',dec:2,suffix:'%'},
-  {key:'us3m',symbol:'^IRX',dec:2},
   {key:'wti',symbol:'CL=F',watch:'watch-wti',dec:2,prefix:'$'},
 ];
 let marketLoading=false,marketTimer=null;
@@ -1246,10 +1254,18 @@ const MARKET_CHARTS={
   vix:{label:'VIX',symbol:'^VIX',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/CBOE-VIX/'},
   dxy:{label:'달러인덱스 DXY',symbol:'DX-Y.NYB',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/TVC-DXY/'},
   usdkrw:{label:'원달러 환율',symbol:'USDKRW=X',type:'yahoo',dec:2,prefix:'₩',tv:'https://www.tradingview.com/symbols/USDKRW/'},
-  us10y:{label:'미국 10년물 금리',symbol:'^TNX',type:'yahoo',dec:2,suffix:'%',tv:'https://www.tradingview.com/symbols/TVC-US10Y/'},
-  curve:{label:'10Y-3M 금리차',type:'curve',a:'^TNX',b:'^IRX',dec:2,suffix:'%p',tv:'https://www.tradingview.com/search/?query=10Y%203M%20yield%20spread'},
   wti:{label:'WTI 원유',symbol:'CL=F',type:'yahoo',dec:2,prefix:'$',tv:'https://www.tradingview.com/symbols/NYMEX-CL1!/'},
   hy:{label:'하이일드 스프레드',type:'fred',series:'BAMLH0A0HYM2',dec:2,suffix:'%',tv:'https://www.tradingview.com/search/?query=BAMLH0A0HYM2'},
+  'bond-us-3m':{label:'미국 국채 3개월',type:'fred',series:'DGS3MO',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS3MO',linkText:'FRED CHART VIEW ↗'},
+  'bond-us-1y':{label:'미국 국채 1년',type:'fred',series:'DGS1',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS1',linkText:'FRED CHART VIEW ↗'},
+  'bond-us-2y':{label:'미국 국채 2년',type:'fred',series:'DGS2',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS2',linkText:'FRED CHART VIEW ↗'},
+  'bond-us-5y':{label:'미국 국채 5년',type:'fred',series:'DGS5',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS5',linkText:'FRED CHART VIEW ↗'},
+  'bond-us-10y':{label:'미국 국채 10년',type:'fred',series:'DGS10',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS10',linkText:'FRED CHART VIEW ↗'},
+  'bond-us-20y':{label:'미국 국채 20년',type:'fred',series:'DGS20',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS20',linkText:'FRED CHART VIEW ↗'},
+  'bond-us-30y':{label:'미국 국채 30년',type:'fred',series:'DGS30',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS30',linkText:'FRED CHART VIEW ↗'},
+  'bond-us-spread':{label:'미국 10Y-3M',type:'fred',series:'T10Y3M',range:'1y',dec:2,suffix:'%p',sourceUrl:'https://fred.stlouisfed.org/series/T10Y3M',linkText:'FRED CHART VIEW ↗'},
+  'bond-kr-10y':{label:'한국 국채 10년',type:'fred',series:'IRLTLT01KRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRLTLT01KRM156N',linkText:'FRED CHART VIEW ↗'},
+  'bond-jp-10y':{label:'일본 국채 10년',type:'fred',series:'IRLTLT01JPM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRLTLT01JPM156N',linkText:'FRED CHART VIEW ↗'},
   'macro-cpi':{label:'CPI',type:'bls',series:'CUSR0000SA0',fallbackFred:'CPIAUCSL',dec:1,sourceUrl:'https://data.bls.gov/timeseries/CUSR0000SA0',linkText:'BLS CHART VIEW ↗'},
   'macro-core-cpi':{label:'Core CPI',type:'bls',series:'CUSR0000SA0L1E',fallbackFred:'CPILFESL',dec:1,sourceUrl:'https://data.bls.gov/timeseries/CUSR0000SA0L1E',linkText:'BLS CHART VIEW ↗'},
   'macro-ppi':{label:'PPI',type:'bls',series:'WPSFD4',fallbackFred:'PPIACO',dec:1,sourceUrl:'https://data.bls.gov/timeseries/WPSFD4',linkText:'BLS CHART VIEW ↗'},
@@ -1321,7 +1337,46 @@ const GLOBAL_RATE_ITEMS=[
   {rank:9,key:'ca',country:'캐나다',name:'BoC Overnight',series:'IRSTCB01CAM156N',fallback:'3.25%',change:'CAD · energy',source:'BoC/FRED',date:'2026-06',note:'원유·북미 경기'},
   {rank:10,key:'au',country:'호주',name:'RBA Cash Rate',series:'IRSTCB01AUM156N',fallback:'3.60%',change:'AUD · China beta',source:'RBA/FRED',date:'2026-06',note:'중국 베타·원자재'}
 ];
+const BOND_TENORS=[
+  {key:'3m',label:'3개월'},
+  {key:'1y',label:'1년'},
+  {key:'2y',label:'2년'},
+  {key:'5y',label:'5년'},
+  {key:'10y',label:'10년'},
+  {key:'20y',label:'20년'},
+  {key:'30y',label:'30년'}
+];
+const BOND_YIELD_GROUPS=[
+  {key:'us',name:'미국 국채',note:'FRED H.15 · Daily',spreadSeries:'T10Y3M',tenors:{
+    '3m':{series:'DGS3MO',value:3.70,source:'FRED'},
+    '1y':{series:'DGS1',value:3.75,source:'FRED'},
+    '2y':{series:'DGS2',value:4.16,source:'FRED'},
+    '5y':{series:'DGS5',value:4.20,source:'FRED'},
+    '10y':{series:'DGS10',value:4.47,source:'FRED'},
+    '20y':{series:'DGS20',value:4.90,source:'FRED'},
+    '30y':{series:'DGS30',value:4.95,source:'FRED'}
+  }},
+  {key:'kr',name:'한국 국채',note:'10Y FRED/OECD · others reference',tenors:{
+    '3m':{value:2.65,source:'참고값'},
+    '1y':{value:2.86,source:'참고값'},
+    '2y':{value:3.02,source:'참고값'},
+    '5y':{value:3.55,source:'참고값'},
+    '10y':{series:'IRLTLT01KRM156N',value:4.08,source:'FRED/OECD'},
+    '20y':{value:4.18,source:'참고값'},
+    '30y':{value:4.10,source:'참고값'}
+  }},
+  {key:'jp',name:'일본 국채',note:'10Y FRED/OECD · others reference',tenors:{
+    '3m':{value:1.00,source:'참고값'},
+    '1y':{value:1.05,source:'참고값'},
+    '2y':{value:1.10,source:'참고값'},
+    '5y':{value:1.70,source:'참고값'},
+    '10y':{series:'IRLTLT01JPM156N',value:2.65,source:'FRED/OECD'},
+    '20y':{value:3.10,source:'참고값'},
+    '30y':{value:3.35,source:'참고값'}
+  }}
+];
 function setMacroStatus(cls,msg){const el=document.getElementById('macroStatus');if(!el)return;el.className='macro-badge '+(cls||'');el.textContent=msg;}
+function setBondYieldStatus(cls,msg){const el=document.getElementById('bondYieldStatus');if(!el)return;el.className='macro-badge '+(cls||'');el.textContent=msg;}
 function sortPeriodRows(rows){
   return rows.filter(r=>/^M\d{2}$/.test(r.period||'')).map(r=>({date:`${r.year}-${r.period.slice(1)}-01`,value:Number(r.value)})).filter(r=>isFinite(r.value)).sort((a,b)=>new Date(a.date)-new Date(b.date));
 }
@@ -1445,6 +1500,59 @@ async function fetchGlobalRateDashboard(){
     return next;
   }));
   renderGlobalRates(updated);
+}
+function cloneBondYieldGroups(){
+  return BOND_YIELD_GROUPS.map(group=>({
+    ...group,
+    tenors:Object.fromEntries(Object.entries(group.tenors).map(([key,item])=>[key,{...item}]))
+  }));
+}
+function bondValueText(v,suffix='%'){
+  return typeof v==='number'&&isFinite(v)?v.toFixed(2)+suffix:'—';
+}
+function renderBondYields(groups=BOND_YIELD_GROUPS){
+  const box=document.getElementById('bondYieldGrid');if(!box)return;
+  box.innerHTML=groups.map(group=>{
+    const tenors=BOND_TENORS.map(tenor=>{
+      const item=group.tenors[tenor.key]||{};
+      const chartKey=item.series?'bond-'+group.key+'-'+tenor.key:'';
+      const chartAttrs=chartKey?` data-chart-key="${escHtml(chartKey)}" role="button" tabindex="0"`:'';
+      const cls=item.cls||'market-flat';
+      return `<div class="bond-card ${currentMarketChartKey===chartKey?'chart-active':''}"${chartAttrs}><div class="bond-tenor">${escHtml(tenor.label)}</div><div class="bond-value ${escHtml(cls)}">${escHtml(bondValueText(item.value))}</div><div class="bond-source">${escHtml(item.source||'참고값')}${item.date?' · '+escHtml(item.date.slice(0,7)):''}</div></div>`;
+    }).join('');
+    const y10=group.tenors['10y']?.value, m3=group.tenors['3m']?.value;
+    const spread=typeof y10==='number'&&typeof m3==='number'?y10-m3:null;
+    const spreadKey=group.spreadSeries?'bond-'+group.key+'-spread':'';
+    const spreadAttrs=spreadKey?` data-chart-key="${escHtml(spreadKey)}" role="button" tabindex="0"`:'';
+    const spreadCls=spread==null?'market-flat':spread>=0?'market-up':'market-down';
+    return `<div class="bond-country"><div class="bond-country-head"><div class="bond-country-name">${escHtml(group.name)}</div><div class="bond-country-note">${escHtml(group.note)}</div></div><div class="bond-grid">${tenors}<div class="bond-card spread ${currentMarketChartKey===spreadKey?'chart-active':''}"${spreadAttrs}><div class="bond-tenor">10Y-3M</div><div class="bond-value ${spreadCls}">${escHtml(bondValueText(spread,'%p'))}</div><div class="bond-source">계산값 · 10년-3개월</div></div></div></div>`;
+  }).join('');
+  bindMarketChartClicks();
+}
+async function fetchBondYieldDashboard(){
+  setBondYieldStatus('warn','BOND CURVE · UPDATING');
+  const groups=cloneBondYieldGroups();
+  renderBondYields(groups);
+  let ok=0,fail=0;
+  await Promise.all(groups.flatMap(group=>BOND_TENORS.map(async tenor=>{
+    const item=group.tenors[tenor.key];
+    if(!item?.series)return;
+    try{
+      const data=await fetchFredSeries(item.series,'1y');
+      const points=data?.points||[];
+      if(points.length){
+        const last=points[points.length-1],prev=points[points.length-2];
+        const diff=prev?last.v-prev.v:0;
+        item.value=last.v;
+        item.cls=diff>0?'market-up':diff<0?'market-down':'market-flat';
+        item.source=data.source||item.source||'FRED';
+        item.date=new Date(last.t).toISOString().slice(0,10);
+        ok++;
+      }else fail++;
+    }catch(e){fail++;}
+  })));
+  renderBondYields(groups);
+  setBondYieldStatus(fail?'warn':'ok','BOND CURVE · '+ok+' LIVE'+(fail?' / REF '+fail:''));
 }
 async function fetchUsMacroDashboard(){
   setMacroStatus('warn','US MACRO · UPDATING');
@@ -1774,8 +1882,6 @@ async function fetchMarketDashboard(force=false){
   const cfngVal=document.getElementById('ind-cfng'),cfngChg=document.getElementById('chg-cfng'),cfngSrc=document.getElementById('src-cfng');
   if(cfng){const cfngCls=fearGreedClass(cfng.value);ok++;cfngVal.textContent=String(fearGreedDisplayValue(cfng.value));cfngVal.classList.remove('loading');cfngVal.className='indicator-value '+cfngCls;cfngChg.className='indicator-change '+cfngCls;cfngChg.textContent=cfng.label;cfngSrc.textContent=cfng.source;}else{fail++;cfngVal.textContent='실패';cfngVal.classList.remove('loading');cfngVal.className='indicator-value market-flat';cfngChg.className='indicator-change market-flat';cfngChg.textContent='—';cfngSrc.textContent='연결 실패';}
   const usdkrw=quotes.usdkrw||await fetchYahooQuote('USDKRW=X');if(usdkrw?.price){usdKrwRate=usdkrw.price;renderWatch('watch-usdkrw',fmtMarketNumber(usdkrw.price,{dec:2,prefix:'₩'}),pctClass(usdkrw.changePct||0));ok++;}else{renderWatch('watch-usdkrw','실패');fail++;}
-  if(quotes.us10y&&quotes.us3m){const spread=quotes.us10y.price-quotes.us3m.price;renderWatch('watch-curve',spread.toFixed(2)+'%p',spread>=0?'market-up':'market-down');}
-  else renderWatch('watch-curve','실패');
   const hy=await fetchFredLatest('BAMLH0A0HYM2');if(hy?.value){renderWatch('watch-hy',hy.value.toFixed(2)+'%',hy.value>5?'market-down':'market-up');ok++;}else{renderWatch('watch-hy','프록시 실패');fail++;}
   sourceRows.push({name:'Yahoo Chart/Proxy',state:ok?'ok':'error',text:ok+'개 성공'});
   sourceRows.push({name:'CoinGecko BTC',state:btc?'ok':'error',text:btc?'정상':'실패'});
@@ -1898,7 +2004,8 @@ function initLiveData() {
   renderDataStatus();
   bindMarketChartClicks();
   renderGlobalRates();
-  Promise.all([fetchExchangeRates(), fetchCommodities(), fetchEnergy(), fetchNews(), fetchMarketDashboard(), fetchUsMacroDashboard(), fetchGlobalRateDashboard()]);
+  renderBondYields();
+  Promise.all([fetchExchangeRates(), fetchCommodities(), fetchEnergy(), fetchNews(), fetchMarketDashboard(), fetchUsMacroDashboard(), fetchGlobalRateDashboard(), fetchBondYieldDashboard()]);
   showMarketChart(currentMarketChartKey);
   setInterval(fetchExchangeRates, 300000);   // 환율: 5분
   setInterval(fetchCommodities, 300000);     // 귀금속: 5분
@@ -1907,6 +2014,7 @@ function initLiveData() {
   marketTimer=setInterval(fetchMarketDashboard, 60000); // 지표: 1분
   setInterval(fetchUsMacroDashboard, 900000); // 미국 매크로: 15분
   setInterval(fetchGlobalRateDashboard, 900000); // 글로벌 금리: 15분
+  setInterval(fetchBondYieldDashboard, 900000); // 국채 커브: 15분
 }
 updateDesktopPanelButtons();
 placeAlliancePanel();
