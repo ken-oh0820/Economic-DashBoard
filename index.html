@@ -435,6 +435,16 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
         <div class="macro-card"><div class="data-loading">미국 지표 연결 중...</div></div>
       </div>
     </div>
+    <div class="dashboard-panel macro-panel">
+      <div class="macro-head">
+        <div>
+          <div class="dashboard-panel-title">글로벌 금리 지표</div>
+          <div class="macro-sub">미국, 한국, 일본, 스위스, 브라질의 정책금리/중앙은행 단기금리를 비교합니다.</div>
+        </div>
+        <div class="macro-badge ok">GLOBAL RATES · 5 MARKETS</div>
+      </div>
+      <div class="macro-grid" id="globalRateGrid"></div>
+    </div>
     <div class="dashboard-panel market-chart-panel">
       <div class="market-chart-head">
         <div>
@@ -675,7 +685,7 @@ function switchView(view){
   document.body.classList.remove('menu-mode','map-mode','dashboard-mode','fed-mode');
   document.body.classList.add(view==='dashboard'?'dashboard-mode':view==='fed'?'fed-mode':view==='map'?'map-mode':'menu-mode');
   if(view==='map'&&map) setTimeout(()=>map.invalidateSize(),80);
-  if(view==='dashboard') setTimeout(()=>{bindMarketChartClicks();fetchMarketDashboard(true);fetchUsMacroDashboard();showMarketChart(currentMarketChartKey);},80);
+  if(view==='dashboard') setTimeout(()=>{bindMarketChartClicks();fetchMarketDashboard(true);fetchUsMacroDashboard();fetchGlobalRateDashboard();showMarketChart(currentMarketChartKey);},80);
   if(view==='fed'){const f=document.getElementById('fedFrame');if(f&&f.getAttribute('src')==='about:blank')f.src=f.dataset.src;}
 }
 function updateDesktopPanelButtons(){
@@ -1246,7 +1256,12 @@ const MARKET_CHARTS={
   'macro-core-ppi':{label:'Core PPI',type:'bls',series:'WPSFD49104',fallbackFred:'PPIACO',dec:1,sourceUrl:'https://data.bls.gov/timeseries/WPSFD49104',linkText:'BLS CHART VIEW ↗'},
   'macro-unrate':{label:'실업률',type:'bls',series:'LNS14000000',fallbackFred:'UNRATE',dec:1,suffix:'%',sourceUrl:'https://data.bls.gov/timeseries/LNS14000000',linkText:'BLS CHART VIEW ↗'},
   'macro-payems':{label:'비농업고용',type:'bls',series:'CES0000000001',fallbackFred:'PAYEMS',dec:0,suffix:'K',sourceUrl:'https://data.bls.gov/timeseries/CES0000000001',linkText:'BLS CHART VIEW ↗'},
-  'macro-ahe':{label:'시간당 임금',type:'bls',series:'CES0500000003',fallbackFred:'CES0500000003',dec:2,prefix:'$',sourceUrl:'https://data.bls.gov/timeseries/CES0500000003',linkText:'BLS CHART VIEW ↗'}
+  'macro-ahe':{label:'시간당 임금',type:'bls',series:'CES0500000003',fallbackFred:'CES0500000003',dec:2,prefix:'$',sourceUrl:'https://data.bls.gov/timeseries/CES0500000003',linkText:'BLS CHART VIEW ↗'},
+  'rate-us':{label:'미국 정책금리',type:'fred',series:'FEDFUNDS',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/FEDFUNDS',linkText:'FRED CHART VIEW ↗'},
+  'rate-kr':{label:'한국 기준금리',type:'fred',series:'IRSTCB01KRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01KRM156N',linkText:'FRED CHART VIEW ↗'},
+  'rate-jp':{label:'일본 정책금리',type:'fred',series:'IRSTCB01JPM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01JPM156N',linkText:'FRED CHART VIEW ↗'},
+  'rate-ch':{label:'스위스 정책금리',type:'fred',series:'IRSTCB01CHM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01CHM156N',linkText:'FRED CHART VIEW ↗'},
+  'rate-br':{label:'브라질 Selic',type:'fred',series:'IRSTCB01BRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01BRM156N',linkText:'FRED CHART VIEW ↗'}
 };
 function setMarketStatus(status,msg){
   const el=document.getElementById('marketDashboardStatus');if(!el)return;
@@ -1288,6 +1303,13 @@ const US_MACRO_FALLBACK=[
   {key:'unrate',group:'고용',name:'실업률',value:'4.3%',change:'+0.0p.p. vs prev',cls:'market-flat',source:'BLS cached',date:'2026-05',note:'전월 대비 p.p.'},
   {key:'payems',group:'고용',name:'비농업고용',value:'+172K',change:'Latest 159,001K · Prev 158,829K',cls:'market-up',source:'BLS cached',date:'2026-05',note:'전월 대비 증감'},
   {key:'ahe',group:'임금',name:'시간당 임금',value:'3.4%',change:'MoM 0.3% · YoY 3.4%',cls:'market-up',source:'BLS cached',date:'2026-05',note:'전월비 / 전년비'}
+];
+const GLOBAL_RATE_ITEMS=[
+  {key:'us',country:'미국',name:'Fed Funds',series:'FEDFUNDS',fallback:'3.50-3.75%',change:'FOMC target range',source:'Fed/FRED',date:'2026-06',note:'유효 연방기금금리'},
+  {key:'kr',country:'한국',name:'BOK 기준금리',series:'IRSTCB01KRM156N',fallback:'2.50%',change:'Base Rate',source:'BOK/FRED',date:'2026-06',note:'한국은행 기준금리'},
+  {key:'jp',country:'일본',name:'BOJ 정책금리',series:'IRSTCB01JPM156N',fallback:'1.00%',change:'Short-term policy rate',source:'BOJ/FRED',date:'2026-06',note:'일본 단기 정책금리'},
+  {key:'ch',country:'스위스',name:'SNB 정책금리',series:'IRSTCB01CHM156N',fallback:'0.00%',change:'SNB policy rate',source:'SNB/FRED',date:'2026-06',note:'스위스 정책금리'},
+  {key:'br',country:'브라질',name:'Selic 목표금리',series:'IRSTCB01BRM156N',fallback:'14.50%',change:'Copom Selic target',source:'BCB/FRED',date:'2026-06',note:'브라질 정책금리'}
 ];
 function setMacroStatus(cls,msg){const el=document.getElementById('macroStatus');if(!el)return;el.className='macro-badge '+(cls||'');el.textContent=msg;}
 function sortPeriodRows(rows){
@@ -1381,6 +1403,39 @@ function renderUsMacro(items){
   const live=items.filter(Boolean);
   grid.innerHTML=live.length?live.map(item=>{const key='macro-'+item.key;return `<div class="macro-card ${currentMarketChartKey===key?'chart-active':''}" data-chart-key="${escHtml(key)}" role="button" tabindex="0"><div class="macro-group">${escHtml(item.group)}</div><div class="macro-name">${escHtml(item.name)}</div><div class="macro-value ${escHtml(item.cls)}">${escHtml(item.value)}</div><div class="macro-change ${escHtml(item.cls)}">${escHtml(item.change)}</div><div class="macro-source">${escHtml(item.source)} · ${escHtml((item.date||'').slice(0,7))} · ${escHtml(item.note||'')}</div></div>`;}).join(''):`<div class="macro-card"><div class="macro-name">미국 매크로</div><div class="macro-value market-flat">—</div><div class="macro-source">BLS/FRED 연결 대기</div></div>`;
   bindMarketChartClicks();
+}
+function renderGlobalRates(items=GLOBAL_RATE_ITEMS){
+  const grid=document.getElementById('globalRateGrid');if(!grid)return;
+  grid.innerHTML=items.map(item=>{
+    const chartKey='rate-'+item.key;
+    return `<div class="macro-card ${currentMarketChartKey===chartKey?'chart-active':''}" data-chart-key="${escHtml(chartKey)}" role="button" tabindex="0"><div class="macro-group">${escHtml(item.country)}</div><div class="macro-name">${escHtml(item.name)}</div><div class="macro-value ${escHtml(item.cls||'market-flat')}">${escHtml(item.value||item.fallback)}</div><div class="macro-change ${escHtml(item.cls||'market-flat')}">${escHtml(item.change||'Latest policy rate')}</div><div class="macro-source">${escHtml(item.source)} · ${escHtml((item.date||'').slice(0,7))} · ${escHtml(item.note||'')}</div></div>`;
+  }).join('');
+  bindMarketChartClicks();
+}
+async function fetchGlobalRateDashboard(){
+  renderGlobalRates(GLOBAL_RATE_ITEMS);
+  const updated=[];
+  for(const item of GLOBAL_RATE_ITEMS){
+    let next={...item,value:item.fallback,cls:'market-flat'};
+    try{
+      const data=await fetchFredSeries(item.series,'1y');
+      const points=data?.points||[];
+      if(points.length){
+        const last=points[points.length-1],prev=points[points.length-2];
+        const diff=prev?last.v-prev.v:0;
+        next={
+          ...item,
+          value:last.v.toFixed(2)+'%',
+          change:(diff>=0?'+':'')+diff.toFixed(2)+'p.p. vs prev',
+          cls:diff>0?'market-up':diff<0?'market-down':'market-flat',
+          source:data.source||item.source,
+          date:new Date(last.t).toISOString().slice(0,10)
+        };
+      }
+    }catch(e){}
+    updated.push(next);
+    renderGlobalRates(updated.concat(GLOBAL_RATE_ITEMS.slice(updated.length)));
+  }
 }
 async function fetchUsMacroDashboard(){
   setMacroStatus('warn','US MACRO · UPDATING');
@@ -1613,7 +1668,10 @@ async function fetchMarketChartData(key){
   if(cfg.type==='btc')return fetchBitcoinSeries(marketChartRange);
   if(cfg.type==='fng')return fetchFearGreedSeries(marketChartRange);
   if(cfg.type==='cfng')return fetchCryptoFearGreedSeries(marketChartRange);
-  if(cfg.type==='fred')return fetchFredSeries(cfg.series,marketChartRange);
+  if(cfg.type==='fred'){
+    const range=cfg.range||marketChartRange;
+    return await fetchFredSeries(cfg.series,range)||(range==='1y'?null:await fetchFredSeries(cfg.series,'1y'));
+  }
   if(cfg.type==='bls')return await fetchBlsSeries(cfg.series,marketChartRange)||await fetchFredSeries(cfg.fallbackFred,'1y');
   if(cfg.type==='curve')return fetchCurveSeries(marketChartRange);
   return fetchYahooSeries(cfg.symbol,marketChartRange);
@@ -1634,7 +1692,7 @@ function renderMarketChart(points,cfg,source){
   const endDate=new Date(last.t).toLocaleDateString('ko-KR',{month:'short',day:'numeric'});
   const chg=(last.v-first.v)/Math.abs(first.v||1)*100;
   document.getElementById('marketChartTitle').textContent='CHART · '+cfg.label;
-  document.getElementById('marketChartMeta').textContent=chartRangeLabel(marketChartRange)+' · '+points.length+'개 포인트 · '+(source||'Live')+' · '+fmtChartValue(last.v,cfg)+' ('+(chg>=0?'+':'')+chg.toFixed(2)+'%)';
+  document.getElementById('marketChartMeta').textContent=chartRangeLabel(cfg.range||marketChartRange)+' · '+points.length+'개 포인트 · '+(source||'Live')+' · '+fmtChartValue(last.v,cfg)+' ('+(chg>=0?'+':'')+chg.toFixed(2)+'%)';
   if(cfg.type==='bls'&&source==='FRED'&&cfg.fallbackFred){
     const link=document.getElementById('tradingViewLink');
     if(link){link.href='https://fred.stlouisfed.org/series/'+encodeURIComponent(cfg.fallbackFred);link.textContent='FRED CHART VIEW ↗';}
@@ -1650,7 +1708,7 @@ async function showMarketChart(key=currentMarketChartKey){
   const box=document.getElementById('marketChartCanvas'),title=document.getElementById('marketChartTitle'),meta=document.getElementById('marketChartMeta');
   updateTradingViewLink(cfg);
   if(title)title.textContent='CHART · '+cfg.label;
-  if(meta)meta.textContent=chartRangeLabel(marketChartRange)+' 데이터 불러오는 중';
+  if(meta)meta.textContent=chartRangeLabel(cfg.range||marketChartRange)+' 데이터 불러오는 중';
   if(box)box.innerHTML='<div class="chart-loading">차트 데이터 로딩 중...</div>';
   const data=await fetchMarketChartData(key);
   if(key!==currentMarketChartKey)return;
@@ -1661,6 +1719,14 @@ async function showMarketChart(key=currentMarketChartKey){
     const link=document.getElementById('tradingViewLink');
     if(link){link.href=fredUrl;link.textContent='FRED CHART VIEW ↗';}
     if(meta)meta.textContent='BLS API 연결 실패 · FRED 공식 차트 이미지로 표시';
+    if(box)box.innerHTML='<a href="'+fredUrl+'" target="_blank" rel="noopener" style="display:block;width:100%;height:100%;background:#fff"><img src="'+imgUrl+'" alt="'+escHtml(cfg.label)+' FRED chart" style="width:100%;height:100%;object-fit:contain;display:block"></a>';
+  }
+  else if(cfg.type==='fred'&&cfg.series){
+    const fredUrl='https://fred.stlouisfed.org/series/'+encodeURIComponent(cfg.series);
+    const imgUrl='https://fred.stlouisfed.org/graph/fredgraph.png?id='+encodeURIComponent(cfg.series);
+    const link=document.getElementById('tradingViewLink');
+    if(link){link.href=fredUrl;link.textContent='FRED CHART VIEW ↗';}
+    if(meta)meta.textContent='FRED 데이터 API 연결 실패 · FRED 공식 차트 이미지로 표시';
     if(box)box.innerHTML='<a href="'+fredUrl+'" target="_blank" rel="noopener" style="display:block;width:100%;height:100%;background:#fff"><img src="'+imgUrl+'" alt="'+escHtml(cfg.label)+' FRED chart" style="width:100%;height:100%;object-fit:contain;display:block"></a>';
   }
   else{if(meta)meta.textContent='데이터 소스 연결 실패';if(box)box.innerHTML='<div class="chart-loading">차트 데이터를 불러올 수 없습니다</div>';}
@@ -1822,7 +1888,8 @@ function drawPowerCables(){
 function initLiveData() {
   renderDataStatus();
   bindMarketChartClicks();
-  Promise.all([fetchExchangeRates(), fetchCommodities(), fetchEnergy(), fetchNews(), fetchMarketDashboard(), fetchUsMacroDashboard()]);
+  renderGlobalRates();
+  Promise.all([fetchExchangeRates(), fetchCommodities(), fetchEnergy(), fetchNews(), fetchMarketDashboard(), fetchUsMacroDashboard(), fetchGlobalRateDashboard()]);
   showMarketChart(currentMarketChartKey);
   setInterval(fetchExchangeRates, 300000);   // 환율: 5분
   setInterval(fetchCommodities, 300000);     // 귀금속: 5분
@@ -1830,6 +1897,7 @@ function initLiveData() {
   setInterval(fetchNews, 600000);            // 뉴스: 10분
   marketTimer=setInterval(fetchMarketDashboard, 60000); // 지표: 1분
   setInterval(fetchUsMacroDashboard, 900000); // 미국 매크로: 15분
+  setInterval(fetchGlobalRateDashboard, 900000); // 글로벌 금리: 15분
 }
 updateDesktopPanelButtons();
 placeAlliancePanel();
