@@ -322,7 +322,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard{display:none}
 <div class="sidebar-left" id="sidebarLeft">
 <div><div class="panel-title">경제 지표 선택</div><button class="metric-btn active" onclick="setMetric('gdp',this)"><span class="metric-icon">📊</span> GDP / 국내총생산</button><button class="metric-btn" onclick="setMetric('trade',this)"><span class="metric-icon">🚢</span> 무역 수출입</button><button class="metric-btn" onclick="setMetric('unemployment',this)"><span class="metric-icon">📉</span> 실업률</button><button class="metric-btn" onclick="setMetric('inflation',this)"><span class="metric-icon">💹</span> 인플레이션율</button></div>
 <div class="search-panel"><div class="panel-title">국가 검색</div><div class="search-box"><span class="search-icon">⌕</span><input id="countrySearch" class="search-input" type="search" placeholder="국가명, 지역, GDP 순위" autocomplete="off" oninput="renderCountrySearch(this.value)" onkeydown="handleSearchKey(event)"><button id="searchClear" class="search-clear" onclick="clearCountrySearch()" aria-label="검색 지우기">×</button></div><div class="search-results" id="countrySearchResults"></div></div>
-<div><div class="panel-title">지도 오버레이</div><button class="overlay-btn" onclick="setOverlay('polsys',this)">🟣 정치체제 구분</button><button class="overlay-btn" onclick="setOverlay('powercable',this)" style="border-color:#00d4ff;color:#00d4ff">🌐 해저케이블</button><button class="overlay-btn resource" onclick="toggleResMenu(this)">🟡 천연자원 보유국</button><div id="resSubMenu"><button class="res-sub-btn" onclick="setResOverlay('oil_prod',this)">🛢️ 석유 생산량</button><button class="res-sub-btn" onclick="setResOverlay('oil_export',this)">🛢️ 석유 수출량</button><button class="res-sub-btn" onclick="setResOverlay('gas_prod',this)">💨 천연가스 생산량</button><button class="res-sub-btn" onclick="setResOverlay('gas_export',this)">💨 천연가스 수출량</button><button class="res-sub-btn" onclick="setResOverlay('uranium',this)">☢️ 우라늄</button><button class="res-sub-btn" onclick="setResOverlay('lithium',this)">🔋 리튬</button><button class="res-sub-btn" onclick="setResOverlay('rare_earth',this)">⚗️ 희토류</button><button class="res-sub-btn" onclick="setResOverlay('tungsten',this)">🪨 텅스텐</button><button class="res-sub-btn" onclick="setResOverlay('all',this)">🌐 전체</button></div><button class="overlay-btn" onclick="setOverlay('none',this)">⬜ 오버레이 해제</button><div class="overlay-legend" id="overlayLegendBox"></div></div>
+<div><div class="panel-title">지도 오버레이</div><button class="overlay-btn" onclick="setOverlay('polsys',this)">🟣 정치체제 구분</button><button class="overlay-btn" onclick="setOverlay('telecomcable',this)" style="border-color:#00d4ff;color:#00d4ff">🌐 통신 해저케이블</button><button class="overlay-btn" onclick="setOverlay('powercable',this)" style="border-color:#ff4488;color:#ff4488">⚡ 전력 해저케이블</button><button class="overlay-btn resource" onclick="toggleResMenu(this)">🟡 천연자원 보유국</button><div id="resSubMenu"><button class="res-sub-btn" onclick="setResOverlay('oil_prod',this)">🛢️ 석유 생산량</button><button class="res-sub-btn" onclick="setResOverlay('oil_export',this)">🛢️ 석유 수출량</button><button class="res-sub-btn" onclick="setResOverlay('gas_prod',this)">💨 천연가스 생산량</button><button class="res-sub-btn" onclick="setResOverlay('gas_export',this)">💨 천연가스 수출량</button><button class="res-sub-btn" onclick="setResOverlay('uranium',this)">☢️ 우라늄</button><button class="res-sub-btn" onclick="setResOverlay('lithium',this)">🔋 리튬</button><button class="res-sub-btn" onclick="setResOverlay('rare_earth',this)">⚗️ 희토류</button><button class="res-sub-btn" onclick="setResOverlay('tungsten',this)">🪨 텅스텐</button><button class="res-sub-btn" onclick="setResOverlay('all',this)">🌐 전체</button></div><button class="overlay-btn" onclick="setOverlay('none',this)">⬜ 오버레이 해제</button><div class="overlay-legend" id="overlayLegendBox"></div></div>
 <div><div class="panel-title">범례</div><canvas id="legendCanvas" height="10"></canvas><div class="legend-labels"><span id="legendMin">$5B</span><span id="legendMax">$30T+</span></div></div>
 <div><div class="panel-title">TOP 10 순위</div><div id="rankingList"></div></div>
 </div>
@@ -660,7 +660,7 @@ function renderInsight(){document.getElementById('insights').innerHTML=`<div cla
 function renderRegionChart(){const regions={};Object.values(eData).forEach(d=>{regions[d.region]=(regions[d.region]||0)+d.gdp;});const total=Object.values(regions).reduce((a,b)=>a+b,0);const col=isLight?mCfg.gdp.lightColor:mCfg.gdp.darkColor;document.getElementById('regionChart').innerHTML=Object.entries(regions).sort((a,b)=>b[1]-a[1]).map(([r,v])=>`<div style="margin-bottom:7px"><div style="display:flex;justify-content:space-between;font-size:9px;color:var(--text-mid);margin-bottom:3px"><span>${r}</span><span style="color:${col}">${(v/total*100).toFixed(1)}%</span></div><div style="height:3px;background:var(--border);border-radius:2px"><div style="height:100%;width:${(v/total*100).toFixed(1)}%;background:${col};border-radius:2px;opacity:0.8"></div></div></div>`).join('');}
 function renderAll(){renderRankings();renderLegend();renderInsight();renderRegionChart();if(selId)renderDetail(selId);}
 
-function setOverlay(mode,btn){curOverlay=mode;curResource=null;document.querySelectorAll('.overlay-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.res-sub-btn').forEach(b=>b.classList.remove('res-active'));document.querySelectorAll('.alliance-card').forEach(c=>c.classList.remove('active'));closeAllPopups();document.getElementById('resSubMenu').style.display='none';if(mode!=='none')btn.classList.add('active');updateColors();renderOverlayLegend();drawPowerCables();const lbl={nato:'NATO 회원국 (32개국)',brics:'BRICS 정식 회원국 (10개국)',g7:'G7 회원국',polsys:'정치체제 구분',powercable:'🌐 해저케이블 현황 (통신·전력)',none:mCfg[curMetric].label};document.getElementById('metricLabel').textContent=lbl[mode]||mCfg[curMetric].label;}
+function setOverlay(mode,btn){curOverlay=mode;curResource=null;document.querySelectorAll('.overlay-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.res-sub-btn').forEach(b=>b.classList.remove('res-active'));document.querySelectorAll('.alliance-card').forEach(c=>c.classList.remove('active'));closeAllPopups();document.getElementById('resSubMenu').style.display='none';if(mode!=='none')btn.classList.add('active');updateColors();renderOverlayLegend();drawPowerCables();const lbl={nato:'NATO 회원국 (32개국)',brics:'BRICS 정식 회원국 (10개국)',g7:'G7 회원국',polsys:'정치체제 구분',telecomcable:'🌐 통신 해저케이블 현황',powercable:'⚡ 전력 해저케이블 현황 (HVDC)',none:mCfg[curMetric].label};document.getElementById('metricLabel').textContent=lbl[mode]||mCfg[curMetric].label;}
 function toggleResMenu(btn){const sub=document.getElementById('resSubMenu');if(sub.style.display==='none'||!sub.style.display){sub.style.display='block';}else{sub.style.display='none';curOverlay='resource';curResource='all';document.querySelectorAll('.overlay-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');updateColors();renderOverlayLegend();}}
 function setResOverlay(type,btn){curOverlay='resource';curResource=type;document.querySelectorAll('.res-sub-btn').forEach(b=>b.classList.remove('res-active'));btn.classList.add('res-active');document.querySelectorAll('.overlay-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.alliance-card').forEach(c=>c.classList.remove('active'));closeAllPopups();document.querySelector('.overlay-btn.resource').classList.add('active');updateColors();renderOverlayLegend();drawPowerCables();const r=RESOURCES[type];const labelMap={oil_prod:'🛢️ 석유 생산량 TOP 10',oil_export:'🛢️ 석유 수출량 TOP 10',gas_prod:'💨 천연가스 생산량 TOP 10',gas_export:'💨 천연가스 수출량 TOP 10'};document.getElementById('metricLabel').textContent=labelMap[type]||(r?`${r.icon} ${r.label}`:'천연자원 보유국');}
 function renderOverlayLegend(){
@@ -670,13 +670,13 @@ if(curOverlay==='nato')el.innerHTML='<div class="ol-pill"><div class="ol-dot" st
 else if(curOverlay==='brics')el.innerHTML='<div class="ol-pill"><div class="ol-dot" style="background:#cc6600"></div>BRICS</div><div class="ol-pill"><div class="ol-dot" style="background:#333;border:1px solid #555"></div>비회원</div>';
 else if(curOverlay==='g7')el.innerHTML='<div class="ol-pill"><div class="ol-dot" style="background:#22aa66"></div>G7</div><div style="width:100%;margin-top:6px;font-size:10px;color:var(--text-dim);line-height:1.8">🇺🇸미국 🇨🇦캐나다 🇬🇧영국 🇫🇷프랑스 🇩🇪독일 🇮🇹이탈리아 🇯🇵일본</div>';
 else if(curOverlay==='polsys')el.innerHTML=Object.entries(polLabels).map(([k,v])=>`<div class="ol-pill"><div class="ol-dot" style="background:${polColors[k]}"></div>${v}</div>`).join('');
-else if(curOverlay==='powercable'){
-  const allCables=[...powerCables,...telecomCables];
-  const active=allCables.filter(c=>(c.status||'').includes('운영')).length;
-  const building=allCables.filter(c=>(c.status||'').includes('건설')||(c.status||'').includes('계획')).length;
-  const telecom=telecomCables.length;
-  const power=powerCables.length;
-  el.innerHTML=`<div class="ol-pill"><div class="ol-dot" style="background:#00d4ff"></div>통신 케이블 (${telecom}개)</div><div class="ol-pill"><div class="ol-dot" style="background:#ff4488"></div>전력 케이블 (${power}개)</div><div class="ol-pill"><div class="ol-dot" style="background:#33ffcc"></div>건설중/계획 (${building}개)</div><div class="ol-pill"><div class="ol-dot" style="background:#9ef5ff"></div>운영/부분운영 (${active}개)</div><div style="width:100%;margin-top:8px;font-size:9px;color:var(--text-dim);line-height:1.7;border-top:1px solid var(--border);padding-top:6px"><b style="color:var(--text)">통신 케이블</b><br>대서양 · 태평양 · 아시아-유럽 · 아프리카 순환망 대표 노선<br><br><b style="color:var(--text)">전력 케이블</b><br>북해 · 발틱해 · 지중해 · 아시아 HVDC 주요 노선<br><br><span style="color:#8aa0b8">선형은 시각화용 근사 경로입니다.</span></div>`;
+else if(curOverlay==='telecomcable'||curOverlay==='powercable'){
+  const isTelecomOverlay=curOverlay==='telecomcable';
+  const cables=isTelecomOverlay?telecomCables:powerCables;
+  const active=cables.filter(c=>(c.status||'').includes('운영')).length;
+  const building=cables.filter(c=>(c.status||'').includes('건설')||(c.status||'').includes('계획')).length;
+  if(isTelecomOverlay)el.innerHTML=`<div class="ol-pill"><div class="ol-dot" style="background:#00d4ff"></div>통신 케이블 (${cables.length}개)</div><div class="ol-pill"><div class="ol-dot" style="background:#9ef5ff"></div>운영/부분운영 (${active}개)</div><div class="ol-pill"><div class="ol-dot" style="background:#33ffcc"></div>건설중/계획 (${building}개)</div><div style="width:100%;margin-top:8px;font-size:9px;color:var(--text-dim);line-height:1.7;border-top:1px solid var(--border);padding-top:6px"><b style="color:var(--text)">통신 해저케이블</b><br>인터넷·금융 데이터가 흐르는 광섬유 해저망 대표 노선<br><br><span style="color:#8aa0b8">날짜변경선은 분할 처리했고, 선형은 시각화용 근사 경로입니다.</span></div>`;
+  else el.innerHTML=`<div class="ol-pill"><div class="ol-dot" style="background:#ff4488"></div>전력 케이블 (${cables.length}개)</div><div class="ol-pill"><div class="ol-dot" style="background:#ff77aa"></div>운영 중 (${active}개)</div><div class="ol-pill"><div class="ol-dot" style="background:#ffaa00"></div>건설중/계획 (${building}개)</div><div style="width:100%;margin-top:8px;font-size:9px;color:var(--text-dim);line-height:1.7;border-top:1px solid var(--border);padding-top:6px"><b style="color:var(--text)">전력 해저케이블</b><br>북해 · 발틱해 · 지중해 · 아시아 HVDC 주요 노선<br><br><span style="color:#8aa0b8">전력망 연계와 재생에너지 송전 중심의 대표 노선입니다.</span></div>`;
 }else if(curOverlay==='resource'){
   if(curResource==='all')el.innerHTML=Object.entries(RESOURCES).map(([,r])=>`<div class="ol-pill"><div class="ol-dot" style="background:${r.color}"></div>${r.icon} ${r.label}</div>`).join('')+'<div class="ol-pill"><div class="ol-dot" style="background:#ffdd00"></div>🌐 복수</div>';
   else{const r=RESOURCES[curResource];if(!r)return;el.innerHTML=`<div style="width:100%;font-size:9px;color:var(--text-dim);margin-bottom:7px">${r.note}</div>`+r.top.map(t=>`<div style="display:flex;align-items:center;gap:6px;padding:3px 0;border-bottom:1px solid var(--border)"><span style="font-family:'Bebas Neue';font-size:13px;min-width:12px;color:${t.rank===1?r.color:'var(--text-dim)'}">${t.rank}</span><span style="flex:1;font-size:10px">${eData[t.id]?.flag??''} ${eData[t.id]?.name??t.id}</span><span style="font-family:'IBM Plex Mono';font-size:10px;color:${r.color}">${t.value}</span></div>`).join('');}
@@ -2080,19 +2080,45 @@ const telecomCables=[
 {name:"Medusa",type:"통신",from:"지중해 유럽 ↔ 북아프리카",capacity:"수백Tbps",status:"건설중",year:"2025+",owner:"AFR-IX",color:"#33ffcc",route:[[-5,36],[0,38],[8,37],[14,37],[20,35],[30,31],[-6,32]]}
 ];
 let powerCableLayers=[];
+function splitCableRoute(route){
+  if(route.length<2)return [route];
+  const segments=[];
+  let seg=[route[0]];
+  for(let i=1;i<route.length;i++){
+    const [lng1,lat1]=route[i-1];
+    const [lng2,lat2]=route[i];
+    if(Math.abs(lng2-lng1)>180){
+      const crossLng=lng1>0?180:-180;
+      const restartLng=lng1>0?-180:180;
+      const adjustedLng2=lng2+(lng1>0?360:-360);
+      const t=(crossLng-lng1)/(adjustedLng2-lng1);
+      const latCross=lat1+(lat2-lat1)*t;
+      seg.push([crossLng,latCross]);
+      segments.push(seg);
+      seg=[[restartLng,latCross],[lng2,lat2]];
+    }else{
+      seg.push([lng2,lat2]);
+    }
+  }
+  segments.push(seg);
+  return segments;
+}
 function drawPowerCables(){
   powerCableLayers.forEach(l=>map.removeLayer(l));powerCableLayers=[];
-  if(curOverlay!=='powercable')return;
-  [...powerCables,...telecomCables].forEach(c=>{
-    const latlngs=c.route.map(([lng,lat])=>[lat,lng]);
+  if(curOverlay!=='powercable'&&curOverlay!=='telecomcable')return;
+  const cables=curOverlay==='telecomcable'?telecomCables:powerCables;
+  cables.forEach(c=>{
     const isTelecom=c.type==='통신';
     const isPlanned=(c.status||'').includes('계획')||(c.status||'').includes('건설');
-    const line=L.polyline(latlngs,{color:c.color,weight:isTelecom?1.6:(isPlanned?2:2.5),opacity:isTelecom?0.72:(isPlanned?0.55:0.8),dashArray:isPlanned?'8,5':null,smoothFactor:1.5});
     const spec=isTelecom?`${c.capacity||''}`:`${c.mw}MW · ${c.km}`;
-    line.bindTooltip(`<b style="color:${c.color}">${c.name}</b><br>${c.from}<br>${spec} · ${c.status}(${c.year})<br><span style="color:#aaa">${c.owner||c.maker||''}</span>`,{sticky:true,className:'cable-tip'});
-    line.on('mouseover',function(){this.setStyle({weight:4,opacity:1});});
-    line.on('mouseout',function(){this.setStyle({weight:isTelecom?1.6:(isPlanned?2:2.5),opacity:isTelecom?0.72:(isPlanned?0.55:0.8)});});
-    line.addTo(map);powerCableLayers.push(line);
+    splitCableRoute(c.route).forEach(seg=>{
+      const latlngs=seg.map(([lng,lat])=>[lat,lng]);
+      const line=L.polyline(latlngs,{color:c.color,weight:isTelecom?1.6:(isPlanned?2:2.5),opacity:isTelecom?0.72:(isPlanned?0.55:0.8),dashArray:isPlanned?'8,5':null,smoothFactor:1.5});
+      line.bindTooltip(`<b style="color:${c.color}">${c.name}</b><br>${c.from}<br>${spec} · ${c.status}(${c.year})<br><span style="color:#aaa">${c.owner||c.maker||''}</span>`,{sticky:true,className:'cable-tip'});
+      line.on('mouseover',function(){this.setStyle({weight:4,opacity:1});});
+      line.on('mouseout',function(){this.setStyle({weight:isTelecom?1.6:(isPlanned?2:2.5),opacity:isTelecom?0.72:(isPlanned?0.55:0.8)});});
+      line.addTo(map);powerCableLayers.push(line);
+    });
     // Landing dots
     [c.route[0],c.route[c.route.length-1]].forEach(([lng,lat])=>{
       const dot=L.circleMarker([lat,lng],{radius:4,color:c.color,fillColor:'#fff',fillOpacity:0.9,weight:2});
