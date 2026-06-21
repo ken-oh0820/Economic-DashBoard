@@ -101,6 +101,7 @@ body {
 .tab { flex: 1; min-width: 80px; background: var(--bg2); color: var(--text2); border: none; padding: 12px 10px; cursor: pointer; font-family: inherit; font-size: 0.85em; font-weight: 600; white-space: nowrap; transition: all 0.2s; }
 .tab:hover { background: var(--bg3); color: var(--text); }
 .tab.active { background: var(--accent); color: var(--bg); }
+.tab-help { flex: 0 0 42px; min-width: 42px; color: var(--accent); font-size: 1em; }
 
 .tab-content { display: none; }
 .tab-content.active { display: block; }
@@ -242,6 +243,18 @@ tr.hi td { background: rgba(91, 123, 139, 0.15); font-weight: 700; }
 .setting-btn:hover { background: var(--border); color: var(--text); }
 .setting-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 .setting-btn svg { flex-shrink: 0; }
+.help-intro { color: var(--text2); line-height: 1.65; margin-bottom: 18px; }
+.help-section { border: 1px solid var(--border); background: var(--bg); padding: 16px; margin-bottom: 12px; }
+.help-section h4 { color: var(--accent); font-size: 1em; margin-bottom: 8px; }
+.help-section p, .help-section li { color: var(--text2); line-height: 1.6; font-size: 0.92em; }
+.help-section ul { padding-left: 18px; display: grid; gap: 6px; }
+.help-metric { display: grid; grid-template-columns: minmax(110px, 0.7fr) 1fr 1fr; gap: 8px; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 10px; }
+.help-metric:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+.help-metric strong { color: var(--text); }
+.help-metric span { color: var(--text2); font-size: 0.86em; line-height: 1.5; }
+.help-metric .up { color: var(--pos); }
+.help-metric .down { color: var(--neg); }
+.help-note { color: var(--text3); font-size: 0.82em; line-height: 1.5; margin-top: 12px; }
 
 .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--accent); color: var(--bg); padding: 14px 24px; font-weight: 600; z-index: 2000; opacity: 0; transition: all 0.3s; }
 .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
@@ -418,6 +431,8 @@ tr.hi td { background: rgba(91, 123, 139, 0.15); font-weight: 700; }
   .modal-header { padding: 14px 16px; }
   .modal-header h3 { font-size: 1em; }
   .modal-body { padding: 16px; max-height: calc(85vh - 120px); }
+  .help-section { padding: 14px; }
+  .help-metric { grid-template-columns: 1fr; gap: 5px; }
   #pasteTextarea { height: 180px; font-size: 0.75em; }
   .form-actions { padding: 12px 16px; }
   .form-actions .btn { padding: 12px 20px; font-size: 0.9em; }
@@ -503,6 +518,7 @@ tr.hi td { background: rgba(91, 123, 139, 0.15); font-weight: 700; }
     <button class="tab" onclick="showTab('banks',this)">지역 연준</button>
     <button class="tab" onclick="showTab('frNotes',this)">연방준비권</button>
     <button class="tab" onclick="showTab('charts',this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>추이</button>
+    <button class="tab tab-help" onclick="openModal('balanceHelpModal')" title="연준 대차대조표 도움말" aria-label="연준 대차대조표 도움말">?</button>
   </div>
 
   <div id="overview" class="tab-content"></div>
@@ -551,6 +567,52 @@ tr.hi td { background: rgba(91, 123, 139, 0.15); font-weight: 700; }
     <div class="form-actions">
       <button class="btn btn-danger" onclick="deleteAllData()" id="deleteAllBtn" style="display:none">모두 삭제</button>
       <button class="btn" onclick="closeModal('historyModal')">닫기</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="balanceHelpModal">
+  <div class="modal-content modal-lg">
+    <div class="modal-header">
+      <h3>연준 대차대조표 도움말</h3>
+    </div>
+    <div class="modal-body">
+      <p class="help-intro">연준 대차대조표는 미국 중앙은행인 Federal Reserve가 보유한 자산과 부채를 정리한 표입니다. 시장에서는 이 표를 통해 달러 유동성이 풀리고 있는지, 흡수되고 있는지, 금융 시스템의 스트레스가 커지는지 살펴봅니다.</p>
+
+      <div class="help-section">
+        <h4>1. 연준 대차대조표는 무엇인가</h4>
+        <p>연준이 국채, MBS, 대출 같은 자산을 얼마나 보유하고 있는지와 통화, 은행 지급준비금, 재무부 예치금, 역레포 같은 부채가 어떻게 구성되어 있는지 보여주는 중앙은행의 재무 상태표입니다.</p>
+      </div>
+
+      <div class="help-section">
+        <h4>2. 무엇을 알려주는가</h4>
+        <ul>
+          <li>연준이 돈을 공급하는 방향인지, 회수하는 방향인지</li>
+          <li>은행 시스템에 남아 있는 준비금이 충분한지</li>
+          <li>재무부 현금, 역레포, 보유 증권 변화가 시장 유동성에 어떤 영향을 주는지</li>
+          <li>위기 때 대출이나 긴급 유동성 장치가 늘어나는지</li>
+        </ul>
+      </div>
+
+      <div class="help-section">
+        <h4>3. 공급 요인과 흡수 요인</h4>
+        <p><strong>공급 요인</strong>은 연준 자산 쪽 항목입니다. 국채와 MBS 매입, 대출, 레포 등이 늘어나면 은행 시스템에 준비금이 공급되는 방향으로 작용합니다.</p>
+        <p><strong>흡수 요인</strong>은 준비금을 시스템 밖으로 묶어두는 항목입니다. 유통 통화, 재무부 일반계정(TGA), 역레포, 기타 예치금 등이 늘어나면 은행 준비금이 줄어드는 방향으로 작용합니다.</p>
+      </div>
+
+      <div class="help-section">
+        <h4>4. 추이 6개 항목 해석</h4>
+        <div class="help-metric"><strong>총 자산</strong><span class="up">증가: QE, 대출 확대처럼 유동성 공급 신호</span><span class="down">감소: QT 진행, 연준 유동성 축소 신호</span></div>
+        <div class="help-metric"><strong>지급준비금</strong><span class="up">증가: 은행 시스템 유동성 여유 확대</span><span class="down">감소: 단기자금시장 압박 가능성 증가</span></div>
+        <div class="help-metric"><strong>TGA</strong><span class="up">증가: 재무부가 현금을 흡수해 시장 유동성 감소</span><span class="down">감소: 재무부 지출 증가로 시장 유동성 공급</span></div>
+        <div class="help-metric"><strong>역레포</strong><span class="up">증가: 머니마켓 자금이 연준에 묶여 유동성 흡수</span><span class="down">감소: 묶였던 현금이 시장으로 돌아올 가능성</span></div>
+        <div class="help-metric"><strong>보유 증권</strong><span class="up">증가: 국채/MBS 매입 확대, 장기금리 하방 압력 가능</span><span class="down">감소: QT로 채권 보유 축소, 유동성 축소 압력</span></div>
+        <div class="help-metric"><strong>유통 통화</strong><span class="up">증가: 현금 수요 증가, 준비금 흡수 요인</span><span class="down">감소: 현금 수요 둔화, 준비금 압박 완화 가능</span></div>
+        <p class="help-note">각 항목은 단독으로 판단하기보다 총 자산, 지급준비금, TGA, 역레포를 함께 봐야 실제 시장 유동성 방향을 더 잘 읽을 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn" onclick="closeModal('balanceHelpModal')">닫기</button>
     </div>
   </div>
 </div>
