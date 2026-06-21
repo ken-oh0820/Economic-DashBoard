@@ -1542,14 +1542,25 @@ function renderCharts() {
     return;
   }
   var now = new Date();
-  var periods = { '1m': 30, '3m': 90, '6m': 180, '1y': 365 };
-  var days = periods[chartPeriod] || 90;
-  var cutoff = new Date(now.getTime() - days * 24 * 60 * 60 * 1000);
-  var filtered = savedDataList.filter(d => parseDate(d.releaseDate) >= cutoff);
-  if (filtered.length < 2) filtered = savedDataList.slice(0, Math.min(savedDataList.length, 12));
+  var periods = { '1m': 30, '3m': 90, '6m': 180, '1y': 365, '3y': 365 * 3, '5y': 365 * 5 };
+  var days = periods[chartPeriod];
+  var filtered = chartPeriod === 'all'
+    ? savedDataList.slice()
+    : savedDataList.filter(d => parseDate(d.releaseDate) >= new Date(now.getTime() - days * 24 * 60 * 60 * 1000));
+  if (filtered.length < 2) filtered = savedDataList.slice(0, Math.min(savedDataList.length, chartPeriod === 'all' ? savedDataList.length : 12));
   filtered = filtered.reverse();
   var metrics = [{key:'totalSupplying',kr:'총 자산',en:'Total Assets'},{key:'reserves',kr:'지급준비금',en:'Reserve Balances'},{key:'tga',kr:'TGA',en:'Treasury General Account'},{key:'rrp',kr:'역레포',en:'Reverse Repo'},{key:'securitiesHeld',kr:'보유 증권',en:'Securities Held'},{key:'currency',kr:'유통 통화',en:'Currency'}];
-  var html = `<div class="chart-controls"><label>기간:</label><button class="period-btn ${chartPeriod==='1m'?'active':''}" onclick="setPeriod('1m')">1개월</button><button class="period-btn ${chartPeriod==='3m'?'active':''}" onclick="setPeriod('3m')">3개월</button><button class="period-btn ${chartPeriod==='6m'?'active':''}" onclick="setPeriod('6m')">6개월</button><button class="period-btn ${chartPeriod==='1y'?'active':''}" onclick="setPeriod('1y')">1년</button></div><div class="chart-grid">`;
+  var periodOptions = [
+    {key:'1m',label:'1개월'},
+    {key:'3m',label:'3개월'},
+    {key:'6m',label:'6개월'},
+    {key:'1y',label:'1년'},
+    {key:'3y',label:'3년'},
+    {key:'5y',label:'5년'},
+    {key:'all',label:'ALL'}
+  ];
+  var periodButtons = periodOptions.map(p => `<button class="period-btn ${chartPeriod===p.key?'active':''}" onclick="setPeriod('${p.key}')">${p.label}</button>`).join('');
+  var html = `<div class="chart-controls"><label>기간:</label>${periodButtons}</div><div class="chart-grid">`;
   metrics.forEach(m => {
     var data = filtered.map(d => ({date:d.releaseDate,value:d[m.key]?.v||0})).filter(d => d.value > 0);
     if (data.length < 2) return;
