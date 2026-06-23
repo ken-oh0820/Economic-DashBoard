@@ -1754,7 +1754,6 @@ async function fetchTradingViewBondQuotes(symbols){
   try{
     const res=await fetchT('https://scanner.tradingview.com/global/scan',6500,{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         symbols:{tickers:unique,query:{types:[]}},
         columns:['close','change_abs','change','name','description']
@@ -1799,8 +1798,31 @@ async function fetchBondYieldDashboard(){
   const groups=cloneBondYieldGroups();
   renderBondYields(groups);
   let ok=0,fail=0,tvOk=0;
+  const tvSymbols=[];
+  groups.forEach(group=>BOND_TENORS.forEach(tenor=>{
+    const sym=tvBondSymbol(group.key,tenor.key);
+    if(sym)tvSymbols.push(sym);
+  }));
+  const tvQuotes=await fetchTradingViewBondQuotes(tvSymbols);
+  groups.forEach(group=>BOND_TENORS.forEach(tenor=>{
+    const item=group.tenors[tenor.key];
+    const quote=tvQuotes.get(tvBondSymbol(group.key,tenor.key));
+    if(!item||!quote)return;
+    item.value=quote.value;
+    item.d1=quote.d1;
+    item.d1Label='전일';
+    item.cls=quote.d1>0?'market-up':quote.d1<0?'market-down':'market-flat';
+    item.source=quote.source;
+    item.date=quote.date;
+    tvOk++;
+  }));
+  if(tvOk){
+    renderBondYields(groups);
+    setBondYieldStatus('ok','BOND CURVE · '+tvOk+' LIVE / TV '+tvOk);
+  }
   await Promise.all(groups.flatMap(group=>BOND_TENORS.map(async tenor=>{
     const item=group.tenors[tenor.key];
+    if(tvQuotes.has(tvBondSymbol(group.key,tenor.key)))return;
     if(!item?.series)return;
     try{
       const data=await fetchFredCsvData(item.series,4500);
@@ -1820,24 +1842,6 @@ async function fetchBondYieldDashboard(){
       }else fail++;
     }catch(e){fail++;}
   })));
-  const tvSymbols=[];
-  groups.forEach(group=>BOND_TENORS.forEach(tenor=>{
-    const sym=tvBondSymbol(group.key,tenor.key);
-    if(sym)tvSymbols.push(sym);
-  }));
-  const tvQuotes=await fetchTradingViewBondQuotes(tvSymbols);
-  groups.forEach(group=>BOND_TENORS.forEach(tenor=>{
-    const item=group.tenors[tenor.key];
-    const quote=tvQuotes.get(tvBondSymbol(group.key,tenor.key));
-    if(!item||!quote)return;
-    item.value=quote.value;
-    item.d1=quote.d1;
-    item.d1Label='전일';
-    item.cls=quote.d1>0?'market-up':quote.d1<0?'market-down':'market-flat';
-    item.source=quote.source;
-    item.date=quote.date;
-    tvOk++;
-  }));
   renderBondYields(groups);
   const live=ok+tvOk;
   const msg=live===0?'BOND CURVE · CACHED VALUES':'BOND CURVE · '+live+' LIVE'+(tvOk?' / TV '+tvOk:'')+(fail?' / CACHED '+fail:'');
