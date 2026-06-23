@@ -1444,20 +1444,20 @@ const RATE_DECISION_SCHEDULES=[
 ];
 const BOND_YIELD_GROUPS=[
   {key:'us',flag:'🇺🇸',name:'미국 국채',note:'FRED H.15 · Daily',spreadSeries:'T10Y3M',tenors:{
-    '3m':{series:'DGS3MO',value:3.70,source:'FRED'},
-    '1y':{series:'DGS1',value:3.75,source:'FRED'},
-    '2y':{series:'DGS2',value:4.16,source:'FRED'},
-    '5y':{series:'DGS5',value:4.20,source:'FRED'},
-    '10y':{series:'DGS10',value:4.47,source:'FRED'},
-    '20y':{series:'DGS20',value:4.90,source:'FRED'},
-    '30y':{series:'DGS30',value:4.95,source:'FRED'}
+    '3m':{series:'DGS3MO',value:3.85,d1:0.02,m1:0.17,date:'2026-06-22',source:'FRED cached'},
+    '1y':{series:'DGS1',value:4.04,d1:0.04,m1:0.18,date:'2026-06-22',source:'FRED cached'},
+    '2y':{series:'DGS2',value:4.24,d1:0.05,m1:0.11,date:'2026-06-22',source:'FRED cached'},
+    '5y':{series:'DGS5',value:4.29,d1:0.06,m1:0.02,date:'2026-06-22',source:'FRED cached'},
+    '10y':{series:'DGS10',value:4.51,d1:0.05,m1:-0.05,date:'2026-06-22',source:'FRED cached'},
+    '20y':{series:'DGS20',value:4.97,d1:0.06,m1:-0.09,date:'2026-06-22',source:'FRED cached'},
+    '30y':{series:'DGS30',value:4.95,d1:0.05,m1:-0.12,date:'2026-06-22',source:'FRED cached'}
   }},
   {key:'kr',flag:'🇰🇷',name:'한국 국채',note:'10Y FRED/OECD · others reference',tenors:{
     '3m':{value:2.65,source:'참고값'},
     '1y':{value:2.86,source:'참고값'},
     '2y':{value:3.02,source:'참고값'},
     '5y':{value:3.55,source:'참고값'},
-    '10y':{series:'IRLTLT01KRM156N',value:4.08,source:'FRED/OECD'},
+    '10y':{series:'IRLTLT01KRM156N',value:4.075,d1:0.34,m1:0.34,d1Label:'전월',date:'2026-05-01',source:'FRED/OECD cached'},
     '20y':{value:4.18,source:'참고값'},
     '30y':{value:4.10,source:'참고값'}
   }},
@@ -1466,7 +1466,7 @@ const BOND_YIELD_GROUPS=[
     '1y':{value:1.05,source:'참고값'},
     '2y':{value:1.10,source:'참고값'},
     '5y':{value:1.70,source:'참고값'},
-    '10y':{series:'IRLTLT01JPM156N',value:2.65,source:'FRED/OECD'},
+    '10y':{series:'IRLTLT01JPM156N',value:2.65,d1:0.13,m1:0.13,d1Label:'전월',date:'2026-05-01',source:'FRED/OECD cached'},
     '20y':{value:3.10,source:'참고값'},
     '30y':{value:3.35,source:'참고값'}
   }},
@@ -1682,7 +1682,9 @@ function bondDeltaClass(v){
   return typeof v==='number'&&isFinite(v)?(v>0?'market-up':v<0?'market-down':'market-flat'):'market-flat';
 }
 function bondChangeHtml(item={}){
-  return `<div class="bond-change"><div class="bond-change-row"><span>전일</span><b class="${bondDeltaClass(item.d1)}">${escHtml(bondDeltaText(item.d1))}</b></div><div class="bond-change-row"><span>1개월</span><b class="${bondDeltaClass(item.m1)}">${escHtml(bondDeltaText(item.m1))}</b></div></div>`;
+  const d1Label=item.d1Label||'전일';
+  const m1Label=item.m1Label||'1개월';
+  return `<div class="bond-change"><div class="bond-change-row"><span>${escHtml(d1Label)}</span><b class="${bondDeltaClass(item.d1)}">${escHtml(bondDeltaText(item.d1))}</b></div><div class="bond-change-row"><span>${escHtml(m1Label)}</span><b class="${bondDeltaClass(item.m1)}">${escHtml(bondDeltaText(item.m1))}</b></div></div>`;
 }
 function bondPointDelta(points,last,days){
   if(!last||!points?.length)return null;
@@ -1724,8 +1726,9 @@ async function fetchBondYieldDashboard(){
     const item=group.tenors[tenor.key];
     if(!item?.series)return;
     try{
-      const data=await fetchFredSeries(item.series,'1y');
-      const points=data?.points||[];
+      const data=await fetchFredCsvData(item.series,4500);
+      const cutoff=Date.now()-420*24*60*60*1000;
+      const points=(data?.points||[]).filter(p=>p.t>=cutoff);
       if(points.length){
         const last=points[points.length-1];
         const diff=bondPointDelta(points,last,1);
@@ -1741,7 +1744,8 @@ async function fetchBondYieldDashboard(){
     }catch(e){fail++;}
   })));
   renderBondYields(groups);
-  setBondYieldStatus(fail?'warn':'ok','BOND CURVE · '+ok+' LIVE'+(fail?' / REF '+fail:''));
+  const msg=fail&&ok===0?'BOND CURVE · CACHED VALUES':'BOND CURVE · '+ok+' LIVE'+(fail?' / CACHED '+fail:'');
+  setBondYieldStatus(fail?'warn':'ok',msg);
 }
 async function fetchUsMacroDashboard(){
   setMacroStatus('warn','US MACRO · UPDATING');
@@ -1952,20 +1956,42 @@ function transformFredPoints(points,opt={}){
   if(opt.scale)out=out.map(p=>({t:p.t,v:p.v*opt.scale}));
   return out;
 }
-async function fetchFredSeries(id,range=marketChartRange,opt={}){
+function parseFredCsvPoints(text){
+  if(!text||!text.includes('observation_date')||text.trim().startsWith('{')||text.trim().startsWith('<'))return [];
+  return text.trim().split(/\r?\n/).slice(1).map(row=>{
+    const idx=row.indexOf(',');
+    if(idx<0)return null;
+    const date=row.slice(0,idx).trim();
+    const raw=row.slice(idx+1).trim();
+    if(!raw||raw==='.')return null;
+    const t=new Date(date).getTime(),v=Number(raw);
+    return isFinite(t)&&isFinite(v)?{t,v}:null;
+  }).filter(Boolean);
+}
+async function fetchFredCsvData(id,timeout=5000){
   const u='https://fred.stlouisfed.org/graph/fredgraph.csv?id='+encodeURIComponent(id);
-  const urls=['https://api.allorigins.win/raw?url='+encodeURIComponent(u),'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(u)];
-  const cutoff=Date.now()-chartLimit(range)*24*60*60*1000;
-  for(const url of urls){
+  const urls=[
+    {name:'FRED',url:u},
+    {name:'CodeTabs',url:'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(u)},
+    {name:'CorsProxy',url:'https://corsproxy.io/?'+encodeURIComponent(u)},
+    {name:'AllOrigins',url:'https://api.allorigins.win/raw?url='+encodeURIComponent(u)}
+  ];
+  for(const src of urls){
     try{
-      const res=await fetchT(url,8000);const text=await res.text();
-      if(!text.includes('observation_date')||text.trim().startsWith('{')||text.trim().startsWith('<'))continue;
-      const raw=text.trim().split(/\r?\n/).slice(1).map(r=>{const [d,v]=r.split(',');return {t:new Date(d).getTime(),v:Number(v)};}).filter(p=>isFinite(p.t)&&isFinite(p.v));
-      const points=transformFredPoints(raw,opt).filter(p=>p.t>=cutoff);
-      if(points.length>1)return {points,source:'FRED'};
+      const res=await fetchT(src.url,timeout);
+      const text=await res.text();
+      const points=parseFredCsvPoints(text);
+      if(points.length>1)return {points,source:src.name};
     }catch(e){}
   }
   return null;
+}
+async function fetchFredSeries(id,range=marketChartRange,opt={}){
+  const cutoff=Date.now()-chartLimit(range)*24*60*60*1000;
+  const data=await fetchFredCsvData(id,5000);
+  if(!data)return null;
+  const points=transformFredPoints(data.points,opt).filter(p=>p.t>=cutoff);
+  return points.length>1?{points,source:data.source}:null;
 }
 async function fetchBlsSeries(id,range=marketChartRange){
   const base='https://api.bls.gov/publicAPI/v2/timeseries/data/'+encodeURIComponent(id);
