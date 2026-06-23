@@ -1485,7 +1485,7 @@ const BOND_YIELD_GROUPS=[
     '20y':{series:'DGS20',value:4.97,d1:0.06,m1:-0.09,date:'2026-06-22',source:'FRED cached'},
     '30y':{series:'DGS30',value:4.95,d1:0.05,m1:-0.12,date:'2026-06-22',source:'FRED cached'}
   }},
-  {key:'kr',flag:'🇰🇷',name:'한국 국채',note:'10년물은 FRED/OECD 월간 · 그 외 Investing 링크',tenors:{
+  {key:'kr',flag:'🇰🇷',name:'한국 국채',note:'TradingView live · 10년 FRED 보조 · Investing 링크',tenors:{
     '3m':{value:2.65,source:'Investing 참고'},
     '1y':{value:2.86,source:'Investing 참고'},
     '2y':{value:3.02,source:'Investing 참고'},
@@ -1494,7 +1494,7 @@ const BOND_YIELD_GROUPS=[
     '20y':{value:4.18,source:'Investing 참고'},
     '30y':{value:4.10,source:'Investing 참고'}
   }},
-  {key:'jp',flag:'🇯🇵',name:'일본 국채',note:'10년물은 FRED/OECD 월간 · 그 외 Investing 링크',tenors:{
+  {key:'jp',flag:'🇯🇵',name:'일본 국채',note:'TradingView live · 10년 FRED 보조 · Investing 링크',tenors:{
     '3m':{value:1.00,source:'Investing 참고'},
     '1y':{value:1.05,source:'Investing 참고'},
     '2y':{value:1.10,source:'Investing 참고'},
@@ -1503,7 +1503,7 @@ const BOND_YIELD_GROUPS=[
     '20y':{value:3.10,source:'Investing 참고'},
     '30y':{value:3.35,source:'Investing 참고'}
   }},
-  {key:'br',flag:'🇧🇷',name:'브라질 국채',note:'Investing 링크 · 참고 커브',tenors:{
+  {key:'br',flag:'🇧🇷',name:'브라질 국채',note:'TradingView live(1Y~10Y) · Investing 링크',tenors:{
     '3m':{value:14.70,source:'Investing 참고'},
     '1y':{value:13.95,source:'Investing 참고'},
     '2y':{value:13.35,source:'Investing 참고'},
@@ -1513,6 +1513,11 @@ const BOND_YIELD_GROUPS=[
     '30y':{value:13.60,source:'Investing 참고'}
   }}
 ];
+const BOND_TV_SYMBOLS={
+  kr:{'1y':'TVC:KR01Y','2y':'TVC:KR02Y','5y':'TVC:KR05Y','10y':'TVC:KR10Y','20y':'TVC:KR20Y','30y':'TVC:KR30Y'},
+  jp:{'1y':'TVC:JP01Y','2y':'TVC:JP02Y','5y':'TVC:JP05Y','10y':'TVC:JP10Y','20y':'TVC:JP20Y','30y':'TVC:JP30Y'},
+  br:{'1y':'TVC:BR01Y','2y':'TVC:BR02Y','5y':'TVC:BR05Y','10y':'TVC:BR10Y'}
+};
 function setMacroStatus(cls,msg){const el=document.getElementById('macroStatus');if(!el)return;el.className='macro-badge '+(cls||'');el.textContent=msg;}
 function setBondYieldStatus(cls,msg){const el=document.getElementById('bondYieldStatus');if(!el)return;el.className='macro-badge '+(cls||'');el.textContent=msg;}
 function toggleRateSchedule(){
@@ -1740,6 +1745,33 @@ function bondPointDelta(points,last,days){
   const prior=[...points].reverse().find(p=>p.t<=target&&typeof p.v==='number'&&isFinite(p.v));
   return prior?last.v-prior.v:null;
 }
+function tvBondSymbol(groupKey,tenorKey){
+  return BOND_TV_SYMBOLS[groupKey]?.[tenorKey]||'';
+}
+async function fetchTradingViewBondQuotes(symbols){
+  const unique=[...new Set(symbols.filter(Boolean))];
+  if(!unique.length)return new Map();
+  try{
+    const res=await fetchT('https://scanner.tradingview.com/global/scan',6500,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        symbols:{tickers:unique,query:{types:[]}},
+        columns:['close','change_abs','change','name','description']
+      })
+    });
+    const data=await res.json();
+    const today=new Date().toISOString().slice(0,10);
+    return new Map((data?.data||[]).map(row=>{
+      const d=row.d||[];
+      const value=Number(d[0]),d1=Number(d[1]),pct=Number(d[2]);
+      if(!isFinite(value))return null;
+      return [row.s,{value,d1:isFinite(d1)?d1:null,pct:isFinite(pct)?pct:null,date:today,source:'TradingView'}];
+    }).filter(Boolean));
+  }catch(e){
+    return new Map();
+  }
+}
 function renderBondYields(groups=BOND_YIELD_GROUPS){
   const box=document.getElementById('bondYieldGrid');if(!box)return;
   box.innerHTML=groups.map(group=>{
@@ -1766,7 +1798,7 @@ async function fetchBondYieldDashboard(){
   setBondYieldStatus('warn','BOND CURVE · UPDATING');
   const groups=cloneBondYieldGroups();
   renderBondYields(groups);
-  let ok=0,fail=0;
+  let ok=0,fail=0,tvOk=0;
   await Promise.all(groups.flatMap(group=>BOND_TENORS.map(async tenor=>{
     const item=group.tenors[tenor.key];
     if(!item?.series)return;
@@ -1788,9 +1820,28 @@ async function fetchBondYieldDashboard(){
       }else fail++;
     }catch(e){fail++;}
   })));
+  const tvSymbols=[];
+  groups.forEach(group=>BOND_TENORS.forEach(tenor=>{
+    const sym=tvBondSymbol(group.key,tenor.key);
+    if(sym)tvSymbols.push(sym);
+  }));
+  const tvQuotes=await fetchTradingViewBondQuotes(tvSymbols);
+  groups.forEach(group=>BOND_TENORS.forEach(tenor=>{
+    const item=group.tenors[tenor.key];
+    const quote=tvQuotes.get(tvBondSymbol(group.key,tenor.key));
+    if(!item||!quote)return;
+    item.value=quote.value;
+    item.d1=quote.d1;
+    item.d1Label='전일';
+    item.cls=quote.d1>0?'market-up':quote.d1<0?'market-down':'market-flat';
+    item.source=quote.source;
+    item.date=quote.date;
+    tvOk++;
+  }));
   renderBondYields(groups);
-  const msg=fail&&ok===0?'BOND CURVE · CACHED VALUES':'BOND CURVE · '+ok+' LIVE'+(fail?' / CACHED '+fail:'');
-  setBondYieldStatus(fail?'warn':'ok',msg);
+  const live=ok+tvOk;
+  const msg=live===0?'BOND CURVE · CACHED VALUES':'BOND CURVE · '+live+' LIVE'+(tvOk?' / TV '+tvOk:'')+(fail?' / CACHED '+fail:'');
+  setBondYieldStatus(live?'ok':'warn',msg);
 }
 async function fetchUsMacroDashboard(){
   setMacroStatus('warn','US MACRO · UPDATING');
