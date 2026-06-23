@@ -1286,6 +1286,20 @@ const DUBAI_CRUDE_FALLBACK={value:72.40,date:'2026-06',source:'참고값'};
 const HY_SPREAD_FALLBACK={value:3.15,date:'2026-06',source:'FRED fallback'};
 let marketLoading=false,marketTimer=null;
 let currentMarketChartKey='sp500',marketChartRange='1mo';
+function investingSearchUrl(q){
+  return 'https://www.investing.com/search/?q='+encodeURIComponent(q);
+}
+function investingBondUrl(country,tenor){
+  const direct={
+    'kr-10y':'https://www.investing.com/rates-bonds/south-korea-10-year-bond-yield',
+    'jp-10y':'https://www.investing.com/rates-bonds/japan-10-year-bond-yield',
+    'br-10y':'https://www.investing.com/rates-bonds/brazil-10-year-bond-yield'
+  };
+  if(direct[country+'-'+tenor])return direct[country+'-'+tenor];
+  const countryName={kr:'South Korea',jp:'Japan',br:'Brazil'}[country]||country;
+  const tenorName={ '3m':'3-Month','1y':'1-Year','2y':'2-Year','5y':'5-Year','10y':'10-Year','20y':'20-Year','30y':'30-Year'}[tenor]||tenor;
+  return investingSearchUrl(countryName+' '+tenorName+' Bond Yield');
+}
 const MARKET_CHARTS={
   sp500:{label:'S&P 500',symbol:'^GSPC',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/SPX/'},
   nasdaq:{label:'나스닥',symbol:'^IXIC',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/NASDAQ-IXIC/'},
@@ -1311,8 +1325,27 @@ const MARKET_CHARTS={
   'bond-us-20y':{label:'미국 국채 20년',type:'fred',series:'DGS20',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS20',linkText:'FRED CHART VIEW ↗'},
   'bond-us-30y':{label:'미국 국채 30년',type:'fred',series:'DGS30',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS30',linkText:'FRED CHART VIEW ↗'},
   'bond-us-spread':{label:'미국 10Y-3M',type:'fred',series:'T10Y3M',range:'1y',dec:2,suffix:'%p',sourceUrl:'https://fred.stlouisfed.org/series/T10Y3M',linkText:'FRED CHART VIEW ↗'},
-  'bond-kr-10y':{label:'한국 국채 10년',type:'fred',series:'IRLTLT01KRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRLTLT01KRM156N',linkText:'FRED CHART VIEW ↗'},
-  'bond-jp-10y':{label:'일본 국채 10년',type:'fred',series:'IRLTLT01JPM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRLTLT01JPM156N',linkText:'FRED CHART VIEW ↗'},
+  'bond-kr-3m':{label:'한국 국채 3개월',type:'search',sourceUrl:investingBondUrl('kr','3m'),linkText:'INVESTING LINK ↗',emptyText:'한국 국채 3개월물 Investing 검색 열기 ↗'},
+  'bond-kr-1y':{label:'한국 국채 1년',type:'search',sourceUrl:investingBondUrl('kr','1y'),linkText:'INVESTING LINK ↗',emptyText:'한국 국채 1년물 Investing 검색 열기 ↗'},
+  'bond-kr-2y':{label:'한국 국채 2년',type:'search',sourceUrl:investingBondUrl('kr','2y'),linkText:'INVESTING LINK ↗',emptyText:'한국 국채 2년물 Investing 검색 열기 ↗'},
+  'bond-kr-5y':{label:'한국 국채 5년',type:'search',sourceUrl:investingBondUrl('kr','5y'),linkText:'INVESTING LINK ↗',emptyText:'한국 국채 5년물 Investing 검색 열기 ↗'},
+  'bond-kr-10y':{label:'한국 국채 10년',type:'fred',series:'IRLTLT01KRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRLTLT01KRM156N',linkText:'FRED CHART VIEW ↗',altUrl:investingBondUrl('kr','10y')},
+  'bond-kr-20y':{label:'한국 국채 20년',type:'search',sourceUrl:investingBondUrl('kr','20y'),linkText:'INVESTING LINK ↗',emptyText:'한국 국채 20년물 Investing 검색 열기 ↗'},
+  'bond-kr-30y':{label:'한국 국채 30년',type:'search',sourceUrl:investingBondUrl('kr','30y'),linkText:'INVESTING LINK ↗',emptyText:'한국 국채 30년물 Investing 검색 열기 ↗'},
+  'bond-jp-3m':{label:'일본 국채 3개월',type:'search',sourceUrl:investingBondUrl('jp','3m'),linkText:'INVESTING LINK ↗',emptyText:'일본 국채 3개월물 Investing 검색 열기 ↗'},
+  'bond-jp-1y':{label:'일본 국채 1년',type:'search',sourceUrl:investingBondUrl('jp','1y'),linkText:'INVESTING LINK ↗',emptyText:'일본 국채 1년물 Investing 검색 열기 ↗'},
+  'bond-jp-2y':{label:'일본 국채 2년',type:'search',sourceUrl:investingBondUrl('jp','2y'),linkText:'INVESTING LINK ↗',emptyText:'일본 국채 2년물 Investing 검색 열기 ↗'},
+  'bond-jp-5y':{label:'일본 국채 5년',type:'search',sourceUrl:investingBondUrl('jp','5y'),linkText:'INVESTING LINK ↗',emptyText:'일본 국채 5년물 Investing 검색 열기 ↗'},
+  'bond-jp-10y':{label:'일본 국채 10년',type:'fred',series:'IRLTLT01JPM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRLTLT01JPM156N',linkText:'FRED CHART VIEW ↗',altUrl:investingBondUrl('jp','10y')},
+  'bond-jp-20y':{label:'일본 국채 20년',type:'search',sourceUrl:investingBondUrl('jp','20y'),linkText:'INVESTING LINK ↗',emptyText:'일본 국채 20년물 Investing 검색 열기 ↗'},
+  'bond-jp-30y':{label:'일본 국채 30년',type:'search',sourceUrl:investingBondUrl('jp','30y'),linkText:'INVESTING LINK ↗',emptyText:'일본 국채 30년물 Investing 검색 열기 ↗'},
+  'bond-br-3m':{label:'브라질 국채 3개월',type:'search',sourceUrl:investingBondUrl('br','3m'),linkText:'INVESTING LINK ↗',emptyText:'브라질 국채 3개월물 Investing 검색 열기 ↗'},
+  'bond-br-1y':{label:'브라질 국채 1년',type:'search',sourceUrl:investingBondUrl('br','1y'),linkText:'INVESTING LINK ↗',emptyText:'브라질 국채 1년물 Investing 검색 열기 ↗'},
+  'bond-br-2y':{label:'브라질 국채 2년',type:'search',sourceUrl:investingBondUrl('br','2y'),linkText:'INVESTING LINK ↗',emptyText:'브라질 국채 2년물 Investing 검색 열기 ↗'},
+  'bond-br-5y':{label:'브라질 국채 5년',type:'search',sourceUrl:investingBondUrl('br','5y'),linkText:'INVESTING LINK ↗',emptyText:'브라질 국채 5년물 Investing 검색 열기 ↗'},
+  'bond-br-10y':{label:'브라질 국채 10년',type:'search',sourceUrl:investingBondUrl('br','10y'),linkText:'INVESTING LINK ↗',emptyText:'브라질 국채 10년물 Investing 열기 ↗'},
+  'bond-br-20y':{label:'브라질 국채 20년',type:'search',sourceUrl:investingBondUrl('br','20y'),linkText:'INVESTING LINK ↗',emptyText:'브라질 국채 20년물 Investing 검색 열기 ↗'},
+  'bond-br-30y':{label:'브라질 국채 30년',type:'search',sourceUrl:investingBondUrl('br','30y'),linkText:'INVESTING LINK ↗',emptyText:'브라질 국채 30년물 Investing 검색 열기 ↗'},
   'macro-cpi':{label:'CPI',type:'bls',series:'CUSR0000SA0',fallbackFred:'CPIAUCSL',dec:1,sourceUrl:'https://data.bls.gov/timeseries/CUSR0000SA0',linkText:'BLS CHART VIEW ↗'},
   'macro-core-cpi':{label:'Core CPI',type:'bls',series:'CUSR0000SA0L1E',fallbackFred:'CPILFESL',dec:1,sourceUrl:'https://data.bls.gov/timeseries/CUSR0000SA0L1E',linkText:'BLS CHART VIEW ↗'},
   'macro-ppi':{label:'PPI',type:'bls',series:'WPSFD4',fallbackFred:'PPIACO',dec:1,sourceUrl:'https://data.bls.gov/timeseries/WPSFD4',linkText:'BLS CHART VIEW ↗'},
@@ -1452,32 +1485,32 @@ const BOND_YIELD_GROUPS=[
     '20y':{series:'DGS20',value:4.97,d1:0.06,m1:-0.09,date:'2026-06-22',source:'FRED cached'},
     '30y':{series:'DGS30',value:4.95,d1:0.05,m1:-0.12,date:'2026-06-22',source:'FRED cached'}
   }},
-  {key:'kr',flag:'🇰🇷',name:'한국 국채',note:'10년물만 FRED/OECD 월간 · 그 외 참고값',tenors:{
-    '3m':{value:2.65,source:'참고값'},
-    '1y':{value:2.86,source:'참고값'},
-    '2y':{value:3.02,source:'참고값'},
-    '5y':{value:3.55,source:'참고값'},
+  {key:'kr',flag:'🇰🇷',name:'한국 국채',note:'10년물은 FRED/OECD 월간 · 그 외 Investing 링크',tenors:{
+    '3m':{value:2.65,source:'Investing 참고'},
+    '1y':{value:2.86,source:'Investing 참고'},
+    '2y':{value:3.02,source:'Investing 참고'},
+    '5y':{value:3.55,source:'Investing 참고'},
     '10y':{series:'IRLTLT01KRM156N',value:4.075,d1:0.34,m1:0.34,d1Label:'전월',date:'2026-05-01',source:'FRED/OECD cached'},
-    '20y':{value:4.18,source:'참고값'},
-    '30y':{value:4.10,source:'참고값'}
+    '20y':{value:4.18,source:'Investing 참고'},
+    '30y':{value:4.10,source:'Investing 참고'}
   }},
-  {key:'jp',flag:'🇯🇵',name:'일본 국채',note:'10년물만 FRED/OECD 월간 · 그 외 참고값',tenors:{
-    '3m':{value:1.00,source:'참고값'},
-    '1y':{value:1.05,source:'참고값'},
-    '2y':{value:1.10,source:'참고값'},
-    '5y':{value:1.70,source:'참고값'},
+  {key:'jp',flag:'🇯🇵',name:'일본 국채',note:'10년물은 FRED/OECD 월간 · 그 외 Investing 링크',tenors:{
+    '3m':{value:1.00,source:'Investing 참고'},
+    '1y':{value:1.05,source:'Investing 참고'},
+    '2y':{value:1.10,source:'Investing 참고'},
+    '5y':{value:1.70,source:'Investing 참고'},
     '10y':{series:'IRLTLT01JPM156N',value:2.65,d1:0.13,m1:0.13,d1Label:'전월',date:'2026-05-01',source:'FRED/OECD cached'},
-    '20y':{value:3.10,source:'참고값'},
-    '30y':{value:3.35,source:'참고값'}
+    '20y':{value:3.10,source:'Investing 참고'},
+    '30y':{value:3.35,source:'Investing 참고'}
   }},
-  {key:'br',flag:'🇧🇷',name:'브라질 국채',note:'공개 시계열 미연결 · 참고 커브',tenors:{
-    '3m':{value:14.70,source:'참고값'},
-    '1y':{value:13.95,source:'참고값'},
-    '2y':{value:13.35,source:'참고값'},
-    '5y':{value:13.10,source:'참고값'},
-    '10y':{value:13.25,source:'참고값'},
-    '20y':{value:13.45,source:'참고값'},
-    '30y':{value:13.60,source:'참고값'}
+  {key:'br',flag:'🇧🇷',name:'브라질 국채',note:'Investing 링크 · 참고 커브',tenors:{
+    '3m':{value:14.70,source:'Investing 참고'},
+    '1y':{value:13.95,source:'Investing 참고'},
+    '2y':{value:13.35,source:'Investing 참고'},
+    '5y':{value:13.10,source:'Investing 참고'},
+    '10y':{value:13.25,source:'Investing 참고'},
+    '20y':{value:13.45,source:'Investing 참고'},
+    '30y':{value:13.60,source:'Investing 참고'}
   }}
 ];
 function setMacroStatus(cls,msg){const el=document.getElementById('macroStatus');if(!el)return;el.className='macro-badge '+(cls||'');el.textContent=msg;}
@@ -1712,10 +1745,11 @@ function renderBondYields(groups=BOND_YIELD_GROUPS){
   box.innerHTML=groups.map(group=>{
     const tenors=BOND_TENORS.map(tenor=>{
       const item=group.tenors[tenor.key]||{};
-      const chartKey=item.series?'bond-'+group.key+'-'+tenor.key:'';
-      const chartAttrs=chartKey?` data-chart-key="${escHtml(chartKey)}" role="button" tabindex="0"`:'';
+      const chartKey='bond-'+group.key+'-'+tenor.key;
+      const hasChart=!!MARKET_CHARTS[chartKey];
+      const chartAttrs=hasChart?` data-chart-key="${escHtml(chartKey)}" role="button" tabindex="0"`:'';
       const cls=item.cls||'market-flat';
-      return `<div class="bond-card ${currentMarketChartKey===chartKey?'chart-active':''}"${chartAttrs}><div class="bond-tenor ${escHtml(tenor.tone)}">${escHtml(tenor.label)}</div><div class="bond-value ${escHtml(cls)}">${escHtml(bondValueText(item.value))}</div>${bondChangeHtml(item)}<div class="bond-source">${escHtml(bondSourceText(item))}${item.date?' · '+escHtml(item.date.slice(0,7)):''}</div></div>`;
+      return `<div class="bond-card ${hasChart&&currentMarketChartKey===chartKey?'chart-active':''}"${chartAttrs}><div class="bond-tenor ${escHtml(tenor.tone)}">${escHtml(tenor.label)}</div><div class="bond-value ${escHtml(cls)}">${escHtml(bondValueText(item.value))}</div>${bondChangeHtml(item)}<div class="bond-source">${escHtml(bondSourceText(item))}${item.date?' · '+escHtml(item.date.slice(0,7)):''}</div></div>`;
     }).join('');
     const y10=group.tenors['10y']?.value, m3=group.tenors['3m']?.value;
     const spread=typeof y10==='number'&&typeof m3==='number'?y10-m3:null;
@@ -2101,8 +2135,8 @@ async function showMarketChart(key=currentMarketChartKey){
     const link=document.getElementById('tradingViewLink');
     const url=cfg.sourceUrl||cfg.tv||'https://www.tradingview.com/';
     if(link){link.href=url;link.textContent=cfg.linkText||'SEARCH CHART ↗';}
-    if(meta)meta.textContent='공개 실시간 차트 심볼 확인 필요 · 검색 링크로 연결';
-    if(box)box.innerHTML='<a href="'+url+'" target="_blank" rel="noopener" class="chart-loading" style="text-decoration:none">두바이산 원유 차트 검색 열기 ↗</a>';
+    if(meta)meta.textContent='공개 차트 API 미연결 · 외부 링크로 확인';
+    if(box)box.innerHTML='<a href="'+url+'" target="_blank" rel="noopener" class="chart-loading" style="text-decoration:none">'+escHtml(cfg.emptyText||((cfg.label||'외부 차트')+' 열기 ↗'))+'</a>';
   }
   else{if(meta)meta.textContent='데이터 소스 연결 실패';if(box)box.innerHTML='<div class="chart-loading">차트 데이터를 불러올 수 없습니다</div>';}
 }
