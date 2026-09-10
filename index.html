@@ -256,6 +256,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 }
 </style>
 <link rel="stylesheet" href="assets/dashboard-ui.css?v=20260910-workspace">
+<link rel="stylesheet" href="assets/economic-guide.css?v=20260911-list">
 </head>
 <body class="menu-mode light">
 <main class="main-menu" id="mainMenu" aria-labelledby="mainMenuTitle">
@@ -664,47 +665,103 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       </div>
       <div class="dashboard-status ok">8 CORE INDICATORS</div>
     </div>
-    <div class="us-guide-grid">
-      <section class="us-guide-card">
-        <div><div class="us-guide-index">01 · FUNDING</div><div class="us-guide-name">Repo Rate</div><div class="us-guide-ko">레포 금리</div></div>
-        <div class="us-guide-desc">미 국채를 담보로 현금을 빌리는 단기 조달비용입니다. 급등하면 딜러와 레버리지 투자자의 자금 부담이 커졌다는 뜻입니다.</div>
-        <div class="us-guide-signal"><b>CHECK</b> SOFR-IORB 스프레드 · TGCR · 일중 금리 급등</div>
-      </section>
-      <section class="us-guide-card">
-        <div><div class="us-guide-index">02 · RELATIVE VALUE</div><div class="us-guide-name">Treasury Basis</div><div class="us-guide-ko">국채 현물-선물 베이시스</div></div>
-        <div class="us-guide-desc">현물 국채와 선물의 상대 가격차입니다. 차익거래 수익 기회인 동시에 포지션이 과밀할 때는 강제 청산 위험을 보여줍니다.</div>
-        <div class="us-guide-signal"><b>CHECK</b> OABNOC · CTD · 헤지펀드 선물 순숏</div>
-      </section>
-      <section class="us-guide-card">
-        <div><div class="us-guide-index">03 · INTERMEDIATION</div><div class="us-guide-name">Primary Dealer Balance Sheet</div><div class="us-guide-ko">프라이머리 딜러 대차대조표</div></div>
-        <div class="us-guide-desc">국채를 인수하고 시장에 유통하는 핵심 딜러의 중개 여력을 나타냅니다. 재고가 쌓이고 여력이 줄면 시장 충격을 흡수하기 어려워집니다.</div>
-        <div class="us-guide-signal"><b>CHECK</b> 국채 보유·재고 · 순포지션 · 대차대조표 제약</div>
-      </section>
-      <section class="us-guide-card">
-        <div><div class="us-guide-index">04 · FINANCING</div><div class="us-guide-name">Dealer Financing</div><div class="us-guide-ko">딜러 자금조달</div></div>
-        <div class="us-guide-desc">딜러가 Repo와 Reverse Repo를 통해 재고와 고객 거래를 금융하는 구조입니다. 비용·만기·헤어컷 변화가 중개 능력을 좌우합니다.</div>
-        <div class="us-guide-signal"><b>CHECK</b> Repo 규모 · 조달 만기 · Haircut · Sponsored Repo</div>
-      </section>
-      <section class="us-guide-card">
-        <div><div class="us-guide-index">05 · POSITIONING</div><div class="us-guide-name">CFTC TFF Positioning</div><div class="us-guide-ko">미 국채선물 투자자 포지셔닝</div></div>
-        <div class="us-guide-desc">자산운용사, 레버리지 펀드 등 투자자 유형별 국채선물 롱·숏 포지션입니다. 한쪽 쏠림과 청산 압력을 파악하는 데 사용합니다.</div>
-        <div class="us-guide-signal"><b>CHECK</b> Leveraged Funds Net · Asset Manager Net · Open Interest</div>
-      </section>
-      <section class="us-guide-card">
-        <div><div class="us-guide-index">06 · AUCTION</div><div class="us-guide-name">Treasury Auction Tail</div><div class="us-guide-ko">미 국채 입찰 Tail</div></div>
-        <div class="us-guide-desc">낙찰금리와 입찰 직전 시장금리의 차이입니다. 양(+)의 Tail 확대는 예상보다 약한 수요, 음(-)의 Stop-through는 강한 수요를 뜻합니다.</div>
-        <div class="us-guide-signal"><b>CHECK</b> High Yield-WI · Bid-to-Cover · Indirect Bidder 비중</div>
-      </section>
-      <section class="us-guide-card">
-        <div><div class="us-guide-index">07 · DERIVATIVES</div><div class="us-guide-name">Swap Spread</div><div class="us-guide-ko">스왑 스프레드</div></div>
-        <div class="us-guide-desc">동일 만기의 금리스왑 고정금리와 국채금리의 차이입니다. 국채 공급, 딜러 대차대조표 비용과 헤지 수요가 함께 반영됩니다.</div>
-        <div class="us-guide-signal"><b>CHECK</b> 2Y·5Y·10Y·30Y Spread · 발행 헤지 · 딜러 수용력</div>
-      </section>
-      <section class="us-guide-card">
-        <div><div class="us-guide-index">08 · COLLATERAL</div><div class="us-guide-name">Collateral</div><div class="us-guide-ko">국채 담보 여건</div></div>
-        <div class="us-guide-desc">Repo 시장에서 담보로 쓰이는 국채의 희소성과 품질을 나타냅니다. 특정 국채가 부족하면 Special 금리와 결제 실패가 나타날 수 있습니다.</div>
-        <div class="us-guide-signal"><b>CHECK</b> GC-Special 스프레드 · Repo Fails · Haircut · 담보 희소성</div>
-      </section>
+    <div class="us-guide-list" aria-label="미국 경제 지표 목록">
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">01</span>
+          <span class="us-guide-label"><span class="us-guide-term">Repo Rate</span><span class="us-guide-translation">레포 금리</span></span>
+          <span class="us-guide-category">자금조달</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>미 국채를 담보로 현금을 빌리는 단기 조달비용입니다. 급등하면 딜러와 레버리지 투자자의 자금 부담이 커졌다는 뜻입니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>SOFR-IORB 스프레드 · TGCR · 일중 금리 급등</p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">02</span>
+          <span class="us-guide-label"><span class="us-guide-term">Treasury Basis</span><span class="us-guide-translation">국채 현물-선물 베이시스</span></span>
+          <span class="us-guide-category">상대가치</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>현물 국채와 선물의 상대 가격차입니다. 차익거래 수익 기회인 동시에 포지션이 과밀할 때는 강제 청산 위험을 보여줍니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>OABNOC · CTD · 헤지펀드 선물 순숏</p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">03</span>
+          <span class="us-guide-label"><span class="us-guide-term">Primary Dealer Balance Sheet</span><span class="us-guide-translation">프라이머리 딜러 대차대조표</span></span>
+          <span class="us-guide-category">시장중개</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>국채를 인수하고 시장에 유통하는 핵심 딜러의 중개 여력을 나타냅니다. 재고가 쌓이고 여력이 줄면 시장 충격을 흡수하기 어려워집니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>국채 보유·재고 · 순포지션 · 대차대조표 제약</p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">04</span>
+          <span class="us-guide-label"><span class="us-guide-term">Dealer Financing</span><span class="us-guide-translation">딜러 자금조달</span></span>
+          <span class="us-guide-category">딜러 금융</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>딜러가 Repo와 Reverse Repo를 통해 재고와 고객 거래를 금융하는 구조입니다. 비용·만기·헤어컷 변화가 중개 능력을 좌우합니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>Repo 규모 · 조달 만기 · Haircut · Sponsored Repo</p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">05</span>
+          <span class="us-guide-label"><span class="us-guide-term">CFTC TFF Positioning</span><span class="us-guide-translation">미 국채선물 투자자 포지셔닝</span></span>
+          <span class="us-guide-category">포지션</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>자산운용사, 레버리지 펀드 등 투자자 유형별 국채선물 롱·숏 포지션입니다. 한쪽 쏠림과 청산 압력을 파악하는 데 사용합니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>Leveraged Funds Net · Asset Manager Net · Open Interest</p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">06</span>
+          <span class="us-guide-label"><span class="us-guide-term">Treasury Auction Tail</span><span class="us-guide-translation">미 국채 입찰 Tail</span></span>
+          <span class="us-guide-category">국채 입찰</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>낙찰금리와 입찰 직전 시장금리의 차이입니다. 양(+)의 Tail 확대는 예상보다 약한 수요, 음(-)의 Stop-through는 강한 수요를 뜻합니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>High Yield-WI · Bid-to-Cover · Indirect Bidder 비중</p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">07</span>
+          <span class="us-guide-label"><span class="us-guide-term">Swap Spread</span><span class="us-guide-translation">스왑 스프레드</span></span>
+          <span class="us-guide-category">파생상품</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>동일 만기의 금리스왑 고정금리와 국채금리의 차이입니다. 국채 공급, 딜러 대차대조표 비용과 헤지 수요가 함께 반영됩니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>2Y·5Y·10Y·30Y Spread · 발행 헤지 · 딜러 수용력</p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">08</span>
+          <span class="us-guide-label"><span class="us-guide-term">Collateral</span><span class="us-guide-translation">국채 담보 여건</span></span>
+          <span class="us-guide-category">담보</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>Repo 시장에서 담보로 쓰이는 국채의 희소성과 품질을 나타냅니다. 특정 국채가 부족하면 Special 금리와 결제 실패가 나타날 수 있습니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>GC-Special 스프레드 · Repo Fails · Haircut · 담보 희소성</p></div>
+        </div>
+      </details>
     </div>
     <div class="us-guide-footer">자금조달, 포지션, 딜러 중개 여력과 담보 상태를 함께 보면 미 국채시장 스트레스가 어디에서 시작되는지 더 빠르게 구분할 수 있습니다.</div>
   </div>

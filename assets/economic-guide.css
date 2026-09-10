@@ -1,0 +1,43 @@
+/* Native disclosures keep the list usable before scripts load. */
+#usEconomyGuide .us-guide-list{display:flex;flex-direction:column;gap:7px}
+#usEconomyGuide .us-guide-item{--guide-tone:#087c73;margin:0;background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+#usEconomyGuide .us-guide-item:nth-child(2){--guide-tone:#9c7019}
+#usEconomyGuide .us-guide-item:nth-child(3){--guide-tone:#366bc1}
+#usEconomyGuide .us-guide-item:nth-child(4){--guide-tone:#7760a0}
+#usEconomyGuide .us-guide-item:nth-child(5){--guide-tone:#b24c66}
+#usEconomyGuide .us-guide-item:nth-child(6){--guide-tone:#ab6228}
+#usEconomyGuide .us-guide-item:nth-child(7){--guide-tone:#337940}
+#usEconomyGuide .us-guide-item:nth-child(8){--guide-tone:#586977}
+#usEconomyGuide .us-guide-row{display:grid;grid-template-columns:34px minmax(0,1fr) 100px 20px;align-items:center;gap:16px;min-height:62px;padding:12px 18px;cursor:pointer;list-style:none;border-left:3px solid var(--guide-tone);transition:background .15s}
+#usEconomyGuide .us-guide-row::-webkit-details-marker{display:none}
+#usEconomyGuide .us-guide-row::marker{content:""}
+#usEconomyGuide .us-guide-row:hover{background:var(--rank-hover)}
+#usEconomyGuide .us-guide-row:focus-visible{outline:2px solid var(--accent);outline-offset:-3px;border-radius:5px}
+#usEconomyGuide .us-guide-number{font:12px 'IBM Plex Mono',monospace;color:var(--text-dim)}
+#usEconomyGuide .us-guide-label{min-width:0;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+#usEconomyGuide .us-guide-term{font-size:15px;font-weight:700;line-height:1.6;color:var(--text);overflow-wrap:anywhere}
+#usEconomyGuide .us-guide-translation{font-size:12px;line-height:1.6;color:var(--text-mid)}
+#usEconomyGuide .us-guide-category{font-size:11px;color:var(--text-dim);text-align:right}
+#usEconomyGuide .us-guide-chevron{width:18px;height:18px;color:var(--text-mid);transition:transform .15s;stroke-width:1.8}
+#usEconomyGuide .us-guide-item[open]{border-color:var(--guide-tone)}
+#usEconomyGuide .us-guide-item[open]>.us-guide-row{background:var(--rank-hover)}
+#usEconomyGuide .us-guide-item[open] .us-guide-chevron{transform:rotate(180deg)}
+#usEconomyGuide .us-guide-detail{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:32px;margin:0 18px 0 71px;padding:20px 0 22px;border-top:1px solid var(--border)}
+#usEconomyGuide .us-guide-detail h3{font-size:12px;font-weight:700;color:var(--text);margin:0 0 8px}
+#usEconomyGuide .us-guide-detail p{font-size:13px;line-height:1.9;color:var(--text-mid);margin:0;word-break:keep-all;overflow-wrap:anywhere}
+@media(max-width:900px){
+ #usEconomyGuide .us-guide-label{display:block}
+ #usEconomyGuide .us-guide-translation{display:block;margin-top:2px}
+ #usEconomyGuide .us-guide-detail{grid-template-columns:minmax(0,1fr);gap:18px}
+}
+@media(max-width:600px){
+ #usEconomyGuide .us-guide-row{grid-template-columns:23px minmax(0,1fr) 18px;gap:9px;padding:11px 12px;min-height:76px}
+ #usEconomyGuide .us-guide-category{display:none}
+ #usEconomyGuide .us-guide-term{font-size:14px}
+ #usEconomyGuide .us-guide-translation{font-size:11px}
+ #usEconomyGuide .us-guide-number{font-size:11px}
+ #usEconomyGuide .us-guide-detail{margin:0 15px;padding:17px 0 20px}
+}
+@media(prefers-reduced-motion:reduce){
+ #usEconomyGuide .us-guide-row,#usEconomyGuide .us-guide-chevron{transition:none}
+}
