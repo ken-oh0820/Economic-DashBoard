@@ -1,0 +1,293 @@
+/* Shared workspace shell. The Fed PDF app is isolated in its unchanged iframe. */
+body.light{
+ --bg:#f3f5f7;--surface:#fff;--surface2:#edf1f4;--border:#dce2e7;
+ --text:#20282e;--text-mid:#52636e;--text-dim:#65747d;
+ --accent:#087c73;--accent2:#bc5740;--accent3:#337940;--accent4:#94630c;--warning:#94630c;
+ --header-bg:#fff;--ctrl-bg:#fff;--tooltip-bg:#fff;--rank-border:#dee4e8;
+ --rank-hover:#f1f7f5;--metric-active-bg:#e7f5f1;--logo-shadow:none;color-scheme:light;
+}
+body:not(.light){--warning:#f0c56e;color-scheme:dark}
+body{height:100dvh}
+body :is(header,.ticker-bar,.layout,.indicator-dashboard,.sites-dashboard,.us-guide-dashboard,.fed-frame-toolbar,.site-help-modal) *{letter-spacing:0}
+body :is(button,a,[role="button"],input,select):focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+body :is(.indicator-dashboard,.sites-dashboard,.us-guide-dashboard){padding:32px 32px 48px;min-height:0;scrollbar-gutter:stable}
+body :is(.dashboard-shell,.sites-shell,.us-guide-shell){max-width:1440px}
+body :is(.indicator-dashboard,.sites-dashboard,.us-guide-dashboard) :is(p,div,span,a){overflow-wrap:anywhere}
+body :is(.indicator-dashboard,.sites-dashboard,.us-guide-dashboard) :is(button,a){font-family:inherit}
+body header{height:70px;padding:0 28px;display:grid;grid-template-columns:1fr auto 1fr;gap:20px;backdrop-filter:none}
+body .header-left{min-width:0;gap:8px}
+body .header-center{position:static;transform:none;min-width:0;margin:0}
+body .logo-main{font:700 20px/1.4 'Noto Sans KR',sans-serif;color:var(--text);text-shadow:none}
+body .logo-sub{font-size:10px;color:var(--text-dim);margin-top:3px}
+body .header-right{justify-content:flex-end;gap:16px}
+body .stat-pill{background:none;border:0;padding:0;font-size:10px;display:flex;flex-direction:column;gap:3px}
+body .stat-value{color:var(--text);font-size:11px}
+body .stat-label{margin:0}
+body :is(.app-nav-btn,.header-left .font-ctrl-btn,#themeToggle){height:34px;border-radius:6px;padding:0 10px;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:12px;background:var(--surface);color:var(--text-mid)}
+body #themeToggle{width:34px;padding:0;flex:none}
+body :is(.header-left,.dashboard-kicker,.market-refresh-btn,.fed-frame-toolbar) svg{width:17px;height:17px;flex:none;stroke-width:1.8}
+body .app-nav-btn{color:var(--accent);border-color:var(--border)}
+body .font-panel{top:69px;border-radius:8px;box-shadow:0 10px 32px #203b451a}
+body .ticker-bar{height:30px}
+body .ticker-item{font-size:11px}
+body .ticker-label,body .ticker-chg{font-size:10px}
+body .dashboard-top{margin-bottom:28px;align-items:center;gap:24px}
+body .dashboard-kicker{display:flex;align-items:center;gap:8px;font:500 11px/1.5 'IBM Plex Mono',monospace;margin-bottom:10px;color:var(--page-tone,var(--accent))}
+body .dashboard-title{font:700 27px/1.45 'Noto Sans KR',sans-serif}
+body .dashboard-sub{font-size:13px;line-height:1.8;margin-top:8px;max-width:880px}
+body .dashboard-actions{flex:none}
+body .dashboard-status{font-size:11px;border-radius:6px;padding:9px 12px;white-space:normal;line-height:1.6;max-width:330px}
+body .market-refresh-btn{width:36px;height:36px;padding:0;display:grid;place-items:center;border-radius:6px}
+body .dashboard-panel{padding:24px 0 0;margin-bottom:28px;border:0;border-top:1px solid var(--border);background:none}
+body .dashboard-panel-title{font-size:17px;font-weight:700;color:var(--text);margin-bottom:14px}
+body .indicator-grid{gap:12px;margin-bottom:28px}
+body :is(.indicator-card,.macro-card,.bond-card,.site-card,.us-guide-card){border-radius:8px;background:var(--surface);border-color:var(--border);box-shadow:0 2px 3px #253c3b03}
+body .indicator-card{padding:18px;min-height:162px}
+body .indicator-group{font-size:11px;margin-bottom:12px}
+body .indicator-name{font-size:16px;line-height:1.5;margin-bottom:10px}
+body .indicator-value{font-size:26px;font-weight:500;color:var(--text);font-variant-numeric:tabular-nums}
+body .indicator-note{font-size:12px;margin-top:6px}
+body :is(.indicator-source,.macro-source,.bond-source){font-size:11px;line-height:1.65;margin-top:8px}
+body .indicator-change{font-size:12px}
+body .official-quote .indicator-value{font:500 17px/1.6 'Noto Sans KR',sans-serif;color:var(--text-mid)}
+body .us-guide-signal{font-family:'Noto Sans KR',sans-serif}
+body :is(.indicator-card,.macro-card,.bond-card)[data-chart-key]:hover,
+body :is(.indicator-card,.macro-card,.bond-card).chart-active{background:var(--surface);border-color:var(--accent);box-shadow:0 3px 10px #203b450c}
+body .macro-head{margin-bottom:18px;flex-wrap:wrap}
+body .macro-sub{font-size:12px;line-height:1.7}
+body .macro-badge{font-size:10px;border-radius:4px;white-space:normal;max-width:100%;line-height:1.6}
+body .macro-grid{gap:12px;grid-template-columns:repeat(5,minmax(0,1fr))}
+body #usMacroGrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+body .macro-card{padding:16px;min-height:146px}
+body .macro-group{font-size:10px}
+body .macro-name{font-size:14px;line-height:1.6}
+body .macro-value{font-size:23px;font-weight:500;color:var(--text);font-variant-numeric:tabular-nums}
+body .macro-change{font-size:11px;line-height:1.65}
+body .bond-country{margin-top:24px;padding-top:22px}
+body .bond-country-head{margin-bottom:14px;align-items:flex-start}
+body .bond-country-name{font-size:16px;flex:none}
+body .bond-country-note{font-size:10px;line-height:1.65}
+body .bond-grid{gap:8px}
+body .bond-card{padding:12px 10px;min-height:152px}
+body .bond-value{font-size:20px;color:var(--text);font-variant-numeric:tabular-nums}
+body .bond-change{font-size:10px;line-height:1.7;margin:10px 0}
+body .bond-tenor{font-size:13px;min-height:30px;box-shadow:none;font-weight:700;padding:4px 7px;margin-bottom:12px;border:0}
+body.light .bond-tenor-3m{background:#ddf3f5;color:#136b77}
+body.light .bond-tenor-1y{background:#e3edfc;color:#365f9c}
+body.light .bond-tenor-2y{background:#e9e9fa;color:#57549d}
+body.light .bond-tenor-5y{background:#f0e7f5;color:#805292}
+body.light .bond-tenor-10y{background:#e0f1e1;color:#337140}
+body.light .bond-tenor-20y{background:#fff0d4;color:#8d6112}
+body.light .bond-tenor-30y{background:#fbe3e9;color:#a44962}
+body.light .bond-tenor-mortgage{background:#dff2eb;color:#216d59}
+body.light .bond-card.spread{background:#eef5f3}
+body.light .bond-card.spread .bond-tenor{background:#dce9e5;color:#456b5d;border:0;box-shadow:none}
+body .bond-change.no-data b{font-size:10px}
+body .market-chart-head{flex-wrap:wrap;gap:16px}
+body .market-chart-meta{font-size:12px;line-height:1.7}
+body .chart-actions{flex-shrink:1}
+body :is(.chart-range-btn,.tradingview-link){font-size:12px;border-radius:5px;min-height:34px;padding:7px 10px}
+body .chart-range-btn.active{background:var(--metric-active-bg)}
+body .market-chart-canvas{background:var(--surface);border-radius:8px}
+body .dashboard-sections{gap:28px;grid-template-columns:1.2fr 1fr}
+body .watch-row{background:var(--surface);border-radius:6px;align-items:center;min-height:56px;font-size:12px;padding:12px;flex-wrap:wrap}
+body .source-row{font-size:12px;line-height:1.7;padding:12px 0}
+body.light :is(.market-up,.ticker-up){color:#1c7a49}
+body.light :is(.market-down,.ticker-down,.dashboard-status.error,.source-row.error span:last-child){color:#bd3e56}
+body.light :is(.macro-badge.warn,.dashboard-status.warn,.basis-risk-badge.watch,.basis-formula-code,.us-news-status.warn,.source-row.warn span:last-child,.rate-schedule-item.past .rate-schedule-tag){color:#92600a}
+body.light .basis-risk-badge.calm{color:#287846}
+body .sentiment-extreme-fear{color:#ff3344}
+body .sentiment-fear{color:#ff9f1a}
+body .sentiment-neutral{color:#dce3ea}
+body .sentiment-greed{color:#9dff57}
+body .sentiment-extreme-greed{color:#00d46a}
+body.light .sentiment-extreme-fear{color:#c53545}
+body.light .sentiment-fear{color:#b65d0e}
+body.light .sentiment-neutral{color:#64717b}
+body.light .sentiment-greed{color:#588020}
+body.light .sentiment-extreme-greed{color:#15834a}
+body .basis-monitor{margin-top:28px;padding-top:24px}
+body .basis-monitor-head{margin-bottom:18px}
+body .basis-monitor-title{font-size:16px}
+body .basis-monitor-sub{font-size:12px;line-height:1.7}
+body .basis-risk-badge{font-size:10px;border-radius:4px;white-space:normal;line-height:1.5}
+body .basis-scroll{background:var(--surface)}
+body .basis-strip{min-width:1060px;grid-template-columns:repeat(5,minmax(212px,1fr))}
+body .basis-metric{padding:18px 16px}
+body .basis-metric:before{left:16px;right:16px}
+body.light .basis-metric.info{--basis-tone:#366bc1}
+body.light .basis-metric.calm{--basis-tone:#287846}
+body.light .basis-metric.watch{--basis-tone:#92600a}
+body.light .basis-metric.alert{--basis-tone:#bd3e56}
+body .basis-index{font-size:10px}
+body .basis-name{font-size:13px;min-height:38px;line-height:1.6}
+body .basis-value{font-size:22px}
+body .basis-value.compact{font-size:16px;white-space:normal}
+body .basis-change{font-size:11px;min-height:38px}
+body .basis-reading{font-size:12px;line-height:1.7;min-height:64px}
+body .basis-source,body .basis-method-note{font-size:11px;line-height:1.65}
+body .basis-interpretation{gap:20px;padding:20px 0}
+body .basis-guide-item,body .basis-guide-item b{font-size:12px;line-height:1.75}
+body .basis-formula-code,body .basis-formula-note{font-size:12px;line-height:1.75}
+body .rate-schedule-panel{padding:0;border-bottom:1px solid var(--border)}
+body .rate-schedule-toggle{background:none;padding:20px 0}
+body .rate-schedule-title{font-size:16px}
+body .rate-schedule-sub{font-size:12px;display:block;line-height:1.7}
+body .rate-schedule-body{transition:opacity .2s;padding:0;visibility:hidden}
+body .rate-schedule-panel.open .rate-schedule-body{max-height:none;padding:0 0 24px;visibility:visible}
+body .rate-schedule-grid{gap:16px}
+body .rate-schedule-card{background:var(--surface);border-radius:8px;padding:16px}
+body .rate-schedule-country b{font-size:15px}
+body .rate-schedule-link{font-size:10px;border-color:var(--border);border-radius:4px}
+body .rate-schedule-section-title{font-size:11px;margin-top:14px}
+body .rate-schedule-item{font-size:12px;padding:7px 0}
+body .rate-schedule-tag{font-size:9px}
+body.light .rate-schedule-item.upcoming .rate-schedule-tag{color:#366bc1}
+body .rate-schedule-note{font-size:12px;line-height:1.75}
+body #indicatorDashboard{--page-tone:#366bc1}
+body #investmentSites{--page-tone:#bb5a4b}
+body #usEconomyGuide{--page-tone:#7760a0}
+body .sites-grid{grid-template-columns:minmax(0,3fr) minmax(220px,1fr);gap:28px}
+body .sites-panel{background:none;border:0;padding:0;min-height:0}
+body .sites-panel-head{padding-bottom:16px;margin-bottom:16px;align-items:center}
+body .sites-country{font-size:17px}
+body .sites-country>span:first-child{font:500 11px 'IBM Plex Mono',monospace;color:var(--page-tone);background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:6px}
+body .sites-note{font-size:10px;line-height:1.6}
+body .site-link-grid{gap:12px}
+body .site-card{padding:18px;min-height:202px}
+body .site-name{font-size:17px;line-height:1.5}
+body .site-desc{font-size:12px;line-height:1.85;margin-top:10px}
+body .site-tag{font-size:11px;color:var(--page-tone,var(--accent));line-height:1.65}
+body .site-help-btn{width:24px;height:24px;border-color:var(--border);border-radius:50%;font-size:12px;background:var(--surface2);color:var(--text-mid)}
+body .site-empty{font-size:12px;min-height:202px;border-radius:8px;line-height:1.85}
+body .us-news-desk{border:0;border-top:1px solid var(--border);background:none;margin-top:32px;padding:28px 0 0}
+body .us-news-title{font-size:21px}
+body .us-news-sub{font-size:12px;line-height:1.8}
+body .us-news-head{padding-bottom:20px}
+body .us-news-status{font-size:11px;white-space:normal}
+body .us-news-tabs{gap:8px;padding:18px 0}
+body .us-news-tab{font-size:12px;background:var(--surface);border-radius:5px;padding:9px 12px}
+body .us-news-count{font-size:10px}
+body .us-news-source-link{font-size:11px;border-color:var(--border);border-radius:5px;padding:9px 12px}
+body .us-news-refresh{width:36px;height:36px;border-radius:6px}
+body .us-news-lead{padding-top:24px;padding-right:28px}
+body .us-news-lead-title{font-size:25px;line-height:1.55}
+body .us-news-summary{font-size:13px;line-height:1.9}
+body .us-news-kicker,body .us-news-open{font-size:11px}
+body .us-news-list{padding-left:28px}
+body .us-news-row{padding:18px 0}
+body .us-news-index{font:12px 'IBM Plex Mono',monospace;padding-top:4px}
+body .us-news-row-title{font-size:14px;line-height:1.7}
+body .us-news-row-meta{font-size:11px;line-height:1.7;margin-top:7px}
+body .us-guide-grid{gap:18px;grid-template-columns:repeat(3,minmax(0,1fr))}
+body .us-guide-card{padding:24px;min-height:268px;gap:22px}
+body .us-guide-card:before{width:3px}
+body .us-guide-index{font-size:11px}
+body .us-guide-name{font-size:21px;line-height:1.5;margin-top:14px}
+body .us-guide-ko{font-size:12px;margin-top:6px}
+body .us-guide-desc{font-size:13px;line-height:1.85}
+body .us-guide-signal{font-size:12px;line-height:1.75;padding-top:14px}
+body.light .us-guide-card:nth-child(2){--guide-tone:#9c7019}
+body.light .us-guide-card:nth-child(3){--guide-tone:#366bc1}
+body.light .us-guide-card:nth-child(4){--guide-tone:#7760a0}
+body.light .us-guide-card:nth-child(5){--guide-tone:#b24c66}
+body.light .us-guide-card:nth-child(6){--guide-tone:#ab6228}
+body.light .us-guide-card:nth-child(7){--guide-tone:#337940}
+body.light .us-guide-card:nth-child(8){--guide-tone:#586977}
+body .us-guide-footer{border:0;background:none;font-size:12px;line-height:1.8;padding:16px 0}
+body .site-help-dialog{border-radius:8px;padding:26px;background:var(--surface);box-shadow:0 20px 70px #20343c26}
+body .site-help-title{font-size:24px}
+body .site-help-body{font-size:13px;line-height:1.9}
+body .site-help-section h4{font-size:15px;margin-bottom:12px}
+body .site-help-section{margin-top:24px}
+body .site-help-term{padding:14px;border-radius:6px;background:var(--bg)}
+body .site-help-term b{font-size:12px}
+body .site-help-caption{font-size:11px;line-height:1.7}
+body .site-help-close{border-radius:5px}
+body .fed-frame-toolbar{height:auto;min-height:86px;flex:none;padding:16px 28px;font-family:inherit}
+body .fed-frame-heading{display:flex;align-items:center;gap:13px;min-width:0}
+body .fed-frame-icon{width:40px;height:40px;display:grid;place-items:center;flex:none;background:#fff5df;color:#a66a0e;border-radius:8px}
+body .fed-frame-icon svg{width:21px;height:21px}
+body .fed-frame-eyebrow{display:block;font:10px/1.5 'IBM Plex Mono',monospace;color:var(--text-dim);margin-bottom:4px}
+body .fed-frame-title{display:block;font-size:19px;font-weight:700;line-height:1.5}
+body .fed-frame-title small{font-size:12px;font-weight:400;color:var(--text-dim);margin-left:8px}
+body .fed-open-link{display:flex;align-items:center;gap:8px;border-radius:5px;padding:9px 12px;font-size:12px;flex:none;background:var(--surface)}
+/* Keep panel widths, collapse transforms and the stationary map canvas intact. */
+body .panel-title{font-size:11px;font-weight:700;color:var(--text-mid);line-height:1.6}
+body :is(.metric-btn,.overlay-btn){font-size:11px;border-radius:5px;line-height:1.6;padding:8px}
+body :is(.rank-name,.rank-val,.news-title,.commodity-row){font-size:11px}
+body .news-title{line-height:1.7}
+body .news-meta,body .last-update{font-size:10px;line-height:1.7}
+body .news-item{padding:12px 0}
+body .map-ctrl-btn{border-radius:5px}
+body .search-box{border-radius:6px}
+body .alliance-name,body .alliance-count{font-size:11px;text-shadow:none}
+body .metric-card{border-radius:5px;background:var(--bg)}
+body .mc-label{font-size:10px}
+body .country-name-big{font-size:20px}
+body .insight-box,body .data-source-card{font-size:11px;line-height:1.85;border:0;background:var(--bg);border-radius:5px}
+body #tooltip,body .alliance-popup{border-radius:8px;box-shadow:0 6px 28px #1428311a}
+body .map-label{font-size:11px;border-radius:5px;max-width:90%;white-space:normal;text-align:center;line-height:1.6}
+body.light #companyDashboard{background:var(--bg)}
+body.light .cf-shell{--cf-bg:#f3f5f7}
+@media(max-width:1200px){
+ body .header-right{gap:10px}body .header-right .stat-pill:first-child{display:none}
+ body .sites-grid{grid-template-columns:minmax(0,1fr)}body .site-empty{min-height:80px}
+ body .macro-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ body .basis-interpretation{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:980px){
+ body header{grid-template-columns:auto 1fr;height:64px;padding:0 20px;gap:16px}
+ body .header-center{align-items:flex-end}body .header-right{display:none}body .font-panel{top:63px}
+ body :is(.indicator-dashboard,.sites-dashboard,.us-guide-dashboard){padding:26px 22px 40px}
+ body .dashboard-top{align-items:flex-start;flex-direction:column;gap:16px}body .dashboard-title{font-size:25px}
+ body .indicator-grid,body #usMacroGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body .indicator-card.row-break,body .macro-card.row-break{grid-column:auto}
+ body .dashboard-sections{grid-template-columns:minmax(0,1fr);gap:0}
+ body .bond-grid,body .bond-country-us .bond-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+ body .us-guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body .us-news-layout{grid-template-columns:minmax(0,1fr)}
+ body .us-news-lead{padding-right:0;border-right:0;border-bottom:1px solid var(--border)}
+ body .us-news-list{padding-left:0}
+ body .rate-schedule-grid{grid-template-columns:minmax(0,1fr)}
+ body .site-link-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:600px){
+ body header{height:60px;padding:0 12px;gap:10px}body .header-left{gap:5px}
+ body .logo-main{font-size:15px;line-height:1.5}body .logo-sub{display:block;font-size:9px}
+ body .font-panel{top:59px}body .app-nav-btn{padding:0 8px;width:34px}body .app-nav-btn span{display:none}
+ body .ticker-item{font-size:10px}
+ body :is(.indicator-dashboard,.sites-dashboard,.us-guide-dashboard){padding:22px 16px 36px}
+ body .dashboard-title{font-size:23px}body .dashboard-sub{font-size:12px}
+ body .dashboard-actions{width:100%;justify-content:flex-start}body .dashboard-status{font-size:10px}
+ body .indicator-grid{gap:10px}body .indicator-card{padding:14px 12px;min-height:170px}
+ body .indicator-name{font-size:14px}body .indicator-value{font-size:23px}
+ body .official-quote .indicator-value{font-size:17px}
+ body .indicator-note,body .indicator-source{font-size:11px}
+ body .macro-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ body .macro-card{padding:14px 12px}body .macro-name{font-size:13px}body .macro-value{font-size:20px}
+ body .bond-grid,body .bond-country-us .bond-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ body .bond-card{padding:14px}body .bond-country-head{flex-direction:column;gap:6px}
+ body .bond-country-note{text-align:left}body .basis-monitor-head{flex-direction:column}
+ body .basis-interpretation{grid-template-columns:minmax(0,1fr);gap:16px}
+ body .basis-formula{flex-direction:column;align-items:flex-start}body .basis-formula-note{text-align:left}
+ body .chart-actions{justify-content:flex-start}body .watch-list{grid-template-columns:minmax(0,1fr)}
+ body .site-link-grid{grid-template-columns:minmax(0,1fr)}body .site-card{min-height:174px}
+ body .us-news-head{flex-direction:column}body .us-news-actions{justify-content:flex-start}
+ body .us-news-lead-title{font-size:21px}body .us-news-tabs{gap:6px}
+ body .us-news-tab{font-size:11px;padding:8px}body .us-news-row{grid-template-columns:24px minmax(0,1fr) auto}
+ body .us-guide-grid{grid-template-columns:minmax(0,1fr)}body .us-guide-card{padding:22px;min-height:240px}
+ body .site-help-modal{padding:12px}body .site-help-dialog{padding:18px}
+ body .site-help-terms{grid-template-columns:minmax(0,1fr)}
+ body .fed-frame-toolbar{min-height:80px;padding:14px 16px;gap:10px}body .fed-frame-icon{display:none}
+ body .fed-frame-title{font-size:17px}body .fed-frame-title small{font-size:10px;margin-left:4px}
+ body .fed-open-link{width:34px;height:34px;padding:0;justify-content:center}body .fed-open-link span{display:none}
+}
+@media(max-width:380px){
+ body .logo-main{font-size:13px;line-height:1.4}
+ body .logo-sub{line-height:1.3}
+}
+@media(prefers-reduced-motion:reduce){
+ body :is(.indicator-card,.macro-card,.bond-card,.site-card,.rate-schedule-body){transition:none}
+ body .ticker-track{animation:none}
+}

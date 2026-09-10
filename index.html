@@ -255,8 +255,9 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 }
 }
 </style>
+<link rel="stylesheet" href="assets/dashboard-ui.css?v=20260910-workspace">
 </head>
-<body class="menu-mode">
+<body class="menu-mode light">
 <main class="main-menu" id="mainMenu" aria-labelledby="mainMenuTitle">
   <div class="main-menu-inner">
     <div class="menu-masthead"><div class="menu-brand"><span class="menu-brand-mark" aria-hidden="true"><i data-lucide="chart-no-axes-combined"></i></span><span>KEN'S WORKSPACE</span></div><span class="menu-masthead-label">ECONOMICS &amp; MARKETS</span></div>
@@ -298,14 +299,14 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 </main>
 <header>
 <div class="header-left">
-  <button class="app-nav-btn" onclick="switchView('menu')">MENU</button>
+  <button class="app-nav-btn" onclick="switchView('menu')" aria-label="메인 메뉴" title="메인 메뉴"><i data-lucide="layout-grid" aria-hidden="true"></i><span>메뉴</span></button>
   <button class="font-ctrl-btn" id="currencyToggle" onclick="toggleCurrency()" style="font-family:'IBM Plex Mono',monospace;font-weight:500;min-width:40px;text-align:center"><span id="currLabel">USD</span></button>
   <button class="font-ctrl-btn" onclick="toggleFontPanel()">Aa <span class="fc-text">글꼴</span></button>
-  <button class="map-ctrl-btn" id="themeToggle" onclick="toggleTheme()" style="width:auto;padding:0 8px;font-size:14px">🌙</button>
+  <button class="map-ctrl-btn" id="themeToggle" onclick="toggleTheme()" aria-label="어두운 테마로 전환" title="어두운 테마로 전환"><i data-lucide="moon" aria-hidden="true"></i></button>
 </div>
 <div class="header-center">
-  <div class="logo-main">ECONOMIC ATLAS</div>
-  <div class="logo-sub"><span class="signal-dot"></span> 글로벌 경제 대시보드 2026</div>
+  <div class="logo-main">Economic Dashboard</div>
+  <div class="logo-sub">Made by Ken</div>
 </div>
 <div class="header-right">
   <div class="stat-pill"><span class="stat-label">세계 GDP</span><span class="stat-value" id="worldGdpVal">$117.2T</span></div>
@@ -436,12 +437,12 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
   <div class="dashboard-shell">
     <div class="dashboard-top">
       <div>
-        <div class="dashboard-kicker">MARKET MONITOR · LIVE MODULES</div>
+        <div class="dashboard-kicker"><i data-lucide="chart-no-axes-combined" aria-hidden="true"></i>02 / MARKET MONITOR</div>
         <div class="dashboard-title">지표 모니터링 대시보드</div>
         <div class="dashboard-sub">글로벌 자산, 한국 지수, 변동성, 환율과 심리 지표를 공개 API 기준으로 최대한 빠르게 갱신합니다.</div>
       </div>
       <div class="dashboard-actions">
-        <button class="market-refresh-btn" onclick="fetchMarketDashboard(true)">REFRESH</button>
+        <button class="market-refresh-btn" onclick="fetchMarketDashboard(true)" aria-label="지표 새로고침" title="지표 새로고침"><i data-lucide="refresh-cw" aria-hidden="true"></i></button>
         <div class="dashboard-status" id="marketDashboardStatus">MARKET DATA · CONNECTING</div>
       </div>
     </div>
@@ -572,8 +573,8 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 </div>
 <div class="fed-dashboard" id="fedDashboard">
   <div class="fed-frame-toolbar">
-    <span class="fed-frame-title">FED BALANCE SHEET · H.4.1 ANALYZER</span>
-    <a class="fed-open-link" href="fed-dashboard.html?v=20260621-help" target="_blank" rel="noopener">OPEN FULL PAGE</a>
+    <div class="fed-frame-heading"><span class="fed-frame-icon"><i data-lucide="landmark" aria-hidden="true"></i></span><div><span class="fed-frame-eyebrow">03 / FED BALANCE SHEET</span><span class="fed-frame-title">연준 대차대조표 <small>H.4.1</small></span></div></div>
+    <a class="fed-open-link" href="fed-dashboard.html?v=20260621-help" target="_blank" rel="noopener" aria-label="연준 대차대조표 새 창에서 열기" title="새 창에서 열기"><span>새 창에서 열기</span><i data-lucide="external-link" aria-hidden="true"></i></a>
   </div>
   <iframe class="fed-frame" id="fedFrame" src="about:blank" data-src="fed-dashboard.html?v=20260621-help" title="Fed Balance Sheet Dashboard"></iframe>
 </div>
@@ -581,7 +582,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
   <div class="sites-shell">
     <div class="dashboard-top">
       <div>
-        <div class="dashboard-kicker">INVESTMENT LINKS · RESEARCH HUB</div>
+        <div class="dashboard-kicker"><i data-lucide="newspaper" aria-hidden="true"></i>04 / RESEARCH HUB</div>
         <div class="dashboard-title">투자 관련 사이트</div>
         <div class="dashboard-sub">투자 리서치 도구와 미국 주요 매체의 최신 시장 뉴스를 한 화면에서 확인합니다.</div>
       </div>
@@ -657,7 +658,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
   <div class="us-guide-shell">
     <div class="dashboard-top">
       <div>
-        <div class="dashboard-kicker">UNITED STATES · MARKET STRUCTURE GUIDE</div>
+        <div class="dashboard-kicker"><i data-lucide="book-open" aria-hidden="true"></i>05 / MARKET STRUCTURE GUIDE</div>
         <div class="dashboard-title">미국 경제 지표 해설</div>
         <div class="dashboard-sub">미 국채시장, 딜러 중개 기능과 달러 조달 여건을 읽는 핵심 지표를 구조별로 정리합니다.</div>
       </div>
@@ -840,7 +841,7 @@ tungsten:{label:"텅스텐",icon:"🪨",color:"#bbbbbb",note:"텅스텐 (USGS 20
 };
 function getResourceList(id){return Object.entries(RESOURCES).filter(([,r])=>r.countries.has(id)).map(([,r])=>r);}
 
-let curMetric='gdp',isLight=false,selId=null,curOverlay='none',showLabels=true,curResource=null;
+let curMetric='gdp',isLight=true,selId=null,curOverlay='none',showLabels=true,curResource=null;
 let colorScale,geoLayer,map,labelMarkers=[];
 const DATA_STATUS={map:{label:'지도 경계',status:'loading',detail:'대기'},fx:{label:'환율',status:'loading',detail:'대기'},commodities:{label:'귀금속',status:'loading',detail:'대기'},energy:{label:'에너지',status:'loading',detail:'대기'},news:{label:'뉴스',status:'loading',detail:'대기'}};
 const COUNTRY_ALIASES={"410":"한국 남한 코리아 korea republic of korea rok","840":"미국 미국달러 usa united states america us","156":"중국 china prc","392":"일본 japan","276":"독일 germany deutschland","826":"영국 uk united kingdom britain","250":"프랑스 france","643":"러시아 russia","356":"인도 india","076":"브라질 brazil","124":"캐나다 canada","036":"호주 australia","792":"튀르키예 터키 turkey turkiye","784":"아랍에미레이트 uae united arab emirates","704":"베트남 vietnam viet nam","408":"북한 north korea dprk"};
@@ -899,7 +900,7 @@ else if(curOverlay==='telecomcable'||curOverlay==='powercable'){
 }}
 
 function setMetric(m,btn){curMetric=m;document.querySelectorAll('.metric-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');if(curOverlay==='none')document.getElementById('metricLabel').textContent=mCfg[m].label;updateColors();renderAll();}
-function toggleTheme(){isLight=!isLight;document.body.classList.toggle('light',isLight);document.getElementById('themeToggle').textContent=isLight?'☀️':'🌙';updateColors();renderLegend();renderInsight();renderRegionChart();if(selId)renderDetail(selId);renderLabels();}
+function toggleTheme(){isLight=!isLight;document.body.classList.toggle('light',isLight);const button=document.getElementById('themeToggle');button.innerHTML='<i data-lucide="'+(isLight?'moon':'sun')+'" aria-hidden="true"></i>';button.title=isLight?'어두운 테마로 전환':'밝은 테마로 전환';button.setAttribute('aria-label',button.title);window.lucide?.createIcons();updateColors();renderLegend();renderInsight();renderRegionChart();if(selId)renderDetail(selId);renderLabels();}
 function toggleLabels(){showLabels=!showLabels;const btn=document.getElementById('labelToggleBtn');btn.style.color=showLabels?'var(--accent)':'var(--text-dim)';btn.style.borderColor=showLabels?'var(--accent)':'var(--border)';renderLabels();}
 
 // ═══ Font control panel ═══
