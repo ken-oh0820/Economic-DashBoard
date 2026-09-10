@@ -273,9 +273,9 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
         <span class="menu-card-content"><span class="menu-card-category">MARKET MONITOR</span><span class="menu-card-title">지표 모니터링</span><span class="menu-card-desc">시장 지수 · 금리 · 매크로</span></span>
         <span class="menu-card-bottom"><span class="menu-card-enter">바로가기</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
       </button>
-      <button type="button" class="main-menu-card menu-tone-amber" onclick="switchView('fed')" aria-label="연준 대차대조표">
-        <span class="menu-card-top"><span class="menu-card-icon" aria-hidden="true"><i data-lucide="landmark"></i></span><span class="menu-card-index">03</span></span>
-        <span class="menu-card-content"><span class="menu-card-category">FED BALANCE SHEET</span><span class="menu-card-title">연준 대차대조표</span><span class="menu-card-desc">연준 자산 · 지급준비금 · 유동성</span></span>
+      <button type="button" class="main-menu-card menu-tone-green" onclick="switchView('company')" aria-label="미국 기업 재무 분석">
+        <span class="menu-card-top"><span class="menu-card-icon" aria-hidden="true"><i data-lucide="building-2"></i></span><span class="menu-card-index">03</span></span>
+        <span class="menu-card-content"><span class="menu-card-category">COMPANY FINANCIALS</span><span class="menu-card-title">미국 기업 재무 분석</span><span class="menu-card-desc">CAPEX · 현금흐름 · 기업 실적</span></span>
         <span class="menu-card-bottom"><span class="menu-card-enter">바로가기</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
       </button>
       <button type="button" class="main-menu-card menu-tone-coral" onclick="switchView('sites')" aria-label="투자 관련 사이트">
@@ -288,9 +288,9 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
         <span class="menu-card-content"><span class="menu-card-category">ECONOMIC LIBRARY</span><span class="menu-card-title">미국 경제 지표 해설</span><span class="menu-card-desc">국채시장 · 달러 유동성 · 지표 해석</span></span>
         <span class="menu-card-bottom"><span class="menu-card-enter">바로가기</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
       </button>
-      <button type="button" class="main-menu-card menu-tone-green" onclick="switchView('company')" aria-label="미국 기업 재무 분석">
-        <span class="menu-card-top"><span class="menu-card-icon" aria-hidden="true"><i data-lucide="building-2"></i></span><span class="menu-card-index">06</span></span>
-        <span class="menu-card-content"><span class="menu-card-category">COMPANY FINANCIALS</span><span class="menu-card-title">미국 기업 재무 분석</span><span class="menu-card-desc">CAPEX · 현금흐름 · 기업 실적</span></span>
+      <button type="button" class="main-menu-card menu-tone-amber" onclick="switchView('fed')" aria-label="연준 대차대조표">
+        <span class="menu-card-top"><span class="menu-card-icon" aria-hidden="true"><i data-lucide="landmark"></i></span><span class="menu-card-index">06</span></span>
+        <span class="menu-card-content"><span class="menu-card-category">FED BALANCE SHEET</span><span class="menu-card-title">연준 대차대조표</span><span class="menu-card-desc">연준 자산 · 지급준비금 · 유동성</span></span>
         <span class="menu-card-bottom"><span class="menu-card-enter">바로가기</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
       </button>
     </nav>
@@ -573,7 +573,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 </div>
 <div class="fed-dashboard" id="fedDashboard">
   <div class="fed-frame-toolbar">
-    <div class="fed-frame-heading"><span class="fed-frame-icon"><i data-lucide="landmark" aria-hidden="true"></i></span><div><span class="fed-frame-eyebrow">03 / FED BALANCE SHEET</span><span class="fed-frame-title">연준 대차대조표 <small>H.4.1</small></span></div></div>
+    <div class="fed-frame-heading"><span class="fed-frame-icon"><i data-lucide="landmark" aria-hidden="true"></i></span><div><span class="fed-frame-eyebrow">06 / FED BALANCE SHEET</span><span class="fed-frame-title">연준 대차대조표 <small>H.4.1</small></span></div></div>
     <a class="fed-open-link" href="fed-dashboard.html?v=20260621-help" target="_blank" rel="noopener" aria-label="연준 대차대조표 새 창에서 열기" title="새 창에서 열기"><span>새 창에서 열기</span><i data-lucide="external-link" aria-hidden="true"></i></a>
   </div>
   <iframe class="fed-frame" id="fedFrame" src="about:blank" data-src="fed-dashboard.html?v=20260621-help" title="Fed Balance Sheet Dashboard"></iframe>
@@ -2980,6 +2980,6 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script defer src="assets/lucide-0.468.0.min.js"></script>
 <script defer src="assets/main-menu.js?v=20260910-menu"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
-<script type="module" src="assets/company-financials.mjs?v=20260910-ui"></script>
+<script type="module" src="assets/company-financials.mjs?v=20260911-menu-order"></script>
 </body>
 </html>
