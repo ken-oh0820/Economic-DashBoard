@@ -94,3 +94,14 @@ test('shared chart sits directly after sentiment cards and before macro indicato
   assert.match(html.slice(start,chart),/id="src-vix">[^]*?<\/div><\/div>\s*<\/div>\s*$/);
   assert.equal([...html.matchAll(/id="marketChartCanvas"/g)].length,1);
 });
+test('Korea, Japan and Brazil each have one consolidated bond link; US tenors remain',()=>{
+  const {context,nodes}=harness();
+  vm.runInContext('renderBondYields()',context);
+  const output=nodes.get('bondYieldGrid').innerHTML;
+  const links=[...output.matchAll(/class="bond-country-link source-card" href="([^"]+)"/g)].map(match=>match[1]);
+  assert.deepEqual(links,['south-korea','japan','brazil'].map(country=>'https://www.investing.com/rates-bonds/'+country+'-government-bonds'));
+  assert.equal([...output.matchAll(/class="bond-card source-card"/g)].length,9);
+  assert.equal([...output.matchAll(/rel="noopener noreferrer"/g)].length,12);
+  assert.doesNotMatch(output,/계산 미제공|bond-country-(?:kr|jp|br)|investing.com\/search/);
+  for(const series of ['DGS3MO','DGS1','DGS2','DGS5','DGS10','DGS20','DGS30','MORTGAGE30US','T10Y3M'])assert.ok(output.includes('/series/'+series+'"'));
+});

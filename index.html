@@ -255,7 +255,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 }
 }
 </style>
-<link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-monitor">
+<link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-bond-links">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260911-list">
 </head>
 <body class="menu-mode light">
@@ -1828,9 +1828,9 @@ const RATE_DECISION_SCHEDULES=[
 ];
 const BOND_YIELD_GROUPS=[
   {key:'us',flag:'🇺🇸',name:'미국 국채·주택금리',note:'FRED 원문',spreadSeries:'T10Y3M',mortgage:true},
-  {key:'kr',flag:'🇰🇷',name:'한국 국채',note:'FRED / Investing 원문'},
-  {key:'jp',flag:'🇯🇵',name:'일본 국채',note:'FRED / Investing 원문'},
-  {key:'br',flag:'🇧🇷',name:'브라질 국채',note:'Investing 원문'}
+  {key:'kr',flag:'🇰🇷',name:'한국 국채',url:'https://www.investing.com/rates-bonds/south-korea-government-bonds'},
+  {key:'jp',flag:'🇯🇵',name:'일본 국채',url:'https://www.investing.com/rates-bonds/japan-government-bonds'},
+  {key:'br',flag:'🇧🇷',name:'브라질 국채',url:'https://www.investing.com/rates-bonds/brazil-government-bonds'}
 ];
 const BOND_TV_SYMBOLS={
   kr:{'1y':'TVC:KR01Y','2y':'TVC:KR02Y','5y':'TVC:KR05Y','10y':'TVC:KR10Y','20y':'TVC:KR20Y','30y':'TVC:KR30Y'},
@@ -1986,12 +1986,14 @@ function renderBondYields(groups=BOND_YIELD_GROUPS){
     const cfg=MARKET_CHARTS[key];
     return '<a class="bond-card source-card" href="'+escHtml(marketSourceUrl(cfg))+'" target="_blank" rel="noopener noreferrer"><div class="bond-tenor '+escHtml(tone||'')+'">'+escHtml(label)+'</div><div class="bond-value source-link-value">원문 보기 ↗</div><div class="bond-source">'+(cfg.type==='fred'?'FRED':'Investing')+'</div></a>';
   }
-  box.innerHTML=groups.map(group=>{
+  const curves=groups.filter(group=>!group.url).map(group=>{
     const tenors=BOND_TENORS.map(tenor=>card('bond-'+group.key+'-'+tenor.key,tenor.label,tenor.tone)).join('');
     const mortgage=group.mortgage?card('bond-us-mortgage30','30년 모기지','bond-tenor-mortgage'):'';
     const spread=group.spreadSeries?card('bond-'+group.key+'-spread','10Y-3M'):'<div class="bond-card spread"><div class="bond-tenor">10Y-3M</div><div class="bond-value source-link-value">계산 미제공</div><div class="bond-source">만기별 수익률 원문 확인</div></div>';
     return '<div class="bond-country bond-country-'+escHtml(group.key)+'"><div class="bond-country-head"><div class="bond-country-name"><span class="bond-flag">'+escHtml(group.flag)+'</span><span>'+escHtml(group.name)+'</span></div><div class="bond-country-note">'+escHtml(group.note)+'</div></div><div class="bond-grid">'+tenors+mortgage+spread+'</div></div>';
   }).join('');
+  const links=groups.filter(group=>group.url).map(group=>'<a class="bond-country-link source-card" href="'+escHtml(group.url)+'" target="_blank" rel="noopener noreferrer"><span class="bond-country-name"><span class="bond-flag" aria-hidden="true">'+escHtml(group.flag)+'</span>'+escHtml(group.name)+'</span><span class="bond-country-link-source">Investing · 전체 만기 ↗</span></a>').join('');
+  box.innerHTML=curves+(links?'<div class="bond-country-links">'+links+'</div>':'');
 }
 function fetchBondYieldDashboard(){
   renderBondYields();
