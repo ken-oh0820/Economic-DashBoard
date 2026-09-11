@@ -86,3 +86,11 @@ test('monitor retains only sentiment and VIX cards and stops Bitcoin requests',(
   const {context}=harness();
   for(const key of ['sp500','nasdaq','gold','btc','kospi','kosdaq'])assert.equal(vm.runInContext('MARKET_CHARTS['+JSON.stringify(key)+']',context),undefined);
 });
+test('shared chart sits directly after sentiment cards and before macro indicators',()=>{
+  const start=html.indexOf('<div class="indicator-grid">');
+  const chart=html.indexOf('<div class="dashboard-panel market-chart-panel">');
+  const macro=html.indexOf('<div class="dashboard-panel macro-panel">');
+  assert.ok(start<chart&&chart<macro);
+  assert.match(html.slice(start,chart),/id="src-vix">[^]*?<\/div><\/div>\s*<\/div>\s*$/);
+  assert.equal([...html.matchAll(/id="marketChartCanvas"/g)].length,1);
+});

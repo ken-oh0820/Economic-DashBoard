@@ -452,6 +452,23 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       <div class="indicator-card" data-chart-key="cfng" role="button" tabindex="0"><div class="indicator-group">크립토 심리</div><div class="indicator-name">암호화폐 공포탐욕</div><div class="indicator-value loading" id="ind-cfng">연결 중</div><div class="indicator-change" id="chg-cfng">—</div><div class="indicator-note">Crypto Fear & Greed · 0~100</div><div class="indicator-source" id="src-cfng">Alternative.me</div></div>
       <div class="indicator-card" data-chart-key="vix" role="button" tabindex="0"><div class="indicator-group">변동성</div><div class="indicator-name">VIX</div><div class="indicator-value loading" id="ind-vix">연결 중</div><div class="indicator-change" id="chg-vix">—</div><div class="indicator-note">20↓ 안정 · 30↑ 경계</div><div class="indicator-source" id="src-vix">TradingView 공식 위젯</div></div>
     </div>
+    <div class="dashboard-panel market-chart-panel">
+      <div class="market-chart-head">
+        <div>
+          <div class="dashboard-panel-title" id="marketChartTitle">CHART · VIX</div>
+          <div class="market-chart-meta" id="marketChartMeta">카드를 클릭하면 최근 흐름을 표시합니다.</div>
+        </div>
+        <div class="chart-actions">
+          <div class="chart-range-tabs">
+            <button class="chart-range-btn active" data-range="1mo" onclick="setMarketChartRange('1mo')">1M</button>
+            <button class="chart-range-btn" data-range="3mo" onclick="setMarketChartRange('3mo')">3M</button>
+            <button class="chart-range-btn" data-range="1y" onclick="setMarketChartRange('1y')">1Y</button>
+          </div>
+          <a class="tradingview-link" id="tradingViewLink" href="https://www.tradingview.com/" target="_blank" rel="noopener">TRADINGVIEW ↗</a>
+        </div>
+      </div>
+      <div class="market-chart-canvas" id="marketChartCanvas"><div class="chart-loading">차트 데이터 대기 중</div></div>
+    </div>
     <div class="dashboard-panel macro-panel">
       <div class="macro-head">
         <div>
@@ -525,23 +542,6 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
         <div class="macro-badge" id="bondYieldStatus">BOND CURVE · CONNECTING</div>
       </div>
       <div id="bondYieldGrid"></div>
-    </div>
-    <div class="dashboard-panel market-chart-panel">
-      <div class="market-chart-head">
-        <div>
-          <div class="dashboard-panel-title" id="marketChartTitle">CHART · VIX</div>
-          <div class="market-chart-meta" id="marketChartMeta">카드를 클릭하면 최근 흐름을 표시합니다.</div>
-        </div>
-        <div class="chart-actions">
-          <div class="chart-range-tabs">
-            <button class="chart-range-btn active" data-range="1mo" onclick="setMarketChartRange('1mo')">1M</button>
-            <button class="chart-range-btn" data-range="3mo" onclick="setMarketChartRange('3mo')">3M</button>
-            <button class="chart-range-btn" data-range="1y" onclick="setMarketChartRange('1y')">1Y</button>
-          </div>
-          <a class="tradingview-link" id="tradingViewLink" href="https://www.tradingview.com/" target="_blank" rel="noopener">TRADINGVIEW ↗</a>
-        </div>
-      </div>
-      <div class="market-chart-canvas" id="marketChartCanvas"><div class="chart-loading">차트 데이터 대기 중</div></div>
     </div>
     <div class="dashboard-sections">
       <div class="dashboard-panel">
