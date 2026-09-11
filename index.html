@@ -255,7 +255,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 }
 }
 </style>
-<link rel="stylesheet" href="assets/dashboard-ui.css?v=20260911-source-links">
+<link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-monitor">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260911-list">
 </head>
 <body class="menu-mode light">
@@ -448,13 +448,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       </div>
     </div>
     <div class="indicator-grid">
-      <div class="indicator-card" data-chart-key="sp500" role="button" tabindex="0"><div class="indicator-group">글로벌 자산</div><div class="indicator-name">S&P 500</div><div class="indicator-value loading" id="ind-sp500">연결 중</div><div class="indicator-change" id="chg-sp500">—</div><div class="indicator-note">미국 대표지수</div><div class="indicator-source" id="src-sp500">TradingView 공식 위젯</div></div>
-      <div class="indicator-card" data-chart-key="nasdaq" role="button" tabindex="0"><div class="indicator-group">글로벌 자산</div><div class="indicator-name">나스닥</div><div class="indicator-value loading" id="ind-nasdaq">연결 중</div><div class="indicator-change" id="chg-nasdaq">—</div><div class="indicator-note">성장주·기술주 위험선호</div><div class="indicator-source" id="src-nasdaq">TradingView 공식 위젯</div></div>
-      <div class="indicator-card" data-chart-key="gold" role="button" tabindex="0"><div class="indicator-group">안전자산</div><div class="indicator-name">금</div><div class="indicator-value loading" id="ind-gold">연결 중</div><div class="indicator-change" id="chg-gold">—</div><div class="indicator-note">USD/온스 · 실질금리 민감</div><div class="indicator-source" id="src-gold">Worker/Yahoo</div></div>
-      <div class="indicator-card" data-chart-key="btc" role="button" tabindex="0"><div class="indicator-group">위험자산</div><div class="indicator-name">비트코인</div><div class="indicator-value loading" id="ind-btc">연결 중</div><div class="indicator-change" id="chg-btc">—</div><div class="indicator-note">BTC/USD · 유동성 민감</div><div class="indicator-source" id="src-btc">CoinGecko</div></div>
-      <div class="indicator-card" data-chart-key="kospi" role="button" tabindex="0"><div class="indicator-group">한국 증시</div><div class="indicator-name">코스피</div><div class="indicator-value loading" id="ind-kospi">연결 중</div><div class="indicator-change" id="chg-kospi">—</div><div class="indicator-note">한국 대표지수</div><div class="indicator-source" id="src-kospi">TradingView 공식 위젯</div></div>
-      <div class="indicator-card" data-chart-key="kosdaq" role="button" tabindex="0"><div class="indicator-group">한국 증시</div><div class="indicator-name">코스닥</div><div class="indicator-value loading" id="ind-kosdaq">연결 중</div><div class="indicator-change" id="chg-kosdaq">—</div><div class="indicator-note">성장주·중소형주 흐름</div><div class="indicator-source" id="src-kosdaq">TradingView 공식 위젯</div></div>
-      <div class="indicator-card row-break" data-chart-key="fng" role="button" tabindex="0"><div class="indicator-group">시장 심리</div><div class="indicator-name">CNN 공포탐욕지수</div><div class="indicator-value loading" id="ind-fng">연결 중</div><div class="indicator-change" id="chg-fng">—</div><div class="indicator-note">미국 주식시장 심리 · 0~100</div><div class="indicator-source" id="src-fng">CNN · Worker 필요</div></div>
+      <div class="indicator-card" data-chart-key="fng" role="button" tabindex="0"><div class="indicator-group">시장 심리</div><div class="indicator-name">CNN 공포탐욕지수</div><div class="indicator-value loading" id="ind-fng">연결 중</div><div class="indicator-change" id="chg-fng">—</div><div class="indicator-note">미국 주식시장 심리 · 0~100</div><div class="indicator-source" id="src-fng">CNN · Worker 필요</div></div>
       <div class="indicator-card" data-chart-key="cfng" role="button" tabindex="0"><div class="indicator-group">크립토 심리</div><div class="indicator-name">암호화폐 공포탐욕</div><div class="indicator-value loading" id="ind-cfng">연결 중</div><div class="indicator-change" id="chg-cfng">—</div><div class="indicator-note">Crypto Fear & Greed · 0~100</div><div class="indicator-source" id="src-cfng">Alternative.me</div></div>
       <div class="indicator-card" data-chart-key="vix" role="button" tabindex="0"><div class="indicator-group">변동성</div><div class="indicator-name">VIX</div><div class="indicator-value loading" id="ind-vix">연결 중</div><div class="indicator-change" id="chg-vix">—</div><div class="indicator-note">20↓ 안정 · 30↑ 경계</div><div class="indicator-source" id="src-vix">TradingView 공식 위젯</div></div>
     </div>
@@ -535,7 +529,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
     <div class="dashboard-panel market-chart-panel">
       <div class="market-chart-head">
         <div>
-          <div class="dashboard-panel-title" id="marketChartTitle">CHART · S&P 500</div>
+          <div class="dashboard-panel-title" id="marketChartTitle">CHART · VIX</div>
           <div class="market-chart-meta" id="marketChartMeta">카드를 클릭하면 최근 흐름을 표시합니다.</div>
         </div>
         <div class="chart-actions">
@@ -1639,11 +1633,6 @@ async function fetchNews() {
 }
 
 const MARKET_ITEMS=[
-  {key:'sp500',symbol:'^GSPC',value:'ind-sp500',change:'chg-sp500',source:'src-sp500',dec:2},
-  {key:'nasdaq',symbol:'^IXIC',value:'ind-nasdaq',change:'chg-nasdaq',source:'src-nasdaq',dec:2},
-  {key:'gold',symbol:'GC=F',value:'ind-gold',change:'chg-gold',source:'src-gold',dec:2,prefix:'$'},
-  {key:'kospi',symbol:'^KS11',value:'ind-kospi',change:'chg-kospi',source:'src-kospi',dec:2},
-  {key:'kosdaq',symbol:'^KQ11',value:'ind-kosdaq',change:'chg-kosdaq',source:'src-kosdaq',dec:2},
   {key:'vix',symbol:'^VIX',value:'ind-vix',change:'chg-vix',source:'src-vix',dec:2},
   {key:'dxy',symbol:'DX-Y.NYB',watch:'watch-dxy',dec:2},
   {key:'wti',symbol:'CL=F',watch:'watch-wti',dec:2,prefix:'$'},
@@ -1653,7 +1642,7 @@ const MARKET_ITEMS=[
 ];
 const DUBAI_CRUDE_FALLBACK={value:72.40,date:'2026-06',source:'참고값'};
 let marketLoading=false,marketTimer=null;
-let currentMarketChartKey='sp500',marketChartRange='1mo';
+let currentMarketChartKey='vix',marketChartRange='1mo';
 function investingSearchUrl(q){
   return 'https://www.investing.com/search/?q='+encodeURIComponent(q);
 }
@@ -1669,12 +1658,6 @@ function investingBondUrl(country,tenor){
   return investingSearchUrl(countryName+' '+tenorName+' Bond Yield');
 }
 const MARKET_CHARTS={
-  sp500:{label:'S&P 500',symbol:'^GSPC',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/SPX/'},
-  nasdaq:{label:'나스닥',symbol:'^IXIC',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/NASDAQ-IXIC/'},
-  gold:{label:'금',symbol:'GC=F',type:'yahoo',dec:2,prefix:'$',tv:'https://www.tradingview.com/symbols/TVC-GOLD/'},
-  btc:{label:'비트코인',symbol:'BTC-USD',type:'btc',dec:0,prefix:'$',tv:'https://www.tradingview.com/symbols/BTCUSD/'},
-  kospi:{label:'코스피',symbol:'^KS11',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/KRX-KOSPI/'},
-  kosdaq:{label:'코스닥',symbol:'^KQ11',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/KRX-KOSDAQ/'},
   fng:{label:'CNN 공포탐욕지수',type:'fng',dec:0,suffix:'',tv:'https://www.tradingview.com/search/?query=CNN%20Fear%20and%20Greed'},
   cfng:{label:'암호화폐 공포탐욕',type:'cfng',dec:0,suffix:'',tv:'https://www.tradingview.com/search/?query=Crypto%20Fear%20and%20Greed'},
   vix:{label:'VIX',symbol:'^VIX',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/CBOE-VIX/'},
@@ -2110,23 +2093,7 @@ async function fetchUsMacroDashboard(){
   }));
   setMacroStatus(liveCount?'ok':'warn','US MACRO · BLS '+liveCount+'/7 · FRED 원문 링크');
 }
-function renderIndicator(item,q){
-  const val=document.getElementById(item.value),chg=document.getElementById(item.change),src=document.getElementById(item.source);
-  if(!val)return;
-  if(!q){val.textContent='연결 실패';val.classList.remove('loading');val.classList.add('market-flat');if(chg)chg.textContent='—';if(src)src.textContent='소스 연결 실패';return;}
-  val.textContent=fmtMarketNumber(q.price,item);val.classList.remove('loading','market-flat');
-  const pct=typeof q.changePct==='number'?q.changePct:null;
-  if(chg){chg.className='indicator-change '+pctClass(pct||0);chg.textContent=pct===null?'—':(pct>0?'+':'')+pct.toFixed(2)+'%';}
-  if(src)src.textContent=(q.source||'Live')+(q.time?' · '+q.time:'');
-}
 function renderWatch(id,text,cls='market-flat'){const el=document.getElementById(id);if(!el)return;el.textContent=text;el.className=cls;}
-async function fetchBitcoinQuote(){
-  try{
-    const res=await fetchT('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true',4500);
-    const d=await res.json();const b=d.bitcoin;if(b?.usd)return {price:b.usd,changePct:b.usd_24h_change,source:'CoinGecko',time:new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})};
-  }catch(e){}
-  return null;
-}
 function parseCnnFearGreed(d){
   const fg=d?.fear_and_greed||d?.fearAndGreed||d?.fearGreed||d;
   const value=Number(fg?.score??fg?.value??fg?.y);
@@ -2179,16 +2146,6 @@ function updateTradingViewLink(cfg){
   link.textContent=cfg.linkText||'TRADINGVIEW ↗';
   link.setAttribute('aria-label',(cfg.label||'지표')+' 원문 차트 보기');
 }
-async function fetchBitcoinSeries(range=marketChartRange){
-  try{
-    const days=chartLimit(range);
-    const res=await fetchT('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days='+days,8000);
-    const d=await res.json();
-    const points=(d.prices||[]).map(p=>({t:p[0],v:p[1]})).filter(p=>typeof p.v==='number'&&isFinite(p.v));
-    if(points.length>1)return {points,source:'CoinGecko'};
-  }catch(e){}
-  return null;
-}
 async function fetchFearGreedSeries(range=marketChartRange){
   const urls=[
     WORKER_URL+'/cnn-fear-greed',
@@ -2236,7 +2193,6 @@ async function fetchBlsSeries(id,range=marketChartRange){
 }
 async function fetchMarketChartData(key){
   const cfg=MARKET_CHARTS[key];if(!cfg||sourceOnlyChart(cfg))return null;
-  if(cfg.type==='btc')return fetchBitcoinSeries(marketChartRange);
   if(cfg.type==='fng')return fetchFearGreedSeries(marketChartRange);
   if(cfg.type==='cfng')return fetchCryptoFearGreedSeries(marketChartRange);
   if(cfg.type==='bls')return fetchBlsSeries(cfg.series,marketChartRange);
@@ -2292,7 +2248,7 @@ function setMarketChartRange(range){
   document.querySelectorAll('.chart-range-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.range===range));
   showMarketChart(currentMarketChartKey);
 }
-const EXTERNAL_MARKET_INDICES={sp500:'SP:SPX',nasdaq:'NASDAQ:IXIC',kospi:'KRX:KOSPI',kosdaq:'KRX:KOSDAQ',vix:'TVC:VIX',gold:'TVC:GOLD'};
+const EXTERNAL_MARKET_INDICES={vix:'TVC:VIX'};
 function mountMarketSourceLinks(){
   const theme=document.body.classList.contains('light')?'light':'dark';
   Object.entries(EXTERNAL_MARKET_INDICES).forEach(([key,symbol])=>{
@@ -2331,7 +2287,6 @@ async function fetchMarketDashboard(force=false){
   });
   const hyEl=document.getElementById('watch-hy');
   if(hyEl){hyEl.className='market-flat';hyEl.innerHTML=sourceLinkHtml(marketSourceUrl(MARKET_CHARTS.hy),'원문 보기');}
-  const btc=await fetchBitcoinQuote();renderIndicator({value:'ind-btc',change:'chg-btc',source:'src-btc',prefix:'$',dec:0},btc);btc?ok++:fail++;
   const fng=await fetchFearGreed();
   const fngVal=document.getElementById('ind-fng'),fngChg=document.getElementById('chg-fng'),fngSrc=document.getElementById('src-fng');
   if(fng){const fngCls=fearGreedClass(fng.value);ok++;fngVal.textContent=String(fearGreedDisplayValue(fng.value));fngVal.classList.remove('loading');fngVal.className='indicator-value '+fngCls;fngChg.className='indicator-change '+fngCls;fngChg.textContent=fng.label;fngSrc.textContent=fng.source;}else{fail++;fngVal.textContent='Worker 필요';fngVal.classList.remove('loading');fngVal.className='indicator-value market-flat';fngChg.className='indicator-change market-flat';fngChg.textContent='CNN 프록시 미연결';fngSrc.textContent='CNN 데이터는 Worker 프록시 필요';}
@@ -2339,9 +2294,8 @@ async function fetchMarketDashboard(force=false){
   const cfngVal=document.getElementById('ind-cfng'),cfngChg=document.getElementById('chg-cfng'),cfngSrc=document.getElementById('src-cfng');
   if(cfng){const cfngCls=fearGreedClass(cfng.value);ok++;cfngVal.textContent=String(fearGreedDisplayValue(cfng.value));cfngVal.classList.remove('loading');cfngVal.className='indicator-value '+cfngCls;cfngChg.className='indicator-change '+cfngCls;cfngChg.textContent=cfng.label;cfngSrc.textContent=cfng.source;}else{fail++;cfngVal.textContent='실패';cfngVal.classList.remove('loading');cfngVal.className='indicator-value market-flat';cfngChg.className='indicator-change market-flat';cfngChg.textContent='—';cfngSrc.textContent='연결 실패';}
   renderWatch('watch-dubai','$'+DUBAI_CRUDE_FALLBACK.value.toFixed(2),'market-flat');
-  sourceRows.push({name:'시장 시세',state:ok?'ok':'error',text:ok+'개 성공'});
-  sourceRows.push({name:'주요 지수',state:'warn',text:'외부 표시 제한 · 원문 링크 제공'});
-  sourceRows.push({name:'CoinGecko BTC',state:btc?'ok':'error',text:btc?'정상':'실패'});
+  sourceRows.push({name:'심리 지표',state:ok?'ok':'error',text:ok+'개 성공'});
+  sourceRows.push({name:'VIX',state:'warn',text:'외부 표시 제한 · 원문 링크 제공'});
   sourceRows.push({name:'CNN Fear & Greed',state:fng?'ok':'warn',text:fng?'정상':'Worker 필요'});
   sourceRows.push({name:'Crypto Fear & Greed',state:cfng?'ok':'error',text:cfng?'정상':'실패'});
   sourceRows.push({name:'하이일드·원자재·환율',state:'warn',text:'원문 링크'});

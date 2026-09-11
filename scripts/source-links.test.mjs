@@ -25,7 +25,7 @@ function harness(){
     fetchT:async()=>{throw new Error('Unexpected network access');},
     encodeURIComponent,URL,URLSearchParams,
   });
-  const names=['investingSearchUrl','investingBondUrl','sourceLinkHtml','marketSourceUrl','sourceOnlyChart','showMarketChart','fetchMarketChartData','renderGlobalRates','renderBondYields','renderUsMacro','fetchBitcoinQuote','fetchBitcoinSeries','fetchBlsMacro'];
+  const names=['investingSearchUrl','investingBondUrl','sourceLinkHtml','marketSourceUrl','sourceOnlyChart','showMarketChart','fetchMarketChartData','renderGlobalRates','renderBondYields','renderUsMacro','fetchBlsMacro'];
   vm.runInContext(names.map(fn).join('\n')+'\n'+['MARKET_CHARTS','GLOBAL_RATE_ITEMS','BOND_TENORS','BOND_YIELD_GROUPS','US_MACRO_ITEMS'].map(declaration).join('\n')+'\nlet currentMarketChartKey="",marketChartRange="1mo";',context);
   return {context,nodes,ranges};
 }
@@ -71,12 +71,18 @@ test('policy rates and bond cards contain links instead of cached yields',()=>{
   }
   assert.match(nodes.get('usMacroGrid').innerHTML,/href="https:\/\/fred.stlouisfed.org\/series\/GDP"/);
 });
-test('failed Bitcoin and BLS requests never fall back to Yahoo or FRED',async()=>{
+test('failed BLS requests never fall back to Yahoo or FRED',async()=>{
   const {context}=harness();
   const urls=[];context.fetchT=async url=>{urls.push(url);throw Error('offline');};
-  assert.equal(await vm.runInContext('fetchBitcoinQuote()',context),null);
-  assert.equal(await vm.runInContext('fetchBitcoinSeries("1mo")',context),null);
   assert.equal(await vm.runInContext('fetchBlsMacro(US_MACRO_ITEMS[0])',context),null);
   assert.ok(urls.length>=3);
   assert.doesNotMatch(urls.join('\n'),/yahoo|stlouisfed|\/quotes/);
+});
+test('monitor retains only sentiment and VIX cards and stops Bitcoin requests',()=>{
+  const grid=html.slice(html.indexOf('<div class="indicator-grid">'),html.indexOf('<div class="dashboard-panel macro-panel">'));
+  assert.deepEqual([...grid.matchAll(/data-chart-key="([^"]+)"/g)].map(match=>match[1]),['fng','cfng','vix']);
+  assert.doesNotMatch(html,/fetchBitcoin|api\.coingecko\.com|ind-(?:sp500|nasdaq|gold|btc|kospi|kosdaq)/);
+  assert.match(html,/currentMarketChartKey='vix'/);
+  const {context}=harness();
+  for(const key of ['sp500','nasdaq','gold','btc','kospi','kosdaq'])assert.equal(vm.runInContext('MARKET_CHARTS['+JSON.stringify(key)+']',context),undefined);
 });

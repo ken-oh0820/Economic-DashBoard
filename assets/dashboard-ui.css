@@ -40,7 +40,7 @@ body .dashboard-status{font-size:11px;border-radius:6px;padding:9px 12px;white-s
 body .market-refresh-btn{width:36px;height:36px;padding:0;display:grid;place-items:center;border-radius:6px}
 body .dashboard-panel{padding:24px 0 0;margin-bottom:28px;border:0;border-top:1px solid var(--border);background:none}
 body .dashboard-panel-title{font-size:17px;font-weight:700;color:var(--text);margin-bottom:14px}
-body .indicator-grid{gap:12px;margin-bottom:28px}
+body .indicator-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:28px}
 body :is(.indicator-card,.macro-card,.bond-card,.site-card,.us-guide-card){border-radius:8px;background:var(--surface);border-color:var(--border);box-shadow:0 2px 3px #253c3b03}
 body .indicator-card{padding:18px;min-height:162px}
 body .indicator-group{font-size:11px;margin-bottom:12px}
