@@ -291,3 +291,9 @@ body.light .cf-shell{--cf-bg:#f3f5f7}
  body :is(.indicator-card,.macro-card,.bond-card,.site-card,.rate-schedule-body){transition:none}
  body .ticker-track{animation:none}
 }
+body .source-card{color:var(--text);text-decoration:none;min-width:0}
+body .source-link{color:var(--accent);font-weight:600;display:inline-block;line-height:1.5}
+body .source-link:hover,body .source-card:hover .source-link-value{text-decoration:underline}
+body .source-card:focus-visible,body .source-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+body .source-link-value{font-size:16px;line-height:1.5;overflow-wrap:anywhere;color:var(--accent)}
+body .chart-range-btn:disabled{opacity:.45;cursor:default}

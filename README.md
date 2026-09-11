@@ -8,25 +8,28 @@
 |------|------|
 | 📊 경제 지표 | GDP · 무역규모 · 실업률 · 인플레이션율 |
 | 🗺️ 지도 오버레이 | NATO · BRICS · G7 · 정치체제 · 천연자원 (석유/가스 생산·수출 TOP10) |
-| 💱 실시간 환율 | 원화 기준 주요 8개 통화 (1분마다 갱신) |
-| 🛢️ 원자재 시세 | WTI · 브렌트유 · 천연가스 · 금 (5분마다 갱신) |
+| 💱 일간 환율 | ExchangeRate-API의 일간 기준 환율 |
+| 🛢️ 원자재 | 에너지·금 시장 지표는 원문 링크, 지도 귀금속 패널은 별도 제공처 |
 | 📰 글로벌 뉴스 | Google/BBC/NYT 경제 뉴스 실시간 피드 |
 | 🌙 다크/라이트 | 테마 전환 지원 |
 
 ## 🚀 배포
 
-GitHub Pages에 `index.html` 하나만 올리면 됩니다.
+GitHub Pages에서 저장소 루트를 배포합니다. `assets/`, `data/`, 연준 앱 파일도 함께 필요합니다.
 
 1. 이 저장소를 GitHub에 생성
 2. Settings → Pages → Source: `main` / `/ (root)` → Save
 3. `https://유저명.github.io/economic-atlas/` 에서 접속
 
-## 📡 사용 API (모두 무료, 키 불필요)
+## 📡 주요 외부 연결
 
 - **지도 타일**: [CartoDB](https://carto.com/) (dark/light nolabels)
 - **국경 데이터**: [Natural Earth TopoJSON](https://github.com/topojson/world-atlas) via jsDelivr
-- **환율**: [Frankfurter API](https://www.frankfurter.app/) (ECB 기준)
-- **원자재**: [Yahoo Finance](https://finance.yahoo.com/) via allorigins proxy
+- **환율**: [ExchangeRate-API](https://www.exchangerate-api.com/)의 공개 일간 API
+- **에너지·시장 지표**: TradingView 등 제공처 원문 링크 (Yahoo 수집 없음)
+- **미국 CPI·고용**: BLS 공식 API. 실패 시 FRED로 재시도하지 않음
+- **FRED 지표·ICE 하이일드**: 원문 링크만 제공. CSV 다운로드·차트 이미지·수치 재배포 없음
+- **Treasury 포지션**: OFR/CFTC 공식 API. 정기 작업은 이 두 출처만 갱신
 - **뉴스**: Google News / BBC / NYT RSS via rss2json + allorigins
 
 ## 📊 데이터 출처
@@ -38,4 +41,15 @@ GitHub Pages에 `index.html` 하나만 올리면 됩니다.
 
 ## 📝 라이선스
 
-MIT License
+프로젝트 코드: MIT License. 외부 데이터·상표·이미지의 사용권까지 포함하지 않습니다.
+
+## 데이터 접근 변경 (2026-09-11)
+
+법적 위험 점검 1~3번에 따라 Yahoo 자동 시세/차트 수집, FRED CSV/이미지 추출,
+ICE BofA 하이일드 수치 재표시를 제거했습니다. 국채·모기지·글로벌 정책금리 및
+FRED 의존 매크로는 외부 링크로 전환했고, 배포 스냅샷의 FRED 값도 삭제했습니다.
+SOFR는 뉴욕 연준 원문으로 연결합니다. 링크 대상의 약관과 접근 제한은 그대로 적용됩니다.
+
+이 변경은 전체 사이트의 법적 적합성을 보장하지 않습니다. CNN·뉴스·귀금속 등
+다른 제공처와 기존 이미지의 권리는 이번 범위 밖입니다. 과거 Git 이력 및 별도로
+배포된 Cloudflare Worker의 코드는 이 저장소 변경만으로 삭제되지 않습니다.

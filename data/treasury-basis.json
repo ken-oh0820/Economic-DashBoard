@@ -1,11 +1,5 @@
 {
   "updatedAt": "2026-09-11T14:24:35.053Z",
-  "repo": {
-    "sofr": 3.62,
-    "iorb": 3.65,
-    "date": "2026-09-10",
-    "source": "NY Fed/FRED"
-  },
   "position": {
     "value": -776362078904.29,
     "prev": -782729978531.05,
@@ -17,12 +11,5 @@
     "change": -3229578,
     "date": "2026-09-01",
     "source": "CFTC TFF"
-  },
-  "mortgage": {
-    "value": 6.76,
-    "prev": 6.71,
-    "month": 6.69,
-    "date": "2026-09-10",
-    "source": "Freddie Mac/FRED"
   }
 }
