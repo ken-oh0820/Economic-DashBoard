@@ -27,9 +27,9 @@ GitHub Pages에서 저장소 루트를 배포합니다. `assets/`, `data/`, 연�
 - **국경 데이터**: [Natural Earth TopoJSON](https://github.com/topojson/world-atlas) via jsDelivr
 - **환율**: [ExchangeRate-API](https://www.exchangerate-api.com/)의 공개 일간 API
 - **에너지·시장 지표**: TradingView 등 제공처 원문 링크 (Yahoo 수집 없음)
-- **미국 CPI·고용**: BLS 공식 API. 실패 시 FRED로 재시도하지 않음
-- **FRED 지표·ICE 하이일드**: 원문 링크만 제공. CSV 다운로드·차트 이미지·수치 재배포 없음
-- **Treasury 포지션**: OFR/CFTC 공식 API. 정기 작업은 이 두 출처만 갱신
+- **미국 매크로·미국 국채**: FRED 공식 API로 BLS·BEA·Federal Reserve 공개 통계를 3시간마다 확인. 서버에서 API 키 사용, 사이트는 공개 스냅샷만 조회
+- **모기지·ICE 하이일드·미확인 시장 지표**: 원문 링크 유지. FRED 웹페이지/CSV/차트 이미지 추출 없음
+- **Treasury 포지션**: OFR/CFTC 공식 API
 - **뉴스**: Google News / BBC / NYT RSS via rss2json + allorigins
 
 ## 📊 데이터 출처
@@ -44,6 +44,11 @@ GitHub Pages에서 저장소 루트를 배포합니다. `assets/`, `data/`, 연�
 프로젝트 코드: MIT License. 외부 데이터·상표·이미지의 사용권까지 포함하지 않습니다.
 
 ## 데이터 접근 변경 (2026-09-11)
+
+2026-09-12 업데이트: [공식 데이터 연결 정책](scripts/OFFICIAL-DATA.md)에 따라
+명시적으로 허용한 미국 정부 통계만 FRED 공식 API로 복원합니다. 매번 공개 도메인
+분류를 확인하며, API 키가 있다는 이유로 모든 FRED 자료를 재배포하지 않습니다.
+아래 내용은 이전 변경 이력입니다.
 
 법적 위험 점검 1~3번에 따라 Yahoo 자동 시세/차트 수집, FRED CSV/이미지 추출,
 ICE BofA 하이일드 수치 재표시를 제거했습니다. 국채·모기지·글로벌 정책금리 및

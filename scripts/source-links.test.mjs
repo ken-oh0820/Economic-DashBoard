@@ -71,12 +71,13 @@ test('policy rates and bond cards contain links instead of cached yields',()=>{
   }
   assert.match(nodes.get('usMacroGrid').innerHTML,/href="https:\/\/fred.stlouisfed.org\/series\/GDP"/);
 });
-test('failed BLS requests never fall back to Yahoo or FRED',async()=>{
+test('macro requests use the shared official snapshot without browser proxies',async()=>{
   const {context}=harness();
   const urls=[];context.fetchT=async url=>{urls.push(url);throw Error('offline');};
+  let loads=0;context.OfficialData={load:async()=>{loads++;},get:()=>null};
   assert.equal(await vm.runInContext('fetchBlsMacro(US_MACRO_ITEMS[0])',context),null);
-  assert.ok(urls.length>=3);
-  assert.doesNotMatch(urls.join('\n'),/yahoo|stlouisfed|\/quotes/);
+  assert.equal(loads,1);
+  assert.equal(urls.length,0);
 });
 test('monitor retains only sentiment and VIX cards and stops Bitcoin requests',()=>{
   const grid=html.slice(html.indexOf('<div class="indicator-grid">'),html.indexOf('<div class="dashboard-panel macro-panel">'));

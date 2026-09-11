@@ -255,7 +255,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 }
 }
 </style>
-<link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-bond-links">
+<link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-official-data">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260911-list">
 </head>
 <body class="menu-mode light">
@@ -473,7 +473,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       <div class="macro-head">
         <div>
           <div class="dashboard-panel-title">미국 매크로 지표</div>
-          <div class="macro-sub">물가·고용: BLS 데이터 · GDP·PCE: FRED 원문 링크</div>
+          <div class="macro-sub">BLS · BEA · Federal Reserve / FRED · 3시간마다 갱신 확인 · 지표별 관측 기준일 상이</div>
         </div>
         <div class="macro-badge" id="macroStatus">US MACRO · CONNECTING</div>
       </div>
@@ -773,6 +773,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
   </div>
 </div>
 <div id="tooltip"></div>
+<script src="assets/official-data.js?v=20260912"></script>
 <script>
 const eData={"004":{name:"아프가니스탄",flag:"🇦🇫",region:"아시아",gdp:18.1,trade:4.0,unemployment:14.4,inflation:5.8},"008":{name:"알바니아",flag:"🇦🇱",region:"유럽",gdp:29.9,trade:11.5,unemployment:10.6,inflation:2.4},"012":{name:"알제리",flag:"🇩🇿",region:"아프리카",gdp:288.0,trade:95.0,unemployment:11.4,inflation:6.1},"024":{name:"앙골라",flag:"🇦🇴",region:"아프리카",gdp:115.2,trade:45.0,unemployment:8.0,inflation:28.0},"032":{name:"아르헨티나",flag:"🇦🇷",region:"아메리카",gdp:683.4,trade:165.0,unemployment:6.9,inflation:136.0},"036":{name:"호주",flag:"🇦🇺",region:"오세아니아",gdp:1829.5,trade:660.0,unemployment:4.1,inflation:3.2},"040":{name:"오스트리아",flag:"🇦🇹",region:"유럽",gdp:566.5,trade:450.0,unemployment:5.4,inflation:2.9},"050":{name:"방글라데시",flag:"🇧🇩",region:"아시아",gdp:475.0,trade:120.0,unemployment:5.1,inflation:10.4},"056":{name:"벨기에",flag:"🇧🇪",region:"유럽",gdp:717.0,trade:1150.0,unemployment:5.6,inflation:2.8},"068":{name:"볼리비아",flag:"🇧🇴",region:"아메리카",gdp:57.1,trade:15.0,unemployment:4.5,inflation:5.4},"076":{name:"브라질",flag:"🇧🇷",region:"아메리카",gdp:2256.9,trade:740.0,unemployment:6.7,inflation:5.7},"100":{name:"불가리아",flag:"🇧🇬",region:"유럽",gdp:127.9,trade:88.0,unemployment:4.3,inflation:3.5},"116":{name:"캄보디아",flag:"🇰🇭",region:"아시아",gdp:48.8,trade:50.0,unemployment:0.3,inflation:2.2},"120":{name:"카메룬",flag:"🇨🇲",region:"아프리카",gdp:60.6,trade:14.0,unemployment:3.5,inflation:5.5},"124":{name:"캐나다",flag:"🇨🇦",region:"아메리카",gdp:2283.6,trade:1000.0,unemployment:6.3,inflation:2.3},"152":{name:"칠레",flag:"🇨🇱",region:"아메리카",gdp:347.2,trade:200.0,unemployment:8.7,inflation:4.2},"156":{name:"중국",flag:"🇨🇳",region:"아시아",gdp:19398.6,trade:6450.0,unemployment:5.0,inflation:0.0},"170":{name:"콜롬비아",flag:"🇨🇴",region:"아메리카",gdp:438.1,trade:110.0,unemployment:9.5,inflation:6.5},"180":{name:"콩고민주공화국",flag:"🇨🇩",region:"아프리카",gdp:82.3,trade:24.0,unemployment:4.5,inflation:22.5},"188":{name:"코스타리카",flag:"🇨🇷",region:"아메리카",gdp:102.6,trade:42.0,unemployment:7.4,inflation:1.8},"191":{name:"크로아티아",flag:"🇭🇷",region:"유럽",gdp:103.9,trade:62.0,unemployment:5.8,inflation:3.2},"203":{name:"체코",flag:"🇨🇿",region:"유럽",gdp:383.4,trade:340.0,unemployment:2.8,inflation:2.6},"208":{name:"덴마크",flag:"🇩🇰",region:"유럽",gdp:459.6,trade:268.0,unemployment:2.8,inflation:2.2},"218":{name:"에콰도르",flag:"🇪🇨",region:"아메리카",gdp:130.5,trade:57.0,unemployment:3.6,inflation:1.0},"818":{name:"이집트",flag:"🇪🇬",region:"아프리카",gdp:349.3,trade:145.0,unemployment:7.0,inflation:27.5},"231":{name:"에티오피아",flag:"🇪🇹",region:"아프리카",gdp:109.5,trade:22.0,unemployment:3.5,inflation:28.2},"246":{name:"핀란드",flag:"🇫🇮",region:"유럽",gdp:314.7,trade:195.0,unemployment:10.4,inflation:1.5},"250":{name:"프랑스",flag:"🇫🇷",region:"유럽",gdp:3361.6,trade:1350.0,unemployment:7.7,inflation:1.1},"266":{name:"가봉",flag:"🇬🇦",region:"아프리카",gdp:21.5,trade:11.0,unemployment:19.5,inflation:3.1},"276":{name:"독일",flag:"🇩🇪",region:"유럽",gdp:5013.6,trade:3250.0,unemployment:3.8,inflation:2.1},"288":{name:"가나",flag:"🇬🇭",region:"아프리카",gdp:112.0,trade:28.0,unemployment:3.5,inflation:18.5},"300":{name:"그리스",flag:"🇬🇷",region:"유럽",gdp:282.0,trade:130.0,unemployment:9.8,inflation:2.5},"320":{name:"과테말라",flag:"🇬🇹",region:"아메리카",gdp:120.9,trade:38.0,unemployment:2.4,inflation:3.0},"332":{name:"아이티",flag:"🇭🇹",region:"아메리카",gdp:30.9,trade:4.5,unemployment:15.0,inflation:21.0},"340":{name:"온두라스",flag:"🇭🇳",region:"아메리카",gdp:39.4,trade:20.0,unemployment:5.4,inflation:5.2},"348":{name:"헝가리",flag:"🇭🇺",region:"유럽",gdp:247.8,trade:235.0,unemployment:4.2,inflation:4.8},"356":{name:"인도",flag:"🇮🇳",region:"아시아",gdp:4125.2,trade:1280.0,unemployment:7.9,inflation:4.9},"360":{name:"인도네시아",flag:"🇮🇩",region:"아시아",gdp:1443.3,trade:510.0,unemployment:5.1,inflation:2.3},"364":{name:"이란",flag:"🇮🇷",region:"중동",gdp:356.5,trade:100.0,unemployment:8.5,inflation:37.5},"368":{name:"이라크",flag:"🇮🇶",region:"중동",gdp:265.5,trade:115.0,unemployment:13.5,inflation:3.5},"372":{name:"아일랜드",flag:"🇮🇪",region:"유럽",gdp:708.8,trade:720.0,unemployment:4.4,inflation:2.5},"376":{name:"이스라엘",flag:"🇮🇱",region:"중동",gdp:610.8,trade:240.0,unemployment:4.1,inflation:3.2},"380":{name:"이탈리아",flag:"🇮🇹",region:"유럽",gdp:2543.7,trade:1150.0,unemployment:5.8,inflation:1.7},"392":{name:"일본",flag:"🇯🇵",region:"아시아",gdp:4279.8,trade:1540.0,unemployment:2.6,inflation:2.9},"398":{name:"카자흐스탄",flag:"🇰🇿",region:"아시아",gdp:300.1,trade:110.0,unemployment:4.6,inflation:10.2},"404":{name:"케냐",flag:"🇰🇪",region:"아프리카",gdp:136.0,trade:30.0,unemployment:5.4,inflation:6.8},"408":{name:"북한",flag:"🇰🇵",region:"아시아",gdp:18.0,trade:1.5,unemployment:15.0,inflation:55.0},"410":{name:"대한민국",flag:"🇰🇷",region:"아시아",gdp:1858.6,trade:1280.0,unemployment:2.9,inflation:2.3},"414":{name:"쿠웨이트",flag:"🇰🇼",region:"중동",gdp:157.5,trade:98.0,unemployment:2.2,inflation:3.1},"418":{name:"라오스",flag:"🇱🇦",region:"아시아",gdp:16.9,trade:11.0,unemployment:0.7,inflation:18.5},"422":{name:"레바논",flag:"🇱🇧",region:"중동",gdp:28.3,trade:16.0,unemployment:28.0,inflation:85.0},"434":{name:"리비아",flag:"🇱🇾",region:"아프리카",gdp:47.9,trade:34.0,unemployment:18.5,inflation:3.2},"458":{name:"말레이시아",flag:"🇲🇾",region:"아시아",gdp:470.6,trade:510.0,unemployment:3.2,inflation:2.1},"484":{name:"멕시코",flag:"🇲🇽",region:"아메리카",gdp:1862.7,trade:1120.0,unemployment:2.6,inflation:4.6},"504":{name:"모로코",flag:"🇲🇦",region:"아프리카",gdp:179.6,trade:75.0,unemployment:12.5,inflation:2.2},"508":{name:"모잠비크",flag:"🇲🇿",region:"아프리카",gdp:24.7,trade:10.0,unemployment:3.3,inflation:6.5},"516":{name:"나미비아",flag:"🇳🇦",region:"아프리카",gdp:14.7,trade:9.0,unemployment:19.5,inflation:5.0},"524":{name:"네팔",flag:"🇳🇵",region:"아시아",gdp:45.5,trade:16.0,unemployment:11.0,inflation:5.6},"528":{name:"네덜란드",flag:"🇳🇱",region:"유럽",gdp:1320.6,trade:1450.0,unemployment:3.9,inflation:2.8},"554":{name:"뉴질랜드",flag:"🇳🇿",region:"오세아니아",gdp:262.9,trade:105.0,unemployment:4.8,inflation:2.5},"558":{name:"니카라과",flag:"🇳🇮",region:"아메리카",gdp:20.7,trade:9.0,unemployment:4.5,inflation:4.0},"566":{name:"나이지리아",flag:"🇳🇬",region:"아프리카",gdp:285.0,trade:125.0,unemployment:4.5,inflation:32.0},"578":{name:"노르웨이",flag:"🇳🇴",region:"유럽",gdp:517.1,trade:295.0,unemployment:2.0,inflation:3.5},"586":{name:"파키스탄",flag:"🇵🇰",region:"아시아",gdp:410.5,trade:95.0,unemployment:6.5,inflation:9.5},"604":{name:"페루",flag:"🇵🇪",region:"아메리카",gdp:318.5,trade:115.0,unemployment:4.4,inflation:2.8},"608":{name:"필리핀",flag:"🇵🇭",region:"아시아",gdp:494.2,trade:230.0,unemployment:4.2,inflation:3.2},"616":{name:"폴란드",flag:"🇵🇱",region:"유럽",gdp:1039.6,trade:680.0,unemployment:3.1,inflation:4.0},"620":{name:"포르투갈",flag:"🇵🇹",region:"유럽",gdp:337.9,trade:200.0,unemployment:6.4,inflation:2.3},"634":{name:"카타르",flag:"🇶🇦",region:"중동",gdp:222.1,trade:168.0,unemployment:0.1,inflation:1.3},"642":{name:"루마니아",flag:"🇷🇴",region:"유럽",gdp:422.5,trade:245.0,unemployment:5.5,inflation:5.8},"643":{name:"러시아",flag:"🇷🇺",region:"유럽",gdp:2540.7,trade:820.0,unemployment:3.0,inflation:9.1},"682":{name:"사우디아라비아",flag:"🇸🇦",region:"중동",gdp:1268.5,trade:585.0,unemployment:3.9,inflation:2.0},"686":{name:"세네갈",flag:"🇸🇳",region:"아프리카",gdp:36.8,trade:12.0,unemployment:3.2,inflation:4.5},"703":{name:"슬로바키아",flag:"🇸🇰",region:"유럽",gdp:154.6,trade:158.0,unemployment:5.9,inflation:3.1},"705":{name:"슬로베니아",flag:"🇸🇮",region:"유럽",gdp:79.2,trade:68.0,unemployment:3.9,inflation:2.5},"706":{name:"소말리아",flag:"🇸🇴",region:"아프리카",gdp:12.9,trade:1.8,unemployment:19.5,inflation:5.0},"710":{name:"남아프리카공화국",flag:"🇿🇦",region:"아프리카",gdp:426.4,trade:215.0,unemployment:33.0,inflation:4.5},"724":{name:"스페인",flag:"🇪🇸",region:"유럽",gdp:1891.4,trade:850.0,unemployment:10.1,inflation:2.4},"729":{name:"수단",flag:"🇸🇩",region:"아프리카",gdp:35.9,trade:8.5,unemployment:20.0,inflation:200.0},"752":{name:"스웨덴",flag:"🇸🇪",region:"유럽",gdp:662.3,trade:410.0,unemployment:9.0,inflation:1.8},"756":{name:"스위스",flag:"🇨🇭",region:"유럽",gdp:1002.7,trade:720.0,unemployment:2.3,inflation:0.9},"764":{name:"태국",flag:"🇹🇭",region:"아시아",gdp:558.6,trade:540.0,unemployment:1.0,inflation:0.4},"788":{name:"튀니지",flag:"🇹🇳",region:"아프리카",gdp:59.1,trade:37.0,unemployment:15.0,inflation:7.0},"792":{name:"튀르키예",flag:"🇹🇷",region:"유럽",gdp:1565.5,trade:650.0,unemployment:8.4,inflation:43.0},"800":{name:"우간다",flag:"🇺🇬",region:"아프리카",gdp:65.0,trade:11.0,unemployment:2.8,inflation:4.5},"804":{name:"우크라이나",flag:"🇺🇦",region:"유럽",gdp:209.7,trade:85.0,unemployment:20.5,inflation:12.5},"784":{name:"아랍에미리트",flag:"🇦🇪",region:"중동",gdp:569.1,trade:520.0,unemployment:3.0,inflation:2.5},"826":{name:"영국",flag:"🇬🇧",region:"유럽",gdp:3958.8,trade:1460.0,unemployment:4.5,inflation:2.8},"840":{name:"미국",flag:"🇺🇸",region:"아메리카",gdp:30615.7,trade:5750.0,unemployment:4.3,inflation:2.7},"858":{name:"우루과이",flag:"🇺🇾",region:"아메리카",gdp:85.0,trade:28.0,unemployment:8.0,inflation:5.5},"860":{name:"우즈베키스탄",flag:"🇺🇿",region:"아시아",gdp:137.5,trade:32.0,unemployment:5.3,inflation:10.0},"862":{name:"베네수엘라",flag:"🇻🇪",region:"아메리카",gdp:82.8,trade:19.0,unemployment:6.5,inflation:269.9},"704":{name:"베트남",flag:"🇻🇳",region:"아시아",gdp:484.7,trade:760.0,unemployment:2.0,inflation:3.4},"887":{name:"예멘",flag:"🇾🇪",region:"중동",gdp:17.4,trade:5.0,unemployment:13.5,inflation:42.0},"894":{name:"잠비아",flag:"🇿🇲",region:"아프리카",gdp:29.4,trade:11.0,unemployment:12.0,inflation:13.3},"716":{name:"짐바브웨",flag:"🇿🇼",region:"아프리카",gdp:53.3,trade:9.0,unemployment:5.5,inflation:35.0},"104":{name:"미얀마",flag:"🇲🇲",region:"아시아",gdp:59.4,trade:30.0,unemployment:2.2,inflation:8.6},"795":{name:"투르크메니스탄",flag:"🇹🇲",region:"아시아",gdp:82.0,trade:18.0,unemployment:4.0,inflation:6.0},"031":{name:"아제르바이잔",flag:"🇦🇿",region:"아시아",gdp:78.7,trade:38.0,unemployment:5.6,inflation:2.1},"702":{name:"싱가포르",flag:"🇸🇬",region:"아시아",gdp:525.2,trade:980.0,unemployment:2.0,inflation:2.5}};
 
@@ -1442,7 +1443,7 @@ function sourceLinkHtml(url,label,cls='source-link'){
 function marketSourceUrl(cfg){
   return cfg.sourceUrl||(cfg.type==='fred'&&cfg.series?'https://fred.stlouisfed.org/series/'+encodeURIComponent(cfg.series):cfg.tv)||'https://www.tradingview.com/';
 }
-function sourceOnlyChart(cfg){return ['yahoo','fred','search','curve'].includes(cfg?.type);}
+function sourceOnlyChart(cfg){return !globalThis.OfficialData?.get(cfg)&&['yahoo','fred','bls','search','curve'].includes(cfg?.type);}
 function renderEnergyLinks(){
   const items=[
     ['WTI 원유','https://www.tradingview.com/symbols/NYMEX-CL1!/'],
@@ -1698,18 +1699,18 @@ const MARKET_CHARTS={
   'bond-br-10y':{label:'브라질 국채 10년',type:'search',sourceUrl:investingBondUrl('br','10y'),linkText:'INVESTING LINK ↗',emptyText:'브라질 국채 10년물 Investing 열기 ↗'},
   'bond-br-20y':{label:'브라질 국채 20년',type:'search',sourceUrl:investingBondUrl('br','20y'),linkText:'INVESTING LINK ↗',emptyText:'브라질 국채 20년물 Investing 검색 열기 ↗'},
   'bond-br-30y':{label:'브라질 국채 30년',type:'search',sourceUrl:investingBondUrl('br','30y'),linkText:'INVESTING LINK ↗',emptyText:'브라질 국채 30년물 Investing 검색 열기 ↗'},
-  'macro-cpi':{label:'CPI',type:'bls',series:'CUSR0000SA0',fallbackFred:'CPIAUCSL',dec:1,sourceUrl:'https://data.bls.gov/timeseries/CUSR0000SA0',linkText:'BLS CHART VIEW ↗'},
-  'macro-core-cpi':{label:'Core CPI',type:'bls',series:'CUSR0000SA0L1E',fallbackFred:'CPILFESL',dec:1,sourceUrl:'https://data.bls.gov/timeseries/CUSR0000SA0L1E',linkText:'BLS CHART VIEW ↗'},
-  'macro-ppi':{label:'PPI',type:'bls',series:'WPSFD4',fallbackFred:'PPIACO',dec:1,sourceUrl:'https://data.bls.gov/timeseries/WPSFD4',linkText:'BLS CHART VIEW ↗'},
-  'macro-core-ppi':{label:'Core PPI',type:'bls',series:'WPSFD49116',fallbackFred:'WPSFD49116',dec:1,sourceUrl:'https://data.bls.gov/timeseries/WPSFD49116',linkText:'BLS CHART VIEW ↗'},
-  'macro-unrate':{label:'실업률',type:'bls',series:'LNS14000000',fallbackFred:'UNRATE',dec:1,suffix:'%',sourceUrl:'https://data.bls.gov/timeseries/LNS14000000',linkText:'BLS CHART VIEW ↗'},
-  'macro-payems':{label:'비농업고용',type:'bls',series:'CES0000000001',fallbackFred:'PAYEMS',dec:0,suffix:'K',sourceUrl:'https://data.bls.gov/timeseries/CES0000000001',linkText:'BLS CHART VIEW ↗'},
-  'macro-ahe':{label:'시간당 임금',type:'bls',series:'CES0500000003',fallbackFred:'CES0500000003',dec:2,prefix:'$',sourceUrl:'https://data.bls.gov/timeseries/CES0500000003',linkText:'BLS CHART VIEW ↗'},
+  'macro-cpi':{label:'CPI (전년비)',type:'bls',transform:'yoy',series:'CUSR0000SA0',fallbackFred:'CPIAUCSL',suffix:'%',dec:1,sourceUrl:'https://fred.stlouisfed.org/series/CPIAUCSL',linkText:'FRED CHART VIEW ↗'},
+  'macro-core-cpi':{label:'Core CPI (전년비)',type:'bls',transform:'yoy',series:'CUSR0000SA0L1E',fallbackFred:'CPILFESL',suffix:'%',dec:1,sourceUrl:'https://fred.stlouisfed.org/series/CPILFESL',linkText:'FRED CHART VIEW ↗'},
+  'macro-ppi':{label:'PPI (전년비)',type:'bls',transform:'yoy',series:'WPSFD4',fallbackFred:'PPIFIS',suffix:'%',dec:1,sourceUrl:'https://fred.stlouisfed.org/series/PPIFIS',linkText:'FRED CHART VIEW ↗'},
+  'macro-core-ppi':{label:'Core PPI (전년비)',type:'bls',transform:'yoy',series:'WPSFD49116',fallbackFred:'WPSFD49116',suffix:'%',dec:1,sourceUrl:'https://fred.stlouisfed.org/series/WPSFD49116',linkText:'FRED CHART VIEW ↗'},
+  'macro-unrate':{label:'실업률',type:'bls',series:'LNS14000000',fallbackFred:'UNRATE',dec:1,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/UNRATE',linkText:'FRED CHART VIEW ↗'},
+  'macro-payems':{label:'비농업고용 (전월 증감)',type:'bls',transform:'change',series:'CES0000000001',fallbackFred:'PAYEMS',dec:0,suffix:'K',sourceUrl:'https://fred.stlouisfed.org/series/PAYEMS',linkText:'FRED CHART VIEW ↗'},
+  'macro-ahe':{label:'시간당 임금 (전년비)',type:'bls',transform:'yoy',series:'CES0500000003',fallbackFred:'CES0500000003',suffix:'%',dec:1,sourceUrl:'https://fred.stlouisfed.org/series/CES0500000003',linkText:'FRED CHART VIEW ↗'},
   'macro-ngdp':{label:'명목 GDP',type:'fred',series:'GDP',range:'1y',dec:2,prefix:'$',suffix:'T',scale:0.001,sourceUrl:'https://fred.stlouisfed.org/series/GDP',linkText:'FRED CHART VIEW ↗'},
   'macro-rgdp':{label:'실질 GDP',type:'fred',series:'GDPC1',range:'1y',dec:2,prefix:'$',suffix:'T',scale:0.001,sourceUrl:'https://fred.stlouisfed.org/series/GDPC1',linkText:'FRED CHART VIEW ↗'},
   'macro-inflation':{label:'인플레이션(PCE)',type:'fred',series:'PCEPI',range:'1y',dec:1,suffix:'%',transform:'yoy',periodsPerYear:12,sourceUrl:'https://fred.stlouisfed.org/series/PCEPI',linkText:'FRED CHART VIEW ↗'},
   'macro-gdpdef':{label:'GDP 디플레이터 증가율',type:'fred',series:'GDPDEF',range:'1y',dec:1,suffix:'%',transform:'qoq-annualized',periodsPerYear:4,sourceUrl:'https://fred.stlouisfed.org/series/GDPDEF',linkText:'FRED CHART VIEW ↗'},
-  'rate-us':{label:'#1 미국 정책금리',type:'fred',series:'FEDFUNDS',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/FEDFUNDS',linkText:'FRED CHART VIEW ↗'},
+  'rate-us':{label:'미국 실효 연방기금금리 (월평균)',type:'fred',series:'FEDFUNDS',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/FEDFUNDS',linkText:'FRED CHART VIEW ↗'},
   'rate-jp':{label:'#2 일본 정책금리',type:'fred',series:'IRSTCB01JPM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01JPM156N',linkText:'FRED CHART VIEW ↗'},
   'rate-eu':{label:'#3 유로존 ECB 금리',type:'fred',series:'ECBDFR',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/ECBDFR',linkText:'FRED CHART VIEW ↗'},
   'rate-cn':{label:'#4 중국 PBOC 금리',type:'fred',series:'INTDSRCNM193N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/INTDSRCNM193N',linkText:'FRED CHART VIEW ↗'},
@@ -1743,15 +1744,15 @@ function fearGreedClass(v){
 const US_MACRO_ITEMS=[
   {key:'cpi',group:'물가',name:'CPI',bls:'CUSR0000SA0',fred:'CPIAUCSL',mode:'inflation',unit:'%',note:'전월비 / 전년비'},
   {key:'core-cpi',group:'물가',name:'Core CPI',bls:'CUSR0000SA0L1E',fred:'CPILFESL',mode:'inflation',unit:'%',note:'식품·에너지 제외'},
-  {key:'ppi',group:'물가',name:'PPI',bls:'WPSFD4',fred:'PPIACO',mode:'inflation',unit:'%',note:'최종수요'},
+  {key:'ppi',group:'물가',name:'PPI',bls:'WPSFD4',fred:'PPIFIS',mode:'inflation',unit:'%',note:'최종수요'},
   {key:'core-ppi',group:'물가',name:'Core PPI',bls:'WPSFD49116',fred:'WPSFD49116',mode:'inflation',unit:'%',note:'식품·에너지·무역 제외'},
   {key:'unrate',group:'고용',name:'실업률',bls:'LNS14000000',fred:'UNRATE',mode:'rate',unit:'%',note:'전월 대비 p.p.',rowBreak:true},
   {key:'payems',group:'고용',name:'비농업고용',bls:'CES0000000001',fred:'PAYEMS',mode:'level-change',unit:'K',note:'전월 대비 증감'},
   {key:'ahe',group:'고용',name:'시간당임금',bls:'CES0500000003',fred:'CES0500000003',mode:'inflation',unit:'%',note:'전월비 / 전년비'},
-  {key:'ngdp',group:'GDP',name:'명목 GDP',fred:'GDP',mode:'level-trillion',unit:'T',note:'현재 달러 · 분기',rowBreak:true},
-  {key:'rgdp',group:'GDP',name:'실질 GDP',fred:'GDPC1',mode:'level-trillion',unit:'T',note:'물가 조정 · 분기'},
+  {key:'ngdp',group:'GDP',name:'명목 GDP',fred:'GDP',mode:'level-trillion',periodsPerYear:4,unit:'T',note:'현재 달러 · 분기',rowBreak:true},
+  {key:'rgdp',group:'GDP',name:'실질 GDP',fred:'GDPC1',mode:'level-trillion',periodsPerYear:4,unit:'T',note:'물가 조정 · 분기'},
   {key:'inflation',group:'GDP',name:'인플레이션',fred:'PCEPI',mode:'inflation',unit:'%',note:'PCE 물가 · 전월비/전년비'},
-  {key:'gdpdef',group:'GDP',name:'GDP 디플레이터 증가율',fred:'GDPDEF',mode:'qoq-annualized',unit:'%',note:'분기 연율'}
+  {key:'gdpdef',group:'GDP',name:'GDP 디플레이터 증가율',fred:'GDPDEF',mode:'qoq-annualized',periodsPerYear:4,unit:'%',note:'분기 연율'}
 ];
 const TREASURY_BASIS_LINKS={
   basis:'https://doi.org/10.17016/2380-7172.3458',
@@ -1766,7 +1767,7 @@ const TREASURY_BASIS_FALLBACK={
 };
 let treasuryBasisLoading=false;
 const GLOBAL_RATE_ITEMS=[
-  {rank:1,key:'us',country:'미국',name:'Fed Funds',series:'FEDFUNDS',source:'Fed/FRED',note:'글로벌 할인율·달러 유동성'},
+  {rank:1,key:'us',country:'미국',name:'실효 연방기금금리 (월평균)',series:'FEDFUNDS',source:'Fed/FRED',note:'글로벌 할인율·달러 유동성'},
   {rank:2,key:'jp',country:'일본',name:'BOJ 정책금리',series:'IRSTCB01JPM156N',source:'BOJ/FRED',note:'엔 캐리 트레이드 핵심'},
   {rank:3,key:'eu',country:'유로존',name:'ECB Deposit Rate',series:'ECBDFR',source:'ECB/FRED',note:'달러 인덱스·유럽 채권'},
   {rank:4,key:'cn',country:'중국',name:'PBOC Rate',series:'INTDSRCNM193N',source:'PBOC/FRED',note:'위안화·원자재·경기부양'},
@@ -1827,7 +1828,7 @@ const RATE_DECISION_SCHEDULES=[
   ]}
 ];
 const BOND_YIELD_GROUPS=[
-  {key:'us',flag:'🇺🇸',name:'미국 국채·주택금리',note:'FRED 원문',spreadSeries:'T10Y3M',mortgage:true},
+  {key:'us',flag:'🇺🇸',name:'미국 국채·주택금리',note:'Federal Reserve / FRED · 일간 국채 · 모기지는 원문',spreadSeries:'T10Y3M',mortgage:true},
   {key:'kr',flag:'🇰🇷',name:'한국 국채',url:'https://www.investing.com/rates-bonds/south-korea-government-bonds'},
   {key:'jp',flag:'🇯🇵',name:'일본 국채',url:'https://www.investing.com/rates-bonds/japan-government-bonds'},
   {key:'br',flag:'🇧🇷',name:'브라질 국채',url:'https://www.investing.com/rates-bonds/brazil-government-bonds'}
@@ -1888,11 +1889,12 @@ function sortPeriodRows(rows){
 }
 function calcMacroFromPoints(points,item,source){
   if(!points||points.length<2)return null;
-  const last=points[points.length-1],prev=points[points.length-2],yearAgo=points.length>12?points[points.length-13]:null;
+  const last=points[points.length-1],prev=OfficialData.periodPoint(points,last.date,item.periodsPerYear===4?3:1),yearAgo=OfficialData.periodPoint(points,last.date,12);
+  if(!prev)return null;
   const lastVal=Number(last.value),prevVal=Number(prev.value),yearAgoVal=Number(yearAgo?.value);
   let value='',change='',cls='market-flat';
   const periodsPerYear=item.periodsPerYear||12;
-  const pAgo=points.length>periodsPerYear?points[points.length-1-periodsPerYear]:null;
+  const pAgo=yearAgo;
   const pAgoVal=Number(pAgo?.value);
   if(item.mode==='level-trillion'){
     const scaled=lastVal/1000,prevScaled=prevVal/1000;
@@ -1927,40 +1929,13 @@ function calcMacroFromPoints(points,item,source){
   return {...item,value,change,cls,source,date:last.date};
 }
 async function fetchBlsMacro(item){
-  if(!item.bls)return null;
-  const base='https://api.bls.gov/publicAPI/v2/timeseries/data/'+encodeURIComponent(item.bls);
-  const urls=[
-    base,
-    'https://api.allorigins.win/raw?url='+encodeURIComponent(base),
-    'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(base)
-  ];
-  for(const url of urls){
-    try{
-      const res=await fetchT(url,4500);const data=await res.json();
-      const rows=data?.Results?.series?.[0]?.data;
-      if(Array.isArray(rows)&&rows.length)return calcMacroFromPoints(sortPeriodRows(rows),item,url===base?'BLS':'BLS proxy');
-    }catch(e){}
-  }
-  return null;
+  await OfficialData.load();
+  const series=OfficialData.get({series:item.fred});
+  return series?calcMacroFromPoints(series.points,item,OfficialData.source(series)):null;
 }
 async function fetchBlsMacroBatch(items){
-  const blsItems=items.filter(item=>item.bls);
-  if(!blsItems.length)return new Map();
-  const now=new Date().getFullYear();
-  const res=await fetchT('https://api.bls.gov/publicAPI/v2/timeseries/data/',9000,{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({seriesid:blsItems.map(item=>item.bls),startyear:String(now-2),endyear:String(now)})
-  });
-  const data=await res.json();
-  const series=data?.Results?.series||[];
-  const output=new Map();
-  blsItems.forEach(item=>{
-    const rows=series.find(s=>s.seriesID===item.bls)?.data;
-    const parsed=Array.isArray(rows)?calcMacroFromPoints(sortPeriodRows(rows),item,'BLS'):null;
-    if(parsed)output.set(item.key,parsed);
-  });
-  return output;
+  await OfficialData.load();
+  return new Map(items.map(item=>{const data=OfficialData.get({series:item.fred});return [item.key,data?calcMacroFromPoints(data.points,item,OfficialData.source(data)):null];}).filter(([,value])=>value));
 }
 function renderUsMacro(items){
   const grid=document.getElementById('usMacroGrid');if(!grid)return;
@@ -1976,14 +1951,22 @@ function renderGlobalRates(items=GLOBAL_RATE_ITEMS){
   const grid=document.getElementById('globalRateGrid');if(!grid)return;
   grid.innerHTML=items.map(item=>{
     const cfg=MARKET_CHARTS['rate-'+item.key];
+    const data=globalThis.OfficialData?.get(cfg);
+    if(data){const last=data.points.at(-1);return '<div class="macro-card" role="button" tabindex="0" data-chart-key="rate-'+escHtml(item.key)+'"><div class="macro-group">#'+item.rank+' · '+escHtml(item.country)+'</div><div class="macro-name">'+escHtml(item.name)+'</div><div class="macro-value">'+last.value.toFixed(2)+'%</div><div class="macro-source">'+escHtml(OfficialData.source(data))+' · '+last.date+'</div></div>';}
     return '<a class="macro-card source-card" href="'+escHtml(marketSourceUrl(cfg))+'" target="_blank" rel="noopener noreferrer"><div class="macro-group">#'+escHtml(item.rank)+' · '+escHtml(item.country)+'</div><div class="macro-name">'+escHtml(item.name)+'</div><div class="macro-value source-link-value">원문 보기 ↗</div><div class="macro-source">FRED · '+escHtml(item.note)+'</div></a>';
   }).join('');
 }
-function fetchGlobalRateDashboard(){renderGlobalRates();}
+async function fetchGlobalRateDashboard(){await OfficialData.load();renderGlobalRates();bindMarketChartClicks();}
 function renderBondYields(groups=BOND_YIELD_GROUPS){
   const box=document.getElementById('bondYieldGrid');if(!box)return;
   function card(key,label,tone){
     const cfg=MARKET_CHARTS[key];
+    const data=globalThis.OfficialData?.get(cfg);
+    if(data){
+      const delta=OfficialData.bondChanges(data.points),suffix=key.endsWith('spread')?'%p':'%';
+      const change=(value)=>value==null?'비교 불가':(value>=0?'+':'')+value.toFixed(2)+'%p';
+      return '<div class="bond-card" role="button" tabindex="0" data-chart-key="'+escHtml(key)+'"><div class="bond-tenor '+escHtml(tone||'')+'">'+escHtml(label)+'</div><div class="bond-value">'+delta.last.value.toFixed(2)+suffix+'</div><div class="bond-change"><span>전 관측일</span><b>'+change(delta.day)+'</b></div><div class="bond-change"><span>1개월 전</span><b>'+change(delta.monthly)+'</b></div><div class="bond-source">'+escHtml(OfficialData.source(data))+' · '+escHtml(delta.last.date)+'</div></div>';
+    }
     return '<a class="bond-card source-card" href="'+escHtml(marketSourceUrl(cfg))+'" target="_blank" rel="noopener noreferrer"><div class="bond-tenor '+escHtml(tone||'')+'">'+escHtml(label)+'</div><div class="bond-value source-link-value">원문 보기 ↗</div><div class="bond-source">'+(cfg.type==='fred'?'FRED':'Investing')+'</div></a>';
   }
   const curves=groups.filter(group=>!group.url).map(group=>{
@@ -1994,10 +1977,13 @@ function renderBondYields(groups=BOND_YIELD_GROUPS){
   }).join('');
   const links=groups.filter(group=>group.url).map(group=>'<a class="bond-country-link source-card" href="'+escHtml(group.url)+'" target="_blank" rel="noopener noreferrer"><span class="bond-country-name"><span class="bond-flag" aria-hidden="true">'+escHtml(group.flag)+'</span>'+escHtml(group.name)+'</span><span class="bond-country-link-source">Investing · 전체 만기 ↗</span></a>').join('');
   box.innerHTML=curves+(links?'<div class="bond-country-links">'+links+'</div>':'');
+  bindMarketChartClicks();
 }
-function fetchBondYieldDashboard(){
+async function fetchBondYieldDashboard(){
+  await OfficialData.load();
   renderBondYields();
-  setBondYieldStatus('warn','국채·모기지 · 원문 링크');
+  const count=BOND_TENORS.filter(tenor=>OfficialData.get(MARKET_CHARTS['bond-us-'+tenor.key])).length;
+  setBondYieldStatus(count===7?'ok':'warn','미국 국채 '+count+'/7 · 공식 일간 관측값');
 }
 function treasuryRiskTone(points){return points>=2?'alert':points===1?'watch':'calm';}
 function treasurySigned(value,dec=1,suffix=''){
@@ -2081,19 +2067,17 @@ async function fetchTreasuryBasisMonitor(){
   }finally{treasuryBasisLoading=false;}
 }
 async function fetchUsMacroDashboard(){
-  setMacroStatus('warn','US MACRO · BLS 조회 중');
-  const results=US_MACRO_ITEMS.map(item=>({...item,value:item.bls?'조회 중':'원문 보기',change:'',cls:'market-flat',source:item.bls?'BLS':'FRED 원문'}));
+  setMacroStatus('warn','공식 데이터 확인 중');
+  await OfficialData.load();
+  let count=0;
+  const results=US_MACRO_ITEMS.map(item=>{
+    const data=OfficialData.get({series:item.fred});
+    const parsed=data?calcMacroFromPoints(data.points,item,OfficialData.source(data)):null;
+    if(parsed)count++;
+    return parsed||{...item,value:'확인 불가',change:'공식 데이터 연결 대기',source:'FRED'};
+  });
   renderUsMacro(results);
-  let liveCount=0;
-  await Promise.allSettled(US_MACRO_ITEMS.filter(item=>item.bls).map(async item=>{
-    let parsed=null;
-    try{parsed=await fetchBlsMacro(item);}catch(e){}
-    const idx=US_MACRO_ITEMS.findIndex(x=>x.key===item.key);
-    results[idx]=parsed?{...parsed,rowBreak:item.rowBreak}:{...item,value:'확인 불가',change:'BLS 원문 확인',cls:'market-flat',source:'BLS'};
-    if(parsed)liveCount++;
-    renderUsMacro(results);
-  }));
-  setMacroStatus(liveCount?'ok':'warn','US MACRO · BLS '+liveCount+'/7 · FRED 원문 링크');
+  setMacroStatus(count===US_MACRO_ITEMS.length?'ok':'warn','공식 데이터 '+count+'/'+US_MACRO_ITEMS.length+' · 3시간 갱신 확인');
 }
 function renderWatch(id,text,cls='market-flat'){const el=document.getElementById(id);if(!el)return;el.textContent=text;el.className=cls;}
 function parseCnnFearGreed(d){
@@ -2175,26 +2159,13 @@ async function fetchCryptoFearGreedSeries(range=marketChartRange){
   return null;
 }
 async function fetchBlsSeries(id,range=marketChartRange){
-  const base='https://api.bls.gov/publicAPI/v2/timeseries/data/'+encodeURIComponent(id);
-  const urls=[
-    base,
-    'https://api.allorigins.win/raw?url='+encodeURIComponent(base),
-    'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(base)
-  ];
-  const maxPoints=range==='1y'?60:range==='3mo'?36:18;
-  for(const url of urls){
-    try{
-      const res=await fetchT(url,6500);const data=await res.json();
-      const rows=data?.Results?.series?.[0]?.data;
-      if(!Array.isArray(rows)||!rows.length)continue;
-      const points=sortPeriodRows(rows).slice(-maxPoints).map(p=>({t:new Date(p.date).getTime(),v:p.value})).filter(p=>isFinite(p.t)&&isFinite(p.v));
-      if(points.length>1)return {points,source:url===base?'BLS':'BLS proxy'};
-    }catch(e){}
-  }
-  return null;
+  await OfficialData.load();
+  const cfg=Object.values(MARKET_CHARTS).find(item=>item.type==='bls'&&item.series===id);
+  return cfg?OfficialData.chart(cfg,range):null;
 }
 async function fetchMarketChartData(key){
   const cfg=MARKET_CHARTS[key];if(!cfg||sourceOnlyChart(cfg))return null;
+  const official=globalThis.OfficialData?.chart(cfg,marketChartRange);if(official)return official;
   if(cfg.type==='fng')return fetchFearGreedSeries(marketChartRange);
   if(cfg.type==='cfng')return fetchCryptoFearGreedSeries(marketChartRange);
   if(cfg.type==='bls')return fetchBlsSeries(cfg.series,marketChartRange);
@@ -2216,7 +2187,7 @@ function renderMarketChart(points,cfg,source){
   const endDate=new Date(last.t).toLocaleDateString('ko-KR',{month:'short',day:'numeric'});
   const chg=(last.v-first.v)/Math.abs(first.v||1)*100;
   document.getElementById('marketChartTitle').textContent='CHART · '+cfg.label;
-  document.getElementById('marketChartMeta').textContent=chartRangeLabel(cfg.range||marketChartRange)+' · '+points.length+'개 포인트 · '+(source||'Live')+' · '+fmtChartValue(last.v,cfg)+' ('+(chg>=0?'+':'')+chg.toFixed(2)+'%)';
+  document.getElementById('marketChartMeta').textContent=(cfg.rangeLabel||chartRangeLabel(marketChartRange))+' · '+points.length+'개 포인트 · '+(source||'Live')+' · '+fmtChartValue(last.v,cfg)+' ('+(chg>=0?'+':'')+chg.toFixed(2)+'%)';
   box.innerHTML=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" aria-label="${escHtml(cfg.label)} chart">${grid}<polyline points="${poly}" fill="none" stroke="${line}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${x(last).toFixed(1)}" cy="${y(last).toFixed(1)}" r="4.5" fill="${line}"/><text class="chart-axis date" x="${padL}" y="${h-14}">${startDate}</text><text class="chart-axis date" x="${w-padR}" y="${h-14}">${endDate}</text></svg>`;
 }
 function setChartActive(key){
@@ -2225,6 +2196,7 @@ function setChartActive(key){
 async function showMarketChart(key=currentMarketChartKey){
   const cfg=MARKET_CHARTS[key];if(!cfg)return;
   currentMarketChartKey=key;setChartActive(key);
+  const requestedRange=marketChartRange;
   const box=document.getElementById('marketChartCanvas'),title=document.getElementById('marketChartTitle'),meta=document.getElementById('marketChartMeta');
   updateTradingViewLink(cfg);
   if(title)title.textContent='CHART · '+cfg.label;
@@ -2238,8 +2210,8 @@ async function showMarketChart(key=currentMarketChartKey){
   if(meta)meta.textContent=chartRangeLabel(cfg.range||marketChartRange)+' 데이터 불러오는 중';
   if(box)box.innerHTML='<div class="chart-loading">차트 데이터 로딩 중...</div>';
   const data=await fetchMarketChartData(key);
-  if(key!==currentMarketChartKey)return;
-  if(data?.points?.length)renderMarketChart(data.points,cfg,data.source);
+  if(key!==currentMarketChartKey||requestedRange!==marketChartRange)return;
+  if(data?.points?.length)renderMarketChart(data.points,{...cfg,rangeLabel:data.rangeLabel},data.source);
   else{
     if(meta)meta.textContent='데이터 연결 실패 · 원 제공처 확인';
     if(box)box.innerHTML=sourceLinkHtml(marketSourceUrl(cfg),cfg.label+' 원문 보기','chart-loading');
