@@ -427,7 +427,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 </div>
 <div class="sidebar-right sidebar-live" id="sidebarRight">
 <button class="sidebar-close" onclick="closeSidebars()" aria-label="닫기">✕</button>
-<div><div class="panel-title">라이브 시세 · 뉴스</div><div class="insight-box">귀금속·에너지 시세와 실시간 경제 뉴스를 고정 표시합니다.</div></div>
+<div><div class="panel-title">시세 · 뉴스</div><div class="insight-box">귀금속 데이터 · 에너지 원문 링크 · 경제 뉴스</div></div>
 <div class="live-section"><div class="live-header"><div class="panel-title" style="display:flex;align-items:center;gap:5px"><span class="live-dot"></span>귀금속 시세</div><button class="refresh-btn" onclick="fetchCommodities()">↻</button></div><div id="commodityPanel"><div class="data-loading">시세 로딩 중...</div></div><div class="last-update" id="commodityTime"></div></div>
 <div class="live-section"><div class="live-header"><div class="panel-title" style="display:flex;align-items:center;gap:5px">🛢️ 에너지 시세</div><button class="refresh-btn" onclick="renderEnergyLinks()">↻</button></div><div id="energyPanel"><div class="data-loading">시세 로딩 중...</div></div><div class="last-update" id="energyTime"></div></div>
 <div class="live-section"><div class="live-header"><div class="panel-title" style="display:flex;align-items:center;gap:5px"><span class="live-dot"></span>실시간 경제 뉴스</div><button class="refresh-btn" onclick="fetchNews()">↻</button></div><div id="newsPanel" style="max-height:220px;overflow-y:auto"><div class="data-loading">뉴스 로딩 중...</div></div><div class="last-update" id="newsTime"></div></div>
@@ -440,7 +440,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       <div>
         <div class="dashboard-kicker"><i data-lucide="chart-no-axes-combined" aria-hidden="true"></i>02 / MARKET MONITOR</div>
         <div class="dashboard-title">지표 모니터링 대시보드</div>
-        <div class="dashboard-sub">글로벌 자산, 한국 지수, 변동성, 환율과 심리 지표를 공개 API 기준으로 최대한 빠르게 갱신합니다.</div>
+        <div class="dashboard-sub">글로벌 자산 · 경제 지표 · 제공처 원문 링크</div>
       </div>
       <div class="dashboard-actions">
         <button class="market-refresh-btn" onclick="fetchMarketDashboard(true)" aria-label="지표 새로고침" title="지표 새로고침"><i data-lucide="refresh-cw" aria-hidden="true"></i></button>
@@ -462,7 +462,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       <div class="macro-head">
         <div>
           <div class="dashboard-panel-title">미국 매크로 지표</div>
-          <div class="macro-sub">물가·고용은 BLS, GDP 계열은 FRED/BEA 계열을 우선 조회합니다. 발표 직후 자동 반영을 목표로 하되 연결 실패 시 공식 FRED 차트로 보강합니다.</div>
+          <div class="macro-sub">물가·고용: BLS 데이터 · GDP·PCE: FRED 원문 링크</div>
         </div>
         <div class="macro-badge" id="macroStatus">US MACRO · CONNECTING</div>
       </div>
@@ -526,7 +526,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       <div class="macro-head">
         <div>
           <div class="dashboard-panel-title">국채 금리 커브</div>
-          <div class="macro-sub">미국, 한국, 일본의 3개월·1년·2년·5년·10년·20년·30년물과 10Y-3M 스프레드를 비교합니다.</div>
+          <div class="macro-sub">미국·한국·일본·브라질 만기별 국채 원문 · 미국 30년 모기지 · 10Y-3M</div>
         </div>
         <div class="macro-badge" id="bondYieldStatus">BOND CURVE · CONNECTING</div>
       </div>
