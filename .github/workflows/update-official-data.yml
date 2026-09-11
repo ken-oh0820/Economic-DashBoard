@@ -1,0 +1,47 @@
+name: Update Official Economic Data
+
+on:
+  schedule:
+    - cron: '37 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: official-economic-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch public-domain series through the official FRED API
+        id: collect
+        continue-on-error: true
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: node scripts/update-official-data.mjs
+      - name: Publish snapshot and request Pages build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ ! -f data/official-data.json ]; then exit 1; fi
+          git add data/official-data.json
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Update official economic data"
+            git pull --rebase origin main
+            git push
+            gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"
+          fi
+      - name: Report incomplete collection
+        if: steps.collect.outcome == 'failure'
+        run: exit 1
