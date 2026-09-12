@@ -256,7 +256,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 }
 </style>
 <link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-official-data">
-<link rel="stylesheet" href="assets/economic-guide.css?v=20260911-list">
+<link rel="stylesheet" href="assets/economic-guide.css?v=20260913-company-metrics">
 </head>
 <body class="menu-mode light">
 <main class="main-menu" id="mainMenu" aria-labelledby="mainMenuTitle">
@@ -646,9 +646,9 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       <div>
         <div class="dashboard-kicker"><i data-lucide="book-open" aria-hidden="true"></i>05 / MARKET STRUCTURE GUIDE</div>
         <div class="dashboard-title">미국 경제 지표 해설</div>
-        <div class="dashboard-sub">미 국채시장, 딜러 중개 기능과 달러 조달 여건을 읽는 핵심 지표를 구조별로 정리합니다.</div>
+        <div class="dashboard-sub">미 국채시장·달러 조달부터 기업의 자본 효율·현금흐름·고객 성장까지 핵심 지표를 정리합니다.</div>
       </div>
-      <div class="dashboard-status ok">8 CORE INDICATORS</div>
+      <div class="dashboard-status ok">18 CORE INDICATORS</div>
     </div>
     <div class="us-guide-list" aria-label="미국 경제 지표 목록">
       <details class="us-guide-item">
@@ -747,8 +747,168 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
           <div><h3>함께 확인할 항목</h3><p>GC-Special 스프레드 · Repo Fails · Haircut · 담보 희소성</p></div>
         </div>
       </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">09</span>
+          <span class="us-guide-label"><span class="us-guide-term">ROIC</span><span class="us-guide-translation">투하자본수익률</span></span>
+          <span class="us-guide-category">자본 효율</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>사업에 넣은 자본으로 세후 영업이익을 얼마나 벌었는지 봅니다. 주가 수익률이 아니라 사업 자체의 자본 효율입니다.</p></div>
+          <div><h3>계산·확인 방법</h3><p>대표 계산: NOPAT ÷ 평균 투하자본 × 100. NOPAT는 세후 영업이익으로, 단순화하면 영업이익 × (1−영업에 적용할 세율)입니다. 투하자본은 영업에 투입한 자기자본과 이자부채에서 비영업 현금 등을 조정합니다.</p></div>
+          <div><h3>가상 계산 예시</h3><p>가상 예시: 연간 NOPAT 15억 원, 기초·기말 평균 투하자본 100억 원이면 ROIC는 15%입니다.</p></div>
+          <div><h3>해석과 주의점</h3><p>같은 기준으로 추정한 가중평균자본비용(WACC)을 지속적으로 웃도는지 봅니다. 자산 손상이나 자사주 매입으로 분모가 작아져 높아질 수도 있으며, 분모가 0 이하이면 단순 비율 해석이 어렵습니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>WACC · 영업이익률 · 자산 회전율 · 영업권·리스·R&amp;D 조정 · 기초/평균 자본 사용 여부</p></div>
+          <div><h3>참고 자료</h3><p><a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/definitions.html" target="_blank" rel="noopener noreferrer">NYU Stern · 재무비율 정의 ↗</a></p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">10</span>
+          <span class="us-guide-label"><span class="us-guide-term">Incremental Margin</span><span class="us-guide-translation">증분 이익률</span></span>
+          <span class="us-guide-category">이익 성장</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>매출이 1원 늘 때 이익이 몇 원 추가되는지 확인합니다. 기존 전체 매출의 이익률과는 다릅니다.</p></div>
+          <div><h3>계산·확인 방법</h3><p>영업이익 기준 예시: (이번 기간 영업이익−비교 기간 영업이익) ÷ (이번 기간 매출−비교 기간 매출) × 100. 영업이익·EBITDA·순이익 중 어떤 이익을 쓰는지 먼저 확인합니다.</p></div>
+          <div><h3>가상 계산 예시</h3><p>가상 예시: 매출이 100억 원에서 120억 원, 영업이익이 10억 원에서 16억 원으로 늘면 6 ÷ 20 = 30%입니다. 추가 매출 1원당 영업이익 0.30원이 붙은 셈입니다.</p></div>
+          <div><h3>해석과 주의점</h3><p>상승은 고정비 분산이나 좋은 제품 구성의 효과일 수 있습니다. 매출 증가분이 작으면 비율이 크게 흔들리고, 매출 감소기에는 이익 감소 민감도를 따로 해석해야 합니다. 매출 변화가 0이면 계산할 수 없습니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>동일 기간 전년비 · 가격/물량/제품 구성 · 일회성 비용 · GAAP와 조정 이익의 차이</p></div>
+          <div><h3>참고 자료</h3><p><a href="https://www.sec.gov/Archives/edgar/data/1003078/000110465923036585/filename1.htm" target="_blank" rel="noopener noreferrer">SEC 공시 · 증분 영업이익률 정의 사례 ↗</a></p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">11</span>
+          <span class="us-guide-label"><span class="us-guide-term">Backlog Conversion</span><span class="us-guide-translation">수주잔고의 매출 전환</span></span>
+          <span class="us-guide-category">수주 이행</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>쌓여 있는 주문이 실제 매출로 얼마나 전환되는지 봅니다. 수주잔고는 현금도, 확정 이익도 아닙니다.</p></div>
+          <div><h3>계산·확인 방법</h3><p>기초 잔고 추적 방식: 기초 수주잔고 중 기간 내 매출로 인식한 금액 ÷ 기초 수주잔고 × 100. 회사에 따라 당기 전체 매출 ÷ 기초 수주잔고를 쓰므로 두 정의를 혼용하지 않습니다.</p></div>
+          <div><h3>가상 계산 예시</h3><p>가상 예시: 기초 수주잔고 200억 원 중 50억 원이 매출로 전환되면 25%입니다. 신규 주문에서 발생한 당기 매출은 이 추적 방식의 분자에서 제외합니다.</p></div>
+          <div><h3>해석과 주의점</h3><p>납품과 프로젝트 진행 속도를 보여주지만, 전환율이 높아도 신규 수주가 부족하면 미래 매출 기반은 줄어듭니다. 취소·일정 연기·환율 변화로 잔고가 감소한 것을 매출 전환으로 오해하지 않습니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>기초/기말 수주잔고 · 신규 수주 · 취소율 · 매출 인식 일정 · Book-to-Bill · 잔고 정의와 자금 확정 여부</p></div>
+          <div><h3>참고 자료</h3><p><a href="https://www.sec.gov/Archives/edgar/data/1793294/000119312521052438/d145825dex991.htm" target="_blank" rel="noopener noreferrer">SEC 공시 · 회사별 수주 전환율 정의 사례 ↗</a></p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">12</span>
+          <span class="us-guide-label"><span class="us-guide-term">Capex Intensity</span><span class="us-guide-translation">매출 대비 설비투자 비중</span></span>
+          <span class="us-guide-category">재투자</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>매출을 유지하거나 키우는 데 설비·인프라 투자가 얼마나 필요한 사업인지 봅니다.</p></div>
+          <div><h3>계산·확인 방법</h3><p>대표 계산: 같은 기간 CAPEX ÷ 매출 × 100. 여기서는 현금흐름표의 유형자산 취득 지출을 출발점으로 삼고, 소프트웨어 자산화·리스 등을 포함하는지는 별도로 확인합니다.</p></div>
+          <div><h3>가상 계산 예시</h3><p>가상 예시: 연간 매출 1,000억 원, CAPEX 150억 원이면 15%입니다. 매출 1원당 설비투자에 현금 0.15원을 사용했습니다.</p></div>
+          <div><h3>해석과 주의점</h3><p>높은 비율은 현금 부담이 큰 구조 또는 성장 투자기를 뜻할 수 있으며, 무조건 나쁜 것은 아닙니다. 낮아도 투자 지연이나 외주화 영향일 수 있습니다. 유지 투자와 성장 투자 분리는 공시가 없으면 추정임을 밝혀야 합니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>감가상각비 · CAPEX/감가상각 · 가동률 · 유지/성장 투자 · FCF · 투자 후 ROIC</p></div>
+          <div><h3>참고 자료</h3><p><a href="https://www.sec.gov/Archives/edgar/data/733099/000119312525048555/d925298dex991.pdf" target="_blank" rel="noopener noreferrer">SEC 공시 · 자본투자 집약도 설명 사례 ↗</a></p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">13</span>
+          <span class="us-guide-label"><span class="us-guide-term">Working Capital</span><span class="us-guide-translation">운전자본</span></span>
+          <span class="us-guide-category">현금 순환</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>판매하고 돈을 회수하기까지 영업 과정에 묶이는 자금을 봅니다. 성장할수록 현금이 더 필요한 구조인지 확인하는 데 유용합니다.</p></div>
+          <div><h3>계산·확인 방법</h3><p>회계상 순운전자본 = 유동자산−유동부채. 현금흐름 분석에서는 현금·차입금을 제외한 영업 운전자본을 구분합니다. 단순 예: 매출채권+재고−매입채무. 실제로는 다른 영업성 자산·부채도 검토합니다.</p></div>
+          <div><h3>가상 계산 예시</h3><p>가상 예시: 영업 운전자본이 20억 원에서 30억 원으로 늘면, 다른 조건이 같을 때 현금 10억 원이 추가로 묶입니다.</p></div>
+          <div><h3>해석과 주의점</h3><p>영업 운전자본 증가는 보통 현금 사용, 감소는 현금 회수입니다. 고객에게 먼저 받고 공급업체에 나중에 지급하는 구조는 성장 중 현금을 만들 수 있지만, 연체로 매입채무가 늘어난 경우와는 구분해야 합니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>DSO(채권 회수일) · DIO(재고 보유일) · DPO(채무 지급일) · 현금전환주기 · 선수금 · 계절성</p></div>
+          <div><h3>참고 자료</h3><p><a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/definitions.html" target="_blank" rel="noopener noreferrer">NYU Stern · 운전자본과 현금흐름 ↗</a></p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">14</span>
+          <span class="us-guide-label"><span class="us-guide-term">Deferred Revenue</span><span class="us-guide-translation">선수수익·이연매출</span></span>
+          <span class="us-guide-category">계약 부채</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>고객에게 대가를 먼저 받았거나 청구할 권리가 생겼지만, 상품·서비스 제공 의무를 아직 이행하지 않아 매출로 인식하지 않은 계약부채입니다. 단순히 “이미 받은 현금”과 항상 일치하지는 않습니다.</p></div>
+          <div><h3>계산·확인 방법</h3><p>대차대조표와 수익인식 주석의 유동·비유동 Deferred Revenue 또는 Contract Liabilities를 확인합니다. RPO(잔여 수행의무)에는 미청구 계약금액도 포함될 수 있어 이연매출과 같은 숫자가 아닙니다.</p></div>
+          <div><h3>가상 계산 예시</h3><p>가상 예시: 12개월 서비스를 시작하며 120만 원을 선납받고 매월 균등하게 제공하면, 첫 달 말 매출 10만 원과 이연매출 잔액 110만 원이 남습니다.</p></div>
+          <div><h3>해석과 주의점</h3><p>증가는 선결제·계약 확대의 신호일 수 있지만 청구 주기 변화일 수도 있습니다. 감소 역시 서비스 제공에 따른 정상적인 매출 전환일 수 있습니다. 앞으로 서비스를 제공할 비용과 의무가 남아 있습니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>현금 수취 여부 · 청구 주기 · 계약부채 증감 주석 · RPO/cRPO · 해지·환불 조건</p></div>
+          <div><h3>참고 자료</h3><p><a href="https://www.sec.gov/Archives/edgar/data/1716621/000143774926017509/R8.htm" target="_blank" rel="noopener noreferrer">SEC 공시 · 계약부채와 이연매출 ↗</a></p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">15</span>
+          <span class="us-guide-label"><span class="us-guide-term">Take Rate</span><span class="us-guide-translation">거래액 대비 수익화율</span></span>
+          <span class="us-guide-category">플랫폼</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>플랫폼이 중개한 거래에서 매출로 얼마나 가져오는지 봅니다. 거래 참여자와 플랫폼 사이의 수수료·수익 배분을 이해하는 지표입니다.</p></div>
+          <div><h3>계산·확인 방법</h3><p>대표 계산: 해당 플랫폼 매출 ÷ 같은 범위의 총거래액(GMV·GSV 등) × 100. 분자에 광고·구독·결제 수익이 포함되는지와 거래액의 환불·세금 처리 기준을 확인합니다.</p></div>
+          <div><h3>가상 계산 예시</h3><p>가상 예시: 거래액 1,000억 원에서 플랫폼 매출 100억 원을 얻으면 Take Rate는 10%입니다. 이 100억 원은 비용 차감 전 매출이지 이익이 아닙니다.</p></div>
+          <div><h3>해석과 주의점</h3><p>상승은 수수료 인상이나 부가서비스 확대일 수 있지만 판매자 이탈과 거래 감소를 유발할 수도 있습니다. 총액/순액 매출 인식 방식이나 사업 구성이 다르면 회사 간 단순 비교가 어렵습니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>거래액 성장률 · 매출 구성 · 판매자 수익성 · 이탈률 · 보조금 · 거래당 공헌이익</p></div>
+          <div><h3>참고 자료</h3><p><a href="https://www.sec.gov/Archives/edgar/data/1627475/000162747526000012/upwk-20251231.htm" target="_blank" rel="noopener noreferrer">Upwork 10-K · 거래액과 Take Rate 정의 ↗</a></p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">16</span>
+          <span class="us-guide-label"><span class="us-guide-term">Free Cash Flow Conversion</span><span class="us-guide-translation">이익의 잉여현금 전환율</span></span>
+          <span class="us-guide-category">이익의 질</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>회계상 이익 중 실제 잉여현금흐름으로 남는 비중을 봅니다. 이익과 현금이 함께 증가하는지 확인하는 데 유용합니다.</p></div>
+          <div><h3>계산·확인 방법</h3><p>여기서는 FCF ÷ 순이익 × 100을 사용합니다. FCF는 일반적으로 영업현금흐름−CAPEX입니다. 회사에 따라 분모가 EBITDA·조정 순이익이거나 FCF 조정항목이 다르므로 공시 정의를 확인합니다.</p></div>
+          <div><h3>가상 계산 예시</h3><p>가상 예시: 영업현금흐름 120억 원−CAPEX 40억 원 = FCF 80억 원. 순이익이 100억 원이면 전환율은 80%입니다.</p></div>
+          <div><h3>해석과 주의점</h3><p>높아도 운전자본 일시 회수나 투자 축소의 결과일 수 있습니다. 주식보상비용은 영업현금흐름에 가산되지만 주주 희석이 남습니다. 순이익이 0 이하이거나 매우 작으면 비율 대신 FCF 절대액을 봅니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>영업현금흐름 · CAPEX · 운전자본 변화 · 주식보상 · 의무적 부채 상환 · 최근 12개월 추세</p></div>
+          <div><h3>참고 자료</h3><p><a href="https://www.sec.gov/rules-regulations/staff-guidance/corporation-finance-interpretations/non-gaap-financial-measures" target="_blank" rel="noopener noreferrer">SEC · FCF 정의와 해석상 주의점 ↗</a></p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">17</span>
+          <span class="us-guide-label"><span class="us-guide-term">Unit Economics</span><span class="us-guide-translation">고객·거래 단위 수익성</span></span>
+          <span class="us-guide-category">사업 구조</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>고객 한 명이나 거래 한 건을 늘릴수록 경제적으로 이익이 남는지 봅니다. 고객·주문·좌석 등 사업에 맞는 단위를 먼저 정해야 합니다.</p></div>
+          <div><h3>계산·확인 방법</h3><p>단위 공헌이익 = 단위 매출−단위 변동비. 고객 기준으로는 고객획득비용(CAC), 서비스 비용을 반영한 고객생애가치(LTV), CAC 회수기간을 함께 봅니다. LTV를 매출 기준으로 계산했다면 이익 기준과 구분합니다.</p></div>
+          <div><h3>가상 계산 예시</h3><p>가상 예시: 고객당 월 매출 10만 원, 서비스 변동비 6만 원이면 월 공헌이익은 4만 원입니다. CAC가 24만 원이고 이탈·추가 비용이 없다고 가정하면 단순 회수기간은 6개월입니다.</p></div>
+          <div><h3>해석과 주의점</h3><p>매출 LTV가 커도 지원·배송·결제·인프라 비용이 크면 실제 수익성은 낮을 수 있습니다. 단위 공헌이익이 양수라도 본사 고정비까지 포함한 회사 전체가 흑자라는 뜻은 아닙니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>고객군별 유지율 · LTV/CAC 정의 · 회수기간 · 광고 채널별 CAC · 변동비 · 고정비 · 규모 확대 후 비용</p></div>
+          <div><h3>참고 자료</h3><p><a href="https://stripe.com/resources/more/cac-in-saas" target="_blank" rel="noopener noreferrer">Stripe · CAC와 고객 단위 경제성 ↗</a></p></div>
+        </div>
+      </details>
+      <details class="us-guide-item">
+        <summary class="us-guide-row">
+          <span class="us-guide-number">18</span>
+          <span class="us-guide-label"><span class="us-guide-term">Net Revenue Retention</span><span class="us-guide-translation">기존 고객 순매출 유지율</span></span>
+          <span class="us-guide-category">고객 성장</span>
+          <i class="us-guide-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="us-guide-detail">
+          <div><h3>지표의 의미</h3><p>신규 고객을 제외하고 기존 고객군만으로 매출이 유지·확대되는지 봅니다. 고객 수 유지율과는 다른 지표입니다.</p></div>
+          <div><h3>계산·확인 방법</h3><p>대표 계산: (기초 기존 고객 매출+확장 매출−축소 매출−이탈 매출) ÷ 기초 기존 고객 매출 × 100. 같은 고객군과 같은 기간 단위를 사용하고 신규 고객 매출은 제외합니다.</p></div>
+          <div><h3>가상 계산 예시</h3><p>가상 예시: 기존 고객 매출 100억 원에 업셀 20억 원, 축소 5억 원, 이탈 10억 원이면 NRR은 105%입니다.</p></div>
+          <div><h3>해석과 주의점</h3><p>100% 초과는 해당 고객군의 매출 확대, 100% 미만은 축소를 뜻합니다. 소수 대형 고객의 확장이 다수 고객 이탈을 가릴 수 있고, 가격 인상과 사용량 증가도 구분해야 합니다. 미래의 지속 성장을 보장하지는 않습니다.</p></div>
+          <div><h3>함께 확인할 항목</h3><p>GRR(확장 제외 유지율) · 고객 수 유지율 · 고객 집중도 · 가격/사용량 효과 · ARR 또는 실제 매출 기준 · 측정 기간</p></div>
+          <div><h3>참고 자료</h3><p><a href="https://stripe.com/resources/more/net-revenue-retention" target="_blank" rel="noopener noreferrer">Stripe · NRR 계산과 고객군 기준 ↗</a></p></div>
+        </div>
+      </details>
     </div>
-    <div class="us-guide-footer">자금조달, 포지션, 딜러 중개 여력과 담보 상태를 함께 보면 미 국채시장 스트레스가 어디에서 시작되는지 더 빠르게 구분할 수 있습니다.</div>
+    <div class="us-guide-footer">시장 구조와 기업 재무 지표를 함께 살펴보세요. 기업별 지표 정의와 공시 기준은 다를 수 있으며, 계산 예시는 이해를 돕기 위한 가상 수치입니다. 개별 지표만으로 투자 결론을 내리지 않습니다.</div>
   </div>
 </div>
 <div class="site-help-modal" id="siteHelpModal" onclick="if(event.target===this)closeSiteHelp()">
