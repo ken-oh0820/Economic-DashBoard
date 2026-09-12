@@ -537,7 +537,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       <div class="macro-head">
         <div>
           <div class="dashboard-panel-title">국채 금리 커브</div>
-          <div class="macro-sub">미국·한국·일본·브라질 만기별 국채 원문 · 미국 30년 모기지 · 10Y-3M</div>
+          <div class="macro-sub">미국 국채: 공식 관측값·변동·차트 · 한국·일본·브라질 및 모기지: 원문 링크</div>
         </div>
         <div class="macro-badge" id="bondYieldStatus">BOND CURVE · CONNECTING</div>
       </div>
@@ -1495,7 +1495,7 @@ async function fetchNews() {
     all.sort((a,b)=>new Date(b.pubDate||0)-new Date(a.pubDate||0));
     panel.innerHTML=all.slice(0,8).map(i=>{
       const d=i.pubDate?new Date(i.pubDate):null;
-      const ts=d&&!isNaN(d)?d.toLocaleDateString('ko-KR',{month:'short',day:'numeric'})+' '+d.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'';
+      const ts=d&&!isNaN(d)?d.toLocaleDateString('ko-KR',{year:'2-digit',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'';
       const t=(i.title||'').replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&#39;/g,"'").replace(/&quot;/g,'"').slice(0,90);
       const l=(i.link||'').trim();
       const safeLink=/^https?:\/\//i.test(l)?l:'#';
@@ -1560,7 +1560,7 @@ function renderNewsItems(items, label){
   if(!list.length)return false;
   panel.innerHTML=list.slice(0,NEWS_MAX_ITEMS).map(i=>{
     const d=i.pubDate?new Date(i.pubDate):null;
-    const ts=d&&!isNaN(d)?d.toLocaleDateString('ko-KR',{month:'short',day:'numeric'})+' '+d.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'';
+    const ts=d&&!isNaN(d)?d.toLocaleDateString('ko-KR',{year:'2-digit',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'';
     return '<a class="news-item" href="'+escHtml(i.link)+'" target="_blank" rel="noopener noreferrer"><div class="news-title">'+escHtml(i.title.slice(0,96))+'</div><div class="news-meta"><span class="news-source">'+escHtml(i._src||'News')+'</span>'+(i._provider&&i._provider!==i._src?' · '+escHtml(i._provider):'')+(ts?' · '+escHtml(ts):'')+'</div></a>';
   }).join('');
   document.getElementById('newsTime').textContent='최종 갱신: '+new Date().toLocaleTimeString('ko-KR');
@@ -1965,7 +1965,7 @@ function renderBondYields(groups=BOND_YIELD_GROUPS){
     if(data){
       const delta=OfficialData.bondChanges(data.points),suffix=key.endsWith('spread')?'%p':'%';
       const change=(value)=>value==null?'비교 불가':(value>=0?'+':'')+value.toFixed(2)+'%p';
-      return '<div class="bond-card" role="button" tabindex="0" data-chart-key="'+escHtml(key)+'"><div class="bond-tenor '+escHtml(tone||'')+'">'+escHtml(label)+'</div><div class="bond-value">'+delta.last.value.toFixed(2)+suffix+'</div><div class="bond-change"><span>전 관측일</span><b>'+change(delta.day)+'</b></div><div class="bond-change"><span>1개월 전</span><b>'+change(delta.monthly)+'</b></div><div class="bond-source">'+escHtml(OfficialData.source(data))+' · '+escHtml(delta.last.date)+'</div></div>';
+      return '<div class="bond-card" role="button" tabindex="0" data-chart-key="'+escHtml(key)+'"><div class="bond-tenor '+escHtml(tone||'')+'">'+escHtml(label)+'</div><div class="bond-value">'+delta.last.value.toFixed(2)+suffix+'</div><div class="bond-change bond-change-row"><span>전 관측일</span><b>'+change(delta.day)+'</b></div><div class="bond-change bond-change-row"><span>1개월 전</span><b>'+change(delta.monthly)+'</b></div><div class="bond-source">'+escHtml(OfficialData.source(data))+' · '+escHtml(delta.last.date)+'</div></div>';
     }
     return '<a class="bond-card source-card" href="'+escHtml(marketSourceUrl(cfg))+'" target="_blank" rel="noopener noreferrer"><div class="bond-tenor '+escHtml(tone||'')+'">'+escHtml(label)+'</div><div class="bond-value source-link-value">원문 보기 ↗</div><div class="bond-source">'+(cfg.type==='fred'?'FRED':'Investing')+'</div></a>';
   }
@@ -2175,7 +2175,7 @@ function renderMarketChart(points,cfg,source){
   const box=document.getElementById('marketChartCanvas');if(!box)return;
   if(!points||points.length<2){box.innerHTML='<div class="chart-loading">차트 데이터를 불러올 수 없습니다</div>';return;}
   const vals=points.map(p=>p.v),min=Math.min(...vals),max=Math.max(...vals),span=max-min||1;
-  const w=820,h=280,padL=72,padR=28,padT=20,padB=42,innerW=w-padL-padR,innerH=h-padT-padB;
+  const w=Math.max(300,Math.min(820,box.clientWidth||820)),h=280,padL=64,padR=24,padT=20,padB=42,innerW=w-padL-padR,innerH=h-padT-padB;
   const first=points[0],last=points[points.length-1],tMin=first.t,tMax=last.t||first.t+1;
   const x=p=>padL+((p.t-tMin)/(tMax-tMin||1))*innerW;
   const y=p=>padT+(1-(p.v-min)/span)*innerH;
@@ -2183,12 +2183,14 @@ function renderMarketChart(points,cfg,source){
   const up=last.v>=first.v,line=up?'#00ff88':'#ff4d6d';
   const gridVals=[max,(max+min)/2,min];
   const grid=gridVals.map(v=>{const yy=padT+(1-(v-min)/span)*innerH;return `<line class="chart-grid" x1="${padL}" y1="${yy}" x2="${w-padR}" y2="${yy}"/><text class="chart-axis value" x="${padL-10}" y="${yy+3}">${fmtChartAxisValue(v,cfg)}</text>`;}).join('');
-  const startDate=new Date(first.t).toLocaleDateString('ko-KR',{month:'short',day:'numeric'});
-  const endDate=new Date(last.t).toLocaleDateString('ko-KR',{month:'short',day:'numeric'});
-  const chg=(last.v-first.v)/Math.abs(first.v||1)*100;
+  const startDate=new Date(first.t).toLocaleDateString('ko-KR',{year:'2-digit',month:'2-digit',day:'2-digit'});
+  const endDate=new Date(last.t).toLocaleDateString('ko-KR',{year:'2-digit',month:'2-digit',day:'2-digit'});
+  const pointsUnit=cfg.suffix==='%'||cfg.suffix==='%p';
+  const chg=pointsUnit?last.v-first.v:(last.v-first.v)/Math.abs(first.v||1)*100;
+  const changeUnit=pointsUnit?'%p':'%';
   document.getElementById('marketChartTitle').textContent='CHART · '+cfg.label;
-  document.getElementById('marketChartMeta').textContent=(cfg.rangeLabel||chartRangeLabel(marketChartRange))+' · '+points.length+'개 포인트 · '+(source||'Live')+' · '+fmtChartValue(last.v,cfg)+' ('+(chg>=0?'+':'')+chg.toFixed(2)+'%)';
-  box.innerHTML=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" aria-label="${escHtml(cfg.label)} chart">${grid}<polyline points="${poly}" fill="none" stroke="${line}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${x(last).toFixed(1)}" cy="${y(last).toFixed(1)}" r="4.5" fill="${line}"/><text class="chart-axis date" x="${padL}" y="${h-14}">${startDate}</text><text class="chart-axis date" x="${w-padR}" y="${h-14}">${endDate}</text></svg>`;
+  document.getElementById('marketChartMeta').textContent=(cfg.rangeLabel||chartRangeLabel(marketChartRange))+' · '+points.length+'개 포인트 · '+(source||'Live')+' · '+fmtChartValue(last.v,cfg)+' ('+(chg>=0?'+':'')+chg.toFixed(2)+changeUnit+')';
+  box.innerHTML=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" aria-label="${escHtml(cfg.label)} chart">${grid}<polyline points="${poly}" fill="none" stroke="${line}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${x(last).toFixed(1)}" cy="${y(last).toFixed(1)}" r="4.5" fill="${line}"/><text class="chart-axis date" style="text-anchor:start" x="${padL}" y="${h-14}">${startDate}</text><text class="chart-axis date" style="text-anchor:end" x="${w-padR}" y="${h-14}">${endDate}</text></svg>`;
 }
 function setChartActive(key){
   document.querySelectorAll('[data-chart-key]').forEach(el=>el.classList.toggle('chart-active',el.dataset.chartKey===key));
