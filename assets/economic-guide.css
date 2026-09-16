@@ -1,4 +1,17 @@
 /* Native disclosures keep the list usable before scripts load. */
+#usEconomyGuide [hidden]{display:none!important}
+#usEconomyGuide .guide-tabs{display:flex;gap:24px;border-bottom:1px solid var(--border);margin:0 0 24px}
+#usEconomyGuide .guide-tabs button{display:flex;align-items:center;gap:8px;border:0;border-bottom:3px solid transparent;background:transparent;color:var(--text-mid);padding:13px 2px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;letter-spacing:0}
+#usEconomyGuide .guide-tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+#usEconomyGuide .guide-tabs button span{font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.8}
+#usEconomyGuide .guide-tabs button:focus-visible,#usEconomyGuide [role="tabpanel"]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+#usEconomyGuide .guide-intro{color:var(--text-mid);font-size:13px;line-height:1.8;margin:0 0 24px;word-break:keep-all;overflow-wrap:anywhere}
+#usEconomyGuide .important-guide-group{margin-bottom:30px}
+#usEconomyGuide .guide-group-heading{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+#usEconomyGuide .guide-group-heading h2{font-size:17px;font-weight:700;margin:0;color:var(--text);letter-spacing:0}
+#usEconomyGuide .guide-group-heading span{font-size:11px;color:var(--text-dim)}
+#usEconomyGuide .guide-group-description{font-size:12px;line-height:1.8;color:var(--text-mid);margin:0 0 12px;word-break:keep-all;overflow-wrap:anywhere}
+#usEconomyGuide .guide-source{grid-column:1/-1}
 #usEconomyGuide .us-guide-list{display:flex;flex-direction:column;gap:7px}
 #usEconomyGuide .us-guide-item{--guide-tone:#087c73;margin:0;background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden}
 #usEconomyGuide .us-guide-item:nth-child(8n+2){--guide-tone:#9c7019}
