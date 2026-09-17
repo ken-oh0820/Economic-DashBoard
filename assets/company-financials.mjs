@@ -29,6 +29,7 @@ function selectCompany(event){
   input.setCustomValidity('');symbol=chosen;
   document.getElementById('cfExchange').value=chosen.split(':')[0];
   document.getElementById('cfCalculatorForm').reset();calculate();renderWidget();
+  window.dispatchEvent(new CustomEvent('company-selected',{detail:symbol}));
 }
 function calculate(){
   for(const [key]of metrics){
@@ -79,4 +80,8 @@ function initialize(){
   renderWidget();
 }
 window.addEventListener('company-view-open',initialize);
+window.addEventListener('company-select-symbol',event=>{
+  if(typeof event.detail!=='string'||!/^(NASDAQ|NYSE|AMEX):[A-Z0-9][A-Z0-9.-]{0,15}$/.test(event.detail))return;
+  initialize();document.getElementById('cfSearch').value=event.detail;selectCompany();
+});
 if(document.body.classList.contains('company-mode'))initialize();

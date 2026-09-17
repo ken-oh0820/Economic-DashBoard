@@ -27,6 +27,12 @@
     const stale=failed||item.status!=='ok'||Date.now()-Date.parse(item.fetchedAt)>86400000;
     return item.source+(stale?' · 갱신 지연':'');
   }
+  function metadata(cfg){
+    const item=get(cfg);if(!item)return null;
+    const fetched=Date.parse(item.fetchedAt);
+    return {date:item.points.at(-1).date,frequency:item.frequency,source:item.source,fetchedAt:item.fetchedAt,
+      delayed:failed||item.status!=='ok'||!Number.isFinite(fetched)||Date.now()-fetched>86400000};
+  }
   function monthBefore(date,months){
     const d=new Date(date+'T00:00:00Z'),day=d.getUTCDate();
     d.setUTCDate(1);d.setUTCMonth(d.getUTCMonth()-months);
@@ -57,5 +63,5 @@
     const cutoff=Date.parse(monthBefore(new Date(last.t).toISOString().slice(0,10),Math.max(months,minimum)));
     return {points:all.filter(p=>p.t>=cutoff),source:source(item)+' · 기준 '+new Date(last.t).toISOString().slice(0,10),rangeLabel:Math.max(months,minimum)+'개월 (최근 관측 기준)'};
   }
-  root.OfficialData={load,get,source,monthBefore,periodPoint,bondChanges,chart};
+  root.OfficialData={load,get,source,metadata,monthBefore,periodPoint,bondChanges,chart};
 })(globalThis);

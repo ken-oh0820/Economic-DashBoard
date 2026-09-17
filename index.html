@@ -257,6 +257,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 </style>
 <link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-official-data">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260917-important">
+<link rel="stylesheet" href="assets/workspace.css?v=20260917-workflow">
 </head>
 <body class="menu-mode light">
 <main class="main-menu" id="mainMenu" aria-labelledby="mainMenuTitle">
@@ -1257,7 +1258,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
   </div>
 </div>
 <div id="tooltip"></div>
-<script src="assets/official-data.js?v=20260912"></script>
+<script src="assets/official-data.js?v=20260917-metadata"></script>
 <script>
 const eData={"004":{name:"아프가니스탄",flag:"🇦🇫",region:"아시아",gdp:18.1,trade:4.0,unemployment:14.4,inflation:5.8},"008":{name:"알바니아",flag:"🇦🇱",region:"유럽",gdp:29.9,trade:11.5,unemployment:10.6,inflation:2.4},"012":{name:"알제리",flag:"🇩🇿",region:"아프리카",gdp:288.0,trade:95.0,unemployment:11.4,inflation:6.1},"024":{name:"앙골라",flag:"🇦🇴",region:"아프리카",gdp:115.2,trade:45.0,unemployment:8.0,inflation:28.0},"032":{name:"아르헨티나",flag:"🇦🇷",region:"아메리카",gdp:683.4,trade:165.0,unemployment:6.9,inflation:136.0},"036":{name:"호주",flag:"🇦🇺",region:"오세아니아",gdp:1829.5,trade:660.0,unemployment:4.1,inflation:3.2},"040":{name:"오스트리아",flag:"🇦🇹",region:"유럽",gdp:566.5,trade:450.0,unemployment:5.4,inflation:2.9},"050":{name:"방글라데시",flag:"🇧🇩",region:"아시아",gdp:475.0,trade:120.0,unemployment:5.1,inflation:10.4},"056":{name:"벨기에",flag:"🇧🇪",region:"유럽",gdp:717.0,trade:1150.0,unemployment:5.6,inflation:2.8},"068":{name:"볼리비아",flag:"🇧🇴",region:"아메리카",gdp:57.1,trade:15.0,unemployment:4.5,inflation:5.4},"076":{name:"브라질",flag:"🇧🇷",region:"아메리카",gdp:2256.9,trade:740.0,unemployment:6.7,inflation:5.7},"100":{name:"불가리아",flag:"🇧🇬",region:"유럽",gdp:127.9,trade:88.0,unemployment:4.3,inflation:3.5},"116":{name:"캄보디아",flag:"🇰🇭",region:"아시아",gdp:48.8,trade:50.0,unemployment:0.3,inflation:2.2},"120":{name:"카메룬",flag:"🇨🇲",region:"아프리카",gdp:60.6,trade:14.0,unemployment:3.5,inflation:5.5},"124":{name:"캐나다",flag:"🇨🇦",region:"아메리카",gdp:2283.6,trade:1000.0,unemployment:6.3,inflation:2.3},"152":{name:"칠레",flag:"🇨🇱",region:"아메리카",gdp:347.2,trade:200.0,unemployment:8.7,inflation:4.2},"156":{name:"중국",flag:"🇨🇳",region:"아시아",gdp:19398.6,trade:6450.0,unemployment:5.0,inflation:0.0},"170":{name:"콜롬비아",flag:"🇨🇴",region:"아메리카",gdp:438.1,trade:110.0,unemployment:9.5,inflation:6.5},"180":{name:"콩고민주공화국",flag:"🇨🇩",region:"아프리카",gdp:82.3,trade:24.0,unemployment:4.5,inflation:22.5},"188":{name:"코스타리카",flag:"🇨🇷",region:"아메리카",gdp:102.6,trade:42.0,unemployment:7.4,inflation:1.8},"191":{name:"크로아티아",flag:"🇭🇷",region:"유럽",gdp:103.9,trade:62.0,unemployment:5.8,inflation:3.2},"203":{name:"체코",flag:"🇨🇿",region:"유럽",gdp:383.4,trade:340.0,unemployment:2.8,inflation:2.6},"208":{name:"덴마크",flag:"🇩🇰",region:"유럽",gdp:459.6,trade:268.0,unemployment:2.8,inflation:2.2},"218":{name:"에콰도르",flag:"🇪🇨",region:"아메리카",gdp:130.5,trade:57.0,unemployment:3.6,inflation:1.0},"818":{name:"이집트",flag:"🇪🇬",region:"아프리카",gdp:349.3,trade:145.0,unemployment:7.0,inflation:27.5},"231":{name:"에티오피아",flag:"🇪🇹",region:"아프리카",gdp:109.5,trade:22.0,unemployment:3.5,inflation:28.2},"246":{name:"핀란드",flag:"🇫🇮",region:"유럽",gdp:314.7,trade:195.0,unemployment:10.4,inflation:1.5},"250":{name:"프랑스",flag:"🇫🇷",region:"유럽",gdp:3361.6,trade:1350.0,unemployment:7.7,inflation:1.1},"266":{name:"가봉",flag:"🇬🇦",region:"아프리카",gdp:21.5,trade:11.0,unemployment:19.5,inflation:3.1},"276":{name:"독일",flag:"🇩🇪",region:"유럽",gdp:5013.6,trade:3250.0,unemployment:3.8,inflation:2.1},"288":{name:"가나",flag:"🇬🇭",region:"아프리카",gdp:112.0,trade:28.0,unemployment:3.5,inflation:18.5},"300":{name:"그리스",flag:"🇬🇷",region:"유럽",gdp:282.0,trade:130.0,unemployment:9.8,inflation:2.5},"320":{name:"과테말라",flag:"🇬🇹",region:"아메리카",gdp:120.9,trade:38.0,unemployment:2.4,inflation:3.0},"332":{name:"아이티",flag:"🇭🇹",region:"아메리카",gdp:30.9,trade:4.5,unemployment:15.0,inflation:21.0},"340":{name:"온두라스",flag:"🇭🇳",region:"아메리카",gdp:39.4,trade:20.0,unemployment:5.4,inflation:5.2},"348":{name:"헝가리",flag:"🇭🇺",region:"유럽",gdp:247.8,trade:235.0,unemployment:4.2,inflation:4.8},"356":{name:"인도",flag:"🇮🇳",region:"아시아",gdp:4125.2,trade:1280.0,unemployment:7.9,inflation:4.9},"360":{name:"인도네시아",flag:"🇮🇩",region:"아시아",gdp:1443.3,trade:510.0,unemployment:5.1,inflation:2.3},"364":{name:"이란",flag:"🇮🇷",region:"중동",gdp:356.5,trade:100.0,unemployment:8.5,inflation:37.5},"368":{name:"이라크",flag:"🇮🇶",region:"중동",gdp:265.5,trade:115.0,unemployment:13.5,inflation:3.5},"372":{name:"아일랜드",flag:"🇮🇪",region:"유럽",gdp:708.8,trade:720.0,unemployment:4.4,inflation:2.5},"376":{name:"이스라엘",flag:"🇮🇱",region:"중동",gdp:610.8,trade:240.0,unemployment:4.1,inflation:3.2},"380":{name:"이탈리아",flag:"🇮🇹",region:"유럽",gdp:2543.7,trade:1150.0,unemployment:5.8,inflation:1.7},"392":{name:"일본",flag:"🇯🇵",region:"아시아",gdp:4279.8,trade:1540.0,unemployment:2.6,inflation:2.9},"398":{name:"카자흐스탄",flag:"🇰🇿",region:"아시아",gdp:300.1,trade:110.0,unemployment:4.6,inflation:10.2},"404":{name:"케냐",flag:"🇰🇪",region:"아프리카",gdp:136.0,trade:30.0,unemployment:5.4,inflation:6.8},"408":{name:"북한",flag:"🇰🇵",region:"아시아",gdp:18.0,trade:1.5,unemployment:15.0,inflation:55.0},"410":{name:"대한민국",flag:"🇰🇷",region:"아시아",gdp:1858.6,trade:1280.0,unemployment:2.9,inflation:2.3},"414":{name:"쿠웨이트",flag:"🇰🇼",region:"중동",gdp:157.5,trade:98.0,unemployment:2.2,inflation:3.1},"418":{name:"라오스",flag:"🇱🇦",region:"아시아",gdp:16.9,trade:11.0,unemployment:0.7,inflation:18.5},"422":{name:"레바논",flag:"🇱🇧",region:"중동",gdp:28.3,trade:16.0,unemployment:28.0,inflation:85.0},"434":{name:"리비아",flag:"🇱🇾",region:"아프리카",gdp:47.9,trade:34.0,unemployment:18.5,inflation:3.2},"458":{name:"말레이시아",flag:"🇲🇾",region:"아시아",gdp:470.6,trade:510.0,unemployment:3.2,inflation:2.1},"484":{name:"멕시코",flag:"🇲🇽",region:"아메리카",gdp:1862.7,trade:1120.0,unemployment:2.6,inflation:4.6},"504":{name:"모로코",flag:"🇲🇦",region:"아프리카",gdp:179.6,trade:75.0,unemployment:12.5,inflation:2.2},"508":{name:"모잠비크",flag:"🇲🇿",region:"아프리카",gdp:24.7,trade:10.0,unemployment:3.3,inflation:6.5},"516":{name:"나미비아",flag:"🇳🇦",region:"아프리카",gdp:14.7,trade:9.0,unemployment:19.5,inflation:5.0},"524":{name:"네팔",flag:"🇳🇵",region:"아시아",gdp:45.5,trade:16.0,unemployment:11.0,inflation:5.6},"528":{name:"네덜란드",flag:"🇳🇱",region:"유럽",gdp:1320.6,trade:1450.0,unemployment:3.9,inflation:2.8},"554":{name:"뉴질랜드",flag:"🇳🇿",region:"오세아니아",gdp:262.9,trade:105.0,unemployment:4.8,inflation:2.5},"558":{name:"니카라과",flag:"🇳🇮",region:"아메리카",gdp:20.7,trade:9.0,unemployment:4.5,inflation:4.0},"566":{name:"나이지리아",flag:"🇳🇬",region:"아프리카",gdp:285.0,trade:125.0,unemployment:4.5,inflation:32.0},"578":{name:"노르웨이",flag:"🇳🇴",region:"유럽",gdp:517.1,trade:295.0,unemployment:2.0,inflation:3.5},"586":{name:"파키스탄",flag:"🇵🇰",region:"아시아",gdp:410.5,trade:95.0,unemployment:6.5,inflation:9.5},"604":{name:"페루",flag:"🇵🇪",region:"아메리카",gdp:318.5,trade:115.0,unemployment:4.4,inflation:2.8},"608":{name:"필리핀",flag:"🇵🇭",region:"아시아",gdp:494.2,trade:230.0,unemployment:4.2,inflation:3.2},"616":{name:"폴란드",flag:"🇵🇱",region:"유럽",gdp:1039.6,trade:680.0,unemployment:3.1,inflation:4.0},"620":{name:"포르투갈",flag:"🇵🇹",region:"유럽",gdp:337.9,trade:200.0,unemployment:6.4,inflation:2.3},"634":{name:"카타르",flag:"🇶🇦",region:"중동",gdp:222.1,trade:168.0,unemployment:0.1,inflation:1.3},"642":{name:"루마니아",flag:"🇷🇴",region:"유럽",gdp:422.5,trade:245.0,unemployment:5.5,inflation:5.8},"643":{name:"러시아",flag:"🇷🇺",region:"유럽",gdp:2540.7,trade:820.0,unemployment:3.0,inflation:9.1},"682":{name:"사우디아라비아",flag:"🇸🇦",region:"중동",gdp:1268.5,trade:585.0,unemployment:3.9,inflation:2.0},"686":{name:"세네갈",flag:"🇸🇳",region:"아프리카",gdp:36.8,trade:12.0,unemployment:3.2,inflation:4.5},"703":{name:"슬로바키아",flag:"🇸🇰",region:"유럽",gdp:154.6,trade:158.0,unemployment:5.9,inflation:3.1},"705":{name:"슬로베니아",flag:"🇸🇮",region:"유럽",gdp:79.2,trade:68.0,unemployment:3.9,inflation:2.5},"706":{name:"소말리아",flag:"🇸🇴",region:"아프리카",gdp:12.9,trade:1.8,unemployment:19.5,inflation:5.0},"710":{name:"남아프리카공화국",flag:"🇿🇦",region:"아프리카",gdp:426.4,trade:215.0,unemployment:33.0,inflation:4.5},"724":{name:"스페인",flag:"🇪🇸",region:"유럽",gdp:1891.4,trade:850.0,unemployment:10.1,inflation:2.4},"729":{name:"수단",flag:"🇸🇩",region:"아프리카",gdp:35.9,trade:8.5,unemployment:20.0,inflation:200.0},"752":{name:"스웨덴",flag:"🇸🇪",region:"유럽",gdp:662.3,trade:410.0,unemployment:9.0,inflation:1.8},"756":{name:"스위스",flag:"🇨🇭",region:"유럽",gdp:1002.7,trade:720.0,unemployment:2.3,inflation:0.9},"764":{name:"태국",flag:"🇹🇭",region:"아시아",gdp:558.6,trade:540.0,unemployment:1.0,inflation:0.4},"788":{name:"튀니지",flag:"🇹🇳",region:"아프리카",gdp:59.1,trade:37.0,unemployment:15.0,inflation:7.0},"792":{name:"튀르키예",flag:"🇹🇷",region:"유럽",gdp:1565.5,trade:650.0,unemployment:8.4,inflation:43.0},"800":{name:"우간다",flag:"🇺🇬",region:"아프리카",gdp:65.0,trade:11.0,unemployment:2.8,inflation:4.5},"804":{name:"우크라이나",flag:"🇺🇦",region:"유럽",gdp:209.7,trade:85.0,unemployment:20.5,inflation:12.5},"784":{name:"아랍에미리트",flag:"🇦🇪",region:"중동",gdp:569.1,trade:520.0,unemployment:3.0,inflation:2.5},"826":{name:"영국",flag:"🇬🇧",region:"유럽",gdp:3958.8,trade:1460.0,unemployment:4.5,inflation:2.8},"840":{name:"미국",flag:"🇺🇸",region:"아메리카",gdp:30615.7,trade:5750.0,unemployment:4.3,inflation:2.7},"858":{name:"우루과이",flag:"🇺🇾",region:"아메리카",gdp:85.0,trade:28.0,unemployment:8.0,inflation:5.5},"860":{name:"우즈베키스탄",flag:"🇺🇿",region:"아시아",gdp:137.5,trade:32.0,unemployment:5.3,inflation:10.0},"862":{name:"베네수엘라",flag:"🇻🇪",region:"아메리카",gdp:82.8,trade:19.0,unemployment:6.5,inflation:269.9},"704":{name:"베트남",flag:"🇻🇳",region:"아시아",gdp:484.7,trade:760.0,unemployment:2.0,inflation:3.4},"887":{name:"예멘",flag:"🇾🇪",region:"중동",gdp:17.4,trade:5.0,unemployment:13.5,inflation:42.0},"894":{name:"잠비아",flag:"🇿🇲",region:"아프리카",gdp:29.4,trade:11.0,unemployment:12.0,inflation:13.3},"716":{name:"짐바브웨",flag:"🇿🇼",region:"아프리카",gdp:53.3,trade:9.0,unemployment:5.5,inflation:35.0},"104":{name:"미얀마",flag:"🇲🇲",region:"아시아",gdp:59.4,trade:30.0,unemployment:2.2,inflation:8.6},"795":{name:"투르크메니스탄",flag:"🇹🇲",region:"아시아",gdp:82.0,trade:18.0,unemployment:4.0,inflation:6.0},"031":{name:"아제르바이잔",flag:"🇦🇿",region:"아시아",gdp:78.7,trade:38.0,unemployment:5.6,inflation:2.1},"702":{name:"싱가포르",flag:"🇸🇬",region:"아시아",gdp:525.2,trade:980.0,unemployment:2.0,inflation:2.5}};
 
@@ -1661,6 +1662,7 @@ function switchView(view){
   if(view!=='map')clearMapTransientUi();
   document.body.classList.remove('menu-mode','map-mode','dashboard-mode','fed-mode','sites-mode','guide-mode','company-mode');
   document.body.classList.add(view==='company'?'company-mode':view==='dashboard'?'dashboard-mode':view==='fed'?'fed-mode':view==='sites'?'sites-mode':view==='guide'?'guide-mode':view==='map'?'map-mode':'menu-mode');
+  window.dispatchEvent(new CustomEvent('app-view-change',{detail:view}));
   if(view==='company')window.dispatchEvent(new Event('company-view-open'));
   if(view==='map'&&map) setTimeout(()=>map.invalidateSize(),80);
   if(view==='dashboard') setTimeout(()=>{renderRateDecisionSchedules();bindMarketChartClicks();fetchMarketDashboard(true);fetchUsMacroDashboard();fetchTreasuryBasisMonitor();fetchGlobalRateDashboard();fetchBondYieldDashboard();showMarketChart(currentMarketChartKey);},80);
@@ -2202,18 +2204,19 @@ function renderUsMacro(items){
     const key='macro-'+item.key,cfg=MARKET_CHARTS[key];
     const linkOnly=sourceOnlyChart(cfg),tag=linkOnly?'a':'div';
     const attrs=linkOnly?'href="'+escHtml(marketSourceUrl(cfg))+'" target="_blank" rel="noopener noreferrer"':'data-chart-key="'+escHtml(key)+'" role="button" tabindex="0"';
-    return '<'+tag+' class="macro-card '+(item.rowBreak?'row-break ':'')+(linkOnly?'source-card':'')+'" '+attrs+'><div class="macro-group">'+escHtml(item.group)+'</div><div class="macro-name">'+escHtml(item.name)+'</div><div class="macro-value '+(linkOnly?'source-link-value':'')+' '+escHtml(item.cls||'market-flat')+'">'+escHtml(linkOnly?'원문 보기 ↗':item.value)+'</div><div class="macro-change">'+escHtml(item.change||'')+'</div><div class="macro-source">'+escHtml(item.source||'')+(item.date?' · '+escHtml(item.date):'')+' · '+escHtml(item.note||'')+'</div></'+tag+'>';
+    return '<'+tag+' class="macro-card '+(item.rowBreak?'row-break ':'')+(linkOnly?'source-card':'')+'" '+attrs+'><div class="macro-group">'+escHtml(item.group)+'</div><div class="macro-name">'+escHtml(item.name)+'</div><div class="macro-value '+(linkOnly?'source-link-value':'')+' '+escHtml(item.cls||'market-flat')+'">'+escHtml(linkOnly?'원문 보기 ↗':item.value)+'</div><div class="macro-change">'+escHtml(item.change||'')+'</div><div class="macro-source">'+escHtml(item.source||'')+' · '+escHtml(item.note||'')+'</div>'+(linkOnly?'':(window.WorkspaceUI?.provenance(key)||''))+'</'+tag+'>';
   }).join('');
-  bindMarketChartClicks();
+  bindMarketChartClicks();notifyMarketRendered();
 }
+function notifyMarketRendered(){window.dispatchEvent(new Event('market-data-rendered'));}
 function renderGlobalRates(items=GLOBAL_RATE_ITEMS){
   const grid=document.getElementById('globalRateGrid');if(!grid)return;
   grid.innerHTML=items.map(item=>{
     const cfg=MARKET_CHARTS['rate-'+item.key];
     const data=globalThis.OfficialData?.get(cfg);
-    if(data){const last=data.points.at(-1);return '<div class="macro-card" role="button" tabindex="0" data-chart-key="rate-'+escHtml(item.key)+'"><div class="macro-group">#'+item.rank+' · '+escHtml(item.country)+'</div><div class="macro-name">'+escHtml(item.name)+'</div><div class="macro-value">'+last.value.toFixed(2)+'%</div><div class="macro-source">'+escHtml(OfficialData.source(data))+' · '+last.date+'</div></div>';}
+    if(data){const last=data.points.at(-1);return '<div class="macro-card" role="button" tabindex="0" data-chart-key="rate-'+escHtml(item.key)+'"><div class="macro-group">#'+item.rank+' · '+escHtml(item.country)+'</div><div class="macro-name">'+escHtml(item.name)+'</div><div class="macro-value">'+last.value.toFixed(2)+'%</div><div class="macro-source">'+escHtml(OfficialData.source(data))+' · '+last.date+'</div>'+(window.WorkspaceUI?.provenance('rate-'+item.key)||'')+'</div>';}
     return '<a class="macro-card source-card" href="'+escHtml(marketSourceUrl(cfg))+'" target="_blank" rel="noopener noreferrer"><div class="macro-group">#'+escHtml(item.rank)+' · '+escHtml(item.country)+'</div><div class="macro-name">'+escHtml(item.name)+'</div><div class="macro-value source-link-value">원문 보기 ↗</div><div class="macro-source">FRED · '+escHtml(item.note)+'</div></a>';
-  }).join('');
+  }).join('');notifyMarketRendered();
 }
 async function fetchGlobalRateDashboard(){await OfficialData.load();renderGlobalRates();bindMarketChartClicks();}
 function renderBondYields(groups=BOND_YIELD_GROUPS){
@@ -2224,7 +2227,7 @@ function renderBondYields(groups=BOND_YIELD_GROUPS){
     if(data){
       const delta=OfficialData.bondChanges(data.points),suffix=key.endsWith('spread')?'%p':'%';
       const change=(value)=>value==null?'비교 불가':(value>=0?'+':'')+value.toFixed(2)+'%p';
-      return '<div class="bond-card" role="button" tabindex="0" data-chart-key="'+escHtml(key)+'"><div class="bond-tenor '+escHtml(tone||'')+'">'+escHtml(label)+'</div><div class="bond-value">'+delta.last.value.toFixed(2)+suffix+'</div><div class="bond-change bond-change-row"><span>전 관측일</span><b>'+change(delta.day)+'</b></div><div class="bond-change bond-change-row"><span>1개월 전</span><b>'+change(delta.monthly)+'</b></div><div class="bond-source">'+escHtml(OfficialData.source(data))+' · '+escHtml(delta.last.date)+'</div></div>';
+      return '<div class="bond-card" role="button" tabindex="0" data-chart-key="'+escHtml(key)+'"><div class="bond-tenor '+escHtml(tone||'')+'">'+escHtml(label)+'</div><div class="bond-value">'+delta.last.value.toFixed(2)+suffix+'</div><div class="bond-change bond-change-row"><span>전 관측일</span><b>'+change(delta.day)+'</b></div><div class="bond-change bond-change-row"><span>1개월 전</span><b>'+change(delta.monthly)+'</b></div><div class="bond-source">'+escHtml(OfficialData.source(data))+' · '+escHtml(delta.last.date)+'</div>'+(window.WorkspaceUI?.provenance(key)||'')+'</div>';
     }
     return '<a class="bond-card source-card" href="'+escHtml(marketSourceUrl(cfg))+'" target="_blank" rel="noopener noreferrer"><div class="bond-tenor '+escHtml(tone||'')+'">'+escHtml(label)+'</div><div class="bond-value source-link-value">원문 보기 ↗</div><div class="bond-source">'+(cfg.type==='fred'?'FRED':'Investing')+'</div></a>';
   }
@@ -2236,7 +2239,7 @@ function renderBondYields(groups=BOND_YIELD_GROUPS){
   }).join('');
   const links=groups.filter(group=>group.url).map(group=>'<a class="bond-country-link source-card" href="'+escHtml(group.url)+'" target="_blank" rel="noopener noreferrer"><span class="bond-country-name"><span class="bond-flag" aria-hidden="true">'+escHtml(group.flag)+'</span>'+escHtml(group.name)+'</span><span class="bond-country-link-source">Investing · 전체 만기 ↗</span></a>').join('');
   box.innerHTML=curves+(links?'<div class="bond-country-links">'+links+'</div>':'');
-  bindMarketChartClicks();
+  bindMarketChartClicks();notifyMarketRendered();
 }
 async function fetchBondYieldDashboard(){
   await OfficialData.load();
@@ -2346,7 +2349,7 @@ function parseCnnFearGreed(d){
   const raw=String(fg?.rating||fg?.value_classification||fg?.status||'').replace(/_/g,' ');
   const score=fearGreedDisplayValue(value);
   const label=raw?raw.replace(/\b\w/g,c=>c.toUpperCase()):score<=24?'Extreme Fear':score<=44?'Fear':score<=55?'Neutral':score<=75?'Greed':'Extreme Greed';
-  return {value,label,source:'CNN'};
+  return {value,label,source:'CNN',timestamp:fg?.timestamp??fg?.last_updated??null};
 }
 async function fetchFearGreed(){
   const urls=[
@@ -2368,7 +2371,7 @@ async function fetchCryptoFearGreed(){
   try{
     const res=await fetchT('https://api.alternative.me/fng/?limit=1',4500);
     const d=await res.json();const f=d.data?.[0];
-    if(f?.value)return {value:Number(f.value),label:f.value_classification||'',source:'Alternative.me'};
+    if(f?.value)return {value:Number(f.value),label:f.value_classification||'',source:'Alternative.me',timestamp:f.timestamp??null};
   }catch(e){}
   return null;
 }
@@ -2439,7 +2442,7 @@ function renderMarketChart(points,cfg,source){
   const x=p=>padL+((p.t-tMin)/(tMax-tMin||1))*innerW;
   const y=p=>padT+(1-(p.v-min)/span)*innerH;
   const poly=points.map(p=>x(p).toFixed(1)+','+y(p).toFixed(1)).join(' ');
-  const up=last.v>=first.v,line=up?'#00ff88':'#ff4d6d';
+  const up=last.v>=first.v,line=isLight?(up?'#13754f':'#b83550'):(up?'#00ff88':'#ff4d6d');
   const gridVals=[max,(max+min)/2,min];
   const grid=gridVals.map(v=>{const yy=padT+(1-(v-min)/span)*innerH;return `<line class="chart-grid" x1="${padL}" y1="${yy}" x2="${w-padR}" y2="${yy}"/><text class="chart-axis value" x="${padL-10}" y="${yy+3}">${fmtChartAxisValue(v,cfg)}</text>`;}).join('');
   const startDate=new Date(first.t).toLocaleDateString('ko-KR',{year:'2-digit',month:'2-digit',day:'2-digit'});
@@ -2457,6 +2460,7 @@ function setChartActive(key){
 async function showMarketChart(key=currentMarketChartKey){
   const cfg=MARKET_CHARTS[key];if(!cfg)return;
   currentMarketChartKey=key;setChartActive(key);
+  document.querySelector('.market-chart-panel')?.classList.toggle('source-only-chart',sourceOnlyChart(cfg));
   const requestedRange=marketChartRange;
   const box=document.getElementById('marketChartCanvas'),title=document.getElementById('marketChartTitle'),meta=document.getElementById('marketChartMeta');
   updateTradingViewLink(cfg);
@@ -2497,20 +2501,20 @@ function mountMarketSourceLinks(){
     const value=document.createElement('div');value.className='indicator-value';value.textContent='원문에서 확인';
     const note=document.createElement('div');note.className='indicator-note';note.textContent='시세·차트 외부 링크';host.append(value,note);
     const link=document.createElement('a');link.href=MARKET_CHARTS[key].tv;link.target='_blank';link.rel='noopener noreferrer';link.className='indicator-source';link.textContent='TradingView 원문 ↗';
-    const chart=document.createElement('button');chart.type='button';chart.className='chart-range-btn';chart.textContent='차트';chart.addEventListener('click',()=>showMarketChart(key));
+    const chart=document.createElement('span');chart.className='source-only-label';chart.textContent='외부 링크';
     card.replaceChildren(heading,host,chart,link);
   });
 }
 function bindMarketChartClicks(){
   document.querySelectorAll('[data-chart-key]').forEach(el=>{
     if(el.dataset.chartBound)return;el.dataset.chartBound='1';
-    el.addEventListener('click',e=>{if(el.dataset.chartKey&&!e.target.closest('a,button'))showMarketChart(el.dataset.chartKey);});
-    el.addEventListener('keydown',e=>{if(el.dataset.chartKey&&!e.target.closest('a,button')&&(e.key==='Enter'||e.key===' ')){e.preventDefault();showMarketChart(el.dataset.chartKey);}});
+    el.addEventListener('click',e=>{if(el.dataset.chartKey&&!e.target.closest('a,button'))(window.WorkspaceUI?WorkspaceUI.openChart(el.dataset.chartKey):showMarketChart(el.dataset.chartKey));});
+    el.addEventListener('keydown',e=>{if(el.dataset.chartKey&&!e.target.closest('a,button')&&(e.key==='Enter'||e.key===' ')){e.preventDefault();(window.WorkspaceUI?WorkspaceUI.openChart(el.dataset.chartKey):showMarketChart(el.dataset.chartKey));}});
   });
 }
 async function fetchMarketDashboard(force=false){
   if(marketLoading&&!force)return;
-  marketLoading=true;setMarketStatus('warn','MARKET DATA · UPDATING');
+  marketLoading=true;setMarketStatus('warn','심리 지표 연결 확인 중');
   try{
   document.querySelectorAll('.indicator-value.loading,.watch-row span.loading').forEach(el=>{el.textContent='연결 중';});
   const sourceRows=[];
@@ -2524,24 +2528,24 @@ async function fetchMarketDashboard(force=false){
   if(hyEl){hyEl.className='market-flat';hyEl.innerHTML=sourceLinkHtml(marketSourceUrl(MARKET_CHARTS.hy),'원문 보기');}
   const fng=await fetchFearGreed();
   const fngVal=document.getElementById('ind-fng'),fngChg=document.getElementById('chg-fng'),fngSrc=document.getElementById('src-fng');
-  if(fng){const fngCls=fearGreedClass(fng.value);ok++;fngVal.textContent=String(fearGreedDisplayValue(fng.value));fngVal.classList.remove('loading');fngVal.className='indicator-value '+fngCls;fngChg.className='indicator-change '+fngCls;fngChg.textContent=fng.label;fngSrc.textContent=fng.source;}else{fail++;fngVal.textContent='Worker 필요';fngVal.classList.remove('loading');fngVal.className='indicator-value market-flat';fngChg.className='indicator-change market-flat';fngChg.textContent='CNN 프록시 미연결';fngSrc.textContent='CNN 데이터는 Worker 프록시 필요';}
+  if(fng){const fngCls=fearGreedClass(fng.value);ok++;fngVal.textContent=String(fearGreedDisplayValue(fng.value));fngVal.classList.remove('loading');fngVal.className='indicator-value '+fngCls;fngChg.className='indicator-change '+fngCls;fngChg.textContent=fng.label;fngSrc.textContent=fng.source+' · 기준 '+(window.WorkspaceUI?.timestampLabel(fng.timestamp)||'미제공');}else{fail++;fngVal.textContent='확인 불가';fngVal.classList.remove('loading');fngVal.className='indicator-value market-flat';fngChg.className='indicator-change market-flat';fngChg.textContent='데이터 연결 실패';fngSrc.textContent='CNN · 기준일 확인 불가';}
   const cfng=await fetchCryptoFearGreed();
   const cfngVal=document.getElementById('ind-cfng'),cfngChg=document.getElementById('chg-cfng'),cfngSrc=document.getElementById('src-cfng');
-  if(cfng){const cfngCls=fearGreedClass(cfng.value);ok++;cfngVal.textContent=String(fearGreedDisplayValue(cfng.value));cfngVal.classList.remove('loading');cfngVal.className='indicator-value '+cfngCls;cfngChg.className='indicator-change '+cfngCls;cfngChg.textContent=cfng.label;cfngSrc.textContent=cfng.source;}else{fail++;cfngVal.textContent='실패';cfngVal.classList.remove('loading');cfngVal.className='indicator-value market-flat';cfngChg.className='indicator-change market-flat';cfngChg.textContent='—';cfngSrc.textContent='연결 실패';}
-  renderWatch('watch-dubai','$'+DUBAI_CRUDE_FALLBACK.value.toFixed(2),'market-flat');
+  if(cfng){const cfngCls=fearGreedClass(cfng.value);ok++;cfngVal.textContent=String(fearGreedDisplayValue(cfng.value));cfngVal.classList.remove('loading');cfngVal.className='indicator-value '+cfngCls;cfngChg.className='indicator-change '+cfngCls;cfngChg.textContent=cfng.label;cfngSrc.textContent=cfng.source+' · 기준 '+(window.WorkspaceUI?.timestampLabel(cfng.timestamp)||'미제공');}else{fail++;cfngVal.textContent='실패';cfngVal.classList.remove('loading');cfngVal.className='indicator-value market-flat';cfngChg.className='indicator-change market-flat';cfngChg.textContent='—';cfngSrc.textContent='연결 실패';}
+  renderWatch('watch-dubai','$'+DUBAI_CRUDE_FALLBACK.value.toFixed(2)+' · '+DUBAI_CRUDE_FALLBACK.date+' 참고값 (자동 갱신 없음)','market-flat');
   sourceRows.push({name:'심리 지표',state:ok?'ok':'error',text:ok+'개 성공'});
   sourceRows.push({name:'VIX',state:'warn',text:'외부 표시 제한 · 원문 링크 제공'});
   sourceRows.push({name:'CNN Fear & Greed',state:fng?'ok':'warn',text:fng?'정상':'Worker 필요'});
   sourceRows.push({name:'Crypto Fear & Greed',state:cfng?'ok':'error',text:cfng?'정상':'실패'});
   sourceRows.push({name:'하이일드·원자재·환율',state:'warn',text:'원문 링크'});
   sourceRows.push({name:'Dubai Crude',state:'warn',text:DUBAI_CRUDE_FALLBACK.date+' 참고값'});
-  sourceRows.push({name:'자동 갱신',state:'ok',text:'60초'});
+  sourceRows.push({name:'심리 지표 연결 확인',state:'ok',text:'60초마다 · 관측 시각과 별개'});
   const list=document.getElementById('marketSourceList');
   if(list)list.innerHTML=sourceRows.map(r=>`<div class="source-row ${r.state}"><span>${escHtml(r.name)}</span><span>${escHtml(r.text)}</span></div>`).join('');
   const now=new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  setMarketStatus(fail?'warn':'ok','MARKET DATA · '+now+' · '+ok+' OK'+(fail?' / '+fail+' FAIL':''));
+  setMarketStatus(fail?'warn':'ok','심리 연결 확인 '+now+' · '+ok+'/2'+(fail?' · 일부 실패':''));
   }catch(e){
-    setMarketStatus('error','MARKET DATA · ERROR');
+    setMarketStatus('error','심리 지표 연결 실패');
   }finally{
     marketLoading=false;
   }
@@ -2750,6 +2754,7 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script defer src="assets/main-menu.js?v=20260910-menu"></script>
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
-<script type="module" src="assets/company-financials.mjs?v=20260911-menu-order"></script>
+<script type="module" src="assets/company-financials.mjs?v=20260917-recent"></script>
+<script type="module" src="assets/workspace.mjs?v=20260917-workflow"></script>
 </body>
 </html>

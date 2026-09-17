@@ -19,7 +19,8 @@ function harness(){
   const nodes=new Map();
   const ranges=[{disabled:false},{disabled:false}];
   const context=vm.createContext({
-    document:{getElementById(id){if(!nodes.has(id))nodes.set(id,{innerHTML:'',textContent:''});return nodes.get(id);},querySelectorAll(){return ranges;}},
+    document:{getElementById(id){if(!nodes.has(id))nodes.set(id,{innerHTML:'',textContent:''});return nodes.get(id);},querySelectorAll(){return ranges;},querySelector(){return null;}},
+    notifyMarketRendered(){},
     setChartActive(){},updateTradingViewLink(){},bindMarketChartClicks(){},chartLimit(){return 30;},
     escHtml(value){return String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');},
     fetchT:async()=>{throw new Error('Unexpected network access');},

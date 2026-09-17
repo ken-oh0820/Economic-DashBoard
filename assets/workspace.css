@@ -1,0 +1,150 @@
+/* Shared navigation and dense monitoring; the Fed iframe remains untouched. */
+body :is(.workspace-dialog,.workspace-overview,.monitor-jump,.recent-companies,.guide-search-band) *{box-sizing:border-box;letter-spacing:0}
+.workspace-dialog{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:24px;width:min(820px,calc(100% - 32px));max-height:calc(100dvh - 40px);overflow:auto;box-shadow:0 24px 70px #0004;margin:auto;font-family:'Noto Sans KR',sans-serif}
+.workspace-dialog::backdrop{background:#101c2866}
+.workspace-dialog-head,.workspace-section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+.workspace-dialog-head h2,.workspace-section-head h2,.workspace-section-title{font-size:19px;line-height:1.5;margin:0;font-weight:700}
+.workspace-dialog :is(button,input,a):focus-visible,.workspace-overview button:focus-visible,.monitor-jump button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.workspace-dialog button,.recent-companies button,.workspace-text-button{font:inherit;cursor:pointer}
+.workspace-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;flex:none;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-mid);padding:0;cursor:pointer}
+.workspace-icon svg,.workspace-text-button svg,.guide-search-band svg,.recent-companies svg{width:18px;height:18px;flex:none;stroke-width:1.8}
+.workspace-icon:hover,.workspace-icon[aria-pressed="true"]{background:var(--metric-active-bg);color:var(--accent);border-color:var(--accent)}
+.workspace-icon[aria-pressed="true"] svg{fill:var(--accent)}
+.workspace-text-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:36px;padding:7px 12px;border:1px solid var(--border);border-radius:5px;background:var(--surface);color:var(--accent);font-size:14px}
+.workspace-dialog-note{color:var(--text-mid);font-size:14px;line-height:1.7;margin:0 0 18px}
+.workspace-dialog [hidden],.workspace-overview [hidden],.recent-companies[hidden],.guide-return[hidden]{display:none!important}
+#workspaceNav{max-width:380px}
+#workspaceNav nav{display:flex;flex-direction:column;gap:4px}
+#workspaceNav nav button{display:flex;align-items:center;gap:12px;border:0;border-radius:5px;background:transparent;color:var(--text);padding:13px 12px;text-align:left;font-size:15px;line-height:1.6}
+#workspaceNav nav button svg{width:19px;height:19px;flex:none}
+#workspaceNav nav button:hover,#workspaceNav nav button[aria-current="page"]{background:var(--metric-active-bg);color:var(--accent)}
+body :is(.indicator-dashboard,.sites-dashboard,.us-guide-dashboard){padding:24px 28px 40px}
+body :is(.dashboard-top){margin-bottom:20px}
+body .dashboard-kicker{font-size:12px;margin-bottom:6px}
+body .dashboard-title{font-size:25px}
+body .dashboard-sub{font-size:14px;margin-top:5px}
+body .dashboard-status{font-size:12px}
+body .ticker-track{animation-duration:100s}
+body.company-mode .ticker-bar,body.guide-mode .ticker-bar,body.sites-mode .ticker-bar,body.fed-mode .ticker-bar{display:none}
+.workspace-overview{margin:0 0 24px}
+.workspace-section-head p{font-size:12px;line-height:1.5;margin:4px 0 0;color:var(--text-mid)}
+.overview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.overview-item{border:1px solid var(--border);border-radius:6px;background:var(--surface);overflow:hidden;min-width:0}
+.overview-open{display:flex;flex-direction:column;align-items:flex-start;width:100%;height:100%;padding:16px;text-align:left;background:none;color:var(--text);border:0;font-family:inherit;cursor:pointer;gap:5px;min-width:0}
+.overview-open:hover{background:var(--rank-hover)}
+.overview-label{font-size:14px;font-weight:600;line-height:1.5}
+.overview-open strong{font:600 24px/1.5 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
+.overview-change{font-size:12px;line-height:1.6;color:var(--text-mid)}
+.overview-source{font-size:12px;line-height:1.6;color:var(--text-mid)}
+.observation-date{font-size:13px;color:var(--text);line-height:1.6;margin-top:6px}
+.observation-status{font-size:12px;line-height:1.6;color:var(--accent)}
+.observation-status.delayed{color:var(--warning)}
+.observation-collected{font-size:12px;line-height:1.6;color:var(--text-mid)}
+.overview-open .observation-collected{display:none}
+.workspace-feedback:empty{display:none}
+.workspace-feedback,.overview-empty{font-size:14px;color:var(--text-mid);line-height:1.7}
+.overview-empty{grid-column:1/-1;margin:8px 0}
+.monitor-jump{position:sticky;top:-24px;z-index:4;display:flex;gap:20px;padding:12px 0 0;margin-bottom:24px;background:var(--bg);border-bottom:1px solid var(--border);overflow:auto;scrollbar-width:thin}
+.monitor-jump button{flex:none;border:0;border-bottom:2px solid transparent;padding:10px 0;background:none;color:var(--text-mid);font:600 14px/1.6 'Noto Sans KR',sans-serif;cursor:pointer}
+.monitor-jump button:hover,.monitor-jump button:focus{color:var(--accent);border-bottom-color:var(--accent)}
+.monitor-section{scroll-margin-top:70px;margin-bottom:28px;outline:none}
+body #monitorMacro>.macro-panel{border-top:0;padding-top:0}
+body .macro-card{min-height:0;padding:14px}
+body :is(.macro-name,.indicator-name){font-size:15px}
+body :is(.macro-change,.macro-source,.bond-source,.bond-change,.macro-sub,.macro-badge){font-size:12px;line-height:1.7}
+body .macro-group{font-size:12px}
+body .macro-value{font-size:22px;margin:5px 0}
+body #globalRateGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+body #globalRateGrid .source-card{display:grid;grid-template-columns:1fr auto;align-items:center;gap:3px 12px;background:transparent;border:0;border-bottom:1px solid var(--border);border-radius:0;box-shadow:none;padding:12px 0}
+body #globalRateGrid .source-card .macro-group{grid-column:1/-1}
+body #globalRateGrid .source-card .macro-source{grid-column:1/-1;margin:0}
+body #globalRateGrid .source-card .macro-value{font-size:13px}
+body #globalRateGrid .macro-card:not(.source-card){grid-column:1/-1;background:var(--surface)}
+body #monitorSentiment .indicator-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
+body #monitorSentiment .indicator-card{min-height:0;padding:15px}
+body .indicator-group{font-size:12px;margin-bottom:7px}
+body .indicator-source{font-size:12px;line-height:1.7}
+body .indicator-name{margin-bottom:6px}
+body .indicator-value{font-size:24px;margin-bottom:4px}
+.source-only-label{display:block;font-size:12px;line-height:1.6;color:var(--text-mid)}
+.workspace-advanced{border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:24px 0}
+.workspace-advanced>summary{font-size:16px;font-weight:600;padding:18px 0;cursor:pointer;color:var(--text)}
+body .workspace-advanced .basis-monitor{border:0;padding:0 0 20px;background:none}
+body .basis-monitor :is(.basis-reading,.basis-source,.basis-guide-item,.basis-formula-note){font-size:13px;line-height:1.8}
+body .watch-list{display:flex;flex-direction:column;gap:0}
+body .watch-row{background:none;border:0;border-bottom:1px solid var(--border);border-radius:0;min-height:48px;font-size:14px;padding:12px 0;line-height:1.7}
+body .watch-row span:last-child{font-family:inherit;font-size:13px;text-align:right}
+body .watch-row[data-chart-key="dubai"]{color:var(--warning)}
+body #monitorSources .dashboard-sections{grid-template-columns:1fr 1fr}
+body .source-row{gap:18px;align-items:flex-start;font-size:13px}
+body .source-row span:last-child{text-align:right}
+.workspace-dialog .market-chart-panel{margin:18px 0 0;padding:0;border:0;background:none}
+.workspace-dialog .market-chart-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.workspace-dialog .market-chart-meta{font-size:13px;line-height:1.7}
+.workspace-dialog .dashboard-panel-title{font-size:15px;margin-bottom:8px}
+.workspace-dialog .market-chart-canvas{min-height:260px;height:auto}
+.workspace-dialog .market-chart-canvas svg{display:block;width:100%;height:auto}
+.workspace-dialog .chart-axis{font-size:12px;fill:var(--text-mid)}
+.workspace-dialog .source-only-chart .chart-range-tabs{display:none}
+.workspace-dialog .source-only-chart .market-chart-canvas{min-height:70px}
+.workspace-dialog .source-only-chart .chart-loading{min-height:70px;padding:18px}
+.chart-secondary-actions{display:flex;gap:10px;border-top:1px solid var(--border);padding-top:16px;margin-top:18px}
+.chart-guide-preview{margin-top:16px;border-top:1px solid var(--border);padding-top:16px}
+.chart-guide-preview h3{font-size:15px;margin:0 0 8px}
+.chart-guide-preview p{font-size:15px;color:var(--text-mid);line-height:1.8;margin:0}
+.chart-source-name{font-size:12px;color:var(--text-mid);margin-top:4px}
+#chartDataBasis p{font-size:13px;line-height:1.7;color:var(--text-mid)}
+#workspaceFavorites{max-width:600px}
+#favoriteChoices{border:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px 12px}
+#favoriteChoices label{display:flex;align-items:center;gap:10px;font-size:14px;min-height:42px;padding:7px 0;cursor:pointer}
+#favoriteChoices input{width:17px;height:17px;accent-color:var(--accent);flex:none}
+#favoriteLimit{font-size:13px;color:var(--warning);min-height:22px}
+.workspace-dialog-actions{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--border);padding-top:16px}
+.workspace-primary{padding:9px 22px;background:var(--accent);color:var(--bg);border:1px solid var(--accent);border-radius:5px;font-size:14px}
+.workspace-primary:disabled{opacity:.5;cursor:not-allowed}
+.workspace-sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.guide-search-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 22px}
+.guide-search-band label{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-mid)}
+.guide-search-band input{width:min(380px,100%);min-width:0;padding:10px 12px;border:1px solid var(--border);border-radius:5px;background:var(--surface);color:var(--text);font:inherit;font-size:14px}
+#guideSearchCount{font-size:12px;color:var(--text-mid)}
+.guide-return{margin:0 0 18px}
+#usEconomyGuide .us-guide-detail p{font-size:15px;line-height:1.85}
+#usEconomyGuide .us-guide-detail h3{font-size:14px}
+#usEconomyGuide .us-guide-translation,#usEconomyGuide .us-guide-category{font-size:12px}
+.guide-empty{font-size:14px;color:var(--text-mid)}
+body .site-card{min-height:158px}
+body .site-card :is(.site-desc,.site-tag){font-size:14px;line-height:1.7}
+.recent-companies{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0 0 18px;margin-top:-10px;color:var(--cf-muted);font-size:12px}
+.recent-companies button[data-recent-symbol]{background:none;border:0;border-bottom:1px solid var(--cf-line);padding:6px;color:var(--cf-accent);font:500 13px 'IBM Plex Mono',monospace;cursor:pointer}
+@media(max-width:1000px){
+ body .dashboard-top{align-items:flex-start}
+ body .dashboard-status{max-width:230px}
+ body .bond-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ body #usMacroGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:700px){
+ body :is(.indicator-dashboard,.sites-dashboard,.us-guide-dashboard){padding:20px 16px 32px}
+ .overview-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .overview-open{padding:12px}
+ .overview-open strong{font-size:22px}
+ .overview-label{font-size:13px}
+ .monitor-jump{top:-20px;gap:18px}
+ body #monitorSentiment .indicator-grid{grid-template-columns:1fr}
+ body #monitorSentiment .indicator-card{display:grid;grid-template-columns:1fr auto;gap:4px 12px}
+ body #monitorSentiment .indicator-card :is(.indicator-source,.indicator-note){grid-column:1/-1}
+ body #monitorSentiment .indicator-card .indicator-group{grid-column:1/-1}
+ body #monitorSources .dashboard-sections{grid-template-columns:1fr;gap:0}
+ body #globalRateGrid,body #usMacroGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .workspace-dialog{padding:18px;width:calc(100% - 20px);max-height:calc(100dvh - 20px)}
+ .workspace-dialog .market-chart-head{flex-direction:column}
+ .workspace-dialog .chart-actions{flex-wrap:wrap}
+ .workspace-dialog .chart-guide-preview p{font-size:14px}
+ .guide-search-band input{flex:1;min-width:180px}
+}
+@media(max-width:420px){
+ body .bond-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #favoriteChoices{grid-template-columns:1fr}
+ .overview-open strong{font-size:20px}
+ body #usMacroGrid .macro-value{font-size:20px}
+}
+@media(prefers-reduced-motion:reduce){body .ticker-track{animation:none}}
