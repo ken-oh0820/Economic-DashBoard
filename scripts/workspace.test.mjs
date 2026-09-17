@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
-import {DEFAULT_FAVORITES,cleanFavorites,cleanRecent,observationLabel,timestampLabel,readPreference,savePreference} from '../assets/workspace-model.mjs';
+import {DEFAULT_FAVORITES,cleanFavorites,observationLabel,timestampLabel,readPreference,savePreference} from '../assets/workspace-model.mjs';
 
 test('favorites support an intentionally empty list, deduplicate and cap saved choices',()=>{
   const allowed=[...DEFAULT_FAVORITES,'a','b','c'];
@@ -11,12 +11,11 @@ test('favorites support an intentionally empty list, deduplicate and cap saved c
   assert.deepEqual(cleanFavorites(['a','a','missing',42],allowed),['a']);
   assert.equal(cleanFavorites(allowed,allowed).length,8);
 });
-test('stored preferences fail safely and do not accept arbitrary company markup',()=>{
+test('stored preferences fail safely when corrupt or blocked',()=>{
   const blocked={getItem(){throw Error('blocked');},setItem(){throw Error('blocked');}};
   assert.deepEqual(readPreference(blocked,'key',[]),[]);
   assert.equal(savePreference(blocked,'key',[]),false);
   assert.deepEqual(readPreference({getItem:()=>'{bad'},'key',[]),[]);
-  assert.deepEqual(cleanRecent(['NASDAQ:AAPL','NASDAQ:AAPL','NYSE:BRK.B','<img src=x>','NYSE:']),['NASDAQ:AAPL','NYSE:BRK.B']);
 });
 test('observations distinguish monthly and quarterly periods from collection timestamps',()=>{
   assert.equal(observationLabel('2026-08-01','monthly'),'2026년 8월');
@@ -45,7 +44,7 @@ test('workflow reuses original chart and sections without adding a data collecti
   assert.doesNotMatch(code,/\bfetch\s*\(|XMLHttpRequest/);
   assert.match(code,/chartPanelHost.*append\(\$\('\.market-chart-panel'\)\)/);
   assert.match(code,/\.showModal\(\)/);
-  assert.match(code,/data-recent-symbol/);
+  assert.doesNotMatch(code,/data-recent-symbol/);
   assert.match(code,/item\.hidden=.*term/);
   assert.match(html,/참고값 \(자동 갱신 없음\)/);
   assert.match(html,/app-view-change/);

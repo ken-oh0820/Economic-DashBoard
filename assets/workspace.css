@@ -1,20 +1,20 @@
 /* Shared navigation and dense monitoring; the Fed iframe remains untouched. */
 body:not(.map-mode) .header-right{visibility:hidden;pointer-events:none}
 body:not(.map-mode) #currencyToggle{display:none}
-body :is(.workspace-dialog,.workspace-overview,.monitor-jump,.recent-companies,.guide-search-band) *{box-sizing:border-box;letter-spacing:0}
+body :is(.workspace-dialog,.workspace-overview,.monitor-jump,.guide-search-band) *{box-sizing:border-box;letter-spacing:0}
 .workspace-dialog{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:24px;width:min(820px,calc(100% - 32px));max-height:calc(100dvh - 40px);overflow:auto;box-shadow:0 24px 70px #0004;margin:auto;font-family:'Noto Sans KR',sans-serif}
 .workspace-dialog::backdrop{background:#101c2866}
 .workspace-dialog-head,.workspace-section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
 .workspace-dialog-head h2,.workspace-section-head h2,.workspace-section-title{font-size:19px;line-height:1.5;margin:0;font-weight:700}
 .workspace-dialog :is(button,input,a):focus-visible,.workspace-overview button:focus-visible,.monitor-jump button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.workspace-dialog button,.recent-companies button,.workspace-text-button{font:inherit;cursor:pointer}
+.workspace-dialog button,.workspace-text-button{font:inherit;cursor:pointer}
 .workspace-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;flex:none;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-mid);padding:0;cursor:pointer}
-.workspace-icon svg,.workspace-text-button svg,.guide-search-band svg,.recent-companies svg{width:18px;height:18px;flex:none;stroke-width:1.8}
+.workspace-icon svg,.workspace-text-button svg,.guide-search-band svg{width:18px;height:18px;flex:none;stroke-width:1.8}
 .workspace-icon:hover,.workspace-icon[aria-pressed="true"]{background:var(--metric-active-bg);color:var(--accent);border-color:var(--accent)}
 .workspace-icon[aria-pressed="true"] svg{fill:var(--accent)}
 .workspace-text-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:36px;padding:7px 12px;border:1px solid var(--border);border-radius:5px;background:var(--surface);color:var(--accent);font-size:14px}
 .workspace-dialog-note{color:var(--text-mid);font-size:14px;line-height:1.7;margin:0 0 18px}
-.workspace-dialog [hidden],.workspace-overview [hidden],.recent-companies[hidden],.guide-return[hidden]{display:none!important}
+.workspace-dialog [hidden],.workspace-overview [hidden],.guide-return[hidden]{display:none!important}
 #workspaceNav{max-width:380px}
 #workspaceNav nav{display:flex;flex-direction:column;gap:4px}
 #workspaceNav nav button{display:flex;align-items:center;gap:12px;border:0;border-radius:5px;background:transparent;color:var(--text);padding:13px 12px;text-align:left;font-size:15px;line-height:1.6}
@@ -117,8 +117,7 @@ body .source-row span:last-child{text-align:right}
 .guide-empty{font-size:14px;color:var(--text-mid)}
 body .site-card{min-height:158px}
 body .site-card :is(.site-desc,.site-tag){font-size:14px;line-height:1.7}
-.recent-companies{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0 0 18px;margin-top:-10px;color:var(--cf-muted);font-size:12px}
-.recent-companies button[data-recent-symbol]{background:none;border:0;border-bottom:1px solid var(--cf-line);padding:6px;color:var(--cf-accent);font:500 13px 'IBM Plex Mono',monospace;cursor:pointer}
+body .site-link-grid>.site-card:only-child{grid-column:1/-1}
 .observation-next{font-size:12px;line-height:1.6;color:var(--text-mid);margin-top:4px}
 .macro-card .observation-collected,.macro-card .observation-next,.bond-card .observation-collected,.bond-card .observation-next{display:none}
 .workspace-section-head>div:first-child{margin-right:auto}

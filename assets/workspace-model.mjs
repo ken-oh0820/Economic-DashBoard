@@ -19,10 +19,6 @@ export function timestampLabel(value) {
   return Number.isFinite(date.getTime()) ? date.toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false})+' KST' : '미제공';
 }
 
-export function cleanRecent(value) {
-  return Array.isArray(value) ? [...new Set(value.filter(x=>typeof x==='string' && /^(NASDAQ|NYSE|AMEX):[A-Z0-9][A-Z0-9.-]{0,15}$/.test(x)))].slice(0,5) : [];
-}
-
 export function readPreference(storage, key, fallback) {
   try { const raw=storage.getItem(key); return raw===null ? fallback : JSON.parse(raw); }
   catch { return fallback; }

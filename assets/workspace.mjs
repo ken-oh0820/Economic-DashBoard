@@ -1,4 +1,4 @@
-import {DEFAULT_FAVORITES,cleanFavorites,observationLabel,timestampLabel,cleanRecent,readPreference,savePreference} from './workspace-model.mjs';
+import {DEFAULT_FAVORITES,cleanFavorites,observationLabel,timestampLabel,readPreference,savePreference} from './workspace-model.mjs?v=20260917-five-menus';
 import {initMonitorTools,nextReleaseText} from './monitor-tools.mjs?v=20260917-contrast';
 
 const $=selector=>document.querySelector(selector);
@@ -15,7 +15,6 @@ const catalog=[
 ];
 const allowed=catalog.map(item=>item.key);
 let favorites=cleanFavorites(readPreference(storage,'ken-favorites-v1',DEFAULT_FAVORITES),allowed);
-let recent=cleanRecent(readPreference(storage,'ken-recent-companies-v1',[]));
 let activeChart=null;
 const helpMap={'macro-cpi':3,'macro-core-cpi':3,'macro-inflation':3,'macro-ahe':3,'macro-unrate':5,'macro-payems':5,'bond-us-2y':2,'rate-us':2,hy:7};
 
@@ -29,7 +28,7 @@ function makeDialog(id,title,body){
   return dialog;
 }
 
-const navItems=[['menu','홈','layout-grid'],['map','세계 경제 지도','globe-2'],['dashboard','지표 모니터링','chart-no-axes-combined'],['company','미국 기업 재무 분석','building-2'],['sites','투자 관련 사이트','newspaper'],['guide','미국 경제 지표 해설','book-open'],['fed','연준 대차대조표','landmark']];
+const navItems=[['menu','홈','layout-grid'],['map','세계 경제 지도','globe-2'],['dashboard','지표 모니터링','chart-no-axes-combined'],['sites','투자 관련 사이트','newspaper'],['guide','미국 경제 지표 해설','book-open'],['fed','연준 대차대조표','landmark']];
 const nav=makeDialog('workspaceNav','워크스페이스','<nav aria-label="워크스페이스 메뉴">'+navItems.map(([view,label,symbol])=>'<button type="button" data-view="'+view+'">'+icon(symbol)+'<span>'+label+'</span></button>').join('')+'</nav>');
 const menuButton=$('header .app-nav-btn');
 menuButton.removeAttribute('onclick');menuButton.setAttribute('aria-label','메뉴 열기');menuButton.title='메뉴 열기';
@@ -160,19 +159,6 @@ guideSearch.addEventListener('input',filterGuide);
 $('#usEconomyGuide .guide-tabs').addEventListener('click',()=>queueMicrotask(filterGuide));
 $('#usEconomyGuide .guide-tabs').addEventListener('keydown',()=>queueMicrotask(filterGuide));
 
-function renderRecent(){
-  const form=$('#cfCompanyForm');if(!form)return;
-  let band=$('#recentCompanies');
-  if(!band){band=document.createElement('div');band.id='recentCompanies';band.className='recent-companies';form.after(band);}
-  band.hidden=!recent.length;
-  band.innerHTML='<span>최근 조회</span>'+recent.map(symbol=>'<button type="button" data-recent-symbol="'+escape(symbol)+'">'+escape(symbol)+'</button>').join('')+button('clearRecentCompanies','최근 조회 기록 지우기','trash-2');
-  band.querySelectorAll('[data-recent-symbol]').forEach(btn=>btn.addEventListener('click',()=>{window.dispatchEvent(new CustomEvent('company-select-symbol',{detail:btn.dataset.recentSymbol}));}));
-  $('#clearRecentCompanies').addEventListener('click',()=>{recent=[];savePreference(storage,'ken-recent-companies-v1',recent);renderRecent();});icons();
-}
-window.addEventListener('company-view-open',()=>queueMicrotask(renderRecent));
-window.addEventListener('company-selected',event=>{
-  recent=cleanRecent([event.detail,...recent]);savePreference(storage,'ken-recent-companies-v1',recent);renderRecent();
-});
 window.addEventListener('market-data-rendered',refreshOverview);
 window.WorkspaceUI={openChart,refreshOverview,provenance,timestampLabel};
 initMonitorTools({catalog,getFavorites:()=>favorites,makeDialog,openChart,escape,icon});

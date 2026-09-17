@@ -28,6 +28,5 @@ test('main page scripts parse and use official display widgets',async()=>{
   const widget=await readFile(new URL('assets/tradingview-widgets.mjs',root),'utf8');
   assert.match(widget,/s3\.tradingview\.com\/external-embedding/);
   assert.match(widget,/tradingview-widget-copyright/);
-  const company=await readFile(new URL('assets/company-financials.mjs',root),'utf8');
-  assert.doesNotMatch(company,/\bfetch\s*\(|localStorage|sessionStorage|contentDocument|contentWindow/);
+  await assert.rejects(access(new URL('assets/company-financials.mjs',root)));
 });

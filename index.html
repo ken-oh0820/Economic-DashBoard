@@ -14,7 +14,6 @@
 <meta name="twitter:description" content="세계 경제 지도, 실시간 시장 지표, 환율, 원자재, 뉴스, FED 대차대조표를 한 곳에서 확인하는 대시보드">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
 <title>Ken's Economic Dashboard</title>
-<link rel="stylesheet" href="assets/company-financials.css?v=20260910-ui">
 <link rel="stylesheet" href="assets/main-menu.css?v=20260910-menu">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
@@ -257,13 +256,13 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 </style>
 <link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-official-data">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260917-important">
-<link rel="stylesheet" href="assets/workspace.css?v=20260917-monitor-3">
+<link rel="stylesheet" href="assets/workspace.css?v=20260917-five-menus">
 </head>
 <body class="menu-mode light">
 <main class="main-menu" id="mainMenu" aria-labelledby="mainMenuTitle">
   <div class="main-menu-inner">
     <div class="menu-masthead"><div class="menu-brand"><span class="menu-brand-mark" aria-hidden="true"><i data-lucide="chart-no-axes-combined"></i></span><span>KEN'S WORKSPACE</span></div><span class="menu-masthead-label">ECONOMICS &amp; MARKETS</span></div>
-    <div class="menu-intro"><div><div class="main-menu-kicker">시장 · 정책 · 기업</div><h1 class="main-menu-title" id="mainMenuTitle">Economic Dashboard</h1><p class="main-menu-sub">글로벌 시장, 경제 정책, 기업 리서치.</p></div><span class="menu-section-label">워크스페이스 <b>06</b></span></div>
+    <div class="menu-intro"><div><div class="main-menu-kicker">시장 · 정책 · 기업</div><h1 class="main-menu-title" id="mainMenuTitle">Economic Dashboard</h1><p class="main-menu-sub">글로벌 시장, 경제 정책, 기업 리서치.</p></div><span class="menu-section-label">워크스페이스 <b>05</b></span></div>
     <nav class="main-menu-grid" aria-label="대시보드 메뉴">
       <button type="button" class="main-menu-card menu-tone-teal" onclick="switchView('map')" aria-label="세계 경제 지도">
         <span class="menu-card-top"><span class="menu-card-icon" aria-hidden="true"><i data-lucide="globe-2"></i></span><span class="menu-card-index">01</span></span>
@@ -275,23 +274,18 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
         <span class="menu-card-content"><span class="menu-card-category">MARKET MONITOR</span><span class="menu-card-title">지표 모니터링</span><span class="menu-card-desc">시장 지수 · 금리 · 매크로</span></span>
         <span class="menu-card-bottom"><span class="menu-card-enter">바로가기</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
       </button>
-      <button type="button" class="main-menu-card menu-tone-green" onclick="switchView('company')" aria-label="미국 기업 재무 분석">
-        <span class="menu-card-top"><span class="menu-card-icon" aria-hidden="true"><i data-lucide="building-2"></i></span><span class="menu-card-index">03</span></span>
-        <span class="menu-card-content"><span class="menu-card-category">COMPANY FINANCIALS</span><span class="menu-card-title">미국 기업 재무 분석</span><span class="menu-card-desc">CAPEX · 현금흐름 · 기업 실적</span></span>
-        <span class="menu-card-bottom"><span class="menu-card-enter">바로가기</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
-      </button>
       <button type="button" class="main-menu-card menu-tone-coral" onclick="switchView('sites')" aria-label="투자 관련 사이트">
-        <span class="menu-card-top"><span class="menu-card-icon" aria-hidden="true"><i data-lucide="newspaper"></i></span><span class="menu-card-index">04</span></span>
+        <span class="menu-card-top"><span class="menu-card-icon" aria-hidden="true"><i data-lucide="newspaper"></i></span><span class="menu-card-index">03</span></span>
         <span class="menu-card-content"><span class="menu-card-category">RESEARCH DESK</span><span class="menu-card-title">투자 관련 사이트</span><span class="menu-card-desc">경제 뉴스 · 공시 · 투자 리서치</span></span>
         <span class="menu-card-bottom"><span class="menu-card-enter">바로가기</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
       </button>
       <button type="button" class="main-menu-card menu-tone-violet" onclick="switchView('guide')" aria-label="미국 경제 지표 해설">
-        <span class="menu-card-top"><span class="menu-card-icon" aria-hidden="true"><i data-lucide="book-open"></i></span><span class="menu-card-index">05</span></span>
+        <span class="menu-card-top"><span class="menu-card-icon" aria-hidden="true"><i data-lucide="book-open"></i></span><span class="menu-card-index">04</span></span>
         <span class="menu-card-content"><span class="menu-card-category">ECONOMIC LIBRARY</span><span class="menu-card-title">미국 경제 지표 해설</span><span class="menu-card-desc">국채시장 · 달러 유동성 · 지표 해석</span></span>
         <span class="menu-card-bottom"><span class="menu-card-enter">바로가기</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
       </button>
       <button type="button" class="main-menu-card menu-tone-amber" onclick="switchView('fed')" aria-label="연준 대차대조표">
-        <span class="menu-card-top"><span class="menu-card-icon" aria-hidden="true"><i data-lucide="landmark"></i></span><span class="menu-card-index">06</span></span>
+        <span class="menu-card-top"><span class="menu-card-icon" aria-hidden="true"><i data-lucide="landmark"></i></span><span class="menu-card-index">05</span></span>
         <span class="menu-card-content"><span class="menu-card-category">FED BALANCE SHEET</span><span class="menu-card-title">연준 대차대조표</span><span class="menu-card-desc">연준 자산 · 지급준비금 · 유동성</span></span>
         <span class="menu-card-bottom"><span class="menu-card-enter">바로가기</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
       </button>
@@ -560,7 +554,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 </div>
 <div class="fed-dashboard" id="fedDashboard">
   <div class="fed-frame-toolbar">
-    <div class="fed-frame-heading"><span class="fed-frame-icon"><i data-lucide="landmark" aria-hidden="true"></i></span><div><span class="fed-frame-eyebrow">06 / FED BALANCE SHEET</span><span class="fed-frame-title">연준 대차대조표 <small>H.4.1</small></span></div></div>
+    <div class="fed-frame-heading"><span class="fed-frame-icon"><i data-lucide="landmark" aria-hidden="true"></i></span><div><span class="fed-frame-eyebrow">05 / FED BALANCE SHEET</span><span class="fed-frame-title">연준 대차대조표 <small>H.4.1</small></span></div></div>
     <a class="fed-open-link" href="fed-dashboard.html?v=20260621-help" target="_blank" rel="noopener" aria-label="연준 대차대조표 새 창에서 열기" title="새 창에서 열기"><span>새 창에서 열기</span><i data-lucide="external-link" aria-hidden="true"></i></a>
   </div>
   <iframe class="fed-frame" id="fedFrame" src="about:blank" data-src="fed-dashboard.html?v=20260621-help" title="Fed Balance Sheet Dashboard"></iframe>
@@ -569,11 +563,11 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
   <div class="sites-shell">
     <div class="dashboard-top">
       <div>
-        <div class="dashboard-kicker"><i data-lucide="newspaper" aria-hidden="true"></i>04 / RESEARCH HUB</div>
+        <div class="dashboard-kicker"><i data-lucide="newspaper" aria-hidden="true"></i>03 / RESEARCH HUB</div>
         <div class="dashboard-title">투자 관련 사이트</div>
         <div class="dashboard-sub">투자 리서치 도구와 미국 주요 매체의 최신 시장 뉴스를 한 화면에서 확인합니다.</div>
       </div>
-      <div class="dashboard-status ok">3 TOOLS · 5 NEWS SOURCES</div>
+      <div class="dashboard-status ok">4 TOOLS · 5 NEWS SOURCES</div>
     </div>
     <div class="sites-grid">
       <section class="sites-panel">
@@ -608,9 +602,16 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       <section class="sites-panel">
         <div class="sites-panel-head">
           <div class="sites-country"><span>KR</span><span>한국</span></div>
-          <div class="sites-note">coming soon</div>
+          <div class="sites-note">기업 분석 · 투자 리서치</div>
         </div>
-        <div class="site-empty">한국 투자 관련 사이트는 다음 단계에서 추가할 자리입니다.</div>
+        <div class="site-link-grid">
+          <div class="site-card">
+            <div class="site-card-head">
+              <span><div class="site-name">Valley AI</div><div class="site-desc">기업 재무·가치평가와 거시경제 분석을 확인하는 투자 리서치 플랫폼.</div></span>
+            </div>
+            <a class="site-tag" href="https://www.valley.town/" target="_blank" rel="noopener noreferrer">Valley AI 바로가기 ↗</a>
+          </div>
+        </div>
       </section>
     </div>
     <section class="us-news-desk" aria-labelledby="usNewsDeskTitle">
@@ -640,12 +641,11 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
     </section>
   </div>
 </div>
-<section id="companyDashboard" aria-label="미국 기업 재무 분석"></section>
 <div class="us-guide-dashboard" id="usEconomyGuide">
   <div class="us-guide-shell">
     <div class="dashboard-top">
       <div>
-        <div class="dashboard-kicker"><i data-lucide="book-open" aria-hidden="true"></i>05 / MARKET STRUCTURE GUIDE</div>
+        <div class="dashboard-kicker"><i data-lucide="book-open" aria-hidden="true"></i>04 / MARKET STRUCTURE GUIDE</div>
         <div class="dashboard-title">미국 경제 지표 해설</div>
         <div class="dashboard-sub">미 국채시장·달러 조달부터 기업의 자본 효율·현금흐름·고객 성장까지 핵심 지표를 정리합니다.</div>
       </div>
@@ -1659,11 +1659,11 @@ function clearMapTransientUi(){
   });
 }
 function switchView(view){
+  if(!['menu','map','dashboard','fed','sites','guide'].includes(view))view='menu';
   if(view!=='map')clearMapTransientUi();
-  document.body.classList.remove('menu-mode','map-mode','dashboard-mode','fed-mode','sites-mode','guide-mode','company-mode');
-  document.body.classList.add(view==='company'?'company-mode':view==='dashboard'?'dashboard-mode':view==='fed'?'fed-mode':view==='sites'?'sites-mode':view==='guide'?'guide-mode':view==='map'?'map-mode':'menu-mode');
+  document.body.classList.remove('menu-mode','map-mode','dashboard-mode','fed-mode','sites-mode','guide-mode');
+  document.body.classList.add(view==='dashboard'?'dashboard-mode':view==='fed'?'fed-mode':view==='sites'?'sites-mode':view==='guide'?'guide-mode':view==='map'?'map-mode':'menu-mode');
   window.dispatchEvent(new CustomEvent('app-view-change',{detail:view}));
-  if(view==='company')window.dispatchEvent(new Event('company-view-open'));
   if(view==='map'&&map) setTimeout(()=>map.invalidateSize(),80);
   if(view==='dashboard') setTimeout(()=>{renderRateDecisionSchedules();bindMarketChartClicks();fetchMarketDashboard(true);fetchUsMacroDashboard();fetchTreasuryBasisMonitor();fetchGlobalRateDashboard();fetchBondYieldDashboard();showMarketChart(currentMarketChartKey);},80);
   if(view==='fed'){const f=document.getElementById('fedFrame');if(f&&f.getAttribute('src')==='about:blank')f.src=f.dataset.src;}
@@ -2754,7 +2754,6 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script defer src="assets/main-menu.js?v=20260910-menu"></script>
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
-<script type="module" src="assets/company-financials.mjs?v=20260917-recent"></script>
-<script type="module" src="assets/workspace.mjs?v=20260917-monitor-4"></script>
+<script type="module" src="assets/workspace.mjs?v=20260917-five-menus"></script>
 </body>
 </html>

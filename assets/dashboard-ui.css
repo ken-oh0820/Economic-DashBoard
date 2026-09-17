@@ -228,7 +228,6 @@ body .country-name-big{font-size:20px}
 body .insight-box,body .data-source-card{font-size:11px;line-height:1.85;border:0;background:var(--bg);border-radius:5px}
 body #tooltip,body .alliance-popup{border-radius:8px;box-shadow:0 6px 28px #1428311a}
 body .map-label{font-size:11px;border-radius:5px;max-width:90%;white-space:normal;text-align:center;line-height:1.6}
-body.light #companyDashboard{background:var(--bg)}
 body.light .cf-shell{--cf-bg:#f3f5f7}
 @media(max-width:1200px){
  body .header-right{gap:10px}body .header-right .stat-pill:first-child{display:none}
