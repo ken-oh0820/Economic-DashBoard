@@ -88,13 +88,12 @@ test('monitor retains only sentiment and VIX cards and stops Bitcoin requests',(
   const {context}=harness();
   for(const key of ['sp500','nasdaq','gold','btc','kospi','kosdaq'])assert.equal(vm.runInContext('MARKET_CHARTS['+JSON.stringify(key)+']',context),undefined);
 });
-test('shared chart sits directly after sentiment cards and before macro indicators',()=>{
-  const start=html.indexOf('<div class="indicator-grid">');
-  const chart=html.indexOf('<div class="dashboard-panel market-chart-panel">');
-  const macro=html.indexOf('<div class="dashboard-panel macro-panel">');
-  assert.ok(start<chart&&chart<macro);
-  assert.match(html.slice(start,chart),/id="src-vix">[^]*?<\/div><\/div>\s*<\/div>\s*$/);
+test('shared chart is reused inside the workspace detail dialog',async()=>{
+  const workspace=await readFile(new URL('assets/workspace.mjs',root),'utf8');
+  assert.equal([...html.matchAll(/class="dashboard-panel market-chart-panel"/g)].length,1);
   assert.equal([...html.matchAll(/id="marketChartCanvas"/g)].length,1);
+  assert.ok(workspace.includes("makeDialog('workspaceChart'"));
+  assert.ok(workspace.includes("$('#chartPanelHost').append($('.market-chart-panel'))"));
 });
 test('Korea, Japan and Brazil each have one consolidated bond link; US tenors remain',()=>{
   const {context,nodes}=harness();

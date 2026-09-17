@@ -1,4 +1,6 @@
 /* Shared navigation and dense monitoring; the Fed iframe remains untouched. */
+body:not(.map-mode) .header-right{visibility:hidden;pointer-events:none}
+body:not(.map-mode) #currencyToggle{display:none}
 body :is(.workspace-dialog,.workspace-overview,.monitor-jump,.recent-companies,.guide-search-band) *{box-sizing:border-box;letter-spacing:0}
 .workspace-dialog{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:24px;width:min(820px,calc(100% - 32px));max-height:calc(100dvh - 40px);overflow:auto;box-shadow:0 24px 70px #0004;margin:auto;font-family:'Noto Sans KR',sans-serif}
 .workspace-dialog::backdrop{background:#101c2866}
