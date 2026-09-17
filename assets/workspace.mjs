@@ -1,5 +1,5 @@
 import {DEFAULT_FAVORITES,cleanFavorites,observationLabel,timestampLabel,cleanRecent,readPreference,savePreference} from './workspace-model.mjs';
-import {initMonitorTools,nextReleaseText} from './monitor-tools.mjs';
+import {initMonitorTools,nextReleaseText} from './monitor-tools.mjs?v=20260917-contrast';
 
 const $=selector=>document.querySelector(selector);
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

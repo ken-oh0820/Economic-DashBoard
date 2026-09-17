@@ -53,7 +53,7 @@ export function initMonitorTools({catalog,getFavorites,makeDialog,openChart,esca
     const number=value=>value.toLocaleString('ko-KR',{maximumFractionDigits:2});
     const units=configs.map(cfg=>mode==='change'?'%':unit(cfg));
     $('#compareMessage').textContent=date(result.start)+' ~ '+date(result.end)+' · 관측 기준일 비교 (발표일 아님) · '+(mode==='change'?'각 지표의 기간 내 첫 관측값 대비 변화율':'좌우 축 눈금은 독립적입니다. 선의 교차는 동일한 수준을 뜻하지 않습니다.');
-    const colors=['#087e83','#c05825'],text=getComputedStyle(document.body).getPropertyValue('--text').trim();
+    const colors=document.body.classList.contains('light')?['#087e83','#c05825']:['#4cd9dc','#ffae72'],text=getComputedStyle(document.body).getPropertyValue('--text').trim();
     const datasets=result.series.map((series,index)=>({label:configs[index].label+' ['+units[index]+']',data:series.points,borderColor:colors[index],backgroundColor:colors[index],pointRadius:2,pointHoverRadius:5,borderWidth:2,tension:0,yAxisID:mode==='change'?'y':index?'yRight':'y'}));
     const y={position:'left',title:{display:true,text:mode==='change'?'상대 변화율 (%)':units[0],color:colors[0]},ticks:{color:colors[0]},grid:{color:'#8882'}};
     const scales={x:{type:'linear',min:result.start,max:result.end,ticks:{maxTicksLimit:5,color:text,callback:value=>date(value).slice(0,7)},grid:{display:false}},y};
