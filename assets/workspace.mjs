@@ -1,4 +1,5 @@
 import {DEFAULT_FAVORITES,cleanFavorites,observationLabel,timestampLabel,cleanRecent,readPreference,savePreference} from './workspace-model.mjs';
+import {initMonitorTools,nextReleaseText} from './monitor-tools.mjs';
 
 const $=selector=>document.querySelector(selector);
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -64,7 +65,18 @@ sources.querySelectorAll('.watch-row[data-chart-key]').forEach(row=>{
 });
 jump.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{const section=$('#'+btn.dataset.section);section.tabIndex=-1;section.focus({preventScroll:true});section.scrollIntoView({block:'start',behavior:'instant'});}));
 $('#marketSourceList').closest('.dashboard-panel').querySelector('.dashboard-panel-title').textContent='데이터 연결 상태';
-$('#indicatorDashboard .dashboard-sub').textContent='핵심 지표 · 공식 관측값 · 원문 리서치';
+$('#indicatorDashboard .dashboard-sub').textContent='관측값과 변화 · 발표 일정 · 시계열 비교';
+$('#investmentSites .dashboard-sub').textContent='공식 발표·공시와 뉴스 제공처 원문 리서치';
+for(const [selector,links] of [
+  ['#indicatorDashboard', [['guide','지표 해설'],['sites','원문 리서치']]],
+  ['#usEconomyGuide', [['dashboard','현재 지표'],['sites','원문 리서치']]],
+  ['#investmentSites', [['dashboard','현재 지표'],['guide','지표 해설']]]
+]){
+  const navigation=document.createElement('nav');navigation.className='context-links';navigation.setAttribute('aria-label','관련 화면');
+  navigation.innerHTML=links.map(([view,label])=>'<button type="button" data-destination="'+view+'">'+label+icon('arrow-up-right')+'</button>').join('');
+  $(selector+' .dashboard-top').after(navigation);
+  navigation.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>switchView(button.dataset.destination)));
+}
 
 const chartDialog=makeDialog('workspaceChart','지표 상세','<div id="chartDataBasis"></div><div id="chartPanelHost"></div><div class="chart-secondary-actions">'+button('chartFavorite','핵심 지표에 추가','star')+'<button type="button" id="chartGuideLink" class="workspace-text-button">'+icon('book-open')+'관련 해설</button></div><section id="chartGuidePreview" class="chart-guide-preview" hidden></section>');
 $('#chartPanelHost').append($('.market-chart-panel'));
@@ -72,7 +84,7 @@ const chooser=makeDialog('workspaceFavorites','핵심 지표 선택','<p class="
 $('#editFavorites').addEventListener('click',()=>{chooser.querySelectorAll('input').forEach(input=>input.checked=favorites.includes(input.value));$('#favoriteLimit').textContent='';$('#favoritesSave').disabled=false;chooser.showModal();});
 chooser.addEventListener('change',()=>{const count=chooser.querySelectorAll('input:checked').length;$('#favoriteLimit').textContent=count>8?'최대 8개까지 선택할 수 있습니다.':count+'개 선택';$('#favoritesSave').disabled=count>8;});
 $('#favoritesDefault').addEventListener('click',()=>{chooser.querySelectorAll('input').forEach(input=>input.checked=DEFAULT_FAVORITES.includes(input.value));$('#favoriteLimit').textContent='6개 선택';$('#favoritesSave').disabled=false;});
-function persistFavorites(){const saved=savePreference(storage,'ken-favorites-v1',favorites);$('#preferenceStatus').textContent=saved?'':'브라우저 저장을 사용할 수 없어 이번 방문에만 적용합니다.';refreshOverview();updateFavoriteButton();}
+function persistFavorites(){const saved=savePreference(storage,'ken-favorites-v1',favorites);$('#preferenceStatus').textContent=saved?'':'브라우저 저장을 사용할 수 없어 이번 방문에만 적용합니다.';refreshOverview();updateFavoriteButton();window.dispatchEvent(new Event('workspace-favorites-changed'));}
 $('#favoritesSave').addEventListener('click',()=>{favorites=cleanFavorites([...chooser.querySelectorAll('input:checked')].map(input=>input.value),allowed);persistFavorites();chooser.close();});
 function toggleFavorite(key){
   if(favorites.includes(key))favorites=favorites.filter(item=>item!==key);
@@ -89,7 +101,7 @@ function updateFavoriteButton(){
 
 function provenance(key){
   const meta=OfficialData.metadata(MARKET_CHARTS[key]);if(!meta)return '<div class="observation-date">관측값 확인 불가</div>';
-  return '<div class="observation-date">관측 '+escape(observationLabel(meta.date,meta.frequency))+'</div><div class="observation-status '+(meta.delayed?'delayed':'')+'">'+(meta.delayed?'수집 지연 · 마지막 확보값':'공식 관측값')+'</div><div class="observation-collected">수집 '+escape(timestampLabel(meta.fetchedAt))+'</div>';
+  return '<div class="observation-date">관측 '+escape(observationLabel(meta.date,meta.frequency))+'</div><div class="observation-status '+(meta.delayed?'delayed':'')+'">'+(meta.delayed?'수집 지연 · 마지막 확보값':'공식 관측값')+'</div><div class="observation-collected">수집 '+escape(timestampLabel(meta.fetchedAt))+'</div><div class="observation-next">'+escape(nextReleaseText(MARKET_CHARTS[key]))+'</div>';
 }
 
 function refreshOverview(){
@@ -99,8 +111,10 @@ function refreshOverview(){
     const item=catalog.find(item=>item.key===key),original=document.querySelector('#indicatorDashboard [data-chart-key="'+key+'"]');
     const value=original?.querySelector('.macro-value,.bond-value')?.textContent || (OfficialData.get(MARKET_CHARTS[key])?'표시 준비 중':'확인 불가');
     const change=original?.querySelector('.macro-change,.bond-change')?.textContent||'';
-    const source=OfficialData.metadata(MARKET_CHARTS[key])?.source||'공식 데이터 연결 대기';
-    return '<article class="overview-item"><button type="button" class="overview-open" data-open-chart="'+key+'"><span class="overview-label">'+escape(item.label)+'</span><strong>'+escape(value)+'</strong><span class="overview-change">'+escape(change)+'</span>'+provenance(key)+'<span class="overview-source">'+escape(source)+'</span></button></article>';
+    const meta=OfficialData.metadata(MARKET_CHARTS[key]);
+    const cfg=MARKET_CHARTS[key],qualifier=cfg.transform==='yoy'?'전년 대비':cfg.transform==='change'?'전월 대비 증감':cfg.transform==='qoq-annualized'?'전분기 연율':key.includes('gdp')?'연율 환산 규모':key==='rate-us'?'월평균 금리':key==='bond-us-spread'?'금리 차':'수준';
+    const shortChange=key==='macro-payems'&&meta?'총고용 '+(OfficialData.get(cfg).points.at(-1).value/10).toLocaleString('ko-KR',{maximumFractionDigits:1})+'만 명':change.split(' · ')[0];
+    return '<article class="overview-item"><button type="button" class="overview-open" data-open-chart="'+key+'"><span class="overview-label">'+escape(item.label)+'</span><span class="overview-qualifier">'+qualifier+'</span><strong>'+escape(value)+'</strong><span class="overview-change">'+escape(shortChange)+'</span><span class="observation-date">'+escape(meta?observationLabel(meta.date,meta.frequency):'관측값 미확인')+'</span>'+(meta?.delayed?'<span class="observation-status delayed">수집 지연</span>':'')+'</button></article>';
   }).join('');
   host.querySelectorAll('[data-open-chart]').forEach(btn=>btn.addEventListener('click',()=>openChart(btn.dataset.openChart)));
 }
@@ -161,4 +175,5 @@ window.addEventListener('company-selected',event=>{
 });
 window.addEventListener('market-data-rendered',refreshOverview);
 window.WorkspaceUI={openChart,refreshOverview,provenance,timestampLabel};
+initMonitorTools({catalog,getFavorites:()=>favorites,makeDialog,openChart,escape,icon});
 refreshOverview();filterGuide();icons();

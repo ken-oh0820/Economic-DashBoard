@@ -57,11 +57,12 @@
       return {t:Date.parse(p.date),v:value*(cfg.scale??1)};
     }).filter(p=>Number.isFinite(p.v));
     const last=all.at(-1);if(!last)return null;
-    const months=range==='1y'?12:range==='3mo'?3:1;
+    const months=range==='all'?72:range==='5y'?60:range==='3y'?36:range==='1y'?12:range==='3mo'?3:1;
     // Monthly/quarterly data need several observations even in short-range views.
     const minimum=item.frequency==='quarterly'?12:item.frequency==='monthly'?3:months;
     const cutoff=Date.parse(monthBefore(new Date(last.t).toISOString().slice(0,10),Math.max(months,minimum)));
     return {points:all.filter(p=>p.t>=cutoff),source:source(item)+' · 기준 '+new Date(last.t).toISOString().slice(0,10),rangeLabel:Math.max(months,minimum)+'개월 (최근 관측 기준)'};
   }
-  root.OfficialData={load,get,source,metadata,monthBefore,periodPoint,bondChanges,chart};
+  function calendar(){return snapshot.calendar||{groups:[]};}
+  root.OfficialData={load,get,source,metadata,monthBefore,periodPoint,bondChanges,chart,calendar};
 })(globalThis);

@@ -27,15 +27,16 @@ body .dashboard-title{font-size:25px}
 body .dashboard-sub{font-size:14px;margin-top:5px}
 body .dashboard-status{font-size:12px}
 body .ticker-track{animation-duration:100s}
-body.company-mode .ticker-bar,body.guide-mode .ticker-bar,body.sites-mode .ticker-bar,body.fed-mode .ticker-bar{display:none}
+body:not(.map-mode) .ticker-bar{display:none}
 .workspace-overview{margin:0 0 24px}
 .workspace-section-head p{font-size:12px;line-height:1.5;margin:4px 0 0;color:var(--text-mid)}
-.overview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.overview-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
 .overview-item{border:1px solid var(--border);border-radius:6px;background:var(--surface);overflow:hidden;min-width:0}
-.overview-open{display:flex;flex-direction:column;align-items:flex-start;width:100%;height:100%;padding:16px;text-align:left;background:none;color:var(--text);border:0;font-family:inherit;cursor:pointer;gap:5px;min-width:0}
+.overview-open{display:flex;flex-direction:column;align-items:flex-start;width:100%;height:100%;padding:12px;text-align:left;background:none;color:var(--text);border:0;font-family:inherit;cursor:pointer;gap:4px;min-width:0;overflow-wrap:anywhere}
 .overview-open:hover{background:var(--rank-hover)}
 .overview-label{font-size:14px;font-weight:600;line-height:1.5}
-.overview-open strong{font:600 24px/1.5 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
+.overview-qualifier{font-size:12px;color:var(--text-mid)}
+.overview-open strong{font:600 21px/1.5 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
 .overview-change{font-size:12px;line-height:1.6;color:var(--text-mid)}
 .overview-source{font-size:12px;line-height:1.6;color:var(--text-mid)}
 .observation-date{font-size:13px;color:var(--text);line-height:1.6;margin-top:6px}
@@ -118,13 +119,51 @@ body .site-card{min-height:158px}
 body .site-card :is(.site-desc,.site-tag){font-size:14px;line-height:1.7}
 .recent-companies{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0 0 18px;margin-top:-10px;color:var(--cf-muted);font-size:12px}
 .recent-companies button[data-recent-symbol]{background:none;border:0;border-bottom:1px solid var(--cf-line);padding:6px;color:var(--cf-accent);font:500 13px 'IBM Plex Mono',monospace;cursor:pointer}
+.observation-next{font-size:12px;line-height:1.6;color:var(--text-mid);margin-top:4px}
+.macro-card .observation-collected,.macro-card .observation-next,.bond-card .observation-collected,.bond-card .observation-next{display:none}
+.workspace-section-head>div:first-child{margin-right:auto}
+.workspace-section-head{flex-wrap:wrap;gap:10px}
+.context-links{display:flex;gap:18px;flex-wrap:wrap;margin:-8px 0 20px}
+.context-links button{border:0;background:none;color:var(--accent);font-family:inherit;font-size:13px;font-weight:500;display:flex;align-items:center;gap:4px;padding:4px 0;cursor:pointer}
+.context-links svg{width:14px;height:14px}
+body.light #indicatorDashboard{--text-mid:#52616b;--text-dim:#586874}
+.release-panel{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0;margin-bottom:18px}
+.release-panel>summary{cursor:pointer;font-size:14px;font-weight:600;line-height:1.8}
+#releaseSummary{font-weight:400;color:var(--text-mid);margin-left:14px;font-size:13px}
+.release-toolbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--text-mid);margin:16px 0}
+.release-toolbar label{display:flex;align-items:center;gap:6px;color:var(--text)}
+.release-columns{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.release-columns h3{font-size:14px;margin:0 0 8px}
+.release-row{display:grid;grid-template-columns:92px 1fr auto;gap:8px;padding:9px 0;border-bottom:1px solid var(--border);align-items:start;font-size:13px}
+.release-row button{border:0;background:none;color:var(--text);text-align:left;padding:0;font:inherit;cursor:pointer}
+.release-row small{display:block;color:var(--text-mid);font-size:12px;margin-top:3px}
+.release-row a,#compareSources a{color:var(--accent)}
+.release-note,.release-columns p{font-size:12px;color:var(--text-mid);line-height:1.7}
+#compareDialog{max-width:1040px}
+.compare-controls{display:grid;grid-template-columns:2fr 2fr 1fr 2fr;gap:12px}
+.compare-controls label{font-size:12px;display:grid;gap:6px;min-width:0;color:var(--text-mid)}
+.compare-controls select{width:100%;min-width:0;padding:9px 6px;font:inherit;font-size:13px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:4px}
+#compareMessage{font-size:13px;line-height:1.7;color:var(--text-mid)}
+.compare-canvas{position:relative;height:350px;width:100%}
+#compareSources{display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:12px;line-height:1.8;overflow-wrap:anywhere}
+.compare-values{font-size:13px;margin-top:14px}
+.compare-values summary{cursor:pointer}
+#compareTable{max-height:280px;overflow:auto}
+#compareTable table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+#compareTable :is(th,td){padding:9px;text-align:right;border-bottom:1px solid var(--border)}
+#compareTable th:first-child{white-space:nowrap;text-align:left}
 @media(max-width:1000px){
+ .overview-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
  body .dashboard-top{align-items:flex-start}
  body .dashboard-status{max-width:230px}
  body .bond-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
  body #usMacroGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media(max-width:700px){
+ .release-columns,#compareSources{grid-template-columns:1fr;gap:16px}
+ .compare-controls{grid-template-columns:1fr 1fr}
+ .compare-canvas{height:300px}
+ #releaseSummary{display:block;margin-left:0}
  body :is(.indicator-dashboard,.sites-dashboard,.us-guide-dashboard){padding:20px 16px 32px}
  .overview-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
  .overview-open{padding:12px}

@@ -37,7 +37,7 @@ test('GDP annual comparison uses matching quarter, not 12 quarters earlier',()=>
   const match=html.match(/function calcMacroFromPoints\([^]*?^}/m);vm.runInContext(match[0],ctx);
   ctx.points=[{date:'2025-01-01',value:100},{date:'2025-04-01',value:103},{date:'2025-07-01',value:105},{date:'2025-10-01',value:110},{date:'2026-01-01',value:120}];
   const result=vm.runInContext("calcMacroFromPoints(points,{mode:'level-trillion',periodsPerYear:4},'test')",ctx);
-  assert.match(result.change,/YoY \+20.0%/);
+  assert.match(result.change,/전년 대비 \+20.0%/);
   ctx.points.splice(3,1);
   assert.equal(vm.runInContext("calcMacroFromPoints(points,{mode:'level-trillion',periodsPerYear:4},'test')",ctx),null);
 });

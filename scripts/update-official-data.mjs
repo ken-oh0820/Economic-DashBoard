@@ -31,6 +31,33 @@ async function request(endpoint,params,key){
   if(!response.ok)throw Error('HTTP '+response.status);
   return response.json();
 }
+export const RELEASE_GROUPS=[
+  {series:['CPIAUCSL','CPILFESL'],name:'CPI · Core CPI',url:'https://www.bls.gov/schedule/news_release/cpi.htm'},
+  {series:['PPIFIS','WPSFD49116'],name:'PPI · Core PPI',url:'https://www.bls.gov/schedule/news_release/ppi.htm'},
+  {series:['UNRATE','PAYEMS','CES0500000003'],name:'고용 보고서',url:'https://www.bls.gov/schedule/news_release/empsit.htm'},
+  {series:['GDP','GDPC1','GDPDEF'],name:'GDP',url:'https://www.bea.gov/news/schedule'},
+  {series:['PCEPI'],name:'개인소득·소비 / PCE',url:'https://www.bea.gov/news/schedule'}
+];
+export function releaseDates(rows){
+  return [...new Set((rows||[]).map(row=>row.date).filter(date=>/^\d{4}-\d{2}-\d{2}$/.test(date||'')&&Number.isFinite(Date.parse(date))))].sort();
+}
+export async function collectCalendar(key,previous={},requestFn=request,now=new Date()){
+  const groups=[],stamp=now.toISOString();
+  for(const group of RELEASE_GROUPS){
+    try{
+      const info=await requestFn('series/release',{series_id:group.series[0]},key);
+      const id=info.releases?.[0]?.id;if(!Number.isInteger(id))throw Error('No release');
+      const start=new Date(now);start.setUTCMonth(start.getUTCMonth()-2);
+      const data=await requestFn('release/dates',{release_id:id,realtime_start:start.toISOString().slice(0,10),include_release_dates_with_no_data:'true',sort_order:'asc'},key);
+      const dates=releaseDates(data.release_dates);if(!dates.length)throw Error('No dates');
+      groups.push({...group,dates,fetchedAt:stamp,status:'ok'});
+    }catch{
+      const old=previous.groups?.find(item=>item.series?.[0]===group.series[0]);
+      groups.push({...group,dates:old?.dates||[],fetchedAt:old?.fetchedAt||null,status:'stale'});
+    }
+  }
+  return {groups,checkedAt:stamp};
+}
 export async function update(){
   const key=process.env.FRED_API_KEY;
   if(!key)throw Error('FRED_API_KEY secret is required');
@@ -62,7 +89,8 @@ export async function update(){
   if(series.DGS10&&series.DGS3MO){
     series.T10Y3M={...series.DGS10,points:spreadPoints(series.DGS10.points,series.DGS3MO.points),source:'Federal Reserve / FRED · 10Y minus 3M',sourceUrl:'https://fred.stlouisfed.org/series/T10Y3M',status:[series.DGS10,series.DGS3MO].some(s=>s.status!=='ok')?'stale':'ok'};
   }
-  await writeFile(path,JSON.stringify({schemaVersion:1,updatedAt:stamp,failures,series},null,2)+'\n');
+  const calendar=await collectCalendar(key,previous.calendar);
+  await writeFile(path,JSON.stringify({schemaVersion:1,updatedAt:stamp,failures,series,calendar},null,2)+'\n');
   if(failures.length)process.exitCode=1;
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)await update();
