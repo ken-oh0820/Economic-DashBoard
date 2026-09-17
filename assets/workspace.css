@@ -1,4 +1,34 @@
 /* Shared navigation and dense monitoring; the Fed iframe remains untouched. */
+#economyHeader{display:none;flex:none;background:var(--bg);border-bottom:1px solid var(--border);padding:18px 28px 0}
+body:is(.dashboard-mode,.guide-mode) #economyHeader{display:block}
+.economy-header-inner{max-width:1480px;margin:0 auto}
+.economy-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+#economyTitle{font-size:24px;line-height:1.5;letter-spacing:0;margin:0;color:var(--text)}
+.economy-tabs{display:flex;gap:26px}
+.economy-tabs button{display:flex;align-items:center;gap:8px;padding:12px 2px;border:0;border-bottom:3px solid transparent;background:none;color:var(--text-mid);font:600 15px/1.5 'Noto Sans KR',sans-serif;letter-spacing:0;cursor:pointer}
+.economy-tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+.economy-tabs svg{width:18px;height:18px}
+.economy-tabs button:focus-visible,#economyHeader button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+body #indicatorDashboard>.dashboard-shell>.dashboard-top>div:first-child,body #usEconomyGuide>.us-guide-shell>.dashboard-top{display:none}
+body #indicatorDashboard>.dashboard-shell>.dashboard-top{justify-content:flex-end;margin-bottom:12px}
+body :is(#indicatorDashboard,#usEconomyGuide){min-height:0}
+.indicator-explanation{margin:14px 0;display:grid;grid-template-columns:112px minmax(0,1fr);gap:12px 20px;font-size:14px;line-height:1.9}
+.indicator-explanation dt{font-weight:600;color:var(--text)}
+.indicator-explanation dd{margin:0;color:var(--text-mid);word-break:keep-all;overflow-wrap:anywhere}
+.chart-guide-preview>a,.chart-related-guide a{color:var(--accent);font-size:13px;text-underline-offset:3px}
+.chart-related-guide{margin-top:18px;border-top:1px solid var(--border);padding-top:16px}
+.chart-related-guide summary{cursor:pointer;font-size:14px;font-weight:600;line-height:1.8}
+.chart-related-guide .us-guide-detail{display:grid;gap:16px;padding-top:16px}
+.chart-related-guide .us-guide-detail h3{font-size:14px}
+.chart-related-guide .us-guide-detail p{font-size:14px}
+@media(max-width:700px){
+ #economyHeader{padding:14px 16px 0}
+ #economyTitle{font-size:22px}
+ .economy-heading{gap:10px}
+ .economy-heading .workspace-text-button{font-size:12px;padding:6px 8px}
+ .indicator-explanation{grid-template-columns:1fr;gap:4px}
+ .indicator-explanation dd{margin-bottom:12px}
+}
 body:not(.map-mode) .header-right{visibility:hidden;pointer-events:none}
 body:not(.map-mode) #currencyToggle{display:none}
 body :is(.workspace-dialog,.workspace-overview,.monitor-jump,.guide-search-band) *{box-sizing:border-box;letter-spacing:0}

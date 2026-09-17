@@ -12,7 +12,7 @@
 #mainMenu .main-menu-sub{font-size:13px;line-height:1.7;color:#67747c;margin-top:12px;max-width:none}
 #mainMenu .menu-section-label{display:flex;align-items:center;gap:10px;color:#68757c;font-size:12px;white-space:nowrap;padding-bottom:3px}
 #mainMenu .menu-section-label b{font:500 12px 'IBM Plex Mono',monospace;color:#263e3b;border-left:1px solid #cbd4d9;padding-left:10px}
-#mainMenu .main-menu-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px}
+#mainMenu .main-menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px}
 #mainMenu .main-menu-card{--menu-tone:#087c73;--menu-tint:#e7f5f1;position:relative;display:flex;flex-direction:column;justify-content:flex-start;min-height:226px;border:1px solid #dee4e8;border-radius:8px;padding:22px 24px 17px;background:#fff;color:#20282e;box-shadow:0 2px 3px #253c3b04;font:inherit;text-align:left;cursor:pointer;transition:border-color .16s,box-shadow .16s,transform .16s}
 #mainMenu .main-menu-card:hover{border-color:var(--menu-tone);background:#fff;transform:translateY(-3px);box-shadow:0 8px 20px #243b4510}
 #mainMenu .main-menu-card:focus-visible{outline:3px solid var(--menu-tone);outline-offset:4px}

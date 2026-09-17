@@ -2,19 +2,19 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 
-test('main menu has five destinations with matching accessible names and numbering',async()=>{
+test('main menu has four destinations with monitoring and guide unified',async()=>{
   const html=await readFile(new URL('../index.html',import.meta.url),'utf8');
   const menu=html.match(/<main class="main-menu"[\s\S]*?<\/main>/)?.[0];
   assert.ok(menu);
-  assert.equal((menu.match(/<button /g)||[]).length,5);
+  assert.equal((menu.match(/<button /g)||[]).length,4);
   const destinations=[...menu.matchAll(/onclick="switchView\('([^']+)'\)"/g)].map(match=>match[1]);
-  assert.deepEqual(destinations,['map','dashboard','sites','guide','fed']);
-  assert.deepEqual([...menu.matchAll(/class="menu-card-index">([^<]+)/g)].map(match=>match[1]),['01','02','03','04','05']);
-  assert.match(html,/05 \/ FED BALANCE SHEET/);
+  assert.deepEqual(destinations,['map','dashboard','sites','fed']);
+  assert.deepEqual([...menu.matchAll(/class="menu-card-index">([^<]+)/g)].map(match=>match[1]),['01','02','03','04']);
+  assert.match(html,/04 \/ FED BALANCE SHEET/);
   assert.match(html,/03 \/ RESEARCH HUB/);
-  assert.match(html,/04 \/ MARKET STRUCTURE GUIDE/);
+  assert.match(menu,/aria-label="경제 지표"/);
   assert.doesNotMatch(html,/companyDashboard|company-financials|company-view-open|company-mode/);
-  assert.equal((menu.match(/<button[^>]*aria-label="/g)||[]).length,5);
+  assert.equal((menu.match(/<button[^>]*aria-label="/g)||[]).length,4);
   assert.match(menu,/id="mainMenuTitle">Economic Dashboard/);
   assert.match(menu,/Made by <strong>Ken/);
   assert.match(html,/assets\/main-menu.css/);

@@ -1,5 +1,7 @@
 import {DEFAULT_FAVORITES,cleanFavorites,observationLabel,timestampLabel,readPreference,savePreference} from './workspace-model.mjs?v=20260917-five-menus';
 import {initMonitorTools,nextReleaseText} from './monitor-tools.mjs?v=20260917-contrast';
+import {initEconomyTabs} from './economy-tabs.mjs?v=20260918-economy';
+import {indicatorExplanation} from './indicator-explanations.mjs?v=20260918-economy';
 
 const $=selector=>document.querySelector(selector);
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -16,7 +18,8 @@ const catalog=[
 const allowed=catalog.map(item=>item.key);
 let favorites=cleanFavorites(readPreference(storage,'ken-favorites-v1',DEFAULT_FAVORITES),allowed);
 let activeChart=null;
-const helpMap={'macro-cpi':3,'macro-core-cpi':3,'macro-inflation':3,'macro-ahe':3,'macro-unrate':5,'macro-payems':5,'bond-us-2y':2,'rate-us':2,hy:7};
+const relatedHelpMap={'macro-cpi':3,'macro-core-cpi':3,'macro-inflation':3,'macro-ahe':3,'macro-unrate':5,'macro-payems':5,'bond-us-2y':2,'rate-us':2,hy:7};
+const syncEconomyTabs=initEconomyTabs($('#economyHeader'),view=>switchView(view));
 
 function makeDialog(id,title,body){
   const dialog=document.createElement('dialog');dialog.id=id;dialog.className='workspace-dialog';
@@ -28,7 +31,7 @@ function makeDialog(id,title,body){
   return dialog;
 }
 
-const navItems=[['menu','홈','layout-grid'],['map','세계 경제 지도','globe-2'],['dashboard','지표 모니터링','chart-no-axes-combined'],['sites','투자 관련 사이트','newspaper'],['guide','미국 경제 지표 해설','book-open'],['fed','연준 대차대조표','landmark']];
+const navItems=[['menu','홈','layout-grid'],['map','세계 경제 지도','globe-2'],['dashboard','경제 지표','chart-no-axes-combined'],['sites','투자 관련 사이트','newspaper'],['fed','연준 대차대조표','landmark']];
 const nav=makeDialog('workspaceNav','워크스페이스','<nav aria-label="워크스페이스 메뉴">'+navItems.map(([view,label,symbol])=>'<button type="button" data-view="'+view+'">'+icon(symbol)+'<span>'+label+'</span></button>').join('')+'</nav>');
 const menuButton=$('header .app-nav-btn');
 menuButton.removeAttribute('onclick');menuButton.setAttribute('aria-label','메뉴 열기');menuButton.title='메뉴 열기';
@@ -37,7 +40,8 @@ menuButton.addEventListener('click',()=>nav.showModal());
 nav.querySelectorAll('[data-view]').forEach(btn=>btn.addEventListener('click',()=>{nav.close();switchView(btn.dataset.view);}));
 window.addEventListener('app-view-change',event=>{
   const view=event.detail;
-  nav.querySelectorAll('[data-view]').forEach(btn=>{if(btn.dataset.view===view)btn.setAttribute('aria-current','page');else btn.removeAttribute('aria-current');});
+  syncEconomyTabs(view==='guide'?'guide':'dashboard');
+  nav.querySelectorAll('[data-view]').forEach(btn=>{if(btn.dataset.view===(view==='guide'?'dashboard':view))btn.setAttribute('aria-current','page');else btn.removeAttribute('aria-current');});
   if(view!=='dashboard'&&chartDialog.open)chartDialog.close();
 });
 
@@ -67,9 +71,7 @@ $('#marketSourceList').closest('.dashboard-panel').querySelector('.dashboard-pan
 $('#indicatorDashboard .dashboard-sub').textContent='관측값과 변화 · 발표 일정 · 시계열 비교';
 $('#investmentSites .dashboard-sub').textContent='공식 발표·공시와 뉴스 제공처 원문 리서치';
 for(const [selector,links] of [
-  ['#indicatorDashboard', [['guide','지표 해설'],['sites','원문 리서치']]],
-  ['#usEconomyGuide', [['dashboard','현재 지표'],['sites','원문 리서치']]],
-  ['#investmentSites', [['dashboard','현재 지표'],['guide','지표 해설']]]
+  ['#investmentSites', [['dashboard','경제 지표'],['guide','지표 사전']]]
 ]){
   const navigation=document.createElement('nav');navigation.className='context-links';navigation.setAttribute('aria-label','관련 화면');
   navigation.innerHTML=links.map(([view,label])=>'<button type="button" data-destination="'+view+'">'+label+icon('arrow-up-right')+'</button>').join('');
@@ -77,7 +79,7 @@ for(const [selector,links] of [
   navigation.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>switchView(button.dataset.destination)));
 }
 
-const chartDialog=makeDialog('workspaceChart','지표 상세','<div id="chartDataBasis"></div><div id="chartPanelHost"></div><div class="chart-secondary-actions">'+button('chartFavorite','핵심 지표에 추가','star')+'<button type="button" id="chartGuideLink" class="workspace-text-button">'+icon('book-open')+'관련 해설</button></div><section id="chartGuidePreview" class="chart-guide-preview" hidden></section>');
+const chartDialog=makeDialog('workspaceChart','지표 상세','<div id="chartDataBasis"></div><div id="chartPanelHost"></div><div class="chart-secondary-actions">'+button('chartFavorite','핵심 지표에 추가','star')+'<button type="button" id="chartGuideLink" class="workspace-text-button" aria-controls="chartGuidePreview">'+icon('book-open')+'지표 해설</button></div><section id="chartGuidePreview" class="chart-guide-preview" tabindex="-1" hidden></section>');
 $('#chartPanelHost').append($('.market-chart-panel'));
 const chooser=makeDialog('workspaceFavorites','핵심 지표 선택','<p class="workspace-dialog-note">최대 8개 · 이 브라우저에 저장</p><fieldset id="favoriteChoices"><legend class="workspace-sr-only">관찰할 지표</legend>'+catalog.map(item=>'<label><input type="checkbox" value="'+item.key+'">'+escape(item.label)+'</label>').join('')+'</fieldset><p id="favoriteLimit" role="status"></p><div class="workspace-dialog-actions"><button type="button" id="favoritesDefault" class="workspace-text-button">기본 선택</button><button type="button" id="favoritesSave" class="workspace-primary">적용</button></div>');
 $('#editFavorites').addEventListener('click',()=>{chooser.querySelectorAll('input').forEach(input=>input.checked=favorites.includes(input.value));$('#favoriteLimit').textContent='';$('#favoritesSave').disabled=false;chooser.showModal();});
@@ -124,22 +126,37 @@ function openChart(key){
   $('#workspaceChartTitle').textContent=MARKET_CHARTS[key].label;
   $('#chartDataBasis').innerHTML=OfficialData.metadata(MARKET_CHARTS[key])?provenance(key)+'<div class="chart-source-name">'+escape(OfficialData.metadata(MARKET_CHARTS[key]).source)+'</div>':'<p>기준일·출처는 차트와 원문에서 확인하세요.</p>';
   updateFavoriteButton();
-  const number=helpMap[key],detail=number?document.querySelectorAll('#guide-important .us-guide-item')[number-1]:null;
-  $('#chartGuideLink').hidden=!detail;$('#chartGuidePreview').hidden=!detail;
-  $('#chartGuidePreview').replaceChildren();
-  if(detail){const title=document.createElement('h3');title.textContent='함께 읽기 · '+detail.querySelector('.us-guide-term').textContent;const p=document.createElement('p');p.textContent=detail.querySelector('.us-guide-detail p').textContent;$('#chartGuidePreview').append(title,p);}
+  renderChartExplanation(key);
   if(!chartDialog.open)chartDialog.showModal();
+  chartDialog.scrollTop=0;
   showMarketChart(key);
 }
-const returnChart=document.createElement('button');returnChart.type='button';returnChart.className='workspace-text-button guide-return';returnChart.hidden=true;returnChart.innerHTML=icon('arrow-left')+'지표 상세로 돌아가기';
-$('#usEconomyGuide .dashboard-top').after(returnChart);
-returnChart.addEventListener('click',()=>{switchView('dashboard');openChart(activeChart);returnChart.hidden=true;});
+function renderChartExplanation(key){
+  const host=$('#chartGuidePreview'),note=indicatorExplanation(key);
+  const number=relatedHelpMap[key],related=number?document.querySelectorAll('#guide-important .us-guide-item')[number-1]:null;
+  host.replaceChildren();host.hidden=!note&&!related;
+  $('#chartGuideLink').hidden=host.hidden;
+  $('#chartGuideLink').lastChild.textContent=note?'지표 해설':'관련 지표 해설';
+  if(note){
+    const title=document.createElement('h3');title.textContent='지표 해설 · '+MARKET_CHARTS[key].label;host.append(title);
+    const dl=document.createElement('dl');dl.className='indicator-explanation';
+    for(const [label,value] of [['무엇을 보나요',note.definition],['어떻게 읽나요',note.reading],['주의할 점',note.caution]]){
+      const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;dl.append(dt,dd);
+    }
+    const source=document.createElement('a');source.href=note.source;source.target='_blank';source.rel='noopener noreferrer';source.textContent='정의·산식 원문';
+    host.append(dl,source);
+  }
+  if(related){
+    const disclosure=document.createElement('details'),summary=document.createElement('summary');
+    disclosure.className='chart-related-guide';summary.textContent='관련 지표 · '+related.querySelector('.us-guide-term').textContent;
+    // Reuse the full dictionary entry without moving it or duplicating its IDs.
+    const content=related.querySelector('.us-guide-detail').cloneNode(true);
+    content.removeAttribute('id');content.querySelectorAll('[id]').forEach(node=>node.removeAttribute('id'));
+    disclosure.append(summary,content);host.append(disclosure);
+  }
+}
 $('#chartGuideLink').addEventListener('click',()=>{
-  const index=helpMap[activeChart];if(!index)return;
-  chartDialog.close();switchView('guide');$('#guide-important-tab').click();
-  guideSearch.value='';filterGuide();
-  const detail=document.querySelectorAll('#guide-important .us-guide-item')[index-1];detail.open=true;
-  returnChart.hidden=false;detail.querySelector('summary').focus();detail.scrollIntoView({block:'center',behavior:'instant'});
+  const section=$('#chartGuidePreview');section.focus({preventScroll:true});section.scrollIntoView({block:'start',behavior:'instant'});
 });
 
 const searchBand=document.createElement('div');searchBand.className='guide-search-band';
