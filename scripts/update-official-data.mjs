@@ -7,6 +7,7 @@ export const SERIES={
   WPSFD49116:['BLS','monthly'],UNRATE:['BLS','monthly'],PAYEMS:['BLS','monthly'],
   CES0500000003:['BLS','monthly'],GDP:['BEA','quarterly'],GDPC1:['BEA','quarterly'],
   PCEPI:['BEA','monthly'],GDPDEF:['BEA','quarterly'],FEDFUNDS:['Federal Reserve','monthly'],
+  DFEDTARL:['Federal Reserve','daily'],DFEDTARU:['Federal Reserve','daily'],
   DGS3MO:['Federal Reserve','daily'],DGS1:['Federal Reserve','daily'],DGS2:['Federal Reserve','daily'],
   DGS5:['Federal Reserve','daily'],DGS10:['Federal Reserve','daily'],DGS20:['Federal Reserve','daily'],DGS30:['Federal Reserve','daily']
 };

@@ -1,6 +1,6 @@
 (function(root){
   let snapshot={series:{}},pending=null,checked=0,failed=false;
-  const allowed=new Set(['CPIAUCSL','CPILFESL','PPIFIS','WPSFD49116','UNRATE','PAYEMS','CES0500000003','GDP','GDPC1','PCEPI','GDPDEF','FEDFUNDS','DGS3MO','DGS1','DGS2','DGS5','DGS10','DGS20','DGS30','T10Y3M']);
+  const allowed=new Set(['CPIAUCSL','CPILFESL','PPIFIS','WPSFD49116','UNRATE','PAYEMS','CES0500000003','GDP','GDPC1','PCEPI','GDPDEF','FEDFUNDS','DFEDTARL','DFEDTARU','DGS3MO','DGS1','DGS2','DGS5','DGS10','DGS20','DGS30','T10Y3M']);
   async function load(){
     if(pending)return pending;
     if(Date.now()-checked<300000)return snapshot;

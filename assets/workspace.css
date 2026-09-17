@@ -158,6 +158,13 @@ body .site-link-grid>.site-card:only-child{grid-column:1/-1}
 .context-links svg{width:14px;height:14px}
 body.light #indicatorDashboard{--text-mid:#52616b;--text-dim:#586874}
 .release-panel{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0;margin-bottom:18px}
+.policy-rate{display:flex;flex-direction:column;gap:5px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 0;margin:12px 0 18px;min-height:180px;letter-spacing:0}
+.policy-rate-label{font-size:13px;font-weight:600;color:var(--text-mid)}
+.policy-rate-value{font:600 25px/1.4 'IBM Plex Mono',monospace;color:var(--accent);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.policy-rate-basis,.policy-rate-check,.policy-rate-method,.policy-rate-warning,.policy-rate-loading{font-size:12px;line-height:1.7;color:var(--text-mid);overflow-wrap:anywhere}
+.policy-rate-warning{color:var(--warning);font-weight:600}
+.policy-rate a{font-size:12px;line-height:1.7;color:var(--accent);text-underline-offset:3px;align-self:flex-start}
+.policy-rate a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .release-panel>summary{cursor:pointer;font-size:14px;font-weight:600;line-height:1.8}
 #releaseSummary{font-weight:400;color:var(--text-mid);margin-left:14px;font-size:13px}
 .release-toolbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--text-mid);margin:16px 0}
