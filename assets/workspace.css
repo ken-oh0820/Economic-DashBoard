@@ -36,6 +36,7 @@ body :is(.workspace-dialog,.workspace-overview,.monitor-jump,.guide-search-band)
 .workspace-dialog::backdrop{background:#101c2866}
 .workspace-dialog-head,.workspace-section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
 .workspace-dialog-head h2,.workspace-section-head h2,.workspace-section-title{font-size:19px;line-height:1.5;margin:0;font-weight:700}
+#workspaceChart>.workspace-dialog-head{position:sticky;top:-24px;z-index:5;background:var(--surface);margin:-24px -24px 18px;padding:16px 24px;border-bottom:1px solid var(--border)}
 .workspace-dialog :is(button,input,a):focus-visible,.workspace-overview button:focus-visible,.monitor-jump button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .workspace-dialog button,.workspace-text-button{font:inherit;cursor:pointer}
 .workspace-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;flex:none;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-mid);padding:0;cursor:pointer}
@@ -206,6 +207,7 @@ body.light #indicatorDashboard{--text-mid:#52616b;--text-dim:#586874}
  body #monitorSources .dashboard-sections{grid-template-columns:1fr;gap:0}
  body #globalRateGrid,body #usMacroGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
  .workspace-dialog{padding:18px;width:calc(100% - 20px);max-height:calc(100dvh - 20px)}
+ #workspaceChart>.workspace-dialog-head{top:-18px;margin:-18px -18px 18px;padding:12px 18px}
  .workspace-dialog .market-chart-head{flex-direction:column}
  .workspace-dialog .chart-actions{flex-wrap:wrap}
  .workspace-dialog .chart-guide-preview p{font-size:14px}
