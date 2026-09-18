@@ -14,7 +14,7 @@ test('workspace loads shared styles last and starts with a consistent light them
 });
 
 test('Fed preserves its isolated PDF application and lazy-loading contract',()=>{
-  assert.match(html,/<iframe class="fed-frame" id="fedFrame" src="about:blank" data-src="fed-dashboard.html\?v=20260918-ui" title="Fed Balance Sheet Dashboard"><\/iframe>/);
+  assert.match(html,/<iframe class="fed-frame" id="fedFrame" src="about:blank" data-src="fed-dashboard.html\?v=20260918-report-nav" title="Fed Balance Sheet Dashboard"><\/iframe>/);
   assert.doesNotMatch(css,/\.fed-frame\s*\{/);
   assert.doesNotMatch(css,/\.map-container\s*\{|#map\s*\{|\.left-cluster\s*\{/);
 });
