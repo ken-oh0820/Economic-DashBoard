@@ -71,4 +71,8 @@ test('Fed presentation loads last and keeps responsive tables and modal bounds',
   assert.match(css, /\.tbl-box, \.stmt-sec\s*\{ overflow-x: auto/);
   assert.match(css, /width: min\(640px, calc\(100vw - 32px\)\)/);
   assert.match(css, /prefers-reduced-motion/);
+  assert.match(css, /\.nav-arrows\s*\{ position: static/);
+  assert.ok(html.indexOf('id="navArrows"') > html.indexOf('class="rel-info"'));
+  assert.ok(html.indexOf('id="navArrows"') < html.indexOf('id="dropzoneInitial"'));
+  assert.doesNotMatch(css, /font-size:\s*\d+px/);
 });

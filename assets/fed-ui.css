@@ -127,7 +127,8 @@ tbody tr:hover { background: var(--selected); }
 .btn-primary:hover { background: var(--accent); }
 .toast { border-radius: 6px; color: var(--on-accent); width: max-content; max-width: calc(100vw - 32px); }
 .app-footer { position: static; margin: 0 auto; max-width: 1440px; padding: 0 32px 24px; opacity: 1; }
-.nav-arrows { right: 8px; }.nav-btn { width: 32px; height: 36px; box-shadow: 0 2px 8px #0001; }
+.nav-arrows { position: static; transform: none; flex-direction: row; gap: 6px; margin-left: auto; }
+.nav-btn { width: 32px; height: 32px; }
 @media (max-width: 768px) {
   .dash { padding: 20px 16px 32px; }
   .hd-top { align-items: flex-start; flex-direction: column; gap: 14px; }
@@ -156,7 +157,6 @@ tbody tr:hover { background: var(--selected); }
   .bk-tab-name, .bk-tab-val { font-size: calc(var(--font-size) * 0.8000); }.bk-tab-pct { font-size: calc(var(--font-size) * 0.7333); }
   .info-item p, .mat-lbl, .mat-val, .leg { font-size: calc(var(--font-size) * 0.8000); }
   .app-footer { padding: 0 16px 20px; }
-  .nav-arrows { bottom: 12px; top: auto; transform: none; flex-direction: row; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; }
