@@ -458,8 +458,10 @@ tr.hi td { background: rgba(91, 123, 139, 0.15); font-weight: 700; }
 .tbl-box::after {
 }
 </style>
+<link rel="stylesheet" href="assets/fed-ui.css?v=20260918">
+<script src="assets/fed-theme.js?v=20260918"></script>
 </head>
-<body class="dark">
+<body>
 <div class="toast" id="toast"></div>
 <div class="loading" id="loading"><div class="spinner"></div></div>
 
@@ -686,7 +688,7 @@ var SETTINGS_STORE_KEY = 'fedDashboard.settings.v1';
 var currentData = null;
 var savedDataList = [];
 var chartPeriod = '3m';
-var defaultSettings = {theme:'dark',fontSize:'md',textFont:'ibm',monoFont:'ibm'};
+var defaultSettings = {theme:'light',fontSize:'md',textFont:'ibm',monoFont:'ibm'};
 var settings = Object.assign({}, defaultSettings);
 var fontMap = {
   text: { 
@@ -804,6 +806,7 @@ function updateStatus(text) {
 }
 
 function applySettings() {
+  settings.theme = window.FedTheme?.current(settings.theme) ?? settings.theme;
   document.body.classList.remove('dark', 'font-sm', 'font-md', 'font-lg', 'font-xl');
   if (settings.theme === 'dark') document.body.classList.add('dark');
   document.body.classList.add('font-' + settings.fontSize);
@@ -824,7 +827,13 @@ function applySettings() {
   else if (settings.monoFont === 'system') document.getElementById('monoSystem')?.classList.add('active');
 }
 
-function setTheme(t) { settings.theme = t; saveSettingsToServer(); applySettings(); }
+function setTheme(t) {
+  if (!window.FedTheme?.request(t)) {
+    settings.theme = t;
+    saveSettingsToServer();
+  }
+  applySettings();
+}
 function setFontSize(s) { settings.fontSize = s; saveSettingsToServer(); applySettings(); }
 function setTextFont(f) { settings.textFont = f; saveSettingsToServer(); applySettings(); }
 function setMonoFont(f) { settings.monoFont = f; saveSettingsToServer(); applySettings(); }
@@ -1705,6 +1714,7 @@ function loadDemoData() {
 }
 
 async function init() { 
+  window.FedTheme?.observe(applySettings);
   applySettings(); // 기본 설정 먼저 적용
   await loadSettingsFromServer(); 
   await loadDataFromServer(); 
