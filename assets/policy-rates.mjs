@@ -4,11 +4,15 @@ import {timestampLabel} from './workspace-model.mjs?v=20260917-five-menus';
 export const VERIFIED_POLICY_RATES={
   kr:{label:'한국은행 기준금리',value:3,decisionDate:'2026-08-27',decisionKstDate:'2026-08-27',checkedAt:'2026-09-17T23:32:42Z',source:'한국은행',url:'https://www.bok.or.kr/portal/singl/baseRate/progress.do?dataSeCd=01&menuNo=200656'},
   us:{label:'연방기금 목표금리 범위',lower:3.75,upper:4,decisionDate:'2026-09-16',decisionKstDate:'2026-09-17',effectiveDate:'2026-09-17',checkedAt:'2026-09-17T23:32:42Z',source:'Federal Reserve',url:'https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a1.htm'},
-  jp:{label:'무담보 익일물 콜금리 목표',value:1,approximate:true,decisionDate:'2026-07-31',decisionKstDate:'2026-07-31',checkedAt:'2026-09-17T23:32:42Z',source:'일본은행',url:'https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260731a.pdf'}
+  jp:{label:'무담보 익일물 콜금리 목표',value:1,nextValue:1.25,effectiveAt:'2026-09-24T00:00:00+09:00',effectiveDate:'2026-09-24',approximate:true,decisionDate:'2026-09-18',decisionKstDate:'2026-09-18',checkedAt:'2026-09-18T08:55:24Z',source:'일본은행',url:'https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260918a.pdf'}
 };
 export function policyRate(group,official,now=Date.now()){
   const verified=VERIFIED_POLICY_RATES[group.key];if(!verified)return null;
   let rate={...verified,mode:'manual',referenceDate:verified.decisionKstDate,dateLabel:'결정일 '+verified.decisionDate+' (현지)',delayed:false};
+  if(Number.isFinite(rate.nextValue)){
+    if(now>=Date.parse(rate.effectiveAt)){rate.value=rate.nextValue;rate.effectiveNote=rate.effectiveDate+' 적용';}
+    else rate.effectiveNote=rate.effectiveDate+'부터 '+rate.nextValue.toFixed(2)+'%'+(rate.approximate?' 내외':'')+' 적용 예정';
+  }
   if(group.key==='us'){
     const lower=official?.get({series:'DFEDTARL'}),upper=official?.get({series:'DFEDTARU'});
     const low=lower?.points?.at(-1),high=upper?.points?.at(-1);
@@ -33,6 +37,7 @@ const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&
 export function policyRateMarkup(group,official,now=Date.now()){
   const rate=policyRate(group,official,now);if(!rate)return '<p>기준금리 확인 불가</p>';
   return '<div class="policy-rate'+(rate.warning?' needs-review':'')+'"><span class="policy-rate-label">'+escape(rate.label)+'</span><strong class="policy-rate-value">'+escape(rate.valueText)+'</strong><span class="policy-rate-basis">최근 확인값 · '+escape(rate.dateLabel)+'</span>'+
+    (rate.effectiveNote?'<span class="policy-rate-effective">'+escape(rate.effectiveNote)+'</span>':'')+
     '<span class="policy-rate-check">'+(rate.mode==='api'?'수집 ':'원문 확인 ')+escape(timestampLabel(rate.checkedAt))+'</span><span class="policy-rate-method">'+(rate.mode==='api'?'공식 API · 3시간마다 갱신 확인':'공식 발표 수동 반영 · 자동 갱신 아님')+'</span>'+
     (rate.warning?'<span class="policy-rate-warning">'+escape(rate.warning)+'</span>':'')+
     '<a href="'+escape(rate.url)+'" target="_blank" rel="noopener noreferrer">'+escape(rate.source)+' 금리 원문 ↗</a></div>';

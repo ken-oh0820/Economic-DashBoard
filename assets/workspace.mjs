@@ -2,7 +2,7 @@ import {DEFAULT_FAVORITES,cleanFavorites,observationLabel,timestampLabel,readPre
 import {initMonitorTools,nextReleaseText} from './monitor-tools.mjs?v=20260917-contrast';
 import {initEconomyTabs} from './economy-tabs.mjs?v=20260918-economy';
 import {indicatorExplanation} from './indicator-explanations.mjs?v=20260918-economy';
-import {initPolicyRates} from './policy-rates.mjs?v=20260918-rates';
+import {initPolicyRates} from './policy-rates.mjs?v=20260918-effective';
 
 const $=selector=>document.querySelector(selector);
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

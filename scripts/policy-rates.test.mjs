@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {policyRate,policyRateMarkup} from '../assets/policy-rates.mjs';
 import {SERIES} from './update-official-data.mjs';
-const now=Date.parse('2026-09-18T00:00:00Z');
+const now=Date.parse('2026-09-18T09:00:00Z');
 const group=key=>({key,items:[{date:'2026-09-18'},{date:'2026-10-22'}]});
 const snapshot=(lowDate,highDate,opts={})=>({get:({series})=>({points:[{date:series==='DFEDTARL'?lowDate:highDate,value:series==='DFEDTARL'?3.75:4}],status:'ok',fetchedAt:new Date(now).toISOString(),...opts})});
 
@@ -16,9 +16,17 @@ test('policy rates distinguish target range, Japanese approximate target and eff
   assert.doesNotMatch(us.label,/월평균/);
 });
 test('new decisions on the calendar do not automatically confirm unchanged policy rates',()=>{
-  assert.match(policyRate(group('jp'),null,now).warning,/새 결정 확인/);
+  assert.match(policyRate(group('kr'),null,now).warning,/새 결정 확인/);
   assert.equal(policyRate({key:'kr',items:[{date:'2026-10-22'}]},null,now).warning,'');
   assert.match(policyRate({key:'kr',items:[]},null,now+2*86400000).warning,/최신 여부/);
+});
+test('an announced Japanese rate change is not treated as effective before its start date',()=>{
+  const jp=policyRate(group('jp'),null,now);
+  assert.equal(jp.valueText,'1.00% 내외');
+  assert.match(jp.effectiveNote,/2026-09-24부터 1.25% 내외 적용 예정/);
+  assert.equal(jp.warning,'');
+  assert.equal(policyRate(group('jp'),null,Date.parse('2026-09-23T14:59:59Z')).valueText,'1.00% 내외');
+  assert.equal(policyRate(group('jp'),null,Date.parse('2026-09-23T15:00:00Z')).valueText,'1.25% 내외');
 });
 test('US bounds require matching dates and cannot regress to pre-decision observations',()=>{
   assert.equal(policyRate(group('us'),snapshot('2026-09-17','2026-09-17'),now).mode,'api');

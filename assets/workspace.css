@@ -163,6 +163,7 @@ body.light #indicatorDashboard{--text-mid:#52616b;--text-dim:#586874}
 .policy-rate-value{font:600 25px/1.4 'IBM Plex Mono',monospace;color:var(--accent);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 .policy-rate-basis,.policy-rate-check,.policy-rate-method,.policy-rate-warning,.policy-rate-loading{font-size:12px;line-height:1.7;color:var(--text-mid);overflow-wrap:anywhere}
 .policy-rate-warning{color:var(--warning);font-weight:600}
+.policy-rate-effective{font-size:12px;line-height:1.7;color:var(--accent);font-weight:600}
 .policy-rate a{font-size:12px;line-height:1.7;color:var(--accent);text-underline-offset:3px;align-self:flex-start}
 .policy-rate a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .release-panel>summary{cursor:pointer;font-size:14px;font-weight:600;line-height:1.8}
