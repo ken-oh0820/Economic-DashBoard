@@ -257,6 +257,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 <link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-official-data">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260917-important">
 <link rel="stylesheet" href="assets/workspace.css?v=20260918-effective">
+<link rel="stylesheet" href="assets/country-profile.css?v=20260920">
 </head>
 <body class="menu-mode light">
 <main class="main-menu" id="mainMenu" aria-labelledby="mainMenuTitle">
@@ -347,14 +348,31 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 <div><div class="panel-title">지도 오버레이</div><button class="overlay-btn" onclick="setOverlay('polsys',this)">🟣 정치체제 구분</button><button class="overlay-btn" onclick="setOverlay('telecomcable',this)" style="border-color:#00d4ff;color:#00d4ff">🌐 통신 해저케이블</button><button class="overlay-btn" onclick="setOverlay('powercable',this)" style="border-color:#ff4488;color:#ff4488">⚡ 전력 해저케이블</button><button class="overlay-btn resource" onclick="toggleResMenu(this)">🟡 천연자원 보유국</button><div id="resSubMenu"><button class="res-sub-btn" onclick="setResOverlay('oil_prod',this)">🛢️ 석유 생산량</button><button class="res-sub-btn" onclick="setResOverlay('oil_export',this)">🛢️ 석유 수출량</button><button class="res-sub-btn" onclick="setResOverlay('gas_prod',this)">💨 천연가스 생산량</button><button class="res-sub-btn" onclick="setResOverlay('gas_export',this)">💨 천연가스 수출량</button><button class="res-sub-btn" onclick="setResOverlay('uranium',this)">☢️ 우라늄</button><button class="res-sub-btn" onclick="setResOverlay('lithium',this)">🔋 리튬</button><button class="res-sub-btn" onclick="setResOverlay('rare_earth',this)">⚗️ 희토류</button><button class="res-sub-btn" onclick="setResOverlay('tungsten',this)">🪨 텅스텐</button><button class="res-sub-btn" onclick="setResOverlay('all',this)">🌐 전체</button></div><button class="overlay-btn" onclick="setOverlay('none',this)">⬜ 오버레이 해제</button><div class="overlay-legend" id="overlayLegendBox"></div></div>
 <div><div class="panel-title">범례</div><canvas id="legendCanvas" height="10"></canvas><div class="legend-labels"><span id="legendMin">$5B</span><span id="legendMax">$30T+</span></div></div>
 <div><div class="panel-title">TOP 10 순위</div><div id="rankingList"></div></div>
-</div>
-<div class="sidebar-detail" id="sidebarDetail">
-<div><div class="panel-title">국가 상세 정보</div><div id="countryDetail"><div class="placeholder-text">지도에서 국가를<br>클릭하세요</div></div></div>
+<details class="atlas-context"><summary>지도 데이터·지역 개요</summary>
 <div><div class="panel-title">글로벌 인사이트</div><div id="insights"></div></div>
 <div><div class="panel-title">데이터 상태</div><div id="dataStatusList" class="data-status-list"></div><div class="data-source-card"><strong>기준:</strong> 국가 경제 수치는 IMF/WB 계열 2024-2025 추정치를 기반으로 한 대시보드용 정적 데이터입니다.<br><strong>환율:</strong> <a href="https://www.exchangerate-api.com/" target="_blank" rel="noopener noreferrer">ExchangeRate-API</a> 일간 기준입니다.</div></div>
 <div><div class="panel-title">지역별 GDP 비중</div><div id="regionChart"></div></div>
+</details>
 </div>
 </div>
+<aside class="country-profile" id="countryProfile" aria-labelledby="countryProfileTitle" hidden>
+  <div class="country-profile-top">
+    <div><small>COUNTRY PROFILE</small><h2 id="countryProfileTitle" tabindex="-1">국가 분석</h2><p id="countryProfileRegion"></p></div>
+    <div class="country-profile-tools">
+      <button type="button" id="countryProfileExpand" aria-label="국가 패널 넓히기" title="국가 패널 넓히기" aria-pressed="false"><i data-lucide="maximize-2" aria-hidden="true"></i></button>
+      <button type="button" id="countryProfileClose" aria-label="국가 패널 접기" title="국가 패널 접기"><i data-lucide="x" aria-hidden="true"></i></button>
+    </div>
+  </div>
+  <div class="country-profile-status"><strong>2024–2025 기존 참고자료</strong><span id="countryProfileCurrency">금액: USD</span></div>
+  <div class="country-profile-scroll" id="countryProfileScroll">
+    <p class="country-highlights" id="countryProfileHighlights"></p>
+    <div id="countryDetail"></div>
+    <div class="country-tabs" id="countryTabs" role="tablist" aria-label="국가 분석 분야"></div>
+    <div id="countryTabBody" role="tabpanel" tabindex="0" aria-labelledby="country-tab-economy"></div>
+    <details class="country-provenance"><summary>자료 기준·확인 범위</summary><p>기존 지도에 등록된 정적 참고자료입니다. 항목별 원문·기준 연도 검증 전이며 최신 공식 통계가 아닙니다. 순위는 등록 국가 내 비교이고 전 세계 공식 순위가 아닙니다.</p><p>외부 링크는 확인용 자료실입니다. 표시된 개별 수치의 검증된 원문 출처를 뜻하지 않습니다. 자료가 없는 항목은 0으로 처리하지 않습니다.</p></details>
+  </div>
+</aside>
+<button type="button" class="country-profile-open" id="countryProfileOpen" hidden aria-controls="countryProfile"><i data-lucide="panel-right-open" aria-hidden="true"></i>국가 분석</button>
 <div class="map-container" id="mapContainer">
 <button class="mobile-toggle mobile-toggle-left" onclick="toggleSidebar('left')" aria-label="왼쪽 메뉴">☰</button>
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeSidebars()"></div>
@@ -1277,7 +1295,7 @@ let usdKrwRate=1450; // 기본값, fetchExchangeRates에서 실시간 업데이�
 function fmtMoney(billionsUsd){
   if(curCurrency==='krw'){
     const krwTril=billionsUsd*usdKrwRate/1000; // 십억USD → 조원
-    if(krwTril>=1000) return `₩${(krwTril/1000).toFixed(0)}경`;
+    if(krwTril>=10000) return `₩${(krwTril/10000).toFixed(1)}경`;
     if(krwTril>=1) return `₩${krwTril.toFixed(1)}조`;
     return `₩${(krwTril*10000).toFixed(0)}억`;
   }
@@ -1399,7 +1417,7 @@ function getCountryEntries(){return Object.entries(eData).map(([id,d])=>({id,d,r
 function renderCountrySearch(q=''){lastSearchQuery=q;const input=document.getElementById('countrySearch'),clear=document.getElementById('searchClear'),box=document.getElementById('countrySearchResults');if(!box)return;if(input&&input.value!==q)input.value=q;if(clear)clear.classList.toggle('show',!!q.trim());const term=q.trim().toLowerCase();let rows=getCountryEntries().sort((a,b)=>a.rank-b.rank);if(term){rows=rows.filter(x=>x.text.includes(term)||String(x.rank)===term.replace('#',''));}rows=rows.slice(0,term?12:8);searchCursor=Math.min(searchCursor,Math.max(rows.length-1,0));if(!rows.length){box.innerHTML='<div class="search-empty">검색 결과가 없습니다</div>';return;}box.innerHTML=rows.map((x,i)=>`<button class="search-result ${x.id===selId||i===searchCursor?'active':''}" onclick="selectCountry('${x.id}',{pan:true,closePanel:true})"><span class="search-result-name">${escHtml(x.d.flag)} ${escHtml(x.d.name)}</span><span class="search-result-meta">#${x.rank} · ${escHtml(x.d.region)}</span></button>`).join('');}
 function clearCountrySearch(){searchCursor=0;renderCountrySearch('');document.getElementById('countrySearch')?.focus();}
 function handleSearchKey(e){const items=[...document.querySelectorAll('#countrySearchResults .search-result')];if(e.key==='ArrowDown'){e.preventDefault();searchCursor=Math.min(searchCursor+1,Math.max(items.length-1,0));renderCountrySearch(e.currentTarget.value);}else if(e.key==='ArrowUp'){e.preventDefault();searchCursor=Math.max(searchCursor-1,0);renderCountrySearch(e.currentTarget.value);}else if(e.key==='Enter'&&items[searchCursor]){e.preventDefault();items[searchCursor].click();}else if(e.key==='Escape'){clearCountrySearch();}}
-function selectCountry(id,opts={}){if(!eData[id])return;selId=id;renderDetail(id);if(geoLayer){geoLayer.eachLayer(l=>{const lid=pad(l.feature.id);l.setStyle(lid===id?{weight:2.5,color:'rgba(0,212,255,0.9)'}:{weight:0.6,color:getStroke()});if(lid===id&&l.bringToFront)l.bringToFront();});}if(opts.pan&&map&&LABEL_POS[id]){const [lon,lat]=LABEL_POS[id];map.setView([lat,lon],Math.max(map.getZoom(),isMobile()?4:3.4),{animate:true});}renderCountrySearch(lastSearchQuery);if(opts.closePanel&&isMobile())closeSidebars();}
+function selectCountry(id,opts={}){if(!eData[id])return;selId=id;renderDetail(id,true);if(geoLayer){geoLayer.eachLayer(l=>{const lid=pad(l.feature.id);l.setStyle(lid===id?{weight:2.5,color:'rgba(0,212,255,0.9)'}:{weight:0.6,color:getStroke()});if(lid===id&&l.bringToFront)l.bringToFront();});}if(opts.pan&&map&&LABEL_POS[id]){const [lon,lat]=LABEL_POS[id];map.setView([lat,lon],Math.max(map.getZoom(),isMobile()?4:3.4),{animate:true});}renderCountrySearch(lastSearchQuery);if(opts.closePanel&&isMobile())closeSidebars();}
 
 function pad(id){return String(id).padStart(3,'0');}
 function getStroke(){return isLight?'rgba(0,80,160,0.22)':'rgba(0,200,255,0.15)';}
@@ -1409,7 +1427,20 @@ function updateColors(){colorScale=isLight?mCfg[curMetric].lightScale():mCfg[cur
 
 function showTip(e,iso){if(!document.body.classList.contains('map-mode'))return;const d=eData[iso];if(!d)return;const tt=document.getElementById('tooltip');const badges=[natoMembers.has(iso)?'<span style="background:#1a44cc;color:#fff;font-size:10px;padding:2px 6px;border-radius:2px">NATO</span>':'',bricsMembers.has(iso)?'<span style="background:#cc6600;color:#fff;font-size:10px;padding:2px 6px;border-radius:2px">BRICS</span>':''].filter(Boolean).join(' ');const pS=polSys[iso];const pLabel=pS?`<span style="color:${polColors[pS]};font-size:10px">● ${polLabels[pS]}</span>`:'';const rl=getResourceList(iso);const resRow=rl.length?`<div class="tt-row" style="border-bottom:none;padding-top:5px;flex-wrap:wrap;gap:4px"><span style="color:var(--text-dim)">자원</span>${rl.map(r=>`<span style="background:${r.color}22;border:1px solid ${r.color}66;color:${r.color};font-size:10px;padding:2px 6px;border-radius:2px">${r.icon}${r.label}</span>`).join('')}</div>`:'';tt.innerHTML=`<div class="tt-name">${d.flag} ${d.name}</div>${(badges||pLabel)?`<div style="margin-bottom:7px;display:flex;gap:5px;align-items:center;flex-wrap:wrap">${badges}${pLabel}</div>`:''}<div class="tt-row"><span>GDP</span><span class="${curMetric==='gdp'?'tt-highlight':''}">${mCfg.gdp.fmt(d.gdp)}</span></div><div class="tt-row"><span>무역</span><span class="${curMetric==='trade'?'tt-highlight':''}">${mCfg.trade.fmt(d.trade)}</span></div><div class="tt-row"><span>실업률</span><span class="${curMetric==='unemployment'?'tt-highlight':''}">${d.unemployment}%</span></div><div class="tt-row"><span>인플레</span><span class="${curMetric==='inflation'?'tt-highlight':''}">${d.inflation}%</span></div>${resRow}`;tt.style.display='block';tt.style.left=Math.min(e.originalEvent.clientX+14,window.innerWidth-215)+'px';tt.style.top=Math.min(e.originalEvent.clientY-8,window.innerHeight-200)+'px';}
 function hideTip(){document.getElementById('tooltip').style.display='none';}
-function renderDetail(iso){const d=eData[iso];if(!d)return;document.getElementById('countryDetail').dataset.iso=iso;const rnk=getRank(iso,'gdp');const badges=[natoMembers.has(iso)?'<span style="background:#1a44cc;color:#fff;font-size:10px;padding:3px 8px;border-radius:2px">NATO</span>':'',bricsMembers.has(iso)?'<span style="background:#cc6600;color:#fff;font-size:10px;padding:3px 8px;border-radius:2px">BRICS</span>':'',polSys[iso]?`<span style="border:1px solid ${polColors[polSys[iso]]};color:${polColors[polSys[iso]]};font-size:10px;padding:3px 8px;border-radius:2px">${polLabels[polSys[iso]]}</span>`:''].filter(Boolean).join('');const ex=extraInfo[iso];const extraHtml=ex?`<div style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px"><div style="font-size:9px;letter-spacing:1px;color:var(--text-dim);margin-bottom:6px">상세 경제지표 (WB/IMF 2024-25)</div><div class="metric-grid"><div class="metric-card"><div class="mc-label">총인구</div><div class="mc-value" style="color:var(--text)">${ex.pop>=1000?(ex.pop/1000).toFixed(1)+'억':ex.pop.toFixed(1)+'백만'}</div></div><div class="metric-card"><div class="mc-label">GNI 총액</div><div class="mc-value" style="color:#88ccff">${fmtMoney(ex.gni)}</div></div><div class="metric-card"><div class="mc-label">1인당 GNI</div><div class="mc-value" style="color:#ffaa44">${fmtMoneyPc(ex.gniPc)}</div></div><div class="metric-card"><div class="mc-label">국가채무/GDP</div><div class="mc-value" style="color:${ex.debt>100?'#ff4466':ex.debt>60?'#ffaa44':'#66dd88'}">${ex.debt}%</div></div></div></div>`:'';const ind=industryData[iso];const indHtml=ind?`<div style="margin-top:8px;padding:9px 11px;background:var(--bg);border:1px solid var(--border)"><div style="font-size:9px;letter-spacing:1px;color:var(--text-dim);margin-bottom:7px">핵심 산업</div><div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px">${ind.ind.map(i=>`<span style="background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);color:var(--accent);font-size:10px;padding:3px 8px;border-radius:2px">${i}</span>`).join('')}</div><div style="font-size:9px;letter-spacing:1px;color:var(--text-dim);margin-bottom:5px">대표 기술·기업</div><div style="font-size:10px;color:var(--text-mid);line-height:1.8">${ind.tech.map(t=>`<div style="padding:2px 0;border-bottom:1px solid var(--border)">▸ ${t}</div>`).join('')}</div></div>`:'';document.getElementById('countryDetail').innerHTML=`<div class="country-card"><div class="country-name-big">${d.flag} ${d.name}</div><div class="country-region">${d.region}</div>${badges?`<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px">${badges}</div>`:''}<div class="metric-grid"><div class="metric-card"><div class="mc-label">GDP</div><div class="mc-value gdp">${mCfg.gdp.fmt(d.gdp)}</div></div><div class="metric-card"><div class="mc-label">무역규모</div><div class="mc-value trade">${mCfg.trade.fmt(d.trade)}</div></div><div class="metric-card"><div class="mc-label">실업률</div><div class="mc-value unemp">${d.unemployment}%</div></div><div class="metric-card"><div class="mc-label">인플레이션</div><div class="mc-value infl">${d.inflation}%</div></div></div><div class="rank-badge"><span>GDP 세계 순위</span><span>#${rnk}</span></div>${extraHtml}${indHtml}${(()=>{const rl=getResourceList(iso);return rl.length?`<div style="margin-top:9px;padding:8px 11px;background:var(--bg);border:1px solid var(--border)"><div style="font-size:9px;letter-spacing:1px;color:var(--text-dim);margin-bottom:7px">보유 천연자원</div><div style="display:flex;flex-wrap:wrap;gap:5px">${rl.map(r=>`<span style="background:${r.color}22;border:1px solid ${r.color}88;color:${r.color};font-size:10px;padding:3px 8px;border-radius:2px">${r.icon} ${r.label}</span>`).join('')}</div></div>`:'';})()} </div>`;}
+window.getAtlasCountry=function(iso){
+  const d=eData[iso];if(!d)return null;
+  const ex=extraInfo[iso];
+  return {id:iso,...d,extra:ex,rank:getRank(iso,'gdp'),count:Object.keys(eData).length,
+    currency:curCurrency,money:{gdp:fmtMoney(d.gdp),trade:fmtMoney(d.trade),gni:ex?fmtMoney(ex.gni):'자료 없음',gniPc:ex?fmtMoneyPc(ex.gniPc):'자료 없음'},
+    industries:industryData[iso]?.ind||[],technologies:industryData[iso]?.tech||[],
+    resources:getResourceList(iso).map(r=>({label:r.label,note:r.note})),
+    groups:[natoMembers.has(iso)?'NATO':'',g7Members.has(iso)?'G7':'',bricsMembers.has(iso)?'BRICS':''].filter(Boolean)};
+};
+function renderDetail(iso,show=false){
+  const country=window.getAtlasCountry(iso);if(!country)return;
+  document.getElementById('countryDetail').dataset.iso=iso;
+  window.CountryProfile?.render(country,{show});
+}
 function getRank(id,key){return Object.entries(eData).sort((a,b)=>b[1][key]-a[1][key]).findIndex(([c])=>c===id)+1;}
 function renderRankings(){const cfg=mCfg[curMetric],col=isLight?cfg.lightColor:cfg.darkColor;const sorted=Object.entries(eData).sort((a,b)=>b[1][curMetric]-a[1][curMetric]).slice(0,10);const max=sorted[0][1][curMetric];document.getElementById('rankingList').innerHTML=sorted.map(([id,d],i)=>`<div class="rank-item" onclick="clickRank('${id}')"><span class="rank-num">${i+1}</span><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between"><span class="rank-name">${d.flag} ${d.name}</span><span class="rank-val" style="color:${col}">${cfg.fmt(d[curMetric])}</span></div><div class="rank-bar-bg"><div style="height:100%;width:${(d[curMetric]/max*100).toFixed(1)}%;background:${col};border-radius:2px;opacity:0.75"></div></div></div></div>`).join('');}
 function clickRank(id){selectCountry(id,{pan:true});}
@@ -2760,5 +2791,6 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
 <script type="module" src="assets/workspace.mjs?v=20260918-effective"></script>
+<script type="module" src="assets/country-profile.mjs?v=20260920"></script>
 </body>
 </html>
