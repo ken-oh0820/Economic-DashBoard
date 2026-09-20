@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "attemptedAt": "2026-09-20T23:23:01.068Z",
+  "attemptedAt": "2026-09-20T23:28:21.830Z",
   "license": "CC BY 4.0",
   "provider": "World Bank, World Development Indicators",
   "series": {
     "gdp": {
       "indicator": "NY.GDP.MKTP.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-20T23:23:01.526Z",
+      "fetchedAt": "2026-09-20T23:28:22.936Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Gross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -799,7 +799,7 @@
     "gdpPc": {
       "indicator": "NY.GDP.PCAP.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-20T23:23:01.597Z",
+      "fetchedAt": "2026-09-20T23:28:23.219Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Gross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. The core indicator has been divided by the general population to achieve a per capita estimate.This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -1591,7 +1591,7 @@
     "growth": {
       "indicator": "NY.GDP.MKTP.KD.ZG",
       "status": "ok",
-      "fetchedAt": "2026-09-20T23:23:01.664Z",
+      "fetchedAt": "2026-09-20T23:28:23.940Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Gross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. This indicator denotes the percentage change over each previous year of the constant price (base year 2015) series in United States dollars.",
@@ -2383,7 +2383,7 @@
     "gni": {
       "indicator": "NY.GNP.MKTP.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-20T23:23:01.721Z",
+      "fetchedAt": "2026-09-20T23:28:24.566Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Gross national income is the total income earned by all residents within an economic territory during an accounting period. It is equal to gross domestic product plus earned income receivable from abroad minus earned income payable abroad. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -3174,7 +3174,7 @@
     "gniPc": {
       "indicator": "NY.GNP.PCAP.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-20T23:23:01.784Z",
+      "fetchedAt": "2026-09-20T23:28:24.994Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Gross national income is the total income earned by all residents within an economic territory during an accounting period. It is equal to gross domestic product plus earned income receivable from abroad minus earned income payable abroad. This figure is converted to U.S. dollars using the World Bank Atlas method, and divided by the midyear population. GNI, calculated in national currency, is usually converted to U.S. dollars at official exchange rates for comparisons across economies, although an alternative rate is used when the official exchange rate is judged to diverge by an exceptionally large margin from the rate actually applied in international transactions. To smooth fluctuations in prices and exchange rates, a special Atlas method of conversion is used by the World Bank. This applies a conversion factor that averages the exchange rate for a given year and the two preceding years, adjusted for differences in rates of inflation between the country, and through 2000, the G-5 countries (France, Germany, Japan, the United Kingdom, and the United States). From 2001, these countries include the Euro area, Japan, the United Kingdom, and the United States. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -3965,7 +3965,7 @@
     "exports": {
       "indicator": "NE.EXP.GNFS.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-20T23:23:01.858Z",
+      "fetchedAt": "2026-09-20T23:28:25.247Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
       "sourceNote": "Exports of goods includes changes in the economic ownership of goods from residents of the compiling economy to non-residents, irrespective of physical movement of goods across national borders. Exports of services includes services provided by residents to non-residents. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -4719,7 +4719,7 @@
     "imports": {
       "indicator": "NE.IMP.GNFS.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-20T23:23:01.918Z",
+      "fetchedAt": "2026-09-20T23:28:25.492Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
       "sourceNote": "Imports of goods includes change in the economic ownership of goods from non-residents to\n\n\n\n\nresidents of the compiling economy, irrespective of physical movement of goods across national borders. Imports of services includes services provided by non-residents to residents. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -5473,7 +5473,7 @@
     "unemployment": {
       "indicator": "SL.UEM.TOTL.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-20T23:23:01.981Z",
+      "fetchedAt": "2026-09-20T23:28:25.710Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "ILO Modelled Estimates database (ILOEST), International Labour Organization (ILO), uri: https://ilostat.ilo.org/data/bulk/, publisher: ILOSTAT, type: external database, date accessed: January 17, 2026",
       "sourceNote": "Unemployment refers to the share of the labor force that is without work but available for and seeking employment.",
@@ -6275,7 +6275,7 @@
     "inflation": {
       "indicator": "FP.CPI.TOTL.ZG",
       "status": "ok",
-      "fetchedAt": "2026-09-20T23:23:02.039Z",
+      "fetchedAt": "2026-09-20T23:28:25.868Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "International Financial Statistics database, International Monetary Fund (IMF)",
       "sourceNote": "Inflation as measured by the consumer price index reflects the annual percentage change in the cost to the average consumer of acquiring a basket of goods and services that may be fixed or changed at specified intervals, such as yearly.",
@@ -7020,7 +7020,7 @@
     "population": {
       "indicator": "SP.POP.TOTL",
       "status": "ok",
-      "fetchedAt": "2026-09-20T23:23:02.117Z",
+      "fetchedAt": "2026-09-20T23:28:26.339Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), uri: https://population.un.org/wpp/, publisher: UN Population Division;\nStatistical databases and publications from national statistical offices, National Statistical Offices (NSOs), uri: https://unstats.un.org/home/nso_sites/, publisher: National Statistical Offices;\nEurostat: Demographic Statistics, Eurostat (ESTAT), uri: https://ec.europa.eu/eurostat/data/database?node_code=earn_ses_monthly, publisher: Eurostat;\nPopulation and Vital Statistics Report (various years), United Nations (UN), uri: https://unstats.un.org, publisher: UN Statistics Division",
       "sourceNote": "Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates.",
@@ -7831,7 +7831,7 @@
     "popGrowth": {
       "indicator": "SP.POP.GROW",
       "status": "ok",
-      "fetchedAt": "2026-09-20T23:23:02.177Z",
+      "fetchedAt": "2026-09-20T23:28:27.019Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), note: Derived from total population, publisher: UN Population Division;\nStatistical databases and publications from national statistical offices, National Statistical Offices (NSOs), note: Derived from total population;\nDemographic Statistics, Eurostat (ESTAT), note: Derived from total population;\nPopulation and Vital Statistics Report (various years), United Nations (UN), note: Derived from total population, publisher: UN Statistical Division",
       "sourceNote": "Annual population growth rate for year t is the exponential rate of growth of midyear population from year t-1 to t, expressed as a percentage. Population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship.",
@@ -8642,7 +8642,7 @@
     "workingAge": {
       "indicator": "SP.POP.1564.TO.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-20T23:23:02.240Z",
+      "fetchedAt": "2026-09-20T23:28:27.509Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), publisher: UN Population Division",
       "sourceNote": "Total population between the ages 15 to 64 as a percentage of the total population. Population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship.",
@@ -9453,7 +9453,7 @@
     "elderly": {
       "indicator": "SP.POP.65UP.TO.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-20T23:23:02.299Z",
+      "fetchedAt": "2026-09-20T23:28:27.754Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), publisher: UN Population Division",
       "sourceNote": "Population ages 65 and above as a percentage of the total population. Population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship.",
@@ -10264,7 +10264,7 @@
     "fertility": {
       "indicator": "SP.DYN.TFRT.IN",
       "status": "ok",
-      "fetchedAt": "2026-09-20T23:23:02.352Z",
+      "fetchedAt": "2026-09-20T23:28:28.000Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), publisher: UN Population Division;\nStatistical databases and publications from national statistical offices, National Statistical Offices (NSOs);\nDemographic Statistics, Eurostat (ESTAT)",
       "sourceNote": "Total fertility rate represents the number of children that would be born to a woman if she were to live to the end of her childbearing years and bear children in accordance with age-specific fertility rates of the specified year.",
