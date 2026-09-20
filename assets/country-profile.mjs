@@ -15,12 +15,17 @@ const rows = entries => `<dl class="country-facts">${entries.map(([label,value,n
 const list = items => `<ul class="country-list">${items.map(item=>`<li>${e(item)}</li>`).join('')}</ul>`;
 const unavailable = text => `<p class="country-empty">${e(text)}</p>`;
 const yearLabel = (c,key) => c.stats?.[key] ? `${c.stats[key].year}년 · 연간` : '자료 없음';
+export function collectionDate(value) {
+  const date=new Date(value);
+  if(!value||!Number.isFinite(date.getTime()))return '없음';
+  return new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(date);
+}
 function sourceMarkup(c,key) {
   if(!c.official) return '';
   return seriesKeys(key).map(k=>{
     const s=c.official.series[k];
-    const stamp=s?.fetchedAt?.slice(0,10)||'없음';
-    return `<div class="country-source-line">${link(sourceUrl(k,c.code),`World Bank · ${SERIES[k][1]}`)}<small>${stale(c.official,k)?'갱신 지연 · 저장 자료':'수집 확인'} ${e(stamp)} · 원본 DB 갱신 ${e(s?.providerUpdatedAt||'미제공')}</small></div>`;
+    const stamp=collectionDate(s?.fetchedAt);
+    return `<div class="country-source-line">${link(sourceUrl(k,c.code),`World Bank · ${SERIES[k][1]}`)}<small>${stale(c.official,k)?'갱신 지연 · 저장 자료':'수집 확인'} ${e(stamp)} (한국 시간) · 원본 DB 갱신 ${e(s?.providerUpdatedAt||'미제공')}</small></div>`;
   }).join('');
 }
 function officialRows(c,keys) {

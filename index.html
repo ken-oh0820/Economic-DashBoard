@@ -1310,7 +1310,7 @@ function fmtMoneyPc(usdVal){
     if(krw>=10000) return `₩${(krw/10000).toFixed(0)}만`;
     return `₩${krw.toLocaleString()}`;
   }
-  return `$${Number(usdVal).toLocaleString()}`;
+  return `$${Number(usdVal).toLocaleString('en-US',{maximumFractionDigits:0})}`;
 }
 function getCurrSym(){return curCurrency==='krw'?'₩':'$';}
 

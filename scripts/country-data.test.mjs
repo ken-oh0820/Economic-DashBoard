@@ -5,10 +5,14 @@ import {runInNewContext} from 'node:vm';
 import {SERIES,iso2FromFlag,observations,observation,comparison,rankFor,sourceUrl,stale,validateSnapshot} from '../assets/country-data.mjs';
 import {buildAtlasData,loadAtlasData} from '../assets/country-data-client.mjs';
 import {readPages,failedSeries} from './update-country-data.mjs';
-import {summaryMarkup,tabMarkup} from '../assets/country-profile.mjs';
+import {summaryMarkup,tabMarkup,collectionDate} from '../assets/country-profile.mjs';
 const date='2026-09-21T00:00:00Z';
 const series=(key,countries)=>({indicator:SERIES[key][0],status:'ok',fetchedAt:date,countries});
 const sample=()=>({schemaVersion:1,attemptedAt:date,series:{gdp:series('gdp',{US:{2024:100,2025:110},KR:{2024:20},JP:{2024:30,2025:35}})}});
+test('collection dates use Korea time independently of the observation year',()=>{
+  assert.equal(collectionDate('2026-09-20T23:23:01Z'),'2026-09-21');
+  assert.equal(collectionDate(null),'없음');assert.equal(collectionDate('invalid'),'없음');
+});
 
 test('country identity and API selection exclude aggregate rows, invalid and future values',()=>{
   assert.equal(iso2FromFlag('🇰🇷'),'KR');assert.throws(()=>iso2FromFlag('KR'));
