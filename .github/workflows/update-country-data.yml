@@ -1,0 +1,47 @@
+name: Update World Bank Country Data
+
+on:
+  schedule:
+    - cron: '17 23 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: world-bank-country-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test country data handling
+        run: node --test scripts/country-data.test.mjs scripts/country-profile.test.mjs
+      - name: Collect allowlisted World Bank WDI indicators
+        id: collect
+        continue-on-error: true
+        run: node scripts/update-country-data.mjs
+      - name: Publish snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          test -f data/country-data.json
+          git add data/country-data.json
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Update World Bank country data"
+            git pull --rebase origin main
+            git push
+            gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"
+          fi
+      - name: Report collection failures
+        if: steps.collect.outcome == 'failure'
+        run: exit 1
