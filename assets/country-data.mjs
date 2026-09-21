@@ -22,7 +22,14 @@ export const SERIES = {
   manufacturedExports: ['TX.VAL.MANF.ZS.UN', '제조품 수출 비중', '%'],
   highTechExports: ['TX.VAL.TECH.MF.ZS', '첨단기술 제품 수출 비중', '%'],
   ictServiceExports: ['BX.GSR.CCIS.ZS', 'ICT 서비스 수출 비중', '%'],
-  research: ['GB.XPD.RSDV.GD.ZS', '연구개발 투자 / GDP', '%']
+  research: ['GB.XPD.RSDV.GD.ZS', '연구개발 투자 / GDP', '%'],
+  landArea: ['AG.LND.TOTL.K2', '육지 면적', 'km²'],
+  arableLand: ['AG.LND.ARBL.ZS', '경작지 비중', '%'],
+  forestArea: ['AG.LND.FRST.ZS', '산림 비중', '%'],
+  freshwater: ['ER.H2O.INTR.PC', '1인당 국내 재생가능 담수', 'm³/인'],
+  resourceRents: ['NY.GDP.TOTL.RT.ZS', '천연자원 렌트 / GDP', '%'],
+  fuelExports: ['TX.VAL.FUEL.ZS.UN', '연료 수출 비중', '%'],
+  metalExports: ['TX.VAL.MMTL.ZS.UN', '광석·금속 수출 비중', '%']
 };
 export const finite = value => typeof value === 'number' && Number.isFinite(value);
 export function iso2FromFlag(flag) {

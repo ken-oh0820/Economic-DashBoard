@@ -257,7 +257,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 <link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-official-data">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260917-important">
 <link rel="stylesheet" href="assets/workspace.css?v=20260918-effective">
-<link rel="stylesheet" href="assets/country-profile.css?v=20260921-industry1">
+<link rel="stylesheet" href="assets/country-profile.css?v=20260921-resources1">
 </head>
 <body class="menu-mode light">
 <main class="main-menu" id="mainMenu" aria-labelledby="mainMenuTitle">
@@ -350,7 +350,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 <div><div class="panel-title">등록 국가 내 상위 10</div><p class="atlas-period" id="atlasMetricPeriod" role="status">공식 연간 통계 확인 중</p><div id="rankingList"></div></div>
 <details class="atlas-context"><summary>지도 데이터·지역 개요</summary>
 <div><div class="panel-title">글로벌 인사이트</div><div id="insights"></div></div>
-<div><div class="panel-title">데이터 상태</div><div id="dataStatusList" class="data-status-list"></div><div class="data-source-card"><strong>기준:</strong> 경제·인구·산업구조: World Bank WDI 연간 통계 (추정치 포함). 지도와 순위는 지표별 공통 연도를 사용합니다. 산업 메모·자원·동맹은 기존 편집 자료로 별도 검증 전입니다.<br><strong>환율:</strong> <a href="https://www.exchangerate-api.com/" target="_blank" rel="noopener noreferrer">ExchangeRate-API</a> 일간 기준입니다.</div></div>
+<div><div class="panel-title">데이터 상태</div><div id="dataStatusList" class="data-status-list"></div><div class="data-source-card"><strong>기준:</strong> 경제·인구·산업·자원 통계: World Bank WDI (추정치 포함). 지도와 순위는 지표별 공통 연도를 사용합니다. 기존 산업·자원 메모와 동맹 분류는 별도 검증 전입니다.<br><strong>환율:</strong> <a href="https://www.exchangerate-api.com/" target="_blank" rel="noopener noreferrer">ExchangeRate-API</a> 일간 기준입니다.</div></div>
 <div><div class="panel-title">등록국 GDP의 지역별 비중</div><div id="regionChart"></div></div>
 </details>
 </div>
@@ -369,7 +369,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
     <div id="countryDetail"></div>
     <div class="country-tabs" id="countryTabs" role="tablist" aria-label="국가 분석 분야"></div>
     <div id="countryTabBody" role="tabpanel" tabindex="0" aria-labelledby="country-tab-economy"></div>
-    <details class="country-provenance"><summary>자료 기준·확인 범위</summary><p>경제·인구·산업구조 수치는 World Bank 공식 API의 연간 통계입니다. 추정치·개정치가 포함될 수 있으며 발표 연도와 수집일은 다릅니다. GDP 순위는 같은 연도 자료가 있는 등록 국가만 비교합니다. 누락값은 0으로 대체하지 않습니다.</p><p>지도 비교 연도는 등록국 85% 이상 자료가 있는 가장 최근 연도입니다. 충족하는 연도가 없으면 자료가 가장 많은 연도를 사용합니다. 국가 상세의 GDP 외 항목은 최근 6개 완료 연도 중 최신 자료이며 지도와 연도가 다를 수 있습니다.</p><p>기존 산업 메모·자원·군사·동맹은 기존 편집 자료입니다. 이들 참고자료의 외부 자료실 링크는 표시된 개별 수치의 검증된 원문 출처를 뜻하지 않습니다.</p></details>
+    <details class="country-provenance"><summary>자료 기준·확인 범위</summary><p>경제·인구·산업·자원 통계는 World Bank 공식 API에서 가져옵니다. 추정치·개정치가 포함될 수 있으며 관측 연도와 수집일은 다릅니다. GDP 순위는 같은 연도 자료가 있는 등록 국가만 비교합니다. 누락값은 0으로 대체하지 않습니다.</p><p>지도 비교 연도는 등록국 85% 이상 자료가 있는 가장 최근 연도입니다. 충족하는 연도가 없으면 자료가 가장 많은 연도를 사용합니다. 국가 상세의 GDP 외 항목은 최근 6개 완료 연도 중 최신 자료이며 지도와 연도가 다를 수 있습니다. 담수 통계는 장기평균 유량 기반이며 각 지표의 해석 범위는 항목별 설명을 따릅니다.</p><p>기존 산업·자원 메모, 군사·동맹 분류는 기존 편집 자료입니다. 이들 참고자료의 외부 자료실 링크는 표시된 개별 수치의 검증된 원문 출처를 뜻하지 않습니다.</p></details>
   </div>
 </aside>
 <button type="button" class="country-profile-open" id="countryProfileOpen" hidden aria-controls="countryProfile"><i data-lucide="panel-right-open" aria-hidden="true"></i>국가 분석</button>
@@ -379,7 +379,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 <div class="loading-overlay" id="loadingOverlay"><div class="loading-text">LOADING MAP DATA</div><div class="loading-bar"></div><div id="loadingStatus" style="font-size:9px;color:var(--text-dim);margin-top:4px;letter-spacing:1px">지도 타일 로딩 중...</div></div>
 <div class="map-label" id="metricLabel">GDP — 국내총생산 (십억 USD)</div>
 <div class="year-watermark" id="atlasWatermark"></div>
-<div class="atlas-map-source">경제·인구·산업구조: World Bank WDI · CC BY 4.0<br>산업 메모·자원·동맹: 기존 참고자료 · 검증 전</div>
+<div class="atlas-map-source">국가 통계: World Bank WDI · CC BY 4.0<br>기존 산업·자원 메모, 동맹 분류: 검증 전</div>
 <div id="map"></div>
 <div class="alliance-panel" id="alliancePanel">
   <div class="alliance-card" id="natoCard" onclick="toggleAllianceOverlay('nato')">
@@ -2828,7 +2828,7 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
 <script type="module" src="assets/workspace.mjs?v=20260918-effective"></script>
-<script type="module" src="assets/country-profile.mjs?v=20260921-industry1"></script>
-<script type="module" src="assets/country-data-client.mjs?v=20260921-industry1"></script>
+<script type="module" src="assets/country-profile.mjs?v=20260921-resources1"></script>
+<script type="module" src="assets/country-data-client.mjs?v=20260921-resources1"></script>
 </body>
 </html>

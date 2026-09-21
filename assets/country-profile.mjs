@@ -1,5 +1,6 @@
-import {SERIES,sourceUrl,seriesKeys,stale} from './country-data.mjs?v=20260921-industry1';
-import {INDUSTRY_GROUPS,INDUSTRY_KEYS,INDUSTRY_INFO,industryScale} from './country-industry.mjs?v=20260921-industry1';
+import {SERIES,sourceUrl,seriesKeys,stale} from './country-data.mjs?v=20260921-resources1';
+import {INDUSTRY_GROUPS,INDUSTRY_KEYS,INDUSTRY_INFO,industryScale} from './country-industry.mjs?v=20260921-resources1';
+import {RESOURCE_GROUPS,RESOURCE_KEYS,RESOURCE_INFO,resourceValue,resourceAge} from './country-resources.mjs?v=20260921-resources1';
 export const TABS = [['economy','경제'],['population','인구'],['industry','산업·경쟁력'],['resources','자원·지리'],['security','군사·외교']];
 export const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number = value => typeof value === 'number' && Number.isFinite(value);
@@ -76,6 +77,19 @@ export function industryMarkup(c) {
     attribution(c,INDUSTRY_KEYS);
 }
 
+export function resourcesMarkup(c) {
+  const available=RESOURCE_KEYS.filter(key=>number(c.stats?.[key]?.value)).length;
+  return `<p class="industry-status">자원·지리 통계 <strong>${available}/${RESOURCE_KEYS.length}</strong> · 항목별 기준 연도 상이</p>`+
+    RESOURCE_GROUPS.map(group=>section(group.title,`<p class="country-note">${e(group.note)}</p>`+group.keys.map(key=>{
+      const stat=c.stats?.[key],info=RESOURCE_INFO[key],age=resourceAge(stat?.year);
+      return `<details class="industry-metric resource-metric industry-${info.color}" data-resource-key="${key}"><summary><span class="industry-metric-name">${e(SERIES[key][1])}<small>${e(info.basis)} · ${stat?`${e(stat.year)}년`:'자료 없음'}${age?`<span class="resource-age">${e(age)}</span>`:''}</small></span><strong>${e(resourceValue(key,stat?.value))}</strong><i data-lucide="chevron-down" aria-hidden="true"></i></summary><div class="industry-reading"><p>${e(info.meaning)}</p><p class="country-note">${e(info.caution)}</p>${sourceMarkup(c,key)}</div></details>`;
+    }).join(''))).join('')+
+    section('매장량·채굴 가능성',`<p>생산량·수출량·자원량·매장량은 서로 다릅니다. 경제성·품위·기술·인허가를 확인하지 않은 채굴 가능량은 표시하지 않습니다.</p><div class="country-sources">${link('https://www.usgs.gov/programs/mineral-resources-program/mineral-resources-data','USGS 광물 자료')}${link('https://www.eia.gov/international/','EIA 국가별 에너지 자료')}</div>`)+
+    section('항만·해협·지형',`<p class="country-empty">국가별 항만·해협·지형 설명은 검증된 자료 연결 전입니다. 육지 면적과 자원 통계만으로 물류 경쟁력이나 해상 접근성을 판단하지 않습니다.</p>`)+
+    `<details class="industry-legacy"><summary>기존 지도 자원 메모 <small>미검증 · 매장량 또는 채굴 가능성 아님</small></summary>${c.resources?.length?`<ul class="country-resource-list">${c.resources.map(r=>`<li><strong>${e(r.label)}</strong><small>${e(r.note)}</small></li>`).join('')}</ul>`:unavailable('현재 목록에 등록된 항목이 없습니다. 자원이 없다는 의미는 아닙니다.')}<p class="country-note">일부 생산·수출 국가를 분류한 기존 참고자료입니다. 현재의 생산 순위나 확인된 매장량으로 사용하지 않습니다.</p></details>`+
+    attribution(c,RESOURCE_KEYS);
+}
+
 export function tabMarkup(tab,c) {
   if (tab === 'economy') return section('경제 규모와 소득',officialRows(c,['gdp','gdpPc','growth','gni','gniPc','trade'])) + section('고용·물가',officialRows(c,['unemployment','inflation'])) + section('비교 기준',list([
     `GDP와 순위는 ${c.rankYear?c.rankYear+'년':'공통 연도'} 자료만 사용합니다. 다른 항목은 수집 범위 내 최신 발표 연도로, 서로 기준 연도가 다를 수 있습니다.`,
@@ -89,13 +103,7 @@ export function tabMarkup(tab,c) {
     '15–64세 비중은 연령 구조이며 실제 취업자 비율이 아닙니다. 인구 자료에는 추정치가 포함됩니다.'
   ])) + attribution(c,['population','popGrowth','workingAge','elderly','fertility']);
   if (tab === 'industry') return industryMarkup(c);
-  if (tab === 'resources') return section('지리', rows([
-    ['지역',c.region],['항만·해협·지형','자료 미연결']
-  ])) + section('기존 지도에 등록된 자원 분야', c.resources.length ?
-    `<ul class="country-resource-list">${c.resources.map(r=>`<li><strong>${e(r.label)}</strong><small>${e(r.note)}</small></li>`).join('')}</ul>` :
-    unavailable('현재 목록에 등록된 항목이 없습니다. 자원이 없다는 의미는 아닙니다.')
-  ) + `<p class="country-note">이 목록은 일부 생산·수출 국가 분류입니다. 매장량 또는 채굴 가능성을 뜻하지 않습니다.</p>` +
-    `<div class="country-sources">${link('https://www.usgs.gov/programs/mineral-resources-program/mineral-resources-data','USGS 광물 자료')}${link('https://www.eia.gov/international/','EIA 에너지 자료')}</div>`;
+  if (tab === 'resources') return resourcesMarkup(c);
   return section('국제 협의체·동맹', c.groups.length ? list(c.groups) : unavailable('기존 지도 분류에 등록된 협의체가 없습니다.')) +
     `<p class="country-note">기존 지도 분류 기준 · NATO는 군사동맹, G7·BRICS는 군사동맹이 아닙니다. 최신 회원 현황은 재확인이 필요합니다.</p>` +
     section('군사 지표', unavailable('국방비·GDP 대비 국방비·병력 수는 검증된 자료 연결 전입니다. 군사력 종합 순위는 표시하지 않습니다.')) +

@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "attemptedAt": "2026-09-21T09:20:48.057Z",
+  "attemptedAt": "2026-09-21T09:32:39.742Z",
   "license": "CC BY 4.0",
   "provider": "World Bank, World Development Indicators",
   "series": {
     "gdp": {
       "indicator": "NY.GDP.MKTP.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:48.236Z",
+      "fetchedAt": "2026-09-21T09:32:39.936Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Gross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -799,7 +799,7 @@
     "gdpPc": {
       "indicator": "NY.GDP.PCAP.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:48.305Z",
+      "fetchedAt": "2026-09-21T09:32:40.011Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Gross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. The core indicator has been divided by the general population to achieve a per capita estimate.This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -1591,7 +1591,7 @@
     "growth": {
       "indicator": "NY.GDP.MKTP.KD.ZG",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:48.373Z",
+      "fetchedAt": "2026-09-21T09:32:40.089Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Gross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. This indicator denotes the percentage change over each previous year of the constant price (base year 2015) series in United States dollars.",
@@ -2383,7 +2383,7 @@
     "gni": {
       "indicator": "NY.GNP.MKTP.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:48.446Z",
+      "fetchedAt": "2026-09-21T09:32:40.165Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Gross national income is the total income earned by all residents within an economic territory during an accounting period. It is equal to gross domestic product plus earned income receivable from abroad minus earned income payable abroad. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -3174,7 +3174,7 @@
     "gniPc": {
       "indicator": "NY.GNP.PCAP.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:48.511Z",
+      "fetchedAt": "2026-09-21T09:32:40.239Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Gross national income is the total income earned by all residents within an economic territory during an accounting period. It is equal to gross domestic product plus earned income receivable from abroad minus earned income payable abroad. This figure is converted to U.S. dollars using the World Bank Atlas method, and divided by the midyear population. GNI, calculated in national currency, is usually converted to U.S. dollars at official exchange rates for comparisons across economies, although an alternative rate is used when the official exchange rate is judged to diverge by an exceptionally large margin from the rate actually applied in international transactions. To smooth fluctuations in prices and exchange rates, a special Atlas method of conversion is used by the World Bank. This applies a conversion factor that averages the exchange rate for a given year and the two preceding years, adjusted for differences in rates of inflation between the country, and through 2000, the G-5 countries (France, Germany, Japan, the United Kingdom, and the United States). From 2001, these countries include the Euro area, Japan, the United Kingdom, and the United States. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -3965,7 +3965,7 @@
     "exports": {
       "indicator": "NE.EXP.GNFS.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:48.570Z",
+      "fetchedAt": "2026-09-21T09:32:40.296Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
       "sourceNote": "Exports of goods includes changes in the economic ownership of goods from residents of the compiling economy to non-residents, irrespective of physical movement of goods across national borders. Exports of services includes services provided by residents to non-residents. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -4719,7 +4719,7 @@
     "imports": {
       "indicator": "NE.IMP.GNFS.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:48.627Z",
+      "fetchedAt": "2026-09-21T09:32:40.378Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
       "sourceNote": "Imports of goods includes change in the economic ownership of goods from non-residents to\n\n\n\n\nresidents of the compiling economy, irrespective of physical movement of goods across national borders. Imports of services includes services provided by non-residents to residents. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -5473,7 +5473,7 @@
     "unemployment": {
       "indicator": "SL.UEM.TOTL.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:48.692Z",
+      "fetchedAt": "2026-09-21T09:32:40.440Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "ILO Modelled Estimates database (ILOEST), International Labour Organization (ILO), uri: https://ilostat.ilo.org/data/bulk/, publisher: ILOSTAT, type: external database, date accessed: January 17, 2026",
       "sourceNote": "Unemployment refers to the share of the labor force that is without work but available for and seeking employment.",
@@ -6275,7 +6275,7 @@
     "inflation": {
       "indicator": "FP.CPI.TOTL.ZG",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:48.763Z",
+      "fetchedAt": "2026-09-21T09:32:40.501Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "International Financial Statistics database, International Monetary Fund (IMF)",
       "sourceNote": "Inflation as measured by the consumer price index reflects the annual percentage change in the cost to the average consumer of acquiring a basket of goods and services that may be fixed or changed at specified intervals, such as yearly.",
@@ -7020,7 +7020,7 @@
     "population": {
       "indicator": "SP.POP.TOTL",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:48.842Z",
+      "fetchedAt": "2026-09-21T09:32:40.560Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), uri: https://population.un.org/wpp/, publisher: UN Population Division;\nStatistical databases and publications from national statistical offices, National Statistical Offices (NSOs), uri: https://unstats.un.org/home/nso_sites/, publisher: National Statistical Offices;\nEurostat: Demographic Statistics, Eurostat (ESTAT), uri: https://ec.europa.eu/eurostat/data/database?node_code=earn_ses_monthly, publisher: Eurostat;\nPopulation and Vital Statistics Report (various years), United Nations (UN), uri: https://unstats.un.org, publisher: UN Statistics Division",
       "sourceNote": "Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates.",
@@ -7831,7 +7831,7 @@
     "popGrowth": {
       "indicator": "SP.POP.GROW",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:48.917Z",
+      "fetchedAt": "2026-09-21T09:32:40.636Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), note: Derived from total population, publisher: UN Population Division;\nStatistical databases and publications from national statistical offices, National Statistical Offices (NSOs), note: Derived from total population;\nDemographic Statistics, Eurostat (ESTAT), note: Derived from total population;\nPopulation and Vital Statistics Report (various years), United Nations (UN), note: Derived from total population, publisher: UN Statistical Division",
       "sourceNote": "Annual population growth rate for year t is the exponential rate of growth of midyear population from year t-1 to t, expressed as a percentage. Population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship.",
@@ -8642,7 +8642,7 @@
     "workingAge": {
       "indicator": "SP.POP.1564.TO.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:48.981Z",
+      "fetchedAt": "2026-09-21T09:32:40.695Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), publisher: UN Population Division",
       "sourceNote": "Total population between the ages 15 to 64 as a percentage of the total population. Population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship.",
@@ -9453,7 +9453,7 @@
     "elderly": {
       "indicator": "SP.POP.65UP.TO.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:49.056Z",
+      "fetchedAt": "2026-09-21T09:32:40.772Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), publisher: UN Population Division",
       "sourceNote": "Population ages 65 and above as a percentage of the total population. Population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship.",
@@ -10264,7 +10264,7 @@
     "fertility": {
       "indicator": "SP.DYN.TFRT.IN",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:49.117Z",
+      "fetchedAt": "2026-09-21T09:32:40.834Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), publisher: UN Population Division;\nStatistical databases and publications from national statistical offices, National Statistical Offices (NSOs);\nDemographic Statistics, Eurostat (ESTAT)",
       "sourceNote": "Total fertility rate represents the number of children that would be born to a woman if she were to live to the end of her childbearing years and bear children in accordance with age-specific fertility rates of the specified year.",
@@ -10975,7 +10975,7 @@
     "services": {
       "indicator": "NV.SRV.TOTL.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:49.178Z",
+      "fetchedAt": "2026-09-21T09:32:40.899Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
       "sourceNote": "Services industries correspond to ISIC (Rev. 4) divisions 45-99 and includes wholesale and retail trade, repair of motor vehicles, hotels and restaurants, transport, storage and communication, financial intermediation, real estate, renting and business activities, public administration and defence, compulsory social security, education, health and social work, other community, social and personal service activities, private households with employed persons, and extra-territorial organizations and bodies. Value added is the contribution to the economy by a producer or an industry or an institutional sector, which is estimated by the total value of output produced and deducting the total value of intermediate consumption of goods and services used to produce that output. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
@@ -11738,7 +11738,7 @@
     "industry": {
       "indicator": "NV.IND.TOTL.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:49.240Z",
+      "fetchedAt": "2026-09-21T09:32:40.962Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
       "sourceNote": "Industry (including construction) corresponds to ISIC (Rev.4) divisions 05-43. It is comprised of mining, manufacturing, construction, electricity, water, and gas industries. Value added is the contribution to the economy by a producer or an industry or an institutional sector, which is estimated by the total value of output produced and deducting the total value of intermediate consumption of goods and services used to produce that output. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
@@ -12501,7 +12501,7 @@
     "agriculture": {
       "indicator": "NV.AGR.TOTL.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:49.315Z",
+      "fetchedAt": "2026-09-21T09:32:41.035Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Agriculture, forestry, and fishing corresponds to ISIC (Rev. 4) divisions 01-03 and includes the exploitation of vegetal and animal natural resources, comprising the activities of growing of crops, raising and breeding of animals, harvesting of timber and other plants, animals or animal products from a farm or their natural habitats.Value added is the contribution to the economy by a producer or an industry or an institutional sector, which is estimated by the total value of output produced and deducting the total value of intermediate consumption of goods and services used to produce that output. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period. Note: For VAB countries, gross value added at factor cost is used as the denominator.",
@@ -13264,7 +13264,7 @@
     "manufacturing": {
       "indicator": "NV.IND.MANF.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:49.618Z",
+      "fetchedAt": "2026-09-21T09:32:41.098Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
       "sourceNote": "Manufacturing includes industries classified in ISIC (Rev. 3) major division C and is defined as the physical or chemical transformation of materials or components into new products. Value added is the contribution to the economy by a producer or an industry or an institutional sector, which is estimated by the total value of output produced and deducting the total value of intermediate consumption of goods and services used to produce that output. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
@@ -13988,7 +13988,7 @@
     "exportIntensity": {
       "indicator": "NE.EXP.GNFS.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:49.993Z",
+      "fetchedAt": "2026-09-21T09:32:41.153Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
       "sourceNote": "Exports of goods includes changes in the economic ownership of goods from residents of the compiling economy to non-residents, irrespective of physical movement of goods across national borders. Exports of services includes services provided by residents to non-residents. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
@@ -14742,7 +14742,7 @@
     "manufacturedExports": {
       "indicator": "TX.VAL.MANF.ZS.UN",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:50.052Z",
+      "fetchedAt": "2026-09-21T09:32:41.205Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Comtrade database, United Nations (UN), publisher: UN Statistics Division;\nWorld Integrated Trade Solution system (WITS);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Manufactures comprise commodities in SITC (Rev. 3) sections 5 (chemicals), 6 (basic manufactures), 7 (machinery and transport equipment), and 8 (miscellaneous manufactured goods), excluding division 68 (non-ferrous metals). This indicator is expressed as a percentage of merchandise exports which is comprised of goods whose economic ownership is changed between a resident and a non-resident and that are not included in the following specific categories: goods under merchanting, non-monetary gold, and parts of travel, construction, and government goods and services n.i.e.",
@@ -15367,7 +15367,7 @@
     "highTechExports": {
       "indicator": "TX.VAL.TECH.MF.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:50.115Z",
+      "fetchedAt": "2026-09-21T09:32:41.285Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Comtrade database, United Nations (UN), uri: comtrade.un.org, publisher: UN Statistics Division;\nWorld Integrated Trade Solution system (WITS), World Bank (WB), uri: https://wits.worldbank.org/",
       "sourceNote": "High-technology exports are products with high R&D intensity, such as in aerospace, computers, pharmaceuticals, scientific instruments, and electrical machinery.",
@@ -15975,7 +15975,7 @@
     "ictServiceExports": {
       "indicator": "BX.GSR.CCIS.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:50.173Z",
+      "fetchedAt": "2026-09-21T09:32:41.339Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Balance of Payments Statistics Yearbook and data files, International Monetary Fund (IMF)",
       "sourceNote": "Information and communication technology service exports include computer and communications services (telecommunications and postal and courier services) and information services (computer data and news-related service transactions).",
@@ -16671,7 +16671,7 @@
     "research": {
       "indicator": "GB.XPD.RSDV.GD.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-21T09:20:50.236Z",
+      "fetchedAt": "2026-09-21T09:32:41.404Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Stat Bulk Data Download Service, UN Educational, Scientific and Cultural Organization (UNESCO), uri: https://databrowser.uis.unesco.org/resources/bulk, publisher: UNESCO Institute for Statistics (UIS), date accessed: 2025-03-26, date published: 2025-02",
       "sourceNote": "Gross domestic expenditures on research and development (R&D), expressed as a percent of GDP. They include both capital and current expenditures in the four main sectors: Business enterprise, Government, Higher education and Private non-profit. R&D covers basic research, applied research, and experimental development.",
@@ -17059,6 +17059,3988 @@
         "VN": {
           "2021": 0.42494,
           "2023": 0.41456
+        }
+      }
+    },
+    "landArea": {
+      "indicator": "AG.LND.TOTL.K2",
+      "status": "ok",
+      "fetchedAt": "2026-09-21T09:33:02.364Z",
+      "providerUpdatedAt": "2026-07-13",
+      "sourceOrganization": "FAOSTAT, Food and Agriculture Organization of the United Nations (FAO), uri: https://www.fao.org/faostat/en/#data/RL, publisher: Food and Agriculture Organization of the United Nations (FAO)",
+      "sourceNote": "Land area is a country's total area, excluding area under inland water bodies, national claims to continental shelf, and exclusive economic zones. In most cases the definition of inland water bodies includes major rivers and lakes.",
+      "apiUrl": "https://api.worldbank.org/v2/country/all/indicator/AG.LND.TOTL.K2?format=json&source=2&date=2020:2025&per_page=20000",
+      "countries": {
+        "AF": {
+          "2020": 652230,
+          "2021": 652230,
+          "2022": 652230,
+          "2023": 652230
+        },
+        "AL": {
+          "2020": 27400,
+          "2021": 27400,
+          "2022": 27400,
+          "2023": 27400
+        },
+        "DZ": {
+          "2020": 2381740,
+          "2021": 2381740,
+          "2022": 2381740,
+          "2023": 2381740
+        },
+        "AO": {
+          "2020": 1246700,
+          "2021": 1246700,
+          "2022": 1246700,
+          "2023": 1246700
+        },
+        "AR": {
+          "2020": 2736690,
+          "2021": 2736690,
+          "2022": 2736690,
+          "2023": 2736690
+        },
+        "AU": {
+          "2020": 7692020,
+          "2021": 7692020,
+          "2022": 7692020,
+          "2023": 7692020
+        },
+        "AT": {
+          "2020": 82520,
+          "2021": 82520,
+          "2022": 82520,
+          "2023": 82520
+        },
+        "AZ": {
+          "2020": 82646,
+          "2021": 82650,
+          "2022": 82650,
+          "2023": 82650
+        },
+        "BD": {
+          "2020": 130170,
+          "2021": 130170,
+          "2022": 130260,
+          "2023": 129980
+        },
+        "BE": {
+          "2020": 30494,
+          "2021": 30494,
+          "2022": 30494,
+          "2023": 30494
+        },
+        "BO": {
+          "2020": 1083300,
+          "2021": 1083300,
+          "2022": 1083300,
+          "2023": 1083300
+        },
+        "BR": {
+          "2020": 8358140,
+          "2021": 8358140,
+          "2022": 8358140,
+          "2023": 8358140
+        },
+        "BG": {
+          "2020": 108560,
+          "2021": 108560,
+          "2022": 108560,
+          "2023": 108560
+        },
+        "KH": {
+          "2020": 176520,
+          "2021": 176520,
+          "2022": 176520,
+          "2023": 176520
+        },
+        "CM": {
+          "2020": 472710,
+          "2021": 472710,
+          "2022": 472710,
+          "2023": 472710
+        },
+        "CA": {
+          "2020": 8965590,
+          "2021": 8788700,
+          "2022": 8788700,
+          "2023": 8788700
+        },
+        "CL": {
+          "2020": 742831.64,
+          "2021": 742831.64,
+          "2022": 742831.64,
+          "2023": 742831.64
+        },
+        "CN": {
+          "2020": 9388210,
+          "2021": 9388210,
+          "2022": 9388210,
+          "2023": 9388210
+        },
+        "CO": {
+          "2020": 1109500,
+          "2021": 1109500,
+          "2022": 1109500,
+          "2023": 1109500
+        },
+        "CD": {
+          "2020": 2267050,
+          "2021": 2267050,
+          "2022": 2267050,
+          "2023": 2267050
+        },
+        "CR": {
+          "2020": 51060,
+          "2021": 51060,
+          "2022": 51060,
+          "2023": 51060
+        },
+        "HR": {
+          "2020": 55960,
+          "2021": 55960,
+          "2022": 55960,
+          "2023": 55960
+        },
+        "CZ": {
+          "2020": 77198.53,
+          "2021": 77186.83,
+          "2022": 77171.73,
+          "2023": 77167.31
+        },
+        "DK": {
+          "2020": 40000,
+          "2021": 40000,
+          "2022": 40000,
+          "2023": 40000
+        },
+        "EC": {
+          "2020": 248360,
+          "2021": 248360,
+          "2022": 248360,
+          "2023": 248360
+        },
+        "EG": {
+          "2020": 995450,
+          "2021": 995450,
+          "2022": 995450,
+          "2023": 995450
+        },
+        "ET": {
+          "2020": 1128571.4,
+          "2021": 1128505.6,
+          "2022": 1128498.8,
+          "2023": 1128498.8
+        },
+        "FI": {
+          "2020": 303940,
+          "2021": 303947.7,
+          "2022": 303947.7,
+          "2023": 303960
+        },
+        "FR": {
+          "2020": 538950,
+          "2021": 538950,
+          "2022": 538950,
+          "2023": 538950
+        },
+        "GA": {
+          "2020": 257670,
+          "2021": 257670,
+          "2022": 257670,
+          "2023": 257670
+        },
+        "DE": {
+          "2020": 349390,
+          "2021": 349390,
+          "2022": 349360,
+          "2023": 349430
+        },
+        "GH": {
+          "2020": 227530,
+          "2021": 227533,
+          "2022": 227533,
+          "2023": 227533
+        },
+        "GR": {
+          "2020": 128900,
+          "2021": 128900,
+          "2022": 128900,
+          "2023": 128900
+        },
+        "GT": {
+          "2020": 107160,
+          "2021": 107160,
+          "2022": 107160,
+          "2023": 107160
+        },
+        "HT": {
+          "2020": 27560,
+          "2021": 27560,
+          "2022": 27560,
+          "2023": 27560
+        },
+        "HN": {
+          "2020": 111890,
+          "2021": 111890,
+          "2022": 111890,
+          "2023": 111890
+        },
+        "HU": {
+          "2020": 91260,
+          "2021": 91260,
+          "2022": 91260,
+          "2023": 91260
+        },
+        "IN": {
+          "2020": 2973190,
+          "2021": 2973190,
+          "2022": 2973190,
+          "2023": 2973190
+        },
+        "ID": {
+          "2020": 1877519,
+          "2021": 1892555.47,
+          "2022": 1892555.47,
+          "2023": 1892555.47
+        },
+        "IR": {
+          "2020": 1622500,
+          "2021": 1622500,
+          "2022": 1622500,
+          "2023": 1622500
+        },
+        "IQ": {
+          "2020": 434130,
+          "2021": 434130,
+          "2022": 434130,
+          "2023": 434130
+        },
+        "IE": {
+          "2020": 68890,
+          "2021": 68890,
+          "2022": 68890,
+          "2023": 68890
+        },
+        "IL": {
+          "2020": 21640,
+          "2021": 21640,
+          "2022": 21640,
+          "2023": 21640
+        },
+        "IT": {
+          "2020": 295717,
+          "2021": 295717,
+          "2022": 295720,
+          "2023": 295720
+        },
+        "JP": {
+          "2020": 364500,
+          "2021": 364500,
+          "2022": 364500,
+          "2023": 364569.27
+        },
+        "KZ": {
+          "2020": 2699700,
+          "2021": 2699700,
+          "2022": 2699700,
+          "2023": 2699700
+        },
+        "KE": {
+          "2020": 580876.3,
+          "2021": 580876.3,
+          "2022": 580876.3,
+          "2023": 580876.3
+        },
+        "KP": {
+          "2020": 120410,
+          "2021": 120410,
+          "2022": 120410,
+          "2023": 120410
+        },
+        "KR": {
+          "2020": 97600,
+          "2021": 97600,
+          "2022": 97600,
+          "2023": 97600
+        },
+        "KW": {
+          "2020": 17820,
+          "2021": 17820,
+          "2022": 17820,
+          "2023": 17820
+        },
+        "LA": {
+          "2020": 230800,
+          "2021": 230800,
+          "2022": 230800,
+          "2023": 230800
+        },
+        "LB": {
+          "2020": 10230,
+          "2021": 10230,
+          "2022": 10230,
+          "2023": 10230
+        },
+        "LY": {
+          "2020": 1759540,
+          "2021": 1759540,
+          "2022": 1759540,
+          "2023": 1759540
+        },
+        "MY": {
+          "2020": 328550,
+          "2021": 328550,
+          "2022": 328550,
+          "2023": 328550
+        },
+        "MX": {
+          "2020": 1943950,
+          "2021": 1943950,
+          "2022": 1943950,
+          "2023": 1943950
+        },
+        "MA": {
+          "2020": 446300,
+          "2021": 446300,
+          "2022": 446300,
+          "2023": 446300
+        },
+        "MZ": {
+          "2020": 786380,
+          "2021": 786380,
+          "2022": 786380,
+          "2023": 786380
+        },
+        "MM": {
+          "2020": 652670,
+          "2021": 652670,
+          "2022": 652670,
+          "2023": 652670
+        },
+        "NA": {
+          "2020": 823290,
+          "2021": 823290,
+          "2022": 823290,
+          "2023": 823290
+        },
+        "NP": {
+          "2020": 143350,
+          "2021": 143350,
+          "2022": 143350,
+          "2023": 143350
+        },
+        "NL": {
+          "2020": 33670,
+          "2021": 33670,
+          "2022": 33670,
+          "2023": 33670
+        },
+        "NZ": {
+          "2020": 263310,
+          "2021": 263310,
+          "2022": 263310,
+          "2023": 263310
+        },
+        "NI": {
+          "2020": 120340,
+          "2021": 120340,
+          "2022": 120340,
+          "2023": 120340
+        },
+        "NG": {
+          "2020": 910770,
+          "2021": 910770,
+          "2022": 910770,
+          "2023": 910770
+        },
+        "NO": {
+          "2020": 364285,
+          "2021": 364270,
+          "2022": 364270,
+          "2023": 364270
+        },
+        "PK": {
+          "2020": 770880,
+          "2021": 770880,
+          "2022": 770880,
+          "2023": 770880
+        },
+        "PE": {
+          "2020": 1280000,
+          "2021": 1280000,
+          "2022": 1280000,
+          "2023": 1280000
+        },
+        "PH": {
+          "2020": 298170,
+          "2021": 298170,
+          "2022": 298170,
+          "2023": 298170
+        },
+        "PL": {
+          "2020": 306130,
+          "2021": 306100,
+          "2022": 306090,
+          "2023": 306270
+        },
+        "PT": {
+          "2020": 91605.6,
+          "2021": 91605.6,
+          "2022": 91605.6,
+          "2023": 91605.6
+        },
+        "QA": {
+          "2020": 11490,
+          "2021": 11490,
+          "2022": 11490,
+          "2023": 11490
+        },
+        "RO": {
+          "2020": 230080,
+          "2021": 230080,
+          "2022": 230080,
+          "2023": 230080
+        },
+        "RU": {
+          "2020": 16376870,
+          "2021": 16376870,
+          "2022": 16376870,
+          "2023": 16376870
+        },
+        "SA": {
+          "2020": 2149690,
+          "2021": 2149690,
+          "2022": 2149690,
+          "2023": 2149690
+        },
+        "SN": {
+          "2020": 192530,
+          "2021": 192530,
+          "2022": 192530,
+          "2023": 192530
+        },
+        "SG": {
+          "2020": 718,
+          "2021": 718,
+          "2022": 718,
+          "2023": 718
+        },
+        "SK": {
+          "2020": 48080,
+          "2021": 48080,
+          "2022": 48080,
+          "2023": 48080
+        },
+        "SI": {
+          "2020": 20136.4,
+          "2021": 20136.4,
+          "2022": 20136.4,
+          "2023": 20134.5
+        },
+        "SO": {
+          "2020": 627340,
+          "2021": 627340,
+          "2022": 627340,
+          "2023": 627340
+        },
+        "ZA": {
+          "2020": 1213090,
+          "2021": 1213090,
+          "2022": 1213090,
+          "2023": 1213090
+        },
+        "ES": {
+          "2020": 499556.645,
+          "2021": 499733.244,
+          "2022": 499713.681,
+          "2023": 499697.4
+        },
+        "SD": {
+          "2020": 1868000,
+          "2021": 1868000,
+          "2022": 1868000,
+          "2023": 1868000
+        },
+        "SE": {
+          "2020": 407280,
+          "2021": 407280,
+          "2022": 407280,
+          "2023": 407270
+        },
+        "CH": {
+          "2020": 39509.63,
+          "2021": 39509.63,
+          "2022": 39509.63,
+          "2023": 39509.63
+        },
+        "TH": {
+          "2020": 510890,
+          "2021": 510890,
+          "2022": 510890,
+          "2023": 510890
+        },
+        "TN": {
+          "2020": 155360,
+          "2021": 155360,
+          "2022": 155360,
+          "2023": 155360
+        },
+        "TR": {
+          "2020": 769630,
+          "2021": 769630,
+          "2022": 769630,
+          "2023": 769630
+        },
+        "TM": {
+          "2020": 469930,
+          "2021": 469930,
+          "2022": 469930,
+          "2023": 469930
+        },
+        "UG": {
+          "2020": 200520,
+          "2021": 200520,
+          "2022": 200520,
+          "2023": 200520
+        },
+        "UA": {
+          "2020": 579400,
+          "2021": 579400,
+          "2022": 579400,
+          "2023": 579400
+        },
+        "AE": {
+          "2020": 71020,
+          "2021": 71020,
+          "2022": 71020,
+          "2023": 71020
+        },
+        "GB": {
+          "2020": 241930,
+          "2021": 241930,
+          "2022": 241930,
+          "2023": 241930
+        },
+        "US": {
+          "2020": 9147420,
+          "2021": 9147420,
+          "2022": 9147420,
+          "2023": 9147420
+        },
+        "UY": {
+          "2020": 175020,
+          "2021": 175020,
+          "2022": 175020,
+          "2023": 175020
+        },
+        "UZ": {
+          "2020": 440650,
+          "2021": 440653,
+          "2022": 440652,
+          "2023": 440650
+        },
+        "VE": {
+          "2020": 882050,
+          "2021": 882050,
+          "2022": 882050,
+          "2023": 882050
+        },
+        "VN": {
+          "2020": 313429,
+          "2021": 313429,
+          "2022": 313429,
+          "2023": 313429
+        },
+        "YE": {
+          "2020": 527970,
+          "2021": 527970,
+          "2022": 527970,
+          "2023": 527970
+        },
+        "ZM": {
+          "2020": 743390,
+          "2021": 743390,
+          "2022": 743390,
+          "2023": 743390
+        },
+        "ZW": {
+          "2020": 386850,
+          "2021": 386850,
+          "2022": 386850,
+          "2023": 386850
+        }
+      }
+    },
+    "arableLand": {
+      "indicator": "AG.LND.ARBL.ZS",
+      "status": "ok",
+      "fetchedAt": "2026-09-21T09:33:15.771Z",
+      "providerUpdatedAt": "2026-07-13",
+      "sourceOrganization": "FAO electronic files and website, Food and Agriculture Organization of the United Nations (FAO), publisher: Food and Agriculture Organization of the United Nations (FAO)",
+      "sourceNote": "Arable land includes land defined by the FAO as land under temporary crops (double-cropped areas are counted once), temporary meadows for mowing or for pasture, land under market or kitchen gardens, and land temporarily fallow. Land abandoned as a result of shifting cultivation is excluded.",
+      "apiUrl": "https://api.worldbank.org/v2/country/all/indicator/AG.LND.ARBL.ZS?format=json&source=2&date=2020:2025&per_page=20000",
+      "countries": {
+        "AF": {
+          "2020": 12.0034343713107,
+          "2021": 12.0034343713107,
+          "2022": 11.9743035432286,
+          "2023": 12.0294987964368
+        },
+        "AL": {
+          "2020": 21.8832116788321,
+          "2021": 21.8941605839416,
+          "2022": 21.8284671532847,
+          "2023": 21.5583941605839
+        },
+        "DZ": {
+          "2020": 3.16197401899452,
+          "2021": 3.16197401899452,
+          "2022": 3.16197401899452,
+          "2023": 3.16197401899452
+        },
+        "AO": {
+          "2020": 4.28330793294297,
+          "2021": 4.28972487366648,
+          "2022": 4.31940322451271,
+          "2023": 4.31940322451271
+        },
+        "AR": {
+          "2020": 15.3214284409268,
+          "2021": 15.4306845130431,
+          "2022": 15.7485867964585,
+          "2023": 14.7577340144481
+        },
+        "AU": {
+          "2020": 3.98386899670048,
+          "2021": 4.0646020161154,
+          "2022": 4.0646020161154,
+          "2023": 4.02880884345075
+        },
+        "AT": {
+          "2020": 16.0563669413475,
+          "2021": 16.0315232670868,
+          "2022": 16.0033082888997,
+          "2023": 16.0177120698013
+        },
+        "AZ": {
+          "2020": 25.2196113544515,
+          "2021": 25.275257108288,
+          "2022": 25.3103448275862,
+          "2023": 25.307924984876
+        },
+        "BD": {
+          "2020": 60.613044480295,
+          "2021": 60.4908965199355,
+          "2022": 60.7838169814218,
+          "2023": 60.6277888905986
+        },
+        "BE": {
+          "2020": 28.3621892831377,
+          "2021": 28.3872237161409,
+          "2022": 28.3186856430773,
+          "2023": 28.3056863645307
+        },
+        "BO": {
+          "2020": 4.86957629465522,
+          "2021": 4.98791673589957,
+          "2022": 5.13483577956245,
+          "2023": 5.13483577956245
+        },
+        "BR": {
+          "2020": 6.66296568375261,
+          "2021": 6.6600942314917,
+          "2022": 6.65722277923079,
+          "2023": 6.65722277923079
+        },
+        "BG": {
+          "2020": 32.1665438467207,
+          "2021": 32.2402358142962,
+          "2022": 31.9454679439941,
+          "2023": 32.1163411938099
+        },
+        "KH": {
+          "2020": 23.1723753682302,
+          "2021": 23.3409228416044,
+          "2022": 23.3409228416044,
+          "2023": 23.3409228416044
+        },
+        "CM": {
+          "2020": 13.1158638488714,
+          "2021": 13.1158638488714,
+          "2022": 13.1158638488714,
+          "2023": 13.1158638488714
+        },
+        "CA": {
+          "2020": 4.26463846774167,
+          "2021": 4.35320354546179,
+          "2022": 4.3631026204103,
+          "2023": 4.34091503862915
+        },
+        "CL": {
+          "2020": 1.85089719657068,
+          "2021": 2.01809524430058,
+          "2022": 1.74588686071584,
+          "2023": 1.89396886756197
+        },
+        "CN": {
+          "2020": 11.5894936308412,
+          "2021": 11.6065788899055,
+          "2022": 11.5635568441694,
+          "2023": 11.5492836227566
+        },
+        "CO": {
+          "2020": 2.11305425867508,
+          "2021": 2.1601922487607,
+          "2022": 2.21063542136097,
+          "2023": 2.29770166741776
+        },
+        "CD": {
+          "2020": 6.0342736154915,
+          "2021": 6.04502913477868,
+          "2022": 6.39680862795263,
+          "2023": 6.571475618094
+        },
+        "CR": {
+          "2020": 3.27327457892675,
+          "2021": 3.27327457892675,
+          "2022": 3.27327457892675,
+          "2023": 3.27327457892675
+        },
+        "HR": {
+          "2020": 15.8863473909936,
+          "2021": 15.3145103645461,
+          "2022": 15.2430307362402,
+          "2023": 15.5110793423874
+        },
+        "CZ": {
+          "2020": 32.1787733522905,
+          "2021": 32.0693957764556,
+          "2022": 32.1272569631392,
+          "2023": 32.7117272845198
+        },
+        "DK": {
+          "2020": 59.27325,
+          "2021": 58.925,
+          "2022": 59,
+          "2023": 59.125
+        },
+        "EC": {
+          "2020": 4.17941697535835,
+          "2021": 4.12304718956354,
+          "2022": 3.92172652601063,
+          "2023": 4.13915284264777
+        },
+        "EG": {
+          "2020": 3.38038073233211,
+          "2021": 3.09106434275956,
+          "2022": 3.11718318348486,
+          "2023": 3.11718318348486
+        },
+        "ET": {
+          "2020": 14.3500889708883,
+          "2021": 14.560115607756,
+          "2022": 14.5325559938566,
+          "2023": 14.5325559938566
+        },
+        "FI": {
+          "2020": 7.37974600250049,
+          "2021": 7.37955904913905,
+          "2022": 7.37297896973723,
+          "2023": 7.38255033557047
+        },
+        "FR": {
+          "2020": 31.5143631134614,
+          "2021": 31.5621764542165,
+          "2022": 31.5249188236386,
+          "2023": 31.3558697467298
+        },
+        "GA": {
+          "2020": 1.26130321729344,
+          "2021": 1.26130321729344,
+          "2022": 1.26130321729344,
+          "2023": 1.26130321729344
+        },
+        "DE": {
+          "2020": 33.3838976501903,
+          "2021": 33.3667248633332,
+          "2022": 33.3667277307076,
+          "2023": 33.428726783619
+        },
+        "GH": {
+          "2020": 20.7001274557201,
+          "2021": 20.6998545265961,
+          "2022": 20.6998545265961,
+          "2023": 20.6998545265961
+        },
+        "GR": {
+          "2020": 13.9927090768037,
+          "2021": 14.0607439875873,
+          "2022": 14.4387362296354,
+          "2023": 14.4387362296354
+        },
+        "GT": {
+          "2020": 14.501679731243,
+          "2021": 14.501679731243,
+          "2022": 14.501679731243,
+          "2023": 14.501679731243
+        },
+        "HT": {
+          "2020": 36.2844702467344,
+          "2021": 36.4658925979681,
+          "2022": 36.4658925979681,
+          "2023": 36.4658925979681
+        },
+        "HN": {
+          "2020": 9.09822146751274,
+          "2021": 9.09822146751274,
+          "2022": 9.09822146751274,
+          "2023": 9.09822146751274
+        },
+        "HU": {
+          "2020": 44.115379136533,
+          "2021": 45.3616524216524,
+          "2022": 45.5585250931405,
+          "2023": 45.4103331141793
+        },
+        "IN": {
+          "2020": 51.9383557727559,
+          "2021": 51.8513672856427,
+          "2022": 51.8054794009128,
+          "2023": 51.752057554344
+        },
+        "ID": {
+          "2020": 9.47991482376477,
+          "2021": 9.40017404086973,
+          "2022": 9.39575176626131,
+          "2023": 9.3962387268892
+        },
+        "IR": {
+          "2020": 9.6517719568567,
+          "2021": 9.67580893682589,
+          "2022": 9.67580893682589,
+          "2023": 9.67580893682589
+        },
+        "IQ": {
+          "2020": 11.4458802662797,
+          "2021": 11.4458802662797,
+          "2022": 11.4458802662797,
+          "2023": 11.4458802662797
+        },
+        "IE": {
+          "2020": 6.44505733778487,
+          "2021": 6.32893017854551,
+          "2022": 6.47408912759472,
+          "2023": 6.37247786326027
+        },
+        "IL": {
+          "2020": 12.7264325323475,
+          "2021": 12.5924214417745,
+          "2022": 12.4075785582255,
+          "2023": 12.5415896487985
+        },
+        "IT": {
+          "2020": 24.3456209822229,
+          "2021": 24.3232955832773,
+          "2022": 23.9567056675233,
+          "2023": 23.9567056675233
+        },
+        "JP": {
+          "2020": 11.2592592592593,
+          "2021": 11.2098765432099,
+          "2022": 11.1550068587106,
+          "2023": 11.0925421662665
+        },
+        "KZ": {
+          "2020": 10.9468459458458,
+          "2021": 10.9899988887654,
+          "2022": 10.9899988887654,
+          "2023": 10.9899988887654
+        },
+        "KE": {
+          "2020": 11.4175064467254,
+          "2021": 11.4175064467254,
+          "2022": 11.4175064467254,
+          "2023": 11.4175064467254
+        },
+        "KP": {
+          "2020": 19.0598787476123,
+          "2021": 19.0598787476123,
+          "2022": 19.0598787476123,
+          "2023": 19.0598787476123
+        },
+        "KR": {
+          "2020": 13.8524590163934,
+          "2021": 13.7602459016393,
+          "2022": 13.5245901639344,
+          "2023": 14.9180327868852
+        },
+        "KW": {
+          "2020": 0.448933782267116,
+          "2021": 0.448933782267116,
+          "2022": 0.448933782267116,
+          "2023": 0.448933782267116
+        },
+        "LA": {
+          "2020": 5.30329289428076,
+          "2021": 5.30329289428076,
+          "2022": 5.30329289428076,
+          "2023": 5.30329289428076
+        },
+        "LB": {
+          "2020": 13.1099706744868,
+          "2021": 13.8435679374389,
+          "2022": 13.341642228739,
+          "2023": 13.1196285434995
+        },
+        "LY": {
+          "2020": 0.977528217602328,
+          "2021": 0.977528217602328,
+          "2022": 0.977528217602328,
+          "2023": 0.977528217602328
+        },
+        "MY": {
+          "2020": 2.51197686805661,
+          "2021": 2.51197686805661,
+          "2022": 2.51197686805661,
+          "2023": 2.38715568406635
+        },
+        "MX": {
+          "2020": 11.1545045911675,
+          "2021": 11.1488039301422,
+          "2022": 10.580191002855,
+          "2023": 10.3004679132694
+        },
+        "MA": {
+          "2020": 16.0767093883038,
+          "2021": 15.9842189110464,
+          "2022": 14.5113036074389,
+          "2023": 15.4023118978266
+        },
+        "MZ": {
+          "2020": 7.18482158752766,
+          "2021": 7.18482158752766,
+          "2022": 7.18482158752766,
+          "2023": 7.18482158752766
+        },
+        "MM": {
+          "2020": 16.8385248287802,
+          "2021": 16.8385248287802,
+          "2022": 16.8385248287802,
+          "2023": 16.8650803622045
+        },
+        "NA": {
+          "2020": 0.971711061715799,
+          "2021": 0.971711061715799,
+          "2022": 0.971711061715799,
+          "2023": 0.971711061715799
+        },
+        "NP": {
+          "2020": 13.0383990233694,
+          "2021": 12.8107938611789,
+          "2022": 12.5831880013952,
+          "2023": 12.5831880013952
+        },
+        "NL": {
+          "2020": 29.8434808434808,
+          "2021": 29.7891297891298,
+          "2022": 29.8188298188298,
+          "2023": 29.96732996733
+        },
+        "NZ": {
+          "2020": 2.00144316585014,
+          "2021": 2.33944779917208,
+          "2022": 2.02422999506285,
+          "2023": 1.97485853176864
+        },
+        "NI": {
+          "2020": 12.4896127638358,
+          "2021": 12.4896127638358,
+          "2022": 12.4896127638358,
+          "2023": 12.4896127638358
+        },
+        "NG": {
+          "2020": 40.4844252665327,
+          "2021": 40.4844252665327,
+          "2022": 40.4844252665327,
+          "2023": 40.4844252665327
+        },
+        "NO": {
+          "2020": 2.20842746750484,
+          "2021": 2.20715403409559,
+          "2022": 2.20715403409559,
+          "2023": 2.20440881763527
+        },
+        "PK": {
+          "2020": 40.1229763387298,
+          "2021": 39.2797841427978,
+          "2022": 39.2149232046492,
+          "2023": 39.2538397675384
+        },
+        "PE": {
+          "2020": 3.07442265625,
+          "2021": 3.35179375,
+          "2022": 3.06127421875,
+          "2023": 3.06127421875
+        },
+        "PH": {
+          "2020": 18.7476942683704,
+          "2021": 18.7476942683704,
+          "2022": 18.7476942683704,
+          "2023": 18.7476942683704
+        },
+        "PL": {
+          "2020": 36.4224349132721,
+          "2021": 36.1940542306436,
+          "2022": 36.4761998105133,
+          "2023": 36.5755705749829
+        },
+        "PT": {
+          "2020": 10.6206312714507,
+          "2021": 10.564565921734,
+          "2022": 10.1801483752085,
+          "2023": 10.1223374990175
+        },
+        "QA": {
+          "2020": 1.82767624020888,
+          "2021": 1.82767624020888,
+          "2022": 1.82767624020888,
+          "2023": 1.82767624020888
+        },
+        "RO": {
+          "2020": 36.8697844228095,
+          "2021": 37.3261474269819,
+          "2022": 35.6875869262865,
+          "2023": 36.5394645340751
+        },
+        "RU": {
+          "2020": 7.42809828740168,
+          "2021": 7.42809828740168,
+          "2022": 7.42809828740168,
+          "2023": 7.42809828740168
+        },
+        "SA": {
+          "2020": 1.59577287888021,
+          "2021": 1.59577287888021,
+          "2022": 1.59577287888021,
+          "2023": 1.59577287888021
+        },
+        "SN": {
+          "2020": 19.4774840284631,
+          "2021": 19.893003687737,
+          "2022": 19.893003687737,
+          "2023": 19.893003687737
+        },
+        "SG": {
+          "2020": 0.779944289693593,
+          "2021": 0.779944289693593,
+          "2022": 0.779944289693593,
+          "2023": 0.779944289693593
+        },
+        "SK": {
+          "2020": 27.9950083194676,
+          "2021": 27.5790349417637,
+          "2022": 27.5166389351082,
+          "2023": 27.1838602329451
+        },
+        "SI": {
+          "2020": 8.89434059712759,
+          "2021": 8.88987107923959,
+          "2022": 8.89185753163425,
+          "2023": 8.88475005587424
+        },
+        "SO": {
+          "2020": 1.75343513884018,
+          "2021": 1.75343513884018,
+          "2022": 1.75343513884018,
+          "2023": 1.75343513884018
+        },
+        "ZA": {
+          "2020": 9.89209374407505,
+          "2021": 9.89209374407505,
+          "2022": 9.89209374407505,
+          "2023": 9.89209374407505
+        },
+        "ES": {
+          "2020": 23.2994560606836,
+          "2021": 23.112437562789,
+          "2022": 23.3945131872425,
+          "2023": 23.0074340991168
+        },
+        "SD": {
+          "2020": 11.2392933618844,
+          "2021": 11.2392933618844,
+          "2022": 11.2392933618844,
+          "2023": 11.2392933618844
+        },
+        "SE": {
+          "2020": 6.23404046356315,
+          "2021": 6.22421921037124,
+          "2022": 6.20703201728541,
+          "2023": 6.20227367593979
+        },
+        "CH": {
+          "2020": 10.1201023649171,
+          "2021": 10.009321778007,
+          "2022": 10.0380287033819,
+          "2023": 10.0335260036604
+        },
+        "TH": {
+          "2020": 32.9299843410519,
+          "2021": 31.6905791853432,
+          "2022": 31.0307502593513,
+          "2023": 30.9953218892521
+        },
+        "TN": {
+          "2020": 18.2241246138002,
+          "2021": 18.2241246138002,
+          "2022": 18.2241246138002,
+          "2023": 18.2241246138002
+        },
+        "TR": {
+          "2020": 25.4485921806582,
+          "2021": 25.8318932474046,
+          "2022": 26.2632693632005,
+          "2023": 26.3464262047997
+        },
+        "TM": {
+          "2020": 3.41710467516439,
+          "2021": 3.39539931479156,
+          "2022": 3.42689336709723,
+          "2023": 3.38675802779137
+        },
+        "UG": {
+          "2020": 34.4105326152005,
+          "2021": 34.4105326152005,
+          "2022": 34.4105326152005,
+          "2023": 34.4105326152005
+        },
+        "UA": {
+          "2020": 56.8243010010356,
+          "2021": 56.8243010010356,
+          "2022": 56.8243010010356,
+          "2023": 56.8243010010356
+        },
+        "AE": {
+          "2020": 0.689946493945367,
+          "2021": 0.708251196845959,
+          "2022": 0.709433962264151,
+          "2023": 0.709433962264151
+        },
+        "GB": {
+          "2020": 24.7117025585913,
+          "2021": 24.8410870913074,
+          "2022": 24.9704873310462,
+          "2023": 24.9811581862522
+        },
+        "US": {
+          "2020": 16.8248090718476,
+          "2021": 16.6944952784501,
+          "2022": 16.5679749153313,
+          "2023": 16.5689915954444
+        },
+        "UY": {
+          "2020": 11.5666780939321,
+          "2021": 11.6043880699349,
+          "2022": 12.0871328990972,
+          "2023": 12.5677065478231
+        },
+        "UZ": {
+          "2020": 9.12969476909111,
+          "2021": 9.11397403399046,
+          "2022": 9.14213483656037,
+          "2023": 9.14331101781459
+        },
+        "VE": {
+          "2020": 2.94767870302137,
+          "2021": 2.94767870302137,
+          "2022": 2.94767870302137,
+          "2023": 2.94767870302137
+        },
+        "VN": {
+          "2020": 21.6540269088055,
+          "2021": 21.6740633444895,
+          "2022": 21.5455493907711,
+          "2023": 21.4673179571769
+        },
+        "YE": {
+          "2020": 2.19330643786579,
+          "2021": 2.19330643786579,
+          "2022": 2.19330643786579,
+          "2023": 2.19330643786579
+        },
+        "ZM": {
+          "2020": 5.11171794078478,
+          "2021": 5.11171794078478,
+          "2022": 5.11171794078478,
+          "2023": 5.11171794078478
+        },
+        "ZW": {
+          "2020": 10.4161222696135,
+          "2021": 10.4083078712679,
+          "2022": 10.4004932144242,
+          "2023": 10.3926785575805
+        }
+      }
+    },
+    "forestArea": {
+      "indicator": "AG.LND.FRST.ZS",
+      "status": "ok",
+      "fetchedAt": "2026-09-21T09:33:17.501Z",
+      "providerUpdatedAt": "2026-07-13",
+      "sourceOrganization": "FAOSTAT, Food and Agriculture Organization of the United Nations (FAO), uri: https://www.fao.org/faostat/en/#data/RL, publisher: Food and Agriculture Organization of the United Nations (FAO)",
+      "sourceNote": "Forest area (% of land area) is the share of total land area that is under natural or planted stands of trees of at least 5 meters in situ, whether productive or not, and excludes tree stands in agricultural production systems (for example, in fruit plantations and agroforestry systems) and trees in urban parks and gardens.",
+      "apiUrl": "https://api.worldbank.org/v2/country/all/indicator/AG.LND.FRST.ZS?format=json&source=2&date=2020:2025&per_page=20000",
+      "countries": {
+        "AF": {
+          "2020": 1.85278199408184,
+          "2021": 1.85278199408184,
+          "2022": 1.85278199408184,
+          "2023": 1.85278199408184
+        },
+        "AL": {
+          "2020": 28.7919708029197,
+          "2021": 28.7919708029197,
+          "2022": 28.7919708029197,
+          "2023": 28.7919708029197
+        },
+        "DZ": {
+          "2020": 0.818309303282474,
+          "2021": 0.822088053271978,
+          "2022": 0.826286664371426,
+          "2023": 0.830314224054683
+        },
+        "AO": {
+          "2020": 53.4269511510388,
+          "2021": 52.9817223871019,
+          "2022": 52.5364972326943,
+          "2023": 52.0912696719339
+        },
+        "AR": {
+          "2020": 10.4407148781923,
+          "2021": 10.4008857415345,
+          "2022": 10.3610566048767,
+          "2023": 10.3212951412107
+        },
+        "AU": {
+          "2020": 17.4213145571644,
+          "2021": 17.4213145571644,
+          "2022": 17.4213145571644,
+          "2023": 17.4213145571644
+        },
+        "AT": {
+          "2020": 47.137905962191,
+          "2021": 47.1720794958798,
+          "2022": 47.206131846825,
+          "2023": 47.2402653902084
+        },
+        "AZ": {
+          "2020": 13.6941896764514,
+          "2021": 13.8329909255898,
+          "2022": 13.9724815486993,
+          "2023": 14.1119540229885
+        },
+        "BD": {
+          "2020": 14.4687716063609,
+          "2021": 14.4687716063609,
+          "2022": 14.458774758176,
+          "2023": 14.4899215263887
+        },
+        "BE": {
+          "2020": 22.604446776415,
+          "2021": 22.604446776415,
+          "2022": 22.604446776415,
+          "2023": 22.604446776415
+        },
+        "BO": {
+          "2020": 46.9249146127573,
+          "2021": 46.7283054555525,
+          "2022": 46.5396883596418,
+          "2023": 46.3457431920982
+        },
+        "BR": {
+          "2020": 59.4174780513368,
+          "2021": 59.2704836243471,
+          "2022": 59.1275092305226,
+          "2023": 58.9818729765235
+        },
+        "BG": {
+          "2020": 35.8603537214444,
+          "2021": 35.9801031687546,
+          "2022": 36.0998526160649,
+          "2023": 36.2196020633751
+        },
+        "KH": {
+          "2020": 45.7079651031045,
+          "2021": 44.825968728756,
+          "2022": 43.9439723544074,
+          "2023": 43.0619759800589
+        },
+        "CM": {
+          "2020": 43.02951069366,
+          "2021": 42.9110448266379,
+          "2022": 42.7925789596158,
+          "2023": 42.6741130925938
+        },
+        "CA": {
+          "2020": 38.6955125094946,
+          "2021": 39.4701279256318,
+          "2022": 39.4659199995449,
+          "2023": 39.4617117321106
+        },
+        "CL": {
+          "2020": 24.5152454733888,
+          "2021": 24.6807203850391,
+          "2022": 24.8461772576085,
+          "2023": 25.0116461113584
+        },
+        "CN": {
+          "2020": 23.4313037309562,
+          "2021": 23.6315548970464,
+          "2022": 23.8316995465589,
+          "2023": 24.0319389958256
+        },
+        "CO": {
+          "2020": 53.3050112663362,
+          "2021": 53.1253958539883,
+          "2022": 52.9457763857593,
+          "2023": 52.7661596214511
+        },
+        "CD": {
+          "2020": 55.6472067223925,
+          "2021": 55.1615535607949,
+          "2022": 54.6754592973247,
+          "2023": 54.1898572594341
+        },
+        "CR": {
+          "2020": 59.4373286329808,
+          "2021": 59.7579318448884,
+          "2022": 60.0785350567959,
+          "2023": 60.3991382687035
+        },
+        "HR": {
+          "2020": 34.6517155110793,
+          "2021": 34.6963902787706,
+          "2022": 34.7410650464618,
+          "2023": 34.785739814153
+        },
+        "CZ": {
+          "2020": 34.6779919254939,
+          "2021": 34.7066980208929,
+          "2022": 34.7369431785448,
+          "2023": 34.7623883740408
+        },
+        "DK": {
+          "2020": 15.711,
+          "2021": 15.7345,
+          "2022": 15.758,
+          "2023": 15.7815
+        },
+        "EC": {
+          "2020": 50.3214285714286,
+          "2021": 50.0626509904977,
+          "2022": 49.8038734095668,
+          "2023": 49.5450958286359
+        },
+        "EG": {
+          "2020": 0.0451855944547692,
+          "2021": 0.0451855944547692,
+          "2022": 0.0451855944547692,
+          "2023": 0.0451855944547692
+        },
+        "ET": {
+          "2020": 15.1239877246579,
+          "2021": 15.0601822445542,
+          "2022": 14.9955852855138,
+          "2023": 14.9308975782695
+        },
+        "FI": {
+          "2020": 73.7283674409423,
+          "2021": 73.7264996576714,
+          "2022": 73.7264996576714,
+          "2023": 73.7235162521384
+        },
+        "FR": {
+          "2020": 32.0122460339549,
+          "2021": 32.1669913721124,
+          "2022": 32.32173671027,
+          "2023": 32.4764820484275
+        },
+        "GA": {
+          "2020": 91.3206814918306,
+          "2021": 91.2745760080723,
+          "2022": 91.228470524314,
+          "2023": 91.1823650405558
+        },
+        "DE": {
+          "2020": 32.6826755201923,
+          "2021": 32.6826755201923,
+          "2022": 32.685482024273,
+          "2023": 32.6789342643734
+        },
+        "GH": {
+          "2020": 35.0973937502747,
+          "2021": 35.1286771589176,
+          "2022": 35.1604431005612,
+          "2023": 35.1921958573042
+        },
+        "GR": {
+          "2020": 30.2699767261443,
+          "2021": 30.2699767261443,
+          "2022": 30.2699767261443,
+          "2023": 30.2699767261443
+        },
+        "GT": {
+          "2020": 32.9208659947742,
+          "2021": 32.812616648003,
+          "2022": 32.7043673012318,
+          "2023": 32.5961179544606
+        },
+        "HT": {
+          "2020": 12.6015965166909,
+          "2021": 12.4887518142235,
+          "2022": 12.3759071117562,
+          "2023": 12.2630624092888
+        },
+        "HN": {
+          "2020": 56.8349271606042,
+          "2021": 56.6476896952364,
+          "2022": 56.4604522298686,
+          "2023": 56.2732147645008
+        },
+        "HU": {
+          "2020": 22.4962743808898,
+          "2021": 22.4803495507342,
+          "2022": 22.4643754109139,
+          "2023": 22.4484341442034
+        },
+        "IN": {
+          "2020": 24.270228273336,
+          "2021": 24.3596944695764,
+          "2022": 24.4494970049005,
+          "2023": 24.5390304689576
+        },
+        "ID": {
+          "2020": 49.0717803654717,
+          "2021": 48.3619448681206,
+          "2022": 48.0419900717626,
+          "2023": 47.7220336902463
+        },
+        "IR": {
+          "2020": 6.62681047765794,
+          "2021": 6.63543913713405,
+          "2022": 6.64160246533128,
+          "2023": 6.64923611710324
+        },
+        "IQ": {
+          "2020": 1.90035242899592,
+          "2021": 1.90035242899592,
+          "2022": 1.90035242899592,
+          "2023": 1.90035242899592
+        },
+        "IE": {
+          "2020": 11.3517201335462,
+          "2021": 11.4097837131659,
+          "2022": 11.4678472927856,
+          "2023": 11.5259108724053
+        },
+        "IL": {
+          "2020": 6.46950092421442,
+          "2021": 6.46950092421442,
+          "2022": 6.46950092421442,
+          "2023": 6.46950092421442
+        },
+        "IT": {
+          "2020": 32.3489349614665,
+          "2021": 32.5308994748357,
+          "2022": 32.7125321249831,
+          "2023": 32.8944947923712
+        },
+        "JP": {
+          "2020": 68.4087791495199,
+          "2021": 68.4087791495199,
+          "2022": 68.4087791495199,
+          "2023": 68.3957811364628
+        },
+        "KZ": {
+          "2020": 1.27965329481053,
+          "2021": 1.29048383153684,
+          "2022": 1.3013145534689,
+          "2023": 1.31214516427751
+        },
+        "KE": {
+          "2020": 6.21662477880402,
+          "2021": 6.21662477880402,
+          "2022": 6.21662477880402,
+          "2023": 6.21662477880402
+        },
+        "KP": {
+          "2020": 50.0788971015696,
+          "2021": 49.9044929823104,
+          "2022": 49.7300888630512,
+          "2023": 49.5507017689561
+        },
+        "KR": {
+          "2020": 64.4159836065574,
+          "2021": 64.3135245901639,
+          "2022": 64.2110655737705,
+          "2023": 64.108606557377
+        },
+        "KW": {
+          "2020": 0.350729517396184,
+          "2021": 0.350729517396184,
+          "2022": 0.350729517396184,
+          "2023": 0.350729517396184
+        },
+        "LA": {
+          "2020": 71.9042461005199,
+          "2021": 71.7547660311958,
+          "2022": 71.6052859618717,
+          "2023": 71.4558058925477
+        },
+        "LB": {
+          "2020": 14.010752688172,
+          "2021": 14.069403714565,
+          "2022": 14.128054740958,
+          "2023": 14.1867057673509
+        },
+        "LY": {
+          "2020": 0.123327687918433,
+          "2021": 0.123327687918433,
+          "2022": 0.123327687918433,
+          "2023": 0.123327687918433
+        },
+        "MY": {
+          "2020": 58.1769593669152,
+          "2021": 58.0243189773246,
+          "2022": 57.871678587734,
+          "2023": 57.7190381981434
+        },
+        "MX": {
+          "2020": 33.7930502327735,
+          "2021": 33.727204917822,
+          "2022": 33.6618740193935,
+          "2023": 33.5959176419147
+        },
+        "MA": {
+          "2020": 12.8668832623796,
+          "2021": 12.8903354246023,
+          "2022": 12.9136878781089,
+          "2023": 12.9371068787811
+        },
+        "MZ": {
+          "2020": 46.7251964699,
+          "2021": 46.412173122409,
+          "2022": 46.1193311121849,
+          "2023": 45.8130349195046
+        },
+        "MM": {
+          "2020": 43.7340309804342,
+          "2021": 43.2901466284646,
+          "2022": 42.846262276495,
+          "2023": 42.4023779245254
+        },
+        "NA": {
+          "2020": 8.06386570953127,
+          "2021": 7.97761420641572,
+          "2022": 7.89136270330017,
+          "2023": 7.80511120018463
+        },
+        "NP": {
+          "2020": 41.5907220090687,
+          "2021": 41.5907220090687,
+          "2022": 41.5907220090687,
+          "2023": 41.5907220090687
+        },
+        "NL": {
+          "2020": 10.974160974161,
+          "2021": 11.001980991981,
+          "2022": 11.0296673596674,
+          "2023": 11.0574428274428
+        },
+        "NZ": {
+          "2020": 37.5701264669021,
+          "2021": 37.6306509437545,
+          "2022": 37.719363487904,
+          "2023": 37.7892841137822
+        },
+        "NI": {
+          "2020": 28.315855077281,
+          "2021": 27.4848761841449,
+          "2022": 26.6538972910088,
+          "2023": 25.8229183978727
+        },
+        "NG": {
+          "2020": 23.7457865322749,
+          "2021": 23.5664876972232,
+          "2022": 23.3871888621716,
+          "2023": 23.2078900271199
+        },
+        "NO": {
+          "2020": 33.4353596771758,
+          "2021": 33.4581491750625,
+          "2022": 33.4795618634529,
+          "2023": 33.5009745518434
+        },
+        "PK": {
+          "2020": 4.83330738895807,
+          "2021": 4.7796803652968,
+          "2022": 4.72605334163553,
+          "2023": 4.67242631797426
+        },
+        "PE": {
+          "2020": 56.5081015625,
+          "2021": 56.373072890625,
+          "2022": 56.238047734375,
+          "2023": 56.103020234375
+        },
+        "PH": {
+          "2020": 24.1090317604051,
+          "2021": 24.226045544488,
+          "2022": 24.3430593285709,
+          "2023": 24.4600731126539
+        },
+        "PL": {
+          "2020": 30.9770358997811,
+          "2021": 31.0192747468148,
+          "2022": 31.0594923061845,
+          "2023": 31.0804192379273
+        },
+        "PT": {
+          "2020": 36.154994891142,
+          "2021": 36.154994891142,
+          "2022": 36.154994891142,
+          "2023": 36.154994891142
+        },
+        "QA": {
+          "2020": 0,
+          "2021": 0,
+          "2022": 0,
+          "2023": 0
+        },
+        "RO": {
+          "2020": 30.1158292767733,
+          "2021": 30.1158292767733,
+          "2022": 30.1158292767733,
+          "2023": 30.1158292767733
+        },
+        "RU": {
+          "2020": 49.7843605035639,
+          "2021": 49.7843605035639,
+          "2022": 49.7843605035639,
+          "2023": 49.7843605035639
+        },
+        "SA": {
+          "2020": 0.454484134921779,
+          "2021": 0.454484134921779,
+          "2022": 0.454484134921779,
+          "2023": 0.454484134921779
+        },
+        "SN": {
+          "2020": 41.9059886770893,
+          "2021": 41.6982288474523,
+          "2022": 41.4904690178154,
+          "2023": 41.2827091881785
+        },
+        "SG": {
+          "2020": 21.6852367688022,
+          "2021": 21.4345403899721,
+          "2022": 21.1838440111421,
+          "2023": 20.933147632312
+        },
+        "SK": {
+          "2020": 40.05615640599,
+          "2021": 40.05615640599,
+          "2022": 40.05615640599,
+          "2023": 40.05615640599
+        },
+        "SI": {
+          "2020": 61.4722591923085,
+          "2021": 61.3711140025029,
+          "2022": 61.2701922885918,
+          "2023": 61.1748938389332
+        },
+        "SO": {
+          "2020": 9.53231102751299,
+          "2021": 9.40996907578028,
+          "2022": 9.28762712404757,
+          "2023": 9.16528517231485
+        },
+        "ZA": {
+          "2020": 14.055090718743,
+          "2021": 14.0250847010527,
+          "2022": 13.9950786833623,
+          "2023": 13.965072665672
+        },
+        "ES": {
+          "2020": 37.1773054885498,
+          "2021": 37.1727521093233,
+          "2022": 37.1827922798055,
+          "2023": 37.1925889548355
+        },
+        "SD": {
+          "2020": 9.82869379014989,
+          "2021": 9.73608137044968,
+          "2022": 9.64400428265525,
+          "2023": 9.55196466809422
+        },
+        "SE": {
+          "2020": 68.6996660773915,
+          "2021": 68.6996660773915,
+          "2022": 68.6996660773915,
+          "2023": 68.7013529108454
+        },
+        "CH": {
+          "2020": 32.1215359394659,
+          "2021": 32.2086033202538,
+          "2022": 32.2956707010417,
+          "2023": 32.3827380818297
+        },
+        "TH": {
+          "2020": 38.8987844741529,
+          "2021": 38.8283192076572,
+          "2022": 38.7578539411615,
+          "2023": 38.6873886746658
+        },
+        "TN": {
+          "2020": 4.52323635427395,
+          "2021": 4.53308444902163,
+          "2022": 4.54293254376931,
+          "2023": 4.55278063851699
+        },
+        "TR": {
+          "2020": 28.8714836999597,
+          "2021": 29.0741785013578,
+          "2022": 29.2768733027559,
+          "2023": 29.4795681041539
+        },
+        "TM": {
+          "2020": 8.78215904496414,
+          "2021": 8.78215904496414,
+          "2022": 8.78215904496414,
+          "2023": 8.78215904496414
+        },
+        "UG": {
+          "2020": 11.6591861160981,
+          "2021": 11.4534375623379,
+          "2022": 11.2477114502294,
+          "2023": 11.0419703770197
+        },
+        "UA": {
+          "2020": 16.7241974456334,
+          "2021": 16.7345529858474,
+          "2022": 16.7449085260614,
+          "2023": 16.7552640662755
+        },
+        "AE": {
+          "2020": 4.46775556181357,
+          "2021": 4.46775556181357,
+          "2022": 4.46775556181357,
+          "2023": 4.46775556181357
+        },
+        "GB": {
+          "2020": 13.1856322076634,
+          "2021": 13.2214553796553,
+          "2022": 13.2554871243748,
+          "2023": 13.2907130161617
+        },
+        "US": {
+          "2020": 33.8669264120375,
+          "2021": 33.8669264120375,
+          "2022": 33.8669264120375,
+          "2023": 33.8669264120375
+        },
+        "UY": {
+          "2020": 11.6043880699349,
+          "2021": 11.7243743572163,
+          "2022": 11.8443606444978,
+          "2023": 11.9643469317792
+        },
+        "UZ": {
+          "2020": 8.37322137751049,
+          "2021": 8.43180461723851,
+          "2022": 8.49046413042492,
+          "2023": 8.54914331101781
+        },
+        "VE": {
+          "2020": 52.4130151351964,
+          "2021": 52.3477807380534,
+          "2022": 52.2949719403662,
+          "2023": 52.2338793719177
+        },
+        "VN": {
+          "2020": 46.7190017515929,
+          "2021": 46.9611618580284,
+          "2022": 47.203321964464,
+          "2023": 47.4454820708996
+        },
+        "YE": {
+          "2020": 1.03983180862549,
+          "2021": 1.03983180862549,
+          "2022": 1.03983180862549,
+          "2023": 1.03983180862549
+        },
+        "ZM": {
+          "2020": 60.283337144702,
+          "2021": 60.0301501230848,
+          "2022": 59.7769691548178,
+          "2023": 59.523784150984
+        },
+        "ZW": {
+          "2020": 45.0939123691353,
+          "2021": 44.9748222825385,
+          "2022": 44.8557321959416,
+          "2023": 44.7366421093447
+        }
+      }
+    },
+    "freshwater": {
+      "indicator": "ER.H2O.INTR.PC",
+      "status": "ok",
+      "fetchedAt": "2026-09-21T09:33:18.787Z",
+      "providerUpdatedAt": "2026-07-13",
+      "sourceOrganization": "AQUASTAT - FAO's Global Information System on Water and Agriculture, Food and Agriculture Organization of the United Nations (FAO), uri: https://data.apps.fao.org/aquastat/, publisher: Food and Agriculture Organization of the United Nations (FAO), date accessed: 20240529",
+      "sourceNote": "Renewable internal freshwater resources flows refer to internal renewable resources (internal river flows and groundwater from rainfall) in the country. Renewable internal freshwater resources per capita are calculated using the World Bank's population estimates.",
+      "apiUrl": "https://api.worldbank.org/v2/country/all/indicator/ER.H2O.INTR.PC?format=json&source=2&date=2020:2025&per_page=20000",
+      "countries": {
+        "AF": {
+          "2020": 1206.83983064927,
+          "2021": 1178.73785900005,
+          "2022": 1161.93557223737
+        },
+        "AL": {
+          "2020": 10638.8027589698,
+          "2021": 10804.2455463615,
+          "2022": 10972.2650507661
+        },
+        "DZ": {
+          "2020": 255.369346564404,
+          "2021": 251.267289035955,
+          "2022": 247.309712525493
+        },
+        "AO": {
+          "2020": 4424.36447292725,
+          "2021": 4285.82651976205,
+          "2022": 4153.21676881475
+        },
+        "AR": {
+          "2020": 6461.32559183917,
+          "2021": 6444.16907637027,
+          "2022": 6430.59851430271
+        },
+        "AU": {
+          "2020": 19181.8489181437,
+          "2021": 19154.841666546,
+          "2022": 18909.4613835938
+        },
+        "AT": {
+          "2020": 6168.08779409443,
+          "2021": 6141.27363538946,
+          "2022": 6082.82529760776
+        },
+        "AZ": {
+          "2020": 804.012950999002,
+          "2021": 800.473477842717,
+          "2022": 800.157290315405
+        },
+        "BD": {
+          "2020": 631.39655826578,
+          "2021": 626.271726752946,
+          "2022": 619.889977558035
+        },
+        "BE": {
+          "2020": 1039.9871596252,
+          "2021": 1035.71534917201,
+          "2022": 1027.3787885663
+        },
+        "BO": {
+          "2020": 25684.861224314,
+          "2021": 25424.3819403955,
+          "2022": 25130.0927354243
+        },
+        "BR": {
+          "2020": 27130.1502751532,
+          "2021": 27014.9943096715,
+          "2022": 26917.8664854327
+        },
+        "BG": {
+          "2020": 3205.76622697802,
+          "2021": 3227.14440287917,
+          "2022": 3248.21112506123
+        },
+        "KH": {
+          "2020": 7210.55797880526,
+          "2021": 7104.85642858426,
+          "2022": 7010.92518401063
+        },
+        "CM": {
+          "2020": 10415.6500597965,
+          "2021": 10142.7572650936,
+          "2022": 9879.57378577776
+        },
+        "CA": {
+          "2020": 74943.5201965424,
+          "2021": 74529.5537661954,
+          "2022": 73170.4837354595
+        },
+        "CL": {
+          "2020": 45687.738298983,
+          "2021": 45486.4724258948,
+          "2022": 45261.513352709
+        },
+        "CN": {
+          "2020": 1993.40939692439,
+          "2021": 1991.63102891614,
+          "2022": 1991.89193973835
+        },
+        "CO": {
+          "2020": 42366.1885660392,
+          "2021": 41904.2109590432,
+          "2022": 41458.9338919227
+        },
+        "CD": {
+          "2020": 9375.97685958906,
+          "2021": 9077.25360067418,
+          "2022": 8789.32274635319
+        },
+        "CR": {
+          "2020": 22445.9311287324,
+          "2021": 22332.0687717046,
+          "2022": 22236.3686632499
+        },
+        "HR": {
+          "2020": 9631.58300815031,
+          "2021": 9719.04734774416,
+          "2022": 9777.88129133392
+        },
+        "CZ": {
+          "2020": 1229.2180359844,
+          "2021": 1251.69287892408,
+          "2022": 1232.18277758923
+        },
+        "DK": {
+          "2020": 1028.91173377801,
+          "2021": 1024.46193125075,
+          "2022": 1016.42595159068
+        },
+        "EC": {
+          "2020": 25213.6305205754,
+          "2021": 25019.151753484,
+          "2022": 24820.6102178441
+        },
+        "EG": {
+          "2020": 9.14786502917931,
+          "2021": 9.01249968816751,
+          "2022": 8.8795554894522
+        },
+        "ET": {
+          "2020": 1025.91985677217,
+          "2021": 998.865321744181,
+          "2022": 973.008683296975
+        },
+        "FI": {
+          "2020": 19350.6045617151,
+          "2021": 19310.5345101811,
+          "2022": 19258.0919082537
+        },
+        "FR": {
+          "2020": 2958.5313022227,
+          "2021": 2947.99105538242,
+          "2022": 2933.21980990477
+        },
+        "GA": {
+          "2020": 70612.3772302639,
+          "2021": 69002.601061462,
+          "2022": 67468.9714725556
+        },
+        "DE": {
+          "2020": 1286.66281044603,
+          "2021": 1286.11831918327,
+          "2022": 1286.40073765825
+        },
+        "GH": {
+          "2020": 950.206393923145,
+          "2021": 931.77256815432,
+          "2022": 914.050531368042
+        },
+        "GR": {
+          "2020": 5421.2705794469,
+          "2021": 5487.16051742032,
+          "2022": 5556.72385142278
+        },
+        "GT": {
+          "2020": 6291.29200496044,
+          "2021": 6205.02140789208,
+          "2022": 6118.37475123792
+        },
+        "HT": {
+          "2020": 1156.81037310359,
+          "2021": 1143.51414636102,
+          "2022": 1130.68893353962
+        },
+        "HN": {
+          "2020": 8958.8167168002,
+          "2021": 8810.60094304334,
+          "2022": 8664.09680852365
+        },
+        "HU": {
+          "2020": 620.448814058626,
+          "2021": 622.992665715011,
+          "2022": 624.669835963783
+        },
+        "IN": {
+          "2020": 1030.92952923284,
+          "2021": 1022.48339443127,
+          "2022": 1014.43556399726
+        },
+        "ID": {
+          "2020": 7345.67248629119,
+          "2021": 7294.09669607699,
+          "2022": 7239.88154109194
+        },
+        "IR": {
+          "2020": 1464.83078645237,
+          "2021": 1452.7080558303,
+          "2022": 1435.365342256
+        },
+        "IQ": {
+          "2020": 835.774868368426,
+          "2021": 817.251226114817,
+          "2022": 798.71930804768
+        },
+        "IE": {
+          "2020": 9722.71028684575,
+          "2021": 9587.94345461429,
+          "2022": 9399.87369639099
+        },
+        "IL": {
+          "2020": 81.3881563954813,
+          "2021": 80.0307318010116
+        },
+        "IT": {
+          "2020": 3070.38236657704,
+          "2021": 3086.25414029448,
+          "2022": 3092.50397878173
+        },
+        "JP": {
+          "2020": 3405.64386469298,
+          "2021": 3421.34428547544,
+          "2022": 3436.56373867893
+        },
+        "KZ": {
+          "2020": 3303.02913179302,
+          "2021": 3259.28352590963,
+          "2022": 3211.94189514754
+        },
+        "KE": {
+          "2020": 396.420085330285,
+          "2021": 388.95761726142,
+          "2022": 381.549511643352
+        },
+        "KP": {
+          "2020": 2563.48332542097,
+          "2021": 2554.08036448175,
+          "2022": 2544.73753026386
+        },
+        "KR": {
+          "2020": 1251.05527042577,
+          "2021": 1252.66713307994,
+          "2022": 1255.01791869493
+        },
+        "KW": {
+          "2020": 0,
+          "2021": 0,
+          "2022": 0
+        },
+        "LA": {
+          "2020": 25916.986965144,
+          "2021": 25546.0947346869,
+          "2022": 25188.4936738384
+        },
+        "LB": {
+          "2020": 841.751136977812,
+          "2021": 839.43644434309,
+          "2022": 835.583460948398
+        },
+        "LY": {
+          "2020": 99.3556220165813,
+          "2021": 98.1055124786708,
+          "2022": 96.9018405120293
+        },
+        "MY": {
+          "2020": 17114.4161868384,
+          "2021": 16918.3025960348,
+          "2022": 16716.8686722509
+        },
+        "MX": {
+          "2020": 3225.57611510256,
+          "2021": 3204.12012558145,
+          "2022": 3180.07999137444
+        },
+        "MA": {
+          "2020": 792.69175377529,
+          "2021": 784.750044392498,
+          "2022": 776.874555440233
+        },
+        "MZ": {
+          "2020": 3258.21909317688,
+          "2021": 3163.25951343203,
+          "2022": 3071.3879360169
+        },
+        "MM": {
+          "2020": 18914.8582775762,
+          "2021": 18783.56311605,
+          "2022": 18654.3887007235
+        },
+        "NA": {
+          "2020": 2257.43395723042,
+          "2021": 2191.74338954538,
+          "2022": 2131.73720663524
+        },
+        "NP": {
+          "2020": 6842.36941517488,
+          "2021": 6724.34038190318,
+          "2022": 6669.93410428169
+        },
+        "NL": {
+          "2020": 630.679700713815,
+          "2021": 627.386778930116,
+          "2022": 621.434449229992
+        },
+        "NZ": {
+          "2020": 64466.5247220251,
+          "2021": 64311.8436061834,
+          "2022": 64348.5447783222
+        },
+        "NI": {
+          "2020": 23793.3963691043,
+          "2021": 23508.8169727007,
+          "2022": 23208.7401907749
+        },
+        "NG": {
+          "2020": 1032.72871023806,
+          "2021": 1011.30610018101,
+          "2022": 990.36124865033
+        },
+        "NO": {
+          "2020": 71010.6469497488,
+          "2021": 70631.9152712857,
+          "2022": 70000.2034037324
+        },
+        "PK": {
+          "2020": 234.040814318035,
+          "2021": 229.666381478089,
+          "2022": 225.68670277788
+        },
+        "PE": {
+          "2020": 49971.7116261334,
+          "2021": 49493.480523305,
+          "2022": 49021.0165435326
+        },
+        "PH": {
+          "2020": 4273.68485066335,
+          "2021": 4235.15452345891,
+          "2022": 4203.06920924684
+        },
+        "PL": {
+          "2020": 1428.733341529,
+          "2021": 1449.37102300095,
+          "2022": 1455.66143531096
+        },
+        "PT": {
+          "2020": 3690.36623097361,
+          "2021": 3667.30551772172,
+          "2022": 3641.8239327635
+        },
+        "QA": {
+          "2020": 20.041887544969,
+          "2021": 22.3560926340667,
+          "2022": 21.0737607970096
+        },
+        "RO": {
+          "2020": 2199.8157303954,
+          "2021": 2216.2885283431,
+          "2022": 2224.84686722347
+        },
+        "RU": {
+          "2020": 29687.738691278,
+          "2021": 29789.958272089,
+          "2022": 29895.2557456279
+        },
+        "SA": {
+          "2020": 76.0636792445355,
+          "2021": 77.9616080010439,
+          "2022": 74.5915552911147
+        },
+        "SN": {
+          "2020": 1536.70042662497,
+          "2021": 1498.18240858605,
+          "2022": 1461.66503022502
+        },
+        "SG": {
+          "2020": 105.525917429135,
+          "2021": 110.019755880831,
+          "2022": 106.439180120283
+        },
+        "SK": {
+          "2020": 2308.18818768208,
+          "2021": 2313.09503681401,
+          "2022": 2319.6935353455
+        },
+        "SI": {
+          "2020": 8880.24699167959,
+          "2021": 8856.4043377881,
+          "2022": 8839.64402796112
+        },
+        "SO": {
+          "2020": 360.334585075626,
+          "2021": 347.394492095067,
+          "2022": 337.042732018953
+        },
+        "ZA": {
+          "2020": 739.733135657266,
+          "2021": 728.424453839783,
+          "2022": 718.197209579404
+        },
+        "ES": {
+          "2020": 2348.00152974833,
+          "2021": 2343.82471007131,
+          "2022": 2327.03642577919
+        },
+        "SD": {
+          "2020": 85.4897572477735,
+          "2021": 83.2173076022089,
+          "2022": 80.9989667366808
+        },
+        "SE": {
+          "2020": 16516.2464811219,
+          "2021": 16417.3485866823,
+          "2022": 16305.9942837478
+        },
+        "CH": {
+          "2020": 4676.91814710227,
+          "2021": 4641.25297287188,
+          "2022": 4602.89335141678
+        },
+        "TH": {
+          "2020": 3133.79884760623,
+          "2021": 3130.04811053059,
+          "2022": 3129.69917514423
+        },
+        "TN": {
+          "2020": 350.340740819924,
+          "2021": 348.172596003095,
+          "2022": 346.141132837828
+        },
+        "TR": {
+          "2020": 2722.32261369834,
+          "2021": 2697.6498526073,
+          "2022": 2671.21949159915
+        },
+        "TM": {
+          "2020": 202.160833115585,
+          "2021": 198.109345924722,
+          "2022": 194.323996607006
+        },
+        "UG": {
+          "2020": 877.249176915336,
+          "2021": 849.470921194583,
+          "2022": 824.302657389021
+        },
+        "UA": {
+          "2020": 1233.21357956602,
+          "2021": 1243.83051037233,
+          "2022": 1342.30588076631
+        },
+        "AE": {
+          "2020": 15.9556848935192,
+          "2021": 15.6655476591912,
+          "2022": 14.8883714573244
+        },
+        "GB": {
+          "2020": 2172.61012885826,
+          "2021": 2164.88996386873,
+          "2022": 2143.82873026199
+        },
+        "US": {
+          "2020": 8498.75177523785,
+          "2021": 8485.39172365244,
+          "2022": 8437.21911365822
+        },
+        "UY": {
+          "2020": 27125.8805613939,
+          "2021": 27144.0326552723,
+          "2022": 27190.3171800633
+        },
+        "UZ": {
+          "2020": 486.506848670645,
+          "2021": 477.168118768488,
+          "2022": 467.672831084959
+        },
+        "VE": {
+          "2020": 28301.1468433305,
+          "2021": 28507.8603430732,
+          "2022": 28532.9286123494
+        },
+        "VN": {
+          "2020": 3664.5897701175,
+          "2021": 3632.88668294441,
+          "2022": 3605.71466951135
+        },
+        "YE": {
+          "2020": 58.1156209171182,
+          "2021": 56.5424608302103,
+          "2022": 54.9409207198328
+        },
+        "ZM": {
+          "2020": 4207.89851933915,
+          "2021": 4091.08385002821,
+          "2022": 3979.56863659284
+        },
+        "ZW": {
+          "2020": 789.598018611328,
+          "2021": 776.086410195218,
+          "2022": 762.957077254569
+        }
+      }
+    },
+    "resourceRents": {
+      "indicator": "NY.GDP.TOTL.RT.ZS",
+      "status": "ok",
+      "fetchedAt": "2026-09-21T09:33:20.335Z",
+      "providerUpdatedAt": "2026-07-13",
+      "sourceOrganization": "The Changing Wealth of Nations, World Bank (WB), uri: https://www.worldbank.org/en/publication/changing-wealth-of-nations/data, note: World Bank staff estimates based on sources and methods described in the World Bank's The Changing Wealth of Nations., publisher: World Bank (WB);\nStaff estimates, World Bank (WB), note: World Bank staff estimates based on sources and methods described in the World Bank's The Changing Wealth of Nations.",
+      "sourceNote": "Total natural resources rents are the sum of oil rents, natural gas rents, coal rents (hard and soft), mineral rents, and forest rents.",
+      "apiUrl": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.TOTL.RT.ZS?format=json&source=2&date=2020:2025&per_page=20000",
+      "countries": {
+        "AF": {
+          "2020": 0.305978171646739,
+          "2021": 0.428525449642917
+        },
+        "AL": {
+          "2020": 0.775369617467959,
+          "2021": 1.44260146706838
+        },
+        "DZ": {
+          "2020": 14.0343770936226,
+          "2021": 22.5902703479201
+        },
+        "AO": {
+          "2020": 20.2476653863539,
+          "2021": 29.9674348417559
+        },
+        "AR": {
+          "2020": 1.42962432529499,
+          "2021": 2.65308888983975
+        },
+        "AU": {
+          "2020": 6.09315865556076,
+          "2021": 13.3578752832739
+        },
+        "AT": {
+          "2020": 0.07085049948111,
+          "2021": 0.117855774382781
+        },
+        "AZ": {
+          "2020": 13.0027347945894,
+          "2021": 29.9383945565987
+        },
+        "BD": {
+          "2020": 0.560867699425496,
+          "2021": 0.610069177584654
+        },
+        "BE": {
+          "2020": 0.0284876381171316,
+          "2021": 0.0448914290094104
+        },
+        "BO": {
+          "2020": 2.7203797976672,
+          "2021": 9.46769419569564
+        },
+        "BR": {
+          "2020": 3.22987656043381,
+          "2021": 7.94111199933246
+        },
+        "BG": {
+          "2020": 0.618935967577506,
+          "2021": 0.917744335906696
+        },
+        "KH": {
+          "2020": 0.939357675669705,
+          "2021": 0.835283715830679
+        },
+        "CM": {
+          "2020": 4.34202268521826,
+          "2021": 5.52598268395679
+        },
+        "CA": {
+          "2020": 1.24181874632923,
+          "2021": 4.94905581435186
+        },
+        "CL": {
+          "2020": 5.48716936741024,
+          "2021": 16.9044168802743
+        },
+        "CN": {
+          "2020": 0.863774740928771,
+          "2021": 1.70756488252672
+        },
+        "CO": {
+          "2020": 2.55119417609951,
+          "2021": 5.32396445388134
+        },
+        "CD": {
+          "2020": 15.9281973313702,
+          "2021": 38.8272665239082
+        },
+        "CR": {
+          "2020": 0.904748239780319,
+          "2021": 0.763407374189705
+        },
+        "HR": {
+          "2020": 0.439094632914067,
+          "2021": 0.681198197003712
+        },
+        "CZ": {
+          "2020": 0.416571327081177,
+          "2021": 0.394999591152656
+        },
+        "DK": {
+          "2020": 0.162332732247836,
+          "2021": 0.33866438619955
+        },
+        "EC": {
+          "2020": 2.92430668533391,
+          "2021": 6.69943720189179
+        },
+        "EG": {
+          "2020": 3.25774327235436,
+          "2021": 5.1391200748227
+        },
+        "ET": {
+          "2020": 5.49770060254135,
+          "2021": 5.86707347361267
+        },
+        "FI": {
+          "2020": 0.289254242774969,
+          "2021": 0.448312840515242
+        },
+        "FR": {
+          "2020": 0.0266318650223516,
+          "2021": 0.0325366370984223
+        },
+        "GA": {
+          "2020": 13.4988249621846,
+          "2021": 18.4933440925176
+        },
+        "DE": {
+          "2020": 0.0767453976974352,
+          "2021": 0.0770848993139744
+        },
+        "GH": {
+          "2020": 8.48657958474163,
+          "2021": 13.3474845007777
+        },
+        "GR": {
+          "2020": 0.0388459707205932,
+          "2021": 0.0875219452812631
+        },
+        "GT": {
+          "2020": 1.35250209053897,
+          "2021": 1.92928512463796
+        },
+        "HT": {
+          "2020": 0.577844130610775,
+          "2021": 0.327641965983974
+        },
+        "HN": {
+          "2020": 1.23326098347167,
+          "2021": 1.22455313744521
+        },
+        "HU": {
+          "2020": 0.204655214271402,
+          "2021": 0.402362635857113
+        },
+        "IN": {
+          "2020": 1.78466920695081,
+          "2021": 3.15934537555664
+        },
+        "ID": {
+          "2020": 2.43866732275102,
+          "2021": 5.15704008451705
+        },
+        "IR": {
+          "2020": 23.2391718001181,
+          "2021": 30.4480600937139
+        },
+        "IQ": {
+          "2020": 27.4170131896725,
+          "2021": 43.4458576871878
+        },
+        "IE": {
+          "2020": 0.0367626864571587,
+          "2021": 0.10098823103923
+        },
+        "IL": {
+          "2020": 0.272440677318125,
+          "2021": 0.441424749575518
+        },
+        "IT": {
+          "2020": 0.0559705463881882,
+          "2021": 0.112009125283042
+        },
+        "JP": {
+          "2020": 0.0969972012044505,
+          "2021": 0.0473044627668744
+        },
+        "KZ": {
+          "2020": 12.8406951964892,
+          "2021": 26.8423173327291
+        },
+        "KE": {
+          "2020": 1.26881196888613,
+          "2021": 1.22792857770901
+        },
+        "KR": {
+          "2020": 0.113270922936166,
+          "2021": 0.049812574781783
+        },
+        "KW": {
+          "2020": 29.2848672951013
+        },
+        "LA": {
+          "2020": 2.81746694955522,
+          "2021": 5.38276112647354
+        },
+        "LB": {
+          "2020": 0.00223718784227487,
+          "2021": 0.00276403839242888
+        },
+        "LY": {
+          "2020": 11.4789831280341,
+          "2021": 61.0347089411103
+        },
+        "MY": {
+          "2020": 4.54156531962687,
+          "2021": 6.92196634868479
+        },
+        "MX": {
+          "2020": 1.55983378352436,
+          "2021": 3.64307338835023
+        },
+        "MA": {
+          "2020": 0.296128236742874,
+          "2021": 0.391702933228196
+        },
+        "MZ": {
+          "2020": 11.8639361284365,
+          "2021": 14.9074768559672
+        },
+        "MM": {
+          "2020": 4.66301426840348,
+          "2021": 8.6785038087485
+        },
+        "NA": {
+          "2020": 1.93029383948291,
+          "2021": 4.03058059383138
+        },
+        "NP": {
+          "2020": 0.522630900968538,
+          "2021": 0.498936909947826
+        },
+        "NL": {
+          "2020": 0.0837440351956371,
+          "2021": 0.340536679351668
+        },
+        "NZ": {
+          "2020": 1.27246721100633,
+          "2021": 1.49411356490814
+        },
+        "NI": {
+          "2020": 1.65812864181366,
+          "2021": 3.84080893833151
+        },
+        "NG": {
+          "2020": 5.07484002483035,
+          "2021": 8.55295423830806
+        },
+        "NO": {
+          "2020": 4.18128689630728,
+          "2021": 10.0482763904291
+        },
+        "PK": {
+          "2020": 1.12387026995965,
+          "2021": 1.43561633294011
+        },
+        "PE": {
+          "2020": 3.97961448773443,
+          "2021": 12.7247082349187
+        },
+        "PH": {
+          "2020": 0.764112790267085,
+          "2021": 1.97263339590791
+        },
+        "PL": {
+          "2020": 0.535468929487005,
+          "2021": 1.03024380772929
+        },
+        "PT": {
+          "2020": 0.200282467054982,
+          "2021": 0.291415692065373
+        },
+        "QA": {
+          "2020": 20.2259593186526,
+          "2021": 27.2897873992471
+        },
+        "RO": {
+          "2020": 0.508984051380759,
+          "2021": 1.144376067244
+        },
+        "RU": {
+          "2020": 7.58812544004463,
+          "2021": 18.5109394363314
+        },
+        "SA": {
+          "2020": 17.3184270283149,
+          "2021": 25.5652418188141
+        },
+        "SN": {
+          "2020": 2.86963190075436,
+          "2021": 4.40159712005452
+        },
+        "SG": {
+          "2020": 0.00024207226855629,
+          "2021": 0.000180989109199595
+        },
+        "SK": {
+          "2020": 0.219233025168727,
+          "2021": 0.226150293544136
+        },
+        "SI": {
+          "2020": 0.214171558575469,
+          "2021": 0.189323915465621
+        },
+        "SO": {
+          "2020": 11.455284804417,
+          "2021": 11.2356934915275
+        },
+        "ZA": {
+          "2020": 4.01777511009808,
+          "2021": 7.32857859192335
+        },
+        "ES": {
+          "2020": 0.0381216045324834,
+          "2021": 0.115181021827658
+        },
+        "SD": {
+          "2020": 9.29265238055366,
+          "2021": 12.7502116848016
+        },
+        "SE": {
+          "2020": 0.370599691340783,
+          "2021": 1.20827979934218
+        },
+        "CH": {
+          "2020": 0.00802785319765779,
+          "2021": 0.00910740311945595
+        },
+        "TH": {
+          "2020": 1.1095683956846,
+          "2021": 1.8170265297611
+        },
+        "TN": {
+          "2020": 1.46717230583582,
+          "2021": 2.24923087429424
+        },
+        "TR": {
+          "2020": 0.397202384078982,
+          "2021": 0.827048726504594
+        },
+        "UG": {
+          "2020": 7.56349041713714,
+          "2021": 7.47552032336567
+        },
+        "UA": {
+          "2020": 1.09312749593482,
+          "2021": 7.5129023639251
+        },
+        "AE": {
+          "2020": 11.9722335248016,
+          "2021": 17.634095847399
+        },
+        "GB": {
+          "2020": 0.28397504842807,
+          "2021": 0.588544260440276
+        },
+        "US": {
+          "2020": 0.329505971924439,
+          "2021": 1.27994423022721
+        },
+        "UY": {
+          "2020": 2.29343009292959,
+          "2021": 1.92773520463627
+        },
+        "UZ": {
+          "2020": 9.08357795040879,
+          "2021": 20.46516083278
+        },
+        "VN": {
+          "2020": 1.8108819584417,
+          "2021": 2.54701708790768
+        },
+        "ZM": {
+          "2020": 16.2222307618142,
+          "2021": 35.2641479964325
+        },
+        "ZW": {
+          "2020": 4.74666809490234,
+          "2021": 6.39845161112644
+        }
+      }
+    },
+    "fuelExports": {
+      "indicator": "TX.VAL.FUEL.ZS.UN",
+      "status": "ok",
+      "fetchedAt": "2026-09-21T09:33:21.866Z",
+      "providerUpdatedAt": "2026-07-13",
+      "sourceOrganization": "Staff estimates, World Bank (WB);\nComtrade database, United Nations (UN), publisher: UN Statistics Division;\nWorld Integrated Trade Solution system (WITS), World Bank (WB)",
+      "sourceNote": "Fuels comprise the commodities in SITC (Rev. 3) section 3 (mineral fuels, lubricants and related materials). This indicator is expressed as a percentage of merchandise exports which is comprised of goods whose economic ownership is changed between a resident and a non-resident and that are not included in the following specific categories: goods under merchanting, non-monetary gold, and parts of travel, construction, and government goods and services n.i.e.",
+      "apiUrl": "https://api.worldbank.org/v2/country/all/indicator/TX.VAL.FUEL.ZS.UN?format=json&source=2&date=2020:2025&per_page=20000",
+      "countries": {
+        "AL": {
+          "2020": 0.905736426979895,
+          "2021": 0.0239145120005926,
+          "2022": 0.408202316704775,
+          "2023": 6.34538423879421,
+          "2024": 3.25771222753826
+        },
+        "AO": {
+          "2020": 93.0512900749378,
+          "2021": 94.1637464395459,
+          "2022": 94.9233435630702,
+          "2023": 94.1710862801417,
+          "2024": 94.1347736309318
+        },
+        "AR": {
+          "2020": 2.67898842404181,
+          "2021": 2.64279316542856,
+          "2022": 6.17703046770052,
+          "2023": 8.81364245499018,
+          "2024": 8.77014211533671
+        },
+        "AU": {
+          "2020": 21.3125228177134,
+          "2021": 27.706071696529,
+          "2022": 42.6954661318656,
+          "2023": 34.9834475509909,
+          "2024": 33.1901228403116,
+          "2025": 26.8943988141127
+        },
+        "AT": {
+          "2020": 1.94118859387382,
+          "2021": 2.47004433673372,
+          "2022": 3.8671447462232,
+          "2023": 3.56336364584427,
+          "2024": 2.77111216210029
+        },
+        "AZ": {
+          "2020": 87.2469415054118,
+          "2021": 88.4074490811342,
+          "2022": 92.537559408706,
+          "2023": 91.499871108591,
+          "2024": 87.9785269977749,
+          "2025": 85.9240304942722
+        },
+        "BE": {
+          "2020": 5.01820736696729,
+          "2021": 8.81647347599391,
+          "2022": 20.0905155012378,
+          "2023": 13.169192837343,
+          "2024": 11.6008457411399
+        },
+        "BO": {
+          "2020": 29.4701072049889,
+          "2021": 21.4767656503189,
+          "2022": 22.7288338190063,
+          "2023": 19.7390284484517,
+          "2024": 18.9433899156143
+        },
+        "BR": {
+          "2020": 11.8904796185398,
+          "2021": 13.6578322774084,
+          "2022": 16.9977876592036,
+          "2023": 16.2396336722963,
+          "2024": 16.958206628778,
+          "2025": 16.1168674307759
+        },
+        "BG": {
+          "2020": 4.63757162036019,
+          "2021": 6.00494091479774,
+          "2022": 12.1946716545187,
+          "2023": 7.89104918636913,
+          "2024": 7.7644781218312
+        },
+        "KH": {
+          "2020": 0.00000205458542426352,
+          "2021": 0.000112840266428058,
+          "2022": 0.00000339233917665731,
+          "2023": 0.00000368599221364749,
+          "2024": 0.00124288090530598
+        },
+        "CM": {
+          "2020": 45.6083100375046,
+          "2021": 51.8663592754246,
+          "2022": 62.1174175971395,
+          "2023": 54.0712041809673
+        },
+        "CA": {
+          "2020": 17.7117312023626,
+          "2021": 23.8688657837555,
+          "2022": 30.1749905885513,
+          "2023": 25.1997448504993,
+          "2024": 27.6974112165315
+        },
+        "CL": {
+          "2020": 0.680307468385457,
+          "2021": 0.815333310737599,
+          "2022": 1.69325787359142,
+          "2023": 1.80543071190217,
+          "2024": 1.32012360616343,
+          "2025": 0.891246166699904
+        },
+        "CN": {
+          "2020": 1.2143685449396,
+          "2021": 1.29170537075172,
+          "2022": 1.79009011301844,
+          "2023": 1.8075643209073,
+          "2024": 1.49786393169736
+        },
+        "CO": {
+          "2020": 41.5564453985501,
+          "2021": 46.303559002575,
+          "2022": 54.5165586087032,
+          "2023": 50.7229439143258,
+          "2024": 45.3036922636334
+        },
+        "CD": {
+          "2020": 0.00155296296283328,
+          "2021": 0.00244527725898267,
+          "2022": 0.0110464409915681,
+          "2023": 0.000486337353062221
+        },
+        "CR": {
+          "2020": 0.01611262540893,
+          "2021": 0.021567003753793,
+          "2022": 0.0216194838414378,
+          "2023": 0.0548257166859753,
+          "2024": 0.018380373927685
+        },
+        "HR": {
+          "2020": 9.04277575351903,
+          "2021": 11.8747173830894,
+          "2022": 19.3892953687712,
+          "2023": 11.9933049772166,
+          "2024": 13.0917820766944
+        },
+        "CZ": {
+          "2020": 1.2001749503011,
+          "2021": 2.22174838363033,
+          "2022": 3.53919514728163,
+          "2023": 1.91907988386955,
+          "2024": 1.65042225091075
+        },
+        "DK": {
+          "2020": 2.08131278754721,
+          "2021": 4.12965844002045,
+          "2022": 5.97125968264802,
+          "2023": 3.93398583708542,
+          "2024": 3.77818245342826,
+          "2025": 3.95080056852683
+        },
+        "EC": {
+          "2020": 26.0572897017572,
+          "2021": 32.2853645441255,
+          "2022": 35.4829696314727,
+          "2023": 28.8613429479255,
+          "2024": 27.4813880702454
+        },
+        "EG": {
+          "2020": 20.6229583667758,
+          "2021": 31.6971100561669,
+          "2022": 35.9532117277136,
+          "2023": 18.1531616111814,
+          "2024": 12.4540426829027
+        },
+        "ET": {
+          "2020": 0.00466762968720468,
+          "2021": 0.0000692693626282324,
+          "2022": 0.0081728528551792,
+          "2023": 0.0317976469871324
+        },
+        "FI": {
+          "2020": 7.01061120576107,
+          "2021": 6.9991011506182,
+          "2022": 10.4171336225174,
+          "2023": 9.50214792822571,
+          "2024": 7.5318060893789
+        },
+        "FR": {
+          "2020": 2.17631318472775,
+          "2021": 3.67766725739694,
+          "2022": 5.90288840625744,
+          "2023": 5.1259997747409,
+          "2024": 4.40931574185064
+        },
+        "GA": {
+          "2020": 52.9194386591688,
+          "2021": 52.3128650846528,
+          "2022": 67.2482428452105,
+          "2023": 53.9865618745688
+        },
+        "DE": {
+          "2020": 1.81843784726771,
+          "2021": 2.60156267352484,
+          "2022": 3.55065871383029,
+          "2023": 2.0446709964022,
+          "2024": 2.07454936630529
+        },
+        "GH": {
+          "2021": 26.6641837008799,
+          "2022": 31.0014653616144,
+          "2023": 24.5298166225955
+        },
+        "GR": {
+          "2020": 21.8705262171051,
+          "2021": 28.2003382348404,
+          "2022": 36.7819392981899,
+          "2023": 32.3610109003756,
+          "2024": 30.247817424431
+        },
+        "GT": {
+          "2020": 2.36062512977755,
+          "2021": 2.71077430779677,
+          "2022": 2.88982472719425,
+          "2023": 1.91720908388626,
+          "2024": 2.87685268224686
+        },
+        "HN": {
+          "2020": 0.009890520380133,
+          "2021": 0.013241011947448,
+          "2023": 0.0650199693590328,
+          "2024": 0.02883145069384
+        },
+        "HU": {
+          "2020": 2.1936775401752,
+          "2021": 3.1975322289865,
+          "2022": 4.26893640063781,
+          "2023": 3.01091871227433,
+          "2024": 3.35037243793325,
+          "2025": 4.13195933028604
+        },
+        "IN": {
+          "2020": 10.0306929080613,
+          "2021": 14.2846592727887,
+          "2022": 21.7524651912837,
+          "2023": 20.7059082080863,
+          "2024": 17.094437885147
+        },
+        "ID": {
+          "2020": 15.6268808662289,
+          "2021": 19.4540368706185,
+          "2022": 24.2968093578513,
+          "2023": 22.988404985231,
+          "2024": 20.8482942182543,
+          "2025": 16.0120291720516
+        },
+        "IR": {
+          "2020": 29.1637868954392,
+          "2021": 47.9119531286438,
+          "2022": 56.361512409332
+        },
+        "IE": {
+          "2020": 0.48076376071733,
+          "2021": 0.573629367116036,
+          "2022": 0.86266788917085,
+          "2023": 0.484641350208567,
+          "2024": 0.35300599772993
+        },
+        "IL": {
+          "2022": 5.31969619319333
+        },
+        "IT": {
+          "2020": 2.14179213063523,
+          "2021": 3.09783025955749,
+          "2022": 4.97853512208366,
+          "2023": 3.62874175899833,
+          "2024": 3.05293641850331
+        },
+        "JP": {
+          "2020": 1.18928797948461,
+          "2021": 1.35105888659274,
+          "2022": 2.4439279415333,
+          "2023": 1.77262134601493,
+          "2024": 1.39430977776367,
+          "2025": 1.18502310670015
+        },
+        "KZ": {
+          "2020": 65.3889791619589,
+          "2021": 65.6108725080086,
+          "2022": 68.0182146754446,
+          "2023": 58.9305033328289,
+          "2024": 56.7199106286709
+        },
+        "KE": {
+          "2020": 6.74832493327525,
+          "2021": 0.924149796237318,
+          "2022": 1.37369379382007,
+          "2023": 1.8648287478394,
+          "2024": 1.63087288958127
+        },
+        "KR": {
+          "2020": 4.96538608506398,
+          "2021": 6.20942713728516,
+          "2022": 9.47277423929597,
+          "2023": 8.55361920375165,
+          "2024": 7.70232630112563
+        },
+        "KW": {
+          "2020": 92.8791686402667,
+          "2021": 94.6305212160108,
+          "2022": 96.0382613795238,
+          "2023": 95.5164366055485,
+          "2024": 90.7321487415169
+        },
+        "LA": {
+          "2020": 16.8657167141044,
+          "2021": 27.4177584302158,
+          "2022": 24.9508670533214,
+          "2023": 1.82681289929622
+        },
+        "LB": {
+          "2020": 0.340577463595891,
+          "2021": 0.241436727400156,
+          "2022": 0.433020096745865,
+          "2023": 9.88237160097366,
+          "2024": 7.70940000965568
+        },
+        "MY": {
+          "2020": 11.3856806445869,
+          "2021": 12.447410329578,
+          "2022": 17.0810793062688,
+          "2023": 16.512163379367,
+          "2024": 14.4033158188559,
+          "2025": 11.1592255377572
+        },
+        "MX": {
+          "2020": 3.84267437174223,
+          "2021": 5.5701378045074,
+          "2022": 6.4977788316006,
+          "2023": 5.44687500653683,
+          "2024": 4.49492353677104,
+          "2025": 2.99248712882047
+        },
+        "MA": {
+          "2020": 0.515055497762877,
+          "2021": 0.690786590320233,
+          "2022": 1.00965161630831,
+          "2023": 1.21428847268287,
+          "2024": 0.759031246462188
+        },
+        "MZ": {
+          "2020": 36.8617331036982,
+          "2021": 41.1381955498654,
+          "2022": 50.7186898345651,
+          "2023": 57.6135156555006,
+          "2024": 58.9003236000415
+        },
+        "MM": {
+          "2020": 20.299108694666,
+          "2021": 21.220208753714,
+          "2022": 23.4942446170029,
+          "2023": 24.2241759769846,
+          "2024": 21.9570193842403
+        },
+        "NA": {
+          "2020": 1.14674893543043,
+          "2021": 1.45482887043634,
+          "2022": 3.60034377014636,
+          "2023": 1.6576098963801,
+          "2024": 1.28285602218848
+        },
+        "NP": {
+          "2021": 0.00000666375384580768,
+          "2022": 0.000422001355639369
+        },
+        "NL": {
+          "2020": 7.458285978711,
+          "2021": 9.01362412065194,
+          "2022": 13.6080383440618,
+          "2023": 14.5347760829432,
+          "2024": 12.6812336694305
+        },
+        "NZ": {
+          "2020": 1.09750251450979,
+          "2021": 1.18782807702254,
+          "2022": 1.6450179073457,
+          "2023": 1.37017086236698,
+          "2024": 1.11148609161885,
+          "2025": 0.920901173181989
+        },
+        "NI": {
+          "2020": 0.437239912588308,
+          "2021": 0.599657917570942,
+          "2022": 0.8168503728216,
+          "2023": 0.63621248699764,
+          "2024": 0.738619250103537
+        },
+        "NG": {
+          "2020": 88.7002181697857,
+          "2021": 89.147069602161,
+          "2022": 90.7270761068365,
+          "2023": 91.6092141524306,
+          "2024": 88.6153186443478
+        },
+        "NO": {
+          "2020": 49.3175349328281,
+          "2021": 68.9331407034111,
+          "2022": 79.2652360834588,
+          "2023": 68.3629762990575,
+          "2024": 65.5240372734242,
+          "2025": 62.3076651968246
+        },
+        "PK": {
+          "2020": 0.873349137853699,
+          "2021": 0.708780532335282,
+          "2022": 1.19408655456312,
+          "2023": 0.583319121620756,
+          "2024": 1.71807476906982
+        },
+        "PE": {
+          "2020": 3.77608731917897,
+          "2021": 6.99027941163955,
+          "2022": 10.6830217836129,
+          "2023": 6.83058695991324,
+          "2024": 5.71895551475461
+        },
+        "PH": {
+          "2020": 1.08970257001447,
+          "2021": 1.18141567992806,
+          "2022": 1.56831669342497,
+          "2023": 1.13912732345338,
+          "2024": 1.25811696364744
+        },
+        "PL": {
+          "2020": 1.58025447472635,
+          "2021": 2.21476888193242,
+          "2022": 3.73795572839486,
+          "2023": 3.05116286755385,
+          "2024": 2.58269731161847
+        },
+        "PT": {
+          "2020": 4.60416397341643,
+          "2021": 5.7682700665625,
+          "2022": 8.42233208891241,
+          "2023": 6.4728964004123,
+          "2024": 6.97069976539579,
+          "2025": 5.07554801427069
+        },
+        "QA": {
+          "2020": 81.8145904890777,
+          "2021": 84.4038969131069,
+          "2022": 87.2912521641352,
+          "2023": 86.5414333242433,
+          "2024": 83.7597865976017
+        },
+        "RO": {
+          "2020": 2.41690733716218,
+          "2021": 3.52321676540238,
+          "2022": 7.6342305168134,
+          "2023": 5.30806019443117,
+          "2024": 4.87639833165149
+        },
+        "RU": {
+          "2020": 42.0988979009334,
+          "2021": 43.1468587746174
+        },
+        "SA": {
+          "2020": 72.5938015741335,
+          "2021": 76.6076971781348,
+          "2022": 82.1937028956426,
+          "2023": 81.3099851483006,
+          "2024": 79.3976376511523
+        },
+        "SN": {
+          "2020": 15.9872308197167,
+          "2021": 15.5262597724139,
+          "2022": 18.2530882668501,
+          "2023": 21.4769186750925,
+          "2024": 32.7114577390774
+        },
+        "SG": {
+          "2020": 8.08880118903498,
+          "2021": 10.0411260925957,
+          "2022": 12.7477293277122,
+          "2023": 12.3816136808707,
+          "2024": 11.1356295723316
+        },
+        "SK": {
+          "2020": 2.40048974080195,
+          "2021": 3.20008877955479,
+          "2022": 5.17128070125546,
+          "2023": 3.49514675824369,
+          "2024": 3.9692718459897
+        },
+        "SI": {
+          "2020": 3.055900555541,
+          "2021": 4.10788382179874,
+          "2022": 7.89672737373254,
+          "2023": 5.56004798300167,
+          "2024": 4.65788147025927
+        },
+        "ZA": {
+          "2020": 8.10609432073402,
+          "2021": 8.68304384294431,
+          "2022": 14.3272920099043,
+          "2023": 10.7279305896972,
+          "2024": 9.60851603889865,
+          "2025": 8.21099773633968
+        },
+        "ES": {
+          "2020": 4.04918305116398,
+          "2021": 6.00550281136412,
+          "2022": 8.748152923734,
+          "2023": 6.80944454760639,
+          "2024": 5.79530570621524
+        },
+        "SE": {
+          "2020": 4.5414669608976,
+          "2021": 6.95473124929989,
+          "2022": 10.1622003847406,
+          "2023": 7.47686102725083,
+          "2024": 7.12163407305459
+        },
+        "CH": {
+          "2020": 0.610244776322465,
+          "2021": 1.12619429120116,
+          "2022": 2.46227430117859,
+          "2023": 1.46216131906984,
+          "2024": 1.20770479250597
+        },
+        "TH": {
+          "2020": 2.65541449875509,
+          "2021": 3.58403042035946,
+          "2022": 3.88472768383787,
+          "2023": 3.86700213725135,
+          "2024": 3.42247697644995
+        },
+        "TN": {
+          "2020": 5.66992261834971,
+          "2021": 6.55409542266409,
+          "2022": 8.02677004326783,
+          "2023": 6.20798342748048,
+          "2024": 6.23208030817829
+        },
+        "TR": {
+          "2020": 2.69239035084596,
+          "2021": 3.69000155336288,
+          "2022": 6.32564856668837,
+          "2023": 6.36477511937887,
+          "2024": 6.16442555598186
+        },
+        "UG": {
+          "2020": 2.37578872053309,
+          "2021": 3.44411222230529,
+          "2022": 4.24312411159032,
+          "2023": 2.96068890680383,
+          "2024": 2.32497095855221
+        },
+        "UA": {
+          "2020": 1.12836959729539,
+          "2021": 1.12823233886,
+          "2022": 2.35030271456421,
+          "2023": 1.08400725933861,
+          "2024": 0.482782438375426
+        },
+        "AE": {
+          "2020": 71.434331985329,
+          "2021": 70.3219846270872,
+          "2022": 73.1440771980313,
+          "2023": 68.202872587783
+        },
+        "GB": {
+          "2020": 7.06424366401815,
+          "2021": 8.32935578799489,
+          "2022": 12.3109041508633,
+          "2023": 8.96373321933615,
+          "2024": 8.57390412775903,
+          "2025": 7.10156229531189
+        },
+        "US": {
+          "2020": 12.7159907896534,
+          "2021": 15.9220948098952,
+          "2022": 21.4101656084375,
+          "2023": 18.6774872527635,
+          "2024": 18.3113039630256
+        },
+        "UY": {
+          "2020": 1.24084050774374,
+          "2021": 5.65375733833479,
+          "2022": 1.47390184229824,
+          "2023": 0.248858467560678,
+          "2024": 1.30632945581964
+        },
+        "UZ": {
+          "2020": 5.95874581011308,
+          "2021": 6.53139390408132,
+          "2022": 7.46412599396005,
+          "2023": 4.46396721405799,
+          "2024": 6.52845706509898
+        },
+        "VN": {
+          "2020": 0.94849894404578,
+          "2021": 0.979644882422729,
+          "2022": 1.16704384704007,
+          "2023": 0.952923330798285
+        },
+        "ZM": {
+          "2020": 1.73850401929445,
+          "2021": 1.67696240024655,
+          "2022": 2.81611636018103,
+          "2023": 4.09782634161287,
+          "2024": 2.72110717813148
+        },
+        "ZW": {
+          "2020": 1.10293713757941,
+          "2021": 1.56615109785809,
+          "2022": 2.8942495074987,
+          "2023": 2.83650249873133,
+          "2024": 2.9112150677223
+        }
+      }
+    },
+    "metalExports": {
+      "indicator": "TX.VAL.MMTL.ZS.UN",
+      "status": "ok",
+      "fetchedAt": "2026-09-21T09:33:23.537Z",
+      "providerUpdatedAt": "2026-07-13",
+      "sourceOrganization": "Comtrade database, United Nations (UN), publisher: UN Statistics Division;\nWorld Integrated Trade Solution system (WITS);\nStaff estimates, World Bank (WB)",
+      "sourceNote": "Ores and metals comprise the commodities in SITC (Rev. 3) sections 27 (crude fertilizer, minerals nes); 28 (metalliferous ores, scrap); and 68 (non-ferrous metals). Exports of services are services provided by residents to non-residents. This indicator is expressed as a percentage of merchandise exports which is comprised of goods whose economic ownership is changed between a resident and a non-resident and that are not included in the following specific categories: goods under merchanting, non-monetary gold, and parts of travel, construction, and government goods and services n.i.e.",
+      "apiUrl": "https://api.worldbank.org/v2/country/all/indicator/TX.VAL.MMTL.ZS.UN?format=json&source=2&date=2020:2025&per_page=20000",
+      "countries": {
+        "AL": {
+          "2020": 4.08685599913531,
+          "2021": 2.47454305915757,
+          "2022": 0.0613901739063739,
+          "2023": 5.34944752843742,
+          "2024": 5.64934031462141
+        },
+        "AO": {
+          "2020": 5.37285733742943,
+          "2021": 4.73446732916134,
+          "2022": 4.13015252901342,
+          "2023": 4.34074978568308,
+          "2024": 4.35688565012152
+        },
+        "AR": {
+          "2020": 0.217988929465899,
+          "2021": 0.0559330328460208,
+          "2022": 0.279738031699619,
+          "2023": 0.39379723312782,
+          "2024": 0.170904833823205
+        },
+        "AU": {
+          "2020": 40.6984142625159,
+          "2021": 42.8423223013758,
+          "2022": 30.1757700607275,
+          "2023": 35.3042339341114,
+          "2024": 34.1553248854625,
+          "2025": 34.6431987175618
+        },
+        "AT": {
+          "2020": 2.99075729896985,
+          "2021": 3.46976797539861,
+          "2022": 3.44223633456495,
+          "2023": 3.02826727077609,
+          "2024": 3.27026243038932
+        },
+        "AZ": {
+          "2020": 1.29170993599265,
+          "2021": 1.24163681141355,
+          "2022": 0.777041765952475,
+          "2023": 0.762659458805416,
+          "2024": 1.02707733667075,
+          "2025": 1.52277391038872
+        },
+        "BE": {
+          "2020": 4.36795342800232,
+          "2021": 4.92750514871567,
+          "2022": 3.9270101316318,
+          "2023": 3.67137717060197,
+          "2024": 3.51802851603446
+        },
+        "BO": {
+          "2020": 26.9900375271782,
+          "2021": 30.7299289920912,
+          "2022": 26.7709560207193,
+          "2023": 29.5215239053543,
+          "2024": 43.5898503549869
+        },
+        "BR": {
+          "2020": 16.15139770501,
+          "2021": 19.7712118224733,
+          "2022": 11.9487430335173,
+          "2023": 12.3830665434344,
+          "2024": 12.6428158614818,
+          "2025": 12.2050024227843
+        },
+        "BG": {
+          "2020": 14.7513336995357,
+          "2021": 15.2812134441165,
+          "2022": 13.122072543618,
+          "2023": 12.6457286634428,
+          "2024": 15.6388377530089
+        },
+        "KH": {
+          "2020": 0.558161545736656,
+          "2021": 1.17918260132275,
+          "2022": 1.11698274839515,
+          "2023": 2.39994779110805,
+          "2024": 2.32384862542691
+        },
+        "CM": {
+          "2020": 3.30322583764507,
+          "2021": 2.0203363785866,
+          "2022": 1.70198514355599,
+          "2023": 2.21406928262342
+        },
+        "CA": {
+          "2020": 7.70223671673035,
+          "2021": 8.29415109423537,
+          "2022": 7.20264166838275,
+          "2023": 6.86872537579518,
+          "2024": 7.21859335754214
+        },
+        "CL": {
+          "2020": 57.372617205842,
+          "2021": 62.2188844607438,
+          "2022": 49.8300184342932,
+          "2023": 52.0026997226168,
+          "2024": 56.1402892229553,
+          "2025": 57.1421752973795
+        },
+        "CN": {
+          "2020": 1.12206922684085,
+          "2021": 1.38279589662737,
+          "2022": 1.51241196259416,
+          "2023": 1.32245246342569,
+          "2024": 1.5142975856954
+        },
+        "CO": {
+          "2020": 1.30101834218228,
+          "2021": 1.65857830550253,
+          "2022": 1.40491616097376,
+          "2023": 1.77130475609424,
+          "2024": 1.83962796660093
+        },
+        "CD": {
+          "2020": 74.1476837170452,
+          "2021": 71.0236615792102,
+          "2022": 83.1096927962329,
+          "2023": 76.344497695925
+        },
+        "CR": {
+          "2020": 1.42269448012349,
+          "2021": 1.65528808128059,
+          "2022": 1.45143574332589,
+          "2023": 1.50937140629287,
+          "2024": 1.39829772346223
+        },
+        "HR": {
+          "2020": 4.38530028892353,
+          "2021": 4.9656928362241,
+          "2022": 4.48865562382228,
+          "2023": 4.01353681138671,
+          "2024": 4.33865937994052
+        },
+        "CZ": {
+          "2020": 1.21934907977933,
+          "2021": 1.61350866676839,
+          "2022": 1.56813504665432,
+          "2023": 1.35386813778064,
+          "2024": 1.40367567949443
+        },
+        "DK": {
+          "2020": 1.37226205427576,
+          "2021": 1.91206467745315,
+          "2022": 1.88025218853746,
+          "2023": 2.00423993416193,
+          "2024": 1.96131728577918,
+          "2025": 1.90947055917077
+        },
+        "EC": {
+          "2020": 4.12023735620389,
+          "2021": 6.61445465526514,
+          "2022": 6.60995491048726,
+          "2023": 6.99936072862236,
+          "2024": 6.88594032491159
+        },
+        "EG": {
+          "2020": 3.63017505658444,
+          "2021": 3.5475375524115,
+          "2022": 2.91694131479414,
+          "2023": 4.6694996946509,
+          "2024": 5.40785612895585
+        },
+        "ET": {
+          "2020": 0.324961749379858,
+          "2021": 0.34981780344132,
+          "2022": 0.670250624917404,
+          "2023": 0.720590411591821
+        },
+        "FI": {
+          "2020": 6.87189065381557,
+          "2021": 7.17679219447999,
+          "2022": 7.75162787848801,
+          "2023": 7.19073331390488,
+          "2024": 7.95818749984781
+        },
+        "FR": {
+          "2020": 2.05535644990595,
+          "2021": 2.62521550149252,
+          "2022": 2.53388659273505,
+          "2023": 2.2621472914111,
+          "2024": 2.39024182700127
+        },
+        "GA": {
+          "2020": 6.19989793138207,
+          "2021": 6.75461904672039,
+          "2022": 6.4339342258012,
+          "2023": 23.3145469906779
+        },
+        "DE": {
+          "2020": 2.83242984391125,
+          "2021": 3.37551358136732,
+          "2022": 3.20293652588426,
+          "2023": 2.72269311920232,
+          "2024": 2.72353839400857
+        },
+        "GH": {
+          "2021": 2.90277951595568,
+          "2022": 1.8752282216153,
+          "2023": 3.79789972324939
+        },
+        "GR": {
+          "2020": 8.68777585031482,
+          "2021": 9.10974624952373,
+          "2022": 8.26741158029574,
+          "2023": 7.74800044317647,
+          "2024": 8.40665835134244
+        },
+        "GT": {
+          "2020": 0.965056394414869,
+          "2021": 1.34790558731064,
+          "2022": 1.0314912584959,
+          "2023": 0.880937617051219,
+          "2024": 0.800281678243913
+        },
+        "HN": {
+          "2020": 3.16148759564147,
+          "2021": 2.25309701265772,
+          "2023": 3.40869496897492,
+          "2024": 3.18629943072344
+        },
+        "HU": {
+          "2020": 1.22862887551063,
+          "2021": 1.54208953732149,
+          "2022": 1.61848112861363,
+          "2023": 1.27806090595818,
+          "2024": 1.31939331705371,
+          "2025": 1.25428042781768
+        },
+        "IN": {
+          "2020": 4.703645380644,
+          "2021": 4.82679996577803,
+          "2022": 3.72613048820678,
+          "2023": 3.88575987351437,
+          "2024": 3.68720358535662
+        },
+        "ID": {
+          "2020": 5.57311674337461,
+          "2021": 6.81269893133157,
+          "2022": 8.59372096129526,
+          "2023": 8.66175888912423,
+          "2024": 10.2519087023766,
+          "2025": 9.15253296016074
+        },
+        "IR": {
+          "2020": 5.96771360144154,
+          "2021": 6.47182698562761,
+          "2022": 6.07369800540942
+        },
+        "IE": {
+          "2020": 0.613661867444033,
+          "2021": 0.850570043921372,
+          "2022": 0.737702824148593,
+          "2023": 0.585779533272327,
+          "2024": 0.609748885370901
+        },
+        "IL": {
+          "2020": 1.32536585966938,
+          "2021": 1.61863415154063,
+          "2022": 1.41284113227542,
+          "2023": 1.52564125373689,
+          "2024": 1.19930105964575
+        },
+        "IT": {
+          "2020": 2.36923313520368,
+          "2021": 2.89371816843881,
+          "2022": 2.84846667997646,
+          "2023": 2.3671450406078,
+          "2024": 2.40552881733977
+        },
+        "JP": {
+          "2020": 3.12739508129515,
+          "2021": 3.50428845966949,
+          "2022": 3.4405823594586,
+          "2023": 3.36894550677221,
+          "2024": 3.40853387907624,
+          "2025": 3.56324938693145
+        },
+        "KZ": {
+          "2020": 12.1957647364909,
+          "2021": 12.4082628140823,
+          "2022": 9.14600106668177,
+          "2023": 14.6008672804896,
+          "2024": 15.4598535578386
+        },
+        "KE": {
+          "2020": 5.13265627350615,
+          "2021": 6.38746779763161,
+          "2022": 6.78261238103048,
+          "2023": 5.32428005533122,
+          "2024": 5.12139249435883
+        },
+        "KR": {
+          "2020": 2.61255316161782,
+          "2021": 3.15233559798272,
+          "2022": 2.97096696912327,
+          "2023": 2.68899251710656,
+          "2024": 2.40115103484146
+        },
+        "KW": {
+          "2020": 0.189371199096136,
+          "2021": 0.162222705074137,
+          "2022": 0.0733627337730976,
+          "2023": 0.137319652411819,
+          "2024": 0.129047853313013
+        },
+        "LA": {
+          "2020": 15.7371132898682,
+          "2021": 12.0566454155105,
+          "2022": 16.1081894779321,
+          "2023": 20.1790222280288
+        },
+        "LB": {
+          "2020": 6.98125587350249,
+          "2021": 10.4101088610053,
+          "2022": 11.0482493293111,
+          "2023": 8.60379953605471,
+          "2024": 9.34050438527481
+        },
+        "MY": {
+          "2020": 3.50293974590154,
+          "2021": 4.71802600814694,
+          "2022": 3.94576691783134,
+          "2023": 3.79046184791075,
+          "2024": 3.6968299912749,
+          "2025": 3.78593904372909
+        },
+        "MX": {
+          "2020": 2.85135208518446,
+          "2021": 2.49514955203276,
+          "2022": 2.12395342069418,
+          "2023": 2.05900174904773,
+          "2024": 2.07437256506146,
+          "2025": 2.35532371656973
+        },
+        "MA": {
+          "2020": 5.49442002494985,
+          "2021": 5.89803620420549,
+          "2022": 5.85006591806819,
+          "2023": 4.40788917871175,
+          "2024": 3.15160489702946
+        },
+        "MZ": {
+          "2020": 34.9241235099286,
+          "2021": 34.7879108669746,
+          "2022": 30.4675661590987,
+          "2023": 23.2868932752681,
+          "2024": 23.2777710502032
+        },
+        "MM": {
+          "2020": 6.3905243432933,
+          "2021": 3.10175654811143,
+          "2022": 1.2515222317234,
+          "2023": 1.40135875616036,
+          "2024": 2.43179309201462
+        },
+        "NA": {
+          "2020": 31.1750030209145,
+          "2021": 27.4732735217223,
+          "2022": 26.518437687903,
+          "2023": 24.9383252013053,
+          "2024": 32.2873344750115
+        },
+        "NP": {
+          "2020": 0.895210140513274,
+          "2021": 0.96321770268593,
+          "2022": 1.44460468329415
+        },
+        "NL": {
+          "2020": 2.20823001994933,
+          "2021": 2.81345984335787,
+          "2022": 2.62242932433025,
+          "2023": 2.38352350050341,
+          "2024": 2.34432343327845
+        },
+        "NZ": {
+          "2020": 2.46221492728178,
+          "2021": 3.23397796677983,
+          "2022": 3.17983764822286,
+          "2023": 3.2657826564058,
+          "2024": 3.30880641293208,
+          "2025": 3.24759379421406
+        },
+        "NI": {
+          "2020": 0.766253218196019,
+          "2021": 1.1082286483178,
+          "2022": 0.862075378592764,
+          "2023": 0.934234123515587,
+          "2024": 1.12278358190894
+        },
+        "NG": {
+          "2020": 0.301988963774128,
+          "2021": 0.896061886697277,
+          "2022": 1.01390050979922,
+          "2023": 1.17584162239168,
+          "2024": 1.22423135300286
+        },
+        "NO": {
+          "2020": 8.19836589342756,
+          "2021": 5.60665182188866,
+          "2022": 4.01517083066805,
+          "2023": 5.18768066986379,
+          "2024": 5.22612607802498,
+          "2025": 5.40227874514336
+        },
+        "PK": {
+          "2020": 3.32696265002863,
+          "2021": 4.61896170905835,
+          "2022": 4.40534065808737,
+          "2023": 4.50449223225348,
+          "2024": 4.33562939812151
+        },
+        "PE": {
+          "2020": 43.5085907829651,
+          "2021": 47.8118088684,
+          "2022": 43.071188539675,
+          "2023": 51.3043308679882,
+          "2024": 47.7744538607891
+        },
+        "PH": {
+          "2020": 6.59574178209328,
+          "2021": 7.4874740704197,
+          "2022": 6.93456443095209,
+          "2023": 7.87761742498115,
+          "2024": 7.50901105484672
+        },
+        "PL": {
+          "2020": 3.22051878025648,
+          "2021": 3.97229976431864,
+          "2022": 3.45108388683856,
+          "2023": 3.04634974229626,
+          "2024": 3.20228542082086
+        },
+        "PT": {
+          "2020": 2.17126177491599,
+          "2021": 2.93086469176063,
+          "2022": 2.73426069633125,
+          "2023": 2.52971110792555,
+          "2024": 2.58903250022659,
+          "2025": 2.70852169351224
+        },
+        "QA": {
+          "2020": 2.59716473860935,
+          "2021": 2.79751145368207,
+          "2022": 2.46572186451205,
+          "2023": 2.33291761974842,
+          "2024": 2.49497468125356
+        },
+        "RO": {
+          "2020": 2.2989315798619,
+          "2021": 2.80466122236143,
+          "2022": 2.78929714304173,
+          "2023": 2.47796891956889,
+          "2024": 2.68710025626505
+        },
+        "RU": {
+          "2020": 8.63720072203089,
+          "2021": 7.40377266771173
+        },
+        "SA": {
+          "2020": 2.00497032043963,
+          "2021": 1.63492146185275,
+          "2022": 1.53347926710053,
+          "2023": 1.5019514801573,
+          "2024": 1.88115150595924
+        },
+        "SN": {
+          "2020": 6.7523481096606,
+          "2021": 7.26296018851439,
+          "2022": 8.67310693880965,
+          "2023": 7.91160881238856,
+          "2024": 7.85005360318967
+        },
+        "SG": {
+          "2020": 0.715717514808364,
+          "2021": 1.19554185193546,
+          "2022": 0.955098805547699,
+          "2023": 0.809638959840998,
+          "2024": 0.731093287901306
+        },
+        "SK": {
+          "2020": 1.82530337418008,
+          "2021": 2.33537749533956,
+          "2022": 2.14228590243134,
+          "2023": 1.48495237277126,
+          "2024": 1.74565593994345
+        },
+        "SI": {
+          "2020": 3.63692852871633,
+          "2021": 4.34050714716847,
+          "2022": 3.90301974294686,
+          "2023": 3.13835009485939,
+          "2024": 3.02692030138335
+        },
+        "ZA": {
+          "2020": 31.4389170033873,
+          "2021": 37.7780356859312,
+          "2022": 31.5450035556722,
+          "2023": 29.1169283744823,
+          "2024": 29.1712554651673,
+          "2025": 30.3392517456071
+        },
+        "ES": {
+          "2020": 3.20291695687462,
+          "2021": 3.88819800713491,
+          "2022": 3.70351654042085,
+          "2023": 3.20080590303441,
+          "2024": 3.42743394375482
+        },
+        "SE": {
+          "2020": 4.98753114074155,
+          "2021": 6.00596153517669,
+          "2022": 5.48872826646114,
+          "2023": 5.1056533111485,
+          "2024": 5.53625805390112
+        },
+        "CH": {
+          "2020": 1.99548928724067,
+          "2021": 2.17657553050765,
+          "2022": 1.92124997304165,
+          "2023": 1.56807129365079,
+          "2024": 1.49057879417026
+        },
+        "TH": {
+          "2020": 1.85814213636656,
+          "2021": 2.56033524529213,
+          "2022": 2.64263355598009,
+          "2023": 2.33563248838574,
+          "2024": 2.78898927714551
+        },
+        "TN": {
+          "2020": 1.83166986977073,
+          "2021": 2.02720053386233,
+          "2022": 1.77628583182134,
+          "2023": 1.42589803126179,
+          "2024": 1.52690825348576
+        },
+        "TR": {
+          "2020": 4.03207772591812,
+          "2021": 4.95569588303999,
+          "2022": 5.23576905684485,
+          "2023": 4.3728944868115,
+          "2024": 4.29374178896157
+        },
+        "UG": {
+          "2020": 0.252231889793945,
+          "2021": 0.744614230461867,
+          "2022": 1.37573978710851,
+          "2023": 1.45187874568621,
+          "2024": 0.711051042553324
+        },
+        "UA": {
+          "2020": 11.0877422634527,
+          "2021": 13.3174565858135,
+          "2022": 8.08380904386312,
+          "2023": 5.98222472007035,
+          "2024": 8.18038486628225
+        },
+        "AE": {
+          "2020": 3.41081233456813,
+          "2021": 4.79280902285031,
+          "2022": 4.52970103395539,
+          "2023": 3.4327739631214
+        },
+        "GB": {
+          "2020": 6.60053768600958,
+          "2021": 6.9118678026751,
+          "2022": 6.3443561242002,
+          "2023": 4.52329389386415,
+          "2024": 4.54180165284014,
+          "2025": 5.70704171115552
+        },
+        "US": {
+          "2020": 3.21390841591217,
+          "2021": 3.65231110135565,
+          "2022": 3.07529985951185,
+          "2023": 2.8511687408118,
+          "2024": 2.87778686360623
+        },
+        "UY": {
+          "2020": 0.385873674975743,
+          "2021": 0.340811844644457,
+          "2022": 0.304286345769239,
+          "2023": 0.355278930515298,
+          "2024": 0.331132184653809
+        },
+        "UZ": {
+          "2020": 8.33762446780379,
+          "2021": 13.9619291123545,
+          "2022": 11.2856964615134,
+          "2023": 8.39123120304255,
+          "2024": 8.10048140248817
+        },
+        "VN": {
+          "2020": 1.05424438145282,
+          "2021": 1.15683907100239,
+          "2022": 1.17550554672327,
+          "2023": 1.11053745518843
+        },
+        "ZM": {
+          "2020": 78.8010057390337,
+          "2021": 79.2520502689073,
+          "2022": 75.6024881567735,
+          "2023": 71.3565858556083,
+          "2024": 72.9899534292382
+        },
+        "ZW": {
+          "2020": 44.7588118464982,
+          "2021": 46.030100180394,
+          "2022": 40.1848643345893,
+          "2023": 42.9777779829568,
+          "2024": 33.8441587265371
         }
       }
     }

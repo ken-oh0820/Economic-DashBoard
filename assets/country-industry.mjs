@@ -1,4 +1,4 @@
-import {observation,points,finite} from './country-data.mjs?v=20260921-industry1';
+import {observation,points,finite} from './country-data.mjs?v=20260921-resources1';
 
 export const INDUSTRY_GROUPS = [
   {title:'경제를 구성하는 산업',keys:['services','industry','agriculture','manufacturing'],note:'GDP 대비 부가가치 비중. 제조업은 산업에 포함되므로 중복 합산하지 않습니다. 순생산물세 등으로 합계가 100%와 다를 수 있습니다.'},

@@ -114,3 +114,7 @@ body.left-collapsed .layout .desktop-panel-toggle-left { left: 0; }
 .industry-teal{--industry-color:#168b85}.industry-blue{--industry-color:#397ed0}.industry-green{--industry-color:#569938}.industry-violet{--industry-color:#8872cb}.industry-rose{--industry-color:#ce657f}
 body:not(.light) .industry-teal{--industry-color:#58c5bc}body:not(.light) .industry-blue{--industry-color:#75acf0}body:not(.light) .industry-green{--industry-color:#93c767}body:not(.light) .industry-violet{--industry-color:#b49bec}body:not(.light) .industry-rose{--industry-color:#ee92aa}
 @media(max-width:420px){.industry-metric-name{font-size:12px}.industry-metric summary>strong{font-size:15px}.industry-metric summary{column-gap:6px}}
+.resource-metric summary{border-left:3px solid var(--industry-color);padding-left:10px;grid-template-columns:minmax(0,1fr) minmax(0,auto) 16px}
+.resource-metric summary>strong{font-size:15px;white-space:normal;overflow-wrap:anywhere;text-align:right;max-width:175px}
+.resource-age{display:block;color:var(--text-mid);font-weight:600;margin-top:3px}
+@media(max-width:420px){.resource-metric summary>strong{font-size:13px;max-width:140px}}

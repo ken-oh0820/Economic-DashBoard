@@ -7,7 +7,7 @@ Monday); GitHub scheduling can be delayed. It also supports manual dispatch.
 
 ## Sources and attribution
 
-The explicit 23-indicator allowlist is in `assets/country-data.mjs`. Each
+The explicit 30-indicator allowlist is in `assets/country-data.mjs`. Each
 indicator's `https://data.worldbank.org/indicator/{id}` page was reviewed on
 2026-09-21 and labeled CC BY 4.0. The snapshot stores World Bank's
 `sourceOrganization` and `sourceNote`, and the UI links to the specific
@@ -80,6 +80,36 @@ https://uncomtrade.org/docs/faqs-on-use-and-re-dissemination/ and
 https://comtradeplus.un.org/LicenseAgreement . A commodity-export ranking would
 not represent service sectors or overall industry competitiveness.
 
+## Resources and geography (stage 4)
+
+Seven additional indicator pages were individually checked for CC BY 4.0 on
+2026-09-21: AG.LND.TOTL.K2, AG.LND.ARBL.ZS, AG.LND.FRST.ZS, ER.H2O.INTR.PC,
+NY.GDP.TOTL.RT.ZS, TX.VAL.FUEL.ZS.UN and TX.VAL.MMTL.ZS.UN. The source links
+follow https://data.worldbank.org/indicator/{indicator}. FAO/AQUASTAT, World
+Bank estimates and UN/WITS attributions are retained from API metadata.
+
+The country tab shows seven compact disclosures grouped into natural foundations
+and the resource economy. Each reports its original unit, denominator, observation
+year, source link, interpretation limits and collection timestamp. Observations
+more than three calendar years old carry an age label independently of collection
+freshness. No trend or ranking is invented from mixed-year resource statistics.
+
+Land area excludes inland water, and is not EEZ or developable land. Arable land
+is not total agricultural land or food self-sufficiency. Forest cover is not
+harvestable timber. Internal renewable freshwater uses long-term average annual
+flow divided by population: it is not annual rainfall, water delivered, current
+drought severity, or external inflows. Natural resource rents are estimated
+economic surplus, not revenue, taxes, company net income, or reserves. Fuel and
+metal exports may include processing and re-exports; they do not establish
+domestic deposits. Percentage values keep two decimals; physical quantities are
+rounded to whole units without currency conversion.
+
+Mineral reserves, economically recoverable quantities, and country-specific
+ports/straits/terrain are NOT connected. USGS and EIA are normal source links,
+not scraped data. Legacy resource notes stay collapsed and explicitly unverified;
+they do not become validated by the new WDI statistics. The existing legacy map
+resource overlay is unchanged.
+
 ## Failure behavior
 
 All API pages must be complete and consistent. A failed indicator collection
@@ -92,5 +122,5 @@ If the browser cannot load the snapshot, statistics remain unavailable; it does
 not substitute old hard-coded numbers.
 
 Run `node scripts/update-country-data.mjs` to refresh and
-`node --test scripts/country-data.test.mjs scripts/country-profile.test.mjs scripts/country-industry.test.mjs`
+`node --test scripts/country-data.test.mjs scripts/country-profile.test.mjs scripts/country-industry.test.mjs scripts/country-resources.test.mjs`
 to check the data pipeline and profile behavior.
