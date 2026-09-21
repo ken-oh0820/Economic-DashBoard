@@ -13,7 +13,16 @@ export const SERIES = {
   popGrowth: ['SP.POP.GROW', '인구 증가율', '%'],
   workingAge: ['SP.POP.1564.TO.ZS', '15–64세 인구 비중', '%'],
   elderly: ['SP.POP.65UP.TO.ZS', '65세 이상 인구 비중', '%'],
-  fertility: ['SP.DYN.TFRT.IN', '합계출산율', '명/여성']
+  fertility: ['SP.DYN.TFRT.IN', '합계출산율', '명/여성'],
+  services: ['NV.SRV.TOTL.ZS', '서비스업', '%'],
+  industry: ['NV.IND.TOTL.ZS', '산업 · 건설 포함', '%'],
+  agriculture: ['NV.AGR.TOTL.ZS', '농림어업', '%'],
+  manufacturing: ['NV.IND.MANF.ZS', '제조업', '%'],
+  exportIntensity: ['NE.EXP.GNFS.ZS', '상품·서비스 수출 / GDP', '%'],
+  manufacturedExports: ['TX.VAL.MANF.ZS.UN', '제조품 수출 비중', '%'],
+  highTechExports: ['TX.VAL.TECH.MF.ZS', '첨단기술 제품 수출 비중', '%'],
+  ictServiceExports: ['BX.GSR.CCIS.ZS', 'ICT 서비스 수출 비중', '%'],
+  research: ['GB.XPD.RSDV.GD.ZS', '연구개발 투자 / GDP', '%']
 };
 export const finite = value => typeof value === 'number' && Number.isFinite(value);
 export function iso2FromFlag(flag) {

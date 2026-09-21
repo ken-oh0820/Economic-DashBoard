@@ -1,4 +1,5 @@
-import {SERIES,sourceUrl,seriesKeys,stale} from './country-data.mjs';
+import {SERIES,sourceUrl,seriesKeys,stale} from './country-data.mjs?v=20260921-industry1';
+import {INDUSTRY_GROUPS,INDUSTRY_KEYS,INDUSTRY_INFO,industryScale} from './country-industry.mjs?v=20260921-industry1';
 export const TABS = [['economy','경제'],['population','인구'],['industry','산업·경쟁력'],['resources','자원·지리'],['security','군사·외교']];
 export const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number = value => typeof value === 'number' && Number.isFinite(value);
@@ -53,6 +54,28 @@ export function summaryMarkup(c) {
   </div>`;
 }
 
+export function industryMarkup(c) {
+  const metrics=c.industryMetrics||{},available=INDUSTRY_KEYS.filter(k=>metrics[k]?.current).length;
+  const sections=INDUSTRY_GROUPS.map(group=>section(group.title,
+    `<p class="country-note">${e(group.note)}</p><div class="industry-metrics">${group.keys.map(key=>{
+      const info=INDUSTRY_INFO[key],m=metrics[key]||{},current=m.current,value=current?.value,scale=industryScale(key,value);
+      const roundedChange=number(m.change)?Math.round(m.change*10)/10:null;
+      const change=number(roundedChange)?`${roundedChange>0?'+':''}${format(roundedChange===0?0:roundedChange)}%p`:'동일 기준 연도 자료 없음';
+      const peerText=number(m.median)?`${pct(m.median)} · ${m.count}/${m.total}개국`:`비교 자료 부족 · ${m.count||0}개국`;
+      return `<details class="industry-metric industry-${info.color}" data-industry-key="${key}">
+        <summary><span class="industry-metric-name">${e(SERIES[key][1])}<small>${e(info.basis)} · ${current?`${current.year}년`:'자료 없음'}</small></span><strong>${pct(value)}</strong><i data-lucide="chevron-down" aria-hidden="true"></i>
+        ${current?`<span class="industry-track" aria-hidden="true"><span style="width:${scale.width.toFixed(2)}%"></span></span><span class="industry-scale" aria-hidden="true">0–${scale.max}%</span>`:''}</summary>
+        <div class="industry-reading"><p>${e(info.meaning)}</p>${rows([
+          [`3년 전 대비${current?` (${m.baselineYear} → ${current.year})`:''}`,change,'비중 차이 · %p'],
+          [`${current?current.year+'년 ':''}등록국 중앙값`,peerText,'국가별 동일 가중 · 경쟁력 순위 아님']
+        ])}<p class="country-note">${e(info.caution)}</p>${sourceMarkup(c,key)}</div></details>`;
+    }).join('')}</div>`)).join('');
+  return `<p class="industry-status">연간 산업 지표 <strong>${available}/${INDUSTRY_KEYS.length}</strong> · 항목별 기준 연도 상이</p>`+sections+
+    section('세부 산업·상품 순위',`<p>상품 수출 TOP 10은 서비스업·내수 산업을 포함한 경쟁력 순위와 다릅니다. 현재 세부 품목 순위는 연결하지 않았으며 원문에서 확인할 수 있습니다.</p><div class="country-sources">${link('https://comtradeplus.un.org/','UN Comtrade 품목별 수출 원문')}</div>`)+
+    `<details class="industry-legacy"><summary>기존 산업·기술 메모 <small>미검증 · 경쟁력 순위 아님</small></summary>${section('주요 산업',c.industries.length?list(c.industries):unavailable('등록된 산업 정보가 없습니다.'))}${section('관련 기술·분야',c.technologies.length?list(c.technologies):unavailable('등록된 기술 정보가 없습니다.'))}</details>`+
+    attribution(c,INDUSTRY_KEYS);
+}
+
 export function tabMarkup(tab,c) {
   if (tab === 'economy') return section('경제 규모와 소득',officialRows(c,['gdp','gdpPc','growth','gni','gniPc','trade'])) + section('고용·물가',officialRows(c,['unemployment','inflation'])) + section('비교 기준',list([
     `GDP와 순위는 ${c.rankYear?c.rankYear+'년':'공통 연도'} 자료만 사용합니다. 다른 항목은 수집 범위 내 최신 발표 연도로, 서로 기준 연도가 다를 수 있습니다.`,
@@ -65,11 +88,7 @@ export function tabMarkup(tab,c) {
     '생산가능인구 비중, 소득 수준, 연령 구조를 함께 봐야 합니다.',
     '15–64세 비중은 연령 구조이며 실제 취업자 비율이 아닙니다. 인구 자료에는 추정치가 포함됩니다.'
   ])) + attribution(c,['population','popGrowth','workingAge','elderly','fertility']);
-  if (tab === 'industry') return section('주요 산업',
-    `<p class="country-note">기존 편집 자료 · 경쟁력 순위 아님</p>` + (c.industries.length ? list(c.industries) : unavailable('등록된 산업 정보가 없습니다.'))
-  ) + section('관련 기술·분야', c.technologies.length ? list(c.technologies) : unavailable('등록된 기술 정보가 없습니다.')) + section('산업 순위 기준',
-    `<p>수출 규모, 세계 점유율, 기술 경쟁력은 서로 다른 기준입니다. 검증된 통계 없이 산업 TOP 10 순위를 만들지 않습니다.</p>`
-  ) + `<div class="country-sources">${link('https://comtrade.un.org/','UN Comtrade 상품 무역 통계')}</div>`;
+  if (tab === 'industry') return industryMarkup(c);
   if (tab === 'resources') return section('지리', rows([
     ['지역',c.region],['항만·해협·지형','자료 미연결']
   ])) + section('기존 지도에 등록된 자원 분야', c.resources.length ?
@@ -128,7 +147,7 @@ export function initCountryProfile({document,window,getCountry}) {
     document.getElementById('countryProfileCurrency').textContent = country.currency === 'krw' ? '원화 환산 · 환율 기준 별도' : '금액: USD';
     const status=document.getElementById('countryProfileStatus');
     if(status) status.textContent=country.dataStatus || '공식 자료 확인 중';
-    document.getElementById('countryProfileHighlights').textContent = country.industries.length ? country.industries.slice(0,3).join(' · ') : '산업 정보 미등록';
+    document.getElementById('countryProfileHighlights').textContent = country.industryHeadline || '산업구조 자료 확인 중';
     detail.innerHTML = summaryMarkup(country);
     activate(activeTab);
     if (changed) scroller.scrollTop = 0;

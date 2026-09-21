@@ -1,4 +1,5 @@
-import {SERIES,iso2FromFlag,observation,comparison,validateSnapshot,stale} from './country-data.mjs';
+import {SERIES,iso2FromFlag,observation,comparison,validateSnapshot,stale} from './country-data.mjs?v=20260921-industry1';
+import {INDUSTRY_KEYS,industryMetric,industryHeadline} from './country-industry.mjs?v=20260921-industry1';
 
 export function buildAtlasData(snapshot,countries,now=Date.now()) {
   validateSnapshot(snapshot);
@@ -8,7 +9,8 @@ export function buildAtlasData(snapshot,countries,now=Date.now()) {
   const profiles={},mapValues={};
   for(const [id,code] of identities) {
     const stats=Object.fromEntries([...Object.keys(SERIES),'trade'].map(key=>[key,key==='gdp'&&!comparisons.gdp.year?null:observation(snapshot,key,code,key==='gdp'?comparisons.gdp.year:null)]));
-    profiles[id]={code,stats};mapValues[id]={};
+    const industryMetrics=Object.fromEntries(INDUSTRY_KEYS.map(key=>[key,industryMetric(snapshot,key,code,codes)]));
+    profiles[id]={code,stats,industryMetrics,industryHeadline:industryHeadline(snapshot,code)};mapValues[id]={};
     for(const key of Object.keys(comparisons)) {
       const value=comparisons[key].year?observation(snapshot,key,code,comparisons[key].year)?.value:null;
       mapValues[id][key]=Number.isFinite(value)?value/(['gdp','trade'].includes(key)?1e9:1):null;

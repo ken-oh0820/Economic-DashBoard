@@ -7,7 +7,7 @@ Monday); GitHub scheduling can be delayed. It also supports manual dispatch.
 
 ## Sources and attribution
 
-The explicit 14-indicator allowlist is in `assets/country-data.mjs`. Each
+The explicit 23-indicator allowlist is in `assets/country-data.mjs`. Each
 indicator's `https://data.worldbank.org/indicator/{id}` page was reviewed on
 2026-09-21 and labeled CC BY 4.0. The snapshot stores World Bank's
 `sourceOrganization` and `sourceNote`, and the UI links to the specific
@@ -43,8 +43,42 @@ has identical reuse rights. Review newly added indicators separately.
 - Population age shares are demographic estimates, not employment ratios.
 - Null values stay unavailable; zero and negative growth/inflation are valid.
   Unit conversion, rounding, translation and trade summation are local changes.
-- Old unverified economic and debt numbers are no longer shown. Industry,
-  resource and alliance layers remain separately labeled legacy editorial data.
+- Old unverified economic and debt numbers are no longer shown. Legacy industry
+  notes are collapsed and explicitly unverified. Resource and alliance layers
+  remain separately labeled legacy editorial data.
+
+## Industry structure (stage 3)
+
+Nine additional WDI indicators have individually reviewed CC BY 4.0 indicator
+pages (2026-09-21): NV.SRV.TOTL.ZS, NV.IND.TOTL.ZS, NV.AGR.TOTL.ZS,
+NV.IND.MANF.ZS, NE.EXP.GNFS.ZS, TX.VAL.MANF.ZS.UN, TX.VAL.TECH.MF.ZS,
+BX.GSR.CCIS.ZS and GB.XPD.RSDV.GD.ZS. Upstream source organizations, including
+UN/WITS, IMF and UNESCO, are retained in the snapshot and UI attribution.
+
+The industry tab contains nine compact disclosures with denominator, year,
+reading/caution, source and collection date. Three-year changes subtract the
+exact year-minus-three observation in percentage points; missing baselines are
+not interpolated. Peer medians use only registered countries with an observation
+in the selected country's observation year, with equal country weights. Medians
+are suppressed with fewer than ten valid peers and coverage is always shown.
+No competitiveness score, world ranking or investment recommendation is inferred.
+
+The profile headline compares services, industry and agriculture only in their
+latest common year for that country. Manufacturing is a subset of industry, not
+a fourth additive sector. Ratios are not normalized to sum to 100. Export/GDP
+can exceed 100 because gross trade and domestic value added are different
+concepts; its bar scale expands and displays its maximum. R&D uses a separate,
+labeled scale. Export metrics have distinct denominators: GDP, merchandise
+exports, manufactured exports, or service exports.
+
+Detailed commodity TOP 10 is NOT connected in this stage. A normal link to
+https://comtradeplus.un.org/ is provided; no direct Comtrade collection or raw
+data redistribution is added. The WDI summary series with their own published
+license are not treated as permission for arbitrary Comtrade datasets. Before
+adding detailed trade rankings, separately check publication/access conditions:
+https://uncomtrade.org/docs/faqs-on-use-and-re-dissemination/ and
+https://comtradeplus.un.org/LicenseAgreement . A commodity-export ranking would
+not represent service sectors or overall industry competitiveness.
 
 ## Failure behavior
 
@@ -58,5 +92,5 @@ If the browser cannot load the snapshot, statistics remain unavailable; it does
 not substitute old hard-coded numbers.
 
 Run `node scripts/update-country-data.mjs` to refresh and
-`node --test scripts/country-data.test.mjs scripts/country-profile.test.mjs`
+`node --test scripts/country-data.test.mjs scripts/country-profile.test.mjs scripts/country-industry.test.mjs`
 to check the data pipeline and profile behavior.
