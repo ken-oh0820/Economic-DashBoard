@@ -1,8 +1,8 @@
-import {SERIES,sourceUrl,seriesKeys,stale} from './country-data.mjs?v=20260922-compare1';
-import {INDUSTRY_GROUPS,INDUSTRY_KEYS,INDUSTRY_INFO,industryScale} from './country-industry.mjs?v=20260922-compare1';
-import {RESOURCE_GROUPS,RESOURCE_KEYS,RESOURCE_INFO,resourceValue,resourceAge} from './country-resources.mjs?v=20260922-compare1';
-import {SECURITY_KEYS,SECURITY_INFO,securityValue,securityChange,DIPLOMACY,MEMBERSHIP_CHECKED,membershipLabel} from './country-security.mjs?v=20260922-compare1';
-import {initCountryComparison} from './country-compare.mjs?v=20260922-compare1';
+import {SERIES,sourceUrl,seriesKeys,stale} from './country-data.mjs?v=20260922-registry1';
+import {INDUSTRY_GROUPS,INDUSTRY_KEYS,INDUSTRY_INFO,industryScale} from './country-industry.mjs?v=20260922-registry1';
+import {RESOURCE_GROUPS,RESOURCE_KEYS,RESOURCE_INFO,resourceValue,resourceAge} from './country-resources.mjs?v=20260922-registry1';
+import {SECURITY_KEYS,SECURITY_INFO,securityValue,securityChange,DIPLOMACY,MEMBERSHIP_CHECKED,membershipLabel} from './country-security.mjs?v=20260922-registry1';
+import {initCountryComparison} from './country-compare.mjs?v=20260922-registry1';
 export const TABS = [['economy','경제'],['population','인구'],['industry','산업·경쟁력'],['resources','자원·지리'],['security','군사·외교']];
 export const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number = value => typeof value === 'number' && Number.isFinite(value);
@@ -49,7 +49,7 @@ function attribution(c,keys) {
 export function summaryMarkup(c) {
   return `<div class="country-summary">
     <div><span>GDP</span><strong>${e(c.money.gdp)}</strong><small>${yearLabel(c,'gdp')}</small></div>
-    <div><span>등록 국가 내 GDP 순위</span><strong>${c.rank ? `${c.rank}위` : '자료 없음'}</strong><small>${c.rankYear?`${c.rankYear}년 · `:''}${c.count}개국 비교</small></div>
+    <div><span>등록 국가·지역 내 GDP 순위</span><strong>${c.rank ? `${c.rank}위` : '자료 없음'}</strong><small>${c.rankYear?`${c.rankYear}년 · `:''}${c.count}개 국가·지역 비교</small></div>
     <div><span>총인구</span><strong>${populationLabel(c.extra?.pop)}</strong><small>${yearLabel(c,'population')}</small></div>
     <div><span>1인당 GNI</span><strong>${e(c.money.gniPc)}</strong><small>${yearLabel(c,'gniPc')} · Atlas 방식</small></div>
     <div><span>실업률 · ILO 추정</span><strong>${pct(c.unemployment)}</strong><small>${yearLabel(c,'unemployment')}</small></div>
@@ -64,7 +64,7 @@ export function industryMarkup(c) {
       const info=INDUSTRY_INFO[key],m=metrics[key]||{},current=m.current,value=current?.value,scale=industryScale(key,value);
       const roundedChange=number(m.change)?Math.round(m.change*10)/10:null;
       const change=number(roundedChange)?`${roundedChange>0?'+':''}${format(roundedChange===0?0:roundedChange)}%p`:'동일 기준 연도 자료 없음';
-      const peerText=number(m.median)?`${pct(m.median)} · ${m.count}/${m.total}개국`:`비교 자료 부족 · ${m.count||0}개국`;
+      const peerText=number(m.median)?`${pct(m.median)} · ${m.count}/${m.total}개 국가·지역`:`비교 자료 부족 · ${m.count||0}개 국가·지역`;
       return `<details class="industry-metric industry-${info.color}" data-industry-key="${key}">
         <summary><span class="industry-metric-name">${e(SERIES[key][1])}<small>${e(info.basis)} · ${current?`${current.year}년`:'자료 없음'}</small></span><strong>${pct(value)}</strong><i data-lucide="chevron-down" aria-hidden="true"></i>
         ${current?`<span class="industry-track" aria-hidden="true"><span style="width:${scale.width.toFixed(2)}%"></span></span><span class="industry-scale" aria-hidden="true">0–${scale.max}%</span>`:''}</summary>
@@ -164,7 +164,7 @@ export function initCountryProfile({document,window,getCountry}) {
     window.CountryComparison?.setCountry(country.id);
     detail.dataset.iso = country.id;
     document.getElementById('countryProfileTitle').textContent = `${country.flag} ${country.name}`;
-    document.getElementById('countryProfileRegion').textContent = country.region;
+    document.getElementById('countryProfileRegion').textContent = [country.region,country.mapNote].filter(Boolean).join(' · ');
     document.getElementById('countryProfileCurrency').textContent = country.currency === 'krw' ? '원화 환산 · 환율 기준 별도' : '금액: USD';
     const status=document.getElementById('countryProfileStatus');
     if(status) status.textContent=country.dataStatus || '공식 자료 확인 중';

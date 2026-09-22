@@ -1,7 +1,7 @@
-import {SERIES,points,finite,seriesKeys,sourceUrl,stale,iso2FromFlag} from './country-data.mjs?v=20260922-compare1';
-import {INDUSTRY_KEYS,INDUSTRY_INFO} from './country-industry.mjs?v=20260922-compare1';
-import {RESOURCE_KEYS,RESOURCE_INFO} from './country-resources.mjs?v=20260922-compare1';
-import {SECURITY_KEYS,SECURITY_INFO} from './country-security.mjs?v=20260922-compare1';
+import {SERIES,points,finite,seriesKeys,sourceUrl,stale,iso2FromFlag} from './country-data.mjs?v=20260922-registry1';
+import {INDUSTRY_KEYS,INDUSTRY_INFO} from './country-industry.mjs?v=20260922-registry1';
+import {RESOURCE_KEYS,RESOURCE_INFO} from './country-resources.mjs?v=20260922-registry1';
+import {SECURITY_KEYS,SECURITY_INFO} from './country-security.mjs?v=20260922-registry1';
 
 export const COMPARE_GROUPS=[
   {id:'economy',label:'경제',keys:['gdp','gdpPc','growth','gni','gniPc','exports','imports','trade','unemployment','inflation']},
@@ -41,7 +41,7 @@ export function comparisonMarkup(snapshot,countries,groupId,now=Date.now()){
     const age=row.year!==null&&new Date(now).getUTCFullYear()-row.year>3;
     return `<tr><th scope="row">${escape(name)}<small>${row.year===null?'공통 연도 없음':`${row.year}년`}${age?' · 3년 초과 경과':''}</small><small>${escape(info?.basis||BASE_NOTES[key])}</small>${info?`<details class="compare-definition"><summary>해석</summary><p>${escape(info.meaning)}</p><p>${escape(info.caution)}</p></details>`:''}</th>${countries.map((country,i)=>`<td><strong>${escape(compareValue(key,row.values[i]))}</strong><span class="compare-cell-source">${seriesKeys(key).map(k=>`<a href="${escape(sourceUrl(k,country.code))}" target="_blank" rel="noopener noreferrer" aria-label="${escape(country.name+' '+SERIES[k][1]+' 원자료')}">${key==='trade'?escape(SERIES[k][1]):'원자료'}</a>`).join(' · ')}</span>${stale(snapshot,key,now)?'<small class="compare-stale">수집 갱신 지연</small>':''}</td>`).join('')}</tr>`;
   }).join('');
-  return `<table class="compare-table"><caption>${escape(group.label)} · ${countries.length}개국 비교</caption><thead><tr><th scope="col">지표 · 공통 연도</th>${countries.map(c=>`<th scope="col">${escape(c.flag)} ${escape(c.name)}</th>`).join('')}</tr></thead><tbody>${body}</tbody></table>`;
+  return `<table class="compare-table"><caption>${escape(group.label)} · ${countries.length}개 국가·지역 비교</caption><thead><tr><th scope="col">지표 · 공통 연도</th>${countries.map(c=>`<th scope="col">${escape(c.flag)} ${escape(c.name)}</th>`).join('')}</tr></thead><tbody>${body}</tbody></table>`;
 }
 
 export function initCountryComparison({document,window,getCountry,getCountries}){

@@ -24,8 +24,8 @@ test('KRW trillion-to-gyeong conversion has the correct threshold',()=>{
 });
 test('profile distinguishes coverage, sources, missing data and unranked industries',()=>{
   const summary=summaryMarkup(country);
-  assert.match(summary,/등록 국가 내 GDP 순위/);
-  assert.match(summary,/100개국 비교/);
+  assert.match(summary,/등록 국가·지역 내 GDP 순위/);
+  assert.match(summary,/100개 국가·지역 비교/);
   assert.doesNotMatch(summary,/GDP 세계 순위/);
   assert.match(tabMarkup('industry',country),/경쟁력 순위 아님/);
   assert.match(tabMarkup('resources',country),/자원이 없다는 의미는 아닙니다/);

@@ -80,7 +80,7 @@ test('comparison uses native modal and local snapshot without new collection or 
   const read=file=>readFileSync(new URL(file,import.meta.url),'utf8');
   const js=read('../assets/country-compare.mjs'),html=read('../index.html'),css=read('../assets/country-compare.css');
   assert.match(html,/<dialog id="countryCompareDialog"/);assert.match(html,/CountryComparison\?\.refresh/);
-  assert.match(html,/country-compare.css\?v=20260922-compare1/);assert.match(js,/dialog.showModal/);
+  assert.match(html,/country-compare.css\?v=20260922-registry1/);assert.match(js,/dialog.showModal/);
   assert.doesNotMatch(js,/\bfetch\s*\(|invalidateSize|setView|fitBounds/);
   assert.match(css,/#countryCompareBody\{overflow:auto/);assert.match(css,/@media\(max-width:600px\)/);
 });

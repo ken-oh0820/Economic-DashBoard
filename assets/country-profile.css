@@ -2,6 +2,9 @@
 .layout { --atlas-controls-width: 220px; }
 .layout .left-cluster { width: var(--atlas-controls-width); grid-template-columns: minmax(0,1fr); }
 .layout .sidebar-left { width: 100%; }
+.layout .search-result { display: grid; grid-template-columns: minmax(0,1fr); gap: 2px; }
+.layout .search-result-name { font-size: 11px; white-space: normal; overflow-wrap: anywhere; }
+.layout .search-result-meta { white-space: normal; overflow-wrap: anywhere; font-size: 10px; }
 .layout .desktop-panel-toggle-left { left: var(--atlas-controls-width); }
 body.left-collapsed .layout .desktop-panel-toggle-left { left: 0; }
 .atlas-context > summary { cursor: pointer; color: var(--text-mid); font-size: 12px; font-weight: 700; padding: 14px 12px; }
@@ -18,6 +21,7 @@ body.left-collapsed .layout .desktop-panel-toggle-left { left: 0; }
 .country-profile :is(p,li,dd,strong,span,h2,h3) { overflow-wrap: anywhere; }
 .country-profile button, .country-profile-open { font-family: inherit; cursor: pointer; }
 .country-profile-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 20px 20px 12px; }
+.country-profile-top > div:first-child { min-width: 0; }
 .country-profile-top small { font: 11px/1.5 'IBM Plex Mono',monospace; color: var(--text-dim); }
 .country-profile-top h2 { font-size: 23px; line-height: 1.4; margin: 3px 0; font-weight: 800; outline: none; }
 .country-profile-top p { color: var(--text-mid); font-size: 12px; }

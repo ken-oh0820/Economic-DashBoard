@@ -1,4 +1,4 @@
-import {SERIES,finite} from './country-data.mjs?v=20260922-compare1';
+import {SERIES,finite} from './country-data.mjs?v=20260922-registry1';
 
 export const RESOURCE_GROUPS = [
   {title:'국토와 자연 기반',keys:['landArea','arableLand','forestArea','freshwater'],note:'면적과 자연조건은 산업의 기반입니다. 이용 가능한 토지·용수나 생산성을 직접 나타내지는 않습니다.'},

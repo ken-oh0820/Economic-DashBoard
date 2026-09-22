@@ -57,7 +57,7 @@ test('no-data countries retain all sections without invented scores, bars or med
 test('browser assets are versioned consistently and collection remains official WDI only',()=>{
   const read=file=>readFileSync(new URL(file,import.meta.url),'utf8');
   const html=read('../index.html');
-  for(const asset of ['country-profile.mjs','country-data-client.mjs','country-profile.css'])assert.ok(html.includes(`${asset}?v=20260922-compare1`));
-  for(const file of ['../assets/country-profile.mjs','../assets/country-data-client.mjs','../assets/country-industry.mjs','../assets/country-resources.mjs'])assert.match(read(file),/country-data.mjs\?v=20260922-compare1/);
+  for(const asset of ['country-profile.mjs','country-data-client.mjs','country-profile.css'])assert.ok(html.includes(`${asset}?v=20260922-registry1`));
+  for(const file of ['../assets/country-profile.mjs','../assets/country-data-client.mjs','../assets/country-industry.mjs','../assets/country-resources.mjs'])assert.match(read(file),/country-data.mjs\?v=20260922-registry1/);
   const collector=read('./update-country-data.mjs');assert.match(collector,/https:\/\/api.worldbank.org/);assert.doesNotMatch(collector,/comtradeapi|comtradeplus|scrap/i);
 });

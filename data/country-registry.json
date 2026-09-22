@@ -1,0 +1,2812 @@
+{
+  "schemaVersion": 1,
+  "fetchedAt": "2026-09-22T11:25:41.461Z",
+  "source": "https://api.worldbank.org/v2/country?format=json&per_page=400",
+  "codeSource": "https://github.com/unicode-org/cldr-json/blob/main/cldr-json/cldr-core/supplemental/codeMappings.json",
+  "note": "World Bank non-aggregate economies; statistical coverage, not a sovereignty classification. Coordinates are provider reference locations, not boundaries.",
+  "countries": {
+    "100": {
+      "code": "BG",
+      "wbId": "BGR",
+      "name": "불가리아",
+      "englishName": "Bulgaria",
+      "flag": "🇧🇬",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        23.3238,
+        42.7105
+      ]
+    },
+    "104": {
+      "code": "MM",
+      "wbId": "MMR",
+      "name": "미얀마",
+      "englishName": "Myanmar",
+      "flag": "🇲🇲",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        95.9562,
+        21.914
+      ]
+    },
+    "108": {
+      "code": "BI",
+      "wbId": "BDI",
+      "name": "부룬디",
+      "englishName": "Burundi",
+      "flag": "🇧🇮",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        29.3639,
+        -3.3784
+      ]
+    },
+    "112": {
+      "code": "BY",
+      "wbId": "BLR",
+      "name": "벨라루스",
+      "englishName": "Belarus",
+      "flag": "🇧🇾",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        27.5766,
+        53.9678
+      ]
+    },
+    "116": {
+      "code": "KH",
+      "wbId": "KHM",
+      "name": "캄보디아",
+      "englishName": "Cambodia",
+      "flag": "🇰🇭",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        104.874,
+        11.5556
+      ]
+    },
+    "120": {
+      "code": "CM",
+      "wbId": "CMR",
+      "name": "카메룬",
+      "englishName": "Cameroon",
+      "flag": "🇨🇲",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        11.5174,
+        3.8721
+      ]
+    },
+    "124": {
+      "code": "CA",
+      "wbId": "CAN",
+      "name": "캐나다",
+      "englishName": "Canada",
+      "flag": "🇨🇦",
+      "region": "북미",
+      "regionId": "NAC",
+      "position": [
+        -75.6919,
+        45.4215
+      ]
+    },
+    "132": {
+      "code": "CV",
+      "wbId": "CPV",
+      "name": "카보베르데",
+      "englishName": "Cabo Verde",
+      "flag": "🇨🇻",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        -23.5087,
+        14.9218
+      ]
+    },
+    "136": {
+      "code": "KY",
+      "wbId": "CYM",
+      "name": "케이맨 제도",
+      "englishName": "Cayman Islands",
+      "flag": "🇰🇾",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -81.3857,
+        19.3022
+      ]
+    },
+    "140": {
+      "code": "CF",
+      "wbId": "CAF",
+      "name": "중앙 아프리카 공화국",
+      "englishName": "Central African Republic",
+      "flag": "🇨🇫",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        21.6407,
+        5.63056
+      ]
+    },
+    "144": {
+      "code": "LK",
+      "wbId": "LKA",
+      "name": "스리랑카",
+      "englishName": "Sri Lanka",
+      "flag": "🇱🇰",
+      "region": "남아시아",
+      "regionId": "SAS",
+      "position": [
+        79.8528,
+        6.92148
+      ]
+    },
+    "148": {
+      "code": "TD",
+      "wbId": "TCD",
+      "name": "차드",
+      "englishName": "Chad",
+      "flag": "🇹🇩",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        15.0445,
+        12.1048
+      ]
+    },
+    "152": {
+      "code": "CL",
+      "wbId": "CHL",
+      "name": "칠레",
+      "englishName": "Chile",
+      "flag": "🇨🇱",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -70.6475,
+        -33.475
+      ]
+    },
+    "156": {
+      "code": "CN",
+      "wbId": "CHN",
+      "name": "중국",
+      "englishName": "China",
+      "flag": "🇨🇳",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        116.286,
+        40.0495
+      ]
+    },
+    "170": {
+      "code": "CO",
+      "wbId": "COL",
+      "name": "콜롬비아",
+      "englishName": "Colombia",
+      "flag": "🇨🇴",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -74.082,
+        4.60987
+      ]
+    },
+    "174": {
+      "code": "KM",
+      "wbId": "COM",
+      "name": "코모로",
+      "englishName": "Comoros",
+      "flag": "🇰🇲",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        43.2418,
+        -11.6986
+      ]
+    },
+    "178": {
+      "code": "CG",
+      "wbId": "COG",
+      "name": "콩고공화국",
+      "englishName": "Congo, Rep.",
+      "flag": "🇨🇬",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        15.2662,
+        -4.2767
+      ]
+    },
+    "180": {
+      "code": "CD",
+      "wbId": "COD",
+      "name": "콩고민주공화국",
+      "englishName": "Congo, Dem. Rep.",
+      "flag": "🇨🇩",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        15.3222,
+        -4.325
+      ]
+    },
+    "188": {
+      "code": "CR",
+      "wbId": "CRI",
+      "name": "코스타리카",
+      "englishName": "Costa Rica",
+      "flag": "🇨🇷",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -84.0089,
+        9.63701
+      ]
+    },
+    "191": {
+      "code": "HR",
+      "wbId": "HRV",
+      "name": "크로아티아",
+      "englishName": "Croatia",
+      "flag": "🇭🇷",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        15.9614,
+        45.8069
+      ]
+    },
+    "192": {
+      "code": "CU",
+      "wbId": "CUB",
+      "name": "쿠바",
+      "englishName": "Cuba",
+      "flag": "🇨🇺",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -82.3667,
+        23.1333
+      ]
+    },
+    "196": {
+      "code": "CY",
+      "wbId": "CYP",
+      "name": "키프로스",
+      "englishName": "Cyprus",
+      "flag": "🇨🇾",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        33.3736,
+        35.1676
+      ]
+    },
+    "203": {
+      "code": "CZ",
+      "wbId": "CZE",
+      "name": "체코",
+      "englishName": "Czechia",
+      "flag": "🇨🇿",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        14.4205,
+        50.0878
+      ]
+    },
+    "204": {
+      "code": "BJ",
+      "wbId": "BEN",
+      "name": "베냉",
+      "englishName": "Benin",
+      "flag": "🇧🇯",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        2.6323,
+        6.4779
+      ]
+    },
+    "208": {
+      "code": "DK",
+      "wbId": "DNK",
+      "name": "덴마크",
+      "englishName": "Denmark",
+      "flag": "🇩🇰",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        12.5681,
+        55.6763
+      ]
+    },
+    "212": {
+      "code": "DM",
+      "wbId": "DMA",
+      "name": "도미니카",
+      "englishName": "Dominica",
+      "flag": "🇩🇲",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -61.39,
+        15.2976
+      ]
+    },
+    "214": {
+      "code": "DO",
+      "wbId": "DOM",
+      "name": "도미니카 공화국",
+      "englishName": "Dominican Republic",
+      "flag": "🇩🇴",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -69.8908,
+        18.479
+      ]
+    },
+    "218": {
+      "code": "EC",
+      "wbId": "ECU",
+      "name": "에콰도르",
+      "englishName": "Ecuador",
+      "flag": "🇪🇨",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -78.5243,
+        -0.229498
+      ]
+    },
+    "222": {
+      "code": "SV",
+      "wbId": "SLV",
+      "name": "엘살바도르",
+      "englishName": "El Salvador",
+      "flag": "🇸🇻",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -89.2073,
+        13.7034
+      ]
+    },
+    "226": {
+      "code": "GQ",
+      "wbId": "GNQ",
+      "name": "적도 기니",
+      "englishName": "Equatorial Guinea",
+      "flag": "🇬🇶",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        8.7741,
+        3.7523
+      ]
+    },
+    "231": {
+      "code": "ET",
+      "wbId": "ETH",
+      "name": "에티오피아",
+      "englishName": "Ethiopia",
+      "flag": "🇪🇹",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        38.7468,
+        9.02274
+      ]
+    },
+    "232": {
+      "code": "ER",
+      "wbId": "ERI",
+      "name": "에리트리아",
+      "englishName": "Eritrea",
+      "flag": "🇪🇷",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        38.9183,
+        15.3315
+      ]
+    },
+    "233": {
+      "code": "EE",
+      "wbId": "EST",
+      "name": "에스토니아",
+      "englishName": "Estonia",
+      "flag": "🇪🇪",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        24.7586,
+        59.4392
+      ]
+    },
+    "234": {
+      "code": "FO",
+      "wbId": "FRO",
+      "name": "페로 제도",
+      "englishName": "Faroe Islands",
+      "flag": "🇫🇴",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        -6.91181,
+        61.8926
+      ]
+    },
+    "242": {
+      "code": "FJ",
+      "wbId": "FJI",
+      "name": "피지",
+      "englishName": "Fiji",
+      "flag": "🇫🇯",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        178.399,
+        -18.1149
+      ]
+    },
+    "246": {
+      "code": "FI",
+      "wbId": "FIN",
+      "name": "핀란드",
+      "englishName": "Finland",
+      "flag": "🇫🇮",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        24.9525,
+        60.1608
+      ]
+    },
+    "250": {
+      "code": "FR",
+      "wbId": "FRA",
+      "name": "프랑스",
+      "englishName": "France",
+      "flag": "🇫🇷",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        2.35097,
+        48.8566
+      ]
+    },
+    "258": {
+      "code": "PF",
+      "wbId": "PYF",
+      "name": "프랑스령 폴리네시아",
+      "englishName": "French Polynesia",
+      "flag": "🇵🇫",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        -149.57,
+        -17.535
+      ]
+    },
+    "262": {
+      "code": "DJ",
+      "wbId": "DJI",
+      "name": "지부티",
+      "englishName": "Djibouti",
+      "flag": "🇩🇯",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        43.1425,
+        11.5806
+      ]
+    },
+    "266": {
+      "code": "GA",
+      "wbId": "GAB",
+      "name": "가봉",
+      "englishName": "Gabon",
+      "flag": "🇬🇦",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        9.45162,
+        0.38832
+      ]
+    },
+    "268": {
+      "code": "GE",
+      "wbId": "GEO",
+      "name": "조지아",
+      "englishName": "Georgia",
+      "flag": "🇬🇪",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        44.793,
+        41.71
+      ]
+    },
+    "270": {
+      "code": "GM",
+      "wbId": "GMB",
+      "name": "감비아",
+      "englishName": "Gambia, The",
+      "flag": "🇬🇲",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        -16.5885,
+        13.4495
+      ]
+    },
+    "275": {
+      "code": "PS",
+      "wbId": "PSE",
+      "name": "팔레스타인",
+      "englishName": "West Bank and Gaza",
+      "flag": "🇵🇸",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": null
+    },
+    "276": {
+      "code": "DE",
+      "wbId": "DEU",
+      "name": "독일",
+      "englishName": "Germany",
+      "flag": "🇩🇪",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        13.4115,
+        52.5235
+      ]
+    },
+    "288": {
+      "code": "GH",
+      "wbId": "GHA",
+      "name": "가나",
+      "englishName": "Ghana",
+      "flag": "🇬🇭",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        -0.20795,
+        5.57045
+      ]
+    },
+    "292": {
+      "code": "GI",
+      "wbId": "GIB",
+      "name": "지브롤터",
+      "englishName": "Gibraltar",
+      "flag": "🇬🇮",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": null
+    },
+    "296": {
+      "code": "KI",
+      "wbId": "KIR",
+      "name": "키리바시",
+      "englishName": "Kiribati",
+      "flag": "🇰🇮",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        172.979,
+        1.32905
+      ]
+    },
+    "300": {
+      "code": "GR",
+      "wbId": "GRC",
+      "name": "그리스",
+      "englishName": "Greece",
+      "flag": "🇬🇷",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        23.7166,
+        37.9792
+      ]
+    },
+    "304": {
+      "code": "GL",
+      "wbId": "GRL",
+      "name": "그린란드",
+      "englishName": "Greenland",
+      "flag": "🇬🇱",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        -51.7214,
+        64.1836
+      ]
+    },
+    "308": {
+      "code": "GD",
+      "wbId": "GRD",
+      "name": "그레나다",
+      "englishName": "Grenada",
+      "flag": "🇬🇩",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -61.7449,
+        12.0653
+      ]
+    },
+    "316": {
+      "code": "GU",
+      "wbId": "GUM",
+      "name": "괌",
+      "englishName": "Guam",
+      "flag": "🇬🇺",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        144.794,
+        13.4443
+      ]
+    },
+    "320": {
+      "code": "GT",
+      "wbId": "GTM",
+      "name": "과테말라",
+      "englishName": "Guatemala",
+      "flag": "🇬🇹",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -90.5328,
+        14.6248
+      ]
+    },
+    "324": {
+      "code": "GN",
+      "wbId": "GIN",
+      "name": "기니",
+      "englishName": "Guinea",
+      "flag": "🇬🇳",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        -13.7,
+        9.51667
+      ]
+    },
+    "328": {
+      "code": "GY",
+      "wbId": "GUY",
+      "name": "가이아나",
+      "englishName": "Guyana",
+      "flag": "🇬🇾",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -58.1548,
+        6.80461
+      ]
+    },
+    "332": {
+      "code": "HT",
+      "wbId": "HTI",
+      "name": "아이티",
+      "englishName": "Haiti",
+      "flag": "🇭🇹",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -72.3288,
+        18.5392
+      ]
+    },
+    "340": {
+      "code": "HN",
+      "wbId": "HND",
+      "name": "온두라스",
+      "englishName": "Honduras",
+      "flag": "🇭🇳",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -87.4667,
+        15.1333
+      ]
+    },
+    "344": {
+      "code": "HK",
+      "wbId": "HKG",
+      "name": "홍콩",
+      "englishName": "Hong Kong SAR, China",
+      "flag": "🇭🇰",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        114.109,
+        22.3964
+      ]
+    },
+    "348": {
+      "code": "HU",
+      "wbId": "HUN",
+      "name": "헝가리",
+      "englishName": "Hungary",
+      "flag": "🇭🇺",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        19.0408,
+        47.4984
+      ]
+    },
+    "352": {
+      "code": "IS",
+      "wbId": "ISL",
+      "name": "아이슬란드",
+      "englishName": "Iceland",
+      "flag": "🇮🇸",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        -21.8952,
+        64.1353
+      ]
+    },
+    "356": {
+      "code": "IN",
+      "wbId": "IND",
+      "name": "인도",
+      "englishName": "India",
+      "flag": "🇮🇳",
+      "region": "남아시아",
+      "regionId": "SAS",
+      "position": [
+        77.225,
+        28.6353
+      ]
+    },
+    "360": {
+      "code": "ID",
+      "wbId": "IDN",
+      "name": "인도네시아",
+      "englishName": "Indonesia",
+      "flag": "🇮🇩",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        106.83,
+        -6.19752
+      ]
+    },
+    "364": {
+      "code": "IR",
+      "wbId": "IRN",
+      "name": "이란",
+      "englishName": "Iran, Islamic Rep.",
+      "flag": "🇮🇷",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        51.4447,
+        35.6878
+      ]
+    },
+    "368": {
+      "code": "IQ",
+      "wbId": "IRQ",
+      "name": "이라크",
+      "englishName": "Iraq",
+      "flag": "🇮🇶",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        44.394,
+        33.3302
+      ]
+    },
+    "372": {
+      "code": "IE",
+      "wbId": "IRL",
+      "name": "아일랜드",
+      "englishName": "Ireland",
+      "flag": "🇮🇪",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        -6.26749,
+        53.3441
+      ]
+    },
+    "376": {
+      "code": "IL",
+      "wbId": "ISR",
+      "name": "이스라엘",
+      "englishName": "Israel",
+      "flag": "🇮🇱",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        35.2035,
+        31.7717
+      ]
+    },
+    "380": {
+      "code": "IT",
+      "wbId": "ITA",
+      "name": "이탈리아",
+      "englishName": "Italy",
+      "flag": "🇮🇹",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        12.4823,
+        41.8955
+      ]
+    },
+    "384": {
+      "code": "CI",
+      "wbId": "CIV",
+      "name": "코트디부아르",
+      "englishName": "Cote d'Ivoire",
+      "flag": "🇨🇮",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        -4.0305,
+        5.332
+      ]
+    },
+    "388": {
+      "code": "JM",
+      "wbId": "JAM",
+      "name": "자메이카",
+      "englishName": "Jamaica",
+      "flag": "🇯🇲",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -76.792,
+        17.9927
+      ]
+    },
+    "392": {
+      "code": "JP",
+      "wbId": "JPN",
+      "name": "일본",
+      "englishName": "Japan",
+      "flag": "🇯🇵",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        139.77,
+        35.67
+      ]
+    },
+    "398": {
+      "code": "KZ",
+      "wbId": "KAZ",
+      "name": "카자흐스탄",
+      "englishName": "Kazakhstan",
+      "flag": "🇰🇿",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        71.4382,
+        51.1879
+      ]
+    },
+    "400": {
+      "code": "JO",
+      "wbId": "JOR",
+      "name": "요르단",
+      "englishName": "Jordan",
+      "flag": "🇯🇴",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        35.9263,
+        31.9497
+      ]
+    },
+    "404": {
+      "code": "KE",
+      "wbId": "KEN",
+      "name": "케냐",
+      "englishName": "Kenya",
+      "flag": "🇰🇪",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        36.8126,
+        -1.27975
+      ]
+    },
+    "408": {
+      "code": "KP",
+      "wbId": "PRK",
+      "name": "북한",
+      "englishName": "Korea, Dem. People's Rep.",
+      "flag": "🇰🇵",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        125.754,
+        39.0319
+      ]
+    },
+    "410": {
+      "code": "KR",
+      "wbId": "KOR",
+      "name": "대한민국",
+      "englishName": "Korea, Rep.",
+      "flag": "🇰🇷",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        126.957,
+        37.5323
+      ]
+    },
+    "414": {
+      "code": "KW",
+      "wbId": "KWT",
+      "name": "쿠웨이트",
+      "englishName": "Kuwait",
+      "flag": "🇰🇼",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        47.9824,
+        29.3721
+      ]
+    },
+    "417": {
+      "code": "KG",
+      "wbId": "KGZ",
+      "name": "키르기스스탄",
+      "englishName": "Kyrgyz Republic",
+      "flag": "🇰🇬",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        74.6057,
+        42.8851
+      ]
+    },
+    "418": {
+      "code": "LA",
+      "wbId": "LAO",
+      "name": "라오스",
+      "englishName": "Lao PDR",
+      "flag": "🇱🇦",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        102.177,
+        18.5826
+      ]
+    },
+    "422": {
+      "code": "LB",
+      "wbId": "LBN",
+      "name": "레바논",
+      "englishName": "Lebanon",
+      "flag": "🇱🇧",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        35.5134,
+        33.8872
+      ]
+    },
+    "426": {
+      "code": "LS",
+      "wbId": "LSO",
+      "name": "레소토",
+      "englishName": "Lesotho",
+      "flag": "🇱🇸",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        27.7167,
+        -29.5208
+      ]
+    },
+    "428": {
+      "code": "LV",
+      "wbId": "LVA",
+      "name": "라트비아",
+      "englishName": "Latvia",
+      "flag": "🇱🇻",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        24.1048,
+        56.9465
+      ]
+    },
+    "430": {
+      "code": "LR",
+      "wbId": "LBR",
+      "name": "라이베리아",
+      "englishName": "Liberia",
+      "flag": "🇱🇷",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        -10.7957,
+        6.30039
+      ]
+    },
+    "434": {
+      "code": "LY",
+      "wbId": "LBY",
+      "name": "리비아",
+      "englishName": "Libya",
+      "flag": "🇱🇾",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        13.1072,
+        32.8578
+      ]
+    },
+    "438": {
+      "code": "LI",
+      "wbId": "LIE",
+      "name": "리히텐슈타인",
+      "englishName": "Liechtenstein",
+      "flag": "🇱🇮",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        9.52148,
+        47.1411
+      ]
+    },
+    "440": {
+      "code": "LT",
+      "wbId": "LTU",
+      "name": "리투아니아",
+      "englishName": "Lithuania",
+      "flag": "🇱🇹",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        25.2799,
+        54.6896
+      ]
+    },
+    "442": {
+      "code": "LU",
+      "wbId": "LUX",
+      "name": "룩셈부르크",
+      "englishName": "Luxembourg",
+      "flag": "🇱🇺",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        6.1296,
+        49.61
+      ]
+    },
+    "446": {
+      "code": "MO",
+      "wbId": "MAC",
+      "name": "마카오",
+      "englishName": "Macao SAR, China",
+      "flag": "🇲🇴",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        113.55,
+        22.1667
+      ]
+    },
+    "450": {
+      "code": "MG",
+      "wbId": "MDG",
+      "name": "마다가스카르",
+      "englishName": "Madagascar",
+      "flag": "🇲🇬",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        45.7167,
+        -20.4667
+      ]
+    },
+    "454": {
+      "code": "MW",
+      "wbId": "MWI",
+      "name": "말라위",
+      "englishName": "Malawi",
+      "flag": "🇲🇼",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        33.7703,
+        -13.9899
+      ]
+    },
+    "458": {
+      "code": "MY",
+      "wbId": "MYS",
+      "name": "말레이시아",
+      "englishName": "Malaysia",
+      "flag": "🇲🇾",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        101.684,
+        3.12433
+      ]
+    },
+    "462": {
+      "code": "MV",
+      "wbId": "MDV",
+      "name": "몰디브",
+      "englishName": "Maldives",
+      "flag": "🇲🇻",
+      "region": "남아시아",
+      "regionId": "SAS",
+      "position": [
+        73.5109,
+        4.1742
+      ]
+    },
+    "466": {
+      "code": "ML",
+      "wbId": "MLI",
+      "name": "말리",
+      "englishName": "Mali",
+      "flag": "🇲🇱",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        -7.50034,
+        13.5667
+      ]
+    },
+    "470": {
+      "code": "MT",
+      "wbId": "MLT",
+      "name": "몰타",
+      "englishName": "Malta",
+      "flag": "🇲🇹",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        14.5189,
+        35.9042
+      ]
+    },
+    "478": {
+      "code": "MR",
+      "wbId": "MRT",
+      "name": "모리타니",
+      "englishName": "Mauritania",
+      "flag": "🇲🇷",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        -15.9824,
+        18.2367
+      ]
+    },
+    "480": {
+      "code": "MU",
+      "wbId": "MUS",
+      "name": "모리셔스",
+      "englishName": "Mauritius",
+      "flag": "🇲🇺",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        57.4977,
+        -20.1605
+      ]
+    },
+    "484": {
+      "code": "MX",
+      "wbId": "MEX",
+      "name": "멕시코",
+      "englishName": "Mexico",
+      "flag": "🇲🇽",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -99.1276,
+        19.427
+      ]
+    },
+    "492": {
+      "code": "MC",
+      "wbId": "MCO",
+      "name": "모나코",
+      "englishName": "Monaco",
+      "flag": "🇲🇨",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        7.41891,
+        43.7325
+      ]
+    },
+    "496": {
+      "code": "MN",
+      "wbId": "MNG",
+      "name": "몽골",
+      "englishName": "Mongolia",
+      "flag": "🇲🇳",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        106.937,
+        47.9129
+      ]
+    },
+    "498": {
+      "code": "MD",
+      "wbId": "MDA",
+      "name": "몰도바",
+      "englishName": "Moldova",
+      "flag": "🇲🇩",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        28.8497,
+        47.0167
+      ]
+    },
+    "499": {
+      "code": "ME",
+      "wbId": "MNE",
+      "name": "몬테네그로",
+      "englishName": "Montenegro",
+      "flag": "🇲🇪",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        19.2595,
+        42.4602
+      ]
+    },
+    "504": {
+      "code": "MA",
+      "wbId": "MAR",
+      "name": "모로코",
+      "englishName": "Morocco",
+      "flag": "🇲🇦",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        -6.8704,
+        33.9905
+      ]
+    },
+    "508": {
+      "code": "MZ",
+      "wbId": "MOZ",
+      "name": "모잠비크",
+      "englishName": "Mozambique",
+      "flag": "🇲🇿",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        32.5713,
+        -25.9664
+      ]
+    },
+    "512": {
+      "code": "OM",
+      "wbId": "OMN",
+      "name": "오만",
+      "englishName": "Oman",
+      "flag": "🇴🇲",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        58.5874,
+        23.6105
+      ]
+    },
+    "516": {
+      "code": "NA",
+      "wbId": "NAM",
+      "name": "나미비아",
+      "englishName": "Namibia",
+      "flag": "🇳🇦",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        17.0931,
+        -22.5648
+      ]
+    },
+    "520": {
+      "code": "NR",
+      "wbId": "NRU",
+      "name": "나우루",
+      "englishName": "Naoero",
+      "flag": "🇳🇷",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        166.920867,
+        -0.5477
+      ]
+    },
+    "524": {
+      "code": "NP",
+      "wbId": "NPL",
+      "name": "네팔",
+      "englishName": "Nepal",
+      "flag": "🇳🇵",
+      "region": "남아시아",
+      "regionId": "SAS",
+      "position": [
+        85.3157,
+        27.6939
+      ]
+    },
+    "528": {
+      "code": "NL",
+      "wbId": "NLD",
+      "name": "네덜란드",
+      "englishName": "Netherlands",
+      "flag": "🇳🇱",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        4.89095,
+        52.3738
+      ]
+    },
+    "531": {
+      "code": "CW",
+      "wbId": "CUW",
+      "name": "퀴라소",
+      "englishName": "Curacao",
+      "flag": "🇨🇼",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": null
+    },
+    "533": {
+      "code": "AW",
+      "wbId": "ABW",
+      "name": "아루바",
+      "englishName": "Aruba",
+      "flag": "🇦🇼",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -70.0167,
+        12.5167
+      ]
+    },
+    "534": {
+      "code": "SX",
+      "wbId": "SXM",
+      "name": "신트마르턴",
+      "englishName": "Sint Maarten (Dutch part)",
+      "flag": "🇸🇽",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": null
+    },
+    "540": {
+      "code": "NC",
+      "wbId": "NCL",
+      "name": "뉴칼레도니아",
+      "englishName": "New Caledonia",
+      "flag": "🇳🇨",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        166.464,
+        -22.2677
+      ]
+    },
+    "548": {
+      "code": "VU",
+      "wbId": "VUT",
+      "name": "바누아투",
+      "englishName": "Vanuatu",
+      "flag": "🇻🇺",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        168.321,
+        -17.7404
+      ]
+    },
+    "554": {
+      "code": "NZ",
+      "wbId": "NZL",
+      "name": "뉴질랜드",
+      "englishName": "New Zealand",
+      "flag": "🇳🇿",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        174.776,
+        -41.2865
+      ]
+    },
+    "558": {
+      "code": "NI",
+      "wbId": "NIC",
+      "name": "니카라과",
+      "englishName": "Nicaragua",
+      "flag": "🇳🇮",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -86.2734,
+        12.1475
+      ]
+    },
+    "562": {
+      "code": "NE",
+      "wbId": "NER",
+      "name": "니제르",
+      "englishName": "Niger",
+      "flag": "🇳🇪",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        2.1073,
+        13.514
+      ]
+    },
+    "566": {
+      "code": "NG",
+      "wbId": "NGA",
+      "name": "나이지리아",
+      "englishName": "Nigeria",
+      "flag": "🇳🇬",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        7.48906,
+        9.05804
+      ]
+    },
+    "578": {
+      "code": "NO",
+      "wbId": "NOR",
+      "name": "노르웨이",
+      "englishName": "Norway",
+      "flag": "🇳🇴",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        10.7387,
+        59.9138
+      ]
+    },
+    "580": {
+      "code": "MP",
+      "wbId": "MNP",
+      "name": "북마리아나제도",
+      "englishName": "Northern Mariana Islands",
+      "flag": "🇲🇵",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        145.765,
+        15.1935
+      ]
+    },
+    "583": {
+      "code": "FM",
+      "wbId": "FSM",
+      "name": "미크로네시아",
+      "englishName": "Micronesia, Fed. Sts.",
+      "flag": "🇫🇲",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        158.185,
+        6.91771
+      ]
+    },
+    "584": {
+      "code": "MH",
+      "wbId": "MHL",
+      "name": "마셜 제도",
+      "englishName": "Marshall Islands",
+      "flag": "🇲🇭",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        171.135,
+        7.11046
+      ]
+    },
+    "585": {
+      "code": "PW",
+      "wbId": "PLW",
+      "name": "팔라우",
+      "englishName": "Palau",
+      "flag": "🇵🇼",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        134.479,
+        7.34194
+      ]
+    },
+    "586": {
+      "code": "PK",
+      "wbId": "PAK",
+      "name": "파키스탄",
+      "englishName": "Pakistan",
+      "flag": "🇵🇰",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        72.8,
+        30.5167
+      ]
+    },
+    "591": {
+      "code": "PA",
+      "wbId": "PAN",
+      "name": "파나마",
+      "englishName": "Panama",
+      "flag": "🇵🇦",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -79.5188,
+        8.99427
+      ]
+    },
+    "598": {
+      "code": "PG",
+      "wbId": "PNG",
+      "name": "파푸아뉴기니",
+      "englishName": "Papua New Guinea",
+      "flag": "🇵🇬",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        147.194,
+        -9.47357
+      ]
+    },
+    "600": {
+      "code": "PY",
+      "wbId": "PRY",
+      "name": "파라과이",
+      "englishName": "Paraguay",
+      "flag": "🇵🇾",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -57.6362,
+        -25.3005
+      ]
+    },
+    "604": {
+      "code": "PE",
+      "wbId": "PER",
+      "name": "페루",
+      "englishName": "Peru",
+      "flag": "🇵🇪",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -77.0465,
+        -12.0931
+      ]
+    },
+    "608": {
+      "code": "PH",
+      "wbId": "PHL",
+      "name": "필리핀",
+      "englishName": "Philippines",
+      "flag": "🇵🇭",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        121.035,
+        14.5515
+      ]
+    },
+    "616": {
+      "code": "PL",
+      "wbId": "POL",
+      "name": "폴란드",
+      "englishName": "Poland",
+      "flag": "🇵🇱",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        21.02,
+        52.26
+      ]
+    },
+    "620": {
+      "code": "PT",
+      "wbId": "PRT",
+      "name": "포르투갈",
+      "englishName": "Portugal",
+      "flag": "🇵🇹",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        -9.13552,
+        38.7072
+      ]
+    },
+    "624": {
+      "code": "GW",
+      "wbId": "GNB",
+      "name": "기니비사우",
+      "englishName": "Guinea-Bissau",
+      "flag": "🇬🇼",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        -15.1804,
+        11.8037
+      ]
+    },
+    "626": {
+      "code": "TL",
+      "wbId": "TLS",
+      "name": "동티모르",
+      "englishName": "Timor-Leste",
+      "flag": "🇹🇱",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        125.567,
+        -8.56667
+      ]
+    },
+    "630": {
+      "code": "PR",
+      "wbId": "PRI",
+      "name": "푸에르토리코",
+      "englishName": "Puerto Rico (US)",
+      "flag": "🇵🇷",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -66,
+        18.23
+      ]
+    },
+    "634": {
+      "code": "QA",
+      "wbId": "QAT",
+      "name": "카타르",
+      "englishName": "Qatar",
+      "flag": "🇶🇦",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        51.5082,
+        25.2948
+      ]
+    },
+    "642": {
+      "code": "RO",
+      "wbId": "ROU",
+      "name": "루마니아",
+      "englishName": "Romania",
+      "flag": "🇷🇴",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        26.0979,
+        44.4479
+      ]
+    },
+    "643": {
+      "code": "RU",
+      "wbId": "RUS",
+      "name": "러시아",
+      "englishName": "Russian Federation",
+      "flag": "🇷🇺",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        37.6176,
+        55.7558
+      ]
+    },
+    "646": {
+      "code": "RW",
+      "wbId": "RWA",
+      "name": "르완다",
+      "englishName": "Rwanda",
+      "flag": "🇷🇼",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        30.0587,
+        -1.95325
+      ]
+    },
+    "659": {
+      "code": "KN",
+      "wbId": "KNA",
+      "name": "세인트키츠 네비스",
+      "englishName": "St. Kitts and Nevis",
+      "flag": "🇰🇳",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -62.7309,
+        17.3
+      ]
+    },
+    "662": {
+      "code": "LC",
+      "wbId": "LCA",
+      "name": "세인트루시아",
+      "englishName": "St. Lucia",
+      "flag": "🇱🇨",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -60.9832,
+        14
+      ]
+    },
+    "663": {
+      "code": "MF",
+      "wbId": "MAF",
+      "name": "생마르탱",
+      "englishName": "St. Martin (French part)",
+      "flag": "🇲🇫",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": null
+    },
+    "670": {
+      "code": "VC",
+      "wbId": "VCT",
+      "name": "세인트빈센트그레나딘",
+      "englishName": "St. Vincent and the Grenadines",
+      "flag": "🇻🇨",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -61.2653,
+        13.2035
+      ]
+    },
+    "674": {
+      "code": "SM",
+      "wbId": "SMR",
+      "name": "산마리노",
+      "englishName": "San Marino",
+      "flag": "🇸🇲",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        12.4486,
+        43.9322
+      ]
+    },
+    "678": {
+      "code": "ST",
+      "wbId": "STP",
+      "name": "상투메 프린시페",
+      "englishName": "Sao Tome and Principe",
+      "flag": "🇸🇹",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        6.6071,
+        0.20618
+      ]
+    },
+    "682": {
+      "code": "SA",
+      "wbId": "SAU",
+      "name": "사우디아라비아",
+      "englishName": "Saudi Arabia",
+      "flag": "🇸🇦",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        46.6977,
+        24.6748
+      ]
+    },
+    "686": {
+      "code": "SN",
+      "wbId": "SEN",
+      "name": "세네갈",
+      "englishName": "Senegal",
+      "flag": "🇸🇳",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        -17.4734,
+        14.7247
+      ]
+    },
+    "688": {
+      "code": "RS",
+      "wbId": "SRB",
+      "name": "세르비아",
+      "englishName": "Serbia",
+      "flag": "🇷🇸",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        20.4656,
+        44.8024
+      ]
+    },
+    "690": {
+      "code": "SC",
+      "wbId": "SYC",
+      "name": "세이셸",
+      "englishName": "Seychelles",
+      "flag": "🇸🇨",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        55.4466,
+        -4.6309
+      ]
+    },
+    "694": {
+      "code": "SL",
+      "wbId": "SLE",
+      "name": "시에라리온",
+      "englishName": "Sierra Leone",
+      "flag": "🇸🇱",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        -13.2134,
+        8.4821
+      ]
+    },
+    "702": {
+      "code": "SG",
+      "wbId": "SGP",
+      "name": "싱가포르",
+      "englishName": "Singapore",
+      "flag": "🇸🇬",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        103.85,
+        1.28941
+      ]
+    },
+    "703": {
+      "code": "SK",
+      "wbId": "SVK",
+      "name": "슬로바키아",
+      "englishName": "Slovak Republic",
+      "flag": "🇸🇰",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        17.1073,
+        48.1484
+      ]
+    },
+    "704": {
+      "code": "VN",
+      "wbId": "VNM",
+      "name": "베트남",
+      "englishName": "Viet Nam",
+      "flag": "🇻🇳",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        105.825,
+        21.0069
+      ]
+    },
+    "705": {
+      "code": "SI",
+      "wbId": "SVN",
+      "name": "슬로베니아",
+      "englishName": "Slovenia",
+      "flag": "🇸🇮",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        14.5044,
+        46.0546
+      ]
+    },
+    "706": {
+      "code": "SO",
+      "wbId": "SOM",
+      "name": "소말리아",
+      "englishName": "Somalia, Fed. Rep.",
+      "flag": "🇸🇴",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        45.3254,
+        2.07515
+      ]
+    },
+    "710": {
+      "code": "ZA",
+      "wbId": "ZAF",
+      "name": "남아프리카",
+      "englishName": "South Africa",
+      "flag": "🇿🇦",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        28.1871,
+        -25.746
+      ]
+    },
+    "716": {
+      "code": "ZW",
+      "wbId": "ZWE",
+      "name": "짐바브웨",
+      "englishName": "Zimbabwe",
+      "flag": "🇿🇼",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        31.0672,
+        -17.8312
+      ]
+    },
+    "724": {
+      "code": "ES",
+      "wbId": "ESP",
+      "name": "스페인",
+      "englishName": "Spain",
+      "flag": "🇪🇸",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        -3.70327,
+        40.4167
+      ]
+    },
+    "728": {
+      "code": "SS",
+      "wbId": "SSD",
+      "name": "남수단",
+      "englishName": "South Sudan",
+      "flag": "🇸🇸",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        31.6,
+        4.85
+      ]
+    },
+    "729": {
+      "code": "SD",
+      "wbId": "SDN",
+      "name": "수단",
+      "englishName": "Sudan",
+      "flag": "🇸🇩",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        32.5363,
+        15.5932
+      ]
+    },
+    "740": {
+      "code": "SR",
+      "wbId": "SUR",
+      "name": "수리남",
+      "englishName": "Suriname",
+      "flag": "🇸🇷",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -55.1679,
+        5.8232
+      ]
+    },
+    "748": {
+      "code": "SZ",
+      "wbId": "SWZ",
+      "name": "에스와티니",
+      "englishName": "Eswatini",
+      "flag": "🇸🇿",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        31.4659,
+        -26.5225
+      ]
+    },
+    "752": {
+      "code": "SE",
+      "wbId": "SWE",
+      "name": "스웨덴",
+      "englishName": "Sweden",
+      "flag": "🇸🇪",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        18.0645,
+        59.3327
+      ]
+    },
+    "756": {
+      "code": "CH",
+      "wbId": "CHE",
+      "name": "스위스",
+      "englishName": "Switzerland",
+      "flag": "🇨🇭",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        7.44821,
+        46.948
+      ]
+    },
+    "760": {
+      "code": "SY",
+      "wbId": "SYR",
+      "name": "시리아",
+      "englishName": "Syrian Arab Republic",
+      "flag": "🇸🇾",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        36.3119,
+        33.5146
+      ]
+    },
+    "762": {
+      "code": "TJ",
+      "wbId": "TJK",
+      "name": "타지키스탄",
+      "englishName": "Tajikistan",
+      "flag": "🇹🇯",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        68.7864,
+        38.5878
+      ]
+    },
+    "764": {
+      "code": "TH",
+      "wbId": "THA",
+      "name": "태국",
+      "englishName": "Thailand",
+      "flag": "🇹🇭",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        100.521,
+        13.7308
+      ]
+    },
+    "768": {
+      "code": "TG",
+      "wbId": "TGO",
+      "name": "토고",
+      "englishName": "Togo",
+      "flag": "🇹🇬",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        1.2255,
+        6.1228
+      ]
+    },
+    "776": {
+      "code": "TO",
+      "wbId": "TON",
+      "name": "통가",
+      "englishName": "Tonga",
+      "flag": "🇹🇴",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        -175.216,
+        -21.136
+      ]
+    },
+    "780": {
+      "code": "TT",
+      "wbId": "TTO",
+      "name": "트리니다드 토바고",
+      "englishName": "Trinidad and Tobago",
+      "flag": "🇹🇹",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -61.4789,
+        10.6596
+      ]
+    },
+    "784": {
+      "code": "AE",
+      "wbId": "ARE",
+      "name": "아랍에미리트",
+      "englishName": "United Arab Emirates",
+      "flag": "🇦🇪",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        54.3705,
+        24.4764
+      ]
+    },
+    "788": {
+      "code": "TN",
+      "wbId": "TUN",
+      "name": "튀니지",
+      "englishName": "Tunisia",
+      "flag": "🇹🇳",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        10.21,
+        36.7899
+      ]
+    },
+    "792": {
+      "code": "TR",
+      "wbId": "TUR",
+      "name": "튀르키예",
+      "englishName": "Turkiye",
+      "flag": "🇹🇷",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        32.3606,
+        39.7153
+      ]
+    },
+    "795": {
+      "code": "TM",
+      "wbId": "TKM",
+      "name": "투르크메니스탄",
+      "englishName": "Turkmenistan",
+      "flag": "🇹🇲",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        58.3794,
+        37.9509
+      ]
+    },
+    "796": {
+      "code": "TC",
+      "wbId": "TCA",
+      "name": "터크스 케이커스 제도",
+      "englishName": "Turks and Caicos Islands",
+      "flag": "🇹🇨",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -71.141389,
+        21.4602778
+      ]
+    },
+    "798": {
+      "code": "TV",
+      "wbId": "TUV",
+      "name": "투발루",
+      "englishName": "Tuvalu",
+      "flag": "🇹🇻",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        179.089567,
+        -8.6314877
+      ]
+    },
+    "800": {
+      "code": "UG",
+      "wbId": "UGA",
+      "name": "우간다",
+      "englishName": "Uganda",
+      "flag": "🇺🇬",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        32.5729,
+        0.314269
+      ]
+    },
+    "804": {
+      "code": "UA",
+      "wbId": "UKR",
+      "name": "우크라이나",
+      "englishName": "Ukraine",
+      "flag": "🇺🇦",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        30.5038,
+        50.4536
+      ]
+    },
+    "807": {
+      "code": "MK",
+      "wbId": "MKD",
+      "name": "북마케도니아",
+      "englishName": "North Macedonia",
+      "flag": "🇲🇰",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        21.4361,
+        42.0024
+      ]
+    },
+    "818": {
+      "code": "EG",
+      "wbId": "EGY",
+      "name": "이집트",
+      "englishName": "Egypt, Arab Rep.",
+      "flag": "🇪🇬",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        31.2461,
+        30.0982
+      ]
+    },
+    "826": {
+      "code": "GB",
+      "wbId": "GBR",
+      "name": "영국",
+      "englishName": "United Kingdom",
+      "flag": "🇬🇧",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        -0.126236,
+        51.5002
+      ]
+    },
+    "833": {
+      "code": "IM",
+      "wbId": "IMN",
+      "name": "맨섬",
+      "englishName": "Isle of Man",
+      "flag": "🇮🇲",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        -4.47928,
+        54.1509
+      ]
+    },
+    "834": {
+      "code": "TZ",
+      "wbId": "TZA",
+      "name": "탄자니아",
+      "englishName": "Tanzania",
+      "flag": "🇹🇿",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        35.7382,
+        -6.17486
+      ]
+    },
+    "840": {
+      "code": "US",
+      "wbId": "USA",
+      "name": "미국",
+      "englishName": "United States",
+      "flag": "🇺🇸",
+      "region": "북미",
+      "regionId": "NAC",
+      "position": [
+        -77.032,
+        38.8895
+      ]
+    },
+    "850": {
+      "code": "VI",
+      "wbId": "VIR",
+      "name": "미국령 버진아일랜드",
+      "englishName": "Virgin Islands (U.S.)",
+      "flag": "🇻🇮",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -64.8963,
+        18.3358
+      ]
+    },
+    "854": {
+      "code": "BF",
+      "wbId": "BFA",
+      "name": "부르키나파소",
+      "englishName": "Burkina Faso",
+      "flag": "🇧🇫",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        -1.53395,
+        12.3605
+      ]
+    },
+    "858": {
+      "code": "UY",
+      "wbId": "URY",
+      "name": "우루과이",
+      "englishName": "Uruguay",
+      "flag": "🇺🇾",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -56.0675,
+        -34.8941
+      ]
+    },
+    "860": {
+      "code": "UZ",
+      "wbId": "UZB",
+      "name": "우즈베키스탄",
+      "englishName": "Uzbekistan",
+      "flag": "🇺🇿",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        69.269,
+        41.3052
+      ]
+    },
+    "862": {
+      "code": "VE",
+      "wbId": "VEN",
+      "name": "베네수엘라",
+      "englishName": "Venezuela, RB",
+      "flag": "🇻🇪",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -69.8371,
+        9.08165
+      ]
+    },
+    "882": {
+      "code": "WS",
+      "wbId": "WSM",
+      "name": "사모아",
+      "englishName": "Samoa",
+      "flag": "🇼🇸",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        -171.752,
+        -13.8314
+      ]
+    },
+    "887": {
+      "code": "YE",
+      "wbId": "YEM",
+      "name": "예멘",
+      "englishName": "Yemen, Rep.",
+      "flag": "🇾🇪",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        44.2075,
+        15.352
+      ]
+    },
+    "894": {
+      "code": "ZM",
+      "wbId": "ZMB",
+      "name": "잠비아",
+      "englishName": "Zambia",
+      "flag": "🇿🇲",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        28.2937,
+        -15.3982
+      ]
+    },
+    "983": {
+      "code": "XK",
+      "wbId": "XKX",
+      "name": "코소보",
+      "englishName": "Kosovo",
+      "flag": "🇽🇰",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        20.926,
+        42.565
+      ]
+    },
+    "004": {
+      "code": "AF",
+      "wbId": "AFG",
+      "name": "아프가니스탄",
+      "englishName": "Afghanistan",
+      "flag": "🇦🇫",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        69.1761,
+        34.5228
+      ]
+    },
+    "024": {
+      "code": "AO",
+      "wbId": "AGO",
+      "name": "앙골라",
+      "englishName": "Angola",
+      "flag": "🇦🇴",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        13.242,
+        -8.81155
+      ]
+    },
+    "008": {
+      "code": "AL",
+      "wbId": "ALB",
+      "name": "알바니아",
+      "englishName": "Albania",
+      "flag": "🇦🇱",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        19.8172,
+        41.3317
+      ]
+    },
+    "020": {
+      "code": "AD",
+      "wbId": "AND",
+      "name": "안도라",
+      "englishName": "Andorra",
+      "flag": "🇦🇩",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        1.5218,
+        42.5075
+      ]
+    },
+    "032": {
+      "code": "AR",
+      "wbId": "ARG",
+      "name": "아르헨티나",
+      "englishName": "Argentina",
+      "flag": "🇦🇷",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -58.4173,
+        -34.6118
+      ]
+    },
+    "051": {
+      "code": "AM",
+      "wbId": "ARM",
+      "name": "아르메니아",
+      "englishName": "Armenia",
+      "flag": "🇦🇲",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        44.509,
+        40.1596
+      ]
+    },
+    "016": {
+      "code": "AS",
+      "wbId": "ASM",
+      "name": "아메리칸 사모아",
+      "englishName": "American Samoa",
+      "flag": "🇦🇸",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        -170.691,
+        -14.2846
+      ]
+    },
+    "028": {
+      "code": "AG",
+      "wbId": "ATG",
+      "name": "앤티가 바부다",
+      "englishName": "Antigua and Barbuda",
+      "flag": "🇦🇬",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -61.8456,
+        17.1175
+      ]
+    },
+    "036": {
+      "code": "AU",
+      "wbId": "AUS",
+      "name": "오스트레일리아",
+      "englishName": "Australia",
+      "flag": "🇦🇺",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        149.129,
+        -35.282
+      ]
+    },
+    "040": {
+      "code": "AT",
+      "wbId": "AUT",
+      "name": "오스트리아",
+      "englishName": "Austria",
+      "flag": "🇦🇹",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        16.3798,
+        48.2201
+      ]
+    },
+    "031": {
+      "code": "AZ",
+      "wbId": "AZE",
+      "name": "아제르바이잔",
+      "englishName": "Azerbaijan",
+      "flag": "🇦🇿",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        49.8932,
+        40.3834
+      ]
+    },
+    "056": {
+      "code": "BE",
+      "wbId": "BEL",
+      "name": "벨기에",
+      "englishName": "Belgium",
+      "flag": "🇧🇪",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        4.36761,
+        50.8371
+      ]
+    },
+    "050": {
+      "code": "BD",
+      "wbId": "BGD",
+      "name": "방글라데시",
+      "englishName": "Bangladesh",
+      "flag": "🇧🇩",
+      "region": "남아시아",
+      "regionId": "SAS",
+      "position": [
+        90.4113,
+        23.7055
+      ]
+    },
+    "048": {
+      "code": "BH",
+      "wbId": "BHR",
+      "name": "바레인",
+      "englishName": "Bahrain",
+      "flag": "🇧🇭",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        50.5354,
+        26.1921
+      ]
+    },
+    "044": {
+      "code": "BS",
+      "wbId": "BHS",
+      "name": "바하마",
+      "englishName": "Bahamas, The",
+      "flag": "🇧🇸",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -77.339,
+        25.0661
+      ]
+    },
+    "070": {
+      "code": "BA",
+      "wbId": "BIH",
+      "name": "보스니아 헤르체고비나",
+      "englishName": "Bosnia and Herzegovina",
+      "flag": "🇧🇦",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": [
+        18.4214,
+        43.8607
+      ]
+    },
+    "084": {
+      "code": "BZ",
+      "wbId": "BLZ",
+      "name": "벨리즈",
+      "englishName": "Belize",
+      "flag": "🇧🇿",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -88.7713,
+        17.2534
+      ]
+    },
+    "060": {
+      "code": "BM",
+      "wbId": "BMU",
+      "name": "버뮤다",
+      "englishName": "Bermuda",
+      "flag": "🇧🇲",
+      "region": "북미",
+      "regionId": "NAC",
+      "position": [
+        -64.706,
+        32.3293
+      ]
+    },
+    "068": {
+      "code": "BO",
+      "wbId": "BOL",
+      "name": "볼리비아",
+      "englishName": "Bolivia",
+      "flag": "🇧🇴",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -66.1936,
+        -13.9908
+      ]
+    },
+    "076": {
+      "code": "BR",
+      "wbId": "BRA",
+      "name": "브라질",
+      "englishName": "Brazil",
+      "flag": "🇧🇷",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -47.9292,
+        -15.7801
+      ]
+    },
+    "052": {
+      "code": "BB",
+      "wbId": "BRB",
+      "name": "바베이도스",
+      "englishName": "Barbados",
+      "flag": "🇧🇧",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -59.6105,
+        13.0935
+      ]
+    },
+    "096": {
+      "code": "BN",
+      "wbId": "BRN",
+      "name": "브루나이",
+      "englishName": "Brunei Darussalam",
+      "flag": "🇧🇳",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        114.946,
+        4.94199
+      ]
+    },
+    "064": {
+      "code": "BT",
+      "wbId": "BTN",
+      "name": "부탄",
+      "englishName": "Bhutan",
+      "flag": "🇧🇹",
+      "region": "남아시아",
+      "regionId": "SAS",
+      "position": [
+        89.6177,
+        27.5768
+      ]
+    },
+    "072": {
+      "code": "BW",
+      "wbId": "BWA",
+      "name": "보츠와나",
+      "englishName": "Botswana",
+      "flag": "🇧🇼",
+      "region": "사하라 이남 아프리카",
+      "regionId": "SSF",
+      "position": [
+        25.9201,
+        -24.6544
+      ]
+    },
+    "WB-CHI": {
+      "code": "JG",
+      "wbId": "CHI",
+      "name": "채널 제도",
+      "englishName": "Channel Islands",
+      "flag": "",
+      "region": "유럽·중앙아시아",
+      "regionId": "ECS",
+      "position": null
+    },
+    "012": {
+      "code": "DZ",
+      "wbId": "DZA",
+      "name": "알제리",
+      "englishName": "Algeria",
+      "flag": "🇩🇿",
+      "region": "중동·북아프리카·아프가니스탄·파키스탄",
+      "regionId": "MEA",
+      "position": [
+        3.05097,
+        36.7397
+      ]
+    },
+    "090": {
+      "code": "SB",
+      "wbId": "SLB",
+      "name": "솔로몬 제도",
+      "englishName": "Solomon Islands",
+      "flag": "🇸🇧",
+      "region": "동아시아·태평양",
+      "regionId": "EAS",
+      "position": [
+        159.949,
+        -9.42676
+      ]
+    },
+    "092": {
+      "code": "VG",
+      "wbId": "VGB",
+      "name": "영국령 버진아일랜드",
+      "englishName": "British Virgin Islands",
+      "flag": "🇻🇬",
+      "region": "중남미·카리브",
+      "regionId": "LCN",
+      "position": [
+        -64.623056,
+        18.431389
+      ]
+    }
+  }
+}

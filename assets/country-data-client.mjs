@@ -1,9 +1,10 @@
-import {SERIES,iso2FromFlag,observation,comparison,validateSnapshot,stale} from './country-data.mjs?v=20260922-compare1';
-import {INDUSTRY_KEYS,industryMetric,industryHeadline} from './country-industry.mjs?v=20260922-compare1';
+import {SERIES,iso2FromFlag,observation,comparison,validateSnapshot,stale} from './country-data.mjs?v=20260922-registry1';
+import {INDUSTRY_KEYS,industryMetric,industryHeadline} from './country-industry.mjs?v=20260922-registry1';
+import {registryCountries} from './country-registry.mjs?v=20260922-registry1';
 
 export function buildAtlasData(snapshot,countries,now=Date.now()) {
   validateSnapshot(snapshot);
-  const identities=Object.entries(countries).map(([id,c])=>[id,iso2FromFlag(c.flag)]);
+  const identities=Object.entries(countries).map(([id,c])=>[id,c.code||iso2FromFlag(c.flag)]);
   const codes=identities.map(([,code])=>code);
   const comparisons=Object.fromEntries(['gdp','trade','unemployment','inflation'].map(key=>[key,comparison(snapshot,key,codes)]));
   const profiles={},mapValues={};
@@ -21,6 +22,9 @@ export function buildAtlasData(snapshot,countries,now=Date.now()) {
 }
 export async function loadAtlasData(window,request=fetch) {
   try {
+    const registryResponse=await request(new URL('../data/country-registry.json',import.meta.url),{cache:'no-cache',signal:AbortSignal.timeout(15000)});
+    if(!registryResponse.ok)throw new Error(`Country registry HTTP ${registryResponse.status}`);
+    window.registerAtlasCountries(registryCountries(await registryResponse.json()));
     const response=await request(new URL('../data/country-data.json',import.meta.url),{cache:'no-cache',signal:AbortSignal.timeout(15000)});
     if(!response.ok)throw new Error(`Country data HTTP ${response.status}`);
     window.applyAtlasCountryData(buildAtlasData(await response.json(),window.getAtlasCountries()));

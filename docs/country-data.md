@@ -162,7 +162,43 @@ organizations are retained. The new view makes no new external data requests,
 collection workflow, strength score, or ranking. Missing-data countries may
 prevent a particular row from being compared even when others have data.
 
-## Failure behavior
+## Full Country and Area Registry
+
+`data/country-registry.json` now contains all 217 non-aggregate World Bank
+economies returned on 2026-09-22, replacing the manually selected 100 countries.
+The original response is retained in `data/country-registry-source.json`.
+Entries with `region.id === "NA"` (world, income groups, regional aggregates)
+are excluded. Coverage is a statistical classification, not a sovereignty claim;
+it does not imply every territory on the map is included in the World Bank list.
+
+Provider ISO2 codes are stored explicitly, including JG for Channel Islands.
+Unicode CLDR numeric mappings are retained in `data/country-code-mappings.json`
+with `data/UNICODE-LICENSE.txt`. Korean names use Node's ICU/CLDR display names
+with a small explicit naming override table. World Bank regional classifications
+are used consistently, with Korean translations; they are not physical continents.
+
+Refresh the two recorded source URLs in the registry, then run
+`node scripts/update-country-registry.mjs` and
+`node scripts/update-country-data.mjs` to rebuild the reviewed registry and data.
+The weekly workflow refreshes all allowlisted indicators for the full committed
+registry; it does not silently add new identities without review.
+
+The browser loads the bundled registry before statistics. Registry failure is
+shown explicitly, never as zero countries; statistics failure still permits
+search and country selection. Search supports Korean/English names and provider
+codes. Country comparison includes all registered economies.
+
+Existing numeric map IDs remain stable. Missing boundary mappings are not guessed
+from names. Search opens the profile even without a boundary; a selected location
+marker uses an existing label position, the World Bank reference coordinate, or
+the matching boundary's center. Markers are reference points, not national borders.
+No coordinates are invented for entries with neither boundaries nor positions.
+Current map geometry is unchanged; small areas can be reached through search.
+
+Run `node --test scripts/country-registry.test.mjs` for registry coverage,
+aggregation exclusion, mapping, and data-failure checks.
+
+## Failure Handling
 
 All API pages must be complete and consistent. A failed indicator collection
 retains its previous data and original successful collection time, marked

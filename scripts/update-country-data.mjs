@@ -1,7 +1,7 @@
 import {readFile,writeFile,mkdir,rename} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
-import {runInNewContext} from 'node:vm';
-import {SERIES,iso2FromFlag,observations,validateSnapshot} from '../assets/country-data.mjs';
+import {SERIES,observations,validateSnapshot} from '../assets/country-data.mjs';
+import {validateRegistry} from '../assets/country-registry.mjs';
 
 export async function readPages(url,request=fetch) {
   let page=1, pages=1, total=null, lastUpdated=null;
@@ -25,9 +25,8 @@ export function failedSeries(previous,indicator) {
 }
 export async function collect() {
   const output=new URL('../data/country-data.json',import.meta.url);
-  const html=await readFile(new URL('../index.html',import.meta.url),'utf8');
-  const countries=runInNewContext('('+html.match(/const eData=(\{[^\r\n]+\});/)[1]+')',{}, {timeout:1000});
-  const codes=Object.values(countries).map(c=>iso2FromFlag(c.flag));
+  const {countries}=validateRegistry(JSON.parse(await readFile(new URL('../data/country-registry.json',import.meta.url),'utf8')));
+  const codes=Object.values(countries).map(c=>c.code);
   if(new Set(codes).size!==codes.length) throw new Error('Duplicate country codes');
   let previous;try{previous=validateSnapshot(JSON.parse(await readFile(output,'utf8')));}catch{previous=null;}
   const now=new Date(), maxYear=now.getUTCFullYear()-1;

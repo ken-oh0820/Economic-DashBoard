@@ -257,8 +257,8 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 <link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-official-data">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260917-important">
 <link rel="stylesheet" href="assets/workspace.css?v=20260918-effective">
-<link rel="stylesheet" href="assets/country-profile.css?v=20260922-compare1">
-<link rel="stylesheet" href="assets/country-compare.css?v=20260922-compare1">
+<link rel="stylesheet" href="assets/country-profile.css?v=20260922-registry1">
+<link rel="stylesheet" href="assets/country-compare.css?v=20260922-registry1">
 </head>
 <body class="menu-mode light">
 <main class="main-menu" id="mainMenu" aria-labelledby="mainMenuTitle">
@@ -302,9 +302,9 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
   <div class="logo-sub">Made by Ken</div>
 </div>
 <div class="header-right">
-  <div class="stat-pill"><span class="stat-label">등록국 GDP 합계</span><span class="stat-value" id="worldGdpVal">자료 확인 중</span></div>
+  <div class="stat-pill"><span class="stat-label">등록 국가·지역 GDP 합계</span><span class="stat-value" id="worldGdpVal">자료 확인 중</span></div>
   <div class="stat-pill"><span class="stat-label">GDP 비교 기준</span><span class="stat-value" id="atlasYear">확인 중</span></div>
-  <div class="stat-pill"><span class="stat-label">표시 국가</span><span class="stat-value" id="countryCount">—</span></div>
+  <div class="stat-pill"><span class="stat-label">국가·지역</span><span class="stat-value" id="countryCount">목록 확인 중</span></div>
 </div>
 <div class="font-panel" id="fontPanel">
   <div class="font-panel-title">라벨 글꼴 설정</div>
@@ -349,11 +349,11 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 <div class="search-panel"><div class="panel-title">국가 검색</div><div class="search-box"><span class="search-icon">⌕</span><input id="countrySearch" class="search-input" type="search" placeholder="국가명, 지역, GDP 순위" autocomplete="off" oninput="renderCountrySearch(this.value)" onkeydown="handleSearchKey(event)"><button id="searchClear" class="search-clear" onclick="clearCountrySearch()" aria-label="검색 지우기">×</button></div><div class="search-results" id="countrySearchResults"></div></div>
 <div><div class="panel-title">지도 오버레이</div><button class="overlay-btn" onclick="setOverlay('polsys',this)">🟣 정치체제 구분</button><button class="overlay-btn" onclick="setOverlay('telecomcable',this)" style="border-color:#00d4ff;color:#00d4ff">🌐 통신 해저케이블</button><button class="overlay-btn" onclick="setOverlay('powercable',this)" style="border-color:#ff4488;color:#ff4488">⚡ 전력 해저케이블</button><button class="overlay-btn resource" onclick="toggleResMenu(this)">🟡 천연자원 보유국</button><div id="resSubMenu"><button class="res-sub-btn" onclick="setResOverlay('oil_prod',this)">🛢️ 석유 생산량</button><button class="res-sub-btn" onclick="setResOverlay('oil_export',this)">🛢️ 석유 수출량</button><button class="res-sub-btn" onclick="setResOverlay('gas_prod',this)">💨 천연가스 생산량</button><button class="res-sub-btn" onclick="setResOverlay('gas_export',this)">💨 천연가스 수출량</button><button class="res-sub-btn" onclick="setResOverlay('uranium',this)">☢️ 우라늄</button><button class="res-sub-btn" onclick="setResOverlay('lithium',this)">🔋 리튬</button><button class="res-sub-btn" onclick="setResOverlay('rare_earth',this)">⚗️ 희토류</button><button class="res-sub-btn" onclick="setResOverlay('tungsten',this)">🪨 텅스텐</button><button class="res-sub-btn" onclick="setResOverlay('all',this)">🌐 전체</button></div><button class="overlay-btn" onclick="setOverlay('none',this)">⬜ 오버레이 해제</button><div class="overlay-legend" id="overlayLegendBox"></div></div>
 <div><div class="panel-title">범례</div><canvas id="legendCanvas" height="10"></canvas><div class="legend-labels"><span id="legendMin">$5B</span><span id="legendMax">$30T+</span></div></div>
-<div><div class="panel-title">등록 국가 내 상위 10</div><p class="atlas-period" id="atlasMetricPeriod" role="status">공식 연간 통계 확인 중</p><div id="rankingList"></div></div>
+<div><div class="panel-title">등록 국가·지역 내 상위 10</div><p class="atlas-period" id="atlasMetricPeriod" role="status">공식 연간 통계 확인 중</p><div id="rankingList"></div></div>
 <details class="atlas-context"><summary>지도 데이터·지역 개요</summary>
 <div><div class="panel-title">글로벌 인사이트</div><div id="insights"></div></div>
 <div><div class="panel-title">데이터 상태</div><div id="dataStatusList" class="data-status-list"></div><div class="data-source-card"><strong>기준:</strong> 경제·인구·산업·자원·군사 통계: World Bank WDI (추정치 포함). 지도와 순위는 지표별 공통 연도를 사용합니다. 기존 산업·자원 메모와 지도 동맹 분류는 별도 검증 전입니다. 국가 상세의 NATO·G7 회원 여부는 표시된 확인일 기준입니다.<br><strong>환율:</strong> <a href="https://www.exchangerate-api.com/" target="_blank" rel="noopener noreferrer">ExchangeRate-API</a> 일간 기준입니다.</div></div>
-<div><div class="panel-title">등록국 GDP의 지역별 비중</div><div id="regionChart"></div></div>
+<div><div class="panel-title">등록 국가·지역 GDP의 지역별 비중</div><div id="regionChart"></div></div>
 </details>
 </div>
 </div>
@@ -372,7 +372,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
     <div id="countryDetail"></div>
     <div class="country-tabs" id="countryTabs" role="tablist" aria-label="국가 분석 분야"></div>
     <div id="countryTabBody" role="tabpanel" tabindex="0" aria-labelledby="country-tab-economy"></div>
-    <details class="country-provenance"><summary>자료 기준·확인 범위</summary><p>경제·인구·산업·자원·군사 통계는 World Bank 공식 API에서 가져옵니다. 추정치·개정치가 포함될 수 있으며 관측 연도와 수집일은 다릅니다. GDP 순위는 같은 연도 자료가 있는 등록 국가만 비교합니다. 누락값은 0으로 대체하지 않습니다.</p><p>지도 비교 연도는 등록국 85% 이상 자료가 있는 가장 최근 연도입니다. 충족하는 연도가 없으면 자료가 가장 많은 연도를 사용합니다. 국가 상세의 GDP 외 항목은 최근 6개 완료 연도 중 최신 자료이며 지도와 연도가 다를 수 있습니다. 담수 통계는 장기평균 유량 기반이며 각 지표의 해석 범위는 항목별 설명을 따릅니다.</p><p>NATO·G7 회원 여부는 군사·외교 탭에 표시된 수동 확인일 기준입니다. 기존 산업·자원 메모와 지도 동맹 분류는 기존 편집 자료입니다. 이들 참고자료의 외부 자료실 링크는 표시된 개별 수치의 검증된 원문 출처를 뜻하지 않습니다.</p></details>
+<details class="country-provenance"><summary>자료 기준·확인 범위</summary><p>등록 범위는 <a href="https://data.worldbank.org/country" target="_blank" rel="noopener noreferrer">World Bank 국가·지역 목록</a>의 비집계 경제권입니다. 독립국가만의 목록이나 국가 승인 여부를 뜻하지 않습니다. 지역 분류도 World Bank 기준입니다. 지도 경계가 없는 곳도 검색·비교할 수 있으며, 선택 위치의 점은 참고 위치이지 국경이 아닙니다.</p><p>경제·인구·산업·자원·군사 통계는 World Bank 공식 API에서 가져옵니다. 추정치·개정치가 포함될 수 있으며 관측 연도와 수집일은 다릅니다. GDP 순위는 같은 연도 자료가 있는 등록 국가·지역만 비교합니다. 누락값은 0으로 대체하지 않습니다.</p><p>지도 비교 연도는 등록국 85% 이상 자료가 있는 가장 최근 연도입니다. 충족하는 연도가 없으면 자료가 가장 많은 연도를 사용합니다. 국가 상세의 GDP 외 항목은 최근 6개 완료 연도 중 최신 자료이며 지도와 연도가 다를 수 있습니다. 담수 통계는 장기평균 유량 기반이며 각 지표의 해석 범위는 항목별 설명을 따릅니다.</p><p>NATO·G7 회원 여부는 군사·외교 탭에 표시된 수동 확인일 기준입니다. 기존 산업·자원 메모와 지도 동맹 분류는 기존 편집 자료입니다. 이들 참고자료의 외부 자료실 링크는 표시된 개별 수치의 검증된 원문 출처를 뜻하지 않습니다.</p></details>
   </div>
 </aside>
 <button type="button" class="country-profile-open" id="countryProfileOpen" hidden aria-controls="countryProfile"><i data-lucide="panel-right-open" aria-hidden="true"></i>국가 분석</button>
@@ -1293,7 +1293,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 <div id="tooltip"></div>
 <script src="assets/official-data.js?v=20260918-rates"></script>
 <script>
-const eData={"004":{name:"아프가니스탄",flag:"🇦🇫",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"008":{name:"알바니아",flag:"🇦🇱",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"012":{name:"알제리",flag:"🇩🇿",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"024":{name:"앙골라",flag:"🇦🇴",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"032":{name:"아르헨티나",flag:"🇦🇷",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"036":{name:"호주",flag:"🇦🇺",region:"오세아니아",gdp:null,trade:null,unemployment:null,inflation:null},"040":{name:"오스트리아",flag:"🇦🇹",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"050":{name:"방글라데시",flag:"🇧🇩",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"056":{name:"벨기에",flag:"🇧🇪",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"068":{name:"볼리비아",flag:"🇧🇴",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"076":{name:"브라질",flag:"🇧🇷",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"100":{name:"불가리아",flag:"🇧🇬",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"116":{name:"캄보디아",flag:"🇰🇭",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"120":{name:"카메룬",flag:"🇨🇲",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"124":{name:"캐나다",flag:"🇨🇦",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"152":{name:"칠레",flag:"🇨🇱",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"156":{name:"중국",flag:"🇨🇳",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"170":{name:"콜롬비아",flag:"🇨🇴",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"180":{name:"콩고민주공화국",flag:"🇨🇩",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"188":{name:"코스타리카",flag:"🇨🇷",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"191":{name:"크로아티아",flag:"🇭🇷",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"203":{name:"체코",flag:"🇨🇿",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"208":{name:"덴마크",flag:"🇩🇰",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"218":{name:"에콰도르",flag:"🇪🇨",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"818":{name:"이집트",flag:"🇪🇬",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"231":{name:"에티오피아",flag:"🇪🇹",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"246":{name:"핀란드",flag:"🇫🇮",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"250":{name:"프랑스",flag:"🇫🇷",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"266":{name:"가봉",flag:"🇬🇦",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"276":{name:"독일",flag:"🇩🇪",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"288":{name:"가나",flag:"🇬🇭",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"300":{name:"그리스",flag:"🇬🇷",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"320":{name:"과테말라",flag:"🇬🇹",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"332":{name:"아이티",flag:"🇭🇹",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"340":{name:"온두라스",flag:"🇭🇳",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"348":{name:"헝가리",flag:"🇭🇺",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"356":{name:"인도",flag:"🇮🇳",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"360":{name:"인도네시아",flag:"🇮🇩",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"364":{name:"이란",flag:"🇮🇷",region:"중동",gdp:null,trade:null,unemployment:null,inflation:null},"368":{name:"이라크",flag:"🇮🇶",region:"중동",gdp:null,trade:null,unemployment:null,inflation:null},"372":{name:"아일랜드",flag:"🇮🇪",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"376":{name:"이스라엘",flag:"🇮🇱",region:"중동",gdp:null,trade:null,unemployment:null,inflation:null},"380":{name:"이탈리아",flag:"🇮🇹",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"392":{name:"일본",flag:"🇯🇵",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"398":{name:"카자흐스탄",flag:"🇰🇿",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"404":{name:"케냐",flag:"🇰🇪",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"408":{name:"북한",flag:"🇰🇵",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"410":{name:"대한민국",flag:"🇰🇷",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"414":{name:"쿠웨이트",flag:"🇰🇼",region:"중동",gdp:null,trade:null,unemployment:null,inflation:null},"418":{name:"라오스",flag:"🇱🇦",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"422":{name:"레바논",flag:"🇱🇧",region:"중동",gdp:null,trade:null,unemployment:null,inflation:null},"434":{name:"리비아",flag:"🇱🇾",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"458":{name:"말레이시아",flag:"🇲🇾",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"484":{name:"멕시코",flag:"🇲🇽",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"504":{name:"모로코",flag:"🇲🇦",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"508":{name:"모잠비크",flag:"🇲🇿",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"516":{name:"나미비아",flag:"🇳🇦",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"524":{name:"네팔",flag:"🇳🇵",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"528":{name:"네덜란드",flag:"🇳🇱",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"554":{name:"뉴질랜드",flag:"🇳🇿",region:"오세아니아",gdp:null,trade:null,unemployment:null,inflation:null},"558":{name:"니카라과",flag:"🇳🇮",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"566":{name:"나이지리아",flag:"🇳🇬",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"578":{name:"노르웨이",flag:"🇳🇴",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"586":{name:"파키스탄",flag:"🇵🇰",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"604":{name:"페루",flag:"🇵🇪",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"608":{name:"필리핀",flag:"🇵🇭",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"616":{name:"폴란드",flag:"🇵🇱",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"620":{name:"포르투갈",flag:"🇵🇹",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"634":{name:"카타르",flag:"🇶🇦",region:"중동",gdp:null,trade:null,unemployment:null,inflation:null},"642":{name:"루마니아",flag:"🇷🇴",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"643":{name:"러시아",flag:"🇷🇺",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"682":{name:"사우디아라비아",flag:"🇸🇦",region:"중동",gdp:null,trade:null,unemployment:null,inflation:null},"686":{name:"세네갈",flag:"🇸🇳",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"703":{name:"슬로바키아",flag:"🇸🇰",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"705":{name:"슬로베니아",flag:"🇸🇮",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"706":{name:"소말리아",flag:"🇸🇴",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"710":{name:"남아프리카공화국",flag:"🇿🇦",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"724":{name:"스페인",flag:"🇪🇸",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"729":{name:"수단",flag:"🇸🇩",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"752":{name:"스웨덴",flag:"🇸🇪",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"756":{name:"스위스",flag:"🇨🇭",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"764":{name:"태국",flag:"🇹🇭",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"788":{name:"튀니지",flag:"🇹🇳",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"792":{name:"튀르키예",flag:"🇹🇷",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"800":{name:"우간다",flag:"🇺🇬",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"804":{name:"우크라이나",flag:"🇺🇦",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"784":{name:"아랍에미리트",flag:"🇦🇪",region:"중동",gdp:null,trade:null,unemployment:null,inflation:null},"826":{name:"영국",flag:"🇬🇧",region:"유럽",gdp:null,trade:null,unemployment:null,inflation:null},"840":{name:"미국",flag:"🇺🇸",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"858":{name:"우루과이",flag:"🇺🇾",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"860":{name:"우즈베키스탄",flag:"🇺🇿",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"862":{name:"베네수엘라",flag:"🇻🇪",region:"아메리카",gdp:null,trade:null,unemployment:null,inflation:null},"704":{name:"베트남",flag:"🇻🇳",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"887":{name:"예멘",flag:"🇾🇪",region:"중동",gdp:null,trade:null,unemployment:null,inflation:null},"894":{name:"잠비아",flag:"🇿🇲",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"716":{name:"짐바브웨",flag:"🇿🇼",region:"아프리카",gdp:null,trade:null,unemployment:null,inflation:null},"104":{name:"미얀마",flag:"🇲🇲",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"795":{name:"투르크메니스탄",flag:"🇹🇲",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"031":{name:"아제르바이잔",flag:"🇦🇿",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null},"702":{name:"싱가포르",flag:"🇸🇬",region:"아시아",gdp:null,trade:null,unemployment:null,inflation:null}};
+const eData={};
 
 function interpolateColor(a,b,t){const ha=parseInt(a.slice(1),16),hb=parseInt(b.slice(1),16);const ra=(ha>>16)&255,ga=(ha>>8)&255,ba=ha&255,rb=(hb>>16)&255,gb=(hb>>8)&255,bb=hb&255;return`rgb(${Math.round(ra+(rb-ra)*t)},${Math.round(ga+(gb-ga)*t)},${Math.round(ba+(bb-ba)*t)})`;}
 function makeLogScale(d,cA,cB){const lo=Math.log(Math.max(d[0],1e-9)),hi=Math.log(Math.max(d[1],1e-9));return v=>{const t=Math.max(0,Math.min(1,(Math.log(Math.max(v,1e-9))-lo)/(hi-lo)));return interpolateColor(cA,cB,t);};}
@@ -1414,7 +1414,8 @@ tungsten:{label:"텅스텐",icon:"🪨",color:"#bbbbbb",note:"텅스텐 (USGS 20
 function getResourceList(id){return Object.entries(RESOURCES).filter(([,r])=>r.countries.has(id)).map(([,r])=>r);}
 
 let curMetric='gdp',isLight=true,selId=null,curOverlay='none',showLabels=true,curResource=null;
-let colorScale,geoLayer,map,labelMarkers=[];
+let colorScale,geoLayer,map,labelMarkers=[],countryLocationMarker=null;
+const boundaryIds=new Set();
 const DATA_STATUS={map:{label:'지도 경계',status:'loading',detail:'대기'},fx:{label:'환율',status:'loading',detail:'대기'}};
 const COUNTRY_ALIASES={"410":"한국 남한 코리아 korea republic of korea rok","840":"미국 미국달러 usa united states america us","156":"중국 china prc","392":"일본 japan","276":"독일 germany deutschland","826":"영국 uk united kingdom britain","250":"프랑스 france","643":"러시아 russia","356":"인도 india","076":"브라질 brazil","124":"캐나다 canada","036":"호주 australia","792":"튀르키예 터키 turkey turkiye","784":"아랍에미레이트 uae united arab emirates","704":"베트남 vietnam viet nam","408":"북한 north korea dprk"};
 let lastSearchQuery='',searchCursor=0;
@@ -1426,11 +1427,28 @@ function placeAlliancePanel(){
   const search=document.querySelector('#sidebarLeft .search-panel');
   if(panel&&search&&search.previousElementSibling!==panel)search.parentElement.insertBefore(panel,search);
 }
-function getCountryEntries(){return Object.entries(eData).map(([id,d])=>({id,d,rank:getRank(id,'gdp'),text:[d.name,d.region,id,d.flag,COUNTRY_ALIASES[id]||''].join(' ').toLowerCase()}));}
+function getCountryEntries(){return Object.entries(eData).map(([id,d])=>({id,d,rank:getRank(id,'gdp'),text:[d.name,d.englishName,d.code,d.wbId,d.region,id,d.flag,COUNTRY_ALIASES[id]||''].join(' ').toLowerCase()}));}
 function renderCountrySearch(q=''){lastSearchQuery=q;const input=document.getElementById('countrySearch'),clear=document.getElementById('searchClear'),box=document.getElementById('countrySearchResults');if(!box)return;if(input&&input.value!==q)input.value=q;if(clear)clear.classList.toggle('show',!!q.trim());const term=q.trim().toLowerCase();let rows=getCountryEntries().sort((a,b)=>(a.rank??Infinity)-(b.rank??Infinity));if(term){rows=rows.filter(x=>x.text.includes(term)||String(x.rank)===term.replace('#',''));}rows=rows.slice(0,term?12:8);searchCursor=Math.min(searchCursor,Math.max(rows.length-1,0));if(!rows.length){box.innerHTML='<div class="search-empty">검색 결과가 없습니다</div>';return;}box.innerHTML=rows.map((x,i)=>`<button class="search-result ${x.id===selId||i===searchCursor?'active':''}" onclick="selectCountry('${x.id}',{pan:true,closePanel:true})"><span class="search-result-name">${escHtml(x.d.flag)} ${escHtml(x.d.name)}</span><span class="search-result-meta">${x.rank?`#${x.rank}`:"순위 없음"} · ${escHtml(x.d.region)}</span></button>`).join('');}
 function clearCountrySearch(){searchCursor=0;renderCountrySearch('');document.getElementById('countrySearch')?.focus();}
 function handleSearchKey(e){const items=[...document.querySelectorAll('#countrySearchResults .search-result')];if(e.key==='ArrowDown'){e.preventDefault();searchCursor=Math.min(searchCursor+1,Math.max(items.length-1,0));renderCountrySearch(e.currentTarget.value);}else if(e.key==='ArrowUp'){e.preventDefault();searchCursor=Math.max(searchCursor-1,0);renderCountrySearch(e.currentTarget.value);}else if(e.key==='Enter'&&items[searchCursor]){e.preventDefault();items[searchCursor].click();}else if(e.key==='Escape'){clearCountrySearch();}}
-function selectCountry(id,opts={}){if(!eData[id])return;selId=id;renderDetail(id,true);if(geoLayer){geoLayer.eachLayer(l=>{const lid=pad(l.feature.id);l.setStyle(lid===id?{weight:2.5,color:'rgba(0,212,255,0.9)'}:{weight:0.6,color:getStroke()});if(lid===id&&l.bringToFront)l.bringToFront();});}if(opts.pan&&map&&LABEL_POS[id]){const [lon,lat]=LABEL_POS[id];map.setView([lat,lon],Math.max(map.getZoom(),isMobile()?4:3.4),{animate:true});}renderCountrySearch(lastSearchQuery);if(opts.closePanel&&isMobile())closeSidebars();}
+function selectCountry(id,opts={}){
+  if(!eData[id])return;
+  selId=id;renderDetail(id,true);hideTip();
+  let position=LABEL_POS[id]||eData[id].position;
+  if(geoLayer)geoLayer.eachLayer(l=>{
+    const selected=pad(l.feature.id)===id;
+    l.setStyle(selected?{weight:2.5,color:'rgba(0,212,255,0.9)'}:{weight:0.6,color:getStroke()});
+    if(selected){l.bringToFront();if(!position){const p=l.getBounds().getCenter();position=[p.lng,p.lat];}}
+  });
+  if(countryLocationMarker){countryLocationMarker.remove();countryLocationMarker=null;}
+  if(map&&position){
+    const [lon,lat]=position;
+    countryLocationMarker=L.circleMarker([lat,lon],{radius:7,color:'#087f8c',weight:2,fillColor:'#ffffff',fillOpacity:1}).addTo(map)
+      .bindTooltip(`${escHtml(eData[id].name)} · 참고 위치 (경계 아님)`,{direction:'top'});
+    if(opts.pan)map.setView([lat,lon],Math.max(map.getZoom(),isMobile()?4:3.4),{animate:true});
+  }
+  renderCountrySearch(lastSearchQuery);if(opts.closePanel&&isMobile())closeSidebars();
+}
 
 function pad(id){return String(id).padStart(3,'0');}
 function getStroke(){return isLight?'rgba(0,80,160,0.22)':'rgba(0,200,255,0.15)';}
@@ -1454,6 +1472,7 @@ window.getAtlasCountry=function(iso){
   const money={};for(const key of ['gdp','gni','trade','exports','imports'])money[key]=fmtMoney(Number.isFinite(value(key))?value(key)/1e9:null);
   for(const key of ['gdpPc','gniPc'])money[key]=fmtMoneyPc(value(key));
   return {id:iso,...d,...profile,stats,official:atlasOfficial,dataStatus:atlasLoadStatus,
+    mapNote:geoLayer&&!boundaryIds.has(iso)?'지도 경계 미제공 · 검색·비교 가능':'',
     extra:{pop:Number.isFinite(value('population'))?value('population')/1e6:null},
     unemployment:value('unemployment'),inflation:value('inflation'),
     rank:getRank(iso,'gdp'),count:atlasComparisons.gdp?.count||0,rankYear:atlasComparisons.gdp?.year,
@@ -1463,20 +1482,28 @@ window.getAtlasCountry=function(iso){
     groups:[natoMembers.has(iso)?'NATO':'',g7Members.has(iso)?'G7':'',bricsMembers.has(iso)?'BRICS':''].filter(Boolean)};
 };
 window.getAtlasCountries=()=>eData;
+window.registerAtlasCountries=function(countries){
+  for(const id of Object.keys(eData))delete eData[id];
+  Object.assign(eData,countries);
+  document.getElementById('countryCount').textContent=Object.keys(eData).length+'개';
+  document.getElementById('countryCount').title='World Bank 비집계 국가·지역 · 국가 승인 여부를 뜻하지 않음';
+  updateColors();renderAll();renderCountrySearch(lastSearchQuery);
+  if(map)renderLabels();
+};
 window.applyAtlasCountryData=function({snapshot,comparisons,profiles,mapValues,status}){
   atlasOfficial=snapshot;atlasComparisons=comparisons;atlasProfiles=profiles;atlasLoadStatus=status;
   for(const [id,values] of Object.entries(mapValues))Object.assign(eData[id],values);
   hideTip();updateColors();renderAll();renderCountrySearch(lastSearchQuery);
   window.CountryComparison?.refresh();
 };
-window.failAtlasCountryData=function(){atlasLoadStatus='공식 자료를 불러오지 못했습니다 · 새로고침 후 재시도';renderAll();};
+window.failAtlasCountryData=function(){atlasLoadStatus='공식 자료를 불러오지 못했습니다 · 새로고침 후 재시도';if(!Object.keys(eData).length){document.getElementById('countryCount').textContent='목록 연결 실패';document.getElementById('countrySearchResults').textContent='국가·지역 목록을 불러오지 못했습니다. 새로고침 후 다시 확인해 주세요.';}renderAll();};
 function renderAtlasStatus(){
   const g=atlasComparisons.gdp,c=atlasComparisons[curMetric];
   const values=Object.values(eData).filter(d=>Number.isFinite(d.gdp));
   document.getElementById('worldGdpVal').textContent=values.length?fmtMoney(values.reduce((sum,d)=>sum+d.gdp,0)):'자료 없음';
-  document.getElementById('worldGdpVal').title=g?.year?`${g.year}년 · ${g.count}/${g.total}개국 합계 · 세계 총액 아님`:atlasLoadStatus;
-  document.getElementById('atlasYear').textContent=g?.year?`${g.year} · ${g.count}개국`:'자료 없음';
-  document.getElementById('atlasMetricPeriod').textContent=c?.year?`${c.year}년 · ${c.count}/${c.total}개국 · World Bank WDI`:atlasLoadStatus;
+  document.getElementById('worldGdpVal').title=g?.year?`${g.year}년 · ${g.count}/${g.total}개 국가·지역 합계 · 세계 총액 아님`:atlasLoadStatus;
+  document.getElementById('atlasYear').textContent=g?.year?`${g.year} · ${g.count}개 국가·지역`:'자료 없음';
+  document.getElementById('atlasMetricPeriod').textContent=c?.year?`${c.year}년 · ${c.count}/${c.total}개 국가·지역 · World Bank WDI`:atlasLoadStatus;
   document.getElementById('atlasWatermark').textContent=c?.year||'';
 }
 function renderDetail(iso,show=false){
@@ -1494,7 +1521,7 @@ function renderRankings(){
 }
 function clickRank(id){selectCountry(id,{pan:true});}
 function renderLegend(){const canvas=document.getElementById('legendCanvas');if(!canvas.offsetWidth)return;const W=canvas.offsetWidth;canvas.width=W;canvas.height=10;const ctx=canvas.getContext('2d');const sc=isLight?mCfg[curMetric].lightScale():mCfg[curMetric].darkScale();const domain=curMetric==='unemployment'?[0,35]:curMetric==='gdp'?[5,31000]:curMetric==='trade'?[1,6500]:[-5,100];const isLog=curMetric==='gdp'||curMetric==='trade';for(let i=0;i<W;i++){const t=i/W;let v;if(isLog)v=Math.exp(Math.log(Math.max(domain[0],1e-9))+(Math.log(Math.max(domain[1],1e-9))-Math.log(Math.max(domain[0],1e-9)))*t);else v=domain[0]+(domain[1]-domain[0])*t;ctx.fillStyle=sc(v);ctx.fillRect(i,0,1,10);}document.getElementById('legendMin').textContent=mCfg[curMetric].min;document.getElementById('legendMax').textContent=mCfg[curMetric].max;}
-function renderInsight(){const c=atlasComparisons[curMetric];document.getElementById('insights').textContent=c?.year?`${c.year}년 · 등록 ${c.total}개국 중 ${c.count}개국 자료. 실업률·물가는 연간값이며 최근 월별 발표치가 아닙니다. 서로 다른 연도 자료는 순위에 섞지 않습니다.`:atlasLoadStatus;}
+function renderInsight(){const c=atlasComparisons[curMetric];document.getElementById('insights').textContent=c?.year?`${c.year}년 · 등록 ${c.total}개 국가·지역 중 ${c.count}개 국가·지역 자료. 실업률·물가는 연간값이며 최근 월별 발표치가 아닙니다. 서로 다른 연도 자료는 순위에 섞지 않습니다.`:atlasLoadStatus;}
 function renderRegionChart(){const regions={};Object.values(eData).filter(d=>Number.isFinite(d.gdp)).forEach(d=>{regions[d.region]=(regions[d.region]||0)+d.gdp;});const total=Object.values(regions).reduce((a,b)=>a+b,0);const col=isLight?mCfg.gdp.lightColor:mCfg.gdp.darkColor;document.getElementById('regionChart').innerHTML=Object.entries(regions).sort((a,b)=>b[1]-a[1]).map(([r,v])=>`<div style="margin-bottom:7px"><div style="display:flex;justify-content:space-between;font-size:9px;color:var(--text-mid);margin-bottom:3px"><span>${r}</span><span style="color:${col}">${(v/(total||1)*100).toFixed(1)}%</span></div><div style="height:3px;background:var(--border);border-radius:2px"><div style="height:100%;width:${(v/(total||1)*100).toFixed(1)}%;background:${col};border-radius:2px;opacity:0.8"></div></div></div>`).join('');}
 function renderAll(){renderRankings();renderLegend();renderInsight();renderRegionChart();if(selId)renderDetail(selId);}
 
@@ -1877,6 +1904,7 @@ function initMap(){
   document.getElementById('loadingStatus').textContent='GeoJSON 로딩 중...';setDataStatus('map','loading','세계 경계 로딩 중');
   fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json').then(r=>r.json()).then(topo=>{
     const countries=topojson.feature(topo,topo.objects.countries);
+    countries.features.forEach(f=>{if(f.id!=null)boundaryIds.add(pad(f.id));});
     // Fix antimeridian: Russia, Fiji etc. cross the 180° line causing render artifacts
     countries.features.forEach(f=>{
       function fixRings(rings){rings.forEach(ring=>{let prev=ring[0][0];for(let i=1;i<ring.length;i++){while(ring[i][0]-prev>180)ring[i][0]-=360;while(ring[i][0]-prev<-180)ring[i][0]+=360;prev=ring[i][0];}});}
@@ -1892,9 +1920,8 @@ function initMap(){
         click:e=>{const cid=pad(e.target.feature.id);if(!eData[cid])return;selectCountry(cid,{pan:false});}
       });}
     }).addTo(map);
-    document.getElementById('countryCount').textContent=Object.keys(eData).length+'개국';
     document.getElementById('loadingOverlay').style.display='none';
-    setDataStatus('map','ok','국가 '+Object.keys(eData).length+'개');
+    setDataStatus('map','ok','세계 경계 연결');
     renderAll();renderLabels();renderCountrySearch('');
   }).catch(err=>{document.getElementById('loadingStatus').textContent='로딩 실패 — 인터넷 연결 확인';setDataStatus('map','error','CDN 연결 실패');console.error(err);});
   map.on('zoomend moveend',()=>renderLabels());
@@ -2840,7 +2867,7 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
 <script type="module" src="assets/workspace.mjs?v=20260918-effective"></script>
-<script type="module" src="assets/country-profile.mjs?v=20260922-compare1"></script>
-<script type="module" src="assets/country-data-client.mjs?v=20260922-compare1"></script>
+<script type="module" src="assets/country-profile.mjs?v=20260922-registry1"></script>
+<script type="module" src="assets/country-data-client.mjs?v=20260922-registry1"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {runInNewContext} from 'node:vm';
+import {registryCountries} from '../assets/country-registry.mjs';
 import {SERIES,iso2FromFlag,observations,observation,comparison,rankFor,sourceUrl,stale,validateSnapshot} from '../assets/country-data.mjs';
 import {buildAtlasData,loadAtlasData} from '../assets/country-data-client.mjs';
 import {readPages,failedSeries} from './update-country-data.mjs';
@@ -61,8 +61,10 @@ test('adapter uses billion USD for map, raw units for details and null for missi
 });
 test('browser reads only the bundled snapshot and exposes failures instead of fallback numbers',async()=>{
   let applied=0,failed=0,called;
-  const w={getAtlasCountries:()=>({'840':{flag:'🇺🇸'}}),applyAtlasCountryData:()=>applied++,failAtlasCountryData:()=>failed++};
-  await loadAtlasData(w,async url=>{called=url;return {ok:true,json:async()=>sample()};});
+  let countries={};
+  const registry=JSON.parse(readFileSync(new URL('../data/country-registry.json',import.meta.url),'utf8'));
+  const w={registerAtlasCountries:value=>countries=value,getAtlasCountries:()=>countries,applyAtlasCountryData:()=>applied++,failAtlasCountryData:()=>failed++};
+  await loadAtlasData(w,async url=>{called=url;return {ok:true,json:async()=>url.pathname.endsWith('country-registry.json')?registry:sample()};});
   assert.equal(applied,1);assert.match(called.pathname,/\/data\/country-data.json$/);
   await loadAtlasData(w,async()=>({ok:true,json:async()=>({invalid:true})}));
   assert.equal(failed,1);assert.equal(applied,1);
@@ -74,9 +76,9 @@ test('snapshot schema rejects nonnumeric observations and non-allowlisted series
 });
 test('committed data covers registered countries only and maintains common-year GDP agreement',()=>{
   const html=readFileSync(new URL('../index.html',import.meta.url),'utf8');
-  const countries=runInNewContext('('+html.match(/const eData=(\{[^\r\n]+\});/)[1]+')');
+  const countries=registryCountries(JSON.parse(readFileSync(new URL('../data/country-registry.json',import.meta.url),'utf8')));
   const s=validateSnapshot(JSON.parse(readFileSync(new URL('../data/country-data.json',import.meta.url),'utf8')));
-  const codes=Object.values(countries).map(c=>iso2FromFlag(c.flag));
+  const codes=Object.values(countries).map(c=>c.code);
   const b=buildAtlasData(s,countries);
   for(const data of Object.values(s.series)) for(const code of Object.keys(data.countries)) assert.ok(codes.includes(code));
   for(const [id,profile] of Object.entries(b.profiles)) {
@@ -93,5 +95,5 @@ test('profile links show per-metric years, collection dates, source attribution 
   assert.match(markup,/2024년 · 연간/);assert.match(markup,/2026-09-21/);
   assert.match(markup,/CC BY 4.0/);assert.match(markup,/국가채무 값은/);
   assert.doesNotMatch(markup,/<script>/);assert.match(markup,/locations=US/);
-  assert.match(summaryMarkup(c),/2024년 · 3개국 비교/);
+  assert.match(summaryMarkup(c),/2024년 · 3개 국가·지역 비교/);
 });
