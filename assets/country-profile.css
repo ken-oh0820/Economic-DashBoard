@@ -121,4 +121,22 @@ body:not(.light) .industry-teal{--industry-color:#58c5bc}body:not(.light) .indus
 .resource-metric summary{border-left:3px solid var(--industry-color);padding-left:10px;grid-template-columns:minmax(0,1fr) minmax(0,auto) 16px}
 .resource-metric summary>strong{font-size:15px;white-space:normal;overflow-wrap:anywhere;text-align:right;max-width:175px}
 .resource-age{display:block;color:var(--text-mid);font-weight:600;margin-top:3px}
+.country-geography-entry{border-top:1px solid var(--border)}
+.country-geography-entry summary{display:grid;grid-template-columns:20px minmax(0,1fr) 16px;gap:12px;align-items:center;padding:14px 0;list-style:none;cursor:pointer}
+.country-geography-entry summary::-webkit-details-marker{display:none}
+.country-geography-entry summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.country-geography-entry summary:hover{background:var(--surface2)}
+.country-geography-entry summary>svg{width:20px;height:20px;color:var(--accent)}
+.country-geography-entry summary>svg:last-child{width:16px;height:16px;color:var(--text-mid)}
+.country-geography-entry[open] summary>svg:last-child{transform:rotate(180deg)}
+.country-geography-entry summary :is(small,strong,em){display:block;overflow-wrap:anywhere}
+.country-geography-entry summary small{font-size:10px;color:var(--text-mid)}
+.country-geography-entry summary strong{font-size:13px;line-height:1.6;margin:2px 0;font-weight:700}
+.country-geography-entry summary em{font-size:11px;font-style:normal;color:var(--text-mid)}
+.country-geography-reading{padding:0 0 16px}
+.country-geography-reading p{margin:6px 0}
+.country-geography-reading h4{font-size:11px;color:var(--accent);margin:12px 0 4px}
+.country-geography-reading .country-sources{padding:4px 0 10px}
+.country-geography-reading .country-sources a{font-size:11px;min-width:0;overflow-wrap:anywhere}
+.country-geography-reading .country-sources svg{flex-shrink:0}
 @media(max-width:420px){.resource-metric summary>strong{font-size:13px;max-width:140px}}

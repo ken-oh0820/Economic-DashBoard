@@ -198,6 +198,32 @@ Current map geometry is unchanged; small areas can be reached through search.
 Run `node --test scripts/country-registry.test.mjs` for registry coverage,
 aggregation exclusion, mapping, and data-failure checks.
 
+## Ports, Waterways and Terrain
+
+`assets/country-geography.mjs` contains manually reviewed representative examples
+for US, CN, DE, JP, GB, IN, FR, RU, IT and CA. The initial cohort is the top ten
+by common-year 2025 nominal GDP in the site's snapshot, selected on 2026-09-23.
+It is fixed at review time, not automatically reselected when WDI revises GDP.
+
+Each country has three native disclosures at the top of the resources/geography
+tab: a port example, a waterway connection, and a terrain/inland connection.
+Domestic ports, shared waters and foreign trade routes are explicitly distinguished.
+These are not complete inventories, port rankings, navigational advice or live
+traffic conditions. Other countries show a pending-coverage message, not absence
+of ports or geographical advantages. The seven WDI resource indicators and
+quantitative comparison remain unchanged.
+
+Every short factual summary links to its government, public authority or official
+port source. Economic interpretations are separately labelled as this site's
+analysis. No source images, complete articles or third-party traffic data are
+republished, and no scraping, proxy, API or background collection is added.
+The source dictionary retains exact source URLs and publication editions where
+relevant; the visible review date is separate from the underlying publication
+date. This editorial content is not covered by the WDI attribution below it.
+
+Run `node --test scripts/country-geography.test.mjs` for coverage, source-link,
+foreign-route labelling, collapsed disclosure and missing-country checks.
+
 ## Failure Handling
 
 All API pages must be complete and consistent. A failed indicator collection

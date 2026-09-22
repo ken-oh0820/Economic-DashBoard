@@ -3,6 +3,7 @@ import {INDUSTRY_GROUPS,INDUSTRY_KEYS,INDUSTRY_INFO,industryScale} from './count
 import {RESOURCE_GROUPS,RESOURCE_KEYS,RESOURCE_INFO,resourceValue,resourceAge} from './country-resources.mjs?v=20260922-registry1';
 import {SECURITY_KEYS,SECURITY_INFO,securityValue,securityChange,DIPLOMACY,MEMBERSHIP_CHECKED,membershipLabel} from './country-security.mjs?v=20260922-registry1';
 import {initCountryComparison} from './country-compare.mjs?v=20260922-registry1';
+import {COUNTRY_GEOGRAPHY,GEOGRAPHY_GROUPS,GEOGRAPHY_SOURCES,GEOGRAPHY_REVIEWED,GEOGRAPHY_COHORT_YEAR} from './country-geography.mjs?v=20260923-geography1';
 export const TABS = [['economy','경제'],['population','인구'],['industry','산업·경쟁력'],['resources','자원·지리'],['security','군사·외교']];
 export const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number = value => typeof value === 'number' && Number.isFinite(value);
@@ -79,15 +80,24 @@ export function industryMarkup(c) {
     attribution(c,INDUSTRY_KEYS);
 }
 
+export function geographyMarkup(c) {
+  const geography=Object.hasOwn(COUNTRY_GEOGRAPHY,c.code)?COUNTRY_GEOGRAPHY[c.code]:null;
+  if(!geography) return section('항만·해협·지형',unavailable('이 국가·지역의 설명은 준비 중입니다. 항만·수로나 지리적 강점이 없다는 의미는 아닙니다.'));
+  return section('항만·해협·지형',`<p class="country-note">${GEOGRAPHY_COHORT_YEAR}년 명목 GDP 상위 10개국 우선 정리 · 수동 확인 ${GEOGRAPHY_REVIEWED}</p>`+
+    GEOGRAPHY_GROUPS.map(group=>{
+      const item=geography[group.key],source=GEOGRAPHY_SOURCES[item.source];
+      return `<details class="country-geography-entry" data-geography-key="${group.key}"><summary><i data-lucide="${group.icon}" aria-hidden="true"></i><span><small>${e(group.label)}</small><strong>${e(item.title)}</strong><em>${e(item.relation)}</em></span><i data-lucide="chevron-down" aria-hidden="true"></i></summary><div class="country-geography-reading"><p>${e(item.fact)}</p><div class="country-sources">${link(source.url,source.label)}</div><h4>경제적 의미 · 이 사이트의 해석</h4><p>${e(item.reading)}</p></div></details>`;
+    }).join('')+`<p class="country-note">대표 사례이며 전체 목록이나 물류 경쟁력 순위가 아닙니다. 통항 제한·혼잡·운임은 실시간 제공하지 않습니다. 설명은 자동 갱신되지 않으며, 아래 World Bank 통계와 별도의 자료입니다.</p>`);
+}
+
 export function resourcesMarkup(c) {
   const available=RESOURCE_KEYS.filter(key=>number(c.stats?.[key]?.value)).length;
-  return `<p class="industry-status">자원·지리 통계 <strong>${available}/${RESOURCE_KEYS.length}</strong> · 항목별 기준 연도 상이</p>`+
+  return geographyMarkup(c)+`<p class="industry-status">자원·지리 통계 <strong>${available}/${RESOURCE_KEYS.length}</strong> · 항목별 기준 연도 상이</p>`+
     RESOURCE_GROUPS.map(group=>section(group.title,`<p class="country-note">${e(group.note)}</p>`+group.keys.map(key=>{
       const stat=c.stats?.[key],info=RESOURCE_INFO[key],age=resourceAge(stat?.year);
       return `<details class="industry-metric resource-metric industry-${info.color}" data-resource-key="${key}"><summary><span class="industry-metric-name">${e(SERIES[key][1])}<small>${e(info.basis)} · ${stat?`${e(stat.year)}년`:'자료 없음'}${age?`<span class="resource-age">${e(age)}</span>`:''}</small></span><strong>${e(resourceValue(key,stat?.value))}</strong><i data-lucide="chevron-down" aria-hidden="true"></i></summary><div class="industry-reading"><p>${e(info.meaning)}</p><p class="country-note">${e(info.caution)}</p>${sourceMarkup(c,key)}</div></details>`;
     }).join(''))).join('')+
     section('매장량·채굴 가능성',`<p>생산량·수출량·자원량·매장량은 서로 다릅니다. 경제성·품위·기술·인허가를 확인하지 않은 채굴 가능량은 표시하지 않습니다.</p><div class="country-sources">${link('https://www.usgs.gov/programs/mineral-resources-program/mineral-resources-data','USGS 광물 자료')}${link('https://www.eia.gov/international/','EIA 국가별 에너지 자료')}</div>`)+
-    section('항만·해협·지형',`<p class="country-empty">국가별 항만·해협·지형 설명은 검증된 자료 연결 전입니다. 육지 면적과 자원 통계만으로 물류 경쟁력이나 해상 접근성을 판단하지 않습니다.</p>`)+
     `<details class="industry-legacy"><summary>기존 지도 자원 메모 <small>미검증 · 매장량 또는 채굴 가능성 아님</small></summary>${c.resources?.length?`<ul class="country-resource-list">${c.resources.map(r=>`<li><strong>${e(r.label)}</strong><small>${e(r.note)}</small></li>`).join('')}</ul>`:unavailable('현재 목록에 등록된 항목이 없습니다. 자원이 없다는 의미는 아닙니다.')}<p class="country-note">일부 생산·수출 국가를 분류한 기존 참고자료입니다. 현재의 생산 순위나 확인된 매장량으로 사용하지 않습니다.</p></details>`+
     attribution(c,RESOURCE_KEYS);
 }
