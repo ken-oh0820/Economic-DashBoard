@@ -224,6 +224,39 @@ date. This editorial content is not covered by the WDI attribution below it.
 Run `node --test scripts/country-geography.test.mjs` for coverage, source-link,
 foreign-route labelling, collapsed disclosure and missing-country checks.
 
+## US Geography Extension
+
+The US view replaces the three short examples with four collapsed groups in
+`assets/country-geography-us.mjs`: eight port regions, eight waterways, eight
+terrain regions, and eight advertised liner-service examples. Coverage spans
+the contiguous states, Alaska and Hawaii; it is not an exhaustive inventory of
+ports, territories, tanker/LNG/bulk voyages or all US trading partners.
+
+Services were checked against carrier listings on 2026-09-23. Hapag-Lloyd's
+Transpacific directory confirms WC2/US2 service listing, with representative
+ports from the LA port's linked rotation report (its legacy URL contains 2020,
+but the reviewed content names Gemini TP8/WC2 and TP12/US2). The current Atlantic
+terminal matrix supports AL2/AL3/AL4 port connections and explicitly marks
+New Orleans as transshipment via Altamira. Matson's Hawaii, Alaska and Asia
+service pages support the remaining connections. Schedule links are separate
+from service descriptions. These checks do not confirm a sailing on a given
+date, booking availability, ocean path, frequency or live vessel position.
+
+International services and domestic coastwise services are labelled separately;
+AAX is explicitly westbound. Partial port connections are not full rotations
+or promises of direct/bidirectional carriage. Bering Strait is geographical
+context, not a claimed year-round Arctic liner service. No invented route lines
+are added to the map and no source map artwork is republished.
+
+The manual review date never advances automatically. After 30 days, the route
+group asks for source rechecking; individual departures always remain unverified.
+Factual summaries link to port authorities, USGS, NOAA, USCG, MARAD or carriers,
+and economic interpretation is separately labelled. Older sources are used
+for stable terrain or network structure only, without recycling old capacity,
+population or traffic totals. Existing data collection and map behavior remain
+unchanged. Run `node --test scripts/country-geography-us.test.mjs` for coverage,
+source integrity, service scope, stale review labels and rendering checks.
+
 ## Failure Handling
 
 All API pages must be complete and consistent. A failed indicator collection

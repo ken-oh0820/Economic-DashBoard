@@ -4,6 +4,7 @@ import {RESOURCE_GROUPS,RESOURCE_KEYS,RESOURCE_INFO,resourceValue,resourceAge} f
 import {SECURITY_KEYS,SECURITY_INFO,securityValue,securityChange,DIPLOMACY,MEMBERSHIP_CHECKED,membershipLabel} from './country-security.mjs?v=20260922-registry1';
 import {initCountryComparison} from './country-compare.mjs?v=20260922-registry1';
 import {COUNTRY_GEOGRAPHY,GEOGRAPHY_GROUPS,GEOGRAPHY_SOURCES,GEOGRAPHY_REVIEWED,GEOGRAPHY_COHORT_YEAR} from './country-geography.mjs?v=20260923-geography1';
+import {US_GEOGRAPHY_GROUPS,US_GEOGRAPHY_SOURCES,US_GEOGRAPHY_REVIEWED,usRouteReviewLabel} from './country-geography-us.mjs?v=20260923-us-geography1';
 export const TABS = [['economy','경제'],['population','인구'],['industry','산업·경쟁력'],['resources','자원·지리'],['security','군사·외교']];
 export const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number = value => typeof value === 'number' && Number.isFinite(value);
@@ -80,7 +81,15 @@ export function industryMarkup(c) {
     attribution(c,INDUSTRY_KEYS);
 }
 
+export function usGeographyMarkup(now=Date.now()) {
+  const sources=keys=>keys.map(key=>{const source=US_GEOGRAPHY_SOURCES[key];return link(source.url,source.label);}).join('');
+  return section('미국 전역 · 항만·수로·지형',`<p class="country-note">본토 48개 주·알래스카·하와이의 권역별 개관 · 수동 확인 ${US_GEOGRAPHY_REVIEWED}</p><p>양대양 항만, 오대호·미시시피 내륙 수운과 비연속 주의 보급망을 함께 살펴봅니다.</p>`+
+    US_GEOGRAPHY_GROUPS.map(group=>`<details class="country-geography-entry country-us-geography" data-geography-key="${group.key}"><summary><i data-lucide="${group.icon}" aria-hidden="true"></i><span><small>${e(group.label)} · ${group.items.length}${group.key==='routes'?'개 노선':'개 권역·항목'}</small><strong>${e(group.title)}</strong></span><i data-lucide="chevron-down" aria-hidden="true"></i></summary><div class="country-geography-reading"><p class="country-note">${e(group.note)}</p>${group.key==='routes'?`<p class="country-route-review">${e(usRouteReviewLabel(now))}<small>공식 안내 확인일 ${US_GEOGRAPHY_REVIEWED} · 자동 갱신 아님</small></p>`:''}<ul class="country-geography-list">${group.items.map(item=>`<li data-us-geography-item="${e(item.id)}"><h4>${e(item.title)}</h4><p class="country-geography-meta">${e(item.meta)}</p>${item.connection?`<p class="country-route-connection"><span>대표 연결</span>${e(item.connection)}</p>`:''}<p>${e(item.fact)}</p><div class="country-sources">${sources(item.sources)}</div><h5>경제적 의미 · 이 사이트의 해석</h5><p>${e(item.reading)}</p>${item.schedule?`<div class="country-sources country-route-schedule">${sources([item.schedule])}</div>`:''}</li>`).join('')}</ul></div></details>`).join('')+
+    `<p class="country-note">대표 사례이며 전체 항만·항로 목록이나 경쟁력 순위가 아닙니다. 통항 제한·혼잡·운임·선박 위치는 실시간 제공하지 않습니다. 유조선·LNG선·벌크선의 개별 운항과 미국령의 상세 정보는 포함하지 않았습니다. 아래 World Bank 통계와 별도의 자료입니다.</p>`);
+}
+
 export function geographyMarkup(c) {
+  if(c.code==='US')return usGeographyMarkup();
   const geography=Object.hasOwn(COUNTRY_GEOGRAPHY,c.code)?COUNTRY_GEOGRAPHY[c.code]:null;
   if(!geography) return section('항만·해협·지형',unavailable('이 국가·지역의 설명은 준비 중입니다. 항만·수로나 지리적 강점이 없다는 의미는 아닙니다.'));
   return section('항만·해협·지형',`<p class="country-note">${GEOGRAPHY_COHORT_YEAR}년 명목 GDP 상위 10개국 우선 정리 · 수동 확인 ${GEOGRAPHY_REVIEWED}</p>`+

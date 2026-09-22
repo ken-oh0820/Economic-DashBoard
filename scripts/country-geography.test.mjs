@@ -28,7 +28,7 @@ test('foreign waterways are not labelled as domestic assets',()=>{
 });
 
 test('geography rows are collapsed, sourced and distinguish facts from interpretation',()=>{
-  for(const code of Object.keys(COUNTRY_GEOGRAPHY)){
+  for(const code of Object.keys(COUNTRY_GEOGRAPHY).filter(code=>code!=='US')){
     const html=geographyMarkup({code});
     assert.equal((html.match(/data-geography-key=/g)||[]).length,3);
     assert.equal((html.match(/경제적 의미 · 이 사이트의 해석/g)||[]).length,3);
@@ -58,6 +58,6 @@ test('editorial data adds no collection and changed assets bypass old caches',()
   const read=file=>readFileSync(new URL(file,import.meta.url),'utf8');
   assert.doesNotMatch(read('../assets/country-geography.mjs'),/fetch\s*\(|XMLHttpRequest|setInterval/);
   assert.match(read('../assets/country-profile.mjs'),/country-geography.mjs\?v=20260923-geography1/);
-  for(const asset of ['country-profile.css','country-profile.mjs'])assert.ok(read('../index.html').includes(`${asset}?v=20260923-geography1`));
+  for(const asset of ['country-profile.css','country-profile.mjs'])assert.ok(read('../index.html').includes(`${asset}?v=20260923-us-geography1`));
   assert.match(read('../.github/workflows/update-country-data.yml'),/country-geography.test.mjs/);
 });
