@@ -1,7 +1,8 @@
-import {SERIES,sourceUrl,seriesKeys,stale} from './country-data.mjs?v=20260922-security1';
-import {INDUSTRY_GROUPS,INDUSTRY_KEYS,INDUSTRY_INFO,industryScale} from './country-industry.mjs?v=20260922-security1';
-import {RESOURCE_GROUPS,RESOURCE_KEYS,RESOURCE_INFO,resourceValue,resourceAge} from './country-resources.mjs?v=20260922-security1';
-import {SECURITY_KEYS,SECURITY_INFO,securityValue,securityChange,DIPLOMACY,MEMBERSHIP_CHECKED,membershipLabel} from './country-security.mjs?v=20260922-security1';
+import {SERIES,sourceUrl,seriesKeys,stale} from './country-data.mjs?v=20260922-compare1';
+import {INDUSTRY_GROUPS,INDUSTRY_KEYS,INDUSTRY_INFO,industryScale} from './country-industry.mjs?v=20260922-compare1';
+import {RESOURCE_GROUPS,RESOURCE_KEYS,RESOURCE_INFO,resourceValue,resourceAge} from './country-resources.mjs?v=20260922-compare1';
+import {SECURITY_KEYS,SECURITY_INFO,securityValue,securityChange,DIPLOMACY,MEMBERSHIP_CHECKED,membershipLabel} from './country-security.mjs?v=20260922-compare1';
+import {initCountryComparison} from './country-compare.mjs?v=20260922-compare1';
 export const TABS = [['economy','경제'],['population','인구'],['industry','산업·경쟁력'],['resources','자원·지리'],['security','군사·외교']];
 export const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number = value => typeof value === 'number' && Number.isFinite(value);
@@ -160,6 +161,7 @@ export function initCountryProfile({document,window,getCountry}) {
     if (!country) return;
     const changed = current?.id !== country.id;
     current = country;
+    window.CountryComparison?.setCountry(country.id);
     detail.dataset.iso = country.id;
     document.getElementById('countryProfileTitle').textContent = `${country.flag} ${country.name}`;
     document.getElementById('countryProfileRegion').textContent = country.region;
@@ -203,5 +205,6 @@ export function initCountryProfile({document,window,getCountry}) {
 }
 
 if(typeof window!=='undefined' && window.getAtlasCountry) {
+  window.CountryComparison=initCountryComparison({document,window,getCountry:window.getAtlasCountry,getCountries:window.getAtlasCountries});
   window.CountryProfile=initCountryProfile({document,window,getCountry:window.getAtlasCountry});
 }

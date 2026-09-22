@@ -140,6 +140,28 @@ does not infer membership from the old map classification. G7 and BRICS are not
 military alliances. The legacy map overlays remain explicitly unverified and
 separate from the sourced country-profile membership facts.
 
+## Country comparison (stage 6)
+
+The native modal compares up to three distinct registered countries across five
+tabs and all 34 allowlisted series plus same-year total trade. The map is not
+resized. Selections survive dialog closure during the page session; reset clears
+them. Opening from a country profile puts that country first while retaining up
+to two other selections. Duplicate choices are disabled in the native selectors.
+
+For each indicator, the table takes the latest year in the intersection of all
+selected countries' observations. Without a common year, every cell remains
+unavailable. The table never mixes each country's latest year, interpolates, or
+uses a missing value as zero. Trade first requires matching export/import years
+inside each country and then the same common year across countries. Comparison
+years can therefore differ from the map, individual profiles, and adjacent rows.
+
+All amounts use nominal USD regardless of the global currency toggle. Each row
+shows its year and denominator, with age warnings over three calendar years and
+separate collection-delay labels. Original per-country WDI links and upstream
+organizations are retained. The new view makes no new external data requests,
+collection workflow, strength score, or ranking. Missing-data countries may
+prevent a particular row from being compared even when others have data.
+
 ## Failure behavior
 
 All API pages must be complete and consistent. A failed indicator collection
@@ -152,5 +174,5 @@ If the browser cannot load the snapshot, statistics remain unavailable; it does
 not substitute old hard-coded numbers.
 
 Run `node scripts/update-country-data.mjs` to refresh and
-`node --test scripts/country-data.test.mjs scripts/country-profile.test.mjs scripts/country-industry.test.mjs scripts/country-resources.test.mjs scripts/country-security.test.mjs`
+`node --test scripts/country-data.test.mjs scripts/country-profile.test.mjs scripts/country-industry.test.mjs scripts/country-resources.test.mjs scripts/country-security.test.mjs scripts/country-compare.test.mjs`
 to check the data pipeline and profile behavior.

@@ -257,7 +257,8 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 <link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-official-data">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260917-important">
 <link rel="stylesheet" href="assets/workspace.css?v=20260918-effective">
-<link rel="stylesheet" href="assets/country-profile.css?v=20260922-security1">
+<link rel="stylesheet" href="assets/country-profile.css?v=20260922-compare1">
+<link rel="stylesheet" href="assets/country-compare.css?v=20260922-compare1">
 </head>
 <body class="menu-mode light">
 <main class="main-menu" id="mainMenu" aria-labelledby="mainMenuTitle">
@@ -343,6 +344,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 <div class="left-cluster" id="leftCluster">
 <button class="sidebar-close cluster-close" onclick="closeSidebars()" aria-label="닫기">✕</button>
 <div class="sidebar-left" id="sidebarLeft">
+<div><button type="button" id="countryCompareOpen" class="country-compare-launch"><i data-lucide="columns-3" aria-hidden="true"></i>국가 비교</button></div>
 <div><div class="panel-title">경제 지표 선택</div><button class="metric-btn active" onclick="setMetric('gdp',this)"><span class="metric-icon">📊</span> GDP / 국내총생산</button><button class="metric-btn" onclick="setMetric('trade',this)"><span class="metric-icon">🚢</span> 무역 수출입</button><button class="metric-btn" onclick="setMetric('unemployment',this)"><span class="metric-icon">📉</span> 실업률</button><button class="metric-btn" onclick="setMetric('inflation',this)"><span class="metric-icon">💹</span> 인플레이션율</button></div>
 <div class="search-panel"><div class="panel-title">국가 검색</div><div class="search-box"><span class="search-icon">⌕</span><input id="countrySearch" class="search-input" type="search" placeholder="국가명, 지역, GDP 순위" autocomplete="off" oninput="renderCountrySearch(this.value)" onkeydown="handleSearchKey(event)"><button id="searchClear" class="search-clear" onclick="clearCountrySearch()" aria-label="검색 지우기">×</button></div><div class="search-results" id="countrySearchResults"></div></div>
 <div><div class="panel-title">지도 오버레이</div><button class="overlay-btn" onclick="setOverlay('polsys',this)">🟣 정치체제 구분</button><button class="overlay-btn" onclick="setOverlay('telecomcable',this)" style="border-color:#00d4ff;color:#00d4ff">🌐 통신 해저케이블</button><button class="overlay-btn" onclick="setOverlay('powercable',this)" style="border-color:#ff4488;color:#ff4488">⚡ 전력 해저케이블</button><button class="overlay-btn resource" onclick="toggleResMenu(this)">🟡 천연자원 보유국</button><div id="resSubMenu"><button class="res-sub-btn" onclick="setResOverlay('oil_prod',this)">🛢️ 석유 생산량</button><button class="res-sub-btn" onclick="setResOverlay('oil_export',this)">🛢️ 석유 수출량</button><button class="res-sub-btn" onclick="setResOverlay('gas_prod',this)">💨 천연가스 생산량</button><button class="res-sub-btn" onclick="setResOverlay('gas_export',this)">💨 천연가스 수출량</button><button class="res-sub-btn" onclick="setResOverlay('uranium',this)">☢️ 우라늄</button><button class="res-sub-btn" onclick="setResOverlay('lithium',this)">🔋 리튬</button><button class="res-sub-btn" onclick="setResOverlay('rare_earth',this)">⚗️ 희토류</button><button class="res-sub-btn" onclick="setResOverlay('tungsten',this)">🪨 텅스텐</button><button class="res-sub-btn" onclick="setResOverlay('all',this)">🌐 전체</button></div><button class="overlay-btn" onclick="setOverlay('none',this)">⬜ 오버레이 해제</button><div class="overlay-legend" id="overlayLegendBox"></div></div>
@@ -359,6 +361,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
   <div class="country-profile-top">
     <div><small>COUNTRY PROFILE</small><h2 id="countryProfileTitle" tabindex="-1">국가 분석</h2><p id="countryProfileRegion"></p></div>
     <div class="country-profile-tools">
+      <button type="button" id="countryCompareCurrent" aria-label="이 국가 비교" title="이 국가 비교"><i data-lucide="columns-3" aria-hidden="true"></i></button>
       <button type="button" id="countryProfileExpand" aria-label="국가 패널 넓히기" title="국가 패널 넓히기" aria-pressed="false"><i data-lucide="maximize-2" aria-hidden="true"></i></button>
       <button type="button" id="countryProfileClose" aria-label="국가 패널 접기" title="국가 패널 접기"><i data-lucide="x" aria-hidden="true"></i></button>
     </div>
@@ -373,6 +376,14 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
   </div>
 </aside>
 <button type="button" class="country-profile-open" id="countryProfileOpen" hidden aria-controls="countryProfile"><i data-lucide="panel-right-open" aria-hidden="true"></i>국가 분석</button>
+<dialog id="countryCompareDialog" class="country-compare" aria-labelledby="countryCompareTitle">
+  <header class="compare-heading"><div><h2 id="countryCompareTitle">국가 비교</h2><p id="countryCompareStatus" aria-live="polite"></p></div><div class="compare-tools"><button type="button" id="countryCompareReset" title="비교 초기화" aria-label="비교 초기화"><i data-lucide="rotate-ccw" aria-hidden="true"></i></button><button type="button" id="countryCompareClose" title="국가 비교 닫기" aria-label="국가 비교 닫기"><i data-lucide="x" aria-hidden="true"></i></button></div></header>
+  <div class="compare-selectors" id="countryCompareSelectors"></div>
+  <div class="country-tabs" id="countryCompareTabs" role="tablist" aria-label="국가 비교 분야"></div>
+  <p class="compare-method">지표별 최신 공통 연도 · 금액은 명목 USD · 국가 상세의 최신값과 다를 수 있음</p>
+  <div id="countryCompareBody" role="tabpanel" tabindex="0" aria-label="국가 비교 표"></div>
+  <details class="compare-notes"><summary>비교 기준·자료 출처</summary><p>선택한 모든 국가에 자료가 있는 가장 최근 연도를 지표별로 사용합니다. 공통 연도가 없으면 값을 표시하지 않으며, 누락값은 0으로 대체하지 않습니다. 수집 범위는 최근 6개 완료 연도입니다.</p><p>국가별 통계 정의·추정·환율·물가 차이가 있습니다. 수치가 크다는 이유만으로 우수하다고 평가하거나 종합 순위를 만들지 않습니다. World Bank WDI 원자료와 각 항목의 정의를 함께 확인하세요.</p><p>World Bank WDI · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a> · 단위 환산·반올림·한국어 표기·동일 연도 수출입 합계 가공</p><div id="countryCompareAttribution"></div></details>
+</dialog>
 <div class="map-container" id="mapContainer">
 <button class="mobile-toggle mobile-toggle-left" onclick="toggleSidebar('left')" aria-label="왼쪽 메뉴">☰</button>
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeSidebars()"></div>
@@ -1456,6 +1467,7 @@ window.applyAtlasCountryData=function({snapshot,comparisons,profiles,mapValues,s
   atlasOfficial=snapshot;atlasComparisons=comparisons;atlasProfiles=profiles;atlasLoadStatus=status;
   for(const [id,values] of Object.entries(mapValues))Object.assign(eData[id],values);
   hideTip();updateColors();renderAll();renderCountrySearch(lastSearchQuery);
+  window.CountryComparison?.refresh();
 };
 window.failAtlasCountryData=function(){atlasLoadStatus='공식 자료를 불러오지 못했습니다 · 새로고침 후 재시도';renderAll();};
 function renderAtlasStatus(){
@@ -2828,7 +2840,7 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
 <script type="module" src="assets/workspace.mjs?v=20260918-effective"></script>
-<script type="module" src="assets/country-profile.mjs?v=20260922-security1"></script>
-<script type="module" src="assets/country-data-client.mjs?v=20260922-security1"></script>
+<script type="module" src="assets/country-profile.mjs?v=20260922-compare1"></script>
+<script type="module" src="assets/country-data-client.mjs?v=20260922-compare1"></script>
 </body>
 </html>

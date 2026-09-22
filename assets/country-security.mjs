@@ -1,4 +1,4 @@
-import {finite,observation,SERIES} from './country-data.mjs?v=20260922-security1';
+import {finite,observation,SERIES} from './country-data.mjs?v=20260922-compare1';
 
 export const SECURITY_KEYS=['militarySpending','militaryGdp','militaryBudget','militaryPersonnel'];
 export const SECURITY_INFO={

@@ -50,7 +50,7 @@ test('missing resource data is not displayed as a resource-free country',()=>{
 });
 test('resource module is versioned and uses no third-party browser collection',()=>{
   const read=file=>readFileSync(new URL(file,import.meta.url),'utf8');
-  assert.match(read('../assets/country-profile.mjs'),/country-resources.mjs\?v=20260922-security1/);
+  assert.match(read('../assets/country-profile.mjs'),/country-resources.mjs\?v=20260922-compare1/);
   assert.doesNotMatch(read('../assets/country-resources.mjs'),/fetch\s*\(/);
   assert.match(read('../.github/workflows/update-country-data.yml'),/country-resources.test.mjs/);
 });

@@ -45,8 +45,8 @@ test('security disclosure labels old observations, sources, definitions and miss
 });
 test('security updates use versioned local modules and the official collection workflow',()=>{
   const read=file=>readFileSync(new URL(file,import.meta.url),'utf8');
-  assert.match(read('../assets/country-profile.mjs'),/country-security.mjs\?v=20260922-security1/);
-  assert.match(read('../assets/country-security.mjs'),/country-data.mjs\?v=20260922-security1/);
+  assert.match(read('../assets/country-profile.mjs'),/country-security.mjs\?v=20260922-compare1/);
+  assert.match(read('../assets/country-security.mjs'),/country-data.mjs\?v=20260922-compare1/);
   assert.doesNotMatch(read('../assets/country-security.mjs'),/fetch\s*\(/);
   assert.match(read('../.github/workflows/update-country-data.yml'),/country-security.test.mjs/);
 });
