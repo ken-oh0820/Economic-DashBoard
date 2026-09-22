@@ -7,7 +7,7 @@ Monday); GitHub scheduling can be delayed. It also supports manual dispatch.
 
 ## Sources and attribution
 
-The explicit 30-indicator allowlist is in `assets/country-data.mjs`. Each
+The explicit 34-indicator allowlist is in `assets/country-data.mjs`. Each
 indicator's `https://data.worldbank.org/indicator/{id}` page was reviewed on
 2026-09-21 and labeled CC BY 4.0. The snapshot stores World Bank's
 `sourceOrganization` and `sourceNote`, and the UI links to the specific
@@ -110,6 +110,36 @@ not scraped data. Legacy resource notes stay collapsed and explicitly unverified
 they do not become validated by the new WDI statistics. The existing legacy map
 resource overlay is unchanged.
 
+## Military and diplomacy (stage 5)
+
+Four WDI indicator pages were individually checked for CC BY 4.0 on 2026-09-22:
+MS.MIL.XPND.CD, MS.MIL.XPND.GD.ZS, MS.MIL.XPND.ZS and MS.MIL.TOTL.P1.
+Their WDI source organizations are SIPRI (spending) and IISS (personnel).
+This does not grant permission to redistribute arbitrary SIPRI/IISS publications.
+The collector uses only the corresponding allowlisted World Bank API series.
+
+Military spending is nominal current USD, shown in Korean hundred-million-dollar
+units independently of the dashboard currency toggle. The GDP and general
+government expenditure ratios have different denominators and are not replaced
+by calculations from other WDI series. Personnel includes active personnel and
+qualifying paramilitary forces, not all reservists. Its latest WDI observations
+can be old (the reviewed page ends in 2020); age and missing data remain explicit.
+No observation window is extended merely to make missing figures look current.
+Year-over-year changes require the exact prior year: percent for USD/personnel,
+percentage points for spending shares. Nonpositive growth baselines are suppressed.
+Neither a combat-power score nor a military-strength rank is calculated.
+
+NATO membership (32 countries) was manually checked against
+https://nato.int/en/about-us/organization/nato-member-countries on 2026-09-22.
+The seven G7 countries and EU participation were checked against
+https://www.consilium.europa.eu/en/meetings/international-summit/2026/06/15-17/ .
+The check date is static and visible, not automatically refreshed with WDI data.
+Nonmembership is not interpreted as absence of bilateral alliances or partnerships.
+BRICS links to https://brics.br/en/about-the-brics (2025 Brazil presidency) and
+does not infer membership from the old map classification. G7 and BRICS are not
+military alliances. The legacy map overlays remain explicitly unverified and
+separate from the sourced country-profile membership facts.
+
 ## Failure behavior
 
 All API pages must be complete and consistent. A failed indicator collection
@@ -122,5 +152,5 @@ If the browser cannot load the snapshot, statistics remain unavailable; it does
 not substitute old hard-coded numbers.
 
 Run `node scripts/update-country-data.mjs` to refresh and
-`node --test scripts/country-data.test.mjs scripts/country-profile.test.mjs scripts/country-industry.test.mjs scripts/country-resources.test.mjs`
+`node --test scripts/country-data.test.mjs scripts/country-profile.test.mjs scripts/country-industry.test.mjs scripts/country-resources.test.mjs scripts/country-security.test.mjs`
 to check the data pipeline and profile behavior.

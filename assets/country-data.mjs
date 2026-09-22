@@ -29,7 +29,11 @@ export const SERIES = {
   freshwater: ['ER.H2O.INTR.PC', '1인당 국내 재생가능 담수', 'm³/인'],
   resourceRents: ['NY.GDP.TOTL.RT.ZS', '천연자원 렌트 / GDP', '%'],
   fuelExports: ['TX.VAL.FUEL.ZS.UN', '연료 수출 비중', '%'],
-  metalExports: ['TX.VAL.MMTL.ZS.UN', '광석·금속 수출 비중', '%']
+  metalExports: ['TX.VAL.MMTL.ZS.UN', '광석·금속 수출 비중', '%'],
+  militarySpending: ['MS.MIL.XPND.CD', '국방비 총액', 'USD'],
+  militaryGdp: ['MS.MIL.XPND.GD.ZS', 'GDP 대비 국방비', '%'],
+  militaryBudget: ['MS.MIL.XPND.ZS', '정부지출 대비 국방비', '%'],
+  militaryPersonnel: ['MS.MIL.TOTL.P1', '군 병력 규모', '명']
 };
 export const finite = value => typeof value === 'number' && Number.isFinite(value);
 export function iso2FromFlag(flag) {

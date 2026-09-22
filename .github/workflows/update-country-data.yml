@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: '22'
       - name: Test country data handling
-        run: node --test scripts/country-data.test.mjs scripts/country-profile.test.mjs scripts/country-industry.test.mjs scripts/country-resources.test.mjs
+        run: node --test scripts/country-data.test.mjs scripts/country-profile.test.mjs scripts/country-industry.test.mjs scripts/country-resources.test.mjs scripts/country-security.test.mjs
       - name: Collect allowlisted World Bank WDI indicators
         id: collect
         continue-on-error: true

@@ -1,6 +1,7 @@
-import {SERIES,sourceUrl,seriesKeys,stale} from './country-data.mjs?v=20260921-resources1';
-import {INDUSTRY_GROUPS,INDUSTRY_KEYS,INDUSTRY_INFO,industryScale} from './country-industry.mjs?v=20260921-resources1';
-import {RESOURCE_GROUPS,RESOURCE_KEYS,RESOURCE_INFO,resourceValue,resourceAge} from './country-resources.mjs?v=20260921-resources1';
+import {SERIES,sourceUrl,seriesKeys,stale} from './country-data.mjs?v=20260922-security1';
+import {INDUSTRY_GROUPS,INDUSTRY_KEYS,INDUSTRY_INFO,industryScale} from './country-industry.mjs?v=20260922-security1';
+import {RESOURCE_GROUPS,RESOURCE_KEYS,RESOURCE_INFO,resourceValue,resourceAge} from './country-resources.mjs?v=20260922-security1';
+import {SECURITY_KEYS,SECURITY_INFO,securityValue,securityChange,DIPLOMACY,MEMBERSHIP_CHECKED,membershipLabel} from './country-security.mjs?v=20260922-security1';
 export const TABS = [['economy','경제'],['population','인구'],['industry','산업·경쟁력'],['resources','자원·지리'],['security','군사·외교']];
 export const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number = value => typeof value === 'number' && Number.isFinite(value);
@@ -90,6 +91,20 @@ export function resourcesMarkup(c) {
     attribution(c,RESOURCE_KEYS);
 }
 
+export function securityMarkup(c) {
+  const available=SECURITY_KEYS.filter(key=>number(c.stats?.[key]?.value)).length;
+  return `<p class="industry-status">군사 통계 <strong>${available}/${SECURITY_KEYS.length}</strong> · 항목별 기준 연도 상이</p>`+
+    section('군사 지출과 인력',`<p class="country-note">군사력 종합 순위는 표시하지 않습니다. 지출·인력은 투입 자원이며 실제 전투력과 다릅니다. 국방비 총액은 상단 통화 설정과 관계없이 명목 USD 기준입니다.</p>`+SECURITY_KEYS.map(key=>{
+      const stat=c.stats?.[key],info=SECURITY_INFO[key],age=resourceAge(stat?.year),change=securityChange(c.official,key,c.code);
+      const delta=change?Math.round(change.value*100)/100:null;
+      const comparison=change?`${delta>0?'+':''}${new Intl.NumberFormat('ko-KR',{maximumFractionDigits:2}).format(delta===0?0:delta)}${change.unit}`:'수집 범위 내 전년 자료 없음';
+      return `<details class="industry-metric resource-metric industry-${info.color}" data-security-key="${key}"><summary><span class="industry-metric-name">${e(SERIES[key][1])}<small>${e(info.basis)} · ${stat?`${e(stat.year)}년`:'자료 없음'}${age?`<span class="resource-age">${e(age)}</span>`:''}</small></span><strong>${e(securityValue(key,stat?.value))}</strong><i data-lucide="chevron-down" aria-hidden="true"></i></summary><div class="industry-reading"><p>${e(info.meaning)}</p>${rows([[change?`전년 대비 (${change.from} → ${change.to})`:'전년 대비',comparison,SERIES[key][2]==='%'?'비중 차이 · %p':'증감률 · %']])}<p class="country-note">${e(info.caution)}</p>${sourceMarkup(c,key)}</div></details>`;
+    }).join(''))+
+    section('국제 협의체·동맹',`<p class="country-note">NATO·G7 회원 목록 수동 확인: ${MEMBERSHIP_CHECKED}. 자동 갱신이 아니며, 아래 3개 항목은 모든 외교 관계를 포괄하지 않습니다.</p>`+DIPLOMACY.map(group=>`<details class="industry-metric resource-metric industry-blue"><summary><span class="industry-metric-name">${e(group.name)}<small>${e(group.type)}</small></span><strong>${e(membershipLabel(group,c.code))}</strong><i data-lucide="chevron-down" aria-hidden="true"></i></summary><div class="industry-reading"><p>${e(group.note)}</p><div class="country-sources">${link(group.url,`${group.name} 공식 안내`)}</div></div></details>`).join(''))+
+    section('경제와 함께 읽기',list(['국방비 총액과 GDP·정부지출 대비 비중을 함께 봅니다. 지출 증가가 성장 때문인지, 재정 우선순위 변화 때문인지 구분합니다.','장비 조달·연구개발·운영비의 구성과 국내 생산 비중은 별도 확인이 필요합니다. 국방비 총액만으로 특정 방산 기업의 매출을 추정하지 않습니다.','병력 수와 동맹 가입 여부만으로 전쟁 가능성·승패·국가 위험을 점수화하지 않습니다.']))+
+    attribution(c,SECURITY_KEYS);
+}
+
 export function tabMarkup(tab,c) {
   if (tab === 'economy') return section('경제 규모와 소득',officialRows(c,['gdp','gdpPc','growth','gni','gniPc','trade'])) + section('고용·물가',officialRows(c,['unemployment','inflation'])) + section('비교 기준',list([
     `GDP와 순위는 ${c.rankYear?c.rankYear+'년':'공통 연도'} 자료만 사용합니다. 다른 항목은 수집 범위 내 최신 발표 연도로, 서로 기준 연도가 다를 수 있습니다.`,
@@ -104,11 +119,7 @@ export function tabMarkup(tab,c) {
   ])) + attribution(c,['population','popGrowth','workingAge','elderly','fertility']);
   if (tab === 'industry') return industryMarkup(c);
   if (tab === 'resources') return resourcesMarkup(c);
-  return section('국제 협의체·동맹', c.groups.length ? list(c.groups) : unavailable('기존 지도 분류에 등록된 협의체가 없습니다.')) +
-    `<p class="country-note">기존 지도 분류 기준 · NATO는 군사동맹, G7·BRICS는 군사동맹이 아닙니다. 최신 회원 현황은 재확인이 필요합니다.</p>` +
-    section('군사 지표', unavailable('국방비·GDP 대비 국방비·병력 수는 검증된 자료 연결 전입니다. 군사력 종합 순위는 표시하지 않습니다.')) +
-    section('해석', `<p>국방비는 지출 규모이며 실제 전투력과 같지 않습니다. 장비·훈련·동맹·지리적 조건을 함께 봐야 합니다.</p>`) +
-    `<div class="country-sources">${link('https://www.sipri.org/databases/milex','SIPRI 국방비 자료')}${link('https://www.nato.int/','NATO 공식 사이트')}</div>`;
+  return securityMarkup(c);
 }
 
 export function initCountryProfile({document,window,getCountry}) {

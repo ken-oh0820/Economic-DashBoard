@@ -1,5 +1,5 @@
-import {SERIES,iso2FromFlag,observation,comparison,validateSnapshot,stale} from './country-data.mjs?v=20260921-resources1';
-import {INDUSTRY_KEYS,industryMetric,industryHeadline} from './country-industry.mjs?v=20260921-resources1';
+import {SERIES,iso2FromFlag,observation,comparison,validateSnapshot,stale} from './country-data.mjs?v=20260922-security1';
+import {INDUSTRY_KEYS,industryMetric,industryHeadline} from './country-industry.mjs?v=20260922-security1';
 
 export function buildAtlasData(snapshot,countries,now=Date.now()) {
   validateSnapshot(snapshot);
