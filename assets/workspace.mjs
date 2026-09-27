@@ -52,7 +52,7 @@ const overview=document.createElement('section');overview.className='workspace-o
 overview.innerHTML='<div class="workspace-section-head"><div><h2 id="overviewTitle">나의 핵심 지표</h2><p>관측 기간 기준 · 공식 데이터</p></div>'+button('editFavorites','핵심 지표 선택','sliders-horizontal')+'</div><div id="overviewGrid" class="overview-grid"></div><p id="preferenceStatus" class="workspace-feedback" role="status"></p>';
 shell.querySelector('.dashboard-top').after(overview);
 const jump=document.createElement('nav');jump.className='monitor-jump';jump.setAttribute('aria-label','모니터링 섹션');
-const sections=[['monitorMacro','물가·고용·성장'],['monitorRates','금리·유동성'],['monitorSentiment','시장 심리'],['monitorSources','원문·연결 상태']];
+const sections=[['monitorMacro','물가·고용·성장'],['monitorRates','금리·유동성'],['monitorSentiment','시장 심리'],['monitorSources','원문 링크']];
 jump.innerHTML=sections.map(([id,label])=>'<button type="button" data-section="'+id+'">'+label+'</button>').join('');
 overview.after(jump);
 const macro=$('#usMacroGrid').closest('.dashboard-panel'),basis=$('.basis-monitor'),rates=$('#globalRateGrid').closest('.dashboard-panel'),bonds=$('.bond-panel'),schedule=$('#rateSchedulePanel'),sentiment=$('#indicatorDashboard .indicator-grid'),sources=$('#indicatorDashboard .dashboard-sections');
@@ -68,7 +68,15 @@ sources.querySelectorAll('.watch-row[data-chart-key]').forEach(row=>{
   row.removeAttribute('role');row.removeAttribute('tabindex');row.removeAttribute('data-chart-key');
 });
 jump.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{const section=$('#'+btn.dataset.section);section.tabIndex=-1;section.focus({preventScroll:true});section.scrollIntoView({block:'start',behavior:'instant'});}));
-$('#marketSourceList').closest('.dashboard-panel').querySelector('.dashboard-panel-title').textContent='데이터 연결 상태';
+function initConnectionStatus(){
+  const list=$('#marketSourceList'),panel=list.closest('.dashboard-panel');
+  const dialog=makeDialog('workspaceConnections','데이터 연결 상태','');
+  dialog.append(list);
+  panel.remove();
+  $('#marketConnectionButton').addEventListener('click',()=>dialog.showModal());
+  window.addEventListener('app-view-change',event=>{if(event.detail!=='dashboard')dialog.close();});
+}
+initConnectionStatus();
 $('#indicatorDashboard .dashboard-sub').textContent='관측값과 변화 · 발표 일정 · 시계열 비교';
 $('#investmentSites .dashboard-sub').textContent='공식 발표·공시와 뉴스 제공처 원문 리서치';
 for(const [selector,links] of [

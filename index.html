@@ -256,7 +256,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 </style>
 <link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-official-data">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260917-important">
-<link rel="stylesheet" href="assets/workspace.css?v=20260927-change-colors">
+<link rel="stylesheet" href="assets/workspace.css?v=20260927-connections">
 <link rel="stylesheet" href="assets/country-profile.css?v=20260923-us-geography1">
 <link rel="stylesheet" href="assets/country-compare.css?v=20260922-registry1">
 </head>
@@ -463,6 +463,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       </div>
       <div class="dashboard-actions">
         <button class="market-refresh-btn" onclick="fetchMarketDashboard(true)" aria-label="지표 새로고침" title="지표 새로고침"><i data-lucide="refresh-cw" aria-hidden="true"></i></button>
+        <button type="button" id="marketConnectionButton" class="workspace-text-button" aria-haspopup="dialog" aria-controls="workspaceConnections" title="데이터 연결 상태"><i data-lucide="activity" aria-hidden="true"></i>연결 상태</button>
         <div class="dashboard-status" id="marketDashboardStatus">MARKET DATA · CONNECTING</div>
       </div>
     </div>
@@ -2861,7 +2862,7 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script defer src="assets/main-menu.js?v=20260910-menu"></script>
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
-<script type="module" src="assets/workspace.mjs?v=20260927-change-colors"></script>
+<script type="module" src="assets/workspace.mjs?v=20260927-connections"></script>
 <script type="module" src="assets/country-profile.mjs?v=20260923-us-geography1"></script>
 <script type="module" src="assets/country-data-client.mjs?v=20260922-registry1"></script>
 </body>
