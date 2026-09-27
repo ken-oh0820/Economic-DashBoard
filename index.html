@@ -546,9 +546,9 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       <div class="macro-head">
         <div>
           <div class="dashboard-panel-title">글로벌 금리 지표</div>
-          <div class="macro-sub">미국 시장 영향력 기준 TOP 10 정책금리/중앙은행 단기금리를 순위별로 비교합니다.</div>
+          <div class="macro-sub">미국·일본·한국·브라질의 정책금리 및 단기금리 지표입니다.</div>
         </div>
-        <div class="macro-badge ok">GLOBAL RATES · TOP 10</div>
+        <div class="macro-badge ok">GLOBAL RATES · 4개국</div>
       </div>
       <div class="macro-grid" id="globalRateGrid"></div>
     </div>
@@ -2083,15 +2083,9 @@ const MARKET_CHARTS={
   'macro-inflation':{label:'인플레이션(PCE)',type:'fred',series:'PCEPI',range:'1y',dec:1,suffix:'%',transform:'yoy',periodsPerYear:12,sourceUrl:'https://fred.stlouisfed.org/series/PCEPI',linkText:'FRED CHART VIEW ↗'},
   'macro-gdpdef':{label:'GDP 디플레이터 증가율',type:'fred',series:'GDPDEF',range:'1y',dec:1,suffix:'%',transform:'qoq-annualized',periodsPerYear:4,sourceUrl:'https://fred.stlouisfed.org/series/GDPDEF',linkText:'FRED CHART VIEW ↗'},
   'rate-us':{label:'미국 실효 연방기금금리 (월평균)',type:'fred',series:'FEDFUNDS',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/FEDFUNDS',linkText:'FRED CHART VIEW ↗'},
-  'rate-jp':{label:'#2 일본 정책금리',type:'fred',series:'IRSTCB01JPM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01JPM156N',linkText:'FRED CHART VIEW ↗'},
-  'rate-eu':{label:'#3 유로존 ECB 금리',type:'fred',series:'ECBDFR',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/ECBDFR',linkText:'FRED CHART VIEW ↗'},
-  'rate-cn':{label:'#4 중국 PBOC 금리',type:'fred',series:'INTDSRCNM193N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/INTDSRCNM193N',linkText:'FRED CHART VIEW ↗'},
-  'rate-ch':{label:'#5 스위스 정책금리',type:'fred',series:'IRSTCB01CHM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01CHM156N',linkText:'FRED CHART VIEW ↗'},
-  'rate-uk':{label:'#6 영국 Bank Rate',type:'fred',series:'IRSTCB01GBM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01GBM156N',linkText:'FRED CHART VIEW ↗'},
-  'rate-br':{label:'#7 브라질 Selic',type:'fred',series:'IRSTCB01BRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01BRM156N',linkText:'FRED CHART VIEW ↗'},
-  'rate-kr':{label:'#8 한국 기준금리',type:'fred',series:'IRSTCB01KRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01KRM156N',linkText:'FRED CHART VIEW ↗'},
-  'rate-ca':{label:'#9 캐나다 Overnight',type:'fred',series:'IRSTCB01CAM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01CAM156N',linkText:'FRED CHART VIEW ↗'},
-  'rate-au':{label:'#10 호주 Cash Rate',type:'fred',series:'IRSTCB01AUM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01AUM156N',linkText:'FRED CHART VIEW ↗'}
+  'rate-jp':{label:'일본 정책금리',type:'fred',series:'IRSTCB01JPM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01JPM156N',linkText:'FRED CHART VIEW ↗'},
+  'rate-kr':{label:'한국 기준금리',type:'fred',series:'IRSTCB01KRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01KRM156N',linkText:'FRED CHART VIEW ↗'},
+  'rate-br':{label:'브라질 Selic',type:'fred',series:'IRSTCB01BRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01BRM156N',linkText:'FRED CHART VIEW ↗'}
 };
 function setMarketStatus(status,msg){
   const el=document.getElementById('marketDashboardStatus');if(!el)return;
@@ -2139,16 +2133,10 @@ const TREASURY_BASIS_FALLBACK={
 };
 let treasuryBasisLoading=false;
 const GLOBAL_RATE_ITEMS=[
-  {rank:1,key:'us',country:'미국',name:'실효 연방기금금리 (월평균)',series:'FEDFUNDS',source:'Fed/FRED',note:'글로벌 할인율·달러 유동성'},
-  {rank:2,key:'jp',country:'일본',name:'BOJ 정책금리',series:'IRSTCB01JPM156N',source:'BOJ/FRED',note:'엔 캐리 트레이드 핵심'},
-  {rank:3,key:'eu',country:'유로존',name:'ECB Deposit Rate',series:'ECBDFR',source:'ECB/FRED',note:'달러 인덱스·유럽 채권'},
-  {rank:4,key:'cn',country:'중국',name:'PBOC Rate',series:'INTDSRCNM193N',source:'PBOC/FRED',note:'위안화·원자재·경기부양'},
-  {rank:5,key:'ch',country:'스위스',name:'SNB 정책금리',series:'IRSTCB01CHM156N',source:'SNB/FRED',note:'안전자산·CHF funding'},
-  {rank:6,key:'uk',country:'영국',name:'BOE Bank Rate',series:'IRSTCB01GBM156N',source:'BOE/FRED',note:'런던 금융시장·길트'},
-  {rank:7,key:'br',country:'브라질',name:'Selic 목표금리',series:'IRSTCB01BRM156N',source:'BCB/FRED',note:'신흥국 캐리·원자재'},
-  {rank:8,key:'kr',country:'한국',name:'BOK 기준금리',series:'IRSTCB01KRM156N',source:'BOK/FRED',note:'원화·반도체 수급'},
-  {rank:9,key:'ca',country:'캐나다',name:'BoC Overnight',series:'IRSTCB01CAM156N',source:'BoC/FRED',note:'원유·북미 경기'},
-  {rank:10,key:'au',country:'호주',name:'RBA Cash Rate',series:'IRSTCB01AUM156N',source:'RBA/FRED',note:'중국 베타·원자재'}
+  {key:'us',country:'미국',name:'실효 연방기금금리 (월평균)',series:'FEDFUNDS',source:'Fed/FRED',note:'글로벌 할인율·달러 유동성'},
+  {key:'jp',country:'일본',name:'BOJ 정책금리',series:'IRSTCB01JPM156N',source:'BOJ/FRED',note:'엔 캐리 트레이드 핵심'},
+  {key:'kr',country:'한국',name:'BOK 기준금리',series:'IRSTCB01KRM156N',source:'BOK/FRED',note:'원화·반도체 수급'},
+  {key:'br',country:'브라질',name:'Selic 목표금리',series:'IRSTCB01BRM156N',source:'BCB/FRED',note:'신흥국 캐리·원자재'}
 ];
 const BOND_TENORS=[
   {key:'3m',label:'3개월물',tone:'bond-tenor-3m'},
@@ -2326,8 +2314,8 @@ function renderGlobalRates(items=GLOBAL_RATE_ITEMS){
   grid.innerHTML=items.map(item=>{
     const cfg=MARKET_CHARTS['rate-'+item.key];
     const data=globalThis.OfficialData?.get(cfg);
-    if(data){const last=data.points.at(-1);return '<div class="macro-card" role="button" tabindex="0" data-chart-key="rate-'+escHtml(item.key)+'"><div class="macro-group">#'+item.rank+' · '+escHtml(item.country)+'</div><div class="macro-name">'+escHtml(item.name)+'</div><div class="macro-value">'+last.value.toFixed(2)+'%</div><div class="macro-source">'+escHtml(OfficialData.source(data))+' · '+last.date+'</div>'+(window.WorkspaceUI?.provenance('rate-'+item.key)||'')+'</div>';}
-    return '<a class="macro-card source-card" href="'+escHtml(marketSourceUrl(cfg))+'" target="_blank" rel="noopener noreferrer"><div class="macro-group">#'+escHtml(item.rank)+' · '+escHtml(item.country)+'</div><div class="macro-name">'+escHtml(item.name)+'</div><div class="macro-value source-link-value">원문 보기 ↗</div><div class="macro-source">FRED · '+escHtml(item.note)+'</div></a>';
+    if(data){const last=data.points.at(-1);return '<div class="macro-card" role="button" tabindex="0" data-chart-key="rate-'+escHtml(item.key)+'"><div class="macro-group">'+escHtml(item.country)+'</div><div class="macro-name">'+escHtml(item.name)+'</div><div class="macro-value">'+last.value.toFixed(2)+'%</div><div class="macro-source">'+escHtml(OfficialData.source(data))+' · '+last.date+'</div>'+(window.WorkspaceUI?.provenance('rate-'+item.key)||'')+'</div>';}
+    return '<a class="macro-card source-card" href="'+escHtml(marketSourceUrl(cfg))+'" target="_blank" rel="noopener noreferrer"><div class="macro-group">'+escHtml(item.country)+'</div><div class="macro-name">'+escHtml(item.name)+'</div><div class="macro-value source-link-value">원문 보기 ↗</div><div class="macro-source">FRED · '+escHtml(item.note)+'</div></a>';
   }).join('');notifyMarketRendered();
 }
 async function fetchGlobalRateDashboard(){await OfficialData.load();renderGlobalRates();bindMarketChartClicks();}

@@ -72,6 +72,34 @@ test('policy rates and bond cards contain links instead of cached yields',()=>{
   }
   assert.match(nodes.get('usMacroGrid').innerHTML,/href="https:\/\/fred.stlouisfed.org\/series\/GDP"/);
 });
+test('global rates retain only US, Japan, Korea and Brazil in the requested order',()=>{
+  const {context,nodes}=harness();
+  assert.deepEqual(Array.from(vm.runInContext('GLOBAL_RATE_ITEMS.map(item=>item.key)',context)),['us','jp','kr','br']);
+  assert.deepEqual(Array.from(vm.runInContext('Object.keys(MARKET_CHARTS).filter(key=>key.startsWith("rate-"))',context)),['rate-us','rate-jp','rate-kr','rate-br']);
+  vm.runInContext('renderGlobalRates()',context);
+  const output=nodes.get('globalRateGrid').innerHTML;
+  assert.deepEqual([...output.matchAll(/class="macro-group">([^<]+)/g)].map(match=>match[1]),['미국','일본','한국','브라질']);
+  assert.equal([...output.matchAll(/class="macro-card source-card"/g)].length,4);
+  for(const series of ['FEDFUNDS','IRSTCB01JPM156N','IRSTCB01KRM156N','IRSTCB01BRM156N'])assert.ok(output.includes('/series/'+series+'"'));
+  assert.doesNotMatch(output,/#\d|undefined/);
+  assert.match(html,/GLOBAL RATES · 4개국/);
+  assert.doesNotMatch(html,/GLOBAL RATES · TOP 10|미국 시장 영향력 기준 TOP 10/);
+});
+
+test('four-country rate grid preserves official values alongside source-only cards',()=>{
+  const {context,nodes}=harness();
+  context.window={};
+  context.OfficialData={get:cfg=>cfg.series==='FEDFUNDS'?{points:[{value:4.5,date:'2026-09-01'}]}:null,source:()=> 'Fed/FRED'};
+  vm.runInContext('renderGlobalRates()',context);
+  const output=nodes.get('globalRateGrid').innerHTML;
+  assert.equal([...output.matchAll(/class="macro-group"/g)].length,4);
+  assert.equal([...output.matchAll(/class="macro-card source-card"/g)].length,3);
+  assert.match(output,/data-chart-key="rate-us"/);
+  assert.match(output,/4\.50%/);
+  assert.match(output,/Fed\/FRED · 2026-09-01/);
+  assert.doesNotMatch(output,/#\d|undefined/);
+});
+
 test('macro requests use the shared official snapshot without browser proxies',async()=>{
   const {context}=harness();
   const urls=[];context.fetchT=async url=>{urls.push(url);throw Error('offline');};
