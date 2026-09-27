@@ -69,6 +69,11 @@ body:not(.map-mode) .ticker-bar{display:none}
 .overview-qualifier{font-size:12px;color:var(--text-mid)}
 .overview-open strong{font:600 21px/1.5 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
 .overview-change{font-size:12px;line-height:1.6;color:var(--text-mid)}
+body #indicatorDashboard .period-change.market-up{color:#4ade80}
+body #indicatorDashboard .period-change.market-down{color:#ff6b6b}
+body #indicatorDashboard .period-change.market-flat{color:var(--text-mid)}
+body.light #indicatorDashboard .period-change.market-up{color:#167344}
+body.light #indicatorDashboard .period-change.market-down{color:#c12c40}
 .overview-source{font-size:12px;line-height:1.6;color:var(--text-mid)}
 .observation-date{font-size:13px;color:var(--text);line-height:1.6;margin-top:6px}
 .observation-status{font-size:12px;line-height:1.6;color:var(--accent)}

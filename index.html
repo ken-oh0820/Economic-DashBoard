@@ -256,7 +256,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 </style>
 <link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-official-data">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260917-important">
-<link rel="stylesheet" href="assets/workspace.css?v=20260918-effective">
+<link rel="stylesheet" href="assets/workspace.css?v=20260927-change-colors">
 <link rel="stylesheet" href="assets/country-profile.css?v=20260923-us-geography1">
 <link rel="stylesheet" href="assets/country-compare.css?v=20260922-registry1">
 </head>
@@ -2253,40 +2253,43 @@ function calcMacroFromPoints(points,item,source){
   const last=points[points.length-1],prev=OfficialData.periodPoint(points,last.date,item.periodsPerYear===4?3:1),yearAgo=OfficialData.periodPoint(points,last.date,12);
   if(!prev)return null;
   const lastVal=Number(last.value),prevVal=Number(prev.value),yearAgoVal=Number(yearAgo?.value);
-  let value='',change='',cls='market-flat';
+  let value='',change='',delta=0;
+  const signed=n=>{const rounded=Number(n.toFixed(1));return (rounded>0?'+':'')+rounded.toFixed(1);};
   const periodsPerYear=item.periodsPerYear||12;
   const pAgo=yearAgo;
   const pAgoVal=Number(pAgo?.value);
   if(item.mode==='level-trillion'){
-    const scaled=lastVal/1000,prevScaled=prevVal/1000;
+    const scaled=lastVal/1000;
     const qoqAnn=(Math.pow(lastVal/prevVal,4)-1)*100;
     const yoy=pAgo&&pAgoVal?(lastVal/pAgoVal-1)*100:null;
     value=scaled.toFixed(2)+'조 달러';
-    change='전분기 연율 '+(qoqAnn>=0?'+':'')+qoqAnn.toFixed(1)+'%'+(yoy==null?'':' · 전년 대비 '+(yoy>=0?'+':'')+yoy.toFixed(1)+'%');
-    cls=scaled>prevScaled?'market-up':scaled<prevScaled?'market-down':'market-flat';
+    change='전분기 연율 '+signed(qoqAnn)+'%'+(yoy==null?'':' · 전년 대비 '+signed(yoy)+'%');
+    delta=qoqAnn;
   }else if(item.mode==='qoq-annualized'){
     const qoqAnn=(Math.pow(lastVal/prevVal,4)-1)*100;
     const yoy=pAgo&&pAgoVal?(lastVal/pAgoVal-1)*100:null;
     value=qoqAnn.toFixed(1)+item.unit;
-    change='전분기 연율 '+qoqAnn.toFixed(1)+'%'+(yoy==null?'':' · 전년 대비 '+yoy.toFixed(1)+'%');
-    cls=qoqAnn>0?'market-up':qoqAnn<0?'market-down':'market-flat';
+    change='전분기 연율 '+signed(qoqAnn)+'%'+(yoy==null?'':' · 전년 대비 '+signed(yoy)+'%');
+    delta=qoqAnn;
   }else if(item.mode==='inflation'){
     const mom=(lastVal/prevVal-1)*100;
     const yoy=pAgo&&pAgoVal?(lastVal/pAgoVal-1)*100:(yearAgo&&yearAgoVal?(lastVal/yearAgoVal-1)*100:null);
     value=(yoy==null?mom:yoy).toFixed(1)+item.unit;
-    change=(periodsPerYear===4?'전분기 대비 ':'전월 대비 ')+mom.toFixed(1)+'%'+(yoy==null?'':' · 전년 대비 '+yoy.toFixed(1)+'%');
-    cls=mom>0?'market-up':mom<0?'market-down':'market-flat';
+    change=(periodsPerYear===4?'전분기 대비 ':'전월 대비 ')+signed(mom)+'%'+(yoy==null?'':' · 전년 대비 '+signed(yoy)+'%');
+    delta=mom;
   }else if(item.mode==='level-change'){
     const diff=lastVal-prevVal;
     value=(diff>0?'+':'')+(diff/10).toLocaleString('ko-KR',{maximumFractionDigits:2})+'만 명';
     change='전월 대비 증감 · 총고용 '+(lastVal/10).toLocaleString('ko-KR',{maximumFractionDigits:1})+'만 명';
-    cls=diff>0?'market-up':diff<0?'market-down':'market-flat';
+    delta=diff/10;
   }else{
     const diff=lastVal-prevVal;
     value=lastVal.toFixed(1)+item.unit;
-    change='전월 대비 '+(diff>0?'+':'')+diff.toFixed(1)+'%p';
-    cls=diff>0?'market-up':diff<0?'market-down':'market-flat';
+    change='전월 대비 '+signed(diff)+'%p';
+    delta=diff;
   }
+  const roundedDelta=Number(delta.toFixed(item.mode==='level-change'?2:1));
+  const cls=roundedDelta>0?'market-up':roundedDelta<0?'market-down':'market-flat';
   return {...item,value,change,cls,source,date:last.date};
 }
 async function fetchBlsMacro(item){
@@ -2304,7 +2307,11 @@ function renderUsMacro(items){
     const key='macro-'+item.key,cfg=MARKET_CHARTS[key];
     const linkOnly=sourceOnlyChart(cfg),tag=linkOnly?'a':'div';
     const attrs=linkOnly?'href="'+escHtml(marketSourceUrl(cfg))+'" target="_blank" rel="noopener noreferrer"':'data-chart-key="'+escHtml(key)+'" role="button" tabindex="0"';
-    return '<'+tag+' class="macro-card '+(item.rowBreak?'row-break ':'')+(linkOnly?'source-card':'')+'" '+attrs+'><div class="macro-group">'+escHtml(item.group)+'</div><div class="macro-name">'+escHtml(item.name)+'</div><div class="macro-value '+(linkOnly?'source-link-value':'')+' '+escHtml(item.cls||'market-flat')+'">'+escHtml(linkOnly?'원문 보기 ↗':item.value)+'</div><div class="macro-change">'+escHtml(item.change||'')+'</div><div class="macro-source">'+escHtml(item.source||'')+' · '+escHtml(item.note||'')+'</div>'+(linkOnly?'':(window.WorkspaceUI?.provenance(key)||''))+'</'+tag+'>';
+    const tone=['market-up','market-down'].includes(item.cls)?item.cls:'market-flat';
+    const [period,...rest]=(item.change||'').split(' · ');
+    const isPayroll=item.mode==='level-change';
+    const changeHtml=!linkOnly&&!isPayroll&&period?'<span class="period-change '+tone+'">'+escHtml(period)+'</span>'+escHtml(rest.length?' · '+rest.join(' · '):''):escHtml(item.change||'');
+    return '<'+tag+' class="macro-card '+(item.rowBreak?'row-break ':'')+(linkOnly?'source-card':'')+'" '+attrs+'><div class="macro-group">'+escHtml(item.group)+'</div><div class="macro-name">'+escHtml(item.name)+'</div><div class="macro-value '+(linkOnly?'source-link-value':isPayroll?'period-change '+tone:'')+'">'+escHtml(linkOnly?'원문 보기 ↗':item.value)+'</div><div class="macro-change">'+changeHtml+'</div><div class="macro-source">'+escHtml(item.source||'')+' · '+escHtml(item.note||'')+'</div>'+(linkOnly?'':(window.WorkspaceUI?.provenance(key)||''))+'</'+tag+'>';
   }).join('');
   bindMarketChartClicks();notifyMarketRendered();
 }
@@ -2854,7 +2861,7 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script defer src="assets/main-menu.js?v=20260910-menu"></script>
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
-<script type="module" src="assets/workspace.mjs?v=20260918-effective"></script>
+<script type="module" src="assets/workspace.mjs?v=20260927-change-colors"></script>
 <script type="module" src="assets/country-profile.mjs?v=20260923-us-geography1"></script>
 <script type="module" src="assets/country-data-client.mjs?v=20260922-registry1"></script>
 </body>

@@ -116,7 +116,9 @@ function refreshOverview(){
     const meta=OfficialData.metadata(MARKET_CHARTS[key]);
     const cfg=MARKET_CHARTS[key],qualifier=cfg.transform==='yoy'?'전년 대비':cfg.transform==='change'?'전월 대비 증감':cfg.transform==='qoq-annualized'?'전분기 연율':key.includes('gdp')?'연율 환산 규모':key==='rate-us'?'월평균 금리':key==='bond-us-spread'?'금리 차':'수준';
     const shortChange=key==='macro-payems'&&meta?'총고용 '+(OfficialData.get(cfg).points.at(-1).value/10).toLocaleString('ko-KR',{maximumFractionDigits:1})+'만 명':change.split(' · ')[0];
-    return '<article class="overview-item"><button type="button" class="overview-open" data-open-chart="'+key+'"><span class="overview-label">'+escape(item.label)+'</span><span class="overview-qualifier">'+qualifier+'</span><strong>'+escape(value)+'</strong><span class="overview-change">'+escape(shortChange)+'</span><span class="observation-date">'+escape(meta?observationLabel(meta.date,meta.frequency):'관측값 미확인')+'</span>'+(meta?.delayed?'<span class="observation-status delayed">수집 지연</span>':'')+'</button></article>';
+    const delta=original?.querySelector('.period-change');
+    const tone=delta?'period-change '+(['market-up','market-down'].find(name=>delta.classList.contains(name))||'market-flat'):'';
+    return '<article class="overview-item"><button type="button" class="overview-open" data-open-chart="'+key+'"><span class="overview-label">'+escape(item.label)+'</span><span class="overview-qualifier">'+qualifier+'</span><strong class="'+(key==='macro-payems'?tone:'')+'">'+escape(value)+'</strong><span class="overview-change '+(key==='macro-payems'?'':tone)+'">'+escape(shortChange)+'</span><span class="observation-date">'+escape(meta?observationLabel(meta.date,meta.frequency):'관측값 미확인')+'</span>'+(meta?.delayed?'<span class="observation-status delayed">수집 지연</span>':'')+'</button></article>';
   }).join('');
   host.querySelectorAll('[data-open-chart]').forEach(btn=>btn.addEventListener('click',()=>openChart(btn.dataset.openChart)));
 }
