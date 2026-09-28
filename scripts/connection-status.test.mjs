@@ -39,5 +39,5 @@ test('toolbar status control is beside reload and dialog retains shared close be
   assert.match(css,/#monitorSources \.dashboard-sections\{grid-template-columns:minmax\(0,1fr\)\}/);
   assert.match(css,/#workspaceConnections\{max-width:640px\}/);
   assert.ok(html.includes('assets/workspace.css?v=20260927-connections'));
-  assert.ok(html.includes('assets/workspace.mjs?v=20260929-columns'));
+  assert.ok(html.includes('assets/workspace.mjs?v=20260929-watch-left'));
 });

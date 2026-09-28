@@ -66,8 +66,8 @@ groups[3].append(sources);
 // Stack each column independently so a tall rate panel cannot push sentiment down.
 const monitorColumns=[document.createElement('div'),document.createElement('div')];
 monitorColumns.forEach(column=>{column.className='monitor-column';shell.append(column);});
-monitorColumns[0].append(groups[0],groups[2]);
-monitorColumns[1].append(groups[1],groups[3]);
+monitorColumns[0].append(groups[0],groups[2],groups[3]);
+monitorColumns[1].append(groups[1]);
 sources.querySelectorAll('.watch-row[data-chart-key]').forEach(row=>{
   if(row.dataset.chartKey==='dubai')return;
   row.removeAttribute('role');row.removeAttribute('tabindex');row.removeAttribute('data-chart-key');
