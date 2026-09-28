@@ -38,5 +38,6 @@ test('toolbar status control is beside reload and dialog retains shared close be
   assert.match(code,/addEventListener\('click',\(\)=>dialog\.close\(\)\)/);
   assert.match(css,/#monitorSources \.dashboard-sections\{grid-template-columns:minmax\(0,1fr\)\}/);
   assert.match(css,/#workspaceConnections\{max-width:640px\}/);
-  for(const ext of ['css','mjs'])assert.ok(html.includes('assets/workspace.'+ext+'?v=20260927-connections'));
+  assert.ok(html.includes('assets/workspace.css?v=20260927-connections'));
+  assert.ok(html.includes('assets/workspace.mjs?v=20260928-table'));
 });

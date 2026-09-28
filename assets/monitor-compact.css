@@ -1,0 +1,83 @@
+/* Compact monitor only; dictionary and shared chart controls keep their layout. */
+body #indicatorDashboard{padding:14px 24px 24px}
+body #indicatorDashboard .dashboard-shell{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 28px;align-items:start}
+body #indicatorDashboard .dashboard-shell> :not(.monitor-section){grid-column:1/-1}
+body #indicatorDashboard .monitor-section{min-width:0;margin:0 0 18px;scroll-margin-top:52px}
+body #indicatorDashboard .dashboard-panel{padding:0;border:0;margin:0 0 16px}
+body #indicatorDashboard :is(.dashboard-panel-title,.workspace-section-title,.workspace-section-head h2){font-size:15px;line-height:1.5;margin:0}
+body #indicatorDashboard :is(.macro-head,.workspace-section-head){gap:8px;margin-bottom:8px;align-items:center}
+body #indicatorDashboard :is(.macro-sub,.bond-country-note,.workspace-section-head p){display:none}
+body #indicatorDashboard .macro-badge{font-size:10px;line-height:1.5;padding:3px 6px;white-space:normal}
+body #indicatorDashboard .dashboard-top{margin:0 0 10px}
+body #indicatorDashboard .workspace-overview{margin:0 0 10px}
+body #indicatorDashboard .overview-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 20px;border-top:1px solid var(--border)}
+body #indicatorDashboard .overview-item{border:0;border-bottom:1px solid var(--border);border-radius:0;background:transparent}
+body #indicatorDashboard .overview-open{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 8px;align-items:center;padding:6px 8px;min-height:48px}
+body #indicatorDashboard .overview-label{grid-column:1;grid-row:1;font-size:12px;line-height:1.5}
+body #indicatorDashboard .overview-qualifier{grid-column:1;grid-row:2;font-size:10px;line-height:1.5}
+body #indicatorDashboard .overview-open strong{grid-column:2;grid-row:1;font-size:15px;line-height:1.5;text-align:right}
+body #indicatorDashboard .overview-change{grid-column:2;grid-row:2;font-size:10px;text-align:right;line-height:1.5}
+body #indicatorDashboard :is(.observation-date,.observation-collected,.observation-next,.observation-status){display:none}
+body #indicatorDashboard .observation-status.delayed{display:block;grid-column:1/-1;font-size:10px;line-height:1.4;color:var(--warning)}
+body #indicatorDashboard .release-panel{padding:8px 0;margin:0 0 8px;font-size:12px}
+body #indicatorDashboard .monitor-jump{top:-14px;gap:20px;padding:0;margin:0 0 14px}
+body #indicatorDashboard .monitor-jump button{padding:7px 0;font-size:12px}
+body #indicatorDashboard :is(#usMacroGrid,#globalRateGrid,.bond-grid,#monitorSentiment .indicator-grid,.watch-list){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;margin:0;border-top:1px solid var(--border)}
+body #indicatorDashboard :is(#usMacroGrid,#globalRateGrid,.bond-grid,#monitorSentiment .indicator-grid,.watch-list)::before,
+body #indicatorDashboard :is(#usMacroGrid,#globalRateGrid,.bond-grid,#monitorSentiment .indicator-grid,.watch-list)::after{font-size:11px;font-weight:600;line-height:1.5;padding:5px 10px;background:var(--surface2);color:var(--text-mid);border-bottom:1px solid var(--border);grid-row:1}
+body #indicatorDashboard :is(#usMacroGrid,#globalRateGrid,.bond-grid,#monitorSentiment .indicator-grid,.watch-list)::before{content:'항목';grid-column:1}
+body #indicatorDashboard :is(#usMacroGrid,#globalRateGrid,.bond-grid,#monitorSentiment .indicator-grid,.watch-list)::after{content:'수치';grid-column:2;text-align:right}
+body #indicatorDashboard :is(.macro-card,.bond-card,.indicator-card,.watch-row){grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 10px;align-items:center;min-height:40px;padding:6px 10px;border:0;border-bottom:1px solid var(--border);border-radius:0;background:transparent;box-shadow:none;transform:none;text-decoration:none;min-width:0}
+body #indicatorDashboard :is(.macro-card,.bond-card,.indicator-card,.watch-row):nth-child(even){background:var(--surface)}
+body #indicatorDashboard :is(.macro-card,.bond-card,.indicator-card,.watch-row)[data-chart-key]:hover,
+body #indicatorDashboard a.source-card:hover{background:var(--rank-hover);transform:none}
+body #indicatorDashboard :is([data-chart-key],a,button):focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+body #indicatorDashboard :is(.macro-name,.indicator-name,.bond-tenor){grid-column:1;grid-row:1/3;margin:0;font-size:12px;font-weight:500;line-height:1.5;min-width:0;overflow-wrap:anywhere}
+body #indicatorDashboard :is(.macro-value,.bond-value,.indicator-value){grid-column:2;grid-row:1;margin:0;font-size:15px;line-height:1.5;text-align:right;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+body #indicatorDashboard :is(.macro-group,.macro-source,.bond-source,.bond-change,.indicator-group,.indicator-source,.indicator-note,.source-only-label){display:none}
+body #indicatorDashboard .macro-change{grid-column:2;grid-row:2;min-height:0;font-size:0;line-height:0;margin:0;text-align:right}
+body #indicatorDashboard .macro-change .period-change{font-size:10px;line-height:1.5}
+body #indicatorDashboard .indicator-change{grid-column:2;grid-row:2;font-size:10px;min-height:0;line-height:1.5;text-align:right}
+body #indicatorDashboard .source-link-value{font-size:12px}
+body #indicatorDashboard .bond-tenor{width:auto;min-height:0;justify-self:start;padding:0 0 0 8px;border:0;border-left:3px solid var(--accent);border-radius:0;background:none;color:var(--text);box-shadow:none}
+body #indicatorDashboard .bond-tenor-3m{border-color:#0891b2}
+body #indicatorDashboard .bond-tenor-1y{border-color:#0284c7}
+body #indicatorDashboard .bond-tenor-2y{border-color:#6366f1}
+body #indicatorDashboard .bond-tenor-5y{border-color:#a855f7}
+body #indicatorDashboard .bond-tenor-10y{border-color:#16a34a}
+body #indicatorDashboard .bond-tenor-20y{border-color:#d97706}
+body #indicatorDashboard .bond-tenor-30y{border-color:#e11d48}
+body #indicatorDashboard .bond-country{margin:0;padding:0;border:0}
+body #indicatorDashboard .bond-country-head{margin:0 0 6px}
+body #indicatorDashboard .bond-country-name{font-size:12px;line-height:1.5}
+body #indicatorDashboard .bond-country-links{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0 0;padding:0;border:0}
+body #indicatorDashboard .bond-country-link{display:inline-flex;min-height:32px;padding:0;gap:6px;border:0;border-radius:0;background:none}
+body #indicatorDashboard .bond-country-link-source{font-size:0}
+body #indicatorDashboard .bond-country-link-source::after{content:'↗';font-size:12px;color:var(--accent)}
+body #indicatorDashboard #globalRateGrid .macro-card{grid-column:1/-1;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:6px 10px}
+body #indicatorDashboard #globalRateGrid .macro-group{display:block;grid-column:1;grid-row:1;font-size:12px;font-weight:600;margin:0}
+body #indicatorDashboard #globalRateGrid .macro-name{grid-column:1;grid-row:2;font-size:10px;color:var(--text-mid)}
+body #indicatorDashboard #globalRateGrid .macro-value{grid-column:2;grid-row:1/3}
+body #indicatorDashboard #monitorSentiment .workspace-section-title{margin-bottom:8px}
+body #indicatorDashboard #monitorSentiment .indicator-card .indicator-group{display:none}
+body #indicatorDashboard #monitorSentiment .indicator-card>a{grid-column:2;grid-row:1/3;justify-self:end;font-size:12px}
+body #indicatorDashboard #monitorSentiment .indicator-card:has(>a) .indicator-value{display:none}
+body #indicatorDashboard .watch-row{font-size:12px;line-height:1.5}
+body #indicatorDashboard .watch-row>span:last-child{font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+body #indicatorDashboard .workspace-advanced{margin:12px 0}
+body #indicatorDashboard .workspace-advanced>summary{font-size:13px;padding:10px 0}
+body #indicatorDashboard #rateSchedulePanel{margin:0 0 10px}
+body #indicatorDashboard .rate-schedule-toggle{padding:10px;font-size:12px}
+.chart-current-value{font:600 23px/1.5 'IBM Plex Mono',monospace;color:var(--text)}
+.chart-current-change{font-size:13px;line-height:1.7;color:var(--text-mid)}
+@media(max-width:1050px){
+ body #indicatorDashboard .overview-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ body #indicatorDashboard{padding:12px 14px 24px}
+ body #indicatorDashboard .dashboard-shell{grid-template-columns:minmax(0,1fr)}
+ body #indicatorDashboard .overview-grid{grid-template-columns:minmax(0,1fr)}
+ body #indicatorDashboard .monitor-jump{top:-12px;gap:16px}
+ body #indicatorDashboard .macro-head{flex-wrap:wrap}
+ body #indicatorDashboard :is(.macro-card,.bond-card,.indicator-card,.watch-row){min-height:44px}
+}

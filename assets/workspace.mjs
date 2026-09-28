@@ -135,7 +135,11 @@ function openChart(key){
   if(!MARKET_CHARTS[key])return;
   activeChart=key;
   $('#workspaceChartTitle').textContent=MARKET_CHARTS[key].label;
-  $('#chartDataBasis').innerHTML=OfficialData.metadata(MARKET_CHARTS[key])?provenance(key)+'<div class="chart-source-name">'+escape(OfficialData.metadata(MARKET_CHARTS[key]).source)+'</div>':'<p>기준일·출처는 차트와 원문에서 확인하세요.</p>';
+  const original=document.querySelector('#indicatorDashboard [data-chart-key="'+key+'"]');
+  const value=original?.querySelector('.macro-value,.bond-value,.indicator-value')?.textContent;
+  const changes=[...(original?.querySelectorAll('.macro-change,.bond-change,.indicator-change')||[])].map(node=>node.textContent).filter(Boolean);
+  const summary=(value?'<div class="chart-current-value">'+escape(value)+'</div>':'')+changes.map(text=>'<div class="chart-current-change">'+escape(text)+'</div>').join('');
+  $('#chartDataBasis').innerHTML=summary+(OfficialData.metadata(MARKET_CHARTS[key])?provenance(key)+'<div class="chart-source-name">'+escape(OfficialData.metadata(MARKET_CHARTS[key]).source)+'</div>':'<p>기준일·출처는 차트와 원문에서 확인하세요.</p>');
   updateFavoriteButton();
   renderChartExplanation(key);
   if(!chartDialog.open)chartDialog.showModal();
