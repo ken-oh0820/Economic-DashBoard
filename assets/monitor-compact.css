@@ -5,8 +5,11 @@ body.dashboard-mode #economyTitle{font-size:20px}
 body.dashboard-mode .economy-tabs button{padding:8px 2px;font-size:13px}
 body #indicatorDashboard{padding:14px 24px 24px}
 body #indicatorDashboard .dashboard-shell{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 28px;align-items:start}
-body #indicatorDashboard .dashboard-shell> :not(.monitor-section){grid-column:1/-1}
+body #indicatorDashboard .dashboard-shell> :not(.monitor-column){grid-column:1/-1}
+body #indicatorDashboard .monitor-column{display:flex;flex-direction:column;min-width:0}
 body #indicatorDashboard .monitor-section{min-width:0;margin:0 0 18px;scroll-margin-top:52px}
+body #indicatorDashboard #monitorMacro{margin-bottom:12px}
+body #indicatorDashboard #monitorMacro>.dashboard-panel{margin-bottom:0}
 body #indicatorDashboard .dashboard-panel{padding:0;border:0;margin:0 0 16px}
 body #indicatorDashboard :is(.dashboard-panel-title,.workspace-section-title,.workspace-section-head h2){font-size:15px;line-height:1.5;margin:0}
 body #indicatorDashboard :is(.macro-head,.workspace-section-head){gap:8px;margin-bottom:8px;align-items:center}

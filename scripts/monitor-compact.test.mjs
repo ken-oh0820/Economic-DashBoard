@@ -40,3 +40,21 @@ test('compact row opens the existing chart with value, deltas, date and source r
   assert.equal(ctx.chartDialog.open,true);
   assert.equal(nodes.get('#workspaceChartTitle').textContent,'미국 국채 10년물');
 });
+
+test('macro and sentiment stack independently from rates while retaining all section nodes',()=>{
+  const columns=[];
+  const groups=Array.from({length:4},(_,index)=>({id:index}));
+  const ctx=vm.createContext({groups,document:{createElement:()=>({append(...children){this.children=children;}})},shell:{append:column=>columns.push(column)}});
+  const start=code.indexOf('const monitorColumns=');
+  const end=code.indexOf("sources.querySelectorAll",start);
+  assert.ok(start>=0&&end>start);
+  vm.runInContext(code.slice(start,end),ctx);
+  assert.equal(columns.length,2);
+  assert.deepEqual(columns[0].children,[groups[0],groups[2]]);
+  assert.deepEqual(columns[1].children,[groups[1],groups[3]]);
+  assert.ok(columns.every(column=>column.className==='monitor-column'));
+  assert.match(css,/\.monitor-column\{display:flex;flex-direction:column;min-width:0\}/);
+  assert.match(css,/#monitorMacro\{margin-bottom:12px\}/);
+  assert.match(css,/#monitorMacro>\.dashboard-panel\{margin-bottom:0\}/);
+  assert.ok(html.includes('assets/monitor-compact.css?v=20260929-columns'));
+});

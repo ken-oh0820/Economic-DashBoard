@@ -63,6 +63,11 @@ const advanced=document.createElement('details');advanced.className='workspace-a
 advanced.innerHTML='<summary>국채 Basis 위험 모니터링</summary>';advanced.append(basis);groups[1].append(advanced);
 groups[2].innerHTML='<h2 class="workspace-section-title">시장 심리</h2>';groups[2].append(sentiment);
 groups[3].append(sources);
+// Stack each column independently so a tall rate panel cannot push sentiment down.
+const monitorColumns=[document.createElement('div'),document.createElement('div')];
+monitorColumns.forEach(column=>{column.className='monitor-column';shell.append(column);});
+monitorColumns[0].append(groups[0],groups[2]);
+monitorColumns[1].append(groups[1],groups[3]);
 sources.querySelectorAll('.watch-row[data-chart-key]').forEach(row=>{
   if(row.dataset.chartKey==='dubai')return;
   row.removeAttribute('role');row.removeAttribute('tabindex');row.removeAttribute('data-chart-key');

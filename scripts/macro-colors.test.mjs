@@ -70,5 +70,5 @@ test('light and dark delta styles are scoped and changed assets bypass stale cac
   for(const tone of ['up','down','flat'])assert.ok(css.includes('#indicatorDashboard .period-change.market-'+tone));
   assert.match(css,/body.light #indicatorDashboard .period-change.market-up\{color:#167344\}/);
   assert.match(css,/body.light #indicatorDashboard .period-change.market-down\{color:#c12c40\}/);
-  for(const ext of ['css','mjs'])assert.match(html,new RegExp('assets/workspace\\.'+ext+'\\?v=202609(?:27|28)-[a-z-]+'));
+  for(const ext of ['css','mjs'])assert.match(html,new RegExp('assets/workspace\\.'+ext+'\\?v=202609(?:27|28|29)-[a-z-]+'));
 });
