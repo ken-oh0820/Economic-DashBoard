@@ -13,7 +13,8 @@ test('compact monitor has item/value columns and scoped responsive rows without 
   assert.match(css,/content:'수치'/);
   assert.match(css,/@media\(max-width:760px\)/);
   assert.match(css,/min-height:44px/);
-  assert.doesNotMatch(css,/#usEconomyGuide|\.us-guide|#economyHeader/);
+  assert.doesNotMatch(css,/#usEconomyGuide|\.us-guide|body\.guide-mode/);
+  assert.match(css,/body\.dashboard-mode #economyHeader/);
   assert.match(css,/#indicatorDashboard :is\(\.observation-date,[^]*?display:none/);
   assert.match(css,/\.observation-status.delayed\{display:block/);
   assert.match(css,/\.macro-change \.period-change\{font-size:10px/);

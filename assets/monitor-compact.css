@@ -1,4 +1,8 @@
 /* Compact monitor only; dictionary and shared chart controls keep their layout. */
+body.dashboard-mode #economyHeader{padding-top:10px}
+body.dashboard-mode .economy-heading{margin-bottom:4px}
+body.dashboard-mode #economyTitle{font-size:20px}
+body.dashboard-mode .economy-tabs button{padding:8px 2px;font-size:13px}
 body #indicatorDashboard{padding:14px 24px 24px}
 body #indicatorDashboard .dashboard-shell{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 28px;align-items:start}
 body #indicatorDashboard .dashboard-shell> :not(.monitor-section){grid-column:1/-1}
@@ -12,7 +16,7 @@ body #indicatorDashboard .dashboard-top{margin:0 0 10px}
 body #indicatorDashboard .workspace-overview{margin:0 0 10px}
 body #indicatorDashboard .overview-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 20px;border-top:1px solid var(--border)}
 body #indicatorDashboard .overview-item{border:0;border-bottom:1px solid var(--border);border-radius:0;background:transparent}
-body #indicatorDashboard .overview-open{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 8px;align-items:center;padding:6px 8px;min-height:48px}
+body #indicatorDashboard .overview-open{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 8px;align-items:center;padding:4px 8px;min-height:42px}
 body #indicatorDashboard .overview-label{grid-column:1;grid-row:1;font-size:12px;line-height:1.5}
 body #indicatorDashboard .overview-qualifier{grid-column:1;grid-row:2;font-size:10px;line-height:1.5}
 body #indicatorDashboard .overview-open strong{grid-column:2;grid-row:1;font-size:15px;line-height:1.5;text-align:right}
@@ -27,16 +31,16 @@ body #indicatorDashboard :is(#usMacroGrid,#globalRateGrid,.bond-grid,#monitorSen
 body #indicatorDashboard :is(#usMacroGrid,#globalRateGrid,.bond-grid,#monitorSentiment .indicator-grid,.watch-list)::after{font-size:11px;font-weight:600;line-height:1.5;padding:5px 10px;background:var(--surface2);color:var(--text-mid);border-bottom:1px solid var(--border);grid-row:1}
 body #indicatorDashboard :is(#usMacroGrid,#globalRateGrid,.bond-grid,#monitorSentiment .indicator-grid,.watch-list)::before{content:'항목';grid-column:1}
 body #indicatorDashboard :is(#usMacroGrid,#globalRateGrid,.bond-grid,#monitorSentiment .indicator-grid,.watch-list)::after{content:'수치';grid-column:2;text-align:right}
-body #indicatorDashboard :is(.macro-card,.bond-card,.indicator-card,.watch-row){grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 10px;align-items:center;min-height:40px;padding:6px 10px;border:0;border-bottom:1px solid var(--border);border-radius:0;background:transparent;box-shadow:none;transform:none;text-decoration:none;min-width:0}
+body #indicatorDashboard :is(.macro-card,.bond-card,.indicator-card,.watch-row){grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 10px;align-items:center;min-height:34px;padding:3px 10px;border:0;border-bottom:1px solid var(--border);border-radius:0;background:transparent;box-shadow:none;transform:none;text-decoration:none;min-width:0}
 body #indicatorDashboard :is(.macro-card,.bond-card,.indicator-card,.watch-row):nth-child(even){background:var(--surface)}
 body #indicatorDashboard :is(.macro-card,.bond-card,.indicator-card,.watch-row)[data-chart-key]:hover,
 body #indicatorDashboard a.source-card:hover{background:var(--rank-hover);transform:none}
 body #indicatorDashboard :is([data-chart-key],a,button):focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 body #indicatorDashboard :is(.macro-name,.indicator-name,.bond-tenor){grid-column:1;grid-row:1/3;margin:0;font-size:12px;font-weight:500;line-height:1.5;min-width:0;overflow-wrap:anywhere}
-body #indicatorDashboard :is(.macro-value,.bond-value,.indicator-value){grid-column:2;grid-row:1;margin:0;font-size:15px;line-height:1.5;text-align:right;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+body #indicatorDashboard :is(.macro-value,.bond-value,.indicator-value){grid-column:2;grid-row:1;margin:0;font-size:15px;line-height:1.4;text-align:right;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 body #indicatorDashboard :is(.macro-group,.macro-source,.bond-source,.bond-change,.indicator-group,.indicator-source,.indicator-note,.source-only-label){display:none}
 body #indicatorDashboard .macro-change{grid-column:2;grid-row:2;min-height:0;font-size:0;line-height:0;margin:0;text-align:right}
-body #indicatorDashboard .macro-change .period-change{font-size:10px;line-height:1.5}
+body #indicatorDashboard .macro-change .period-change{font-size:10px;line-height:1.3}
 body #indicatorDashboard .indicator-change{grid-column:2;grid-row:2;font-size:10px;min-height:0;line-height:1.5;text-align:right}
 body #indicatorDashboard .source-link-value{font-size:12px}
 body #indicatorDashboard .bond-tenor{width:auto;min-height:0;justify-self:start;padding:0 0 0 8px;border:0;border-left:3px solid var(--accent);border-radius:0;background:none;color:var(--text);box-shadow:none}
