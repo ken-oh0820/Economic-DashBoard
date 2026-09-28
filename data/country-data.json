@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "attemptedAt": "2026-09-22T11:25:42.492Z",
+  "attemptedAt": "2026-09-28T01:42:20.733Z",
   "license": "CC BY 4.0",
   "provider": "World Bank, World Development Indicators",
   "series": {
     "gdp": {
       "indicator": "NY.GDP.MKTP.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:25:42.705Z",
+      "fetchedAt": "2026-09-28T01:42:33.464Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Gross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -1659,7 +1659,7 @@
     "gdpPc": {
       "indicator": "NY.GDP.PCAP.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:25:42.774Z",
+      "fetchedAt": "2026-09-28T01:42:39.613Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Gross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. The core indicator has been divided by the general population to achieve a per capita estimate.This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -3311,7 +3311,7 @@
     "growth": {
       "indicator": "NY.GDP.MKTP.KD.ZG",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:25:42.829Z",
+      "fetchedAt": "2026-09-28T01:42:46.495Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Gross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. This indicator denotes the percentage change over each previous year of the constant price (base year 2015) series in United States dollars.",
@@ -4960,7 +4960,7 @@
     },
     "gni": {
       "indicator": "NY.GNP.MKTP.CD",
-      "status": "ok",
+      "status": "stale",
       "fetchedAt": "2026-09-22T11:25:42.888Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
@@ -6563,7 +6563,7 @@
     "gniPc": {
       "indicator": "NY.GNP.PCAP.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:25:42.960Z",
+      "fetchedAt": "2026-09-28T01:43:33.814Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Gross national income is the total income earned by all residents within an economic territory during an accounting period. It is equal to gross domestic product plus earned income receivable from abroad minus earned income payable abroad. This figure is converted to U.S. dollars using the World Bank Atlas method, and divided by the midyear population. GNI, calculated in national currency, is usually converted to U.S. dollars at official exchange rates for comparisons across economies, although an alternative rate is used when the official exchange rate is judged to diverge by an exceptionally large margin from the rate actually applied in international transactions. To smooth fluctuations in prices and exchange rates, a special Atlas method of conversion is used by the World Bank. This applies a conversion factor that averages the exchange rate for a given year and the two preceding years, adjusted for differences in rates of inflation between the country, and through 2000, the G-5 countries (France, Germany, Japan, the United Kingdom, and the United States). From 2001, these countries include the Euro area, Japan, the United Kingdom, and the United States. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -8159,7 +8159,7 @@
     "exports": {
       "indicator": "NE.EXP.GNFS.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:25:43.021Z",
+      "fetchedAt": "2026-09-28T01:43:35.660Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
       "sourceNote": "Exports of goods includes changes in the economic ownership of goods from residents of the compiling economy to non-residents, irrespective of physical movement of goods across national borders. Exports of services includes services provided by residents to non-residents. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -9570,7 +9570,7 @@
     "imports": {
       "indicator": "NE.IMP.GNFS.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:25:43.097Z",
+      "fetchedAt": "2026-09-28T01:43:37.207Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
       "sourceNote": "Imports of goods includes change in the economic ownership of goods from non-residents to\n\n\n\n\nresidents of the compiling economy, irrespective of physical movement of goods across national borders. Imports of services includes services provided by non-residents to residents. This indicator is expressed in current prices, meaning no adjustment has been made to account for price changes over time. This indicator is expressed in United States dollars.",
@@ -10980,7 +10980,7 @@
     },
     "unemployment": {
       "indicator": "SL.UEM.TOTL.ZS",
-      "status": "ok",
+      "status": "stale",
       "fetchedAt": "2026-09-22T11:25:43.162Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "ILO Modelled Estimates database (ILOEST), International Labour Organization (ILO), uri: https://ilostat.ilo.org/data/bulk/, publisher: ILOSTAT, type: external database, date accessed: January 17, 2026",
@@ -12473,7 +12473,7 @@
     },
     "inflation": {
       "indicator": "FP.CPI.TOTL.ZG",
-      "status": "ok",
+      "status": "stale",
       "fetchedAt": "2026-09-22T11:25:43.217Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "International Financial Statistics database, International Monetary Fund (IMF)",
@@ -13892,7 +13892,7 @@
     "population": {
       "indicator": "SP.POP.TOTL",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:25:43.296Z",
+      "fetchedAt": "2026-09-28T01:45:17.787Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), uri: https://population.un.org/wpp/, publisher: UN Population Division;\nStatistical databases and publications from national statistical offices, National Statistical Offices (NSOs), uri: https://unstats.un.org/home/nso_sites/, publisher: National Statistical Offices;\nEurostat: Demographic Statistics, Eurostat (ESTAT), uri: https://ec.europa.eu/eurostat/data/database?node_code=earn_ses_monthly, publisher: Eurostat;\nPopulation and Vital Statistics Report (various years), United Nations (UN), uri: https://unstats.un.org, publisher: UN Statistics Division",
       "sourceNote": "Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates.",
@@ -15639,7 +15639,7 @@
     "popGrowth": {
       "indicator": "SP.POP.GROW",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:25:43.371Z",
+      "fetchedAt": "2026-09-28T01:45:24.806Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), note: Derived from total population, publisher: UN Population Division;\nStatistical databases and publications from national statistical offices, National Statistical Offices (NSOs), note: Derived from total population;\nDemographic Statistics, Eurostat (ESTAT), note: Derived from total population;\nPopulation and Vital Statistics Report (various years), United Nations (UN), note: Derived from total population, publisher: UN Statistical Division",
       "sourceNote": "Annual population growth rate for year t is the exponential rate of growth of midyear population from year t-1 to t, expressed as a percentage. Population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship.",
@@ -17385,7 +17385,7 @@
     "workingAge": {
       "indicator": "SP.POP.1564.TO.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:25:43.432Z",
+      "fetchedAt": "2026-09-28T01:45:28.553Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), publisher: UN Population Division",
       "sourceNote": "Total population between the ages 15 to 64 as a percentage of the total population. Population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship.",
@@ -19132,7 +19132,7 @@
     "elderly": {
       "indicator": "SP.POP.65UP.TO.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:25:43.499Z",
+      "fetchedAt": "2026-09-28T01:45:31.497Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), publisher: UN Population Division",
       "sourceNote": "Population ages 65 and above as a percentage of the total population. Population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship.",
@@ -20879,7 +20879,7 @@
     "fertility": {
       "indicator": "SP.DYN.TFRT.IN",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:25:43.571Z",
+      "fetchedAt": "2026-09-28T01:45:47.215Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "World Population Prospects, United Nations (UN), publisher: UN Population Division;\nStatistical databases and publications from national statistical offices, National Statistical Offices (NSOs);\nDemographic Statistics, Eurostat (ESTAT)",
       "sourceNote": "Total fertility rate represents the number of children that would be born to a woman if she were to live to the end of her childbearing years and bear children in accordance with age-specific fertility rates of the specified year.",
@@ -22409,7 +22409,7 @@
     "services": {
       "indicator": "NV.SRV.TOTL.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:25:56.350Z",
+      "fetchedAt": "2026-09-28T01:45:50.409Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
       "sourceNote": "Services industries correspond to ISIC (Rev. 4) divisions 45-99 and includes wholesale and retail trade, repair of motor vehicles, hotels and restaurants, transport, storage and communication, financial intermediation, real estate, renting and business activities, public administration and defence, compulsory social security, education, health and social work, other community, social and personal service activities, private households with employed persons, and extra-territorial organizations and bodies. Value added is the contribution to the economy by a producer or an industry or an institutional sector, which is estimated by the total value of output produced and deducting the total value of intermediate consumption of goods and services used to produce that output. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
@@ -23964,7 +23964,7 @@
     "industry": {
       "indicator": "NV.IND.TOTL.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:16.364Z",
+      "fetchedAt": "2026-09-28T01:45:52.421Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
       "sourceNote": "Industry (including construction) corresponds to ISIC (Rev.4) divisions 05-43. It is comprised of mining, manufacturing, construction, electricity, water, and gas industries. Value added is the contribution to the economy by a producer or an industry or an institutional sector, which is estimated by the total value of output produced and deducting the total value of intermediate consumption of goods and services used to produce that output. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
@@ -25519,7 +25519,7 @@
     "agriculture": {
       "indicator": "NV.AGR.TOTL.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:18.745Z",
+      "fetchedAt": "2026-09-28T01:45:59.627Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Agriculture, forestry, and fishing corresponds to ISIC (Rev. 4) divisions 01-03 and includes the exploitation of vegetal and animal natural resources, comprising the activities of growing of crops, raising and breeding of animals, harvesting of timber and other plants, animals or animal products from a farm or their natural habitats.Value added is the contribution to the economy by a producer or an industry or an institutional sector, which is estimated by the total value of output produced and deducting the total value of intermediate consumption of goods and services used to produce that output. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period. Note: For VAB countries, gross value added at factor cost is used as the denominator.",
@@ -27055,7 +27055,7 @@
     },
     "manufacturing": {
       "indicator": "NV.IND.MANF.ZS",
-      "status": "ok",
+      "status": "stale",
       "fetchedAt": "2026-09-22T11:26:19.685Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
@@ -28527,7 +28527,7 @@
     "exportIntensity": {
       "indicator": "NE.EXP.GNFS.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:21.340Z",
+      "fetchedAt": "2026-09-28T01:46:48.810Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
       "sourceNote": "Exports of goods includes changes in the economic ownership of goods from residents of the compiling economy to non-residents, irrespective of physical movement of goods across national borders. Exports of services includes services provided by residents to non-residents. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
@@ -29942,7 +29942,7 @@
     "manufacturedExports": {
       "indicator": "TX.VAL.MANF.ZS.UN",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:22.311Z",
+      "fetchedAt": "2026-09-28T01:46:50.738Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Comtrade database, United Nations (UN), publisher: UN Statistics Division;\nWorld Integrated Trade Solution system (WITS);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Manufactures comprise commodities in SITC (Rev. 3) sections 5 (chemicals), 6 (basic manufactures), 7 (machinery and transport equipment), and 8 (miscellaneous manufactured goods), excluding division 68 (non-ferrous metals). This indicator is expressed as a percentage of merchandise exports which is comprised of goods whose economic ownership is changed between a resident and a non-resident and that are not included in the following specific categories: goods under merchanting, non-monetary gold, and parts of travel, construction, and government goods and services n.i.e.",
@@ -31098,7 +31098,7 @@
     "highTechExports": {
       "indicator": "TX.VAL.TECH.MF.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:23.298Z",
+      "fetchedAt": "2026-09-28T01:46:52.249Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Comtrade database, United Nations (UN), uri: comtrade.un.org, publisher: UN Statistics Division;\nWorld Integrated Trade Solution system (WITS), World Bank (WB), uri: https://wits.worldbank.org/",
       "sourceNote": "High-technology exports are products with high R&D intensity, such as in aerospace, computers, pharmaceuticals, scientific instruments, and electrical machinery.",
@@ -32224,7 +32224,7 @@
     "ictServiceExports": {
       "indicator": "BX.GSR.CCIS.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:24.979Z",
+      "fetchedAt": "2026-09-28T01:46:59.159Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Balance of Payments Statistics Yearbook and data files, International Monetary Fund (IMF)",
       "sourceNote": "Information and communication technology service exports include computer and communications services (telecommunications and postal and courier services) and information services (computer data and news-related service transactions).",
@@ -33540,7 +33540,7 @@
     "research": {
       "indicator": "GB.XPD.RSDV.GD.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:26.160Z",
+      "fetchedAt": "2026-09-28T01:47:00.482Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Stat Bulk Data Download Service, UN Educational, Scientific and Cultural Organization (UNESCO), uri: https://databrowser.uis.unesco.org/resources/bulk, publisher: UNESCO Institute for Statistics (UIS), date accessed: 2025-03-26, date published: 2025-02",
       "sourceNote": "Gross domestic expenditures on research and development (R&D), expressed as a percent of GDP. They include both capital and current expenditures in the four main sectors: Business enterprise, Government, Higher education and Private non-profit. R&D covers basic research, applied research, and experimental development.",
@@ -34144,7 +34144,7 @@
     "landArea": {
       "indicator": "AG.LND.TOTL.K2",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:27.088Z",
+      "fetchedAt": "2026-09-28T01:47:04.934Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "FAOSTAT, Food and Agriculture Organization of the United Nations (FAO), uri: https://www.fao.org/faostat/en/#data/RL, publisher: Food and Agriculture Organization of the United Nations (FAO)",
       "sourceNote": "Land area is a country's total area, excluding area under inland water bodies, national claims to continental shelf, and exclusive economic zones. In most cases the definition of inland water bodies includes major rivers and lakes.",
@@ -35449,7 +35449,7 @@
     "arableLand": {
       "indicator": "AG.LND.ARBL.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:28.053Z",
+      "fetchedAt": "2026-09-28T01:47:06.507Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "FAO electronic files and website, Food and Agriculture Organization of the United Nations (FAO), publisher: Food and Agriculture Organization of the United Nations (FAO)",
       "sourceNote": "Arable land includes land defined by the FAO as land under temporary crops (double-cropped areas are counted once), temporary meadows for mowing or for pasture, land under market or kitchen gardens, and land temporarily fallow. Land abandoned as a result of shifting cultivation is excluded.",
@@ -36696,7 +36696,7 @@
     "forestArea": {
       "indicator": "AG.LND.FRST.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:29.644Z",
+      "fetchedAt": "2026-09-28T01:47:07.342Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "FAOSTAT, Food and Agriculture Organization of the United Nations (FAO), uri: https://www.fao.org/faostat/en/#data/RL, publisher: Food and Agriculture Organization of the United Nations (FAO)",
       "sourceNote": "Forest area (% of land area) is the share of total land area that is under natural or planted stands of trees of at least 5 meters in situ, whether productive or not, and excludes tree stands in agricultural production systems (for example, in fruit plantations and agroforestry systems) and trees in urban parks and gardens.",
@@ -37989,7 +37989,7 @@
     "freshwater": {
       "indicator": "ER.H2O.INTR.PC",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:31.008Z",
+      "fetchedAt": "2026-09-28T01:47:12.076Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "AQUASTAT - FAO's Global Information System on Water and Agriculture, Food and Agriculture Organization of the United Nations (FAO), uri: https://data.apps.fao.org/aquastat/, publisher: Food and Agriculture Organization of the United Nations (FAO), date accessed: 20240529",
       "sourceNote": "Renewable internal freshwater resources flows refer to internal renewable resources (internal river flows and groundwater from rainfall) in the country. Renewable internal freshwater resources per capita are calculated using the World Bank's population estimates.",
@@ -38913,7 +38913,7 @@
     "resourceRents": {
       "indicator": "NY.GDP.TOTL.RT.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:32.009Z",
+      "fetchedAt": "2026-09-28T01:47:12.736Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "The Changing Wealth of Nations, World Bank (WB), uri: https://www.worldbank.org/en/publication/changing-wealth-of-nations/data, note: World Bank staff estimates based on sources and methods described in the World Bank's The Changing Wealth of Nations., publisher: World Bank (WB);\nStaff estimates, World Bank (WB), note: World Bank staff estimates based on sources and methods described in the World Bank's The Changing Wealth of Nations.",
       "sourceNote": "Total natural resources rents are the sum of oil rents, natural gas rents, coal rents (hard and soft), mineral rents, and forest rents.",
@@ -39733,7 +39733,7 @@
     "fuelExports": {
       "indicator": "TX.VAL.FUEL.ZS.UN",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:32.925Z",
+      "fetchedAt": "2026-09-28T01:47:14.496Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Staff estimates, World Bank (WB);\nComtrade database, United Nations (UN), publisher: UN Statistics Division;\nWorld Integrated Trade Solution system (WITS), World Bank (WB)",
       "sourceNote": "Fuels comprise the commodities in SITC (Rev. 3) section 3 (mineral fuels, lubricants and related materials). This indicator is expressed as a percentage of merchandise exports which is comprised of goods whose economic ownership is changed between a resident and a non-resident and that are not included in the following specific categories: goods under merchanting, non-monetary gold, and parts of travel, construction, and government goods and services n.i.e.",
@@ -40872,7 +40872,7 @@
     "metalExports": {
       "indicator": "TX.VAL.MMTL.ZS.UN",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:33.843Z",
+      "fetchedAt": "2026-09-28T01:47:18.755Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "Comtrade database, United Nations (UN), publisher: UN Statistics Division;\nWorld Integrated Trade Solution system (WITS);\nStaff estimates, World Bank (WB)",
       "sourceNote": "Ores and metals comprise the commodities in SITC (Rev. 3) sections 27 (crude fertilizer, minerals nes); 28 (metalliferous ores, scrap); and 68 (non-ferrous metals). Exports of services are services provided by residents to non-residents. This indicator is expressed as a percentage of merchandise exports which is comprised of goods whose economic ownership is changed between a resident and a non-resident and that are not included in the following specific categories: goods under merchanting, non-monetary gold, and parts of travel, construction, and government goods and services n.i.e.",
@@ -42027,7 +42027,7 @@
     "militarySpending": {
       "indicator": "MS.MIL.XPND.CD",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:33.907Z",
+      "fetchedAt": "2026-09-28T01:47:19.373Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "SIPRI Military Expenditure Database, Stockholm International Peace Research Institute (SIPRI), uri: https://www.sipri.org/databases",
       "sourceNote": "Military spending USD, in current prices (converted at the exchange rate for the given year)",
@@ -43117,7 +43117,7 @@
     "militaryGdp": {
       "indicator": "MS.MIL.XPND.GD.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:33.971Z",
+      "fetchedAt": "2026-09-28T01:47:22.582Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "SIPRI Military Expenditure Database, Stockholm International Peace Research Institute (SIPRI), uri: https://www.sipri.org/databases",
       "sourceNote": "Military expenditure by country as percentage of gross domestic product",
@@ -44185,7 +44185,7 @@
     "militaryBudget": {
       "indicator": "MS.MIL.XPND.ZS",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:34.029Z",
+      "fetchedAt": "2026-09-28T01:47:25.378Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "SIPRI Military Expenditure Database, Stockholm International Peace Research Institute (SIPRI), uri: https://www.sipri.org/databases",
       "sourceNote": "Military expenditure expressed as a percentage of general government expenditure",
@@ -45237,7 +45237,7 @@
     "militaryPersonnel": {
       "indicator": "MS.MIL.TOTL.P1",
       "status": "ok",
-      "fetchedAt": "2026-09-22T11:26:34.105Z",
+      "fetchedAt": "2026-09-28T01:47:30.214Z",
       "providerUpdatedAt": "2026-07-13",
       "sourceOrganization": "The Military Balance, International Institute for Strategic Studies",
       "sourceNote": "Armed forces personnel are active duty military personnel, including paramilitary forces if the training, organization, equipment, and control suggest they may be used to support or replace regular military forces.",
