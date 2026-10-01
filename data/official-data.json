@@ -1,14 +1,10 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-30T20:16:17.138Z",
+  "updatedAt": "2026-10-01T00:48:00.070Z",
   "failures": [],
   "series": {
     "CPIAUCSL": {
       "points": [
-        {
-          "date": "2020-09-01",
-          "value": 259.997
-        },
         {
           "date": "2020-10-01",
           "value": 260.319
@@ -293,16 +289,12 @@
       "source": "BLS / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/CPIAUCSL",
       "frequency": "monthly",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "CPILFESL": {
       "points": [
-        {
-          "date": "2020-09-01",
-          "value": 268.933
-        },
         {
           "date": "2020-10-01",
           "value": 269.306
@@ -587,16 +579,12 @@
       "source": "BLS / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/CPILFESL",
       "frequency": "monthly",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "PPIFIS": {
       "points": [
-        {
-          "date": "2020-09-01",
-          "value": 118.8
-        },
         {
           "date": "2020-10-01",
           "value": 119.4
@@ -885,16 +873,12 @@
       "source": "BLS / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/PPIFIS",
       "frequency": "monthly",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "WPSFD49116": {
       "points": [
-        {
-          "date": "2020-09-01",
-          "value": 111.8
-        },
         {
           "date": "2020-10-01",
           "value": 112
@@ -1183,16 +1167,12 @@
       "source": "BLS / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/WPSFD49116",
       "frequency": "monthly",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "UNRATE": {
       "points": [
-        {
-          "date": "2020-09-01",
-          "value": 7.8
-        },
         {
           "date": "2020-10-01",
           "value": 6.9
@@ -1477,16 +1457,12 @@
       "source": "BLS / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/UNRATE",
       "frequency": "monthly",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "PAYEMS": {
       "points": [
-        {
-          "date": "2020-09-01",
-          "value": 141770
-        },
         {
           "date": "2020-10-01",
           "value": 142460
@@ -1775,16 +1751,12 @@
       "source": "BLS / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/PAYEMS",
       "frequency": "monthly",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "CES0500000003": {
       "points": [
-        {
-          "date": "2020-09-01",
-          "value": 29.51
-        },
         {
           "date": "2020-10-01",
           "value": 29.54
@@ -2073,16 +2045,12 @@
       "source": "BLS / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/CES0500000003",
       "frequency": "monthly",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "GDP": {
       "points": [
-        {
-          "date": "2020-07-01",
-          "value": 21704.437
-        },
         {
           "date": "2020-10-01",
           "value": 22087.16
@@ -2179,16 +2147,12 @@
       "source": "BEA / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/GDP",
       "frequency": "quarterly",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "GDPC1": {
       "points": [
-        {
-          "date": "2020-07-01",
-          "value": 20558.879
-        },
         {
           "date": "2020-10-01",
           "value": 20791.917
@@ -2285,16 +2249,12 @@
       "source": "BEA / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/GDPC1",
       "frequency": "quarterly",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "PCEPI": {
       "points": [
-        {
-          "date": "2020-09-01",
-          "value": 105.057
-        },
         {
           "date": "2020-10-01",
           "value": 105.151
@@ -2583,16 +2543,12 @@
       "source": "BEA / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/PCEPI",
       "frequency": "monthly",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "GDPDEF": {
       "points": [
-        {
-          "date": "2020-07-01",
-          "value": 105.572
-        },
         {
           "date": "2020-10-01",
           "value": 106.23
@@ -2689,16 +2645,12 @@
       "source": "BEA / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/GDPDEF",
       "frequency": "quarterly",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "FEDFUNDS": {
       "points": [
-        {
-          "date": "2020-09-01",
-          "value": 0.09
-        },
         {
           "date": "2020-10-01",
           "value": 0.09
@@ -2987,16 +2939,12 @@
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/FEDFUNDS",
       "frequency": "monthly",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "DFEDTARL": {
       "points": [
-        {
-          "date": "2020-09-30",
-          "value": 0
-        },
         {
           "date": "2020-10-01",
           "value": 0
@@ -11765,16 +11713,12 @@
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DFEDTARL",
       "frequency": "daily",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "DFEDTARU": {
       "points": [
-        {
-          "date": "2020-09-30",
-          "value": 0.25
-        },
         {
           "date": "2020-10-01",
           "value": 0.25
@@ -20543,16 +20487,12 @@
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DFEDTARU",
       "frequency": "daily",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "DGS3MO": {
       "points": [
-        {
-          "date": "2020-09-30",
-          "value": 0.1
-        },
         {
           "date": "2020-10-01",
           "value": 0.09
@@ -26549,16 +26489,12 @@
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS3MO",
       "frequency": "daily",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "DGS1": {
       "points": [
-        {
-          "date": "2020-09-30",
-          "value": 0.12
-        },
         {
           "date": "2020-10-01",
           "value": 0.12
@@ -32555,16 +32491,12 @@
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS1",
       "frequency": "daily",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "DGS2": {
       "points": [
-        {
-          "date": "2020-09-30",
-          "value": 0.13
-        },
         {
           "date": "2020-10-01",
           "value": 0.14
@@ -38561,16 +38493,12 @@
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS2",
       "frequency": "daily",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "DGS5": {
       "points": [
-        {
-          "date": "2020-09-30",
-          "value": 0.28
-        },
         {
           "date": "2020-10-01",
           "value": 0.27
@@ -44567,16 +44495,12 @@
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS5",
       "frequency": "daily",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "DGS10": {
       "points": [
-        {
-          "date": "2020-09-30",
-          "value": 0.69
-        },
         {
           "date": "2020-10-01",
           "value": 0.68
@@ -50573,16 +50497,12 @@
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS10",
       "frequency": "daily",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "DGS20": {
       "points": [
-        {
-          "date": "2020-09-30",
-          "value": 1.23
-        },
         {
           "date": "2020-10-01",
           "value": 1.23
@@ -56579,16 +56499,12 @@
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS20",
       "frequency": "daily",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "DGS30": {
       "points": [
-        {
-          "date": "2020-09-30",
-          "value": 1.46
-        },
         {
           "date": "2020-10-01",
           "value": 1.45
@@ -62585,16 +62501,12 @@
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS30",
       "frequency": "daily",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
     "T10Y3M": {
       "points": [
-        {
-          "date": "2020-09-30",
-          "value": 0.59
-        },
         {
           "date": "2020-10-01",
           "value": 0.59
@@ -68591,7 +68503,7 @@
       "source": "Federal Reserve / FRED · 10Y minus 3M",
       "sourceUrl": "https://fred.stlouisfed.org/series/T10Y3M",
       "frequency": "daily",
-      "fetchedAt": "2026-09-30T20:16:17.138Z",
+      "fetchedAt": "2026-10-01T00:48:00.070Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     }
@@ -68612,7 +68524,7 @@
           "2026-11-10",
           "2026-12-10"
         ],
-        "fetchedAt": "2026-09-30T20:17:06.852Z",
+        "fetchedAt": "2026-10-01T00:48:45.367Z",
         "status": "ok"
       },
       {
@@ -68629,7 +68541,7 @@
           "2026-11-13",
           "2026-12-15"
         ],
-        "fetchedAt": "2026-09-30T20:17:06.852Z",
+        "fetchedAt": "2026-10-01T00:48:45.367Z",
         "status": "ok"
       },
       {
@@ -68647,7 +68559,7 @@
           "2026-11-06",
           "2026-12-04"
         ],
-        "fetchedAt": "2026-09-30T20:17:06.852Z",
+        "fetchedAt": "2026-10-01T00:48:45.367Z",
         "status": "ok"
       },
       {
@@ -68659,14 +68571,13 @@
         "name": "GDP",
         "url": "https://www.bea.gov/news/schedule",
         "dates": [
-          "2026-07-30",
           "2026-08-26",
           "2026-09-30",
           "2026-10-29",
           "2026-11-25",
           "2026-12-23"
         ],
-        "fetchedAt": "2026-09-30T20:17:06.852Z",
+        "fetchedAt": "2026-10-01T00:48:45.367Z",
         "status": "ok"
       },
       {
@@ -68676,17 +68587,16 @@
         "name": "개인소득·소비 / PCE",
         "url": "https://www.bea.gov/news/schedule",
         "dates": [
-          "2026-07-30",
           "2026-08-26",
           "2026-09-30",
           "2026-10-29",
           "2026-11-25",
           "2026-12-23"
         ],
-        "fetchedAt": "2026-09-30T20:17:06.852Z",
+        "fetchedAt": "2026-10-01T00:48:45.367Z",
         "status": "ok"
       }
     ],
-    "checkedAt": "2026-09-30T20:17:06.852Z"
+    "checkedAt": "2026-10-01T00:48:45.367Z"
   }
 }
