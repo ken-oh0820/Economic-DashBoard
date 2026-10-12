@@ -3,7 +3,7 @@ import {initMonitorTools,nextReleaseText} from './monitor-tools.mjs?v=20260917-c
 import {initEconomyTabs} from './economy-tabs.mjs?v=20260918-economy';
 import {indicatorExplanation} from './indicator-explanations.mjs?v=20260918-economy';
 import {initPolicyRates} from './policy-rates.mjs?v=20260918-effective';
-import {initInvestmentCalendar} from './investment-calendar.mjs?v=20261012-fomc-qra';
+import {initInvestmentCalendar} from './investment-calendar.mjs?v=20261012-fomc2027';
 
 const $=selector=>document.querySelector(selector);
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

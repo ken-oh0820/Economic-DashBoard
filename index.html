@@ -626,7 +626,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
           <input type="file" id="calendarRestoreFile" accept=".json,application/json" hidden>
         </div>
       </div>
-      <div class="calendar-event-legend"><span class="fomc">2026 FOMC · 8회</span><span class="qra">2026 QRA · 4회</span><span>발표 시각 · 한국 시간</span></div>
+      <div class="calendar-event-legend" id="calendarEventLegend"></div>
       <table class="investment-calendar-grid" aria-labelledby="investmentCalendarTitle">
         <thead><tr><th scope="col">일</th><th scope="col">월</th><th scope="col">화</th><th scope="col">수</th><th scope="col">목</th><th scope="col">금</th><th scope="col">토</th></tr></thead>
         <tbody id="investmentCalendarDays"></tbody>
@@ -2906,7 +2906,7 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script defer src="assets/main-menu.js?v=20260910-menu"></script>
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
-<script type="module" src="assets/workspace.mjs?v=20261012-fomc-qra"></script>
+<script type="module" src="assets/workspace.mjs?v=20261012-fomc2027"></script>
 <script type="module" src="assets/country-profile.mjs?v=20260923-us-geography1"></script>
 <script type="module" src="assets/country-data-client.mjs?v=20260922-registry1"></script>
 </body>

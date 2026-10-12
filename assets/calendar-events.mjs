@@ -2,7 +2,7 @@ export const CALENDAR_EVENTS_REVIEWED = '2026-10-12';
 const fedCalendar = 'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm';
 const treasuryCalendar = 'https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding/most-recent-quarterly-refunding-documents/';
 
-// Official statement release dates, not meeting start dates or Treasury borrowing estimates.
+// 2027 dates are Fed-published tentative meetings; their 14:00 ET release times are estimates.
 export const CALENDAR_EVENTS = [
   {id:'fomc-202601',kind:'fomc',at:'2026-01-28T14:00:00-05:00',sep:false},
   {id:'fomc-202603',kind:'fomc',at:'2026-03-18T14:00:00-04:00',sep:true},
@@ -19,7 +19,15 @@ export const CALENDAR_EVENTS = [
   {id:'qra-202605',kind:'qra',at:'2026-05-06T08:30:00-04:00',
     source:'https://home.treasury.gov/news/press-releases/sb0485'},
   {id:'qra-202608',kind:'qra',at:'2026-08-05T08:30:00-04:00',source:treasuryCalendar},
-  {id:'qra-202611',kind:'qra',at:'2026-11-04T08:30:00-05:00',source:treasuryCalendar}
+  {id:'qra-202611',kind:'qra',at:'2026-11-04T08:30:00-05:00',source:treasuryCalendar},
+  {id:'fomc-202701',kind:'fomc',meetingStart:'2027-01-26',at:'2027-01-27T14:00:00-05:00',sep:false,tentative:true,timeEstimated:true},
+  {id:'fomc-202703',kind:'fomc',meetingStart:'2027-03-16',at:'2027-03-17T14:00:00-04:00',sep:true,tentative:true,timeEstimated:true},
+  {id:'fomc-202704',kind:'fomc',meetingStart:'2027-04-27',at:'2027-04-28T14:00:00-04:00',sep:false,tentative:true,timeEstimated:true},
+  {id:'fomc-202706',kind:'fomc',meetingStart:'2027-06-08',at:'2027-06-09T14:00:00-04:00',sep:true,tentative:true,timeEstimated:true},
+  {id:'fomc-202707',kind:'fomc',meetingStart:'2027-07-27',at:'2027-07-28T14:00:00-04:00',sep:false,tentative:true,timeEstimated:true},
+  {id:'fomc-202709',kind:'fomc',meetingStart:'2027-09-14',at:'2027-09-15T14:00:00-04:00',sep:true,tentative:true,timeEstimated:true},
+  {id:'fomc-202710',kind:'fomc',meetingStart:'2027-10-26',at:'2027-10-27T14:00:00-04:00',sep:false,tentative:true,timeEstimated:true},
+  {id:'fomc-202712',kind:'fomc',meetingStart:'2027-12-07',at:'2027-12-08T14:00:00-05:00',sep:true,tentative:true,timeEstimated:true}
 ].map(event => ({
   title:event.kind === 'fomc' ? 'FOMC 금리 결정 발표' : 'QRA 분기 국채 발행계획 발표',
   source:fedCalendar,
@@ -38,4 +46,12 @@ export function eventClock(event, timeZone = 'Asia/Seoul') {
 
 export function eventsOnDate(date) {
   return CALENDAR_EVENTS.filter(event => eventClock(event).date === date);
+}
+
+export function eventsInYear(year) {
+  return CALENDAR_EVENTS.filter(event => eventClock(event).date.startsWith(`${year}-`));
+}
+
+export function eventTimeLabel(event) {
+  return eventClock(event).time + (event.timeEstimated ? ' 예상' : '');
 }
