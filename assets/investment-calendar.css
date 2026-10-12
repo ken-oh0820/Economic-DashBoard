@@ -1,4 +1,21 @@
 #investmentSites [hidden]{display:none!important}
+#investmentSites{--calendar-fomc:#83b1ff;--calendar-qra:#62cba8}
+body.light #investmentSites{--calendar-fomc:#295baf;--calendar-qra:#147857}
+.calendar-event-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 12px;color:var(--text-mid);font-size:12px;line-height:1.6}
+.calendar-event-legend .fomc{color:var(--calendar-fomc);font-weight:600}
+.calendar-event-legend .qra{color:var(--calendar-qra);font-weight:600}
+.calendar-official-badge{display:flex;align-items:center;gap:6px;font:600 11px/18px 'Noto Sans KR',sans-serif;letter-spacing:0;white-space:nowrap}
+.calendar-official-badge.fomc{color:var(--calendar-fomc)}
+.calendar-official-badge.qra{color:var(--calendar-qra)}
+.has-official-event .calendar-note-preview{-webkit-line-clamp:1;margin-top:1px}
+#calendarOfficialDetails{margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.calendar-official-detail{padding-left:12px;border-left:3px solid var(--calendar-fomc)}
+.calendar-official-detail.qra{border-left-color:var(--calendar-qra)}
+.calendar-official-detail h3{font-size:15px;line-height:1.6;margin:0 0 6px}
+.calendar-official-detail p{font-size:13px;line-height:1.7;margin:6px 0;color:var(--text-mid);overflow-wrap:anywhere}
+.calendar-official-detail strong{color:var(--text)}
+.calendar-official-detail a{color:var(--accent);font-size:12px;text-underline-offset:3px}
+.calendar-official-reviewed{color:var(--text-mid);font-size:11px;line-height:1.6;margin:10px 0 0}
 #investmentSites .investment-tabs{display:flex;gap:26px;border-bottom:1px solid var(--border);margin-bottom:24px}
 #investmentSites .investment-tabs button{display:flex;align-items:center;gap:8px;padding:12px 2px;border:0;border-bottom:3px solid transparent;background:none;color:var(--text-mid);font:600 15px/1.5 'Noto Sans KR',sans-serif;letter-spacing:0;cursor:pointer}
 #investmentSites .investment-tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
@@ -46,6 +63,8 @@
  .investment-calendar-grid td{height:76px;padding:0}
  .calendar-day{height:76px;padding:4px 2px}
  .calendar-note-preview{font-size:11px;line-height:16px}
+ .calendar-official-badge{font-size:10px}
+ .calendar-official-badge span:last-child{display:none}
  .investment-calendar-controls{gap:6px}
  #investmentSites .investment-tabs{margin-bottom:18px}
 }

@@ -1,4 +1,5 @@
 import {CALENDAR_STORAGE_KEY, MAX_BACKUP_BYTES, readCalendar, saveCalendarDay, parseCalendar, restoreCalendar, escapeCalendarText} from './calendar-notes.mjs?v=20261012-notes';
+import {CALENDAR_EVENTS_REVIEWED, eventClock, eventsOnDate} from './calendar-events.mjs?v=20261012-fomc-qra';
 
 export const MIN_YEAR = 1900;
 export const MAX_YEAR = 2100;
@@ -60,15 +61,27 @@ export function initInvestmentCalendar(root) {
     $('#investmentCalendarDays [data-date="' + selectedDate + '"]')?.focus();
   }
   function openEditor(date) {
-    if (!loadNotes()) return;
+    const canEdit = loadNotes();
     selectedDate = date;
     originalEntry = notes[date] ?? null;
     $('#calendarNoteTitle').textContent = date.replace(/^(\d+)-(\d+)-(\d+)$/, '$1년 $2월 $3일');
     textarea.value = originalEntry?.text ?? '';
-    feedback.textContent = '';
-    $('#calendarNoteDelete').hidden = !originalEntry;
+    feedback.textContent = canEdit ? '' : '개인 일정을 불러올 수 없어 편집을 중단했습니다. 공식 일정만 표시합니다.';
+    textarea.disabled = !canEdit;
+    $('#calendarNoteForm button[type="submit"]').disabled = !canEdit;
+    $('#calendarNoteDelete').hidden = !canEdit || !originalEntry;
+    const official = eventsOnDate(date);
+    const officialPanel = $('#calendarOfficialDetails');
+    officialPanel.hidden = !official.length;
+    officialPanel.innerHTML = official.map(event => {
+      const korea = eventClock(event), eastern = eventClock(event, 'America/New_York');
+      const description = event.kind === 'fomc'
+        ? '연방공개시장위원회 정책금리 결정 및 성명 발표.' + (event.sep ? ' 경제전망(SEP)·점도표 공개 회의.' : ' 경제전망(SEP) 공개 없음.')
+        : '미 재무부의 분기 국채 발행계획 본발표. 차입규모 추정치 발표·국채 입찰일과는 별도입니다.';
+      return `<article class="calendar-official-detail ${event.kind}"><h3>${event.title}</h3><p><strong>${korea.time} KST</strong> · 미국 동부 ${eastern.date} ${eastern.time} ET</p><p>${description}</p><a href="${event.source}" target="_blank" rel="noopener noreferrer">${event.kind === 'fomc' ? '연준 공식 일정' : '미 재무부 공식 발표'}</a>${event.kind === 'fomc' ? ` · <a href="${event.timeSource}" target="_blank" rel="noopener noreferrer">발표 시각 근거</a>` : ''}</article>`;
+    }).join('') + (official.length ? `<p class="calendar-official-reviewed">공식 일정 확인: ${CALENDAR_EVENTS_REVIEWED} · 예정 일정은 변경될 수 있습니다.</p>` : '');
     dialog.showModal();
-    textarea.focus();
+    if (canEdit) textarea.focus();
   }
   function saveNote(text) {
     if (!text.trim() && originalEntry && !window.confirm('이 날짜의 일정을 삭제할까요?')) return;
@@ -139,11 +152,14 @@ export function initInvestmentCalendar(root) {
       '<tr>' + days.slice(week * 7, week * 7 + 7).map(date => {
         const isToday = date.year === today.year && date.month === today.month && date.day === today.day;
         const text = notes[date.iso]?.text ?? '';
+        const official = eventsOnDate(date.iso);
+        const eventPreview = official.map(event => `<span class="calendar-official-badge ${event.kind}"><span>${event.kind.toUpperCase()}</span><span>${eventClock(event).time}</span></span>`).join('');
         const disabled = date.year < MIN_YEAR || date.year > MAX_YEAR;
-        return `<td class="${date.inMonth ? '' : 'outside-month'}${isToday ? ' calendar-current-day' : ''}"><button type="button" class="calendar-day" data-date="${date.iso}" aria-label="${date.year}년 ${date.month}월 ${date.day}일 ${text ? '일정 수정' : '일정 추가'}"${disabled ? ' disabled' : ''}><time datetime="${date.iso}"${isToday ? ' aria-current="date"' : ''}>${date.day}</time><span class="calendar-note-preview">${escapeCalendarText(text)}</span></button></td>`;
+        return `<td class="${date.inMonth ? '' : 'outside-month'}${isToday ? ' calendar-current-day' : ''}${official.length ? ' has-official-event' : ''}"><button type="button" class="calendar-day" data-date="${date.iso}" aria-label="${date.year}년 ${date.month}월 ${date.day}일 ${official.length ? official.map(event => event.kind.toUpperCase() + ' ' + eventClock(event).time + ' KST').join(', ') + ' 일정 보기 및 메모' : text ? '일정 수정' : '일정 추가'}"${disabled ? ' disabled' : ''}><time datetime="${date.iso}"${isToday ? ' aria-current="date"' : ''}>${date.day}</time>${eventPreview}<span class="calendar-note-preview">${escapeCalendarText(text)}</span></button></td>`;
       }).join('') + '</tr>').join('');
     const count = days.filter(date => date.inMonth && notes[date.iso]).length;
-    $('#calendarMonthCount').textContent = count ? `일정 ${count}일` : '등록된 일정 없음';
+    const officialCount = days.filter(date => date.inMonth).reduce((sum,date) => sum + eventsOnDate(date.iso).length, 0);
+    $('#calendarMonthCount').textContent = officialCount || count ? `공식 ${officialCount}건 · 개인 ${count}일` : '등록된 일정 없음';
   }
   function activate(tab) {
     tabs.forEach(item => {

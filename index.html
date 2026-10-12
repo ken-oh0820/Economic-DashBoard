@@ -257,7 +257,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 <link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-official-data">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260917-important">
 <link rel="stylesheet" href="assets/workspace.css?v=20260927-connections">
-<link rel="stylesheet" href="assets/investment-calendar.css?v=20261012-notes">
+<link rel="stylesheet" href="assets/investment-calendar.css?v=20261012-fomc-qra">
 <link rel="stylesheet" href="assets/monitor-compact.css?v=20260929-columns">
 <link rel="stylesheet" href="assets/country-profile.css?v=20260923-us-geography1">
 <link rel="stylesheet" href="assets/country-compare.css?v=20260922-registry1">
@@ -626,6 +626,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
           <input type="file" id="calendarRestoreFile" accept=".json,application/json" hidden>
         </div>
       </div>
+      <div class="calendar-event-legend"><span class="fomc">2026 FOMC · 8회</span><span class="qra">2026 QRA · 4회</span><span>발표 시각 · 한국 시간</span></div>
       <table class="investment-calendar-grid" aria-labelledby="investmentCalendarTitle">
         <thead><tr><th scope="col">일</th><th scope="col">월</th><th scope="col">화</th><th scope="col">수</th><th scope="col">목</th><th scope="col">금</th><th scope="col">토</th></tr></thead>
         <tbody id="investmentCalendarDays"></tbody>
@@ -634,8 +635,9 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       <p id="calendarStorageStatus" class="calendar-storage-status" role="status"></p>
       <dialog id="investmentCalendarEditor" class="workspace-dialog" aria-labelledby="calendarNoteTitle">
         <div class="workspace-dialog-head"><h2 id="calendarNoteTitle">일정</h2><button type="button" class="workspace-icon" id="calendarNoteClose" aria-label="일정 창 닫기" title="닫기"><i data-lucide="x" aria-hidden="true"></i></button></div>
+        <section id="calendarOfficialDetails" aria-label="공식 발표 일정" hidden></section>
         <form id="calendarNoteForm">
-          <label for="calendarNoteText">일정</label>
+          <label for="calendarNoteText">개인 일정·메모</label>
           <textarea id="calendarNoteText" maxlength="10000" rows="8"></textarea>
           <p class="calendar-storage-notice">이 기기의 브라우저에 저장됩니다. 다른 기기로 자동 동기화되지 않으며, 브라우저 데이터 삭제 시 지워질 수 있습니다.</p>
           <p id="calendarNoteFeedback" role="alert"></p>
@@ -2904,7 +2906,7 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script defer src="assets/main-menu.js?v=20260910-menu"></script>
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
-<script type="module" src="assets/workspace.mjs?v=20261012-notes"></script>
+<script type="module" src="assets/workspace.mjs?v=20261012-fomc-qra"></script>
 <script type="module" src="assets/country-profile.mjs?v=20260923-us-geography1"></script>
 <script type="module" src="assets/country-data-client.mjs?v=20260922-registry1"></script>
 </body>
