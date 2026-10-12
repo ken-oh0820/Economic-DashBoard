@@ -257,7 +257,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 <link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-official-data">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260917-important">
 <link rel="stylesheet" href="assets/workspace.css?v=20260927-connections">
-<link rel="stylesheet" href="assets/investment-calendar.css?v=20261012-calendar">
+<link rel="stylesheet" href="assets/investment-calendar.css?v=20261012-notes">
 <link rel="stylesheet" href="assets/monitor-compact.css?v=20260929-columns">
 <link rel="stylesheet" href="assets/country-profile.css?v=20260923-us-geography1">
 <link rel="stylesheet" href="assets/country-compare.css?v=20260922-registry1">
@@ -619,13 +619,29 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
             <button type="button" id="investmentCalendarPrevious" title="이전 달" aria-label="이전 달"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
             <button type="button" id="investmentCalendarNext" title="다음 달" aria-label="다음 달"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
           </div>
+          <div class="calendar-month-navigation">
+            <button type="button" id="calendarBackup" title="일정 백업 다운로드" aria-label="일정 백업 다운로드"><i data-lucide="download" aria-hidden="true"></i></button>
+            <button type="button" id="calendarRestore" title="일정 백업 복원" aria-label="일정 백업 복원"><i data-lucide="upload" aria-hidden="true"></i></button>
+          </div>
+          <input type="file" id="calendarRestoreFile" accept=".json,application/json" hidden>
         </div>
       </div>
       <table class="investment-calendar-grid" aria-labelledby="investmentCalendarTitle">
         <thead><tr><th scope="col">일</th><th scope="col">월</th><th scope="col">화</th><th scope="col">수</th><th scope="col">목</th><th scope="col">금</th><th scope="col">토</th></tr></thead>
         <tbody id="investmentCalendarDays"></tbody>
       </table>
-      <div class="investment-calendar-meta"><span>한국 시간 (KST)</span><span>등록된 일정 없음</span></div>
+      <div class="investment-calendar-meta"><span>한국 시간 (KST) · 이 기기의 브라우저에 저장</span><span id="calendarMonthCount">등록된 일정 없음</span></div>
+      <p id="calendarStorageStatus" class="calendar-storage-status" role="status"></p>
+      <dialog id="investmentCalendarEditor" class="workspace-dialog" aria-labelledby="calendarNoteTitle">
+        <div class="workspace-dialog-head"><h2 id="calendarNoteTitle">일정</h2><button type="button" class="workspace-icon" id="calendarNoteClose" aria-label="일정 창 닫기" title="닫기"><i data-lucide="x" aria-hidden="true"></i></button></div>
+        <form id="calendarNoteForm">
+          <label for="calendarNoteText">일정</label>
+          <textarea id="calendarNoteText" maxlength="10000" rows="8"></textarea>
+          <p class="calendar-storage-notice">이 기기의 브라우저에 저장됩니다. 다른 기기로 자동 동기화되지 않으며, 브라우저 데이터 삭제 시 지워질 수 있습니다.</p>
+          <p id="calendarNoteFeedback" role="alert"></p>
+          <div class="calendar-editor-actions"><button type="button" class="workspace-icon" id="calendarNoteDelete" title="일정 삭제" aria-label="일정 삭제" hidden><i data-lucide="trash-2" aria-hidden="true"></i></button><button type="submit" class="workspace-primary">저장</button></div>
+        </form>
+      </dialog>
     </section>
     <section id="investmentLinksPanel" role="tabpanel" aria-labelledby="investmentLinksTab" tabindex="0" hidden>
     <div class="sites-grid">
@@ -2888,7 +2904,7 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script defer src="assets/main-menu.js?v=20260910-menu"></script>
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
-<script type="module" src="assets/workspace.mjs?v=20261012-calendar"></script>
+<script type="module" src="assets/workspace.mjs?v=20261012-notes"></script>
 <script type="module" src="assets/country-profile.mjs?v=20260923-us-geography1"></script>
 <script type="module" src="assets/country-data-client.mjs?v=20260922-registry1"></script>
 </body>
