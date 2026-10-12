@@ -257,6 +257,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 <link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-official-data">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260917-important">
 <link rel="stylesheet" href="assets/workspace.css?v=20260927-connections">
+<link rel="stylesheet" href="assets/investment-calendar.css?v=20261012-calendar">
 <link rel="stylesheet" href="assets/monitor-compact.css?v=20260929-columns">
 <link rel="stylesheet" href="assets/country-profile.css?v=20260923-us-geography1">
 <link rel="stylesheet" href="assets/country-compare.css?v=20260922-registry1">
@@ -277,9 +278,9 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
         <span class="menu-card-content"><span class="menu-card-category">ECONOMIC INDICATORS</span><span class="menu-card-title">경제 지표</span><span class="menu-card-desc">모니터링 · 차트 · 지표 사전</span></span>
         <span class="menu-card-bottom"><span class="menu-card-enter">바로가기</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
       </button>
-      <button type="button" class="main-menu-card menu-tone-coral" onclick="switchView('sites')" aria-label="투자 관련 사이트">
+      <button type="button" class="main-menu-card menu-tone-coral" onclick="switchView('sites')" aria-label="투자 관련 일정 및 사이트">
         <span class="menu-card-top"><span class="menu-card-icon" aria-hidden="true"><i data-lucide="newspaper"></i></span><span class="menu-card-index">03</span></span>
-        <span class="menu-card-content"><span class="menu-card-category">RESEARCH DESK</span><span class="menu-card-title">투자 관련 사이트</span><span class="menu-card-desc">경제 뉴스 · 공시 · 투자 리서치</span></span>
+        <span class="menu-card-content"><span class="menu-card-category">RESEARCH DESK</span><span class="menu-card-title">투자 관련 일정 및 사이트</span><span class="menu-card-desc">월간 캘린더 · 경제 뉴스 · 투자 리서치</span></span>
         <span class="menu-card-bottom"><span class="menu-card-enter">바로가기</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
       </button>
       <button type="button" class="main-menu-card menu-tone-amber" onclick="switchView('fed')" aria-label="연준 대차대조표">
@@ -599,11 +600,34 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
     <div class="dashboard-top">
       <div>
         <div class="dashboard-kicker"><i data-lucide="newspaper" aria-hidden="true"></i>03 / RESEARCH HUB</div>
-        <div class="dashboard-title">투자 관련 사이트</div>
-        <div class="dashboard-sub">투자 리서치 도구와 미국 주요 매체의 최신 시장 뉴스를 한 화면에서 확인합니다.</div>
+        <div class="dashboard-title">투자 관련 일정 및 사이트</div>
+        <div class="dashboard-sub">월간 캘린더 · 공식 발표·공시 · 투자 리서치</div>
       </div>
-      <div class="dashboard-status ok">4 TOOLS · 5 NEWS SOURCES</div>
     </div>
+    <div class="investment-tabs" role="tablist" aria-label="투자 일정 및 사이트 분류">
+      <button type="button" id="investmentCalendarTab" role="tab" aria-selected="true" aria-controls="investmentCalendarPanel" tabindex="0"><i data-lucide="calendar-days" aria-hidden="true"></i>캘린더</button>
+      <button type="button" id="investmentLinksTab" role="tab" aria-selected="false" aria-controls="investmentLinksPanel" tabindex="-1"><i data-lucide="external-link" aria-hidden="true"></i>사이트</button>
+    </div>
+    <section id="investmentCalendarPanel" role="tabpanel" aria-labelledby="investmentCalendarTab" tabindex="0">
+      <div class="investment-calendar-toolbar">
+        <h2 id="investmentCalendarTitle" aria-live="polite" aria-atomic="true">월간 캘린더</h2>
+        <div class="investment-calendar-controls">
+          <select id="investmentCalendarYear" aria-label="캘린더 연도"></select>
+          <select id="investmentCalendarMonth" aria-label="캘린더 월"></select>
+          <button type="button" class="calendar-today" id="investmentCalendarToday">오늘</button>
+          <div class="calendar-month-navigation">
+            <button type="button" id="investmentCalendarPrevious" title="이전 달" aria-label="이전 달"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+            <button type="button" id="investmentCalendarNext" title="다음 달" aria-label="다음 달"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+      <table class="investment-calendar-grid" aria-labelledby="investmentCalendarTitle">
+        <thead><tr><th scope="col">일</th><th scope="col">월</th><th scope="col">화</th><th scope="col">수</th><th scope="col">목</th><th scope="col">금</th><th scope="col">토</th></tr></thead>
+        <tbody id="investmentCalendarDays"></tbody>
+      </table>
+      <div class="investment-calendar-meta"><span>한국 시간 (KST)</span><span>등록된 일정 없음</span></div>
+    </section>
+    <section id="investmentLinksPanel" role="tabpanel" aria-labelledby="investmentLinksTab" tabindex="0" hidden>
     <div class="sites-grid">
       <section class="sites-panel">
         <div class="sites-panel-head">
@@ -673,6 +697,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       <div class="us-news-layout" id="usNewsContent" aria-live="polite">
         <div class="us-news-loading">뉴스 메뉴를 열면 최신 헤드라인을 불러옵니다.</div>
       </div>
+    </section>
     </section>
   </div>
 </div>
@@ -2863,7 +2888,7 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script defer src="assets/main-menu.js?v=20260910-menu"></script>
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
-<script type="module" src="assets/workspace.mjs?v=20260929-watch-left"></script>
+<script type="module" src="assets/workspace.mjs?v=20261012-calendar"></script>
 <script type="module" src="assets/country-profile.mjs?v=20260923-us-geography1"></script>
 <script type="module" src="assets/country-data-client.mjs?v=20260922-registry1"></script>
 </body>

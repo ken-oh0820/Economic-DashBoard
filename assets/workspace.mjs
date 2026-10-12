@@ -3,6 +3,7 @@ import {initMonitorTools,nextReleaseText} from './monitor-tools.mjs?v=20260917-c
 import {initEconomyTabs} from './economy-tabs.mjs?v=20260918-economy';
 import {indicatorExplanation} from './indicator-explanations.mjs?v=20260918-economy';
 import {initPolicyRates} from './policy-rates.mjs?v=20260918-effective';
+import {initInvestmentCalendar} from './investment-calendar.mjs?v=20261012-calendar';
 
 const $=selector=>document.querySelector(selector);
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -32,7 +33,7 @@ function makeDialog(id,title,body){
   return dialog;
 }
 
-const navItems=[['menu','홈','layout-grid'],['map','세계 경제 지도','globe-2'],['dashboard','경제 지표','chart-no-axes-combined'],['sites','투자 관련 사이트','newspaper'],['fed','연준 대차대조표','landmark']];
+const navItems=[['menu','홈','layout-grid'],['map','세계 경제 지도','globe-2'],['dashboard','경제 지표','chart-no-axes-combined'],['sites','투자 관련 일정 및 사이트','calendar-days'],['fed','연준 대차대조표','landmark']];
 const nav=makeDialog('workspaceNav','워크스페이스','<nav aria-label="워크스페이스 메뉴">'+navItems.map(([view,label,symbol])=>'<button type="button" data-view="'+view+'">'+icon(symbol)+'<span>'+label+'</span></button>').join('')+'</nav>');
 const menuButton=$('header .app-nav-btn');
 menuButton.removeAttribute('onclick');menuButton.setAttribute('aria-label','메뉴 열기');menuButton.title='메뉴 열기';
@@ -83,13 +84,13 @@ function initConnectionStatus(){
 }
 initConnectionStatus();
 $('#indicatorDashboard .dashboard-sub').textContent='관측값과 변화 · 발표 일정 · 시계열 비교';
-$('#investmentSites .dashboard-sub').textContent='공식 발표·공시와 뉴스 제공처 원문 리서치';
+initInvestmentCalendar($('#investmentSites'));
 for(const [selector,links] of [
   ['#investmentSites', [['dashboard','경제 지표'],['guide','지표 사전']]]
 ]){
   const navigation=document.createElement('nav');navigation.className='context-links';navigation.setAttribute('aria-label','관련 화면');
   navigation.innerHTML=links.map(([view,label])=>'<button type="button" data-destination="'+view+'">'+label+icon('arrow-up-right')+'</button>').join('');
-  $(selector+' .dashboard-top').after(navigation);
+  $(selector+' #investmentLinksPanel').prepend(navigation);
   navigation.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>switchView(button.dataset.destination)));
 }
 

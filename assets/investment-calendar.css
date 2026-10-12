@@ -1,0 +1,35 @@
+#investmentSites [hidden]{display:none!important}
+#investmentSites .investment-tabs{display:flex;gap:26px;border-bottom:1px solid var(--border);margin-bottom:24px}
+#investmentSites .investment-tabs button{display:flex;align-items:center;gap:8px;padding:12px 2px;border:0;border-bottom:3px solid transparent;background:none;color:var(--text-mid);font:600 15px/1.5 'Noto Sans KR',sans-serif;letter-spacing:0;cursor:pointer}
+#investmentSites .investment-tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+#investmentSites .investment-tabs svg{width:18px;height:18px}
+#investmentCalendarPanel{color:var(--text);letter-spacing:0}
+.investment-calendar-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+#investmentCalendarTitle{margin:0;font:700 24px/1.5 'Noto Sans KR',sans-serif;letter-spacing:0}
+.investment-calendar-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.investment-calendar-controls :is(button,select){box-sizing:border-box;height:36px;border:1px solid var(--border);border-radius:4px;background:var(--surface);color:var(--text);font:500 14px/1.4 'Noto Sans KR',sans-serif;letter-spacing:0;cursor:pointer}
+.investment-calendar-controls select{padding:0 8px}
+.calendar-today{padding:0 12px}
+.calendar-month-navigation{display:flex;gap:4px}
+.calendar-month-navigation button{display:flex;align-items:center;justify-content:center;width:36px;padding:0}
+.calendar-month-navigation svg{width:18px;height:18px}
+.investment-calendar-controls button:hover:not(:disabled){background:var(--metric-active-bg);color:var(--accent);border-color:var(--accent)}
+.investment-calendar-controls button:disabled{opacity:.35;cursor:default}
+#investmentSites :is(.investment-tabs button,.investment-calendar-controls button,.investment-calendar-controls select):focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.investment-calendar-grid{width:100%;table-layout:fixed;border-collapse:collapse;background:var(--surface);font:500 14px/1.5 'Noto Sans KR',sans-serif;font-variant-numeric:tabular-nums}
+.investment-calendar-grid th{height:36px;font-weight:600;border-bottom:1px solid var(--border);background:var(--bg)}
+.investment-calendar-grid td{height:80px;box-sizing:border-box;vertical-align:top;border:1px solid var(--border);padding:8px}
+.investment-calendar-grid time{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;border-radius:50%}
+.investment-calendar-grid :is(th,td):first-child{color:#d24852}
+.investment-calendar-grid :is(th,td):last-child{color:#438bd1}
+.investment-calendar-grid td.outside-month{background:var(--bg)}
+.investment-calendar-grid td.outside-month time{opacity:.4}
+.investment-calendar-grid td.calendar-current-day time{color:var(--bg);background:var(--accent);font-weight:700;opacity:1}
+.investment-calendar-meta{display:flex;justify-content:space-between;gap:12px;margin-top:10px;font-size:12px;color:var(--text-mid)}
+@media(max-width:700px){
+ #investmentCalendarTitle{font-size:21px}
+ .investment-calendar-toolbar{gap:12px}
+ .investment-calendar-grid td{height:60px;padding:5px 2px}
+ .investment-calendar-controls{gap:6px}
+ #investmentSites .investment-tabs{margin-bottom:18px}
+}
