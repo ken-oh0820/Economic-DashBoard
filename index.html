@@ -696,7 +696,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
         <div>
           <div class="dashboard-kicker">UNITED STATES · MARKET INTELLIGENCE</div>
           <div class="us-news-title" id="usNewsDeskTitle">US MARKET NEWS DESK</div>
-          <div class="us-news-sub">Reuters, Investing.com, 백악관, Washington Post, WSJ의 최신 헤드라인을 한국시간 기준으로 모아봅니다.</div>
+          <div class="us-news-sub">Reuters, 백악관, WSJ의 최신 헤드라인을 한국시간 기준으로 모아봅니다.</div>
         </div>
         <div class="us-news-actions">
           <span class="us-news-status" id="usNewsStatus">피드 대기 중</span>
@@ -706,9 +706,7 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
       <div class="us-news-tabs" id="usNewsTabs" role="tablist" aria-label="뉴스 출처 선택">
         <button class="us-news-tab active" type="button" data-source="all" onclick="setUsNewsFilter('all',this)" aria-pressed="true">ALL <span class="us-news-count">0</span></button>
         <button class="us-news-tab" type="button" data-source="reuters" onclick="setUsNewsFilter('reuters',this)" aria-pressed="false">REUTERS <span class="us-news-count">0</span></button>
-        <button class="us-news-tab" type="button" data-source="investing" onclick="setUsNewsFilter('investing',this)" aria-pressed="false">INVESTING <span class="us-news-count">0</span></button>
         <button class="us-news-tab" type="button" data-source="whitehouse" onclick="setUsNewsFilter('whitehouse',this)" aria-pressed="false">WHITE HOUSE <span class="us-news-count">0</span></button>
-        <button class="us-news-tab" type="button" data-source="washingtonpost" onclick="setUsNewsFilter('washingtonpost',this)" aria-pressed="false">WASHINGTON POST <span class="us-news-count">0</span></button>
         <button class="us-news-tab" type="button" data-source="wsj" onclick="setUsNewsFilter('wsj',this)" aria-pressed="false">WSJ <span class="us-news-count">0</span></button>
         <a class="us-news-source-link" id="usNewsSourceLink" href="https://www.reuters.com/markets/" target="_blank" rel="noopener noreferrer">OPEN NEWS SOURCES ↗</a>
       </div>
@@ -1653,9 +1651,7 @@ function closeSiteHelp(){
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSiteHelp();});
 const US_NEWS_SOURCES={
   reuters:{name:'Reuters',site:'https://www.reuters.com/markets/',feed:'https://news.google.com/rss/search?q=when%3A2d%20site%3Areuters.com%20(markets%20OR%20economy%20OR%20Federal%20Reserve)&hl=en-US&gl=US&ceid=US%3Aen'},
-  investing:{name:'Investing.com',site:'https://www.investing.com/news/',feed:'https://www.investing.com/rss/news.rss'},
   whitehouse:{name:'The White House',site:'https://www.whitehouse.gov/news/',feed:'https://www.whitehouse.gov/news/feed/'},
-  washingtonpost:{name:'Washington Post',site:'https://www.washingtonpost.com/business/',feed:'https://feeds.washingtonpost.com/rss/business'},
   wsj:{name:'The Wall Street Journal',site:'https://www.wsj.com/news/markets',feed:'https://news.google.com/rss/search?q=when%3A7d%20site%3Awsj.com&hl=en-US&gl=US&ceid=US%3Aen'}
 };
 let usNewsItems=[],usNewsFilter='all',usNewsLoading=false,usNewsFetchedAt=0;
@@ -1713,7 +1709,7 @@ async function fetchUsNewsSource(sourceKey){
 function readUsNewsCache(){
   try{
     const cached=JSON.parse(localStorage.getItem('economicAtlasUsNewsCache')||'null');
-    return cached&&Array.isArray(cached.items)?cached:{items:[],savedAt:0};
+    return cached&&Array.isArray(cached.items)?{...cached,items:cached.items.filter(item=>item&&Object.hasOwn(US_NEWS_SOURCES,item.sourceKey))}:{items:[],savedAt:0};
   }catch(error){return {items:[],savedAt:0};}
 }
 function writeUsNewsCache(items){
@@ -1785,7 +1781,7 @@ async function fetchUsNewsDesk(force=false){
   usNewsLoading=true;
   refresh.disabled=true;
   status.className='us-news-status';
-  status.textContent='5개 출처 갱신 중';
+  status.textContent=Object.keys(US_NEWS_SOURCES).length+'개 출처 갱신 중';
   content.innerHTML='<div class="us-news-loading">미국 주요 뉴스 피드를 불러오는 중...</div>';
   const entries=Object.keys(US_NEWS_SOURCES);
   const previousItems=usNewsItems.slice();
