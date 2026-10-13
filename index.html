@@ -255,6 +255,19 @@ body.map-mode #fedDashboard,body.dashboard-mode #fedDashboard,body.sites-mode #f
 }
 body .treasury-sites{margin-top:28px}
 body .treasury-sites .site-link-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+body .buyback-guide{font-size:14px;line-height:1.8}
+.buyback-example{margin:16px 0 0}
+.buyback-example img{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--border)}
+.buyback-example figcaption{margin-top:8px;font-size:12px;color:var(--text-mid)}
+.buyback-guide a{color:var(--accent);text-underline-offset:3px}
+.buyback-table{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:12px}
+.buyback-table th,.buyback-table td{text-align:left;vertical-align:top;padding:12px 10px;border-bottom:1px solid var(--border);overflow-wrap:anywhere}
+.buyback-table thead th{background:var(--surface2)}
+.buyback-table th:first-child{width:32%}
+.buyback-table th:nth-child(2){width:23%}
+.buyback-table tbody th{font-weight:600;color:var(--text)}
+.buyback-table small{display:block;font-size:12px;font-weight:400;color:var(--text-mid)}
+@media(max-width:600px){.buyback-table th,.buyback-table td{padding:9px 5px;font-size:12px}.buyback-table th:first-child{width:35%}.buyback-table small{font-size:11px}}
 </style>
 <link rel="stylesheet" href="assets/dashboard-ui.css?v=20260912-official-data">
 <link rel="stylesheet" href="assets/economic-guide.css?v=20260917-important">
@@ -708,6 +721,7 @@ body .treasury-sites .site-link-grid{grid-template-columns:repeat(auto-fit,minma
         <div class="site-card">
           <div class="site-card-head">
             <div><div class="site-name">BUYBACK · 국채 바이백</div><div class="site-desc">TreasuryDirect의 국채 재매입 일정, 공고와 결과. 대상 만기·매입 규모 등 확인.</div></div>
+            <button class="site-help-btn" type="button" onclick="openSiteHelp('buyback')" aria-label="BUYBACK 사용법" title="BUYBACK 사용법" aria-haspopup="dialog" aria-controls="siteHelpModal">?</button>
           </div>
           <a class="site-tag" href="https://treasurydirect.gov/auctions/announcements-data-results/buy-backs/" target="_blank" rel="noopener noreferrer">BUYBACK 공고·결과 ↗</a>
         </div>
@@ -1642,6 +1656,32 @@ function setLabelWeight(w,btn){
 
 // Mobile sidebar toggles
 const siteGuides={
+  buyback:{
+    title:'BUYBACK 사용법',
+    kicker:'U.S. TREASURY · BUYBACK RESULTS',
+    body:`<div class="buyback-guide">
+      <div class="site-help-section"><h4>국채 바이백이란?</h4><p>미국 재무부가 이미 발행한 국채를 만기 전에 다시 사들이는 것입니다. 시장 유동성 지원 또는 재무부 현금 관리를 목적으로 하며, 매입 국채는 결제 시 소각됩니다.</p></div>
+      <div class="site-help-section"><h4>결과표 예시</h4>
+        <figure class="buyback-example"><a href="assets/treasury-buyback-results-example.png" target="_blank" rel="noopener noreferrer" aria-label="BUYBACK 예시 이미지 원본 크게 보기"><img src="assets/treasury-buyback-results-example.png" alt="2026년 10월 8일로 표시된 국채 바이백 결과표 설명 예시. 최대 액면 60억 달러, 제안 액면 148억 8,600만 달러, 수락 액면 60억 달러." width="1160" height="650"></a><figcaption>사용자 제공 주석 이미지 · 화면에 표시된 수치를 읽는 예시이며 최신 결과가 아닙니다. <a href="assets/treasury-buyback-results-example.png" target="_blank" rel="noopener noreferrer">이미지 원본 보기 ↗</a></figcaption></figure>
+      </div>
+      <div class="site-help-section"><h4>항목별 의미</h4>
+        <table class="buyback-table"><thead><tr><th scope="col">항목</th><th scope="col">이미지 예시</th><th scope="col">의미</th></tr></thead><tbody>
+          <tr><th scope="row">Operation Date<small>실시일</small></th><td>2026.10.08</td><td>바이백 거래를 실시한 날짜입니다.</td></tr>
+          <tr><th scope="row">Settlement Date<small>결제일</small></th><td>2026.10.09</td><td>국채와 대금이 실제로 결제되는 날짜입니다.</td></tr>
+          <tr><th scope="row">Maturity Date Range<small>대상 만기일 범위</small></th><td>2046.11.15 ~<br>2056.08.15</td><td>이번 회차에서 매입할 수 있는 국채의 만기일 범위입니다. 매입 실시 기간이 아닙니다.</td></tr>
+          <tr><th scope="row">Maximum Par Amount to be Redeemed<small>최대 매입 액면금액</small></th><td>$6,000,000,000<br>60억 달러</td><td>이번 회차의 매입 한도입니다. 반드시 이 금액을 전부 매입하는 것은 아닙니다.</td></tr>
+          <tr><th scope="row">Total Par Amount Offered<small>총 매도 제안 액면금액</small></th><td>$14,886,000,000<br>148억 8,600만 달러</td><td>참가자들이 재무부에 팔겠다고 제출한 총액입니다. 매입이 확정된 금액이 아닙니다.</td></tr>
+          <tr><th scope="row">Total Par Amount Accepted<small>총 매입 수락 액면금액</small></th><td>$6,000,000,000<br>60억 달러</td><td>제안 중 재무부가 매입하기로 수락한 총액입니다. 실제 지급 현금과는 구분합니다.</td></tr>
+          <tr><th scope="row">Number of Issues Eligible<small>매입 가능 종목 수</small></th><td>34종목</td><td>이번 회차에서 매입 대상이 될 수 있는 국채 종목 수입니다.</td></tr>
+          <tr><th scope="row">Number of Issues Accepted<small>매입 수락 종목 수</small></th><td>10종목</td><td>실제 수락된 국채 종목 수입니다. 참가 기관 수가 아닙니다.</td></tr>
+        </tbody></table>
+      </div>
+      <div class="site-help-section"><h4>이 예시는 이렇게 읽어요</h4><p>“최대 60억 달러를 매입하는 회차에 148억 8,600만 달러의 매도 제안이 들어왔고, 그중 60억 달러를 수락했다.”</p><ul><li><b>한도 사용률:</b> 수락액 ÷ 한도 = 60 ÷ 60 = 100%</li><li><b>제안액 대비 수락 비율:</b> 수락액 ÷ 제안액 = 60 ÷ 148.86 ≈ 40.3%</li><li><b>제안액 / 수락액:</b> 약 2.48배. 신규 국채 입찰의 매수 수요를 뜻하는 응찰배율과는 구분합니다.</li></ul></div>
+      <div class="site-help-section"><h4>공식 사이트에서 확인하는 순서</h4><ol><li>아래 공식 공고·결과 페이지에서 Operation Date로 회차를 찾습니다. 시각에 ET가 붙어 있으면 미국 동부시간입니다.</li><li>Final Announcement에서 매입 한도와 대상 국채를 확인합니다.</li><li>Results의 PDF에서 Offered와 Accepted, 종목별 결과를 비교합니다.</li></ol></div>
+      <div class="site-help-note"><b>해석할 때 주의</b><br>Par Amount는 액면금액입니다. 실제 지급액은 매입 가격과 경과이자 등에 따라 다릅니다. 제안액이 크다는 이유만으로 시장 위기라고 단정할 수 없고, 수락액이 한도에 못 미쳐도 곧바로 실패를 뜻하지 않습니다. 재무부는 시장가격·상대가치 등을 평가해 수락합니다. 재무부 바이백은 연준의 QE가 아니며, 매입액 전체를 순유동성 공급으로 볼 수는 없습니다.</div>
+      <div class="site-help-section"><h4>공식 원문</h4><p><a href="https://treasurydirect.gov/auctions/announcements-data-results/buy-backs/" target="_blank" rel="noopener noreferrer">바이백 공고·결과 ↗</a> · <a href="https://treasurydirect.gov/help-center/faqs/buyback-faqs/" target="_blank" rel="noopener noreferrer">미 재무부 바이백 FAQ ↗</a></p></div>
+    </div>`
+  },
   whalewisdom:{
     title:'WhaleWisdom 사용법',
     kicker:'13F · INSTITUTIONAL HOLDINGS',
@@ -1659,18 +1699,34 @@ const siteGuides={
   }
 };
 siteGuides.whalewisdom.body=siteGuides.whalewisdom.body.replace('<div class="site-help-section"><h4>표 항목 의미</h4>','<div class="site-help-section"><h4>예시 화면</h4><p>아래 화면처럼 티커별 기관 보유 현황 표에서 투자자, 보유 수량, 시장가치, 포트폴리오 비중, 보유 변화, 공시 기준일을 한 줄로 비교합니다.</p><div class="site-help-example"><img src="assets/whalewisdom-13f-example-v2.png" alt="WhaleWisdom 13F 기관 보유 현황 표 예시"><div class="site-help-caption">WhaleWisdom 13F holdings table example</div></div></div><div class="site-help-section"><h4>표 항목 의미</h4>');
+let siteHelpReturnFocus=null;
 function openSiteHelp(key){
   const guide=siteGuides[key];
   if(!guide)return;
+  siteHelpReturnFocus=document.activeElement;
   document.getElementById('siteHelpKicker').textContent=guide.kicker;
   document.getElementById('siteHelpTitle').textContent=guide.title;
   document.getElementById('siteHelpBody').innerHTML=guide.body;
   document.getElementById('siteHelpModal').classList.add('show');
+  document.querySelector('#siteHelpModal .site-help-dialog').scrollTop=0;
+  document.querySelector('#siteHelpModal .site-help-close').focus();
 }
 function closeSiteHelp(){
+  if(!document.getElementById('siteHelpModal').classList.contains('show'))return;
   document.getElementById('siteHelpModal').classList.remove('show');
+  if(siteHelpReturnFocus?.isConnected)siteHelpReturnFocus.focus();
 }
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSiteHelp();});
+document.addEventListener('keydown',e=>{
+  const modal=document.getElementById('siteHelpModal');
+  if(!modal.classList.contains('show'))return;
+  if(e.key==='Escape'){e.preventDefault();closeSiteHelp();}
+  if(e.key==='Tab'){
+    const items=[...modal.querySelectorAll('button,a[href]')].filter(el=>!el.disabled&&el.getClientRects().length);
+    const first=items[0],last=items[items.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}
+  }
+});
 const US_NEWS_SOURCES={
   reuters:{name:'Reuters',site:'https://www.reuters.com/markets/',feed:'https://news.google.com/rss/search?q=when%3A2d%20site%3Areuters.com%20(markets%20OR%20economy%20OR%20Federal%20Reserve)&hl=en-US&gl=US&ceid=US%3Aen'},
   whitehouse:{name:'The White House',site:'https://www.whitehouse.gov/news/',feed:'https://www.whitehouse.gov/news/feed/'},
