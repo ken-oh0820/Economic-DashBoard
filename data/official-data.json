@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-15T17:18:28.683Z",
+  "updatedAt": "2026-10-15T21:42:51.298Z",
   "failures": [],
   "series": {
     "CPIAUCSL": {
@@ -293,7 +293,7 @@
       "source": "BLS / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/CPIAUCSL",
       "frequency": "monthly",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -587,7 +587,7 @@
       "source": "BLS / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/CPILFESL",
       "frequency": "monthly",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -885,7 +885,7 @@
       "source": "BLS / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/PPIFIS",
       "frequency": "monthly",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -1183,7 +1183,7 @@
       "source": "BLS / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/WPSFD49116",
       "frequency": "monthly",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -1477,7 +1477,7 @@
       "source": "BLS / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/UNRATE",
       "frequency": "monthly",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -1775,7 +1775,7 @@
       "source": "BLS / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/PAYEMS",
       "frequency": "monthly",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -2073,7 +2073,7 @@
       "source": "BLS / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/CES0500000003",
       "frequency": "monthly",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -2175,7 +2175,7 @@
       "source": "BEA / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/GDP",
       "frequency": "quarterly",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -2277,7 +2277,7 @@
       "source": "BEA / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/GDPC1",
       "frequency": "quarterly",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -2571,7 +2571,7 @@
       "source": "BEA / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/PCEPI",
       "frequency": "monthly",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -2673,7 +2673,7 @@
       "source": "BEA / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/GDPDEF",
       "frequency": "quarterly",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -2971,7 +2971,7 @@
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/FEDFUNDS",
       "frequency": "monthly",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -11749,7 +11749,7 @@
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DFEDTARL",
       "frequency": "daily",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -20527,7 +20527,7 @@
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DFEDTARU",
       "frequency": "daily",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -26524,12 +26524,16 @@
         {
           "date": "2026-10-13",
           "value": 4.26
+        },
+        {
+          "date": "2026-10-14",
+          "value": 4.28
         }
       ],
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS3MO",
       "frequency": "daily",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -32526,12 +32530,16 @@
         {
           "date": "2026-10-13",
           "value": 4.48
+        },
+        {
+          "date": "2026-10-14",
+          "value": 4.53
         }
       ],
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS1",
       "frequency": "daily",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -38528,12 +38536,16 @@
         {
           "date": "2026-10-13",
           "value": 4.79
+        },
+        {
+          "date": "2026-10-14",
+          "value": 4.82
         }
       ],
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS2",
       "frequency": "daily",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -44530,12 +44542,16 @@
         {
           "date": "2026-10-13",
           "value": 5
+        },
+        {
+          "date": "2026-10-14",
+          "value": 5
         }
       ],
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS5",
       "frequency": "daily",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -50532,12 +50548,16 @@
         {
           "date": "2026-10-13",
           "value": 5.21
+        },
+        {
+          "date": "2026-10-14",
+          "value": 5.19
         }
       ],
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS10",
       "frequency": "daily",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -56534,12 +56554,16 @@
         {
           "date": "2026-10-13",
           "value": 5.6
+        },
+        {
+          "date": "2026-10-14",
+          "value": 5.57
         }
       ],
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS20",
       "frequency": "daily",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -62536,12 +62560,16 @@
         {
           "date": "2026-10-13",
           "value": 5.56
+        },
+        {
+          "date": "2026-10-14",
+          "value": 5.52
         }
       ],
       "source": "Federal Reserve / FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS30",
       "frequency": "daily",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     },
@@ -68538,12 +68566,16 @@
         {
           "date": "2026-10-13",
           "value": 0.95
+        },
+        {
+          "date": "2026-10-14",
+          "value": 0.91
         }
       ],
       "source": "Federal Reserve / FRED · 10Y minus 3M",
       "sourceUrl": "https://fred.stlouisfed.org/series/T10Y3M",
       "frequency": "daily",
-      "fetchedAt": "2026-10-15T17:18:28.683Z",
+      "fetchedAt": "2026-10-15T21:42:51.298Z",
       "status": "ok",
       "rights": "Public Domain: Citation Requested"
     }
@@ -68563,7 +68595,7 @@
           "2026-11-10",
           "2026-12-10"
         ],
-        "fetchedAt": "2026-10-15T17:18:54.020Z",
+        "fetchedAt": "2026-10-15T21:43:56.007Z",
         "status": "ok"
       },
       {
@@ -68579,7 +68611,7 @@
           "2026-11-13",
           "2026-12-15"
         ],
-        "fetchedAt": "2026-10-15T17:18:54.020Z",
+        "fetchedAt": "2026-10-15T21:43:56.007Z",
         "status": "ok"
       },
       {
@@ -68596,7 +68628,7 @@
           "2026-11-06",
           "2026-12-04"
         ],
-        "fetchedAt": "2026-10-15T17:18:54.020Z",
+        "fetchedAt": "2026-10-15T21:43:56.007Z",
         "status": "ok"
       },
       {
@@ -68614,7 +68646,7 @@
           "2026-11-25",
           "2026-12-23"
         ],
-        "fetchedAt": "2026-10-15T17:18:54.020Z",
+        "fetchedAt": "2026-10-15T21:43:56.007Z",
         "status": "ok"
       },
       {
@@ -68630,10 +68662,10 @@
           "2026-11-25",
           "2026-12-23"
         ],
-        "fetchedAt": "2026-10-15T17:18:54.020Z",
+        "fetchedAt": "2026-10-15T21:43:56.007Z",
         "status": "ok"
       }
     ],
-    "checkedAt": "2026-10-15T17:18:54.020Z"
+    "checkedAt": "2026-10-15T21:43:56.007Z"
   }
 }
