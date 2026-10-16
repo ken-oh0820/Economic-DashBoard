@@ -549,7 +549,7 @@ body .buyback-guide{font-size:14px;line-height:1.8}
       <div class="macro-head">
         <div>
           <div class="dashboard-panel-title">국채 금리 커브</div>
-          <div class="macro-sub">미국 국채: 공식 관측값·변동·차트 · 한국·일본·브라질 및 모기지: 원문 링크</div>
+          <div class="macro-sub">국채·주택금리 관측값과 변동 · 해외 월평균·정책금리 참고값</div>
         </div>
         <div class="macro-badge" id="bondYieldStatus">BOND CURVE · CONNECTING</div>
       </div>
@@ -2404,7 +2404,7 @@ async function fetchBlsMacroBatch(items){
 }
 function renderUsMacro(items){
   const grid=document.getElementById('usMacroGrid');if(!grid)return;
-  grid.innerHTML=items.map(item=>{
+  grid.innerHTML=items.filter(item=>!['cpi','core-cpi','unrate','payems'].includes(item.key)).map(item=>{
     const key='macro-'+item.key,cfg=MARKET_CHARTS[key];
     const linkOnly=sourceOnlyChart(cfg),tag=linkOnly?'a':'div';
     const attrs=linkOnly?'href="'+escHtml(marketSourceUrl(cfg))+'" target="_blank" rel="noopener noreferrer"':'data-chart-key="'+escHtml(key)+'" role="button" tabindex="0"';
@@ -2442,8 +2442,7 @@ function renderBondYields(groups=BOND_YIELD_GROUPS){
   const curves=groups.filter(group=>!group.url).map(group=>{
     const tenors=BOND_TENORS.map(tenor=>card('bond-'+group.key+'-'+tenor.key,tenor.label,tenor.tone)).join('');
     const mortgage=group.mortgage?card('bond-us-mortgage30','30년 모기지','bond-tenor-mortgage'):'';
-    const spread=group.spreadSeries?card('bond-'+group.key+'-spread','10Y-3M'):'<div class="bond-card spread"><div class="bond-tenor">10Y-3M</div><div class="bond-value source-link-value">계산 미제공</div><div class="bond-source">만기별 수익률 원문 확인</div></div>';
-    return '<div class="bond-country bond-country-'+escHtml(group.key)+'"><div class="bond-country-head"><div class="bond-country-name"><span class="bond-flag">'+escHtml(group.flag)+'</span><span>'+escHtml(group.name)+'</span></div><div class="bond-country-note">'+escHtml(group.note)+'</div></div><div class="bond-grid">'+tenors+mortgage+spread+'</div></div>';
+    return '<div class="bond-country bond-country-'+escHtml(group.key)+'"><div class="bond-country-head"><div class="bond-country-name"><span class="bond-flag">'+escHtml(group.flag)+'</span><span>'+escHtml(group.name)+'</span></div><div class="bond-country-note">'+escHtml(group.note)+'</div></div><div class="bond-grid">'+tenors+mortgage+'</div></div>';
   }).join('');
   const links=groups.filter(group=>group.url).map(group=>{
     const key=group.key==='br'?'rate-br':'bond-'+group.key+'-10y',label=group.key==='br'?'브라질 금리 참고 · Selic 목표 (국채 대체)':group.name+' 10년 · 월평균';
@@ -2546,15 +2545,15 @@ async function fetchTreasuryBasisMonitor(){
 async function fetchUsMacroDashboard(){
   setMacroStatus('warn','공식 데이터 확인 중');
   await OfficialData.load();
-  let count=0;
   const results=US_MACRO_ITEMS.map(item=>{
     const data=OfficialData.get({series:item.fred});
     const parsed=data?calcMacroFromPoints(data.points,item,OfficialData.source(data)):null;
-    if(parsed)count++;
     return parsed||{...item,value:'확인 불가',change:'공식 데이터 연결 대기',source:'FRED'};
   });
   renderUsMacro(results);
-  setMacroStatus(count===US_MACRO_ITEMS.length?'ok':'warn','공식 데이터 '+count+'/'+US_MACRO_ITEMS.length+' · 3시간 갱신 확인');
+  const visible=results.filter(item=>!['cpi','core-cpi','unrate','payems'].includes(item.key));
+  const count=visible.filter(item=>item.date).length;
+  setMacroStatus(count===visible.length?'ok':'warn','공식 데이터 '+count+'/'+visible.length+' · 3시간 갱신 확인');
 }
 function renderWatch(id,text,cls='market-flat'){const el=document.getElementById(id);if(!el)return;el.textContent=text;el.className=cls;}
 function parseCnnFearGreed(d){
@@ -2969,7 +2968,7 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script defer src="assets/lucide-0.468.0.min.js"></script>
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
-<script type="module" src="assets/workspace.mjs?v=20261016-numeric2"></script>
+<script type="module" src="assets/workspace.mjs?v=20261017-dedup"></script>
 <script type="module" src="assets/country-profile.mjs?v=20260923-us-geography1"></script>
 <script type="module" src="assets/country-data-client.mjs?v=20260922-registry1"></script>
 </body>

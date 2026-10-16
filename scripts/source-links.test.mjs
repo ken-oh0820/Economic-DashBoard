@@ -154,7 +154,8 @@ test('overseas rate rows show sourced observations with Brazilian policy proxy e
   vm.runInContext('renderBondYields()',context);
   const output=nodes.get('bondYieldGrid').innerHTML;
   assert.doesNotMatch(output,/bond-country-link|원문 보기/);
-  assert.equal([...output.matchAll(/class="bond-card"/g)].length,12);
+  assert.equal([...output.matchAll(/class="bond-card"/g)].length,11);
+  assert.doesNotMatch(output,/data-chart-key="bond-us-spread"|10Y-3M/);
   assert.match(output,/한국 국채 10년 · 월평균/);assert.match(output,/일본 국채 10년 · 월평균/);
   assert.match(output,/브라질 금리 참고 · Selic 목표 \(국채 대체\)/);
   assert.match(output,/data-chart-key="rate-br"/);assert.match(output,/4\.10%/);assert.match(output,/2026-09-01/);

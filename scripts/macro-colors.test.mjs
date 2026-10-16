@@ -33,20 +33,20 @@ test('monthly deltas have signed positive/negative text and neutral rounded zero
 test('monthly direction colors only the period delta, not the opposite annual figure',()=>{
   const {ctx,grid}=setup();
   ctx.rows=[{date:'2025-08-01',value:80},{date:'2026-07-01',value:100},{date:'2026-08-01',value:99}];
-  vm.runInContext('renderUsMacro([calcMacroFromPoints(rows,{key:"cpi",mode:"inflation",unit:"%"},"test")])',ctx);
+  vm.runInContext('renderUsMacro([calcMacroFromPoints(rows,{key:"ppi",mode:"inflation",unit:"%"},"test")])',ctx);
   assert.match(grid.innerHTML,/<span class="period-change market-down">전월 대비 -1.0%<\/span> · 전년 대비 \+23.8%/);
   assert.doesNotMatch(grid.innerHTML,/class="macro-value [^"]*market-down/);
 });
 
-test('payroll colors the monthly job change but not the total employment count',()=>{
+test('payroll observations retain the monthly change and total for overview-only display',()=>{
   const {ctx,grid}=setup();
   for(const [value,tone] of [[100100,'market-up'],[99900,'market-down'],[100000,'market-flat']]){
     ctx.rows=[{date:'2025-08-01',value:90000},{date:'2026-07-01',value:100000},{date:'2026-08-01',value}];
-    vm.runInContext('renderUsMacro([calcMacroFromPoints(rows,{key:"payems",mode:"level-change"},"test")])',ctx);
-    assert.ok(grid.innerHTML.includes('class="macro-value period-change '+tone+'"'));
-    assert.match(grid.innerHTML,/<div class="macro-change">전월 대비 증감 · 총고용/);
+    const observation=vm.runInContext('calcMacroFromPoints(rows,{key:"payems",mode:"level-change"},"test")',ctx);
+    assert.equal(observation.cls,tone);
+    assert.match(observation.change,/전월 대비 증감 · 총고용/);
   }
-  vm.runInContext('renderUsMacro([{key:"cpi",value:"확인 불가"}])',ctx);
+  vm.runInContext('renderUsMacro([{key:"ppi",value:"확인 불가"}])',ctx);
   assert.doesNotMatch(grid.innerHTML,/period-change market-(?:up|down)/);
 });
 

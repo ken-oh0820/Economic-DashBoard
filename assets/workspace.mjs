@@ -117,18 +117,29 @@ function provenance(key){
   return '<div class="observation-date">관측 '+escape(observationLabel(meta.date,meta.frequency))+'</div><div class="observation-status '+(meta.delayed?'delayed':'')+'">'+(meta.delayed?'수집 지연 · 마지막 확보값':'공식 관측값')+'</div><div class="observation-collected">수집 '+escape(timestampLabel(meta.fetchedAt))+'</div><div class="observation-next">'+escape(nextReleaseText(MARKET_CHARTS[key]))+'</div>';
 }
 
+// Overview-only indicators read the same snapshot without a duplicate row in the tables.
+function standaloneObservation(key){
+  const cfg=MARKET_CHARTS[key],data=OfficialData.get(cfg);if(!cfg||!data)return null;
+  const macro=US_MACRO_ITEMS.find(item=>'macro-'+item.key===key);
+  if(macro)return calcMacroFromPoints(data.points,macro,OfficialData.source(data));
+  const delta=OfficialData.bondChanges(data.points);
+  const change=value=>value==null?'비교 불가':(value>=0?'+':'')+value.toFixed(2)+'%p';
+  return {value:fmtMarketNumber(delta.last.value,cfg),change:'전 관측일 '+change(delta.day)+' · 1개월 전 '+change(delta.monthly)};
+}
+
 function refreshOverview(){
   const host=$('#overviewGrid');
   if(!favorites.length){host.innerHTML='<p class="overview-empty">선택한 핵심 지표가 없습니다.</p>';return;}
   host.innerHTML=favorites.map(key=>{
     const item=catalog.find(item=>item.key===key),original=document.querySelector('#indicatorDashboard [data-chart-key="'+key+'"]');
-    const value=original?.querySelector('.macro-value,.bond-value')?.textContent || (OfficialData.get(MARKET_CHARTS[key])?'표시 준비 중':'확인 불가');
-    const change=original?.querySelector('.macro-change,.bond-change')?.textContent||'';
+    const standalone=original?null:standaloneObservation(key);
+    const value=original?.querySelector('.macro-value,.bond-value')?.textContent || standalone?.value || (OfficialData.get(MARKET_CHARTS[key])?'표시 준비 중':'확인 불가');
+    const change=original?.querySelector('.macro-change,.bond-change')?.textContent||standalone?.change||'';
     const meta=OfficialData.metadata(MARKET_CHARTS[key]);
     const cfg=MARKET_CHARTS[key],qualifier=cfg.transform==='yoy'?'전년 대비':cfg.transform==='change'?'전월 대비 증감':cfg.transform==='qoq-annualized'?'전분기 연율':key.includes('gdp')?'연율 환산 규모':key==='rate-us'?'월평균 금리':key==='bond-us-spread'?'금리 차':'수준';
     const shortChange=key==='macro-payems'&&meta?'총고용 '+(OfficialData.get(cfg).points.at(-1).value/10).toLocaleString('ko-KR',{maximumFractionDigits:1})+'만 명':change.split(' · ')[0];
     const delta=original?.querySelector('.period-change');
-    const tone=delta?'period-change '+(['market-up','market-down'].find(name=>delta.classList.contains(name))||'market-flat'):'';
+    const tone=delta?'period-change '+(['market-up','market-down'].find(name=>delta.classList.contains(name))||'market-flat'):standalone?.cls?'period-change '+standalone.cls:'';
     return '<article class="overview-item"><button type="button" class="overview-open" data-open-chart="'+key+'"><span class="overview-label">'+escape(item.label)+'</span><span class="overview-qualifier">'+qualifier+'</span><strong class="'+(key==='macro-payems'?tone:'')+'">'+escape(value)+'</strong><span class="overview-change '+(key==='macro-payems'?'':tone)+'">'+escape(shortChange)+'</span><span class="observation-date">'+escape(meta?observationLabel(meta.date,meta.frequency):'관측값 미확인')+'</span>'+(meta?.delayed?'<span class="observation-status delayed">수집 지연</span>':'')+'</button></article>';
   }).join('');
   host.querySelectorAll('[data-open-chart]').forEach(btn=>btn.addEventListener('click',()=>openChart(btn.dataset.openChart)));
@@ -139,8 +150,9 @@ function openChart(key){
   activeChart=key;
   $('#workspaceChartTitle').textContent=MARKET_CHARTS[key].label;
   const original=document.querySelector('#indicatorDashboard [data-chart-key="'+key+'"]');
-  const value=original?.querySelector('.macro-value,.bond-value,.indicator-value,.numeric-watch-value strong,.basis-value')?.textContent;
-  const changes=[...(original?.querySelectorAll('.macro-change,.bond-change,.indicator-change')||[])].map(node=>node.textContent).filter(Boolean);
+  const standalone=original?null:standaloneObservation(key);
+  const value=original?.querySelector('.macro-value,.bond-value,.indicator-value,.numeric-watch-value strong,.basis-value')?.textContent||standalone?.value;
+  const changes=original?[...original.querySelectorAll('.macro-change,.bond-change,.indicator-change')].map(node=>node.textContent).filter(Boolean):standalone?.change?[standalone.change]:[];
   const summary=(value?'<div class="chart-current-value">'+escape(value)+'</div>':'')+changes.map(text=>'<div class="chart-current-change">'+escape(text)+'</div>').join('');
   $('#chartDataBasis').innerHTML=summary+(OfficialData.metadata(MARKET_CHARTS[key])?provenance(key)+'<div class="chart-source-name">'+escape(OfficialData.metadata(MARKET_CHARTS[key]).source)+'</div>':'<p>기준일·출처는 차트와 원문에서 확인하세요.</p>');
   const metadata=OfficialData.metadata(MARKET_CHARTS[key]);
