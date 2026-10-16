@@ -1,16 +1,21 @@
 #investmentSites [hidden]{display:none!important}
-#investmentSites{--calendar-fomc:#83b1ff;--calendar-qra:#62cba8}
-body.light #investmentSites{--calendar-fomc:#295baf;--calendar-qra:#147857}
+#investmentSites{--calendar-fomc:#83b1ff;--calendar-qra:#62cba8;--calendar-bok:#eab86c;--calendar-boj:#df9cbe}
+body.light #investmentSites{--calendar-fomc:#295baf;--calendar-qra:#147857;--calendar-bok:#946015;--calendar-boj:#a53f71}
 .calendar-event-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 12px;color:var(--text-mid);font-size:12px;line-height:1.6}
 .calendar-event-legend .fomc{color:var(--calendar-fomc);font-weight:600}
 .calendar-event-legend .qra{color:var(--calendar-qra);font-weight:600}
-.calendar-official-badge{display:flex;align-items:center;gap:6px;font:600 11px/18px 'Noto Sans KR',sans-serif;letter-spacing:0;white-space:nowrap}
+.calendar-official-badge{display:flex;align-items:center;flex-wrap:wrap;gap:0 6px;font:600 11px/18px 'Noto Sans KR',sans-serif;letter-spacing:0;white-space:normal;overflow-wrap:anywhere}
+.calendar-official-badge span{min-width:0}
+.calendar-event-legend .bok,.calendar-official-badge.bok{color:var(--calendar-bok);font-weight:600}
+.calendar-event-legend .boj,.calendar-official-badge.boj{color:var(--calendar-boj);font-weight:600}
 .calendar-official-badge.fomc{color:var(--calendar-fomc)}
 .calendar-official-badge.qra{color:var(--calendar-qra)}
 .has-official-event .calendar-note-preview{-webkit-line-clamp:1;margin-top:1px}
 #calendarOfficialDetails{margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid var(--border)}
 .calendar-official-detail{padding-left:12px;border-left:3px solid var(--calendar-fomc)}
 .calendar-official-detail.qra{border-left-color:var(--calendar-qra)}
+.calendar-official-detail.bok{border-left-color:var(--calendar-bok)}
+.calendar-official-detail.boj{border-left-color:var(--calendar-boj)}
 .calendar-official-detail h3{font-size:15px;line-height:1.6;margin:0 0 6px}
 .calendar-official-detail p{font-size:13px;line-height:1.7;margin:6px 0;color:var(--text-mid);overflow-wrap:anywhere}
 .calendar-official-detail strong{color:var(--text)}

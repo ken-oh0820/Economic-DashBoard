@@ -3,7 +3,7 @@ import {initMonitorTools,nextReleaseText} from './monitor-tools.mjs?v=20260917-c
 import {initEconomyTabs} from './economy-tabs.mjs?v=20260918-economy';
 import {indicatorExplanation} from './indicator-explanations.mjs?v=20261017-liquidity';
 import {initPolicyRates} from './policy-rates.mjs?v=20261016-numeric';
-import {initInvestmentCalendar} from './investment-calendar.mjs?v=20261012-fomc2027';
+import {initInvestmentCalendar} from './investment-calendar.mjs?v=20261017-asia';
 import {initSentimentGauges} from './sentiment-gauges.mjs?v=20261017';
 
 const $=selector=>document.querySelector(selector);

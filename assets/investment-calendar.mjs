@@ -1,5 +1,5 @@
 import {CALENDAR_STORAGE_KEY, MAX_BACKUP_BYTES, readCalendar, saveCalendarDay, parseCalendar, restoreCalendar, escapeCalendarText} from './calendar-notes.mjs?v=20261012-notes';
-import {CALENDAR_EVENTS_REVIEWED, eventClock, eventsOnDate, eventsInYear, eventTimeLabel} from './calendar-events.mjs?v=20261012-fomc2027';
+import {CALENDAR_EVENTS_REVIEWED, EVENT_LABELS, eventClock, eventsOnDate, eventsInYear, eventTimeLabel} from './calendar-events.mjs?v=20261017-asia';
 
 export const MIN_YEAR = 1900;
 export const MAX_YEAR = 2100;
@@ -75,13 +75,20 @@ export function initInvestmentCalendar(root) {
     officialPanel.hidden = !official.length;
     officialPanel.innerHTML = official.map(event => {
       const korea = eventClock(event), eastern = eventClock(event, 'America/New_York');
-      const description = event.kind === 'fomc'
+      const description = event.kind === 'bok'
+        ? '한국은행 금융통화위원회의 통화정책방향 결정회의입니다. 금융안정회의·의사록 공개일과는 별도입니다. 개별 결정문 발표 시각은 공식 일정에서 확인되지 않아 미정으로 표시합니다.'
+        : event.kind === 'boj'
+        ? '일본은행 금융정책결정회의의 정책금리 결정 발표입니다. 회의 종료 후 공표하며 고정된 발표 시각은 사전 공지하지 않습니다. 의사록·주요 의견 공개일이나 총재 기자회견 시각과 구분합니다.'
+        : event.kind === 'fomc'
         ? '연방공개시장위원회 정책금리 결정 및 성명 발표.' + (event.sep ? ' 경제전망(SEP)·점도표 공개 회의.' : ' 경제전망(SEP) 공개 없음.')
         : '미 재무부의 분기 국채 발행계획 본발표. 차입규모 추정치 발표·국채 입찰일과는 별도입니다.';
-      const timing = event.timeEstimated
+      const timing = event.date
+        ? `<p><strong>한국 ${korea.date} · ${eventTimeLabel(event)}</strong></p>${event.meetingStart ? `<p>회의 기간: ${event.meetingStart} ~ ${event.date} (일본 현지 · 한국과 동일한 UTC+9). 달력에는 회의 종료일을 표시합니다.</p>` : ''}`
+        : event.timeEstimated
         ? `<p><strong>한국 ${korea.date} ${korea.time} 예상</strong></p><p>공식 회의일: ${event.meetingStart} ~ ${eastern.date} (미국 동부). 직전 회의에서 확인되기 전까지 잠정 일정입니다.</p><p>개별 발표 시각 미확인. 기존 정례 발표 시각인 회의 종료일 14:00 ET를 가정해 한국 날짜·시간으로 환산했습니다.</p>`
         : `<p><strong>${korea.time} KST</strong> · 미국 동부 ${eastern.date} ${eastern.time} ET</p>`;
-      return `<article class="calendar-official-detail ${event.kind}"><h3>${event.title}${event.tentative ? ' · 공식 잠정 일정' : ''}</h3>${timing}<p>${description}</p><a href="${event.source}" target="_blank" rel="noopener noreferrer">${event.kind === 'fomc' ? '연준 공식 일정' : '미 재무부 공식 발표'}</a>${event.kind === 'fomc' ? ` · <a href="${event.timeSource}" target="_blank" rel="noopener noreferrer">${event.timeEstimated ? '기존 발표 시각 참고' : '발표 시각 근거'}</a>` : ''}</article>`;
+      const sourceLabel = {fomc:'연준 공식 일정',qra:'미 재무부 공식 발표',bok:'한국은행 공식 일정',boj:'일본은행 공식 일정'}[event.kind];
+      return `<article class="calendar-official-detail ${event.kind}"><h3>${event.title}${event.tentative ? ' · 공식 잠정 일정' : ''}</h3>${timing}<p>${description}</p><a href="${event.source}" target="_blank" rel="noopener noreferrer">${sourceLabel}</a>${event.kind === 'fomc' ? ` · <a href="${event.timeSource}" target="_blank" rel="noopener noreferrer">${event.timeEstimated ? '기존 발표 시각 참고' : '발표 시각 근거'}</a>` : ''}</article>`;
     }).join('') + (official.length ? `<p class="calendar-official-reviewed">공식 일정 확인: ${CALENDAR_EVENTS_REVIEWED} · 예정 일정은 변경될 수 있습니다.</p>` : '');
     dialog.showModal();
     if (canEdit) textarea.focus();
@@ -151,19 +158,19 @@ export function initInvestmentCalendar(root) {
     previous.disabled = current.year === MIN_YEAR && current.month === 1;
     next.disabled = current.year === MAX_YEAR && current.month === 12;
     const yearEvents = eventsInYear(current.year);
-    $('#calendarEventLegend').innerHTML = ['fomc','qra'].map(kind => {
+    $('#calendarEventLegend').innerHTML = ['fomc','bok','boj','qra'].map(kind => {
       const count = yearEvents.filter(event => event.kind === kind).length;
-      return count ? `<span class="${kind}">${current.year} ${kind.toUpperCase()} · ${count}회</span>` : '';
-    }).join('') + `<span>${yearEvents.some(event => event.timeEstimated) ? '공식 잠정 일정 · 한국 날짜·시각은 예상' : yearEvents.length ? '발표 시각 · 한국 시간' : '이 연도의 공식 일정은 아직 등록되지 않았습니다.'}</span>`;
+      return count ? `<span class="${kind}">${current.year} ${EVENT_LABELS[kind]} · ${count}회</span>` : '';
+    }).join('') + `<span>${yearEvents.length ? '한국 시간 · 미정/예상은 개별 일정에 표시' : '이 연도의 공식 일정은 아직 등록되지 않았습니다.'}</span>`;
     const days = monthDays(current.year, current.month);
     $('#investmentCalendarDays').innerHTML = Array.from({length: 6}, (_, week) =>
       '<tr>' + days.slice(week * 7, week * 7 + 7).map(date => {
         const isToday = date.year === today.year && date.month === today.month && date.day === today.day;
         const text = notes[date.iso]?.text ?? '';
         const official = eventsOnDate(date.iso);
-        const eventPreview = official.map(event => `<span class="calendar-official-badge ${event.kind}"><span>${event.kind.toUpperCase()}</span><span>${eventTimeLabel(event)}</span></span>`).join('');
+        const eventPreview = official.map(event => `<span class="calendar-official-badge ${event.kind}"><span>${EVENT_LABELS[event.kind]}</span><span>${eventTimeLabel(event)}</span></span>`).join('');
         const disabled = date.year < MIN_YEAR || date.year > MAX_YEAR;
-        return `<td class="${date.inMonth ? '' : 'outside-month'}${isToday ? ' calendar-current-day' : ''}${official.length ? ' has-official-event' : ''}"><button type="button" class="calendar-day" data-date="${date.iso}" aria-label="${date.year}년 ${date.month}월 ${date.day}일 ${official.length ? official.map(event => event.kind.toUpperCase() + ' ' + eventTimeLabel(event) + ' KST').join(', ') + ' 일정 보기 및 메모' : text ? '일정 수정' : '일정 추가'}"${disabled ? ' disabled' : ''}><time datetime="${date.iso}"${isToday ? ' aria-current="date"' : ''}>${date.day}</time>${eventPreview}<span class="calendar-note-preview">${escapeCalendarText(text)}</span></button></td>`;
+        return `<td class="${date.inMonth ? '' : 'outside-month'}${isToday ? ' calendar-current-day' : ''}${official.length ? ' has-official-event' : ''}"><button type="button" class="calendar-day" data-date="${date.iso}" aria-label="${date.year}년 ${date.month}월 ${date.day}일 ${official.length ? official.map(event => EVENT_LABELS[event.kind] + ' ' + eventTimeLabel(event) + (event.date ? '' : ' KST')).join(', ') + ' 일정 보기 및 메모' : text ? '일정 수정' : '일정 추가'}"${disabled ? ' disabled' : ''}><time datetime="${date.iso}"${isToday ? ' aria-current="date"' : ''}>${date.day}</time>${eventPreview}<span class="calendar-note-preview">${escapeCalendarText(text)}</span></button></td>`;
       }).join('') + '</tr>').join('');
     const count = days.filter(date => date.inMonth && notes[date.iso]).length;
     const officialCount = days.filter(date => date.inMonth).reduce((sum,date) => sum + eventsOnDate(date.iso).length, 0);

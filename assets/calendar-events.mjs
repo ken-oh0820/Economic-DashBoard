@@ -1,6 +1,22 @@
-export const CALENDAR_EVENTS_REVIEWED = '2026-10-12';
+export const CALENDAR_EVENTS_REVIEWED = '2026-10-17';
 const fedCalendar = 'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm';
 const treasuryCalendar = 'https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding/most-recent-quarterly-refunding-documents/';
+const bokCalendar = 'https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?menuNo=200755&mtgSe=A';
+const bojCalendar = 'https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm';
+export const EVENT_LABELS = {fomc:'FOMC',qra:'QRA',bok:'한국 금리',boj:'일본 금리'};
+
+// Date-only events do not invent a release timestamp. Japan and Korea share UTC+9.
+const asianDecisions = [
+  ...['2026-01-15','2026-02-26','2026-04-10','2026-05-28','2026-07-16','2026-08-27','2026-10-22','2026-11-26'].map(date=>({
+    id:'bok-'+date.replaceAll('-',''),kind:'bok',date,title:'한국은행 기준금리 결정',source:bokCalendar
+  })),
+  ...[
+    ['2026-01-22','2026-01-23'],['2026-03-18','2026-03-19'],['2026-04-27','2026-04-28'],['2026-06-15','2026-06-16'],
+    ['2026-07-30','2026-07-31'],['2026-09-17','2026-09-18'],['2026-10-29','2026-10-30'],['2026-12-17','2026-12-18'],
+    ['2027-01-21','2027-01-22'],['2027-03-17','2027-03-18'],['2027-04-27','2027-04-28'],['2027-06-10','2027-06-11'],
+    ['2027-07-21','2027-07-22'],['2027-09-21','2027-09-22'],['2027-10-28','2027-10-29'],['2027-12-16','2027-12-17']
+  ].map(([meetingStart,date])=>({id:'boj-'+date.replaceAll('-',''),kind:'boj',date,meetingStart,title:'일본은행 정책금리 결정',source:bojCalendar}))
+];
 
 // 2027 dates are Fed-published tentative meetings; their 14:00 ET release times are estimates.
 export const CALENDAR_EVENTS = [
@@ -33,9 +49,10 @@ export const CALENDAR_EVENTS = [
   source:fedCalendar,
   ...(event.kind === 'fomc' ? {timeSource:'https://www.federalreserve.gov/monetarypolicy/fomcpressconf20260128.htm'} : {}),
   ...event
-})).sort((a,b) => Date.parse(a.at) - Date.parse(b.at));
+})).concat(asianDecisions).sort((a,b) => eventClock(a).date.localeCompare(eventClock(b).date));
 
 export function eventClock(event, timeZone = 'Asia/Seoul') {
+  if(event.date)return {date:event.date,time:null};
   const parts = new Intl.DateTimeFormat('en-US', {
     timeZone, year:'numeric', month:'2-digit', day:'2-digit',
     hour:'2-digit', minute:'2-digit', hourCycle:'h23'
@@ -53,5 +70,6 @@ export function eventsInYear(year) {
 }
 
 export function eventTimeLabel(event) {
+  if(event.date)return event.kind==='boj'?'종료 후 · 시각 미정':'시각 미정';
   return eventClock(event).time + (event.timeEstimated ? ' 예상' : '');
 }

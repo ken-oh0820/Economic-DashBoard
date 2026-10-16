@@ -4,15 +4,15 @@ import {readFile} from 'node:fs/promises';
 import {CALENDAR_EVENTS, CALENDAR_EVENTS_REVIEWED, eventClock, eventsOnDate, eventsInYear, eventTimeLabel} from '../assets/calendar-events.mjs';
 import {readCalendar, saveCalendarDay} from '../assets/calendar-notes.mjs';
 
-test('2026 calendar contains exactly eight FOMC statements and four QRA main releases', () => {
+test('2026 calendar contains official US, Korean and Japanese policy events', () => {
   const events=eventsInYear(2026);
-  assert.equal(events.length,12);
+  assert.equal(events.length,28);
   assert.equal(new Set(CALENDAR_EVENTS.map(event=>event.id)).size,CALENDAR_EVENTS.length);
   assert.equal(events.filter(event=>event.kind==='fomc').length,8);
   assert.equal(events.filter(event=>event.kind==='qra').length,4);
   assert.equal(events.filter(event=>event.sep).length,4);
-  assert.equal(CALENDAR_EVENTS_REVIEWED,'2026-10-12');
-  for(const event of CALENDAR_EVENTS)assert.ok(['www.federalreserve.gov','home.treasury.gov'].includes(new URL(event.source).hostname));
+  assert.equal(CALENDAR_EVENTS_REVIEWED,'2026-10-17');
+  for(const event of CALENDAR_EVENTS)assert.ok(['www.federalreserve.gov','home.treasury.gov','www.bok.or.kr','www.boj.or.jp'].includes(new URL(event.source).hostname));
 });
 
 test('FOMC is on the following Korean date with daylight-saving adjustments', () => {
@@ -28,8 +28,8 @@ test('FOMC is on the following Korean date with daylight-saving adjustments', ()
   assert.equal(eventsOnDate('2026-10-29')[0].id,'fomc-202610');
 });
 
-test('2027 contains only eight Fed-published tentative meetings with explicitly estimated release times', () => {
-  const events=eventsInYear(2027);
+test('2027 FOMC retains eight Fed-published tentative meetings with estimated release times', () => {
+  const events=eventsInYear(2027).filter(event=>event.kind==='fomc');
   assert.equal(events.length,8);
   assert.equal(events.filter(event=>event.sep).length,4);
   assert.equal(eventsInYear(2028).length,0);
@@ -48,6 +48,32 @@ test('2027 contains only eight Fed-published tentative meetings with explicitly 
     assert.equal(eventClock(event,'America/New_York').time,'14:00');
   }
   for(const event of eventsInYear(2026))assert.doesNotMatch(eventTimeLabel(event),/예상/);
+});
+
+test('Korea uses eight 2026 policy meetings, not financial stability or minutes dates',()=>{
+  const events=CALENDAR_EVENTS.filter(event=>event.kind==='bok');
+  assert.deepEqual(events.map(event=>event.date),['2026-01-15','2026-02-26','2026-04-10','2026-05-28','2026-07-16','2026-08-27','2026-10-22','2026-11-26']);
+  assert.equal(eventsInYear(2027).filter(event=>event.kind==='bok').length,0);
+  for(const event of events){
+    assert.equal(event.at,undefined);
+    assert.deepEqual(eventClock(event),{date:event.date,time:null});
+    assert.equal(eventTimeLabel(event),'시각 미정');
+  }
+  assert.equal(eventsOnDate('2026-07-09').length,0);
+});
+
+test('Japan shows the meeting end date without fabricated noon release timestamps',()=>{
+  const events=CALENDAR_EVENTS.filter(event=>event.kind==='boj');
+  assert.deepEqual(events.filter(event=>event.date.startsWith('2026')).map(event=>event.date),['2026-01-23','2026-03-19','2026-04-28','2026-06-16','2026-07-31','2026-09-18','2026-10-30','2026-12-18']);
+  assert.deepEqual(events.filter(event=>event.date.startsWith('2027')).map(event=>event.date),['2027-01-22','2027-03-18','2027-04-28','2027-06-11','2027-07-22','2027-09-22','2027-10-29','2027-12-17']);
+  for(const event of events){
+    assert.ok(event.meetingStart<event.date);
+    assert.equal(event.at,undefined);
+    assert.equal(eventClock(event).time,null);
+    assert.match(eventTimeLabel(event),/終了|종료 후/);
+    assert.doesNotMatch(eventTimeLabel(event),/12:00|00:00|예상/);
+  }
+  assert.deepEqual(eventsOnDate('2026-03-19').map(event=>event.kind),['fomc','boj']);
 });
 
 test('QRA dates refer to 08:30 ET issuance details, not Monday borrowing estimates', () => {
