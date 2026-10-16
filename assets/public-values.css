@@ -1,0 +1,10 @@
+.numeric-watch-value{display:flex;flex-direction:column;align-items:flex-end;gap:3px;min-width:0}
+.numeric-watch-value strong{font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--text)}
+.numeric-watch-value small{font:10px/1.5 'Noto Sans KR',sans-serif;white-space:normal;overflow-wrap:anywhere}
+.data-attribution{margin:12px 0;font-size:12px;line-height:1.8;color:var(--text-mid)}
+.data-attribution summary{cursor:pointer;color:var(--accent)}
+.data-attribution p{white-space:pre-wrap;overflow-wrap:anywhere}
+body #indicatorDashboard .watch-row{align-items:center;min-height:48px;cursor:pointer}
+body #indicatorDashboard .bond-country-kr .bond-grid,body #indicatorDashboard .bond-country-jp .bond-grid,body #indicatorDashboard .bond-country-br .bond-grid{grid-template-columns:minmax(0,1fr)}
+.basis-metric[data-chart-key]{cursor:pointer}
+@media(max-width:600px){.numeric-watch-value small{font-size:9px}.numeric-watch-value strong{font-size:13px}}

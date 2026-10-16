@@ -275,6 +275,7 @@ body .buyback-guide{font-size:14px;line-height:1.8}
 <link rel="stylesheet" href="assets/country-profile.css?v=20260923-us-geography1">
 <link rel="stylesheet" href="assets/country-compare.css?v=20260922-registry1">
 <link rel="stylesheet" href="assets/home-shell.css?v=20261016-indicator-home">
+<link rel="stylesheet" href="assets/public-values.css?v=20261016-numeric">
 </head>
 <body class="dashboard-mode light">
 <header class="app-header">
@@ -461,7 +462,7 @@ body .buyback-guide{font-size:14px;line-height:1.8}
     <div class="indicator-grid">
       <div class="indicator-card" data-chart-key="fng" role="button" tabindex="0"><div class="indicator-group">시장 심리</div><div class="indicator-name">CNN 공포탐욕지수</div><div class="indicator-value loading" id="ind-fng">연결 중</div><div class="indicator-change" id="chg-fng">—</div><div class="indicator-note">미국 주식시장 심리 · 0~100</div><div class="indicator-source" id="src-fng">CNN · Worker 필요</div></div>
       <div class="indicator-card" data-chart-key="cfng" role="button" tabindex="0"><div class="indicator-group">크립토 심리</div><div class="indicator-name">암호화폐 공포탐욕</div><div class="indicator-value loading" id="ind-cfng">연결 중</div><div class="indicator-change" id="chg-cfng">—</div><div class="indicator-note">Crypto Fear & Greed · 0~100</div><div class="indicator-source" id="src-cfng">Alternative.me</div></div>
-      <div class="indicator-card" data-chart-key="vix" role="button" tabindex="0"><div class="indicator-group">변동성</div><div class="indicator-name">VIX</div><div class="indicator-value loading" id="ind-vix">연결 중</div><div class="indicator-change" id="chg-vix">—</div><div class="indicator-note">20↓ 안정 · 30↑ 경계</div><div class="indicator-source" id="src-vix">TradingView 공식 위젯</div></div>
+      <div class="indicator-card" data-chart-key="vix" role="button" tabindex="0"><div class="indicator-group">금융위험 · 공개 대체 지표</div><div class="indicator-name">NFCI Risk (VIX 대체)</div><div class="indicator-value loading" id="ind-vix">연결 중</div><div class="indicator-change" id="chg-vix">—</div><div class="indicator-note">주간 · 0 초과는 평균보다 긴축적 · VIX와 산식·단위 다름</div><div class="indicator-source" id="src-vix">Chicago Fed / FRED</div></div>
     </div>
     <div class="dashboard-panel market-chart-panel">
       <div class="market-chart-head">
@@ -495,7 +496,7 @@ body .buyback-guide{font-size:14px;line-height:1.8}
         <div class="basis-monitor-head">
           <div>
             <div class="basis-monitor-title" id="basisMonitorTitle">TREASURY CASH-FUTURES BASIS RISK MONITOR</div>
-            <div class="basis-monitor-sub">미 국채 현물-선물 차익거래의 수익 유인, 조달비용, 헤지펀드 포지션, 전체 포지션 규모와 시장 유동성 스트레스를 함께 봅니다.</div>
+            <div class="basis-monitor-sub">공개 데이터로 조달 여건·포지션·금리 변동성을 봅니다. Basis 수익률과 MOVE는 별도 산식의 대체 지표로 표시합니다.</div>
           </div>
           <div class="basis-risk-badge" id="basisRiskStatus">BASIS RISK · CONNECTING</div>
         </div>
@@ -505,15 +506,15 @@ body .buyback-guide{font-size:14px;line-height:1.8}
           </div>
         </div>
         <div class="basis-interpretation">
-          <div class="basis-guide-item"><b>① Basis / OABNOC</b>연준의 연율 수익률 방식에서는 양(+)의 basis가 커질수록 long-basis 유인이 강해집니다. 데이터 공급자에 따라 부호 정의가 반대일 수 있습니다.</div>
+          <div class="basis-guide-item"><b>① SOFR−IORB · Basis 대체</b>동일 관측일의 SOFR에서 IORB를 뺀 조달 여건 지표입니다. 실제 현물-선물 Basis나 차익거래 수익률을 측정하지 않습니다.</div>
           <div class="basis-guide-item"><b>② SOFR · Repo</b>SOFR 자체보다 IORB 대비 스프레드를 봅니다. 스프레드 급등은 국채 담보 조달비용과 레버리지 유지 부담이 커졌다는 신호입니다.</div>
           <div class="basis-guide-item"><b>③ Leveraged Funds Net</b>순숏 규모가 커질수록 현물 매수-선물 매도 포지션이 붐볐을 가능성이 큽니다. 급격한 숏 축소는 포지션 청산 신호일 수 있습니다.</div>
           <div class="basis-guide-item"><b>④ Futures Open Interest</b>미결제약정이 빠르게 늘면 시장에 쌓인 총 포지션이 커집니다. 절대 수준보다 주간 증가율과 롤오버 시기를 함께 확인합니다.</div>
-          <div class="basis-guide-item"><b>⑤ Treasury Liquidity</b>무료 실시간 직접 유동성 지표가 없어 MOVE를 스트레스 프록시로 씁니다. MOVE 상승은 변동성 확대와 강제 청산 충격 가능성을 뜻합니다.</div>
+          <div class="basis-guide-item"><b>⑤ 10년 금리 실현변동성</b>최근 20거래일의 금리 변화 표준편차를 연율화한 자체 계산값입니다. MOVE와 산식·단위가 다르고 국채 매매 호가의 유동성을 직접 측정하지 않습니다.</div>
         </div>
         <div class="basis-formula">
-          <div class="basis-formula-code">BASIS ↑ + REPO STRESS ↑ + HF SHORT ↑ + MOVE ↑ = UNWIND RISK ↑</div>
-          <div class="basis-formula-note">Basis만 확대되면 차익거래 기회일 수 있습니다. 하지만 조달비용과 변동성이 함께 오르고 헤지펀드 순숏이 큰 상태라면 국채 매도와 선물 숏커버가 동시에 발생할 위험이 커집니다.</div>
+          <div class="basis-formula-code">조달 스프레드 · 선물 순포지션 · 미결제약정 · 실현변동성</div>
+          <div class="basis-formula-note">조달 부담과 변동성이 함께 커지고 선물 순숏이 큰 상태인지 비교합니다. 순숏에는 다른 거래 목적도 포함되며, 이 조합만으로 Basis 거래 잔액이나 청산 위험을 확정할 수 없습니다.</div>
         </div>
       </section>
     </div>
@@ -565,6 +566,8 @@ body .buyback-guide{font-size:14px;line-height:1.8}
           <div class="watch-row" data-chart-key="brent" role="button" tabindex="0"><span>브렌트유</span><span class="loading" id="watch-brent">연결 중</span></div>
           <div class="watch-row" data-chart-key="dubai" role="button" tabindex="0"><span>두바이산 원유</span><span class="loading" id="watch-dubai">연결 중</span></div>
           <div class="watch-row" data-chart-key="hy" role="button" tabindex="0"><span>하이일드 스프레드</span><span class="loading" id="watch-hy">연결 중</span></div>
+          <div class="watch-row" data-chart-key="sofr" role="button" tabindex="0"><span>SOFR</span><span class="loading" id="watch-sofr">연결 중</span></div>
+          <div class="watch-row" data-chart-key="iorb" role="button" tabindex="0"><span>IORB</span><span class="loading" id="watch-iorb">연결 중</span></div>
         </div>
       </div>
       <div class="dashboard-panel">
@@ -1344,7 +1347,7 @@ body .buyback-guide{font-size:14px;line-height:1.8}
   </div>
 </div>
 <div id="tooltip"></div>
-<script src="assets/official-data.js?v=20260918-rates"></script>
+<script src="assets/official-data.js?v=20261016-numeric"></script>
 <script>
 const eData={};
 
@@ -2108,7 +2111,6 @@ const MARKET_ITEMS=[
   {key:'usdjpy',symbol:'JPY=X',watch:'watch-usdjpy',dec:2,prefix:'¥'},
   {key:'eurusd',symbol:'EURUSD=X',watch:'watch-eurusd',dec:4,prefix:'$'},
 ];
-const DUBAI_CRUDE_FALLBACK={value:72.40,date:'2026-06',source:'참고값'};
 let marketLoading=false,marketTimer=null;
 let currentMarketChartKey='vix',marketChartRange='1mo';
 function investingSearchUrl(q){
@@ -2128,14 +2130,18 @@ function investingBondUrl(country,tenor){
 const MARKET_CHARTS={
   fng:{label:'CNN 공포탐욕지수',type:'fng',dec:0,suffix:'',tv:'https://www.tradingview.com/search/?query=CNN%20Fear%20and%20Greed'},
   cfng:{label:'암호화폐 공포탐욕',type:'cfng',dec:0,suffix:'',tv:'https://www.tradingview.com/search/?query=Crypto%20Fear%20and%20Greed'},
-  vix:{label:'VIX',symbol:'^VIX',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/CBOE-VIX/'},
-  dxy:{label:'달러인덱스 DXY',symbol:'DX-Y.NYB',type:'yahoo',dec:2,tv:'https://www.tradingview.com/symbols/TVC-DXY/'},
-  usdjpy:{label:'엔달러 환율',symbol:'JPY=X',type:'yahoo',dec:2,prefix:'¥',tv:'https://www.tradingview.com/symbols/USDJPY/'},
-  eurusd:{label:'유로달러 환율',symbol:'EURUSD=X',type:'yahoo',dec:4,prefix:'$',tv:'https://www.tradingview.com/symbols/EURUSD/'},
-  wti:{label:'WTI 원유',symbol:'CL=F',type:'yahoo',dec:2,prefix:'$',tv:'https://www.tradingview.com/symbols/NYMEX-CL1!/'},
-  brent:{label:'브렌트유',symbol:'BZ=F',type:'yahoo',dec:2,prefix:'$',tv:'https://www.tradingview.com/symbols/ICEEUR-BRN1!/'},
-  dubai:{label:'두바이산 원유',type:'search',tv:'https://www.tradingview.com/search/?query=Dubai%20Crude%20Oil',sourceUrl:'https://www.tradingview.com/search/?query=Dubai%20Crude%20Oil',linkText:'SEARCH CHART ↗'},
-  hy:{label:'하이일드 스프레드',type:'search',sourceUrl:'https://fred.stlouisfed.org/series/BAMLH0A0HYM2',linkText:'FRED 원문 보기 ↗'},
+  vix:{label:'금융위험 · NFCI Risk (VIX 대체)',type:'fred',series:'NFCIRISK',dec:3,suffix:'',sourceUrl:'https://fred.stlouisfed.org/series/NFCIRISK'},
+  dxy:{label:'광의 달러지수 (DXY 대체)',type:'fred',series:'DTWEXBGS',dec:2,sourceUrl:'https://fred.stlouisfed.org/series/DTWEXBGS'},
+  usdjpy:{label:'달러/엔 · 엔 per USD',type:'fred',series:'DEXJPUS',dec:2,prefix:'¥',sourceUrl:'https://fred.stlouisfed.org/series/DEXJPUS'},
+  eurusd:{label:'유로/달러 · USD per EUR',type:'fred',series:'DEXUSEU',dec:4,prefix:'$',sourceUrl:'https://fred.stlouisfed.org/series/DEXUSEU'},
+  wti:{label:'WTI 현물 · USD/배럴',type:'fred',series:'DCOILWTICO',dec:2,prefix:'$',sourceUrl:'https://fred.stlouisfed.org/series/DCOILWTICO'},
+  brent:{label:'브렌트 현물 · USD/배럴',type:'fred',series:'DCOILBRENTEU',dec:2,prefix:'$',sourceUrl:'https://fred.stlouisfed.org/series/DCOILBRENTEU'},
+  dubai:{label:'두바이유 · 월평균 USD/배럴',type:'fred',series:'POILDUBUSDM',dec:2,prefix:'$',sourceUrl:'https://fred.stlouisfed.org/series/POILDUBUSDM'},
+  hy:{label:'신용여건 · NFCI Credit (HY 대체)',type:'fred',series:'NFCICREDIT',dec:3,sourceUrl:'https://fred.stlouisfed.org/series/NFCICREDIT'},
+  sofr:{label:'SOFR · 국채 담보 익일물 조달금리',type:'fred',series:'SOFR',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/SOFR'},
+  iorb:{label:'IORB · 준비금 이자율',type:'fred',series:'IORB',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IORB'},
+  'repo-spread':{label:'SOFR−IORB · 조달 여건 (Basis 대체)',type:'fred',series:'SOFRIORB',dec:3,suffix:'%p',sourceUrl:'https://www.newyorkfed.org/markets/reference-rates/sofr'},
+  'treasury-vol':{label:'미국 10년 금리 · 20일 연율화 실현변동성 (MOVE 대체)',type:'fred',series:'DGS10VOL20',dec:1,suffix:'bp',sourceUrl:'https://fred.stlouisfed.org/series/DGS10'},
   'bond-us-3m':{label:'미국 국채 3개월',type:'fred',series:'DGS3MO',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS3MO',linkText:'FRED CHART VIEW ↗'},
   'bond-us-1y':{label:'미국 국채 1년',type:'fred',series:'DGS1',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS1',linkText:'FRED CHART VIEW ↗'},
   'bond-us-2y':{label:'미국 국채 2년',type:'fred',series:'DGS2',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS2',linkText:'FRED CHART VIEW ↗'},
@@ -2178,9 +2184,9 @@ const MARKET_CHARTS={
   'macro-inflation':{label:'인플레이션(PCE)',type:'fred',series:'PCEPI',range:'1y',dec:1,suffix:'%',transform:'yoy',periodsPerYear:12,sourceUrl:'https://fred.stlouisfed.org/series/PCEPI',linkText:'FRED CHART VIEW ↗'},
   'macro-gdpdef':{label:'GDP 디플레이터 증가율',type:'fred',series:'GDPDEF',range:'1y',dec:1,suffix:'%',transform:'qoq-annualized',periodsPerYear:4,sourceUrl:'https://fred.stlouisfed.org/series/GDPDEF',linkText:'FRED CHART VIEW ↗'},
   'rate-us':{label:'미국 실효 연방기금금리 (월평균)',type:'fred',series:'FEDFUNDS',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/FEDFUNDS',linkText:'FRED CHART VIEW ↗'},
-  'rate-jp':{label:'일본 정책금리',type:'fred',series:'IRSTCB01JPM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01JPM156N',linkText:'FRED CHART VIEW ↗'},
-  'rate-kr':{label:'한국 기준금리',type:'fred',series:'IRSTCB01KRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01KRM156N',linkText:'FRED CHART VIEW ↗'},
-  'rate-br':{label:'브라질 Selic',type:'fred',series:'IRSTCB01BRM156N',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IRSTCB01BRM156N',linkText:'FRED CHART VIEW ↗'}
+  'rate-jp':{label:'일본 정책금리 · BIS',type:'fred',series:'BIS_POLICY_JP',range:'1y',dec:2,suffix:'%',sourceUrl:'https://data.bis.org/topics/CBPOL/BIS%2CWS_CBPOL%2C1.0/D.JP'},
+  'rate-kr':{label:'한국 기준금리 · BIS',type:'fred',series:'BIS_POLICY_KR',range:'1y',dec:2,suffix:'%',sourceUrl:'https://data.bis.org/topics/CBPOL/BIS%2CWS_CBPOL%2C1.0/D.KR'},
+  'rate-br':{label:'브라질 Selic 목표금리 · BIS',type:'fred',series:'BIS_POLICY_BR',range:'1y',dec:2,suffix:'%',sourceUrl:'https://data.bis.org/topics/CBPOL/BIS%2CWS_CBPOL%2C1.0/D.BR'}
 };
 function setMarketStatus(status,msg){
   const el=document.getElementById('marketDashboardStatus');if(!el)return;
@@ -2283,7 +2289,7 @@ const RATE_DECISION_SCHEDULES=[
   ]}
 ];
 const BOND_YIELD_GROUPS=[
-  {key:'us',flag:'🇺🇸',name:'미국 국채·주택금리',note:'Federal Reserve / FRED · 일간 국채 · 모기지는 원문',spreadSeries:'T10Y3M',mortgage:true},
+  {key:'us',flag:'🇺🇸',name:'미국 국채·주택금리',note:'Federal Reserve / FRED · 일간 국채 · 주간 모기지',spreadSeries:'T10Y3M',mortgage:true},
   {key:'kr',flag:'🇰🇷',name:'한국 국채',url:'https://www.investing.com/rates-bonds/south-korea-government-bonds'},
   {key:'jp',flag:'🇯🇵',name:'일본 국채',url:'https://www.investing.com/rates-bonds/japan-government-bonds'},
   {key:'br',flag:'🇧🇷',name:'브라질 국채',url:'https://www.investing.com/rates-bonds/brazil-government-bonds'}
@@ -2439,8 +2445,11 @@ function renderBondYields(groups=BOND_YIELD_GROUPS){
     const spread=group.spreadSeries?card('bond-'+group.key+'-spread','10Y-3M'):'<div class="bond-card spread"><div class="bond-tenor">10Y-3M</div><div class="bond-value source-link-value">계산 미제공</div><div class="bond-source">만기별 수익률 원문 확인</div></div>';
     return '<div class="bond-country bond-country-'+escHtml(group.key)+'"><div class="bond-country-head"><div class="bond-country-name"><span class="bond-flag">'+escHtml(group.flag)+'</span><span>'+escHtml(group.name)+'</span></div><div class="bond-country-note">'+escHtml(group.note)+'</div></div><div class="bond-grid">'+tenors+mortgage+spread+'</div></div>';
   }).join('');
-  const links=groups.filter(group=>group.url).map(group=>'<a class="bond-country-link source-card" href="'+escHtml(group.url)+'" target="_blank" rel="noopener noreferrer"><span class="bond-country-name"><span class="bond-flag" aria-hidden="true">'+escHtml(group.flag)+'</span>'+escHtml(group.name)+'</span><span class="bond-country-link-source">Investing · 전체 만기 ↗</span></a>').join('');
-  box.innerHTML=curves+(links?'<div class="bond-country-links">'+links+'</div>':'');
+  const links=groups.filter(group=>group.url).map(group=>{
+    const key=group.key==='br'?'rate-br':'bond-'+group.key+'-10y',label=group.key==='br'?'브라질 금리 참고 · Selic 목표 (국채 대체)':group.name+' 10년 · 월평균';
+    return '<div class="bond-country bond-country-'+escHtml(group.key)+'"><div class="bond-country-head"><div class="bond-country-name">'+escHtml(group.flag)+' '+escHtml(label)+'</div></div><div class="bond-grid">'+card(key,group.key==='br'?'Selic 목표':'10년물 월평균')+'</div></div>';
+  }).join('');
+  box.innerHTML=curves+links;
   bindMarketChartClicks();notifyMarketRendered();
 }
 async function fetchBondYieldDashboard(){
@@ -2455,7 +2464,7 @@ function treasurySigned(value,dec=1,suffix=''){
   return (value>0?'+':'')+value.toFixed(dec)+suffix;
 }
 function treasuryMetricHtml(item,index){
-  return `<div class="basis-metric ${escHtml(item.tone||'info')}"><div class="basis-index">0${index} · ${escHtml(item.signal||'MONITOR')}</div><div class="basis-name">${escHtml(item.name)}</div><div class="basis-value${item.compact?' compact':''}">${escHtml(item.value)}</div><div class="basis-change">${escHtml(item.change)}</div><div class="basis-reading">${escHtml(item.reading)}</div><a class="basis-source" href="${escHtml(item.url)}" target="_blank" rel="noopener">${escHtml(item.source)} ↗</a>${item.method?`<div class="basis-method-note">${escHtml(item.method)}</div>`:''}</div>`;
+  return `<div class="basis-metric ${escHtml(item.tone||'info')}" ${item.key?`role="button" tabindex="0" data-chart-key="${escHtml(item.key)}"`:''}><div class="basis-index">0${index} · ${escHtml(item.signal||'MONITOR')}</div><div class="basis-name">${escHtml(item.name)}</div><div class="basis-value${item.compact?' compact':''}">${escHtml(item.value)}</div><div class="basis-change">${escHtml(item.change)}</div><div class="basis-reading">${escHtml(item.reading)}</div><a class="basis-source" href="${escHtml(item.url)}" target="_blank" rel="noopener">${escHtml(item.source)} ↗</a>${item.method?`<div class="basis-method-note">${escHtml(item.method)}</div>`:''}</div>`;
 }
 function renderTreasuryBasisMonitor(data=TREASURY_BASIS_FALLBACK,liveCount=0){
   const strip=document.getElementById('treasuryBasisStrip');
@@ -2471,15 +2480,18 @@ function renderTreasuryBasisMonitor(data=TREASURY_BASIS_FALLBACK,liveCount=0){
   const oiPrev=Number(oi.value)-Number(oi.change||0);
   const oiWow=oiPrev?Number(oi.change||0)/oiPrev*100:0;
   const oiRisk=Math.abs(oiWow)>=7?2:Math.abs(oiWow)>=3?1:0;
+  const officialMetric=(key)=>{const cfg=MARKET_CHARTS[key],series=globalThis.OfficialData?.get(cfg),last=series?.points.at(-1);return {value:last?fmtMarketNumber(last.value,cfg):'확인 불가',source:series?OfficialData.source(series)+' · '+last.date:'공식 데이터 연결 대기',url:cfg.sourceUrl};};
+  const funding=officialMetric('repo-spread'),sofr=officialMetric('sofr'),vol=officialMetric('treasury-vol');
   const items=[
-    {name:'Cash-Futures Basis / OABNOC',value:'계산 데이터 미지원',compact:true,change:'계산 방법·해석만 제공',reading:'양(+)의 연율 basis 확대 = long-basis 수익 유인 증가',tone:'info',signal:'METHODOLOGY',source:'FED METHOD',url:TREASURY_BASIS_LINKS.basis,method:'CTD 가격·전환계수·옵션가치·term repo가 필요합니다. OFR/J.P. Morgan 방식은 부호가 반대일 수 있습니다.'},
-    {name:'SOFR · Repo Funding',value:'원문 보기',compact:true,change:'수치·스프레드 직접 수집 미제공',reading:'SOFR와 IORB는 원 제공처에서 확인합니다.',tone:'info',signal:'SOURCE LINK',source:'NY Fed · SOFR',url:TREASURY_BASIS_LINKS.repo},
+    {name:'SOFR−IORB · 조달 여건 (Basis 대체)',key:'repo-spread',...funding,change:'같은 관측일의 SOFR − IORB · %p',reading:'스프레드 확대 시 준비금 금리 대비 담보 조달 부담 증가',tone:'info',signal:'FUNDING PROXY',method:'Cash-Futures Basis/OABNOC 수익률이 아닙니다. CTD·선물 가격을 쓰지 않는 조달 여건 참고 지표입니다.'},
+    {name:'SOFR · Repo Funding',key:'sofr',...sofr,change:'국채 담보 익일물 · 연율 %',reading:'전 영업일 Repo 거래를 반영한 일간 관측값',tone:'info',signal:'OFFICIAL DATA'},
     {name:'Leveraged Funds Futures Net',value:'-$'+shortBillions.toFixed(0)+'B',change:'순숏 전주 대비 '+shortDeltaText,reading:positionRisk===2?'순숏 포지션 과밀 위험':positionRisk===1?'Basis 포지션 집중 구간':'순숏 규모 안정 구간',tone:treasuryRiskTone(positionRisk),signal:positionRisk===2?'CROWDED':positionRisk===1?'ELEVATED':'NORMAL',source:(position.source||'OFR/CFTC')+' · '+String(position.date||'').slice(0,10),url:TREASURY_BASIS_LINKS.position},
     {name:'Treasury Futures Open Interest',value:(Number(oi.value)/1e6).toFixed(2)+'M',change:'WoW '+treasurySigned(oiWow,1,'%')+' · '+treasurySigned(Number(oi.change)/1e6,2,'M'),reading:oiRisk===2?'전체 포지션 규모 급변':oiRisk===1?'포지션 증가 속도 주의':'포지션 변화 안정',tone:treasuryRiskTone(oiRisk),signal:oiRisk===2?'FAST CHANGE':oiRisk===1?'BUILDING':'STABLE',source:(oi.source||'CFTC')+' · '+String(oi.date||'').slice(0,10),url:TREASURY_BASIS_LINKS.openInterest,method:'만기별 계약 단위가 다르므로 절대값보다 주간 변화율을 우선 봅니다.'},
-    {name:'Treasury Liquidity · MOVE Proxy',value:'원문 확인',compact:true,change:'직접 수집 미제공',reading:'MOVE는 국채 옵션 변동성 지표입니다.',tone:'info',signal:'SOURCE LINK',source:'TradingView에서 보기',url:TREASURY_BASIS_LINKS.liquidity,method:'현재 값을 확인하지 못했으므로 위험도를 자동 판정하지 않습니다.'}
+    {name:'10년 금리 실현변동성 (MOVE 대체)',key:'treasury-vol',...vol,change:'20거래일 변화 표준편차 × √252 · bp',reading:'높을수록 최근 국채 금리 움직임이 컸음',tone:'info',signal:'REALIZED VOL',method:'DGS10 일간 금리 변화로 자체 계산합니다. MOVE 내재변동성이나 매수·매도 호가 기반 유동성 지표가 아닙니다.'}
   ];
   strip.innerHTML=items.map((item,index)=>treasuryMetricHtml(item,index+1)).join('');
-  if(status){status.className='basis-risk-badge watch';status.textContent='BASIS MONITOR · '+liveCount+'/2 SOURCES · SOFR·MOVE 원문 확인';}
+  bindMarketChartClicks();
+  if(status){status.className='basis-risk-badge watch';status.textContent='공개 대체 지표 · 포지션 '+liveCount+'/2 · 관측일 확인';}
 }
 async function fetchTreasuryLeveragedPosition(){
   const start=new Date(Date.now()-370*24*60*60*1000).toISOString().slice(0,10);
@@ -2515,6 +2527,7 @@ async function fetchTreasuryBasisSnapshot(){
 async function fetchTreasuryBasisMonitor(){
   if(treasuryBasisLoading)return;
   treasuryBasisLoading=true;
+  await OfficialData.load();
   renderTreasuryBasisMonitor(TREASURY_BASIS_FALLBACK,0);
   try{
     try{
@@ -2689,23 +2702,31 @@ function setMarketChartRange(range){
   document.querySelectorAll('.chart-range-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.range===range));
   showMarketChart(currentMarketChartKey);
 }
-const EXTERNAL_MARKET_INDICES={vix:'TVC:VIX'};
-function mountMarketSourceLinks(){
-  const theme=document.body.classList.contains('light')?'light':'dark';
-  Object.entries(EXTERNAL_MARKET_INDICES).forEach(([key,symbol])=>{
-    const card=document.querySelector('[data-chart-key="'+key+'"],[data-official-chart-key="'+key+'"]');
-    if(!card||card.dataset.widgetTheme===theme)return;
-    card.dataset.widgetTheme=theme;
-    card.removeAttribute('role');card.removeAttribute('tabindex');card.removeAttribute('data-chart-key');
-    card.dataset.officialChartKey=key;
-    const heading=document.createElement('div');heading.className='indicator-name';heading.textContent=MARKET_CHARTS[key].label;
-    const host=document.createElement('div');host.className='official-quote';
-    const value=document.createElement('div');value.className='indicator-value';value.textContent='원문에서 확인';
-    const note=document.createElement('div');note.className='indicator-note';note.textContent='시세·차트 외부 링크';host.append(value,note);
-    const link=document.createElement('a');link.href=MARKET_CHARTS[key].tv;link.target='_blank';link.rel='noopener noreferrer';link.className='indicator-source';link.textContent='TradingView 원문 ↗';
-    const chart=document.createElement('span');chart.className='source-only-label';chart.textContent='외부 링크';
-    card.replaceChildren(heading,host,chart,link);
-  });
+function renderOfficialMarketValues(){
+  let count=0;
+  for(const key of ['vix','dxy','usdjpy','eurusd','wti','brent','dubai','hy','sofr','iorb']){
+    const cfg=MARKET_CHARTS[key],data=OfficialData.get(cfg),last=data?.points.at(-1),prev=data?.points.at(-2);
+    const value=last?fmtMarketNumber(last.value,cfg):'확인 불가';
+    const frequency={daily:'일간',weekly:'주간',monthly:'월평균'}[data?.frequency]||'';
+    const delta=last&&prev?last.value-prev.value:null;
+    const difference=delta===null?'':cfg.suffix==='%'?treasurySigned(delta,2,'%p'):['vix','hy'].includes(key)?treasurySigned(delta,3,'p'):treasurySigned(prev.value?delta/Math.abs(prev.value)*100:0,2,'%');
+    const basis=last?last.date+' · '+frequency+(difference?' · 전 관측 대비 '+difference:''):'공식 데이터 연결 대기';
+    if(last)count++;
+    if(key==='vix'){
+      renderWatch('ind-vix',value,'indicator-value');
+      renderWatch('chg-vix',basis,'indicator-change '+pctClass(delta));
+      renderWatch('src-vix',data?OfficialData.source(data):'Chicago Fed / FRED');
+    }else{
+      const el=document.getElementById('watch-'+key);if(!el)continue;
+      const row=el.closest('.watch-row');
+      row.dataset.chartKey=key;row.setAttribute('role','button');row.tabIndex=0;row.title=cfg.label+' · 차트 보기';
+      row.firstElementChild.textContent=cfg.label;
+      el.className='numeric-watch-value';
+      el.innerHTML='<strong>'+escHtml(value)+'</strong><small class="'+pctClass(delta)+'">'+escHtml(basis)+'</small>';
+    }
+  }
+  bindMarketChartClicks();notifyMarketRendered();
+  return count;
 }
 function bindMarketChartClicks(){
   document.querySelectorAll('[data-chart-key]').forEach(el=>{
@@ -2721,31 +2742,23 @@ async function fetchMarketDashboard(force=false){
   document.querySelectorAll('.indicator-value.loading,.watch-row span.loading').forEach(el=>{el.textContent='연결 중';});
   const sourceRows=[];
   let ok=0,fail=0;
-  mountMarketSourceLinks();
-  MARKET_ITEMS.filter(item=>item.watch).forEach(item=>{
-    const el=document.getElementById(item.watch);
-    if(el){el.className='market-flat';el.innerHTML=sourceLinkHtml(marketSourceUrl(MARKET_CHARTS[item.key]),'원문 보기');}
-  });
-  const hyEl=document.getElementById('watch-hy');
-  if(hyEl){hyEl.className='market-flat';hyEl.innerHTML=sourceLinkHtml(marketSourceUrl(MARKET_CHARTS.hy),'원문 보기');}
+  await OfficialData.load();
+  const numericCount=renderOfficialMarketValues();
   const fng=await fetchFearGreed();
   const fngVal=document.getElementById('ind-fng'),fngChg=document.getElementById('chg-fng'),fngSrc=document.getElementById('src-fng');
   if(fng){const fngCls=fearGreedClass(fng.value);ok++;fngVal.textContent=String(fearGreedDisplayValue(fng.value));fngVal.classList.remove('loading');fngVal.className='indicator-value '+fngCls;fngChg.className='indicator-change '+fngCls;fngChg.textContent=fng.label;fngSrc.textContent=fng.source+' · 기준 '+(window.WorkspaceUI?.timestampLabel(fng.timestamp)||'미제공');}else{fail++;fngVal.textContent='확인 불가';fngVal.classList.remove('loading');fngVal.className='indicator-value market-flat';fngChg.className='indicator-change market-flat';fngChg.textContent='데이터 연결 실패';fngSrc.textContent='CNN · 기준일 확인 불가';}
   const cfng=await fetchCryptoFearGreed();
   const cfngVal=document.getElementById('ind-cfng'),cfngChg=document.getElementById('chg-cfng'),cfngSrc=document.getElementById('src-cfng');
   if(cfng){const cfngCls=fearGreedClass(cfng.value);ok++;cfngVal.textContent=String(fearGreedDisplayValue(cfng.value));cfngVal.classList.remove('loading');cfngVal.className='indicator-value '+cfngCls;cfngChg.className='indicator-change '+cfngCls;cfngChg.textContent=cfng.label;cfngSrc.textContent=cfng.source+' · 기준 '+(window.WorkspaceUI?.timestampLabel(cfng.timestamp)||'미제공');}else{fail++;cfngVal.textContent='실패';cfngVal.classList.remove('loading');cfngVal.className='indicator-value market-flat';cfngChg.className='indicator-change market-flat';cfngChg.textContent='—';cfngSrc.textContent='연결 실패';}
-  renderWatch('watch-dubai','$'+DUBAI_CRUDE_FALLBACK.value.toFixed(2)+' · '+DUBAI_CRUDE_FALLBACK.date+' 참고값 (자동 갱신 없음)','market-flat');
   sourceRows.push({name:'심리 지표',state:ok?'ok':'error',text:ok+'개 성공'});
-  sourceRows.push({name:'VIX',state:'warn',text:'외부 표시 제한 · 원문 링크 제공'});
+  sourceRows.push({name:'공개 수치 · 환율·현물·금융위험',state:numericCount===10?'ok':'warn',text:numericCount+'/10 · 일간/주간/월간 관측값'});
   sourceRows.push({name:'CNN Fear & Greed',state:fng?'ok':'warn',text:fng?'정상':'Worker 필요'});
   sourceRows.push({name:'Crypto Fear & Greed',state:cfng?'ok':'error',text:cfng?'정상':'실패'});
-  sourceRows.push({name:'하이일드·원자재·환율',state:'warn',text:'원문 링크'});
-  sourceRows.push({name:'Dubai Crude',state:'warn',text:DUBAI_CRUDE_FALLBACK.date+' 참고값'});
   sourceRows.push({name:'심리 지표 연결 확인',state:'ok',text:'60초마다 · 관측 시각과 별개'});
   const list=document.getElementById('marketSourceList');
   if(list)list.innerHTML=sourceRows.map(r=>`<div class="source-row ${r.state}"><span>${escHtml(r.name)}</span><span>${escHtml(r.text)}</span></div>`).join('');
   const now=new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  setMarketStatus(fail?'warn':'ok','심리 연결 확인 '+now+' · '+ok+'/2'+(fail?' · 일부 실패':''));
+  setMarketStatus(fail||numericCount!==10?'warn':'ok','공개 수치 '+numericCount+'/10 · 심리 '+ok+'/2 · '+now);
   }catch(e){
     setMarketStatus('error','심리 지표 연결 실패');
   }finally{
@@ -2955,7 +2968,7 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script defer src="assets/lucide-0.468.0.min.js"></script>
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
-<script type="module" src="assets/workspace.mjs?v=20261016-indicator-home"></script>
+<script type="module" src="assets/workspace.mjs?v=20261016-numeric"></script>
 <script type="module" src="assets/country-profile.mjs?v=20260923-us-geography1"></script>
 <script type="module" src="assets/country-data-client.mjs?v=20260922-registry1"></script>
 </body>

@@ -46,7 +46,8 @@ test('workflow reuses original chart and sections without adding a data collecti
   assert.match(code,/\.showModal\(\)/);
   assert.doesNotMatch(code,/data-recent-symbol/);
   assert.match(code,/item\.hidden=.*term/);
-  assert.match(html,/참고값 \(자동 갱신 없음\)/);
+  assert.match(html,/POILDUBUSDM/);
+  assert.doesNotMatch(html,/DUBAI_CRUDE_FALLBACK/);
   assert.match(html,/app-view-change/);
   for(const path of ['assets/workspace.mjs','assets/workspace-model.mjs','assets/workspace.css']){
     assert.ok((await readFile(new URL('../'+path,import.meta.url),'utf8')).length);

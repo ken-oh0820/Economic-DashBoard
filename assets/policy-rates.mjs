@@ -25,6 +25,14 @@ export function policyRate(group,official,now=Date.now()){
         delayed:lower.status!=='ok'||upper.status!=='ok'||!Number.isFinite(checked)||now-checked>86400000};
     }
   }
+  if(['kr','jp'].includes(group.key)){
+    const item=official?.get({series:'BIS_POLICY_'+group.key.toUpperCase()}),last=item?.points?.at(-1);
+    const minimum=verified.effectiveDate||verified.decisionDate;
+    if(last&&last.date>=minimum&&Date.parse(last.date)<=now&&Number.isFinite(last.value)){
+      rate={...rate,value:last.value,mode:'api',referenceDate:last.date,dateLabel:'BIS 관측일 '+last.date,checkedAt:item.fetchedAt,source:'BIS · '+verified.source,url:item.sourceUrl,delayed:item.status!=='ok'||!Number.isFinite(Date.parse(item.fetchedAt))||now-Date.parse(item.fetchedAt)>86400000};
+      delete rate.effectiveNote;
+    }
+  }
   const today=new Date(now+9*3600000).toISOString().slice(0,10);
   const unconfirmed=group.items.some(item=>item.date>rate.referenceDate&&item.date<=today);
   const checked=Date.parse(rate.checkedAt);

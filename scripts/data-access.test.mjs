@@ -24,7 +24,7 @@ test('main page scripts parse and use official display widgets',async()=>{
     if(/src=|application\/ld\+json|type="module"/.test(match[1]))continue;
     new vm.Script(match[2]);
   }
-  assert.match(html,/MOVE 원문 확인/);
+  assert.match(html,/20일 연율화 실현변동성 \(MOVE 대체\)/);
   const widget=await readFile(new URL('assets/tradingview-widgets.mjs',root),'utf8');
   assert.match(widget,/s3\.tradingview\.com\/external-embedding/);
   assert.match(widget,/tradingview-widget-copyright/);

@@ -46,7 +46,7 @@ test('macro, sentiment and watch indicators stack on the left independently from
   const groups=Array.from({length:4},(_,index)=>({id:index}));
   const ctx=vm.createContext({groups,document:{createElement:()=>({append(...children){this.children=children;}})},shell:{append:column=>columns.push(column)}});
   const start=code.indexOf('const monitorColumns=');
-  const end=code.indexOf("sources.querySelectorAll",start);
+  const end=code.indexOf("jump.querySelectorAll",start);
   assert.ok(start>=0&&end>start);
   vm.runInContext(code.slice(start,end),ctx);
   assert.equal(columns.length,2);

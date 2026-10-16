@@ -80,7 +80,8 @@ test('global rates retain only US, Japan, Korea and Brazil in the requested orde
   const output=nodes.get('globalRateGrid').innerHTML;
   assert.deepEqual([...output.matchAll(/class="macro-group">([^<]+)/g)].map(match=>match[1]),['미국','일본','한국','브라질']);
   assert.equal([...output.matchAll(/class="macro-card source-card"/g)].length,4);
-  for(const series of ['FEDFUNDS','IRSTCB01JPM156N','IRSTCB01KRM156N','IRSTCB01BRM156N'])assert.ok(output.includes('/series/'+series+'"'));
+  assert.ok(output.includes('/series/FEDFUNDS"'));
+  for(const country of ['JP','KR','BR'])assert.ok(output.includes('/D.'+country+'"'));
   assert.doesNotMatch(output,/#\d|undefined/);
   assert.match(html,/GLOBAL RATES · 4개국/);
   assert.doesNotMatch(html,/GLOBAL RATES · TOP 10|미국 시장 영향력 기준 TOP 10/);
@@ -123,14 +124,15 @@ test('shared chart is reused inside the workspace detail dialog',async()=>{
   assert.ok(workspace.includes("makeDialog('workspaceChart'"));
   assert.ok(workspace.includes("$('#chartPanelHost').append($('.market-chart-panel'))"));
 });
-test('Korea, Japan and Brazil each have one consolidated bond link; US tenors remain',()=>{
+test('overseas rate rows show sourced observations with Brazilian policy proxy explicitly distinguished',()=>{
   const {context,nodes}=harness();
+  context.window={};
+  context.OfficialData={get:()=>({points:[{date:'2026-08-01',value:4},{date:'2026-09-01',value:4.1}]}),bondChanges:points=>({last:points.at(-1),day:.1,monthly:.1}),source:()=> 'Official source'};
   vm.runInContext('renderBondYields()',context);
   const output=nodes.get('bondYieldGrid').innerHTML;
-  const links=[...output.matchAll(/class="bond-country-link source-card" href="([^"]+)"/g)].map(match=>match[1]);
-  assert.deepEqual(links,['south-korea','japan','brazil'].map(country=>'https://www.investing.com/rates-bonds/'+country+'-government-bonds'));
-  assert.equal([...output.matchAll(/class="bond-card source-card"/g)].length,9);
-  assert.equal([...output.matchAll(/rel="noopener noreferrer"/g)].length,12);
-  assert.doesNotMatch(output,/계산 미제공|bond-country-(?:kr|jp|br)|investing.com\/search/);
-  for(const series of ['DGS3MO','DGS1','DGS2','DGS5','DGS10','DGS20','DGS30','MORTGAGE30US','T10Y3M'])assert.ok(output.includes('/series/'+series+'"'));
+  assert.doesNotMatch(output,/bond-country-link|원문 보기/);
+  assert.equal([...output.matchAll(/class="bond-card"/g)].length,12);
+  assert.match(output,/한국 국채 10년 · 월평균/);assert.match(output,/일본 국채 10년 · 월평균/);
+  assert.match(output,/브라질 금리 참고 · Selic 목표 \(국채 대체\)/);
+  assert.match(output,/data-chart-key="rate-br"/);assert.match(output,/4\.10%/);assert.match(output,/2026-09-01/);
 });

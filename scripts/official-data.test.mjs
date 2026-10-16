@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
-import {SERIES,observations,spreadPoints} from './update-official-data.mjs';
+import {SERIES,observations,spreadPoints,seriesRights,bisPolicySeries,yieldVolatility} from './update-official-data.mjs';
 const code=await readFile(new URL('../assets/official-data.js',import.meta.url),'utf8');
 const html=await readFile(new URL('../index.html',import.meta.url),'utf8');
 function setup(data){
@@ -15,13 +15,35 @@ const entry=points=>({points,source:'BLS / FRED',frequency:'monthly',status:'ok'
 test('collector rejects missing values and aligns spread on matching dates',()=>{
   assert.deepEqual(observations([{date:'2026-01-01',value:'.'},{date:'2026-01-02',value:null},{date:'2026-01-03',value:'-1'},{date:'bad',value:'2'},{date:'2026-01-04',value:''}]),[{date:'2026-01-03',value:-1}]);
   assert.deepEqual(spreadPoints([{date:'2026-01-01',value:4},{date:'2026-01-02',value:5}],[{date:'2026-01-02',value:3}]),[{date:'2026-01-02',value:2}]);
-  for(const id of ['VIXCLS','MORTGAGE30US','BAMLH0A0HYM2','IRLTLT01KRM156N'])assert.equal(SERIES[id],undefined);
+  for(const id of ['VIXCLS','BAMLH0A0HYM2'])assert.equal(SERIES[id],undefined);
   assert.ok(SERIES.PPIFIS);assert.equal(SERIES.PPIACO,undefined);
 });
 test('snapshot requests deduplicate and reject unapproved series',async()=>{
-  const {api,requests}=setup({schemaVersion:1,updatedAt:new Date().toISOString(),series:{GDP:entry([{date:'2025-01-01',value:100},{date:'2025-04-01',value:110}]),MORTGAGE30US:entry([{date:'2025-01-01',value:1},{date:'2025-02-01',value:2}])}});
+  const {api,requests}=setup({schemaVersion:1,updatedAt:new Date().toISOString(),series:{GDP:entry([{date:'2025-01-01',value:100},{date:'2025-04-01',value:110}]),MORTGAGE30US:{...entry([{date:'2025-01-01',value:1},{date:'2025-02-01',value:2}]),rights:'Copyrighted: Pre-approval Required'}}});
   await Promise.all([api.load(),api.load(),api.load()]);
   assert.equal(requests(),1);assert.equal(api.get({series:'MORTGAGE30US'}),null);assert.equal(api.get({series:'GDP'}).points.length,2);
+});
+
+test('reviewed attribution series require an allowed label and runtime attribution; pre-approval stays blocked',async()=>{
+  assert.equal(seriesRights('SOFR',[{name:'copyrighted: citation required'}]),'Copyrighted: Citation Required');
+  assert.equal(seriesRights('VIXCLS',[{name:'copyrighted: citation required'}]),null);
+  assert.equal(seriesRights('MORTGAGE30US',[{name:'copyrighted: pre-approval required'},{name:'copyrighted: citation required'}]),null);
+  const data={...entry([{date:'2026-09-01',value:6},{date:'2026-09-08',value:6.1}]),rights:'Copyrighted: Citation Required'};
+  const {api}=setup({schemaVersion:1,updatedAt:new Date().toISOString(),series:{MORTGAGE30US:data,NFCIRISK:{...data,notice:'Chicago Fed source notes',citation:'Chicago Fed via FRED'}}});
+  await api.load();assert.equal(api.get({series:'MORTGAGE30US'}),null);
+  assert.equal(api.get({series:'NFCIRISK'}).points.at(-1).value,6.1);
+  assert.equal(api.metadata({series:'NFCIRISK'}).notice,'Chicago Fed source notes');
+});
+
+test('BIS parser follows dimension keys and observation dates instead of country or row order',()=>{
+  const parsed=bisPolicySeries({data:{structure:{dimensions:{series:[{id:'REF_AREA',values:[{id:'BR'},{id:'KR'},{id:'JP'}]},{id:'FREQ',values:[{id:'D'}]}],observation:[{id:'TIME_PERIOD',values:[{id:'2026-10-02'},{id:'2026-10-01'}]}]}},dataSets:[{series:{'1:0':{observations:{'0':['3'],'1':['2.75']}},'0:0':{observations:{'0':['13.75'],'1':[null]}},'2:0':{observations:{'0':['1.25'],'1':['1.25']}}}}]}});
+  assert.deepEqual(parsed.BIS_POLICY_KR,[{date:'2026-10-01',value:2.75},{date:'2026-10-02',value:3}]);
+  assert.equal(parsed.BIS_POLICY_BR,undefined);assert.equal(parsed.BIS_POLICY_JP.length,2);
+});
+
+test('realized Treasury volatility uses sample yield changes in basis points and rejects long gaps',()=>{
+  assert.deepEqual(yieldVolatility([{date:'2026-10-01',value:4},{date:'2026-10-02',value:4.1},{date:'2026-10-05',value:4.0}],2),[{date:'2026-10-05',value:Number(Math.sqrt(200*252).toFixed(6))}]);
+  assert.deepEqual(yieldVolatility([{date:'2026-09-01',value:4},{date:'2026-10-02',value:4.1},{date:'2026-10-05',value:4.0}],2),[]);
 });
 test('month comparison clamps calendar dates and never substitutes a distant month',()=>{
   const {api}=setup({});

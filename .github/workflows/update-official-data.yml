@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Fetch public-domain series through the official FRED API
+      - name: Fetch reviewed series through the official FRED and BIS APIs
         id: collect
         continue-on-error: true
         env:

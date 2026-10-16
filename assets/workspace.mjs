@@ -1,8 +1,8 @@
 import {DEFAULT_FAVORITES,cleanFavorites,observationLabel,timestampLabel,readPreference,savePreference} from './workspace-model.mjs?v=20260917-five-menus';
 import {initMonitorTools,nextReleaseText} from './monitor-tools.mjs?v=20260917-contrast';
 import {initEconomyTabs} from './economy-tabs.mjs?v=20260918-economy';
-import {indicatorExplanation} from './indicator-explanations.mjs?v=20260918-economy';
-import {initPolicyRates} from './policy-rates.mjs?v=20260918-effective';
+import {indicatorExplanation} from './indicator-explanations.mjs?v=20261016-numeric';
+import {initPolicyRates} from './policy-rates.mjs?v=20261016-numeric';
 import {initInvestmentCalendar} from './investment-calendar.mjs?v=20261012-fomc2027';
 
 const $=selector=>document.querySelector(selector);
@@ -70,10 +70,6 @@ const monitorColumns=[document.createElement('div'),document.createElement('div'
 monitorColumns.forEach(column=>{column.className='monitor-column';shell.append(column);});
 monitorColumns[0].append(groups[0],groups[2],groups[3]);
 monitorColumns[1].append(groups[1]);
-sources.querySelectorAll('.watch-row[data-chart-key]').forEach(row=>{
-  if(row.dataset.chartKey==='dubai')return;
-  row.removeAttribute('role');row.removeAttribute('tabindex');row.removeAttribute('data-chart-key');
-});
 jump.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{const section=$('#'+btn.dataset.section);section.tabIndex=-1;section.focus({preventScroll:true});section.scrollIntoView({block:'start',behavior:'instant'});}));
 function initConnectionStatus(){
   const list=$('#marketSourceList'),panel=list.closest('.dashboard-panel');
@@ -143,10 +139,17 @@ function openChart(key){
   activeChart=key;
   $('#workspaceChartTitle').textContent=MARKET_CHARTS[key].label;
   const original=document.querySelector('#indicatorDashboard [data-chart-key="'+key+'"]');
-  const value=original?.querySelector('.macro-value,.bond-value,.indicator-value')?.textContent;
+  const value=original?.querySelector('.macro-value,.bond-value,.indicator-value,.numeric-watch-value strong,.basis-value')?.textContent;
   const changes=[...(original?.querySelectorAll('.macro-change,.bond-change,.indicator-change')||[])].map(node=>node.textContent).filter(Boolean);
   const summary=(value?'<div class="chart-current-value">'+escape(value)+'</div>':'')+changes.map(text=>'<div class="chart-current-change">'+escape(text)+'</div>').join('');
   $('#chartDataBasis').innerHTML=summary+(OfficialData.metadata(MARKET_CHARTS[key])?provenance(key)+'<div class="chart-source-name">'+escape(OfficialData.metadata(MARKET_CHARTS[key]).source)+'</div>':'<p>기준일·출처는 차트와 원문에서 확인하세요.</p>');
+  const metadata=OfficialData.metadata(MARKET_CHARTS[key]);
+  if(metadata?.citation||metadata?.notice){
+    const attribution=document.createElement('details');attribution.className='data-attribution';
+    const heading=document.createElement('summary');heading.textContent='출처·이용 조건';
+    const text=document.createElement('p');text.textContent=[metadata.citation,metadata.notice].filter(Boolean).join('\n\n');
+    attribution.append(heading,text);$('#chartDataBasis').append(attribution);
+  }
   updateFavoriteButton();
   renderChartExplanation(key);
   if(!chartDialog.open)chartDialog.showModal();

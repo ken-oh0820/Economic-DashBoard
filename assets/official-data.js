@@ -1,6 +1,8 @@
 (function(root){
   let snapshot={series:{}},pending=null,checked=0,failed=false;
   const allowed=new Set(['CPIAUCSL','CPILFESL','PPIFIS','WPSFD49116','UNRATE','PAYEMS','CES0500000003','GDP','GDPC1','PCEPI','GDPDEF','FEDFUNDS','DFEDTARL','DFEDTARU','DGS3MO','DGS1','DGS2','DGS5','DGS10','DGS20','DGS30','T10Y3M']);
+  for(const id of ['SOFR','IORB','SOFRIORB','DGS10VOL20','DTWEXBGS','DEXJPUS','DEXUSEU','DCOILWTICO','DCOILBRENTEU','NFCIRISK','NFCICREDIT','MORTGAGE30US','POILDUBUSDM','IRLTLT01KRM156N','IRLTLT01JPM156N','BIS_POLICY_JP','BIS_POLICY_KR','BIS_POLICY_BR'])allowed.add(id);
+  const attributed=new Set(['SOFR','SOFRIORB','NFCIRISK','NFCICREDIT','MORTGAGE30US','POILDUBUSDM','IRLTLT01KRM156N','IRLTLT01JPM156N']);
   async function load(){
     if(pending)return pending;
     if(Date.now()-checked<300000)return snapshot;
@@ -12,7 +14,8 @@
         if(data.schemaVersion!==1||!data.series||!Number.isFinite(Date.parse(data.updatedAt)))throw Error('invalid snapshot');
         const series={};
         for(const [id,item] of Object.entries(data.series)){
-          if(!allowed.has(id)||!Array.isArray(item.points)||item.rights!=='Public Domain: Citation Requested')continue;
+          const rights=item.rights==='Public Domain: Citation Requested'||attributed.has(id)&&item.rights==='Copyrighted: Citation Required'&&item.notice&&item.citation||id.startsWith('BIS_POLICY_')&&item.rights==='BIS: Attribution Required';
+          if(!allowed.has(id)||!Array.isArray(item.points)||!rights)continue;
           const points=item.points.filter(p=>/^\d{4}-\d{2}-\d{2}$/.test(p.date)&&Number.isFinite(p.value)).sort((a,b)=>a.date.localeCompare(b.date));
           if(points.length>1)series[id]={...item,points};
         }
@@ -30,7 +33,7 @@
   function metadata(cfg){
     const item=get(cfg);if(!item)return null;
     const fetched=Date.parse(item.fetchedAt);
-    return {date:item.points.at(-1).date,frequency:item.frequency,source:item.source,fetchedAt:item.fetchedAt,
+    return {date:item.points.at(-1).date,frequency:item.frequency,source:item.source,fetchedAt:item.fetchedAt,sourceUrl:item.sourceUrl,notice:item.notice,citation:item.citation,
       delayed:failed||item.status!=='ok'||!Number.isFinite(fetched)||Date.now()-fetched>86400000};
   }
   function monthBefore(date,months){
