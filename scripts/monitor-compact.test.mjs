@@ -7,10 +7,11 @@ const html=await readFile(new URL('../index.html',import.meta.url),'utf8');
 const css=await readFile(new URL('../assets/monitor-compact.css',import.meta.url),'utf8');
 const code=await readFile(new URL('../assets/workspace.mjs',import.meta.url),'utf8');
 
-test('compact monitor has item/value columns and scoped responsive rows without changing dictionary styles',()=>{
+test('compact monitor arranges metrics horizontally without changing dictionary styles',()=>{
   assert.ok(html.indexOf('assets/monitor-compact.css')>html.indexOf('assets/workspace.css'));
-  assert.match(css,/content:'항목'/);
-  assert.match(css,/content:'수치'/);
+  assert.match(css,/grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
+  assert.match(css,/grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
+  assert.doesNotMatch(css,/content:'항목'|content:'수치'/);
   assert.match(css,/@media\(max-width:760px\)/);
   assert.match(css,/min-height:44px/);
   assert.doesNotMatch(css,/#usEconomyGuide|\.us-guide|body\.guide-mode/);
@@ -54,8 +55,8 @@ test('macro and watch stack independently from rates, with sentiment above overv
   assert.deepEqual(columns[1].children,[groups[1]]);
   assert.ok(columns.every(column=>column.className==='monitor-column'));
   assert.ok(code.includes('overview.before(groups[2])'));
-  assert.match(css,/\.monitor-column\{display:flex;flex-direction:column;min-width:0\}/);
+  assert.match(css,/\.monitor-column\{display:contents\}/);
   assert.match(css,/#monitorMacro\{margin-bottom:12px\}/);
   assert.match(css,/#monitorMacro>\.dashboard-panel\{margin-bottom:0\}/);
-  assert.ok(html.includes('assets/monitor-compact.css?v=20260929-columns'));
+  assert.ok(html.includes('assets/monitor-compact.css?v=20261017-horizontal'));
 });
