@@ -2130,14 +2130,14 @@ function investingBondUrl(country,tenor){
 const MARKET_CHARTS={
   fng:{label:'CNN 공포탐욕지수',type:'fng',dec:0,suffix:'',tv:'https://www.tradingview.com/search/?query=CNN%20Fear%20and%20Greed'},
   cfng:{label:'암호화폐 공포탐욕',type:'cfng',dec:0,suffix:'',tv:'https://www.tradingview.com/search/?query=Crypto%20Fear%20and%20Greed'},
-  vix:{label:'금융위험 · NFCI Risk (VIX 대체)',type:'fred',series:'NFCIRISK',dec:3,suffix:'',sourceUrl:'https://fred.stlouisfed.org/series/NFCIRISK'},
+  vix:{label:'금융위험 · NFCI Risk (VIX 대체)',type:'fred',series:'NFCIRISK',dec:3,suffix:'',deltaUnit:'p',sourceUrl:'https://fred.stlouisfed.org/series/NFCIRISK'},
   dxy:{label:'광의 달러지수 (DXY 대체)',type:'fred',series:'DTWEXBGS',dec:2,sourceUrl:'https://fred.stlouisfed.org/series/DTWEXBGS'},
   usdjpy:{label:'달러/엔 · 엔 per USD',type:'fred',series:'DEXJPUS',dec:2,prefix:'¥',sourceUrl:'https://fred.stlouisfed.org/series/DEXJPUS'},
   eurusd:{label:'유로/달러 · USD per EUR',type:'fred',series:'DEXUSEU',dec:4,prefix:'$',sourceUrl:'https://fred.stlouisfed.org/series/DEXUSEU'},
   wti:{label:'WTI 현물 · USD/배럴',type:'fred',series:'DCOILWTICO',dec:2,prefix:'$',sourceUrl:'https://fred.stlouisfed.org/series/DCOILWTICO'},
   brent:{label:'브렌트 현물 · USD/배럴',type:'fred',series:'DCOILBRENTEU',dec:2,prefix:'$',sourceUrl:'https://fred.stlouisfed.org/series/DCOILBRENTEU'},
   dubai:{label:'두바이유 · 월평균 USD/배럴',type:'fred',series:'POILDUBUSDM',dec:2,prefix:'$',sourceUrl:'https://fred.stlouisfed.org/series/POILDUBUSDM'},
-  hy:{label:'신용여건 · NFCI Credit (HY 대체)',type:'fred',series:'NFCICREDIT',dec:3,sourceUrl:'https://fred.stlouisfed.org/series/NFCICREDIT'},
+  hy:{label:'신용여건 · NFCI Credit (HY 대체)',type:'fred',series:'NFCICREDIT',dec:3,deltaUnit:'p',sourceUrl:'https://fred.stlouisfed.org/series/NFCICREDIT'},
   sofr:{label:'SOFR · 국채 담보 익일물 조달금리',type:'fred',series:'SOFR',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/SOFR'},
   iorb:{label:'IORB · 준비금 이자율',type:'fred',series:'IORB',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IORB'},
   'repo-spread':{label:'SOFR−IORB · 조달 여건 (Basis 대체)',type:'fred',series:'SOFRIORB',dec:3,suffix:'%p',sourceUrl:'https://www.newyorkfed.org/markets/reference-rates/sofr'},
@@ -2663,8 +2663,8 @@ function renderMarketChart(points,cfg,source){
   const startDate=new Date(first.t).toLocaleDateString('ko-KR',{year:'2-digit',month:'2-digit',day:'2-digit'});
   const endDate=new Date(last.t).toLocaleDateString('ko-KR',{year:'2-digit',month:'2-digit',day:'2-digit'});
   const pointsUnit=cfg.suffix==='%'||cfg.suffix==='%p';
-  const chg=pointsUnit?last.v-first.v:(last.v-first.v)/Math.abs(first.v||1)*100;
-  const changeUnit=pointsUnit?'%p':'%';
+  const chg=pointsUnit||cfg.deltaUnit?last.v-first.v:(last.v-first.v)/Math.abs(first.v||1)*100;
+  const changeUnit=cfg.deltaUnit||(pointsUnit?'%p':'%');
   document.getElementById('marketChartTitle').textContent='CHART · '+cfg.label;
   document.getElementById('marketChartMeta').textContent=(cfg.rangeLabel||chartRangeLabel(marketChartRange))+' · '+points.length+'개 포인트 · '+(source||'Live')+' · '+fmtChartValue(last.v,cfg)+' ('+(chg>=0?'+':'')+chg.toFixed(2)+changeUnit+')';
   box.innerHTML=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" aria-label="${escHtml(cfg.label)} chart">${grid}<polyline points="${poly}" fill="none" stroke="${line}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${x(last).toFixed(1)}" cy="${y(last).toFixed(1)}" r="4.5" fill="${line}"/><text class="chart-axis date" style="text-anchor:start" x="${padL}" y="${h-14}">${startDate}</text><text class="chart-axis date" style="text-anchor:end" x="${w-padR}" y="${h-14}">${endDate}</text></svg>`;
@@ -2710,12 +2710,13 @@ function renderOfficialMarketValues(){
     const frequency={daily:'일간',weekly:'주간',monthly:'월평균'}[data?.frequency]||'';
     const delta=last&&prev?last.value-prev.value:null;
     const difference=delta===null?'':cfg.suffix==='%'?treasurySigned(delta,2,'%p'):['vix','hy'].includes(key)?treasurySigned(delta,3,'p'):treasurySigned(prev.value?delta/Math.abs(prev.value)*100:0,2,'%');
-    const basis=last?last.date+' · '+frequency+(difference?' · 전 관측 대비 '+difference:''):'공식 데이터 연결 대기';
+    const observed=last?(data.frequency==='monthly'?last.date.slice(0,7):last.date):'';
+    const basis=last?observed+' · '+frequency+(difference?' · 전 관측 대비 '+difference:''):'공식 데이터 연결 대기';
     if(last)count++;
     if(key==='vix'){
       renderWatch('ind-vix',value,'indicator-value');
       renderWatch('chg-vix',basis,'indicator-change '+pctClass(delta));
-      renderWatch('src-vix',data?OfficialData.source(data):'Chicago Fed / FRED');
+      renderWatch('src-vix',data?OfficialData.source(data):'Chicago Fed / FRED','indicator-source');
     }else{
       const el=document.getElementById('watch-'+key);if(!el)continue;
       const row=el.closest('.watch-row');

@@ -116,7 +116,7 @@ test('numeric market rows use actual observed values, proxy labels, dates and ch
   assert.match(rows.get('watch-dxy').firstElementChild.textContent,/광의 달러지수 \(DXY 대체\)/);
   assert.match(rows.get('watch-hy').firstElementChild.textContent,/NFCI Credit \(HY 대체\)/);
   assert.match(nodes.get('watch-dubai').innerHTML,/\$102\.00/);
-  assert.match(nodes.get('watch-dubai').innerHTML,/2026-10-01 · 월평균/);
+  assert.match(nodes.get('watch-dubai').innerHTML,/2026-10 · 월평균/);
   assert.match(nodes.get('watch-dubai').innerHTML,/전 관측 대비 \+2\.00%/);
   assert.equal(rows.get('watch-sofr').dataset.chartKey,'sofr');
   assert.equal(rows.get('watch-sofr').attrs.role,'button');

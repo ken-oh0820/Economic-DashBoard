@@ -32,7 +32,7 @@ test('connection status reuses the live list, removes its old panel and opens on
 test('toolbar status control is beside reload and dialog retains shared close behavior',()=>{
   assert.match(html,/aria-label="지표 새로고침"[^]*?<\/button>\s*<button type="button" id="marketConnectionButton"[^]*?aria-haspopup="dialog" aria-controls="workspaceConnections"/);
   assert.equal([...html.matchAll(/id="marketSourceList"/g)].length,1);
-  assert.match(code,/\[\s*'monitorSources','원문 링크'\]/);
+  assert.match(code,/\[\s*'monitorSources','환율·원자재·조달'\]/);
   assert.doesNotMatch(code,/원문·연결 상태/);
   assert.match(code,/dialog\.className='workspace-dialog'/);
   assert.match(code,/addEventListener\('click',\(\)=>dialog\.close\(\)\)/);
