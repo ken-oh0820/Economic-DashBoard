@@ -1,0 +1,19 @@
+body #indicatorDashboard #monitorSentiment{margin:0 0 20px}
+body #indicatorDashboard #monitorSentiment .sentiment-gauges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;border:0;margin-top:8px}
+body #indicatorDashboard #monitorSentiment .sentiment-gauges::before,body #indicatorDashboard #monitorSentiment .sentiment-gauges::after{display:none}
+body #indicatorDashboard #monitorSentiment .indicator-card{display:grid;grid-column:auto;grid-template-columns:minmax(0,1fr) auto;align-content:start;gap:5px 10px;min-width:0;padding:12px 0;background:transparent;border:0;border-top:1px solid var(--border);cursor:pointer}
+body #indicatorDashboard #monitorSentiment .indicator-name{grid-column:1;grid-row:1;font-size:13px;font-weight:600}
+body #indicatorDashboard #monitorSentiment .indicator-value{grid-column:2;grid-row:1;font-size:26px;font-weight:700;line-height:1.3;color:var(--text)}
+body #indicatorDashboard #monitorSentiment .indicator-change{grid-column:1/-1;grid-row:4;text-align:left;font-size:11px;color:var(--text-mid);line-height:1.6}
+body #indicatorDashboard #monitorSentiment .indicator-note{display:block;grid-column:1/-1;grid-row:5;font-size:10px;line-height:1.5;color:var(--text-mid);margin:0}
+body #indicatorDashboard #monitorSentiment .sentiment-gauge{grid-column:1/-1;grid-row:2;margin-top:10px;min-width:0}
+.gauge-track{position:relative;height:10px;border-radius:3px;background:linear-gradient(to right,#db3d4d 0% 24%,#ee952b 24% 44%,#abb8c4 44% 55%,#a5cf48 55% 75%,#209c62 75% 100%)}
+.risk-gauge .gauge-track{background:linear-gradient(to right,#209c62,#abb8c4 50%,#db3d4d)}
+.gauge-track.unavailable{background:var(--border)}
+.gauge-marker{position:absolute;top:-5px;width:4px;height:20px;border:1px solid var(--surface);border-radius:1px;background:var(--text);transform:translateX(-50%)}
+.gauge-marker[hidden]{display:none}
+.gauge-scale{display:flex;justify-content:space-between;gap:6px;margin-top:10px;font-size:10px;line-height:1.5;color:var(--text-mid);font-variant-numeric:tabular-nums}
+.gauge-reading{font-size:12px;font-weight:600;color:var(--text);margin-top:5px;line-height:1.5}
+.liquidity-note{font-size:11px;line-height:1.7;color:var(--text-mid);margin:8px 0 0}
+body #indicatorDashboard .liquidity-panel .watch-row>span:first-child{font-weight:600}
+@media(max-width:760px){body #indicatorDashboard #monitorSentiment .sentiment-gauges{grid-template-columns:1fr;gap:8px}body #indicatorDashboard #monitorSentiment .indicator-card{padding:10px 0}}

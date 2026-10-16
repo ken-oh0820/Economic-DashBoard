@@ -272,6 +272,7 @@ body .buyback-guide{font-size:14px;line-height:1.8}
 <link rel="stylesheet" href="assets/workspace.css?v=20260927-connections">
 <link rel="stylesheet" href="assets/investment-calendar.css?v=20261012-fomc-qra">
 <link rel="stylesheet" href="assets/monitor-compact.css?v=20260929-columns">
+<link rel="stylesheet" href="assets/sentiment-gauges.css?v=20261017">
 <link rel="stylesheet" href="assets/country-profile.css?v=20260923-us-geography1">
 <link rel="stylesheet" href="assets/country-compare.css?v=20260922-registry1">
 <link rel="stylesheet" href="assets/home-shell.css?v=20261016-indicator-home">
@@ -518,23 +519,16 @@ body .buyback-guide{font-size:14px;line-height:1.8}
         </div>
       </section>
     </div>
-    <div class="dashboard-panel rate-schedule-panel" id="rateSchedulePanel">
-      <button class="rate-schedule-toggle" id="rateScheduleToggle" type="button" onclick="toggleRateSchedule()" aria-expanded="false" aria-controls="rateScheduleBody">
-        <span>
-          <span class="rate-schedule-title">금리 발표 일정 · 기준금리</span>
-          <span class="rate-schedule-sub">한국 · 미국 · 일본 금리 확인값과 발표 일정 (한국 시간)</span>
-        </span>
-        <span class="rate-schedule-caret" aria-hidden="true">▼</span>
-      </button>
-      <div class="rate-schedule-body" id="rateScheduleBody">
-        <div class="rate-schedule-grid" id="rateScheduleGrid">
-          <div class="rate-schedule-card">
-            <div class="data-loading">금리 발표 일정 계산 중...</div>
-          </div>
-        </div>
-        <div class="rate-schedule-note">각 국가는 가장 최근에 지난 발표 1개와 앞으로 남은 공식 일정 최대 6개만 표시합니다. 모든 시간은 한국 시간 기준이며, 한국/일본 발표 시각은 중앙은행 공지와 회의 진행에 따라 달라질 수 있습니다.</div>
+    <section class="dashboard-panel liquidity-panel" aria-labelledby="liquidityTitle">
+      <div class="macro-head"><div class="dashboard-panel-title" id="liquidityTitle">유동성 · 달러 자금시장</div></div>
+      <div class="watch-list">
+        <div class="watch-row" data-chart-key="sofr" role="button" tabindex="0"><span>SOFR · 국채 담보 익일물</span><span class="loading" id="watch-sofr">연결 중</span></div>
+        <div class="watch-row" data-chart-key="iorb" role="button" tabindex="0"><span>IORB · 준비금 이자율</span><span class="loading" id="watch-iorb">연결 중</span></div>
+        <div class="watch-row" data-chart-key="tgcr" role="button" tabindex="0"><span>TGCR · 삼자간 레포시장 금리</span><span class="loading" id="watch-tgcr">연결 중</span></div>
+        <div class="watch-row" data-chart-key="srf" role="button" tabindex="0"><span>SRF · 상설 레포 운영금리</span><span class="loading" id="watch-srf">연결 중</span></div>
       </div>
-    </div>
+      <p class="liquidity-note">연율 % · TGCR은 시장 거래금리, SRF는 연준의 운영금리입니다. SRF 이용금액과는 다릅니다.</p>
+    </section>
     <div class="dashboard-panel macro-panel">
       <div class="macro-head">
         <div>
@@ -566,8 +560,6 @@ body .buyback-guide{font-size:14px;line-height:1.8}
           <div class="watch-row" data-chart-key="brent" role="button" tabindex="0"><span>브렌트유</span><span class="loading" id="watch-brent">연결 중</span></div>
           <div class="watch-row" data-chart-key="dubai" role="button" tabindex="0"><span>두바이산 원유</span><span class="loading" id="watch-dubai">연결 중</span></div>
           <div class="watch-row" data-chart-key="hy" role="button" tabindex="0"><span>하이일드 스프레드</span><span class="loading" id="watch-hy">연결 중</span></div>
-          <div class="watch-row" data-chart-key="sofr" role="button" tabindex="0"><span>SOFR</span><span class="loading" id="watch-sofr">연결 중</span></div>
-          <div class="watch-row" data-chart-key="iorb" role="button" tabindex="0"><span>IORB</span><span class="loading" id="watch-iorb">연결 중</span></div>
         </div>
       </div>
       <div class="dashboard-panel">
@@ -1347,7 +1339,7 @@ body .buyback-guide{font-size:14px;line-height:1.8}
   </div>
 </div>
 <div id="tooltip"></div>
-<script src="assets/official-data.js?v=20261016-numeric"></script>
+<script src="assets/official-data.js?v=20261017-liquidity"></script>
 <script>
 const eData={};
 
@@ -2140,6 +2132,8 @@ const MARKET_CHARTS={
   hy:{label:'신용여건 · NFCI Credit (HY 대체)',type:'fred',series:'NFCICREDIT',dec:3,deltaUnit:'p',sourceUrl:'https://fred.stlouisfed.org/series/NFCICREDIT'},
   sofr:{label:'SOFR · 국채 담보 익일물 조달금리',type:'fred',series:'SOFR',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/SOFR'},
   iorb:{label:'IORB · 준비금 이자율',type:'fred',series:'IORB',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/IORB'},
+  tgcr:{label:'TGCR · 삼자간 레포시장 금리',type:'fred',series:'TGCRRATE',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/TGCRRATE'},
+  srf:{label:'SRF · 상설 레포 운영금리',type:'fred',series:'SRFTSYD',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/SRFTSYD'},
   'repo-spread':{label:'SOFR−IORB · 조달 여건 (Basis 대체)',type:'fred',series:'SOFRIORB',dec:3,suffix:'%p',sourceUrl:'https://www.newyorkfed.org/markets/reference-rates/sofr'},
   'treasury-vol':{label:'미국 10년 금리 · 20일 연율화 실현변동성 (MOVE 대체)',type:'fred',series:'DGS10VOL20',dec:1,suffix:'bp',sourceUrl:'https://fred.stlouisfed.org/series/DGS10'},
   'bond-us-3m':{label:'미국 국채 3개월',type:'fred',series:'DGS3MO',range:'1y',dec:2,suffix:'%',sourceUrl:'https://fred.stlouisfed.org/series/DGS3MO',linkText:'FRED CHART VIEW ↗'},
@@ -2703,7 +2697,7 @@ function setMarketChartRange(range){
 }
 function renderOfficialMarketValues(){
   let count=0;
-  for(const key of ['vix','dxy','usdjpy','eurusd','wti','brent','dubai','hy','sofr','iorb']){
+  for(const key of ['vix','dxy','usdjpy','eurusd','wti','brent','dubai','hy','sofr','iorb','tgcr','srf']){
     const cfg=MARKET_CHARTS[key],data=OfficialData.get(cfg),last=data?.points.at(-1),prev=data?.points.at(-2);
     const value=last?fmtMarketNumber(last.value,cfg):'확인 불가';
     const frequency={daily:'일간',weekly:'주간',monthly:'월평균'}[data?.frequency]||'';
@@ -2751,14 +2745,14 @@ async function fetchMarketDashboard(force=false){
   const cfngVal=document.getElementById('ind-cfng'),cfngChg=document.getElementById('chg-cfng'),cfngSrc=document.getElementById('src-cfng');
   if(cfng){const cfngCls=fearGreedClass(cfng.value);ok++;cfngVal.textContent=String(fearGreedDisplayValue(cfng.value));cfngVal.classList.remove('loading');cfngVal.className='indicator-value '+cfngCls;cfngChg.className='indicator-change '+cfngCls;cfngChg.textContent=cfng.label;cfngSrc.textContent=cfng.source+' · 기준 '+(window.WorkspaceUI?.timestampLabel(cfng.timestamp)||'미제공');}else{fail++;cfngVal.textContent='실패';cfngVal.classList.remove('loading');cfngVal.className='indicator-value market-flat';cfngChg.className='indicator-change market-flat';cfngChg.textContent='—';cfngSrc.textContent='연결 실패';}
   sourceRows.push({name:'심리 지표',state:ok?'ok':'error',text:ok+'개 성공'});
-  sourceRows.push({name:'공개 수치 · 환율·현물·금융위험',state:numericCount===10?'ok':'warn',text:numericCount+'/10 · 일간/주간/월간 관측값'});
+  sourceRows.push({name:'공개 수치 · 환율·현물·금융위험·유동성',state:numericCount===12?'ok':'warn',text:numericCount+'/12 · 일간/주간/월간 관측값'});
   sourceRows.push({name:'CNN Fear & Greed',state:fng?'ok':'warn',text:fng?'정상':'Worker 필요'});
   sourceRows.push({name:'Crypto Fear & Greed',state:cfng?'ok':'error',text:cfng?'정상':'실패'});
   sourceRows.push({name:'심리 지표 연결 확인',state:'ok',text:'60초마다 · 관측 시각과 별개'});
   const list=document.getElementById('marketSourceList');
   if(list)list.innerHTML=sourceRows.map(r=>`<div class="source-row ${r.state}"><span>${escHtml(r.name)}</span><span>${escHtml(r.text)}</span></div>`).join('');
   const now=new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  setMarketStatus(fail||numericCount!==10?'warn':'ok','공개 수치 '+numericCount+'/10 · 심리 '+ok+'/2 · '+now);
+  setMarketStatus(fail||numericCount!==12?'warn':'ok','공개 수치 '+numericCount+'/12 · 심리 '+ok+'/2 · '+now);
   }catch(e){
     setMarketStatus('error','심리 지표 연결 실패');
   }finally{
@@ -2968,7 +2962,7 @@ setTimeout(initLiveData, 1500); // Start after map loads
 <script defer src="assets/lucide-0.468.0.min.js"></script>
 <script type="module" src="assets/economic-guide.mjs?v=20260917-important"></script>
 <script defer src="assets/chart-4.4.8.umd.js"></script>
-<script type="module" src="assets/workspace.mjs?v=20261017-dedup"></script>
+<script type="module" src="assets/workspace.mjs?v=20261017-liquidity"></script>
 <script type="module" src="assets/country-profile.mjs?v=20260923-us-geography1"></script>
 <script type="module" src="assets/country-data-client.mjs?v=20260922-registry1"></script>
 </body>

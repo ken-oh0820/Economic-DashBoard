@@ -1,9 +1,10 @@
 import {DEFAULT_FAVORITES,cleanFavorites,observationLabel,timestampLabel,readPreference,savePreference} from './workspace-model.mjs?v=20260917-five-menus';
 import {initMonitorTools,nextReleaseText} from './monitor-tools.mjs?v=20260917-contrast';
 import {initEconomyTabs} from './economy-tabs.mjs?v=20260918-economy';
-import {indicatorExplanation} from './indicator-explanations.mjs?v=20261016-numeric';
+import {indicatorExplanation} from './indicator-explanations.mjs?v=20261017-liquidity';
 import {initPolicyRates} from './policy-rates.mjs?v=20261016-numeric';
 import {initInvestmentCalendar} from './investment-calendar.mjs?v=20261012-fomc2027';
+import {initSentimentGauges} from './sentiment-gauges.mjs?v=20261017';
 
 const $=selector=>document.querySelector(selector);
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -54,21 +55,26 @@ const overview=document.createElement('section');overview.className='workspace-o
 overview.innerHTML='<div class="workspace-section-head"><div><h2 id="overviewTitle">나의 핵심 지표</h2><p>관측 기간 기준 · 공식 데이터</p></div>'+button('editFavorites','핵심 지표 선택','sliders-horizontal')+'</div><div id="overviewGrid" class="overview-grid"></div><p id="preferenceStatus" class="workspace-feedback" role="status"></p>';
 shell.querySelector('.dashboard-top').after(overview);
 const jump=document.createElement('nav');jump.className='monitor-jump';jump.setAttribute('aria-label','모니터링 섹션');
-const sections=[['monitorMacro','물가·고용·성장'],['monitorRates','금리·유동성'],['monitorSentiment','시장 심리'],['monitorSources','환율·원자재·조달']];
+const sections=[['monitorMacro','물가·고용·성장'],['monitorRates','금리'],['monitorSentiment','시장 심리'],['monitorSources','환율·원자재']];
 jump.innerHTML=sections.map(([id,label])=>'<button type="button" data-section="'+id+'">'+label+'</button>').join('');
 overview.after(jump);
-const macro=$('#usMacroGrid').closest('.dashboard-panel'),basis=$('.basis-monitor'),rates=$('#globalRateGrid').closest('.dashboard-panel'),bonds=$('.bond-panel'),schedule=$('#rateSchedulePanel'),sentiment=$('#indicatorDashboard .indicator-grid'),sources=$('#indicatorDashboard .dashboard-sections');
+const macro=$('#usMacroGrid').closest('.dashboard-panel'),basis=$('.basis-monitor'),rates=$('#globalRateGrid').closest('.dashboard-panel'),bonds=$('.bond-panel'),liquidity=$('.liquidity-panel'),sentiment=$('#indicatorDashboard .indicator-grid'),sources=$('#indicatorDashboard .dashboard-sections');
 const groups=sections.map(([id,label])=>{const section=document.createElement('section');section.id=id;section.className='monitor-section';section.setAttribute('aria-label',label);shell.append(section);return section;});
 groups[0].append(macro);
-groups[1].append(schedule,bonds,rates);
+groups[1].append(liquidity,bonds,rates);
+liquidity.id='monitorLiquidity';
+jump.insertAdjacentHTML('afterbegin','<button type="button" data-section="monitorLiquidity">유동성</button>');
+jump.prepend(jump.querySelector('[data-section="monitorSentiment"]'));
 const advanced=document.createElement('details');advanced.className='workspace-advanced';
 advanced.innerHTML='<summary>국채 Basis 위험 모니터링</summary>';advanced.append(basis);groups[1].append(advanced);
 groups[2].innerHTML='<h2 class="workspace-section-title">시장 심리</h2>';groups[2].append(sentiment);
+overview.before(groups[2]);
+initSentimentGauges(sentiment);
 groups[3].append(sources);
 // Stack each column independently so a tall rate panel cannot push sentiment down.
 const monitorColumns=[document.createElement('div'),document.createElement('div')];
 monitorColumns.forEach(column=>{column.className='monitor-column';shell.append(column);});
-monitorColumns[0].append(groups[0],groups[2],groups[3]);
+monitorColumns[0].append(groups[0],groups[3]);
 monitorColumns[1].append(groups[1]);
 jump.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{const section=$('#'+btn.dataset.section);section.tabIndex=-1;section.focus({preventScroll:true});section.scrollIntoView({block:'start',behavior:'instant'});}));
 function initConnectionStatus(){
@@ -80,7 +86,7 @@ function initConnectionStatus(){
   window.addEventListener('app-view-change',event=>{if(event.detail!=='dashboard')dialog.close();});
 }
 initConnectionStatus();
-$('#indicatorDashboard .dashboard-sub').textContent='관측값과 변화 · 발표 일정 · 시계열 비교';
+$('#indicatorDashboard .dashboard-sub').textContent='시장 심리 · 거시경제 · 달러 유동성';
 initInvestmentCalendar($('#investmentSites'));
 for(const [selector,links] of [
   ['#investmentSites', [['dashboard','경제 지표'],['guide','지표 사전']]]

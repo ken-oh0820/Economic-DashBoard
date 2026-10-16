@@ -2,7 +2,8 @@
   let snapshot={series:{}},pending=null,checked=0,failed=false;
   const allowed=new Set(['CPIAUCSL','CPILFESL','PPIFIS','WPSFD49116','UNRATE','PAYEMS','CES0500000003','GDP','GDPC1','PCEPI','GDPDEF','FEDFUNDS','DFEDTARL','DFEDTARU','DGS3MO','DGS1','DGS2','DGS5','DGS10','DGS20','DGS30','T10Y3M']);
   for(const id of ['SOFR','IORB','SOFRIORB','DGS10VOL20','DTWEXBGS','DEXJPUS','DEXUSEU','DCOILWTICO','DCOILBRENTEU','NFCIRISK','NFCICREDIT','MORTGAGE30US','POILDUBUSDM','IRLTLT01KRM156N','IRLTLT01JPM156N','BIS_POLICY_JP','BIS_POLICY_KR','BIS_POLICY_BR'])allowed.add(id);
-  const attributed=new Set(['SOFR','SOFRIORB','NFCIRISK','NFCICREDIT','MORTGAGE30US','POILDUBUSDM','IRLTLT01KRM156N','IRLTLT01JPM156N']);
+  for(const id of ['TGCRRATE','SRFTSYD'])allowed.add(id);
+  const attributed=new Set(['SOFR','TGCRRATE','SRFTSYD','SOFRIORB','NFCIRISK','NFCICREDIT','MORTGAGE30US','POILDUBUSDM','IRLTLT01KRM156N','IRLTLT01JPM156N']);
   async function load(){
     if(pending)return pending;
     if(Date.now()-checked<300000)return snapshot;

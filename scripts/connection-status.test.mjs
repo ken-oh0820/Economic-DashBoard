@@ -32,12 +32,12 @@ test('connection status reuses the live list, removes its old panel and opens on
 test('toolbar status control is beside reload and dialog retains shared close behavior',()=>{
   assert.match(html,/aria-label="지표 새로고침"[^]*?<\/button>\s*<button type="button" id="marketConnectionButton"[^]*?aria-haspopup="dialog" aria-controls="workspaceConnections"/);
   assert.equal([...html.matchAll(/id="marketSourceList"/g)].length,1);
-  assert.match(code,/\[\s*'monitorSources','환율·원자재·조달'\]/);
+  assert.match(code,/\[\s*'monitorSources','환율·원자재'\]/);
   assert.doesNotMatch(code,/원문·연결 상태/);
   assert.match(code,/dialog\.className='workspace-dialog'/);
   assert.match(code,/addEventListener\('click',\(\)=>dialog\.close\(\)\)/);
   assert.match(css,/#monitorSources \.dashboard-sections\{grid-template-columns:minmax\(0,1fr\)\}/);
   assert.match(css,/#workspaceConnections\{max-width:640px\}/);
   assert.ok(html.includes('assets/workspace.css?v=20260927-connections'));
-  assert.ok(html.includes('assets/workspace.mjs?v=20261017-dedup'));
+  assert.ok(html.includes('assets/workspace.mjs?v=20261017-liquidity'));
 });

@@ -112,7 +112,7 @@ test('numeric market rows use actual observed values, proxy labels, dates and ch
     return nodes.get(id);
   };
   vm.runInContext([fn('fmtMarketNumber'),fn('treasurySigned'),fn('renderOfficialMarketValues')].join('\n'),context);
-  assert.equal(vm.runInContext('renderOfficialMarketValues()',context),10);
+  assert.equal(vm.runInContext('renderOfficialMarketValues()',context),12);
   assert.match(rows.get('watch-dxy').firstElementChild.textContent,/광의 달러지수 \(DXY 대체\)/);
   assert.match(rows.get('watch-hy').firstElementChild.textContent,/NFCI Credit \(HY 대체\)/);
   assert.match(nodes.get('watch-dubai').innerHTML,/\$102\.00/);
@@ -121,6 +121,8 @@ test('numeric market rows use actual observed values, proxy labels, dates and ch
   assert.equal(rows.get('watch-sofr').dataset.chartKey,'sofr');
   assert.equal(rows.get('watch-sofr').attrs.role,'button');
   assert.match(nodes.get('watch-iorb').innerHTML,/102\.00%/);
+  assert.equal(rows.get('watch-tgcr').dataset.chartKey,'tgcr');
+  assert.equal(rows.get('watch-srf').dataset.chartKey,'srf');
   assert.equal(nodes.get('ind-vix').textContent,'102.000');
 });
 

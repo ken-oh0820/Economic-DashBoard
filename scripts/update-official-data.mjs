@@ -11,13 +11,14 @@ export const SERIES={
   DGS3MO:['Federal Reserve','daily'],DGS1:['Federal Reserve','daily'],DGS2:['Federal Reserve','daily'],
   DGS5:['Federal Reserve','daily'],DGS10:['Federal Reserve','daily'],DGS20:['Federal Reserve','daily'],DGS30:['Federal Reserve','daily'],
   SOFR:['Federal Reserve Bank of New York','daily'],IORB:['Federal Reserve','daily'],
+  TGCRRATE:['Federal Reserve Bank of New York','daily'],SRFTSYD:['Federal Reserve Bank of New York','daily'],
   DTWEXBGS:['Federal Reserve','daily'],DEXJPUS:['Federal Reserve','daily'],DEXUSEU:['Federal Reserve','daily'],
   DCOILWTICO:['EIA','daily'],DCOILBRENTEU:['EIA','daily'],
   NFCIRISK:['Federal Reserve Bank of Chicago','weekly'],NFCICREDIT:['Federal Reserve Bank of Chicago','weekly'],
   MORTGAGE30US:['Freddie Mac','weekly'],POILDUBUSDM:['IMF','monthly'],
   IRLTLT01KRM156N:['OECD','monthly'],IRLTLT01JPM156N:['OECD','monthly']
 };
-export const ATTRIBUTED_SERIES=new Set(['SOFR','NFCIRISK','NFCICREDIT','MORTGAGE30US','POILDUBUSDM','IRLTLT01KRM156N','IRLTLT01JPM156N']);
+export const ATTRIBUTED_SERIES=new Set(['SOFR','TGCRRATE','SRFTSYD','NFCIRISK','NFCICREDIT','MORTGAGE30US','POILDUBUSDM','IRLTLT01KRM156N','IRLTLT01JPM156N']);
 export function seriesRights(id,tags){
   const names=new Set((tags||[]).map(tag=>tag.name.toLowerCase()));
   if(names.has('copyrighted: pre-approval required'))return null;
