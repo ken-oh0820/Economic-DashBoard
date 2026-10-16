@@ -7,9 +7,9 @@ const css=await readFile(new URL('../assets/dashboard-ui.css',import.meta.url),'
 
 test('workspace loads shared styles last and starts with a consistent light theme',()=>{
   assert.ok(html.indexOf('assets/dashboard-ui.css')>html.indexOf('</style>'));
-  assert.match(html,/<body class="menu-mode light">/);
+  assert.match(html,/<body class="dashboard-mode light">/);
   assert.match(html,/let curMetric='gdp',isLight=true/);
-  assert.match(html,/aria-label="메인 메뉴"/);
+  assert.match(html,/aria-label="경제 지표 홈"/);
   assert.match(html,/aria-label="어두운 테마로 전환"/);
 });
 

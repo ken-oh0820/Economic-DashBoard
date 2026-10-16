@@ -1,0 +1,36 @@
+/* Persistent navigation above the indicator home and all secondary views. */
+body header.app-header{height:auto;min-height:76px;flex:none;position:relative;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"brand nav tools";gap:0 24px;padding:0 28px;background:var(--header-bg);border-bottom:1px solid var(--border)}
+body .app-home{grid-area:brand;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;min-height:64px;padding:8px 0;border:0;background:none;text-align:left;font:inherit;cursor:pointer}
+body .app-home .logo-main{font-size:19px;line-height:1.5;letter-spacing:0;white-space:nowrap}
+body .app-home .logo-sub{display:block;font-size:10px;line-height:1.5;letter-spacing:0;margin:0}
+body .app-home[aria-current="page"] .logo-main{color:var(--accent)}
+.primary-nav{grid-area:nav;display:flex;align-items:stretch;justify-content:center;gap:8px;align-self:stretch;min-width:0}
+.primary-nav button{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;padding:12px 14px;border:0;border-bottom:3px solid transparent;background:none;color:var(--text-mid);font:500 13px/1.5 'Noto Sans KR',sans-serif;letter-spacing:0;cursor:pointer;word-break:keep-all}
+.primary-nav button svg{width:18px;height:18px;stroke-width:1.8;flex:none}
+.primary-nav button:hover{color:var(--accent);background:var(--rank-hover)}
+.primary-nav button[aria-current="page"]{color:var(--accent);border-bottom-color:var(--accent);background:var(--metric-active-bg)}
+body header.app-header .header-left{grid-area:tools;justify-content:flex-end;flex-wrap:nowrap}
+body header.app-header .header-right{display:none;grid-area:stats;min-width:0;padding:8px 0 10px;border-top:1px solid var(--border);justify-content:flex-start;gap:32px}
+body.map-mode header.app-header{grid-template-areas:"brand nav tools" "stats stats stats"}
+body.map-mode header.app-header .header-right{display:flex}
+body header.app-header .stat-pill{flex-direction:row;align-items:center;gap:8px}
+body header.app-header .font-panel{top:100%;left:auto;right:16px}
+@media(max-width:1100px){
+ body header.app-header{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand tools" "nav nav";padding:0 24px;gap:0 16px}
+ .primary-nav{justify-content:flex-start;gap:20px}
+ .primary-nav button{padding:10px 8px}
+ body.map-mode header.app-header{grid-template-areas:"brand tools" "nav nav" "stats stats"}
+}
+@media(max-width:600px){
+ body header.app-header{padding:0 12px;gap:0 8px}
+ body .app-home{min-height:58px;padding:6px 0}
+ body .app-home .logo-main{font-size:16px}
+ body header.app-header .header-left{gap:6px}
+ body header.app-header .header-left .font-ctrl-btn{padding:0 8px}
+ .primary-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+ .primary-nav button{gap:5px;padding:8px 4px;min-height:62px;font-size:12px;line-height:1.6;align-items:center}
+ .primary-nav button svg{width:16px;height:16px}
+ body header.app-header .header-right{gap:14px;flex-wrap:wrap}
+ body header.app-header .stat-pill{gap:5px}
+ body header.app-header .font-panel{right:8px;left:8px}
+}

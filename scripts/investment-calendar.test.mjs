@@ -33,11 +33,10 @@ test('each month has a continuous Sunday-first six-week grid, including leap yea
 
 test('investment calendar defaults to calendar while preserving all research destinations', async () => {
   const html=await readFile(new URL('../index.html',import.meta.url),'utf8');
-  const workspace=await readFile(new URL('../assets/workspace.mjs',import.meta.url),'utf8');
   const calendar=await readFile(new URL('../assets/investment-calendar.mjs',import.meta.url),'utf8');
   const css=await readFile(new URL('../assets/investment-calendar.css',import.meta.url),'utf8');
   assert.match(html,/aria-label="투자 관련 일정 및 사이트"/);
-  assert.match(workspace,/'sites','투자 관련 일정 및 사이트'/);
+  assert.match(html,/data-view="sites" onclick="switchView\('sites'\)" aria-label="투자 관련 일정 및 사이트"/);
   assert.match(html,/id="investmentCalendarTab" role="tab" aria-selected="true"/);
   assert.match(html,/id="investmentLinksPanel"[^>]* hidden>/);
   const links=html.slice(html.indexOf('<section id="investmentLinksPanel"'),html.indexOf('<div class="us-guide-dashboard"'));

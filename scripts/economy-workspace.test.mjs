@@ -56,5 +56,5 @@ test('chart explanation stays inside the chart dialog and related concepts stay 
     assert.ok(html.includes('id="'+id+'" role="tabpanel" aria-labelledby="'+tab+'" tabindex="0"'));
     assert.ok(html.includes('id="'+tab+'" role="tab" aria-controls="'+id+'"'));
   }
-  assert.doesNotMatch(code.match(/const navItems=.*;/)[0],/\['guide'/);
+  assert.doesNotMatch(html.match(/<nav class="primary-nav"[\s\S]*?<\/nav>/)[0],/data-view="guide"/);
 });

@@ -33,17 +33,18 @@ function makeDialog(id,title,body){
   return dialog;
 }
 
-const navItems=[['menu','홈','layout-grid'],['map','세계 경제 지도','globe-2'],['dashboard','경제 지표','chart-no-axes-combined'],['sites','투자 관련 일정 및 사이트','calendar-days'],['fed','연준 대차대조표','landmark']];
-const nav=makeDialog('workspaceNav','워크스페이스','<nav aria-label="워크스페이스 메뉴">'+navItems.map(([view,label,symbol])=>'<button type="button" data-view="'+view+'">'+icon(symbol)+'<span>'+label+'</span></button>').join('')+'</nav>');
-const menuButton=$('header .app-nav-btn');
-menuButton.removeAttribute('onclick');menuButton.setAttribute('aria-label','메뉴 열기');menuButton.title='메뉴 열기';
-menuButton.setAttribute('aria-haspopup','dialog');menuButton.setAttribute('aria-controls',nav.id);
-menuButton.addEventListener('click',()=>nav.showModal());
-nav.querySelectorAll('[data-view]').forEach(btn=>btn.addEventListener('click',()=>{nav.close();switchView(btn.dataset.view);}));
+function syncPrimaryNavigation(view){
+  const home=view==='dashboard'||view==='guide';
+  if(home)$('.app-home').setAttribute('aria-current','page');else $('.app-home').removeAttribute('aria-current');
+  document.querySelectorAll('.primary-nav [data-view]').forEach(btn=>{
+    if(btn.dataset.view===view)btn.setAttribute('aria-current','page');else btn.removeAttribute('aria-current');
+  });
+}
+syncPrimaryNavigation('dashboard');
 window.addEventListener('app-view-change',event=>{
   const view=event.detail;
   syncEconomyTabs(view==='guide'?'guide':'dashboard');
-  nav.querySelectorAll('[data-view]').forEach(btn=>{if(btn.dataset.view===(view==='guide'?'dashboard':view))btn.setAttribute('aria-current','page');else btn.removeAttribute('aria-current');});
+  syncPrimaryNavigation(view);
   if(view!=='dashboard'&&chartDialog.open)chartDialog.close();
 });
 
