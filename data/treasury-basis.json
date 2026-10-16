@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T20:51:53.099Z",
+  "updatedAt": "2026-10-16T22:04:32.479Z",
   "position": {
     "value": -709210332893.72,
     "prev": -750687403132.18,
@@ -7,9 +7,9 @@
     "source": "OFR/CFTC"
   },
   "openInterest": {
-    "value": 23882925,
-    "change": -79919,
-    "date": "2026-10-06",
+    "value": 24139276,
+    "change": 256351,
+    "date": "2026-10-13",
     "source": "CFTC TFF"
   }
 }
