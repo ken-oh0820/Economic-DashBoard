@@ -101,6 +101,29 @@ test('four-country rate grid preserves official values alongside source-only car
   assert.doesNotMatch(output,/#\d|undefined/);
 });
 
+test('numeric market rows use actual observed values, proxy labels, dates and chart actions',()=>{
+  const {context,nodes}=harness();
+  const rows=new Map();
+  context.renderWatch=(id,text)=>{nodes.set(id,{textContent:text});};
+  context.pctClass=value=>value>0?'market-up':value<0?'market-down':'market-flat';
+  context.OfficialData={get:cfg=>({frequency:cfg.series==='POILDUBUSDM'?'monthly':'daily',points:[{date:'2026-09-01',value:100},{date:'2026-10-01',value:102}]}),source:()=> 'Agency / FRED'};
+  context.document.getElementById=id=>{
+    if(!nodes.has(id)){const row={dataset:{},attrs:{},firstElementChild:{},setAttribute(key,value){this.attrs[key]=value;}};rows.set(id,row);nodes.set(id,{closest:()=>row});}
+    return nodes.get(id);
+  };
+  vm.runInContext([fn('fmtMarketNumber'),fn('treasurySigned'),fn('renderOfficialMarketValues')].join('\n'),context);
+  assert.equal(vm.runInContext('renderOfficialMarketValues()',context),10);
+  assert.match(rows.get('watch-dxy').firstElementChild.textContent,/광의 달러지수 \(DXY 대체\)/);
+  assert.match(rows.get('watch-hy').firstElementChild.textContent,/NFCI Credit \(HY 대체\)/);
+  assert.match(nodes.get('watch-dubai').innerHTML,/\$102\.00/);
+  assert.match(nodes.get('watch-dubai').innerHTML,/2026-10-01 · 월평균/);
+  assert.match(nodes.get('watch-dubai').innerHTML,/전 관측 대비 \+2\.00%/);
+  assert.equal(rows.get('watch-sofr').dataset.chartKey,'sofr');
+  assert.equal(rows.get('watch-sofr').attrs.role,'button');
+  assert.match(nodes.get('watch-iorb').innerHTML,/102\.00%/);
+  assert.equal(nodes.get('ind-vix').textContent,'102.000');
+});
+
 test('macro requests use the shared official snapshot without browser proxies',async()=>{
   const {context}=harness();
   const urls=[];context.fetchT=async url=>{urls.push(url);throw Error('offline');};
